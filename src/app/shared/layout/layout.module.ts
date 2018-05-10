@@ -3,10 +3,22 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [NavbarComponent, SidebarComponent, FooterComponent],
-  declarations: [SidebarComponent, NavbarComponent, FooterComponent]
+  imports: [CommonModule, RouterModule],
+  exports: [
+    NavbarComponent,
+    SidebarComponent,
+    FooterComponent,
+    BreadcrumbComponent
+  ],
+  declarations: [
+    SidebarComponent,
+    NavbarComponent,
+    FooterComponent,
+    BreadcrumbComponent
+  ]
 })
 export class LayoutModule {}
