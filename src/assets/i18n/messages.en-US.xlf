@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+    <!-- Nav Bar -->
+      <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
+        <source>Change Password</source>
+        <target>Change Password</target>
+      </trans-unit>
+      <trans-unit id="layout-navbar-anchor-logout" datatype="html">
+        <source>Sign Out</source>
+        <target>Sign Out</target>
+      </trans-unit>
+
+    <!-- Side Bar -->
+      <trans-unit id="layout-sidebar-anchor-dashboard" datatype="html">
+        <source>Dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-menu" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
