@@ -21,6 +21,10 @@
         <source>Menu</source>
         <target>Thực Đơn</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
+        <source>User Management</source>
+        <target>Quản Lý User</target>
+      </trans-unit>
 
       <!--Create user-->
       <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
