@@ -3,6 +3,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuComponent } from './menu/menu.component';
 
+export const userModule = 'app/modules/users/users.module#UsersModule';
+
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -16,6 +18,13 @@ const routes: Routes = [
     component: MenuComponent,
     data: {
       breadcrumb: 'Menu'
+    }
+  },
+  {
+    path: 'users',
+    loadChildren: userModule,
+    data: {
+      breadcrumb: 'Users'
     }
   }
 ];
