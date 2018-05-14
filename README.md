@@ -20,14 +20,26 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `npm build-i18n` to build the project in multi language. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+## Configure multi language
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Define the translate unit: 
 
-## Running end-to-end tests
+    Open resource files in assets/i18n and define the translate unit
+    *Example:*
+    ```html
+    <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
+       <source>Change Password</source>
+       <target>Đổi Mật Khẩu</target>
+    </trans-unit>
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+2. Use the translate unit
+    ```html
+    <a class="dropdown-item mt-2"   i18n="@@layout-navbar-anchor-changepassword">
+       Change Password
+    </a>
+    ```
 
-## Further help
+3. Build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    Refer to *Development server* section above.
