@@ -63,6 +63,11 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
+      <trans-unit id="user-create_user-input-email_place_holder" datatype="html">
+        <source>Enter email</source>
+        <target>Enter email 2</target>
+      </trans-unit>
+      
       <!--End create user-->
 
     </body>

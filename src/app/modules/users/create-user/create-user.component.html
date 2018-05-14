@@ -14,24 +14,31 @@
               <label for="email" i18n="@@user-create_user-label-email_field">Email
                 <span class="require">*</span>
               </label>
-              <input id="email" class="form-control" name="email" type="email">
+              <input id="email" class="form-control" name="email" type="email" [ngClass]="{'form-control-danger': errorMessage.email }"
+                i18n-placeholder="@@user-create_user-input-email_place_holder" placeholder="Enter email">
+              <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
             </div>
             <div class="form-group">
               <label for="fullname" i18n="@@user-create_user-label-fullname_field">Full name
                 <span class="require">*</span>
               </label>
-              <input id="fullname" class="form-control" name="fullname" type="text">
+              <input id="fullname" class="form-control" name="fullname" type="text" [ngClass]="{'form-control-danger': errorMessage.fullname }"
+                placeholder="Enter full name">
+              <label id="fullname-error" class="error mt-2 text-danger" for="fullname" *ngIf="errorMessage.fullname"> {{ errorMessage.fullname }}</label>
             </div>
             <div class="form-group">
               <label for="username" i18n="@@user-create_user-label-username_field">Username
                 <span class="require">*</span>
               </label>
-              <input id="username" class="form-control" name="username" type="text">
+              <input id="username" class="form-control" name="username" type="text" [ngClass]="{'form-control-danger': errorMessage.username }"
+                placeholder="Enter username">
+              <label id="username-error" class="error mt-2 text-danger" for="username" *ngIf="errorMessage.username"> {{ errorMessage.username }}</label>
             </div>
             <div class="form-group">
               <label for="password" i18n="@@user-create_user-label-password_field">Password</label>
-              <div class="input-group" data-toggle="tooltip" data-placement="right" title="Abccbaasdasd">
-                <input id="password" class="form-control" name="password" type="password">
+              <div class="input-group" data-toggle="tooltip" data-placement="right" i18n-title="@@user-create_user-div-password_tooltip"
+                title="If you do not enter a password, one will be generated automatically">
+                <input id="password" class="form-control" name="password" type="password" placeholder="Enter password if required">
                 <i class="mdi mdi-information-outline inside-control-icon"></i>
               </div>
             </div>
