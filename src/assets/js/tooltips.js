@@ -9,7 +9,7 @@
 
     var Tooltip = $.fn.tooltip.Constructor;
 
-    // add customClass option to Bootstrap Tooltip
+    // add customClass, trigger option to Bootstrap Tooltip
     $.extend(Tooltip.Default, {
       customClass: ''
     });
@@ -25,6 +25,6 @@
         $(tip).addClass(this.config.customClass);
       }
     };
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'focus' });
   });
 })(jQuery);

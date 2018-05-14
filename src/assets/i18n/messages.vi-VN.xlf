@@ -21,6 +21,46 @@
         <source>Menu</source>
         <target>Thực Đơn</target>
       </trans-unit>
+
+      <!--Create user-->
+      <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
+        <source>Create New User</source>
+        <target>Tạo User Mới</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-h4-create_new_user_description" datatype="html">
+        <source>Create a new user account to access SNOB CMS</source>
+        <target>Tạo user mới truy cập hệ thống SNOB CMS</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-email_field" datatype="html">
+        <source>Email</source>
+        <target>Địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-fullname_field" datatype="html">
+        <source>Full name</source>
+        <target>Tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-username_field" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-password_field" datatype="html">
+        <source>Password</source>
+        <target>Mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-create_another_field" datatype="html">
+        <source>Create another</source>
+        <target>Tạo user khác</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+      <!--End create user-->
+
     </body>
   </file>
 </xliff>
