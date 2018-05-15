@@ -9,12 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-i18n":
-      "for lang in vi-VN en-US; do ng build --output-path=dist/$lang --aot -prod --bh /$lang/ --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done",
-    "vi":
-      "ng serve --aot --i18n-file=src/assets/i18n/messages.vi-VN.xlf --locale=vi --i18n-format=xlf",
-    "en":
-      "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf"
+    "build-i18n": "for lang in vi-VN en-US; do ng build --output-path=dist/$lang --aot -prod --bh /$lang/ --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done",
+    "vi": "ng serve --aot --i18n-file=src/assets/i18n/messages.vi-VN.xlf --locale=vi --i18n-format=xlf",
+    "en": "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf"
   },
   "private": true,
   "dependencies": {
@@ -28,7 +25,9 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "ng2-slim-loading-bar": "^4.0.0",
     "rxjs": "^5.5.6",
+    "toastr": "^2.1.4",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
@@ -38,6 +37,7 @@
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "@types/toastr": "^2.1.35",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",

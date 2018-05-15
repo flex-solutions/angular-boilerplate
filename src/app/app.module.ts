@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -14,4 +14,10 @@ import { MenuComponent } from './menu/menu.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  static injector: Injector;
+
+  constructor(injector: Injector) {
+    AppModule.injector = injector;
+  }
+}
