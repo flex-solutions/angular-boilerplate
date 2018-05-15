@@ -1,0 +1,8 @@
+.none-underline {
+     list-style-type: none;
+     text-decoration: none;
+}
+
+.none-lineheight {
+     line-height: 0;
+}
