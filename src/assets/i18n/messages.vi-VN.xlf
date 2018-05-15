@@ -67,6 +67,23 @@
         <source>Enter email</source>
         <target>Nhập địa chỉ email</target>
       </trans-unit>
+       <trans-unit id="user-create_user-input-fullname_place_holder" datatype="html">
+        <source>Enter full name</source>
+        <target>Nhập tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-username_place_holder" datatype="html">
+        <source>Enter username</source>
+        <target>Nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-password_place_holder" datatype="html">
+        <source>Enter password if required</source>
+        <target>Nhập mật khẩu nếu cần thiết</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-div-password_tooltip" datatype="html">
+        <source>If you do not enter a password, one will be generated automatically</source>
+        <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
+      </trans-unit>
+
       <!--End create user-->
 
     </body>

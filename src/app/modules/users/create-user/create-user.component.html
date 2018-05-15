@@ -8,49 +8,58 @@
         <p class="card-description" i18n="@@user-create_user-h4-create_new_user_description">
           Create a new user account to access SNOB CMS
         </p>
-        <form class="cmxform" id="signupForm" method="get" action="#">
+        <form class="cmxform" id="signupForm">
           <fieldset>
+            <!-- Email field -->
             <div class="form-group">
-              <label for="email" i18n="@@user-create_user-label-email_field">Email
-                <span class="require">*</span>
-              </label>
+              <label for="email" i18n="@@user-create_user-label-email_field">Email </label>
+              <label class="require">*</label>
               <input id="email" class="form-control" name="email" type="email" [ngClass]="{'form-control-danger': errorMessage.email }"
                 i18n-placeholder="@@user-create_user-input-email_place_holder" placeholder="Enter email">
               <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
             </div>
+
+            <!-- Fullname field -->
             <div class="form-group">
-              <label for="fullname" i18n="@@user-create_user-label-fullname_field">Full name
-                <span class="require">*</span>
-              </label>
+              <label for="fullname" i18n="@@user-create_user-label-fullname_field">Full name </label>
+              <label class="require">*</label>
               <input id="fullname" class="form-control" name="fullname" type="text" [ngClass]="{'form-control-danger': errorMessage.fullname }"
-                placeholder="Enter full name">
+                i18n-placeholder="@@user-create_user-input-fullname_place_holder" placeholder="Enter full name">
               <label id="fullname-error" class="error mt-2 text-danger" for="fullname" *ngIf="errorMessage.fullname"> {{ errorMessage.fullname }}</label>
             </div>
+
+            <!-- Username field -->
             <div class="form-group">
-              <label for="username" i18n="@@user-create_user-label-username_field">Username
-                <span class="require">*</span>
-              </label>
+              <label for="username" i18n="@@user-create_user-label-username_field">Username </label>
+              <label class="require">*</label>
               <input id="username" class="form-control" name="username" type="text" [ngClass]="{'form-control-danger': errorMessage.username }"
-                placeholder="Enter username">
+                i18n-placeholder="@@user-create_user-input-username_place_holder" placeholder="Enter username">
               <label id="username-error" class="error mt-2 text-danger" for="username" *ngIf="errorMessage.username"> {{ errorMessage.username }}</label>
             </div>
+
+            <!-- Password field -->
             <div class="form-group">
               <label for="password" i18n="@@user-create_user-label-password_field">Password</label>
-              <div class="input-group" data-toggle="tooltip" data-placement="right" i18n-title="@@user-create_user-div-password_tooltip"
-                title="If you do not enter a password, one will be generated automatically">
-                <input id="password" class="form-control" name="password" type="password" placeholder="Enter password if required">
+              <div class="input-group" placement="right" ngbTooltip="Basic tooltip" triggers="click:blur" i18n-ngbTooltip="@@user-create_user-div-password_tooltip">
+                <input id="password" class="form-control" name="password" type="password" i18n-placeholder="@@user-create_user-input-password_place_holder"
+                  placeholder="Enter password if required">
                 <i class="mdi mdi-information-outline inside-control-icon"></i>
               </div>
             </div>
+
+            <!-- Create another field -->
             <div class="form-group">
               <div class="form-check form-check-flat">
-                <label class="form-check-label" i18n="@@user-create_user-label-create_another_field">
-                  <input type="checkbox" class="form-check-input" name="createanother"> Create another
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="createanother">
+                  <i class="input-helper"></i>
+                  <label class="form-check-label" i18n="@@user-create_user-label-create_another_field"> Create another</label>
                 </label>
               </div>
             </div>
 
-            <button type="submit" class="btn btn-success mr-2" i18n="@@user-create_user-button-submit">Submit</button>
+            <!-- Form buttons -->
+            <button type="submit" class="btn btn-success mr-2" i18n="@@user-create_user-button-submit" (click)="submit()">Submit</button>
             <button class="btn btn-light" i18n="@@user-create_user-button-cancel">Cancel</button>
           </fieldset>
         </form>

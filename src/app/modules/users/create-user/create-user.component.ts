@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewChildren,
-  ElementRef
-} from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -22,7 +16,7 @@ import 'rxjs/add/observable/merge';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent implements OnInit, AfterViewInit {
+export class CreateUserComponent implements OnInit {
   @ViewChildren(FormControlName, { read: ElementRef })
   formControls: ElementRef[];
 
@@ -59,16 +53,7 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    const controlBlurs: Observable<any>[] = this.formControls.map(
-      (formControl: ElementRef) =>
-        Observable.fromEvent(formControl.nativeElement, 'blur')
-    );
-
-    Observable.merge(this.userForm.valueChanges, ...controlBlurs)
-      .debounceTime(1000)
-      .subscribe(value => {
-        this.errorMessage = this.genericValidator.validate(this.userForm);
-      });
+  submit(): void {
+    this.errorMessage = this.genericValidator.validate(this.userForm);
   }
 }
