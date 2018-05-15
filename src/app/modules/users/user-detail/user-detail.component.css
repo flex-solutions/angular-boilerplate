@@ -6,3 +6,7 @@
 .none-lineheight {
      line-height: 0;
 }
+
+.pointer {
+     cursor: pointer;
+}
