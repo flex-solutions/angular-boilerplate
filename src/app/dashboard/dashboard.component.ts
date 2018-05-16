@@ -11,9 +11,9 @@ export class DashboardComponent implements OnInit {
   constructor(public notifier: NotificationService) {}
 
   ngOnInit() {
-    this.notifier.showSuccess('success');
-    this.notifier.showInfo('info');
-    this.notifier.showWarning('warning');
-    this.notifier.showError('error');
+    // this.notifier.showSuccess('success');
+    // this.notifier.showInfo('info');
+    // this.notifier.showWarning('warning');
+    // this.notifier.showError('error');
   }
 }

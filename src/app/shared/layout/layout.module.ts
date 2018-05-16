@@ -5,6 +5,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationItemComponent } from './notification-item/notification-item.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
@@ -18,7 +20,9 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     NavbarComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    NotificationComponent,
+    NotificationItemComponent
   ]
 })
 export class LayoutModule {}

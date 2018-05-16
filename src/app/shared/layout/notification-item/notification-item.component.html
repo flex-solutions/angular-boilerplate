@@ -1,0 +1,11 @@
+<a class="dropdown-item preview-item">
+  <div class="preview-thumbnail">
+    <div [className]="itemClass">
+      <i class="mdi mdi-alert-circle-outline mx-0"></i>
+    </div>
+  </div>
+  <div class="preview-item-content">
+    <h6 *ngIf="message" class="preview-subject font-weight-normal text-dark mb-1">{{message.message}}</h6>
+    <p *ngIf="message" class="font-weight-light small-text mb-0">{{message.time}}</p>
+  </div>
+</a>
