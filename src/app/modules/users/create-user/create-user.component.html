@@ -41,9 +41,8 @@
             <!-- Password field -->
             <div class="form-group">
               <label for="password" i18n="@@user-create_user-label-password_field">Password</label>
-              <div class="input-group">
-                <input id="password" class="form-control" formControlName="password" type="password" n placement="right" gbTooltip="Basic tooltip"
-                  triggers="mouseenter:blur" i18n-ngbTooltip="@@user-create_user-div-password_tooltip" i18n-placeholder="@@user-create_user-input-password_place_holder"
+              <div class="input-group" data-toggle="tooltip" data-placement="right" title="{{tooltipContent}}" tooltip-trigger="focus">
+                <input id="password" class="form-control" formControlName="password" type="password" i18n-placeholder="@@user-create_user-input-password_place_holder"
                   placeholder="Enter password if required">
                 <i class="mdi mdi-information-outline inside-control-icon"></i>
               </div>

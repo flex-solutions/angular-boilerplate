@@ -4,10 +4,10 @@ export function getBase64(localFilePath: string) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', localFilePath, true);
     xhr.responseType = 'blob';
-    xhr.onload = function(e) {
+    xhr.onload = function(this: XMLHttpRequest, e: Event) {
       // console.log(this.response);
       const reader = new FileReader();
-      reader.onload = function(event) {
+      reader.onload = function(event: FileReaderProgressEvent) {
         const binaryString = event.target.result;
         // console.log(binaryString);
         resolve(binaryString);
@@ -19,4 +19,8 @@ export function getBase64(localFilePath: string) {
     };
     xhr.send();
   });
+}
+
+interface FileReaderProgressEvent extends ProgressEvent {
+  readonly target: FileReader | null;
 }

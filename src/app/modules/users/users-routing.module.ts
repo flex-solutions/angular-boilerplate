@@ -4,30 +4,30 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 
-const routes: Routes = [
+const userRoutes: Routes = [
   {
-    path: '',
+    path: 'users',
     component: CreateUserComponent,
     data: {
       breadcrumb: 'Users'
     }
   },
   {
-    path: 'create',
+    path: 'users/create',
     component: CreateUserComponent,
     data: {
       breadcrumb: 'Create User'
     }
   },
   {
-    path: 'update',
+    path: 'users/update',
     component: EditUserComponent,
     data: {
       breadcrumb: 'Edit User'
     }
   },
   {
-    path: 'user-detail',
+    path: 'users/user-detail',
     component: UserDetailComponent,
     data: {
       breadcrumb: 'View User Detail'
@@ -36,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(userRoutes)],
   exports: [RouterModule]
 })
 export class UsersRoutingModule {}

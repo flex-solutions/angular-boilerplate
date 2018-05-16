@@ -11,8 +11,12 @@ import { getBase64 } from '../../../utilities/convert-image-to-base64';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent extends UserModificationBase {
+  tooltipContent: string;
   constructor(fb: FormBuilder, translateService: TranslateService) {
     super(fb, translateService);
+    this.tooltipContent = this.translateService.translate(
+      'user-create_user-div-password_tooltip'
+    );
   }
 
   protected onCreateUserForm() {
