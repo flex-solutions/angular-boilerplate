@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
-import { TranslateService } from '../../../shared/services/translateService';
-import { GenericValidator } from '../../../shared/validation/generic-validator';
 import { FormBuilder, Validators } from '@angular/forms';
+import { TranslateService } from '../../../shared/services/translateService';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class CreateUserComponent extends UserModificationBase {
+export class EditUserComponent extends UserModificationBase {
   constructor(fb: FormBuilder, translateService: TranslateService) {
     super(fb, translateService);
   }
@@ -23,11 +22,9 @@ export class CreateUserComponent extends UserModificationBase {
       ],
       fullname: ['', [Validators.required]],
       username: ['', [Validators.required]],
-      password: ['', []],
-      createAnother: ['', []]
+      isActive: ['', []]
     });
   }
-
   protected onSubmit() {
     throw new Error('Method not implemented.');
   }

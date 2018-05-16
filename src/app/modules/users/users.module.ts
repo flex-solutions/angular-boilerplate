@@ -5,6 +5,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [CreateUserComponent, UserDetailComponent]
+  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent]
 })
-export class UsersModule { }
+export class UsersModule {}

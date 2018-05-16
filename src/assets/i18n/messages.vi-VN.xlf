@@ -113,6 +113,24 @@
       </trans-unit>
       <!--End create user-->
 
+      <!--Edit user-->
+      <trans-unit id="user-edit_user-h4-edit_user_title" datatype="html">
+        <source>Edit User</source>
+        <target>Sửa User</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-h4-edit_user_description" datatype="html">
+        <source>Edit access information of an user account</source>
+        <target>Sửa thông tin truy cập của user</target>
+      </trans-unit>
+       <trans-unit id="user-edit_user-label-is_active" datatype="html">
+        <source>Is Active</source>
+        <target>Cho phép đăng nhập</target>
+      </trans-unit>
+       <trans-unit id="user-create_user-button-update" datatype="html">
+        <source>Update</source>
+        <target>Cập Nhật</target>
+      </trans-unit>
+      <!--End edit user-->
     </body>
   </file>
 </xliff>
