@@ -83,7 +83,7 @@
         <source>If you do not enter a password, one will be generated automatically</source>
         <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
       </trans-unit>
-      <trans-unit id="user-create_user-label-validation_require_email" datatype="html"> 
+      <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html"> 
         <source>Please provide email address</source>
         <target>Vui lòng cung cấp địa chỉ email </target>
       </trans-unit>

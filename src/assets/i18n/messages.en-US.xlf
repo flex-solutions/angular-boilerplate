@@ -81,7 +81,7 @@
       </trans-unit>
       <trans-unit id="user-create_user-div-password_tooltip" datatype="html">
         <source>If you do not enter a password, one will be generated automatically</source>
-        <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
+        <target>If you do not enter a password, one will be generated automatically</target>
       </trans-unit>
       <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html">
         <source>Please provide email address</source>
