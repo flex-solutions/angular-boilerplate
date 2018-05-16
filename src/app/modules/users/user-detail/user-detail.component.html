@@ -1,12 +1,12 @@
-<div class="row profile-page">
+<div *ngIf="userdetail" class="row profile-page">
   <div class="col-12">
     <div class="d-flex flex-row">
       <img src="https://placehold.it/100x100" class="img-lg rounded" alt="profile image" />
       <div class="ml-3 col-md-9">
-        <h6>Thomas Edison</h6>
-        <p class="text-muted">thomas</p>
-        <p class="text-muted none-lineheight">thomas@gmail.com</p>
-        <p class="mt-2 text-success font-weight-bold">Developer</p>
+        <h6>{{userdetail.fullName}}</h6>
+        <p class="text-muted">{{userdetail.accountName}}</p>
+        <p class="text-muted none-lineheight">{{userdetail.email}}</p>
+        <p class="mt-2 text-success font-weight-bold">{{userdetail.position}}</p>
       </div>
 
       <div class="ml-3">
@@ -20,6 +20,7 @@
           <i class="mdi mdi-dots-horizontal"></i>
         </button>
         
+        <!-- Modal -->
         <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-4" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -33,7 +34,6 @@
                 <form>
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">User "hieutran" will be permanently deleted. Are you sure want to delete?</label>
-                    <input type="text" class="form-control" id="recipient-name">
                   </div>
                 </form>
               </div>
@@ -66,21 +66,21 @@
               <table class="table table-borderless w-100 mt-4">
                 <tr>
                   <td>
-                    <strong>Login Count :</strong> Johnathan Deo</td>
+                    <strong>Login Count :</strong> {{userdetail.loginCount}}</td>
                   <td>
-                    <strong>Last Failed Login :</strong> staradmin.com</td>
+                    <strong>Last Failed Login :</strong> {{userdetail.lastFailedLogin}}</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>Last Login :</strong> USA</td>
+                    <strong>Last Login :</strong> {{userdetail.lastLogin}}</td>
                   <td>
-                    <strong>Current Failed Logins :</strong> Richard@staradmin.com</td>
+                    <strong>Current Failed Logins :</strong> {{userdetail.currentFailedLogin}}</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>Previous Login :</strong> English, German, Spanish.</td>
+                    <strong>Previous Login :</strong> {{userdetail.previousLogin}}</td>
                   <td>
-                    <strong>Total Failed Login :</strong> +73646 4563</td>
+                    <strong>Total Failed Login :</strong> {{userdetail.totalFailedLogin}}</td>
                 </tr>
               </table>
 
