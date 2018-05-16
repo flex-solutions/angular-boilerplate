@@ -3,40 +3,38 @@ import * as toastNotifier from 'toastr';
 
 @Injectable()
 export class NotificationService {
-  constructor() {
-    toastr.options = {
-      debug: false,
-      tapToDismiss: true,
-      positionClass: 'toast-top-right',
-      preventDuplicates: false,
-      progressBar: true,
-      newestOnTop: true,
-      closeButton: true,
-      onclick: null,
-      showDuration: 300,
-      hideDuration: 1000,
-      timeOut: 5000,
-      extendedTimeOut: 1000,
-      showEasing: 'swing',
-      hideEasing: 'linear',
-      showMethod: 'fadeIn',
-      hideMethod: 'fadeOut'
-    };
-  }
+  options = {
+    debug: false,
+    tapToDismiss: true,
+    positionClass: 'toast-top-right',
+    preventDuplicates: false,
+    progressBar: true,
+    newestOnTop: true,
+    closeButton: true,
+    onclick: null,
+    showDuration: 300,
+    hideDuration: 1000,
+    timeOut: 5000,
+    extendedTimeOut: 5000,
+    showEasing: 'swing',
+    hideEasing: 'linear',
+    showMethod: 'fadeIn',
+    hideMethod: 'fadeOut'
+  };
 
   showSuccess(message: string) {
-    toastNotifier.success(message, 'Thành Công');
+    toastNotifier.success(message, '', this.options);
   }
 
   showError(message: string) {
-    toastNotifier.error(message, 'Lỗi');
+    toastNotifier.error(message, '', this.options);
   }
 
   showInfo(message: string) {
-    toastNotifier.info(message, 'Thông Báo');
+    toastNotifier.info(message, '', this.options);
   }
 
   showWarning(message: string) {
-    toastNotifier.warning(message, 'Chú Ý');
+    toastNotifier.warning(message, '', this.options);
   }
 }
