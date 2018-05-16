@@ -70,6 +70,12 @@ export abstract class UserModificationBase implements OnInit {
 
   submit() {
     this.validate();
+
+    if (this.userFormGroup === undefined || this.userFormGroup.invalid) {
+      return;
+    }
+
+    this.onSubmit();
   }
   protected abstract onSubmit();
 
