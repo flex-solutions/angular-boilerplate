@@ -1,0 +1,95 @@
+<div class="row profile-page">
+  <div class="col-12">
+    <div class="d-flex flex-row">
+      <img src="https://placehold.it/100x100" class="img-lg rounded" alt="profile image" />
+      <div class="ml-3 col-md-9">
+        <h6>Thomas Edison</h6>
+        <p class="text-muted">thomas</p>
+        <p class="text-muted none-lineheight">thomas@gmail.com</p>
+        <p class="mt-2 text-success font-weight-bold">Developer</p>
+      </div>
+
+      <div class="ml-3">
+        <a routerLink="/users/edit-user" class="none-underline">
+          <button type="button" class="btn btn-primary btn-sm">
+            <i class="mdi mdi-pencil" aria-hidden="false"></i>Edit User
+          </button>
+        </a>
+
+        <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="mdi mdi-dots-horizontal"></i>
+        </button>
+        
+        <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-4" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel-4">Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">User "hieutran" will be permanently deleted. Are you sure want to delete?</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a routerLink="/home" class="none-underline">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">OK</button></a>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Change user group</a>
+          <button class="dropdown-item pointer" data-toggle="modal" data-target="#exampleModal-4" href="#">Delete user</button>
+        </div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <ul class="nav tab-switch" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info"
+            aria-selected="true">User Statistics</a>
+        </li>
+
+      </ul>
+      <div class="row">
+        <div class="col-md-9">
+          <div class="tab-content tab-body" id="profile-log-switch">
+            <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+              <table class="table table-borderless w-100 mt-4">
+                <tr>
+                  <td>
+                    <strong>Login Count :</strong> Johnathan Deo</td>
+                  <td>
+                    <strong>Last Failed Login :</strong> staradmin.com</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Last Login :</strong> USA</td>
+                  <td>
+                    <strong>Current Failed Logins :</strong> Richard@staradmin.com</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Previous Login :</strong> English, German, Spanish.</td>
+                  <td>
+                    <strong>Total Failed Login :</strong> +73646 4563</td>
+                </tr>
+              </table>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
