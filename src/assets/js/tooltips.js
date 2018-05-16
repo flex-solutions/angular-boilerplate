@@ -25,6 +25,6 @@
         $(tip).addClass(this.config.customClass);
       }
     };
-    $('[data-toggle="tooltip"]').tooltip({ trigger: 'focus' });
+    $('[data-toggle="tooltip"]').tooltip();
   });
 })(jQuery);

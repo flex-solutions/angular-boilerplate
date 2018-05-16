@@ -63,8 +63,55 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
+      <trans-unit id="user-create_user-input-email_place_holder" datatype="html">
+        <source>Enter email</source>
+        <target>Enter email</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-fullname_place_holder" datatype="html">
+        <source>Enter full name</source>
+        <target>Enter full name</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-username_place_holder" datatype="html">
+        <source>Enter username</source>
+        <target>Enter username</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-password_place_holder" datatype="html">
+        <source>Enter password if required</source>
+        <target>Enter password if required</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-div-password_tooltip" datatype="html">
+        <source>If you do not enter a password, one will be generated automatically</source>
+        <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html">
+        <source>Please provide email address</source>
+        <target>Please provide email address</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalidEmail" datatype="html">
+        <source>Email address is invalid</source>
+        <target>Email address is invalid</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueEmail" datatype="html">
+        <source>Email address {{0}} has already been taken</source>
+        <target>Email address {{0}} has already been taken</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireFullname" datatype="html">
+        <source>Please provide full name</source>
+        <target>Please provide full name</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireUserName" datatype="html">
+        <source>Please provide username</source>
+        <target>Please provide username</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueUserName" datatype="html">
+        <source>Username {{0}} has already been taken</source>
+        <target>Username {{0}} has already been taken</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-notification-create_user_successfully" datatype="html">
+        <source>Create user successfully</source>
+        <target>Create user successfully</target>
+      </trans-unit>
       <!--End create user-->
-
     </body>
   </file>
 </xliff>
