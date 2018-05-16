@@ -10,47 +10,6 @@
       <span class="badge badge-pill badge-inverse-info float-right">View all</span>
     </a>
     <div class="dropdown-divider"></div>
-    <app-notification-item *ngFor="let message of messages" [message]="message"></app-notification-item>
-    <!-- <a class="dropdown-item preview-item">
-      <div class="preview-thumbnail">
-        <div class="preview-icon bg-inverse-success">
-          <i class="mdi mdi-alert-circle-outline mx-0"></i>
-        </div>
-      </div>
-      <div class="preview-item-content">
-        <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-        <p class="font-weight-light small-text mb-0">
-          Just now
-        </p>
-      </div>
-    </a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item preview-item">
-      <div class="preview-thumbnail">
-        <div class="preview-icon bg-inverse-warning">
-          <i class="mdi mdi-comment-text-outline mx-0"></i>
-        </div>
-      </div>
-      <div class="preview-item-content">
-        <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-        <p class="font-weight-light small-text mb-0">
-          Private message
-        </p>
-      </div>
-    </a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item preview-item">
-      <div class="preview-thumbnail">
-        <div class="preview-icon bg-inverse-info">
-          <i class="mdi mdi-email-outline mx-0"></i>
-        </div>
-      </div>
-      <div class="preview-item-content">
-        <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-        <p class="font-weight-light small-text mb-0">
-          2 days ago
-        </p>
-      </div>
-    </a> -->
+    <app-notification-item *ngFor="let message of messages" [message]="message" [isLast]="isLast(message)"></app-notification-item>
   </div>
 </li>

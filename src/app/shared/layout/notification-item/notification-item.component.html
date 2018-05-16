@@ -1,7 +1,7 @@
 <a class="dropdown-item preview-item">
   <div class="preview-thumbnail">
-    <div [className]="itemClass">
-      <i class="mdi mdi-alert-circle-outline mx-0"></i>
+    <div [className]="divClass">
+      <i [className]="iClass"></i>
     </div>
   </div>
   <div class="preview-item-content">
@@ -9,3 +9,4 @@
     <p *ngIf="message" class="font-weight-light small-text mb-0">{{message.time}}</p>
   </div>
 </a>
+<div *ngIf="!isLast" class="dropdown-divider"></div>

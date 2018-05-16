@@ -9,30 +9,38 @@ import { MessageType } from '../../enums/message-type.enum';
 })
 export class NotificationItemComponent implements OnInit {
   @Input() message: MessageItem;
-  itemClass: string;
+  @Input() isLast: boolean;
+  divClass: string;
+  iClass: string;
   constructor() {}
 
   ngOnInit() {
     if (this.message) {
-      let typeClass = '';
+      let partialDivClass = '';
+      let partialIClass = '';
       switch (this.message.type) {
         case MessageType.Success:
-          typeClass = 'bg-inverse-success';
+          partialDivClass = 'bg-inverse-success';
+          partialIClass = 'mdi-check';
           break;
         case MessageType.Info:
-          typeClass = 'bg-inverse-info';
+          partialDivClass = 'bg-inverse-info';
+          partialIClass = 'mdi-information-variant';
           break;
         case MessageType.Warning:
-          typeClass = 'bg-inverse-warning';
+          partialDivClass = 'bg-inverse-warning';
+          partialIClass = 'mdi-alert-outline';
           break;
         case MessageType.Error:
-          typeClass = 'bg-inverse-danger';
+          partialDivClass = 'bg-inverse-danger';
+          partialIClass = 'mdi-alert-circle-outline';
           break;
         default:
           break;
       }
 
-      this.itemClass = `preview-icon ${typeClass}`;
+      this.divClass = `preview-icon ${partialDivClass}`;
+      this.iClass = `mdi ${partialIClass} mx-0`;
     }
   }
 }

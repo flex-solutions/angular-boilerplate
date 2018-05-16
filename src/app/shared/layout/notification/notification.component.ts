@@ -1,23 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
 import { MessageItem } from '../../models/message-item.model';
 import { MessageType } from '../../enums/message-type.enum';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent implements OnDestroy {
+  message: any;
+  subscription: Subscription;
   messages: MessageItem[] = [];
-  constructor() {
-    for (let y = 0; y < 5; y++) {
-      let i = new MessageItem();
-      i.message = 'asdsad';
-      i.time = new Date('December 17, 1995 03:24:00');
-      i.type = MessageType.Error;
-      this.messages.push(i);
-    }
+
+  constructor(private messageService: MessageService) {
+    this.subscription = this.messageService
+      .getMessage()
+      .subscribe(message => this.onReceiveMessage(message));
   }
 
-  ngOnInit() {}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  onReceiveMessage(message: any) {
+    if (this.messages.length === 5) {
+      this.messages.pop();
+    }
+
+    this.messages.unshift(message);
+  }
+
+  isLast(message: MessageItem) {
+    return this.messages.indexOf(message) === this.messages.length - 1;
+  }
 }
