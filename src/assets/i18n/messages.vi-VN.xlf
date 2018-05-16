@@ -83,7 +83,34 @@
         <source>If you do not enter a password, one will be generated automatically</source>
         <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
       </trans-unit>
-
+      <trans-unit id="user-create_user-label-validation_require_email" datatype="html"> 
+        <source>Please provide email address</source>
+        <target>Vui lòng cung cấp địa chỉ email </target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalidEmail" datatype="html">
+        <source>Email address is invalid</source>
+        <target>Địa chỉ email không đúng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueEmail" datatype="html">
+        <source>Email address {{0}} has already been taken</source>
+        <target>Địa chỉ email {{0}} đã được sử dụng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireFullname" datatype="html">
+        <source>Please provide full name</source>
+        <target>Vui lòng cung cấp tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireUserName" datatype="html">
+        <source>Please provide username</source>
+        <target>Vui lòng nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueUserName" datatype="html">
+        <source>Username {{0}} has already been taken</source>
+        <target>Tên đăng nhập {{0}} đã được sử dụng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-notification-create_user_successfully" datatype="html">
+        <source>Create user successfully</source>
+        <target>Tạo user thành công </target>
+      </trans-unit>
       <!--End create user-->
 
     </body>

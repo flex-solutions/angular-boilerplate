@@ -1,3 +1,4 @@
+import { TranslateService } from './../services/translateService';
 import { FormGroup } from '@angular/forms';
 
 // Generic validator for Reactive forms
@@ -6,15 +7,18 @@ export class GenericValidator {
   // Provide the set of valid validation messages
   // Stucture:
   // controlName1: {
-  //     validationRuleName1: 'Validation Message.',
-  //     validationRuleName2: 'Validation Message.'
+  //     validationRuleName1: IValidationMessage,
+  //     validationRuleName2: IValidationMessage
   // },
   // controlName2: {
-  //     validationRuleName1: 'Validation Message.',
-  //     validationRuleName2: 'Validation Message.'
+  //     validationRuleName1: IValidationMessage,
+  //     validationRuleName2: IValidationMessage
   // }
   constructor(
-    private validationMessages: { [key: string]: { [key: string]: string } }
+    private validationMessages: {
+      [key: string]: { [key: string]: IValidationMessage };
+    },
+    private translateService: TranslateService
   ) {}
 
   // Processes each control within a FormGroup
@@ -35,15 +39,23 @@ export class GenericValidator {
           // Only validate if there are validation messages for the control
           if (this.validationMessages[controlKey]) {
             messages[controlKey] = '';
-            if ((c.dirty || c.touched) && c.errors) {
+            if (c.invalid && c.errors) {
               for (const messageKey in c.errors) {
                 if (
                   c.errors.hasOwnProperty(messageKey) &&
                   this.validationMessages[controlKey][messageKey]
                 ) {
-                  messages[controlKey] += this.validationMessages[controlKey][
+                  const validationMsg = this.validationMessages[controlKey][
                     messageKey
                   ];
+                  if (this.translateService) {
+                    // Need to resolve multilingual value
+                    const message = this.resolveMultilingual(validationMsg);
+                    messages[controlKey] += message;
+                  } else {
+                    // Multilingual resolver haven't yet
+                    messages[controlKey] += validationMsg.message;
+                  }
                 }
               }
             }
@@ -53,4 +65,30 @@ export class GenericValidator {
     }
     return messages;
   }
+
+  // Using translate service to resolve multilingual value with specific params or dynamic params by params callback handler
+  resolveMultilingual(validationMsg: IValidationMessage): string {
+    // Have specific params
+    if (validationMsg.params) {
+      return this.translateService.translateWithParams(
+        validationMsg.message,
+        validationMsg.params
+      );
+    } else if (validationMsg.paramsCallback) {
+      // Using callback to get params at run-time
+      const params = validationMsg.paramsCallback();
+      return this.translateService.translateWithParams(
+        validationMsg.message,
+        params
+      );
+    }
+
+    // No params
+    return this.translateService.translate(validationMsg.message);
+  }
+}
+export interface IValidationMessage {
+  message: string;
+  params?: string[];
+  paramsCallback?: () => string[];
 }
