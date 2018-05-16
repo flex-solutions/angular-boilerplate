@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { i18nFactory } from './i18n.factory';
 import { TranslateService } from './shared/services/translateService';
+import { UsersService } from './modules/users/users-service';
+
 @NgModule({
   declarations: [AppComponent, DashboardComponent, MenuComponent],
   imports: [
@@ -24,7 +26,8 @@ import { TranslateService } from './shared/services/translateService';
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]
     },
-    TranslateService
+    TranslateService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

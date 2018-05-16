@@ -1,5 +1,8 @@
 
 export class UserModel {
+     /*
+      * Define usermodel
+      */
      uid: number;
      fullName: string;
      accountName: string;

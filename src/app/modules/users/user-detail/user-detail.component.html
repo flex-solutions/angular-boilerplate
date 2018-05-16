@@ -1,7 +1,7 @@
 <div *ngIf="userdetail" class="row profile-page">
   <div class="col-12">
     <div class="d-flex flex-row">
-      <img src="https://placehold.it/100x100" class="img-lg rounded" alt="profile image" />
+      <img src="{{userdetail.imagePath}}" class="img-lg rounded" alt="profile image" />
       <div class="ml-3 col-md-9">
         <h6>{{userdetail.fullName}}</h6>
         <p class="text-muted">{{userdetail.accountName}}</p>
@@ -19,7 +19,7 @@
         <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="mdi mdi-dots-horizontal"></i>
         </button>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-4" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -33,13 +33,12 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">User "hieutran" will be permanently deleted. Are you sure want to delete?</label>
+                    <label for="recipient-name" class="col-form-label">User "{{userdetail.accountName}}" will be permanently deleted. Are you sure want to delete?</label>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <a routerLink="/home" class="none-underline">
-                  <button type="button" class="btn btn-success" data-dismiss="modal">OK</button></a>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=deleteUser()>OK</button>
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
               </div>
             </div>
@@ -47,7 +46,7 @@
         </div>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Change user group</a>
-          <button class="dropdown-item pointer" data-toggle="modal" data-target="#exampleModal-4" href="#">Delete user</button>
+          <button class="dropdown-item pointer" data-toggle="modal" data-target="#exampleModal-4" href="javascript:;">Delete user</button>
         </div>
       </div>
     </div>

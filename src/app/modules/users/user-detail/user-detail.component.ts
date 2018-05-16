@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from '../../../models/user-model';
+import { UsersService } from '../users-service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-detail',
@@ -8,28 +10,28 @@ import { UserModel } from '../../../models/user-model';
 })
 
 export class UserDetailComponent implements OnInit {
-// Just test
-  // userdetail: UserModel = {
-  //   uid: 1,
-  //   fullName: 'Hieu Trung Tran',
-  //   accountName: 'hieutran',
-  //   email: 'thomas@gmail.com',
-  //   imagePath: 'string',
-  //   position: 'Developer',
 
-  //   loginCount: 1,
-  //   lastLogin: new Date(),
-  //   previousLogin: new Date(),
-  //   lastFailedLogin: new Date(),
-  //   currentFailedLogin: 2,
-  //   totalFailedLogin: 2
-  // };
-  userdetail: UserModel = new UserModel;
+  @Input() userdetail: UserModel = new UserModel;
 
-  constructor() { }
+  // Constructor
+  constructor(private userService: UsersService,
+    private location: Location) { }
 
+  // Init user detail component
   ngOnInit() {
-    this.userdetail.fullName = 'Hieu Trung Tran';
+    this.getUserInfomation();
   }
 
+  // Handle get user detail information.
+  getUserInfomation() {
+    if (this.userdetail !== null) {
+      this.userService.getUserByEmail(this.userdetail.email).subscribe(user => this.userdetail = user);
+    }
+  }
+
+  // Handle delete user.
+  deleteUser() {
+    this.userService.deleteUser(this.userdetail).subscribe();
+    this.location.back();
+  }
 }
