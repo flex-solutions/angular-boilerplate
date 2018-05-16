@@ -7,8 +7,8 @@ import { TranslateService } from '../../../shared/services/translateService';
 import { OnInit } from '@angular/core/src/core';
 
 export abstract class UserModificationBase implements OnInit {
-  protected userFormGroup: FormGroup;
-  public errorMessage: { [key: string]: string } = {};
+  userFormGroup: FormGroup;
+  errorMessage: { [key: string]: string } = {};
   protected genericValidator: GenericValidator;
 
   // Define validation message
@@ -60,20 +60,20 @@ export abstract class UserModificationBase implements OnInit {
 
   protected abstract onCreateUserForm();
 
-  public getEmailValue(): string {
+  getEmailValue(): string {
     return this.userFormGroup.get('email').value;
   }
 
-  public getUserNameValue(): string {
+  getUserNameValue(): string {
     return this.userFormGroup.get('username').value;
   }
 
-  public submit() {
+  submit() {
     this.validate();
   }
   protected abstract onSubmit();
 
-  public cancel() {
+  cancel() {
     this.onCancel();
   }
 

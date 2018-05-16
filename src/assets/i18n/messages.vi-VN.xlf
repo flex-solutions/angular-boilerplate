@@ -126,7 +126,7 @@
         <source>Is Active</source>
         <target>Cho phép đăng nhập</target>
       </trans-unit>
-       <trans-unit id="user-create_user-button-update" datatype="html">
+       <trans-unit id="user-edit_user-button-update" datatype="html">
         <source>Update</source>
         <target>Cập Nhật</target>
       </trans-unit>
