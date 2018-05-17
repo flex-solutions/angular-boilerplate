@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MessageItem } from '../../models/message-item.model';
 import { MessageType } from '../../enums/message-type.enum';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-notification-item',
@@ -42,5 +43,9 @@ export class NotificationItemComponent implements OnInit {
       this.divClass = `preview-icon ${partialDivClass}`;
       this.iClass = `mdi ${partialIClass} mx-0`;
     }
+  }
+
+  parseTime(date: Date) {
+    return moment(date).fromNow();
   }
 }

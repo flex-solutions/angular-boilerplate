@@ -26,6 +26,7 @@ export class NotificationComponent implements OnDestroy {
   }
 
   onReceiveMessage(message: any) {
+    console.log(message);
     if (this.messages.length === 5) {
       this.messages.pop();
     }
