@@ -1,80 +1,27 @@
-import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControlName
-} from '@angular/forms';
-import {
-  GenericValidator,
-  IValidationMessage
-} from '../../../shared/validation/generic-validator';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/observable/merge';
+import { Component, OnInit } from '@angular/core';
+import { UserModificationBase } from '../create-user/user-modification-base';
 import { TranslateService } from '../../../shared/services/translateService';
+import { GenericValidator } from '../../../shared/validation/generic-validator';
+import { FormBuilder, Validators } from '@angular/forms';
+import { getBase64 } from '../../../utilities/convert-image-to-base64';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent implements OnInit {
-  signupFormGroup: FormGroup;
-  errorMessage: { [key: string]: string } = {};
-  genericValidator: GenericValidator;
-
-  // Define validation message
-  private validationMessages: {
-    [key: string]: { [key: string]: IValidationMessage };
-  } = {
-    email: {
-      required: { message: 'user-create_user-label-validation_requireEmail' },
-      pattern: { message: 'user-create_user-label-validation_invalidEmail' },
-      unique: {
-        message: 'user-create_user-label-validation_uniqueEmail',
-        params: null,
-        paramsCallback: () => {
-          return [this.getEmailValue()];
-        }
-      }
-    },
-    fullname: {
-      required: { message: 'user-create_user-label-validation_requireFullname' }
-    },
-    username: {
-      required: {
-        message: 'user-create_user-label-validation_requireUserName'
-      },
-      unique: {
-        message: 'user-create_user-label-validation_uniqueUserName',
-        params: null,
-        paramsCallback: () => {
-          return [this.getUserNameValue()];
-        }
-      }
-    }
-  };
-
-  constructor(
-    private fb: FormBuilder,
-    private multilingualProvider: TranslateService
-  ) {
-    // Create an instance of the generic validator
-    this.genericValidator = new GenericValidator(
-      this.validationMessages,
-      this.multilingualProvider
+export class CreateUserComponent extends UserModificationBase {
+  tooltipContent: string;
+  constructor(fb: FormBuilder, translateService: TranslateService) {
+    super(fb, translateService);
+    this.tooltipContent = this.translateService.translate(
+      'user-create_user-div-password_tooltip'
     );
   }
 
-  ngOnInit() {
-    this.createSignupForm();
-  }
-
-  private createSignupForm(): void {
+  protected onCreateUserForm() {
     // Build user form
-    this.signupFormGroup = this.fb.group({
+    this.userFormGroup = this.fb.group({
       email: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
@@ -86,19 +33,16 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
-  getEmailValue(): string {
-    return this.signupFormGroup.get('email').value;
+  protected onSubmit() {
+    getBase64('assets/images/defaultavatar.png')
+      .then(data => {
+        const avatarBase64 = data;
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
-
-  getUserNameValue(): string {
-    return this.signupFormGroup.get('username').value;
-  }
-
-  submit(): void {
-    // Validate
-    this.errorMessage = this.genericValidator.validate(this.signupFormGroup);
-
-    // Do stuff
-    const emailValue = this.getEmailValue();
+  protected onCancel() {
+    throw new Error('Method not implemented.');
   }
 }

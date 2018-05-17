@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuComponent } from './menu/menu.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { i18nFactory } from './i18n.factory';
 import { TranslateService } from './shared/services/translateService';
 import { UsersService } from './modules/users/users-service';
+import { UsersModule } from './modules/users/users.module';
+import { UsersRoutingModule } from './modules/users/users-routing.module';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, MenuComponent],
@@ -17,8 +18,9 @@ import { UsersService } from './modules/users/users-service';
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    HttpClientModule,
-    NgbModule.forRoot()
+    UsersModule,
+    UsersRoutingModule,
+    HttpClientModule
   ],
   providers: [
     {
