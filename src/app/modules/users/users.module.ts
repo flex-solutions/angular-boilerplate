@@ -5,9 +5,11 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule],
-  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent]
+  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent],
+  providers: [UserService]
 })
 export class UsersModule {}

@@ -10,15 +10,16 @@ import { i18nFactory } from './i18n.factory';
 import { TranslateService } from './shared/services/translateService';
 import { UsersModule } from './modules/users/users.module';
 import { UsersRoutingModule } from './modules/users/users-routing.module';
+import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
 @NgModule({
   declarations: [AppComponent, DashboardComponent, MenuComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     SharedModule,
     AppRoutingModule,
     UsersModule,
-    UsersRoutingModule,
-    HttpClientModule
+    UsersRoutingModule
   ],
   providers: [
     {
@@ -26,7 +27,8 @@ import { UsersRoutingModule } from './modules/users/users-routing.module';
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]
     },
-    TranslateService
+    TranslateService,
+    ApplicationConfigurationService
   ],
   bootstrap: [AppComponent]
 })
