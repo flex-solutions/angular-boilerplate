@@ -15,7 +15,7 @@ export class EditUserComponent extends UserModificationBase {
 
   protected onCreateUserForm() {
     // Build user form
-    this.userFormGroup = this.fb.group({
+    this.formGroup = this.fb.group({
       email: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]

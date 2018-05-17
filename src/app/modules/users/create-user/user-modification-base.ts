@@ -1,3 +1,4 @@
+import { User } from './../../../models/user.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {
   GenericValidator,
@@ -5,11 +6,13 @@ import {
 } from '../../../shared/validation/generic-validator';
 import { TranslateService } from '../../../shared/services/translateService';
 import { OnInit } from '@angular/core/src/core';
+import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 
-export abstract class UserModificationBase implements OnInit {
-  userFormGroup: FormGroup;
+export abstract class UserModificationBase extends AbstractFormComponent
+  implements OnInit {
   errorMessage: { [key: string]: string } = {};
   protected genericValidator: GenericValidator;
+  protected user: User;
 
   // Define validation message
   protected validationMessages: {
@@ -47,6 +50,8 @@ export abstract class UserModificationBase implements OnInit {
     protected fb: FormBuilder,
     protected translateService: TranslateService
   ) {
+    super();
+
     // Create an instance of the generic validator
     this.genericValidator = new GenericValidator(
       this.validationMessages,
@@ -61,32 +66,20 @@ export abstract class UserModificationBase implements OnInit {
   protected abstract onCreateUserForm();
 
   getEmailValue(): string {
-    return this.userFormGroup.get('email').value;
+    return this.formGroup.get('email').value;
   }
 
   getUserNameValue(): string {
-    return this.userFormGroup.get('username').value;
+    return this.formGroup.get('username').value;
   }
 
-  submit() {
-    this.validate();
-
-    if (this.userFormGroup === undefined || this.userFormGroup.invalid) {
-      return;
-    }
-
-    this.onSubmit();
-  }
-  protected abstract onSubmit();
-
-  cancel() {
-    this.onCancel();
+  getFullNameValue() {
+    return this.formGroup.get('fullname').value;
   }
 
-  protected abstract onCancel();
-
-  protected validate() {
+  // Overload in base class to implement custom validation
+  protected onValidate() {
     // Validate
-    this.errorMessage = this.genericValidator.validate(this.userFormGroup);
+    this.errorMessage = this.genericValidator.validate(this.formGroup);
   }
 }
