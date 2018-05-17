@@ -6,7 +6,7 @@
   </div>
   <div class="preview-item-content">
     <h6 *ngIf="message" class="preview-subject font-weight-normal text-dark mb-1">{{message.message}}</h6>
-    <p *ngIf="message" class="font-weight-light small-text mb-0">{{parseTime(message.time)}}</p>
+    <p *ngIf="message" class="font-weight-light small-text mb-0">{{message.displayTime}}</p>
   </div>
 </a>
 <div *ngIf="!isLast" class="dropdown-divider"></div>

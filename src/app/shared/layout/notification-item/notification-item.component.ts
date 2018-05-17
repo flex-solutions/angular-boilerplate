@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MessageItem } from '../../models/message-item.model';
 import { MessageType } from '../../enums/message-type.enum';
-import * as moment from 'moment';
+import { MessageItemFormat } from '../../models/message-item-format.model';
 
 @Component({
   selector: 'app-notification-item',
@@ -9,7 +9,7 @@ import * as moment from 'moment';
   styleUrls: ['./notification-item.component.css']
 })
 export class NotificationItemComponent implements OnInit {
-  @Input() message: MessageItem;
+  @Input() message: MessageItemFormat;
   @Input() isLast: boolean;
   divClass: string;
   iClass: string;
@@ -43,9 +43,5 @@ export class NotificationItemComponent implements OnInit {
       this.divClass = `preview-icon ${partialDivClass}`;
       this.iClass = `mdi ${partialIClass} mx-0`;
     }
-  }
-
-  parseTime(date: Date) {
-    return moment(date).fromNow();
   }
 }
