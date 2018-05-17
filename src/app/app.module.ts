@@ -1,3 +1,5 @@
+import { AccountRoutingModule } from './modules/account/account-routing.module';
+import { AccountModule } from './modules/account/account.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, TRANSLATIONS, LOCALE_ID } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
@@ -18,6 +20,8 @@ import { ApplicationConfigurationService } from './shared/services/application-c
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
+    AccountModule,
+    AccountRoutingModule,
     UsersModule,
     UsersRoutingModule
   ],
