@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from '../../../models/user-model';
 import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
+import { UserGroup } from '../../../models/user-group.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -32,6 +33,11 @@ export class UserDetailComponent implements OnInit {
   // Handle delete user.
   deleteUser() {
     this.userService.deleteUser(this.userdetail).subscribe();
+    this.location.back();
+  }
+
+  // Handle change user group.
+  changeUserGroup() {
     this.location.back();
   }
 }

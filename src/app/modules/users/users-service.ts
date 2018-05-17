@@ -32,4 +32,6 @@ export class UsersService {
           const url = `$''/${user.uid}`;
           return this.http.delete<UserModel>(url, httpOptions).pipe();
      }
+
+     // getUserGroup(): Observable<>
 }
