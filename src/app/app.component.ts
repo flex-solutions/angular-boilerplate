@@ -1,4 +1,5 @@
 import { Component, LOCALE_ID, Inject } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -13,5 +14,7 @@ export class AppComponent {
     { code: 'en', label: 'English' }
   ];
 
-  constructor(@Inject(LOCALE_ID) protected localeId: string) {}
+  constructor(@Inject(LOCALE_ID) protected localeId: string) {
+    moment.locale('en');
+  }
 }
