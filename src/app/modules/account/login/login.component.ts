@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../shared/services/translateService';
@@ -6,6 +6,7 @@ import {
   GenericValidator,
   IValidationMessage
 } from '../../../shared/validation/generic-validator';
+import { RecaptchaComponent } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,8 @@ import {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent extends AbstractFormComponent implements OnInit {
+  @ViewChild('captchaRef') captchaRef: RecaptchaComponent;
+  captchaResponse: string;
   errorMessage: { [key: string]: string } = {};
   protected genericValidator: GenericValidator;
 
@@ -53,7 +56,20 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     });
   }
 
-  protected onSubmit() {}
+  onReCaptchaResolved(responde) {
+    this.captchaResponse = responde;
+    console.log(`Resolved captcha with response ${this.captchaResponse}:`);
+    if (this.captchaResponse) {
+      this.captchaRef.reset();
+    }
+  }
+
+  protected onSubmit() {
+    // Execute check captcha
+    console.log('onSubmit');
+    this.captchaRef.execute();
+  }
+
   protected onCancel() {
     // Ignore
   }

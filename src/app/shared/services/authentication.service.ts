@@ -12,8 +12,7 @@ import { AbstractRestService } from '../abstract/abstract-rest-service';
 import { NavigateConstant } from '../constants/navigate.constant';
 
 @Injectable()
-export class AuthenticationService extends AbstractRestService
-  implements CanActivate {
+export class AuthenticationService extends AbstractRestService {
   constructor(
     httpClient: HttpClient,
     configService: ApplicationConfigurationService,
@@ -34,15 +33,6 @@ export class AuthenticationService extends AbstractRestService
       }
       return true;
     }
-    return false;
-  }
-
-  canActivate() {
-    if (this.authenticated()) {
-      return true;
-    }
-
-    this.navigateToLoginPage();
     return false;
   }
 
