@@ -35,17 +35,20 @@ export class UserDetailComponent implements OnInit {
 
   // Handle delete user.
   deleteUser() {
-    this.userService.deleteUser(this.userdetail).subscribe();
-    this.location.back();
+    this.userService.deleteUser(this.userdetail).subscribe(() => { this.goBack(); });
   }
 
   // Handle change user group.
   changeUserGroup() {
-    this.location.back();
+    this.goBack();
   }
 
   // Handle navigate to Edit user page.
   navigateToEditPage() {
     this.router.navigate(['../update'], { relativeTo: this.route });
+  }
+
+  private goBack() {
+    this.location.back();
   }
 }
