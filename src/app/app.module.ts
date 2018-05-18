@@ -8,7 +8,6 @@ import { MenuComponent } from './menu/menu.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { i18nFactory } from './i18n.factory';
 import { TranslateService } from './shared/services/translateService';
-import { UsersService } from './modules/users/users-service';
 import { UsersModule } from './modules/users/users.module';
 import { UsersRoutingModule } from './modules/users/users-routing.module';
 
@@ -28,8 +27,7 @@ import { UsersRoutingModule } from './modules/users/users-routing.module';
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]
     },
-    TranslateService,
-    UsersService
+    TranslateService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { UserModel } from '../../../models/user-model';
 import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
 import { UserGroup } from '../../../models/user-group.model';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,11 +13,13 @@ import { UserGroup } from '../../../models/user-group.model';
 
 export class UserDetailComponent implements OnInit {
 
-  @Input() userdetail: UserModel = new UserModel;
+  private userdetail: UserModel = new UserModel;
 
   // Constructor
   constructor(private userService: UsersService,
-    private location: Location) { }
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   // Init user detail component
   ngOnInit() {
@@ -39,5 +42,10 @@ export class UserDetailComponent implements OnInit {
   // Handle change user group.
   changeUserGroup() {
     this.location.back();
+  }
+
+  // Handle navigate to Edit user page.
+  navigateToEditPage() {
+    this.router.navigate(['../update'], { relativeTo: this.route });
   }
 }
