@@ -4,6 +4,7 @@ import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
 import { UserGroup } from '../../../models/user-group.model';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { userConfiguration } from '../../user.configuration';
 
 @Component({
   selector: 'app-user-detail',
@@ -45,7 +46,7 @@ export class UserDetailComponent implements OnInit {
 
   // Handle navigate to Edit user page.
   navigateToEditPage() {
-    this.router.navigate(['../update'], { relativeTo: this.route });
+    this.router.navigate([userConfiguration.editPageUrl], { relativeTo: this.route });
   }
 
   private goBack() {
