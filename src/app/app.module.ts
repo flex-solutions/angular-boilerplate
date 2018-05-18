@@ -1,3 +1,4 @@
+import { AuthenticationService } from './shared/services/authentication.service';
 import { AccountRoutingModule } from './modules/account/account-routing.module';
 import { AccountModule } from './modules/account/account.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +33,8 @@ import { ApplicationConfigurationService } from './shared/services/application-c
       deps: [LOCALE_ID]
     },
     TranslateService,
-    ApplicationConfigurationService
+    ApplicationConfigurationService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
