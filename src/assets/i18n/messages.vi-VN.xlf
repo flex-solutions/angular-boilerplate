@@ -131,6 +131,45 @@
         <target>Cập Nhật</target>
       </trans-unit>
       <!--End edit user-->
+
+      <!--Login-->
+      <trans-unit id="account-login-input-username_place_holder" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="account-login-input-password_place_holder" datatype="html">
+        <source>Password</source>
+        <target>Mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-login-paragraph-copyright" datatype="html">
+        <source>Copyright © 2018 SNOB. All rights reserved.</source>
+        <target>Bản quyền © 2018 SNOB. Đã đăng ký bản quyền.</target>
+      </trans-unit>
+      <trans-unit id="account-login-button-sign_in" datatype="html">
+        <source>SIGN IN</source>
+        <target>ĐĂNG NHẬP</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-emptyUsername" datatype="html">
+        <source>Please enter your username</source>
+        <target>Vui lòng nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-emptyPassword" datatype="html">
+        <source>Please enter your password</source>
+        <target>Vui lòng nhập mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-incorrectUsernamePassowrd" datatype="html">
+        <source>Username or password is incorrect. You have {{0}} login attempts remain.</source>
+        <target>Tên đăng nhập hoặc mật khẩu không chính xác. Bạn còn lại {{0}} lần đăng nhập.</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-blockedAccount" datatype="html">
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
+        <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để mở khóa.</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-invalidRecaptcha" datatype="html">
+        <source>Recaptcha is invalid. Please make sure that you are not a robot.</source>
+        <target>Vui lòng đảm bảo bạn không phải là robot.</target>
+      </trans-unit>
+      <!--End login-->
     </body>
   </file>
 </xliff>
