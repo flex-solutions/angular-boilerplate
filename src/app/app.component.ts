@@ -1,4 +1,5 @@
-import { Component, LOCALE_ID, Inject } from '@angular/core';
+import { AuthenticationService } from './shared/services/authentication.service';
+import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -6,7 +7,7 @@ import * as moment from 'moment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
   languages = [
@@ -14,7 +15,21 @@ export class AppComponent {
     { code: 'en', label: 'English' }
   ];
 
-  constructor(@Inject(LOCALE_ID) protected localeId: string) {
+  constructor(
+    @Inject(LOCALE_ID) protected localeId: string,
+    public authenticationService: AuthenticationService
+  ) {
     moment.locale('en');
+  }
+
+  ngOnInit(): void {
+    if (
+      this.authenticationService.authenticated() &&
+      this.authenticationService.hasAuthRemember()
+    ) {
+      // Have authenticate to login CMS
+    } else {
+      this.authenticationService.navigateToLoginPage();
+    }
   }
 }

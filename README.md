@@ -6,9 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server in `English` language. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `npm run vi` for a dev server in `Vietnamese' language. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run vi` for a dev server in `Vietnamese' language. Navigate to`http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `npm run en` for a dev server in `English' language. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run en` for a dev server in `English' language. Navigate to`http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -22,10 +22,12 @@ Run `npm build-i18n` to build the project in multi language. The build artifacts
 
 ## Configure multi language
 
-1. Define the translate unit: 
+1.  Define the translate unit:
 
     Open resource files in assets/i18n and define the translate unit
-    *Example:*
+    Format: <module_name>-<component_name>-<control_abbreviation>-<resource_key>
+    _Example:_
+
     ```html
     <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
        <source>Change Password</source>
@@ -33,13 +35,14 @@ Run `npm build-i18n` to build the project in multi language. The build artifacts
     </trans-unit>
     ```
 
-2. Use the translate unit
+2.  Use the translate unit
+
     ```html
     <a class="dropdown-item mt-2"   i18n="@@layout-navbar-anchor-changepassword">
        Change Password
     </a>
     ```
 
-3. Build
+3.  Build
 
-    Refer to *Development server* section above.
+    Refer to _Development server_ section above.

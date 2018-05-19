@@ -29,10 +29,11 @@
     "ng2-slim-loading-bar": "^4.0.0",
     "rxjs": "^5.5.6",
     "toastr": "^2.1.4",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "ng-recaptcha": "^3.0.5"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.4",
+    "@angular/cli": "1.7.2",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",

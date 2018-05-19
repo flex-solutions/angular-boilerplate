@@ -23,4 +23,22 @@
       <span class="menu-title" i18n="@@layout-sidebar-anchor-menu">Menu</span>
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#users" aria-controls="icons">
+      <img class="menu-icon" src="../../../../assets/images/menu_icons/18.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-user-management">User Management</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="users">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users/create">Create new user</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users/user-detail">View user detail</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  
 </ul>

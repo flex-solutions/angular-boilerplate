@@ -21,6 +21,155 @@
         <source>Menu</source>
         <target>Thực Đơn</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
+        <source>User Management</source>
+        <target>Quản Lý User</target>
+      </trans-unit>
+
+      <!--Create user-->
+      <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
+        <source>Create New User</source>
+        <target>Tạo User Mới</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-h4-create_new_user_description" datatype="html">
+        <source>Create a new user account to access SNOB CMS</source>
+        <target>Tạo user mới truy cập hệ thống SNOB CMS</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-email_field" datatype="html">
+        <source>Email</source>
+        <target>Địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-fullname_field" datatype="html">
+        <source>Full name</source>
+        <target>Tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-username_field" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-password_field" datatype="html">
+        <source>Password</source>
+        <target>Mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-create_another_field" datatype="html">
+        <source>Create another</source>
+        <target>Tạo user khác</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-email_place_holder" datatype="html">
+        <source>Enter email</source>
+        <target>Nhập địa chỉ email</target>
+      </trans-unit>
+       <trans-unit id="user-create_user-input-fullname_place_holder" datatype="html">
+        <source>Enter full name</source>
+        <target>Nhập tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-username_place_holder" datatype="html">
+        <source>Enter username</source>
+        <target>Nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-password_place_holder" datatype="html">
+        <source>Enter password if required</source>
+        <target>Nhập mật khẩu nếu cần thiết</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-div-password_tooltip" datatype="html">
+        <source>If you do not enter a password, one will be generated automatically</source>
+        <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html"> 
+        <source>Please provide email address</source>
+        <target>Vui lòng cung cấp địa chỉ email </target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalidEmail" datatype="html">
+        <source>Email address is invalid</source>
+        <target>Địa chỉ email không đúng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueEmail" datatype="html">
+        <source>Email address {{0}} has already been taken</source>
+        <target>Địa chỉ email {{0}} đã được sử dụng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireFullname" datatype="html">
+        <source>Please provide full name</source>
+        <target>Vui lòng cung cấp tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireUserName" datatype="html">
+        <source>Please provide username</source>
+        <target>Vui lòng nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueUserName" datatype="html">
+        <source>Username {{0}} has already been taken</source>
+        <target>Tên đăng nhập {{0}} đã được sử dụng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-notification-create_user_successfully" datatype="html">
+        <source>Create user successfully</source>
+        <target>Tạo user thành công </target>
+      </trans-unit>
+      <!--End create user-->
+
+      <!--Edit user-->
+      <trans-unit id="user-edit_user-h4-edit_user_title" datatype="html">
+        <source>Edit User</source>
+        <target>Sửa User</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-h4-edit_user_description" datatype="html">
+        <source>Edit access information of an user account</source>
+        <target>Sửa thông tin truy cập của user</target>
+      </trans-unit>
+       <trans-unit id="user-edit_user-label-is_active" datatype="html">
+        <source>Is Active</source>
+        <target>Cho phép đăng nhập</target>
+      </trans-unit>
+       <trans-unit id="user-edit_user-button-update" datatype="html">
+        <source>Update</source>
+        <target>Cập Nhật</target>
+      </trans-unit>
+      <!--End edit user-->
+
+      <!--Login-->
+      <trans-unit id="account-login-input-username_place_holder" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="account-login-input-password_place_holder" datatype="html">
+        <source>Password</source>
+        <target>Mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-login-paragraph-copyright" datatype="html">
+        <source>Copyright © 2018 SNOB. All rights reserved.</source>
+        <target>Bản quyền © 2018 SNOB. Đã đăng ký bản quyền.</target>
+      </trans-unit>
+      <trans-unit id="account-login-button-sign_in" datatype="html">
+        <source>SIGN IN</source>
+        <target>ĐĂNG NHẬP</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-emptyUsername" datatype="html">
+        <source>Please enter your username</source>
+        <target>Vui lòng nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-emptyPassword" datatype="html">
+        <source>Please enter your password</source>
+        <target>Vui lòng nhập mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-incorrectUsernamePassowrd" datatype="html">
+        <source>Username or password is incorrect. You have {{0}} login attempts remain.</source>
+        <target>Tên đăng nhập hoặc mật khẩu không chính xác. Bạn còn lại {{0}} lần đăng nhập.</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-blockedAccount" datatype="html">
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
+        <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để mở khóa.</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-invalidRecaptcha" datatype="html">
+        <source>Recaptcha is invalid. Please make sure that you are not a robot.</source>
+        <target>Vui lòng đảm bảo bạn không phải là robot.</target>
+      </trans-unit>
+      <!--End login-->
     </body>
   </file>
 </xliff>
