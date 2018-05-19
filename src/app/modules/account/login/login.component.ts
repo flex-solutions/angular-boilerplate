@@ -7,6 +7,7 @@ import {
   IValidationMessage
 } from '../../../shared/validation/generic-validator';
 import { RecaptchaComponent } from 'ng-recaptcha';
+import { AccountErrorCodes } from '../account-error-code.constant';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ import { RecaptchaComponent } from 'ng-recaptcha';
 })
 export class LoginComponent extends AbstractFormComponent implements OnInit {
   @ViewChild('captchaRef') captchaRef: RecaptchaComponent;
-  errorMessage: { [key: string]: string } = {};
+  errorMessage: { [key: string]: string } = {}; // Error message for login form validation
+  loginError: string; // Error message when login failed
   protected genericValidator: GenericValidator;
 
   constructor(
@@ -37,12 +39,12 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   } = {
     username: {
       required: {
-        message: 'account-login-validation-emptyUsername'
+        message: AccountErrorCodes.EmptyUserName
       }
     },
     password: {
       required: {
-        message: 'account-login-validation-emptyPassword'
+        message: AccountErrorCodes.EmptyPassword
       }
     }
   };
@@ -56,10 +58,13 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   }
 
   reCaptchaCallback(token) {
-    console.log(`Resolved captcha with response ${token}:`); // TODO: Just for test
     if (!token || token.length === 0) {
+      // Reset recaptcha
       this.captchaRef.reset();
-      // TODO: Raise error reCaptcha invalid
+      // Raise error reCaptcha invalid
+      this.loginError = this.translateService.translate(
+        AccountErrorCodes.InvalidRECAPTCHA
+      );
     } else {
       // Check reCaptcha on service
       // Call api login
@@ -67,6 +72,8 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   }
 
   protected onSubmit() {
+    // Reset login error
+    this.loginError = null;
     // Execute check captcha and login if recaptcha is valid
     this.captchaRef.execute();
   }
