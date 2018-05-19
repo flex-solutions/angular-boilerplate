@@ -1,5 +1,6 @@
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,9 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(LOCALE_ID) protected localeId: string,
     public authenticationService: AuthenticationService
-  ) {}
+  ) {
+    moment.locale('en');
+  }
 
   ngOnInit(): void {
     if (

@@ -4,7 +4,7 @@ import {
   GenericValidator,
   IValidationMessage
 } from '../../../shared/validation/generic-validator';
-import { TranslateService } from '../../../shared/services/translateService';
+import { TranslateService } from '../../../shared/services/translate.service';
 import { OnInit } from '@angular/core/src/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 

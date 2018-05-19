@@ -14,7 +14,7 @@ import { userConfiguration } from '../../user.configuration';
 
 export class UserDetailComponent implements OnInit {
 
-  private userdetail: UserModel = new UserModel;
+  userdetail: UserModel = new UserModel;
 
   // Constructor
   constructor(private userService: UsersService,

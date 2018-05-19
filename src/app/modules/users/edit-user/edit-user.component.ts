@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TranslateService } from '../../../shared/services/translateService';
+import { TranslateService } from '../../../shared/services/translate.service';
 
 @Component({
   selector: 'app-edit-user',

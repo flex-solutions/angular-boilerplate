@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TranslateService } from '../../../shared/services/translateService';
+import { TranslateService } from '../../../shared/services/translate.service';
 import {
   GenericValidator,
   IValidationMessage

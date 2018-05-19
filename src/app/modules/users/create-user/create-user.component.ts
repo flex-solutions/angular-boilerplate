@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
-import { TranslateService } from '../../../shared/services/translateService';
+import { TranslateService } from '../../../shared/services/translate.service';
 import { GenericValidator } from '../../../shared/validation/generic-validator';
 import { FormBuilder, Validators } from '@angular/forms';
 import { getBase64 } from '../../../utilities/convert-image-to-base64';
