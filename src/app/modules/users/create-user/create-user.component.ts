@@ -4,7 +4,7 @@ import { TranslateService } from '../../../shared/services/translate.service';
 import { GenericValidator } from '../../../shared/validation/generic-validator';
 import { FormBuilder, Validators } from '@angular/forms';
 import { getBase64 } from '../../../utilities/convert-image-to-base64';
-import { User } from '../../../models/user.model';
+import { User } from '../../../shared/models/user.model';
 
 @Component({
   selector: 'app-create-user',

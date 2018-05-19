@@ -1,25 +1,22 @@
+import { BaseService } from './base.service';
 import {
   ControllerConstant,
   ApiConstant
 } from './../constants/api-route.constant';
 import { Router, CanActivate } from '@angular/router';
-import { Authentication } from './../../models/authentication.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApplicationConstant } from '../constants/application.constant';
 import { ApplicationConfigurationService } from './application-configuration.service';
-import { AbstractRestService } from '../abstract/abstract-rest-service';
 import { NavigateConstant } from '../constants/navigate.constant';
+import { Authentication } from '../models/authentication.model';
+import { HttpService } from './http.service';
+import { CustomErrorHandlerService } from './custom-error-handler.service';
+import { HelperService } from './helper.service';
 
 @Injectable()
-export class AuthenticationService extends AbstractRestService {
-  constructor(
-    httpClient: HttpClient,
-    configService: ApplicationConfigurationService,
-    private router: Router
-  ) {
-    super(ControllerConstant.Account, configService, httpClient);
-  }
+export class AuthenticationService {
+  constructor(private baseService: BaseService, private router: Router) {}
 
   authenticated(): boolean {
     const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
@@ -39,8 +36,11 @@ export class AuthenticationService extends AbstractRestService {
   logOut() {
     const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
     if (authData) {
-      const api = this.getApiWithController(ApiConstant.logout);
-      this.get(api).subscribe(res => {
+      const logoutApi = this.baseService.buildApi(
+        ControllerConstant.Account,
+        ApiConstant.logout
+      );
+      this.baseService.get(logoutApi).subscribe(res => {
         sessionStorage.removeItem(ApplicationConstant.AUTH_REMEMBER);
         sessionStorage.removeItem(ApplicationConstant.AUTH_DATA);
         sessionStorage.removeItem(ApplicationConstant.AUTH_SCREENS);

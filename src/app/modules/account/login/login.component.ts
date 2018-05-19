@@ -7,7 +7,7 @@ import {
   IValidationMessage
 } from '../../../shared/validation/generic-validator';
 import { RecaptchaComponent } from 'ng-recaptcha';
-import { AccountErrorCodes } from '../account-error-code.constant';
+import { AccountMessages } from '../account.message';
 
 @Component({
   selector: 'app-login',
@@ -39,12 +39,12 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   } = {
     username: {
       required: {
-        message: AccountErrorCodes.EmptyUserName
+        message: AccountMessages.EmptyUserName
       }
     },
     password: {
       required: {
-        message: AccountErrorCodes.EmptyPassword
+        message: AccountMessages.EmptyPassword
       }
     }
   };
@@ -63,7 +63,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
       this.captchaRef.reset();
       // Raise error reCaptcha invalid
       this.loginError = this.translateService.translate(
-        AccountErrorCodes.InvalidRECAPTCHA
+        AccountMessages.InvalidRECAPTCHA
       );
     } else {
       // Check reCaptcha on service

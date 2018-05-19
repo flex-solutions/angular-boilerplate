@@ -1,24 +1,28 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/finally';
-
 import { Injectable } from '@angular/core';
 import { RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
 import { HttpService } from './http.service';
 import { HelperService } from './helper.service';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { ServiceResponse } from '../interfaces/service-response';
 import { Error } from '../interfaces/error';
 import { appVariables } from '../../app.constant';
+import { ApplicationConfigurationService } from './application-configuration.service';
 
 @Injectable()
 export class BaseService {
+  protected readonly baseUrl: string;
+
   constructor(
     public http: HttpService,
     public errorHandler: CustomErrorHandlerService,
-    public helperService: HelperService
-  ) {}
+    public helperService: HelperService,
+    protected configService: ApplicationConfigurationService
+  ) {
+    this.baseUrl = this.configService.getApiURI();
+  }
 
   get(url) {
     // Helper service to start ng2-slim-loading-bar progress bar
@@ -129,5 +133,9 @@ export class BaseService {
     if (token) {
       localStorage.setItem(appVariables.accessTokenLocalStorage, `${token}`);
     }
+  }
+
+  buildApi(...params: string[]) {
+    return `${this.baseUrl}/${params.join('/')}`;
   }
 }
