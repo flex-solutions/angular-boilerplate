@@ -36,7 +36,7 @@
               <label id="password-error" class="error mt-2 text-danger" for="password" *ngIf="errorMessage.password"> {{ errorMessage.password }}</label>
             </div>
             <div class="form-group">
-              <re-captcha size="invisible" #captchaRef (resolved)="onReCaptchaResolved($event)"></re-captcha>
+              <re-captcha size="invisible" #captchaRef (resolved)="reCaptchaCallback($event)"></re-captcha>
             </div>
             <div class="form-group">
               <button (click)="submit()" class="btn btn-primary submit-btn" i18n="@@account-login-button-sign_in">SIGN IN</button>

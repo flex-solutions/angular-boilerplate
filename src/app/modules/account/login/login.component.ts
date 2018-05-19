@@ -15,7 +15,6 @@ import { RecaptchaComponent } from 'ng-recaptcha';
 })
 export class LoginComponent extends AbstractFormComponent implements OnInit {
   @ViewChild('captchaRef') captchaRef: RecaptchaComponent;
-  captchaResponse: string;
   errorMessage: { [key: string]: string } = {};
   protected genericValidator: GenericValidator;
 
@@ -56,22 +55,24 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     });
   }
 
-  onReCaptchaResolved(responde) {
-    this.captchaResponse = responde;
-    console.log(`Resolved captcha with response ${this.captchaResponse}:`);
-    if (this.captchaResponse) {
+  reCaptchaCallback(token) {
+    console.log(`Resolved captcha with response ${token}:`); // TODO: Just for test
+    if (!token || token.length === 0) {
       this.captchaRef.reset();
+      // TODO: Raise error reCaptcha invalid
+    } else {
+      // Check reCaptcha on service
+      // Call api login
     }
   }
 
   protected onSubmit() {
-    // Execute check captcha
-    console.log('onSubmit');
+    // Execute check captcha and login if recaptcha is valid
     this.captchaRef.execute();
   }
 
   protected onCancel() {
-    // Ignore
+    // Not implementation
   }
 
   // Overload in base class to implement custom validation
