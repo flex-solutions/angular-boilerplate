@@ -1,3 +1,6 @@
+import { HelperService } from './shared/services/helper.service';
+import { HttpService } from './shared/services/http.service';
+import { BaseService } from './shared/services/base.service';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { AccountRoutingModule } from './modules/account/account-routing.module';
@@ -20,6 +23,9 @@ import {
   RECAPTCHA_SETTINGS,
   RECAPTCHA_LANGUAGE
 } from 'ng-recaptcha';
+import { CustomErrorHandlerService } from './shared/services/custom-error-handler.service';
+import { XHRBackend, RequestOptions, HttpModule } from '@angular/http';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, MenuComponent],
@@ -27,6 +33,8 @@ import {
     BrowserModule,
     RecaptchaModule.forRoot(),
     HttpClientModule,
+    HttpModule,
+    SlimLoadingBarModule,
     SharedModule,
     AppRoutingModule,
     AccountModule,
@@ -55,6 +63,10 @@ import {
     },
 
     ApplicationConfigurationService,
+    HttpService,
+    CustomErrorHandlerService,
+    HelperService,
+    BaseService,
     AuthenticationService
   ],
   bootstrap: [AppComponent]

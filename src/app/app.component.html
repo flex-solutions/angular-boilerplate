@@ -1,19 +1,14 @@
 <!--Layout for CMS page-->
-<div class="container-scroller" *ngIf="authenticationService.authenticated()">
-  <app-navbar class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row"></app-navbar>
+<div class="container-scroller">
+  <app-navbar *ngIf="hasAuthenticated" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row"></app-navbar>
   <div class="container-fluid page-body-wrapper">
-    <app-sidebar class="sidebar sidebar-offcanvas" id="sidebar"></app-sidebar>
+    <app-sidebar *ngIf="hasAuthenticated" class="sidebar sidebar-offcanvas" id="sidebar"></app-sidebar>
     <div class="main-panel">
-      <div class="content-wrapper">
-        <app-breadcrumb aria-label="breadcrumb" role="navigation"></app-breadcrumb>
+      <div [ngClass]="{'content-wrapper': hasAuthenticated, 'full-page-wrapper': !hasAuthenticated}">
+        <app-breadcrumb *ngIf="hasAuthenticated" aria-label="breadcrumb" role="navigation"></app-breadcrumb>
         <router-outlet></router-outlet>
       </div>
-      <app-footer class="footer"></app-footer>
+      <app-footer *ngIf="hasAuthenticated" class="footer"></app-footer>
     </div>
   </div>
-</div>
-
-<!--Layout for Login page-->
-<div class="container-scroller" *ngIf="!authenticationService.authenticated()">
-  <router-outlet></router-outlet>
 </div>

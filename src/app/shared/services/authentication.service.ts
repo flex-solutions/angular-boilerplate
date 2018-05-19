@@ -13,12 +13,17 @@ import { Authentication } from '../models/authentication.model';
 import { HttpService } from './http.service';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
+import { NumberFormatStyle } from '@angular/common';
 
 @Injectable()
 export class AuthenticationService {
+  private isLogin: boolean;
   constructor(private baseService: BaseService, private router: Router) {}
 
   authenticated(): boolean {
+    if (this.isLogin) {
+      return true;
+    }
     const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
     if (authData) {
       const authInfo = <Authentication>JSON.parse(authData);
@@ -48,6 +53,11 @@ export class AuthenticationService {
         this.router.navigate([NavigateConstant.LOGIN]);
       });
     }
+  }
+
+  login() {
+    this.isLogin = true;
+    this.router.navigate([NavigateConstant.HOME]);
   }
 
   hasAuthRemember(): boolean {

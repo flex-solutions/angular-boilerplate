@@ -1,3 +1,6 @@
+import { AuthenticationService } from './../../../shared/services/authentication.service';
+import { NavigateConstant } from './../../../shared/constants/navigate.constant';
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -22,7 +25,9 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private router: Router,
+    private authService: AuthenticationService
   ) {
     super();
 
@@ -68,6 +73,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     } else {
       // Check reCaptcha on service
       // Call api login
+      this.authService.login();
     }
   }
 

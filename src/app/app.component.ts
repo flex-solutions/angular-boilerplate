@@ -1,3 +1,4 @@
+import { Router, NavigationStart } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';
@@ -9,6 +10,7 @@ import * as moment from 'moment';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  hasAuthenticated: boolean;
 
   languages = [
     { code: 'vi', label: 'Tiếng Việt' },
@@ -17,16 +19,21 @@ export class AppComponent implements OnInit {
 
   constructor(
     @Inject(LOCALE_ID) protected localeId: string,
-    public authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService,
+    private router: Router
   ) {
     moment.locale('en');
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        // * Check authenticate
+        this.hasAuthenticated = this.authenticationService.authenticated();
+      }
+    });
   }
 
   ngOnInit(): void {
-    if (
-      this.authenticationService.authenticated() &&
-      this.authenticationService.hasAuthRemember()
-    ) {
+    this.hasAuthenticated = this.authenticationService.authenticated();
+    if (this.hasAuthenticated && this.authenticationService.hasAuthRemember()) {
       // Have authenticate to login CMS
     } else {
       this.authenticationService.navigateToLoginPage();
