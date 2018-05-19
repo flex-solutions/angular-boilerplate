@@ -5,6 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     NavbarComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    ModalComponent
   ]
 })
 export class LayoutModule {}

@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { UserModel } from '../../models/user-model';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable()
+export class UsersService {
+
+     constructor(private http: HttpClient) { }
+
+     // Handle get user by email.
+     getUserByEmail(emailAddress: string): Observable<UserModel> {
+          const url = `$''/${emailAddress}`;
+          const user = new UserModel;
+          user.uid = 1;
+          user.fullName = 'Hieu Trung Tran';
+          user.accountName = 'hieutran';
+          user.email = 'hieutran@abc.com';
+          user.imagePath = 'https://placehold.it/100x100';
+          user.position = 'Software Engineering';
+          // return this.http.get<UserModel>(url).pipe();
+          return of(user);
+     }
+
+     // Handle delete user.
+     deleteUser(user: UserModel): Observable<UserModel> {
+          const url = `$''/${user.uid}`;
+          return this.http.delete<UserModel>(url, httpOptions).pipe();
+     }
+
+     // getUserGroup(): Observable<>
+}
