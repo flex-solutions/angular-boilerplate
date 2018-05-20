@@ -11,6 +11,10 @@
         <source>Sign Out</source>
         <target>Đăng Xuất</target>
       </trans-unit>
+      <trans-unit id="layout-navbar-label-notification" datatype="html">
+        <source>You have {{messages.length}} new notifications</source>
+        <target>Bạn có {{messages.length}} thông báo mới trong phiên làm việc</target>
+      </trans-unit>
 
       <!-- Side Bar -->
       <trans-unit id="layout-sidebar-anchor-dashboard" datatype="html">

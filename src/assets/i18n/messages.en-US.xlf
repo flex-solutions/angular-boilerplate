@@ -11,6 +11,10 @@
         <source>Sign Out</source>
         <target>Sign Out</target>
       </trans-unit>
+      <trans-unit id="layout-navbar-label-notification" datatype="html">
+        <source>You have {{messages.length}} new notifications</source>
+        <target>You have {{messages.length}} new notifications</target>
+      </trans-unit>
 
     <!-- Side Bar -->
       <trans-unit id="layout-sidebar-anchor-dashboard" datatype="html">

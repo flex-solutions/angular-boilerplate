@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     @Inject(LOCALE_ID) protected localeId: string,
     public authenticationService: AuthenticationService
   ) {
-    moment.locale('en');
+    moment.locale(this.localeId);
   }
 
   ngOnInit(): void {
