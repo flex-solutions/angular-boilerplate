@@ -22998,7 +22998,7 @@ input:focus {
   width: calc(255px - 145px);
   max-width: 100%;
   height: 70px;
-  width: 200px;
+  width: 150px;
   margin: auto;
   vertical-align: middle;
   background: url('../images/logo-default.svg') no-repeat center;

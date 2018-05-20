@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     public authenticationService: AuthenticationService,
     private router: Router
   ) {
-    moment.locale('en');
+    moment.locale(this.localeId);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // * Check authenticate
