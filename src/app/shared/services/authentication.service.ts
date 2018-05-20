@@ -1,8 +1,5 @@
+import { async } from '@angular/core/testing';
 import { BaseService } from './base.service';
-import {
-  ControllerConstant,
-  ApiConstant
-} from './../constants/api-route.constant';
 import { Router, CanActivate } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -14,11 +11,12 @@ import { HttpService } from './http.service';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
 import { NumberFormatStyle } from '@angular/common';
+import { SignedUser, LoginResponse } from '../models/user.model';
 
 @Injectable()
 export class AuthenticationService {
   private isLogin: boolean;
-  constructor(private baseService: BaseService, private router: Router) {}
+  constructor(private baseService: BaseService, private router: Router) { }
 
   authenticated(): boolean {
     if (this.isLogin) {
@@ -41,23 +39,32 @@ export class AuthenticationService {
   logOut() {
     const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
     if (authData) {
-      const logoutApi = this.baseService.buildApi(
-        ControllerConstant.Account,
-        ApiConstant.logout
-      );
+      const logoutApi = this.baseService.buildApi('auth', 'logout');
       this.baseService.get(logoutApi).subscribe(res => {
-        sessionStorage.removeItem(ApplicationConstant.AUTH_REMEMBER);
         sessionStorage.removeItem(ApplicationConstant.AUTH_DATA);
-        sessionStorage.removeItem(ApplicationConstant.AUTH_SCREENS);
 
         this.router.navigate([NavigateConstant.LOGIN]);
       });
     }
   }
 
-  login() {
-    this.isLogin = true;
+  async login(signedUser: SignedUser) {
+    // Just for testing
+    if (signedUser.username === 'root' && signedUser.password === 'root') {
+      this.isLogin = true;
+    }
+    const loginApi = this.baseService.buildApi('auth', 'login');
+    const loginResponse = <LoginResponse>await this.baseService.post(loginApi, signedUser).toPromise();
+    // Save token into cookies
+    sessionStorage.setItem(ApplicationConstant.AUTH_DATA, loginResponse.token);
+
+    // Navigate to home page
     this.router.navigate([NavigateConstant.HOME]);
+  }
+
+  async validateUserToken(userToken: string) {
+    const loginApi = this.baseService.buildApi('auth', 'verify');
+    return await this.baseService.post(loginApi, { usertoken: userToken }).toPromise();
   }
 
   hasAuthRemember(): boolean {

@@ -61,7 +61,6 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
       useFactory: locale => locale,
       deps: [LOCALE_ID]
     },
-
     ApplicationConfigurationService,
     HttpService,
     CustomErrorHandlerService,

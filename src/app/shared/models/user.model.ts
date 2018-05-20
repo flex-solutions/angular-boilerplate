@@ -1,21 +1,46 @@
-export interface IUser {
+export class User {
   id: string;
+
   email: string;
+
   fullname: string;
+
   username: string;
+
   password: string;
+
   isLocked: boolean;
+
   avatar: string;
-  loginAttempts: number;
+
+  // the current login failed attempt
+  loginAttempts = 0;
+
+  // total count of success log in
+  successLoginCount = 0;
+
+  // the last login time to system
+  lastTimeLogin = 0;
+
+  // the previous login time of last login
+  previousTimeLogin = 0;
+
+  // the last time of login fail
+  lastTimeFailedLogin = 0;
+
+  // total count of fail log in
+  failedLoginCount = 0;
 }
 
-export class User implements IUser {
-  loginAttempts: number;
-  id: string;
-  email: string;
-  fullname: string;
+export class SignedUser {
+
+  usertoken: string;
+
   username: string;
+
   password: string;
-  isLocked: boolean;
-  avatar: string;
+}
+
+export interface LoginResponse {
+  token: string;
 }

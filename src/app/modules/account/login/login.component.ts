@@ -11,6 +11,7 @@ import {
 } from '../../../shared/validation/generic-validator';
 import { RecaptchaComponent } from 'ng-recaptcha';
 import { AccountMessages } from '../account.message';
+import { SignedUser } from '../../../shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -42,17 +43,17 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   protected validationMessages: {
     [key: string]: { [key: string]: IValidationMessage };
   } = {
-    username: {
-      required: {
-        message: AccountMessages.EmptyUserName
+      username: {
+        required: {
+          message: AccountMessages.EmptyUserName
+        }
+      },
+      password: {
+        required: {
+          message: AccountMessages.EmptyPassword
+        }
       }
-    },
-    password: {
-      required: {
-        message: AccountMessages.EmptyPassword
-      }
-    }
-  };
+    };
 
   ngOnInit() {
     // Build login form
@@ -71,9 +72,19 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
         AccountMessages.InvalidRECAPTCHA
       );
     } else {
-      // Check reCaptcha on service
-      // Call api login
-      this.authService.login();
+      this.authService.validateUserToken(token).then(res => {
+        const signedUser = new SignedUser();
+        signedUser.username = this.username;
+        signedUser.password = this.password;
+        signedUser.usertoken = token;
+
+        // Call api login
+        this.authService.login(signedUser);
+
+      }).catch(err => {
+        // Raise error reCaptcha invalid
+        this.loginError = this.translateService.translate(AccountMessages.InvalidRECAPTCHA);
+      });
     }
   }
 
@@ -92,5 +103,13 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   protected onValidate() {
     // Validate
     this.errorMessage = this.genericValidator.validate(this.formGroup);
+  }
+
+  get username() {
+    return this.formGroup.get('username').value;
+  }
+
+  get password() {
+    return this.formGroup.get('password').value;
   }
 }
