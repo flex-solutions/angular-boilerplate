@@ -5,6 +5,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationItemComponent } from './notification-item/notification-item.component';
 import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
@@ -20,6 +22,8 @@ import { ModalComponent } from './modal/modal.component';
     NavbarComponent,
     FooterComponent,
     BreadcrumbComponent,
+    NotificationComponent,
+    NotificationItemComponent,
     ModalComponent
   ]
 })

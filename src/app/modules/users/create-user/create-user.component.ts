@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
-import { TranslateService } from '../../../shared/services/translateService';
+import { TranslateService } from '../../../shared/services/translate.service';
 import { GenericValidator } from '../../../shared/validation/generic-validator';
 import { FormBuilder, Validators } from '@angular/forms';
 import { getBase64 } from '../../../utilities/convert-image-to-base64';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-create-user',
@@ -21,7 +22,7 @@ export class CreateUserComponent extends UserModificationBase {
 
   protected onCreateUserForm() {
     // Build user form
-    this.userFormGroup = this.fb.group({
+    this.formGroup = this.fb.group({
       email: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
@@ -33,10 +34,23 @@ export class CreateUserComponent extends UserModificationBase {
     });
   }
 
+  getPassword() {
+    return this.formGroup.get('password').value;
+  }
+
   protected onSubmit() {
+    this.user = new User();
+
+    // Convert image to Base64String
     getBase64('assets/images/defaultavatar.png')
       .then(data => {
-        const avatarBase64 = data;
+        this.user.avatar = data.toString();
+        this.user.email = this.getEmailValue();
+        this.user.username = this.getUserNameValue();
+        this.user.fullname = this.getFullNameValue();
+        this.user.password = this.getPassword();
+
+        // TODO: Call API to create new user
       })
       .catch(err => {
         console.error(err);

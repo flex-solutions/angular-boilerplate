@@ -1,0 +1,16 @@
+<li class="nav-item dropdown">
+  <a (click)="onRepoClicked()" class="nav-link count-indicator dropdown-toggle" href="#" data-toggle="dropdown">
+    <i class="mdi mdi-bell-outline"></i>
+    <span class="count bg-success">{{messages.length}}</span>
+  </a>
+  <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+    <a class="dropdown-item py-3">
+      <p class="mb-0 font-weight-medium float-left" i18n="@@layout-navbar-label-notification">You have {{messages.length}} new notifications
+      </p>
+      <!-- <span class="badge badge-pill badge-inverse-info float-right">Read</span>
+      <span class="badge badge-pill badge-inverse-info float-right">View all</span> -->
+    </a>
+    <div class="dropdown-divider"></div>
+    <app-notification-item *ngFor="let message of messages" [message]="message" [isLast]="isLast(message)"></app-notification-item>
+  </div>
+</li>

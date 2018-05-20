@@ -21,9 +21,16 @@
       "styles.css",
       "customStyles.css"
     ],
-    "scripts": [
-      "../src/assets/js/data-table.js"
-    ],
+     "scripts": [
+        "../node_modules/toastr/build/toastr.min.js",
+        "./assets/vendors/js/vendor.bundle.base.js",
+        "./assets/vendors/js/vendor.bundle.addons.js",
+        "./assets/js/off-canvas.js",
+        "./assets/js/hoverable-collapse.js",
+        "./assets/js/misc.js",
+        "./assets/js/tooltips.js",
+        "../src/assets/js/data-table.js"
+      ],
     "environmentSource": "environments/environment.ts",
     "environments": {
       "dev": "environments/environment.ts",

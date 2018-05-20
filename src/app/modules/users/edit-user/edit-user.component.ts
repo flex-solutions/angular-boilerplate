@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TranslateService } from '../../../shared/services/translateService';
+import { TranslateService } from '../../../shared/services/translate.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -15,7 +15,7 @@ export class EditUserComponent extends UserModificationBase {
 
   protected onCreateUserForm() {
     // Build user form
-    this.userFormGroup = this.fb.group({
+    this.formGroup = this.fb.group({
       email: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]

@@ -1,4 +1,4 @@
-import { TranslateService } from './../services/translateService';
+import { TranslateService } from './../services/translate.service';
 import { FormGroup } from '@angular/forms';
 
 // Generic validator for Reactive forms
