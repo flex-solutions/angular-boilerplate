@@ -16,4 +16,5 @@ export class UserModel {
      lastFailedLogin: Date;
      currentFailedLogin: number;
      totalFailedLogin: number;
+     groupId: number;
 }
