@@ -5,24 +5,31 @@ import { Injectable } from '@angular/core';
 import { RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { HttpService } from './http.service';
-import { HelperService } from './helper.service';
-import { CustomErrorHandlerService } from './custom-error-handler.service';
+import { HttpService } from '../services/http.service';
+import { HelperService } from '../services/helper.service';
+import { CustomErrorHandlerService } from '../services/custom-error-handler.service';
 import { ServiceResponse } from '../interfaces/service-response';
 import { Error } from '../interfaces/error';
 import { appVariables } from '../../app.constant';
+import { environment } from '../../../environments/environment';
+import { AppModule } from '../../app.module';
 
-@Injectable()
-export class BaseService {
-  constructor(
-    public http: HttpService,
-    public errorHandler: CustomErrorHandlerService,
-    public helperService: HelperService
-  ) {}
+export abstract class AbstractHttpService {
+  private http: HttpService;
+  private errorHandler: CustomErrorHandlerService;
+  private helperService: HelperService;
+  protected abstract controllerName: string;
 
-  get(url) {
+  constructor() {
+    this.http = AppModule.injector.get(HttpService);
+    this.errorHandler = AppModule.injector.get(CustomErrorHandlerService);
+    this.helperService = AppModule.injector.get(HelperService);
+  }
+
+  get(relativeUrl) {
     // Helper service to start ng2-slim-loading-bar progress bar
     this.helperService.startLoader();
+    const url = this.buildApiUrl(relativeUrl);
     return this.http
       .get(url)
       .map((res: Response) => {
@@ -37,8 +44,9 @@ export class BaseService {
       });
   }
 
-  post(url, postBody: any, options?: RequestOptions) {
+  post(relativeUrl, postBody: any, options?: RequestOptions) {
     this.helperService.startLoader();
+    const url = this.buildApiUrl(relativeUrl);
     if (options) {
       return this.http
         .post(url, postBody, options)
@@ -62,8 +70,9 @@ export class BaseService {
     }
   }
 
-  delete(url, postBody: any) {
+  delete(relativeUrl, postBody: any) {
     this.helperService.startLoader();
+    const url = this.buildApiUrl(relativeUrl);
     return this.http
       .delete(url)
       .map((res: Response) => {
@@ -75,8 +84,9 @@ export class BaseService {
       });
   }
 
-  put(url, putData) {
+  put(relattiveUrl, putData) {
     this.helperService.startLoader();
+    const url = this.buildApiUrl(relattiveUrl);
     return this.http
       .put(url, putData)
       .map((res: Response) => {
@@ -88,7 +98,8 @@ export class BaseService {
       });
   }
 
-  upload(url: string, file: File) {
+  upload(relativeUrl: string, file: File) {
+    const url = this.buildApiUrl(relativeUrl);
     const formData: FormData = new FormData();
     if (file) {
       formData.append('files', file, file.name);
@@ -97,7 +108,8 @@ export class BaseService {
     return this.post(url, formData);
   }
 
-  formUrlParam(url, data) {
+  formUrlParam(relativeUrl, data) {
+    const url = this.buildApiUrl(relativeUrl);
     let queryString = '';
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
@@ -129,5 +141,9 @@ export class BaseService {
     if (token) {
       localStorage.setItem(appVariables.accessTokenLocalStorage, `${token}`);
     }
+  }
+
+  buildApiUrl(relativeUrl: string): string {
+    return `${environment.host}/${this.controllerName}/${relativeUrl}`;
   }
 }

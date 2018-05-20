@@ -17,13 +17,9 @@
       </trans-unit>
 
       <!-- Side Bar -->
-      <trans-unit id="layout-sidebar-anchor-dashboard" datatype="html">
-        <source>Dashboard</source>
-        <target>Trang Chủ</target>
-      </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-menu" datatype="html">
-        <source>Menu</source>
-        <target>Thực Đơn</target>
+      <trans-unit id="layout-sidebar-anchor-demo" datatype="html">
+        <source>Demo</source>
+        <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
         <source>User Management</source>
