@@ -40,7 +40,3 @@ export class SignedUser {
 
   password: string;
 }
-
-export interface LoginResponse {
-  token: string;
-}

@@ -2,7 +2,6 @@ import { async } from '@angular/core/testing';
 import { Router, CanActivate } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApplicationConstant } from '../constants/application.constant';
 import { ApplicationConfigurationService } from './application-configuration.service';
 import { NavigateConstant } from '../constants/navigate.constant';
 import { Authentication } from '../models/authentication.model';
@@ -10,8 +9,9 @@ import { HttpService } from './http.service';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
 import { NumberFormatStyle } from '@angular/common';
-import { SignedUser, LoginResponse } from '../models/user.model';
+import { SignedUser } from '../models/user.model';
 import { AbstractHttpService } from '../abstract/http-service.abstract';
+import { appVariables } from '../../app.constant';
 
 @Injectable()
 export class AuthenticationService extends AbstractHttpService {
@@ -22,13 +22,17 @@ export class AuthenticationService extends AbstractHttpService {
     this.controllerName = 'auth';
   }
 
+  get localToken() {
+    return sessionStorage.getItem(appVariables.accessTokenLocalStorage);
+  }
+
   authenticated(): boolean {
     // ! JUST FOR TESTING. REMOVE LATER
     if (this.username === 'admin') {
       return true;
     }
     // ! JUST FOR TESTING. REMOVE LATER
-    const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
+    const authData = sessionStorage.getItem(appVariables.accessTokenLocalStorage);
     if (authData) {
       const authInfo = <Authentication>JSON.parse(authData);
       const expireUtcDate = authInfo.expireTime;
@@ -43,10 +47,10 @@ export class AuthenticationService extends AbstractHttpService {
   }
 
   logOut() {
-    const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
+    const authData = sessionStorage.getItem(appVariables.accessTokenLocalStorage);
     if (authData) {
       this.get('logout').subscribe(res => {
-        sessionStorage.removeItem(ApplicationConstant.AUTH_DATA);
+        sessionStorage.removeItem(appVariables.accessTokenLocalStorage);
 
         this.router.navigate([NavigateConstant.LOGIN]);
       });
@@ -56,14 +60,17 @@ export class AuthenticationService extends AbstractHttpService {
   login(signedUser: SignedUser) {
     // ! JUST FOR TESTING. REMOVE LATER
     if (signedUser.username === 'admin') {
+      // Navigate to home page
       this.username = 'admin';
-      return;
+      this.router.navigate([NavigateConstant.HOME]);
+      return new Promise((r) => 'true');
     }
     // ! JUST FOR TESTING. REMOVE LATER
 
-    return this.post('login', signedUser).toPromise().then((loginResponse: LoginResponse) => {
+    return this.post('login', signedUser).toPromise().then((tokenResponse: Authentication) => {
       // Save token into cookies
-      sessionStorage.setItem(ApplicationConstant.AUTH_DATA, loginResponse.token);
+      sessionStorage.setItem(appVariables.accessTokenLocalStorage, tokenResponse.token);
+      sessionStorage.setItem(appVariables.accessTokenExpireTime, `${tokenResponse.expireTime}`);
 
       // Navigate to home page
       this.router.navigate([NavigateConstant.HOME]);
@@ -72,11 +79,6 @@ export class AuthenticationService extends AbstractHttpService {
 
   async validateUserToken(userToken: string) {
     return await this.post('verify', { usertoken: userToken }).toPromise();
-  }
-
-  hasAuthRemember(): boolean {
-    const remember = sessionStorage.getItem(ApplicationConstant.AUTH_REMEMBER);
-    return remember === '1';
   }
 
   navigateToLoginPage() {

@@ -32,8 +32,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Handle auto login
     this.hasAuthenticated = this.authenticationService.authenticated();
-    if (this.hasAuthenticated && this.authenticationService.hasAuthRemember()) {
+    if (this.hasAuthenticated) {
       // Have authenticate to login CMS
     } else {
       this.authenticationService.navigateToLoginPage();
