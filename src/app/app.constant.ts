@@ -30,6 +30,8 @@ export const appVariables = {
   ng2SlimLoadingBarHeight: '4px',
   accessTokenLocalStorage: 'accessToken',
   accessTokenExpireTime: 'expireTime',
+  accessTokenOwner: 'owner',
+  accessRefreshToken: 'refreshToken',
   resourceNameIdentifier: 'Entity',
   docViewerurl: 'http://docs.google.com/gview?url=',
   msOfficeDocViewerPath: 'https://view.officeapps.live.com/op/embed.aspx?src=',

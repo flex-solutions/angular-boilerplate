@@ -35,7 +35,11 @@ export class AppComponent implements OnInit {
     // Handle auto login
     this.hasAuthenticated = this.authenticationService.authenticated();
     if (this.hasAuthenticated) {
-      // Have authenticate to login CMS
+      // Have authenticate to login CMS. Verify can get new token on server side
+      this.authenticationService.refreshToken()
+        .catch(err => {
+          this.authenticationService.navigateToLoginPage();
+        });
     } else {
       this.authenticationService.navigateToLoginPage();
     }

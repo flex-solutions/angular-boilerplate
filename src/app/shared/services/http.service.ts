@@ -14,6 +14,8 @@ import { AppModule } from '../../app.module';
 import { HelperService } from './helper.service';
 import { appVariables } from '../../app.constant';
 import 'rxjs/add/observable/throw';
+import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
+import { NavigateConstant } from '../constants/navigate.constant';
 
 @Injectable()
 export class HttpService extends Http {
@@ -44,9 +46,7 @@ export class HttpService extends Http {
   }
 
   createRequestOptions(options: RequestOptions | Request) {
-    const token: string = localStorage.getItem(
-      appVariables.accessTokenLocalStorage
-    );
+    const token: string = AuthenticationTokenHelper.localToken;
     if (
       this.helperService.addContentTypeHeader &&
       typeof this.helperService.addContentTypeHeader === 'string'
@@ -72,9 +72,8 @@ export class HttpService extends Http {
     return (res: Response) => {
       if (res.status === 401 || res.status === 403) {
         // if not authenticated
-        localStorage.removeItem(appVariables.userLocalStorage);
-        localStorage.removeItem(appVariables.accessTokenLocalStorage);
-        this.router.navigate([appVariables.loginPageUrl]);
+        AuthenticationTokenHelper.clearTokenInCookie();
+        this.router.navigate([NavigateConstant.LOGIN]);
       }
       return Observable.throw(res);
     };

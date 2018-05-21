@@ -12,6 +12,7 @@ import { NumberFormatStyle } from '@angular/common';
 import { SignedUser } from '../models/user.model';
 import { AbstractHttpService } from '../abstract/http-service.abstract';
 import { appVariables } from '../../app.constant';
+import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 
 @Injectable()
 export class AuthenticationService extends AbstractHttpService {
@@ -22,21 +23,15 @@ export class AuthenticationService extends AbstractHttpService {
     this.controllerName = 'auth';
   }
 
-  get localToken() {
-    return sessionStorage.getItem(appVariables.accessTokenLocalStorage);
-  }
-
   authenticated(): boolean {
     // ! JUST FOR TESTING. REMOVE LATER
     if (this.username === 'admin') {
       return true;
     }
     // ! JUST FOR TESTING. REMOVE LATER
-    const authData = sessionStorage.getItem(appVariables.accessTokenLocalStorage);
-    if (authData) {
-      const authInfo = <Authentication>JSON.parse(authData);
-      const expireUtcDate = authInfo.expireTime;
-      const dateNow = Date.now();
+    if (AuthenticationTokenHelper.localToken) {
+      const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
+      const dateNow = Date.now() / 1000;
       if (expireUtcDate < dateNow) {
         this.logOut();
         return false;
@@ -47,11 +42,10 @@ export class AuthenticationService extends AbstractHttpService {
   }
 
   logOut() {
-    const authData = sessionStorage.getItem(appVariables.accessTokenLocalStorage);
+    const authData = AuthenticationTokenHelper.localToken;
     if (authData) {
       this.get('logout').subscribe(res => {
-        sessionStorage.removeItem(appVariables.accessTokenLocalStorage);
-
+        AuthenticationTokenHelper.clearTokenInCookie();
         this.router.navigate([NavigateConstant.LOGIN]);
       });
     }
@@ -69,8 +63,7 @@ export class AuthenticationService extends AbstractHttpService {
 
     return this.post('login', signedUser).toPromise().then((tokenResponse: Authentication) => {
       // Save token into cookies
-      sessionStorage.setItem(appVariables.accessTokenLocalStorage, tokenResponse.token);
-      sessionStorage.setItem(appVariables.accessTokenExpireTime, `${tokenResponse.expireTime}`);
+      AuthenticationTokenHelper.saveTokenInCookie(tokenResponse, signedUser.username);
 
       // Navigate to home page
       this.router.navigate([NavigateConstant.HOME]);
@@ -79,6 +72,18 @@ export class AuthenticationService extends AbstractHttpService {
 
   async validateUserToken(userToken: string) {
     return await this.post('verify', { usertoken: userToken }).toPromise();
+  }
+
+  verifyToken() {
+    const usernameInCookie = localStorage.getItem(appVariables.accessTokenOwner);
+    const refreshTokenInCookie = localStorage.getItem(appVariables.accessTokenOwner);
+
+    return this.post('token', { username: usernameInCookie, refreshToken: refreshTokenInCookie })
+      .toPromise()
+      .then((newToken: Authentication) => {
+        AuthenticationTokenHelper.clearTokenInCookie();
+        AuthenticationTokenHelper.saveTokenInCookie(newToken, usernameInCookie);
+      });
   }
 
   navigateToLoginPage() {
