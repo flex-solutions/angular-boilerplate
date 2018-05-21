@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { DemoDto } from '../models/demo-dto.model';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { Observable } from 'rxjs';
@@ -7,6 +7,12 @@ import { Observable } from 'rxjs';
 export class DemoService extends AbstractRestService {
 
   protected controllerName: string;
+  /**
+   *
+   */
+  constructor(protected injector: Injector) {
+    super(injector);
+  }
 
   findAll(): Observable<string> {
     return this.get<string>('findall');
