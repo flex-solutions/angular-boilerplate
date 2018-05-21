@@ -31,12 +31,9 @@ export class UsersComponent implements OnInit {
           };
      }
 
-     getUserInfomation() {
-
-     }
+     getUserInfomation() {}
 
      editUserGroup() {
-          alert('asdjfhjj');
      }
 
      // tslint:disable-next-line:use-life-cycle-interface
