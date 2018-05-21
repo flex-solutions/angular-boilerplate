@@ -10,10 +10,10 @@ import {
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
-
 import { AppModule } from '../../app.module';
 import { HelperService } from './helper.service';
 import { appVariables } from '../../app.constant';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class HttpService extends Http {

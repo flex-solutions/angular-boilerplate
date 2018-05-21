@@ -1,18 +1,20 @@
 import { User } from './../../../shared/models/user.model';
-import { BaseService } from './../../../shared/services/base.service';
 import { Injectable } from '@angular/core';
+import { AbstractHttpService } from '../../../shared/abstract/http-service.abstract';
 
 @Injectable()
-export class UserService {
-  constructor(private baseService: BaseService) { }
+export class UserService extends AbstractHttpService {
+  protected controllerName: string;
+  constructor() {
+    super();
+    this.controllerName = 'user';
+  }
 
   create(user: User) {
-    const createUserUrl = this.baseService.buildApi('user');
-    return this.baseService.post(createUserUrl, user).toPromise();
+    return this.post('create', user).toPromise();
   }
 
   update(user: User) {
-    const editUserUrl = this.baseService.buildApi('user');
-    return this.baseService.put(editUserUrl, user).toPromise();
+    return this.put('update', user).toPromise();
   }
 }

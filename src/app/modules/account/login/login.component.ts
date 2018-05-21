@@ -5,13 +5,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../shared/services/translate.service';
-import {
-  GenericValidator,
-  IValidationMessage
-} from '../../../shared/validation/generic-validator';
+import { GenericValidator, IValidationMessage } from '../../../shared/validation/generic-validator';
 import { RecaptchaComponent } from 'ng-recaptcha';
 import { AccountMessages } from '../account.message';
 import { SignedUser } from '../../../shared/models/user.model';
+import { HttpExceptionResponse } from '../../../shared/models/http-exception-response.model';
 
 @Component({
   selector: 'app-login',
@@ -68,23 +66,20 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
       // Reset recaptcha
       this.captchaRef.reset();
       // Raise error reCaptcha invalid
-      this.loginError = this.translateService.translate(
-        AccountMessages.InvalidRECAPTCHA
-      );
+      this.loginError = this.translateService.translate(AccountMessages.InvalidRECAPTCHA);
     } else {
-      this.authService.validateUserToken(token).then(res => {
-        const signedUser = new SignedUser();
-        signedUser.username = this.username;
-        signedUser.password = this.password;
-        signedUser.usertoken = token;
+      const signedUser = new SignedUser();
+      signedUser.username = this.username;
+      signedUser.password = this.password;
+      signedUser.usertoken = token;
 
-        // Call api login
-        this.authService.login(signedUser);
-
-      }).catch(err => {
-        // Raise error reCaptcha invalid
-        this.loginError = this.translateService.translate(AccountMessages.InvalidRECAPTCHA);
-      });
+      // Call api login
+      this.authService.login(signedUser)
+        .catch(error => {
+          // Failed to login
+          const httpException = error.json() as HttpExceptionResponse;
+          this.onHandleException(httpException);
+        });
     }
   }
 
@@ -103,6 +98,13 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   protected onValidate() {
     // Validate
     this.errorMessage = this.genericValidator.validate(this.formGroup);
+  }
+
+  private onHandleException(httpException: HttpExceptionResponse) {
+    if (httpException.message.message) {
+      const errorMsg = httpException.message.message.content[this.translateService.currentLocale];
+      this.loginError = errorMsg;
+    }
   }
 
   get username() {

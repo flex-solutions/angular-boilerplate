@@ -1,5 +1,4 @@
 import { async } from '@angular/core/testing';
-import { BaseService } from './base.service';
 import { Router, CanActivate } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,16 +11,23 @@ import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
 import { NumberFormatStyle } from '@angular/common';
 import { SignedUser, LoginResponse } from '../models/user.model';
+import { AbstractHttpService } from '../abstract/http-service.abstract';
 
 @Injectable()
-export class AuthenticationService {
-  private isLogin: boolean;
-  constructor(private baseService: BaseService, private router: Router) { }
+export class AuthenticationService extends AbstractHttpService {
+  protected controllerName: string;
+  private username: string;
+  constructor(private router: Router) {
+    super();
+    this.controllerName = 'auth';
+  }
 
   authenticated(): boolean {
-    if (this.isLogin) {
+    // ! JUST FOR TESTING. REMOVE LATER
+    if (this.username === 'admin') {
       return true;
     }
+    // ! JUST FOR TESTING. REMOVE LATER
     const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
     if (authData) {
       const authInfo = <Authentication>JSON.parse(authData);
@@ -39,8 +45,7 @@ export class AuthenticationService {
   logOut() {
     const authData = sessionStorage.getItem(ApplicationConstant.AUTH_DATA);
     if (authData) {
-      const logoutApi = this.baseService.buildApi('auth', 'logout');
-      this.baseService.get(logoutApi).subscribe(res => {
+      this.get('logout').subscribe(res => {
         sessionStorage.removeItem(ApplicationConstant.AUTH_DATA);
 
         this.router.navigate([NavigateConstant.LOGIN]);
@@ -48,23 +53,25 @@ export class AuthenticationService {
     }
   }
 
-  async login(signedUser: SignedUser) {
-    // Just for testing
-    if (signedUser.username === 'root' && signedUser.password === 'root') {
-      this.isLogin = true;
+  login(signedUser: SignedUser) {
+    // ! JUST FOR TESTING. REMOVE LATER
+    if (signedUser.username === 'admin') {
+      this.username = 'admin';
+      return;
     }
-    const loginApi = this.baseService.buildApi('auth', 'login');
-    const loginResponse = <LoginResponse>await this.baseService.post(loginApi, signedUser).toPromise();
-    // Save token into cookies
-    sessionStorage.setItem(ApplicationConstant.AUTH_DATA, loginResponse.token);
+    // ! JUST FOR TESTING. REMOVE LATER
 
-    // Navigate to home page
-    this.router.navigate([NavigateConstant.HOME]);
+    return this.post('login', signedUser).toPromise().then((loginResponse: LoginResponse) => {
+      // Save token into cookies
+      sessionStorage.setItem(ApplicationConstant.AUTH_DATA, loginResponse.token);
+
+      // Navigate to home page
+      this.router.navigate([NavigateConstant.HOME]);
+    });
   }
 
   async validateUserToken(userToken: string) {
-    const loginApi = this.baseService.buildApi('auth', 'verify');
-    return await this.baseService.post(loginApi, { usertoken: userToken }).toPromise();
+    return await this.post('verify', { usertoken: userToken }).toPromise();
   }
 
   hasAuthRemember(): boolean {

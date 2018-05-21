@@ -3,7 +3,6 @@ import 'rxjs/add/operator/finally';
 import { Injectable } from '@angular/core';
 import { RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
 import { HttpService } from '../services/http.service';
 import { HelperService } from '../services/helper.service';
 import { CustomErrorHandlerService } from '../services/custom-error-handler.service';
@@ -143,6 +142,9 @@ export abstract class AbstractHttpService {
   }
 
   buildApiUrl(relativeUrl: string): string {
-    return `${environment.host}/${this.controllerName}/${relativeUrl}`;
+    if (relativeUrl) {
+      return `${environment.host}/${this.controllerName}/${relativeUrl}`;
+    }
+    return `${environment.host}/${this.controllerName}`;
   }
 }

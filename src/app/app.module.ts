@@ -1,6 +1,4 @@
-import { HelperService } from './shared/services/helper.service';
 import { HttpService } from './shared/services/http.service';
-import { BaseService } from './shared/services/base.service';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { AccountRoutingModule } from './modules/account/account-routing.module';
@@ -61,10 +59,6 @@ import { DemoRoutingModule } from './modules/demo/demo-routing.module';
       deps: [LOCALE_ID]
     },
     ApplicationConfigurationService,
-    HttpService,
-    CustomErrorHandlerService,
-    HelperService,
-    BaseService,
     AuthenticationService
   ],
   bootstrap: [AppComponent]
