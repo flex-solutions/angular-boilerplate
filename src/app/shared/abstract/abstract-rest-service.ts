@@ -2,32 +2,45 @@ import { ApplicationConfigurationService } from '../services/application-configu
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Injector } from '@angular/core';
+import { SharedModule } from '../shared.module';
 
 export abstract class AbstractRestService {
-
   protected abstract controllerName: string;
   protected baseUrl: string;
   private configurationService: ApplicationConfigurationService;
   protected httpClient: HttpClient;
 
-  constructor(protected injector: Injector) {
+  constructor() {
     // Get base url provide by application configuration service
-    this.configurationService = injector.get(ApplicationConfigurationService);
-    this.baseUrl = this.configurationService.getApiURI();
-
-    this.httpClient = injector.get(HttpClient);
+    this.configurationService = SharedModule.injector.get(
+      ApplicationConfigurationService
+    );
+    this.baseUrl = this.configurationService.getApiUri();
+    this.httpClient = SharedModule.injector.get(HttpClient);
   }
 
-  get<T>(url: string) {
+  get<T>(relativeUrl: string) {
+    const url = this.getFullUrl(relativeUrl);
     return this.httpClient.get<T>(url).pipe(catchError(this.handleError));
   }
 
-  getWithRetry<T>(url: string, retryTimes: number) {
+  getWithRetry<T>(relativeUrl: string, retryTimes: number) {
+    const url = this.getFullUrl(relativeUrl);
     return this.httpClient.get<T>(url).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     );
+  }
+
+  protected getFullUrl(relativeUrl: string) {
+    let fullUrl = '';
+    if (this.controllerName) {
+      fullUrl = this.getApiWithController(relativeUrl);
+    } else {
+      fullUrl = this.getApiWithoutController(relativeUrl);
+    }
+
+    return fullUrl;
   }
 
   // Build full path for api

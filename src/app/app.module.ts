@@ -3,7 +3,7 @@ import { AuthenticationService } from './shared/services/authentication.service'
 import { AccountRoutingModule } from './modules/account/account-routing.module';
 import { AccountModule } from './modules/account/account.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, TRANSLATIONS, LOCALE_ID, Injector } from '@angular/core';
+import { NgModule, TRANSLATIONS, LOCALE_ID } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -60,10 +60,4 @@ import { DemoRoutingModule } from './modules/demo/demo-routing.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  static injector: Injector;
-
-  constructor(injector: Injector) {
-    AppModule.injector = injector;
-  }
-}
+export class AppModule {}

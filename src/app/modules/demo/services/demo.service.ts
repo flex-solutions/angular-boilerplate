@@ -5,13 +5,11 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class DemoService extends AbstractRestService {
-
   protected controllerName: string;
-  /**
-   *
-   */
-  constructor(protected injector: Injector) {
-    super(injector);
+
+  constructor() {
+    super();
+    this.controllerName = 'demo';
   }
 
   findAll(): Observable<string> {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from './layout/layout.module';
 import { NotificationService } from './services/notification.service';
@@ -22,4 +22,10 @@ import { UICommonModule } from './ui-common/ui-common.module';
   ],
   declarations: []
 })
-export class SharedModule {}
+export class SharedModule {
+  static injector: Injector;
+
+  constructor(private injector: Injector) {
+    SharedModule.injector = injector;
+  }
+}

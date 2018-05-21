@@ -6,14 +6,7 @@ import { ApplicationConfigurationService } from '../../../shared/services/applic
 
 @Injectable()
 export class UserService extends AbstractRestService {
-
   protected controllerName = 'users';
-  /**
-   *
-   */
-  constructor(protected injector: Injector) {
-    super(injector);
-  }
 
   create(user: IUser) {}
 

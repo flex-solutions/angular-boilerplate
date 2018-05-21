@@ -13,12 +13,9 @@ import { NavigateConstant } from '../constants/navigate.constant';
 
 @Injectable()
 export class AuthenticationService extends AbstractRestService {
-
   protected controllerName: string;
-  constructor(protected injector: Injector,
-    private router: Router
-  ) {
-    super(injector);
+  constructor(private router: Router) {
+    super();
   }
 
   authenticated(): boolean {
