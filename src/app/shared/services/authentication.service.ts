@@ -58,4 +58,8 @@ export class AuthenticationService extends AbstractRestService {
   navigateToLoginPage() {
     this.router.navigate([NavigateConstant.LOGIN]);
   }
+
+  getAuthorizationToken(): string {
+    return '';
+  }
 }

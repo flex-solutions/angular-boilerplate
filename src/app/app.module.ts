@@ -18,7 +18,7 @@ import {
   RECAPTCHA_SETTINGS,
   RECAPTCHA_LANGUAGE
 } from 'ng-recaptcha';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/http';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
 
@@ -28,7 +28,7 @@ import { DemoRoutingModule } from './modules/demo/demo-routing.module';
     BrowserModule,
     RecaptchaModule.forRoot(),
     HttpClientModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule,
     AppRoutingModule,
     AccountModule,

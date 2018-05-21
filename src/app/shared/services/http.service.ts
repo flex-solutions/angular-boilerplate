@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
 import {
   Headers,
-  Http,
   Request,
   RequestOptions,
   Response,
   XHRBackend
 } from '@angular/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
-
 import { AppModule } from '../../app.module';
 import { HelperService } from './helper.service';
 import { appVariables } from '../../app.constant';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @Injectable()
-export class HttpService extends Http {
-  helperService: HelperService;
-  router: Router;
+export class HttpService extends HttpClient {
 
-  constructor(backend: XHRBackend, options: RequestOptions) {
-    super(backend, options);
-    this.helperService = AppModule.injector.get(HelperService);
-    this.router = AppModule.injector.get(Router);
+  constructor(private handler: HttpHandler,
+    private helperService: HelperService,
+    private router: Router) {
+    super(handler);
   }
 
   request(

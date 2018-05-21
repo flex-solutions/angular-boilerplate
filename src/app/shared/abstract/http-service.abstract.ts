@@ -3,7 +3,6 @@ import 'rxjs/add/operator/finally';
 
 import { Injectable } from '@angular/core';
 import { RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 
 import { HttpService } from '../services/http.service';
 import { HelperService } from '../services/helper.service';
@@ -13,17 +12,14 @@ import { Error } from '../interfaces/error';
 import { appVariables } from '../../app.constant';
 import { environment } from '../../../environments/environment';
 import { AppModule } from '../../app.module';
+import { Observable } from 'rxjs';
 
 export abstract class AbstractHttpService {
-  private http: HttpService;
-  private errorHandler: CustomErrorHandlerService;
-  private helperService: HelperService;
   protected abstract controllerName: string;
 
-  constructor() {
-    this.http = AppModule.injector.get(HttpService);
-    this.errorHandler = AppModule.injector.get(CustomErrorHandlerService);
-    this.helperService = AppModule.injector.get(HelperService);
+  constructor(private http: HttpService,
+  private errorHandler: CustomErrorHandlerService,
+  private helperService: HelperService) {
   }
 
   get(relativeUrl) {
