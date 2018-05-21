@@ -8,8 +8,11 @@ export class UserService {
 
   create(user: User) {
     const createUserUrl = this.baseService.buildApi('user');
-    return this.baseService.post(createUserUrl, user);
+    return this.baseService.post(createUserUrl, user).toPromise();
   }
 
-  update(user: User) { }
+  update(user: User) {
+    const editUserUrl = this.baseService.buildApi('user');
+    return this.baseService.put(editUserUrl, user).toPromise();
+  }
 }

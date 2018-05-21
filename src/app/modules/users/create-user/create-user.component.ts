@@ -59,7 +59,7 @@ export class CreateUserComponent extends UserModificationBase {
         this.user.password = this.getPassword();
 
         // * Call API to create new user
-        this.userService.create(this.user).subscribe(
+        this.userService.create(this.user).then(
           respond => {
             // * Create user successful, display success notification
             const msg = this.translateService.translate(
@@ -69,15 +69,11 @@ export class CreateUserComponent extends UserModificationBase {
             this.notificationService.showSuccess(msg);
 
             this.onHandleCreateUserSuccessful();
-          },
-          error => {
+          })
+          .catch(error => {
             // * Failed to create user
             this.notificationService.showError(error);
-          }
-        );
-      })
-      .catch(err => {
-        console.error(err);
+          });
       });
   }
 
