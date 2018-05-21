@@ -7,17 +7,18 @@ import { TranslateService } from './services/translate.service';
 import { HelperService } from './services/helper.service';
 import { CustomErrorHandlerService } from './services/custom-error-handler.service';
 import { httpInterceptorProviders } from './http-interceptors';
+import { UICommonModule } from './ui-common/ui-common.module';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [LayoutModule],
+  exports: [LayoutModule, UICommonModule],
   providers: [
     NotificationService,
     MessageService,
     TranslateService,
     HelperService,
     CustomErrorHandlerService,
-    httpInterceptorProviders
+    httpInterceptorProviders,
   ],
   declarations: []
 })
