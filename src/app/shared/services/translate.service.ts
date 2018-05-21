@@ -10,8 +10,8 @@ export class TranslateService {
 
   constructor(@Inject(TRANSLATIONS) source: string) {
     const xliff = new Xliff();
-    // this._source = source;
-    // this._translations = xliff.load(this._source, '');
+    this._source = source;
+    this._translations = xliff.load(this._source, '');
   }
 
   translate(resourceKey: string) {
