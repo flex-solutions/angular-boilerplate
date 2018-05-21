@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../../models/user-model';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 const httpOptions = {
      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,6 +31,4 @@ export class UsersService {
           const url = `$''/${user.uid}`;
           return this.http.delete<UserModel>(url, httpOptions).pipe();
      }
-
-     // getUserGroup(): Observable<>
 }

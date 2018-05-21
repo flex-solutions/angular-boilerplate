@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 
 import { MessageItem } from '../../models/message-item.model';
 import { MessageType } from '../../enums/message-type.enum';
 import { MessageService } from '../../services/message.service';
 import { MessageItemFormat } from '../../models/message-item-format.model';
+import { Subscription } from 'rxjs';
 
 declare let $: any;
 

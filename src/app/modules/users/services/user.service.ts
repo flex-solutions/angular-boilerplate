@@ -6,12 +6,8 @@ import { ApplicationConfigurationService } from '../../../shared/services/applic
 
 @Injectable()
 export class UserService extends AbstractRestService {
-  constructor(
-    configurationService: ApplicationConfigurationService,
-    httpClient: HttpClient
-  ) {
-    super('users', configurationService, httpClient);
-  }
+
+  protected controllerName = 'users';
 
   create(user: IUser) {}
 

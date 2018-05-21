@@ -6,7 +6,6 @@ import {
   GenericValidator,
   IValidationMessage
 } from '../../../shared/validation/generic-validator';
-import { RecaptchaComponent } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,6 @@ import { RecaptchaComponent } from 'ng-recaptcha';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent extends AbstractFormComponent implements OnInit {
-  @ViewChild('captchaRef') captchaRef: RecaptchaComponent;
   captchaResponse: string;
   errorMessage: { [key: string]: string } = {};
   protected genericValidator: GenericValidator;
@@ -60,14 +58,14 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     this.captchaResponse = responde;
     console.log(`Resolved captcha with response ${this.captchaResponse}:`);
     if (this.captchaResponse) {
-      this.captchaRef.reset();
+      // this.captchaRef.reset();
     }
   }
 
   protected onSubmit() {
     // Execute check captcha
     console.log('onSubmit');
-    this.captchaRef.execute();
+    // this.captchaRef.execute();
   }
 
   protected onCancel() {

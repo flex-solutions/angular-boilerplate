@@ -1,25 +1,30 @@
 import { ApplicationConfigurationService } from '../services/application-configuration.service';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { catchError, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Injector } from '@angular/core';
 
 export abstract class AbstractRestService {
+
+  protected abstract controllerName: string;
   protected baseUrl: string;
-  constructor(
-    protected controllerName: string,
-    protected configurationService: ApplicationConfigurationService,
-    protected httpClient: HttpClient
-  ) {
+  private configurationService: ApplicationConfigurationService;
+  protected httpClient: HttpClient;
+
+  constructor(protected injector: Injector) {
     // Get base url provide by application configuration service
-    this.baseUrl = configurationService.getApiURI();
+    this.configurationService = injector.get(ApplicationConfigurationService);
+    this.baseUrl = this.configurationService.getApiURI();
+
+    this.httpClient = injector.get(HttpClient);
   }
 
-  get(url: string) {
-    return this.httpClient.get(url).pipe(catchError(this.handleError));
+  get<T>(url: string) {
+    return this.httpClient.get<T>(url).pipe(catchError(this.handleError));
   }
 
-  getWithRetry(url: string, retryTimes: number) {
-    return this.httpClient.get(url).pipe(
+  getWithRetry<T>(url: string, retryTimes: number) {
+    return this.httpClient.get<T>(url).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     );
