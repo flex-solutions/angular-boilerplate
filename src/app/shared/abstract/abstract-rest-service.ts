@@ -1,14 +1,16 @@
 import { ApplicationConfigurationService } from '../services/application-configuration.service';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SharedModule } from '../shared.module';
+import { LoaderService } from '../ui-common/loading-bar/loader.service';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
   protected baseUrl: string;
   private configurationService: ApplicationConfigurationService;
   protected httpClient: HttpClient;
+  protected loaderService: LoaderService;
 
   constructor() {
     // Get base url provide by application configuration service
@@ -17,11 +19,15 @@ export abstract class AbstractRestService {
     );
     this.baseUrl = this.configurationService.getApiUri();
     this.httpClient = SharedModule.injector.get(HttpClient);
+    this.loaderService = SharedModule.injector.get(LoaderService);
   }
 
   get<T>(relativeUrl: string) {
+    this.showLoader();
     const url = this.getFullUrl(relativeUrl);
-    return this.httpClient.get<T>(url).pipe(catchError(this.handleError));
+    return this.httpClient
+      .get<T>(url)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
   }
 
   getWithRetry<T>(relativeUrl: string, retryTimes: number) {
@@ -30,6 +36,14 @@ export abstract class AbstractRestService {
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     );
+  }
+
+  showLoader() {
+    this.loaderService.show();
+  }
+
+  hideLoader() {
+    this.loaderService.hide();
   }
 
   protected getFullUrl(relativeUrl: string) {
