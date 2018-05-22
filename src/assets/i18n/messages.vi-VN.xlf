@@ -33,7 +33,7 @@
       </trans-unit>
       <trans-unit id="modal-confirm-cancel-button" datatype="html">
         <source>Cancel</source>
-        <target>Huy</target>
+        <target>Huỷ</target>
       </trans-unit>
 
       <!--Create user-->
