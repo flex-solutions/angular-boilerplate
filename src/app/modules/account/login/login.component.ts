@@ -6,7 +6,7 @@ import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-co
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../shared/services/translate.service';
 import { GenericValidator, IValidationMessage } from '../../../shared/validation/generic-validator';
-// import { RecaptchaComponent } from 'ng-recaptcha'; //TODO
+import { InvisibleReCaptchaComponent } from 'ngx-captcha';
 import { AccountMessages } from '../account.message';
 import { SignedUser } from '../../../shared/models/user.model';
 import { HttpExceptionResponse } from '../../../shared/models/http-exception-response.model';
@@ -17,7 +17,7 @@ import { HttpExceptionResponse } from '../../../shared/models/http-exception-res
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent extends AbstractFormComponent implements OnInit {
-  // @ViewChild('captchaRef') captchaRef: RecaptchaComponent; //TODO
+  @ViewChild('captchaRef') captchaRef: InvisibleReCaptchaComponent;
   errorMessage: { [key: string]: string } = {}; // Error message for login form validation
   loginError: string; // Error message when login failed
   protected genericValidator: GenericValidator;
@@ -64,7 +64,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   reCaptchaCallback(token) {
     if (!token || token.length === 0) {
       // Reset recaptcha
-      // this.captchaRef.reset(); //TODO
+      this.captchaRef.resetCaptcha();
       // Raise error reCaptcha invalid
       this.loginError = this.translateService.translate(AccountMessages.InvalidRECAPTCHA);
     } else {
@@ -88,7 +88,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     // Reset login error
     this.loginError = null;
     // Execute check captcha and login if recaptcha is valid
-    // this.captchaRef.execute(); //TODO
+    this.captchaRef.execute();
   }
 
   protected onCancel() {
