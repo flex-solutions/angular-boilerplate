@@ -44,7 +44,7 @@ export class UsersComponent implements OnInit {
                responsive: true,
                language: {
                     search: '_INPUT_',
-                    searchPlaceholder: 'Search records',
+                    searchPlaceholder: 'Search by username, fullname or email',
                }
 
           });

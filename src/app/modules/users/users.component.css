@@ -3,6 +3,7 @@
 }
 
 .btn-fw {
-     height: 30px;
+     line-height: 18px;
      float: right;
+     padding: 5px;
 }
