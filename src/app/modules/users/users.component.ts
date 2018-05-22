@@ -1,5 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import * as jquery from 'jquery';
+import { Router, ActivatedRoute } from '@angular/router';
+import { userConfiguration } from '../user.configuration';
 
 declare interface DataTable {
      headerRow: string[];
@@ -17,7 +19,9 @@ declare var $: any;
 export class UsersComponent implements OnInit {
 
      public dataTable: DataTable;
-     constructor() { }
+     constructor(
+          private router: Router,
+          private route: ActivatedRoute) { }
 
      ngOnInit(): void {
           this.dataTable = {
@@ -34,6 +38,10 @@ export class UsersComponent implements OnInit {
      getUserInfomation() {}
 
      editUserGroup() {
+     }
+
+     navigateToCreatePage() {
+          this.router.navigate([userConfiguration.createPageUrl], { relativeTo: this.route });
      }
 
      // tslint:disable-next-line:use-life-cycle-interface

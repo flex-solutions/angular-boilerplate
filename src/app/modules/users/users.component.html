@@ -1,52 +1,52 @@
 <!-- partial -->
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <h4 class="card-title col-md-10">Users</h4>
-        <div class="col-md-2">
-          <button type="button" class="btn btn-primary btn-fw pull-right">
-            <i class="mdi mdi-plus"></i>Create User</button>
-        </div>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h4 class="card-title col-md-10">Users</h4>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+          <i class="mdi mdi-plus"></i>Create User</button>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-12">
-          <table id="datatables" class="table">
-            <thead>
-              <tr>
-                <th>{{ dataTable.headerRow[0] }}</th>
-                <th>{{ dataTable.headerRow[1] }}</th>
-                <th>{{ dataTable.headerRow[2] }}</th>
-                <th>{{ dataTable.headerRow[3] }}</th>
-                <th>{{ dataTable.headerRow[4] }}</th>
-                <th>{{ dataTable.headerRow[5] }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let row of dataTable.dataRows">
-                <td>{{row[0]}}</td>
-                <td>{{row[1]}}</td>
-                <td>{{row[2]}}</td>
-                <td>{{row[3]}}</td>
-                <td>
-                  <label class="badge badge-{{row[4]}}">On hold</label>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-light">
-                    <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>Edit</button>
-                  <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="mdi mdi-dots-horizontal"></i>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" (click)="editUserGroup()" href="javascript:;">Edit user groups</a>
-                    <a class="dropdown-item" (click)="getUserInfomation()" href="javascript:;">Delete user</a>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div class="row">
+      <div class="col-12">
+        <table id="datatables" class="table">
+          <thead>
+            <tr>
+              <th>{{ dataTable.headerRow[0] }}</th>
+              <th>{{ dataTable.headerRow[1] }}</th>
+              <th>{{ dataTable.headerRow[2] }}</th>
+              <th>{{ dataTable.headerRow[3] }}</th>
+              <th>{{ dataTable.headerRow[4] }}</th>
+              <th>{{ dataTable.headerRow[5] }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of dataTable.dataRows">
+              <td>{{row[0]}}</td>
+              <td>{{row[1]}}</td>
+              <td>{{row[2]}}</td>
+              <td>{{row[3]}}</td>
+              <td>
+                <label class="badge badge-{{row[4]}}">On hold</label>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>Edit</button>
+                <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-dots-horizontal"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="editUserGroup()" href="javascript:;">Edit user groups</a>
+                  <a class="dropdown-item" (click)="getUserInfomation()" href="javascript:;">Delete user</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>
 <!-- partial -->
