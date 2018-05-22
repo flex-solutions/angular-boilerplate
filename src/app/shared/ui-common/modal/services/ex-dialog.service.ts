@@ -2,7 +2,7 @@ import { Injectable, Injector, Type } from '@angular/core';
 import { DialogService } from './dialog.service';
 import { Observable } from 'rxjs';
 import { BasicDialogComponent } from '../components/basic-dialog.component';
-import { DialogComponent } from '../components/dialog.component';
+import { DialogComponent, ModalSize } from '../components/dialog.component';
 
 @Injectable()
 export class ExDialog {
@@ -14,9 +14,10 @@ export class ExDialog {
     this.dialogService.addDialog(BasicDialogComponent, params);
   }
 
-  openConfirm(message: string, title?: string): Observable<any> {
+  openConfirm(message: string, title?: string, size: ModalSize = ModalSize.Normal): Observable<any> {
     const params: any = this.getParams(message, title, undefined);
     params.basicType = 'confirm';
+    params.modalSize = size;
     return this.dialogService.addDialog(BasicDialogComponent, params);
   }
 
@@ -34,7 +35,11 @@ export class ExDialog {
   }
 
   // Open custom or data dialog by passing custom dialog component and parameters.
-  openPrime(component: Type<DialogComponent>, params?: any): Observable<any> {
+  openPrime(component: Type<DialogComponent>, params?: any, size: ModalSize = ModalSize.Normal): Observable<any> {
+    if (!params) {
+      params = {};
+    }
+    params = Object.assign({modalSize: size});
     return this.dialogService.addDialog(component, params);
   }
 

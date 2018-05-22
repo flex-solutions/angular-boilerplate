@@ -21,7 +21,7 @@ export class DialogMainComponent {
   private element: ViewContainerRef;
 
   public shown = false;
-  private content: DialogComponent;
+  content: DialogComponent;
   dialogPaddingTop = 0;
 
   // Setting values for directives used in this component view.

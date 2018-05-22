@@ -3,6 +3,12 @@ import { Observable, Observer } from 'rxjs';
 import { DialogMainComponent } from './dialog-main.component';
 import { DialogService } from '../services/dialog.service';
 
+export enum ModalSize {
+  Normal = 0,
+  Small,
+  Large
+}
+
 export abstract class DialogComponent {
   private observer: Observer<any>;
   protected result: any;
@@ -48,6 +54,7 @@ export abstract class DialogComponent {
   // Basic dialog type flag (internal use).
   // Value is set in ExDialog service and used in BasicDialogComponent and DialogMainComponent.
   basicType: string = undefined;
+  modalSize: ModalSize = ModalSize.Normal;
 
   constructor(protected dialogService: DialogService) {}
 

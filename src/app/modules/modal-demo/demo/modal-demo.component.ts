@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
 import { HostedModalComponent } from './hosted-modal.component';
+import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
 
 @Component({
     selector: 'app-modal-demo',
@@ -13,7 +14,7 @@ export class ModalDemoComponent implements OnInit {
     ngOnInit() { }
 
     showConfirm() {
-        this.exDialog.openConfirm('this is a confirm dialog', 'Xac Nhan').subscribe(result => {
+        this.exDialog.openConfirm('this is a confirm dialog', 'Xac Nhan', ModalSize.Small).subscribe(result => {
           if (result) {
             alert('you clicked Submit button');
           } else {
@@ -23,7 +24,7 @@ export class ModalDemoComponent implements OnInit {
     }
 
     showHostedModal() {
-      this.exDialog.openPrime(HostedModalComponent, 'This is hosted modal component').subscribe(result => {
+      this.exDialog.openPrime(HostedModalComponent, 'This is hosted modal component', ModalSize.Large).subscribe(result => {
         if (result) {
           alert('you clicked Submit button');
         } else {
