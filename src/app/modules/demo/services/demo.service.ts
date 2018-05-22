@@ -21,6 +21,6 @@ export class DemoService extends AbstractRestService {
     dto.message = 'this is message';
     dto.title = 'this is title';
 
-    return this.get<DemoDto>('findall');
+    return this.post<DemoDto>('create', dto);
   }
 }

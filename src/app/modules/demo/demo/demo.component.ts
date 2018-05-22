@@ -18,7 +18,7 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
     this.notifier.showSuccess('success');
     this.demoService.findAll().subscribe(t => console.log(t));
-    // this.demoService.create().subscribe(t => console.log(t));
+    this.demoService.create().subscribe(t => console.log(t));
     // this.loaderService.show();
     // this.loaderService.hide();
   }

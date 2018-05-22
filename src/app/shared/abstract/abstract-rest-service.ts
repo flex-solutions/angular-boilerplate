@@ -31,11 +31,37 @@ export abstract class AbstractRestService {
   }
 
   getWithRetry<T>(relativeUrl: string, retryTimes: number) {
+    this.showLoader();
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient.get<T>(url).pipe(
       retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError)
+      catchError(this.handleError),
+      finalize(() => this.hideLoader())
     );
+  }
+
+  post<T>(relativeUrl, postBody: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .post<T>(url, postBody)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+  }
+
+  put<T>(relativeUrl, putData) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .put<T>(url, putData)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+  }
+
+  delete<T>(relativeUrl, postBody: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .delete<T>(url)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
   }
 
   showLoader() {
