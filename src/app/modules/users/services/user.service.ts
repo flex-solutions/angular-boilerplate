@@ -1,19 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { User } from './../../../shared/models/user.model';
 import { Injectable } from '@angular/core';
-import { IUser } from '../../../models/user.model';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { ApplicationConfigurationService } from '../../../shared/services/application-configuration.service';
 
 @Injectable()
 export class UserService extends AbstractRestService {
-  constructor(
-    configurationService: ApplicationConfigurationService,
-    httpClient: HttpClient
-  ) {
-    super('users', configurationService, httpClient);
+  protected controllerName: string;
+  constructor() {
+    super();
+    this.controllerName = 'user';
   }
 
-  create(user: IUser) {}
+  create(user: User) {
+    return this.post('create', user).toPromise();
+  }
 
-  update(user: IUser) {}
+  update(user: User) {
+    return this.put('update', user).toPromise();
+  }
 }

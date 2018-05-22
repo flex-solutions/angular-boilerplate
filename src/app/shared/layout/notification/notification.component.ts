@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-
 import { MessageItem } from '../../models/message-item.model';
 import { MessageType } from '../../enums/message-type.enum';
 import { MessageService } from '../../services/message.service';
 import { MessageItemFormat } from '../../models/message-item-format.model';
+import { Subscription } from 'rxjs';
+import { indexOf } from 'ramda';
 
 declare let $: any;
 
@@ -44,7 +44,7 @@ export class NotificationComponent implements OnDestroy {
   }
 
   isLast(message: MessageItemFormat) {
-    return this.messages.indexOf(message) === this.messages.length - 1;
+    return indexOf(message, this.messages) === this.messages.length - 1;
   }
 
   onRepoClicked() {

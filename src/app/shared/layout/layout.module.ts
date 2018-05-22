@@ -7,7 +7,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification-item/notification-item.component';
-import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
@@ -15,7 +14,7 @@ import { ModalComponent } from './modal/modal.component';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
   ],
   declarations: [
     SidebarComponent,
@@ -24,7 +23,6 @@ import { ModalComponent } from './modal/modal.component';
     BreadcrumbComponent,
     NotificationComponent,
     NotificationItemComponent,
-    ModalComponent
-  ]
+  ],
 })
 export class LayoutModule {}

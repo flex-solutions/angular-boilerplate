@@ -1,5 +1,5 @@
 <!--Layout for CMS page-->
-<div class="container-scroller" *ngIf="authenticationService.authenticated()">
+<div class="container-scroller">
   <app-navbar class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row"></app-navbar>
   <div class="container-fluid page-body-wrapper">
     <app-sidebar class="sidebar sidebar-offcanvas" id="sidebar"></app-sidebar>
@@ -11,9 +11,4 @@
       <app-footer class="footer"></app-footer>
     </div>
   </div>
-</div>
-
-<!--Layout for Login page-->
-<div class="container-scroller" *ngIf="!authenticationService.authenticated()">
-  <router-outlet></router-outlet>
 </div>

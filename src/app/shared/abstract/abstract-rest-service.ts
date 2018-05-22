@@ -1,28 +1,87 @@
 import { ApplicationConfigurationService } from '../services/application-configuration.service';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { SharedModule } from '../shared.module';
+import { LoaderService } from '../ui-common/loading-bar/loader.service';
+import { appVariables } from '../../app.constant';
 
 export abstract class AbstractRestService {
+  protected abstract controllerName: string;
   protected baseUrl: string;
-  constructor(
-    protected controllerName: string,
-    protected configurationService: ApplicationConfigurationService,
-    protected httpClient: HttpClient
-  ) {
+  private configurationService: ApplicationConfigurationService;
+  protected httpClient: HttpClient;
+  protected loaderService: LoaderService;
+
+  constructor() {
     // Get base url provide by application configuration service
-    this.baseUrl = configurationService.getApiURI();
-  }
-
-  get(url: string) {
-    return this.httpClient.get(url).pipe(catchError(this.handleError));
-  }
-
-  getWithRetry(url: string, retryTimes: number) {
-    return this.httpClient.get(url).pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError)
+    this.configurationService = SharedModule.injector.get(
+      ApplicationConfigurationService
     );
+    this.baseUrl = this.configurationService.getApiUri();
+    this.httpClient = SharedModule.injector.get(HttpClient);
+    this.loaderService = SharedModule.injector.get(LoaderService);
+  }
+
+  get<T>(relativeUrl: string) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .get<T>(url)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+  }
+
+  getWithRetry<T>(relativeUrl: string, retryTimes: number) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient.get<T>(url).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError),
+      finalize(() => this.hideLoader())
+    );
+  }
+
+  post<T>(relativeUrl, postBody: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .post<T>(url, postBody)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+  }
+
+  put<T>(relativeUrl, putData) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .put<T>(url, putData)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+  }
+
+  delete<T>(relativeUrl, postBody: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .delete<T>(url)
+      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+  }
+
+  showLoader() {
+    this.loaderService.show();
+  }
+
+  hideLoader() {
+    this.loaderService.hide();
+  }
+
+  protected getFullUrl(relativeUrl: string) {
+    let fullUrl = '';
+    if (this.controllerName) {
+      fullUrl = this.getApiWithController(relativeUrl);
+    } else {
+      fullUrl = this.getApiWithoutController(relativeUrl);
+    }
+
+    return fullUrl;
   }
 
   // Build full path for api
@@ -32,6 +91,13 @@ export abstract class AbstractRestService {
 
   protected getApiWithoutController(api: string) {
     return `${this.baseUrl}/${api}`;
+  }
+
+  refreshToken(res: Response) {
+    const token = res.headers.get(appVariables.accessTokenServer);
+    if (token) {
+      localStorage.setItem(appVariables.accessTokenLocalStorage, `${token}`);
+    }
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -3,16 +3,16 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ApplicationConfigurationService {
-  private _apiURI: string;
+  private _apiUri: string;
   private _pageSize: number;
 
   constructor() {
-    this._apiURI = environment.host;
+    this._apiUri = environment.host;
     this._pageSize = 20;
   }
 
-  getApiURI() {
-    return this._apiURI;
+  getApiUri() {
+    return this._apiUri;
   }
 
   getPageSize() {

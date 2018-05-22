@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
-import { AbstractHttpService } from '../../../shared/abstract/http-service.abstract';
-import { Observable } from 'rxjs/Observable';
+import { Injectable, Injector } from '@angular/core';
 import { DemoDto } from '../models/demo-dto.model';
+import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class DemoService extends AbstractHttpService {
+export class DemoService extends AbstractRestService {
   protected controllerName: string;
+
   constructor() {
     super();
     this.controllerName = 'demo';
   }
 
   findAll(): Observable<string> {
-    return this.get('findall');
+    return this.get<string>('findall');
   }
 
   create(): Observable<DemoDto> {
@@ -20,6 +21,6 @@ export class DemoService extends AbstractHttpService {
     dto.message = 'this is message';
     dto.title = 'this is title';
 
-    return this.post('create', dto);
+    return this.post<DemoDto>('create', dto);
   }
 }
