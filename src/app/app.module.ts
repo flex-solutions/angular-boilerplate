@@ -12,14 +12,10 @@ import { i18nFactory } from './i18n.factory';
 import { UsersModule } from './modules/users/users.module';
 import { UsersRoutingModule } from './modules/users/users-routing.module';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
-// import {
-//   RecaptchaModule,
-//   RecaptchaSettings,
-//   RECAPTCHA_SETTINGS,
-//   RECAPTCHA_LANGUAGE
-// } from 'ng-recaptcha';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
+import { ModalDemoModule } from './modules/modal-demo/modal-demo.module';
+import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +30,9 @@ import { DemoRoutingModule } from './modules/demo/demo-routing.module';
     UsersModule,
     UsersRoutingModule,
     DemoModule,
-    DemoRoutingModule
+    DemoRoutingModule,
+    ModalDemoModule,
+    ModalDemoRoutingModule
   ],
   providers: [
     {
@@ -42,19 +40,6 @@ import { DemoRoutingModule } from './modules/demo/demo-routing.module';
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]
     },
-    // {
-    //   // Configure global setting for recaptcha
-    //   provide: RECAPTCHA_SETTINGS,
-    //   useValue: {
-    //     siteKey: environment.INVISIBLE_RECAPTCHA_SITEKEY
-    //   } as RecaptchaSettings
-    // },
-    // {
-    //   // Configure language for recaptcha
-    //   provide: RECAPTCHA_LANGUAGE,
-    //   useFactory: locale => locale,
-    //   deps: [LOCALE_ID]
-    // },
     ApplicationConfigurationService,
     AuthenticationService
   ],
