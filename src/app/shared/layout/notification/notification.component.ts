@@ -4,7 +4,7 @@ import { MessageType } from '../../enums/message-type.enum';
 import { MessageService } from '../../services/message.service';
 import { MessageItemFormat } from '../../models/message-item-format.model';
 import { Subscription } from 'rxjs';
-import { indexOf } from 'ramda';
+import { indexOf, init, append } from 'ramda';
 
 declare let $: any;
 
@@ -30,7 +30,7 @@ export class NotificationComponent implements OnDestroy {
 
   onReceiveMessage(message: MessageItem) {
     if (this.messages.length === 5) {
-      this.messages.pop();
+      init(this.messages);
     }
 
     const newMessage = new MessageItemFormat(
@@ -40,7 +40,7 @@ export class NotificationComponent implements OnDestroy {
     );
 
     newMessage.parseTime();
-    this.messages.unshift(newMessage);
+    append(newMessage, this.messages);
   }
 
   isLast(message: MessageItemFormat) {
