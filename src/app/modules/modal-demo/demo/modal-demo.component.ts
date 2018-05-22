@@ -13,7 +13,7 @@ export class ModalDemoComponent implements OnInit {
     ngOnInit() { }
 
     showConfirm() {
-        this.exDialog.openConfirm('this is a confirm dialog').subscribe(result => {
+        this.exDialog.openConfirm('this is a confirm dialog', 'Xac Nhan').subscribe(result => {
           if (result) {
             alert('you clicked Submit button');
           } else {
@@ -23,7 +23,7 @@ export class ModalDemoComponent implements OnInit {
     }
 
     showHostedModal() {
-      this.exDialog.openPrime(HostedModalComponent).subscribe(result => {
+      this.exDialog.openPrime(HostedModalComponent, 'This is hosted modal component').subscribe(result => {
         if (result) {
           alert('you clicked Submit button');
         } else {
