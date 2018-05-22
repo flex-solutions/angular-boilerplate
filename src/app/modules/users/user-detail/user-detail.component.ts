@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { UserGroup } from '../../../models/user-group.model';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { userConfiguration } from '../../user.configuration';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -20,7 +21,8 @@ export class UserDetailComponent implements OnInit {
   constructor(private userService: UsersService,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private notifier: NotificationService) { }
 
   // Init user detail component
   ngOnInit() {
@@ -36,7 +38,10 @@ export class UserDetailComponent implements OnInit {
 
   // Handle delete user.
   deleteUser() {
-    this.userService.deleteUser(this.userdetail).subscribe(() => { this.goBack(); });
+    this.userService.deleteUser(this.userdetail).subscribe(() => {
+      this.goBack();
+      this.notifier.showSuccess('success');
+    });
   }
 
   // Handle change user group.

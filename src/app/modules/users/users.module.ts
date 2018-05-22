@@ -6,10 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserService } from './services/user.service';
+import { UsersComponent } from './users.component';
+import { UsersService } from './users-service';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule],
-  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent],
-  providers: [UserService]
+  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent],
+  providers: [UserService, UsersService]
 })
 export class UsersModule {}

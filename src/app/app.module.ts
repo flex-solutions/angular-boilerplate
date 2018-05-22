@@ -22,6 +22,7 @@ import {
 import { HttpModule } from '@angular/http';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
+import { MdModule } from './md/md.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,8 @@ import { DemoRoutingModule } from './modules/demo/demo-routing.module';
     UsersModule,
     UsersRoutingModule,
     DemoModule,
-    DemoRoutingModule
+    DemoRoutingModule,
+    MdModule
   ],
   providers: [
     {
