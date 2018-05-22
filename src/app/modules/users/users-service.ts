@@ -10,8 +10,9 @@ const httpOptions = {
 
 @Injectable()
 export class UsersService {
-
-     constructor(private http: HttpClient) { }
+     protected controllerName: string;
+     constructor(private http: HttpClient) {
+      }
 
      // Handle get user by email.
      getUserByEmail(emailAddress: string): Observable<UserModel> {
