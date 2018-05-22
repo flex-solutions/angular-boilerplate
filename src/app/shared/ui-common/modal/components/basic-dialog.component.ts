@@ -13,8 +13,7 @@ import { Observable } from 'rxjs';
 @Component({
   moduleId: module.id,
   selector: 'app-basic-dialog',
-  templateUrl: './basic-dialog.component.html',
-  styleUrls: ['./basic-dialog.component.css']
+  templateUrl: './basic-dialog.component.html'
 })
 export class BasicDialogComponent extends DialogComponent
   implements AfterViewInit {
