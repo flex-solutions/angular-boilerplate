@@ -26,6 +26,16 @@
         <target>Quản Lý User</target>
       </trans-unit>
 
+      <!-- Modal -->
+      <trans-unit id="modal-confirm-submit-button" datatype="html">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="modal-confirm-cancel-button" datatype="html">
+        <source>Cancel</source>
+        <target>Huy</target>
+      </trans-unit>
+
       <!--Create user-->
       <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
         <source>Create New User</source>
@@ -83,7 +93,7 @@
         <source>If you do not enter a password, one will be generated automatically</source>
         <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
       </trans-unit>
-      <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html"> 
+      <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html">
         <source>Please provide email address</source>
         <target>Vui lòng cung cấp địa chỉ email </target>
       </trans-unit>

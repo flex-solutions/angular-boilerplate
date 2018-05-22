@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
+
     <body>
-    <!-- Nav Bar -->
+      <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
         <target>Change Password</target>
@@ -16,7 +17,7 @@
         <target>You have {{messages.length}} new notifications</target>
       </trans-unit>
 
-    <!-- Side Bar -->
+      <!-- Side Bar -->
       <trans-unit id="layout-sidebar-anchor-demo" datatype="html">
         <source>Demo</source>
         <target>Demo</target>
@@ -25,7 +26,17 @@
         <source>User Management</source>
         <target>User Management</target>
       </trans-unit>
-      
+
+      <!-- Modal -->
+      <trans-unit id="modal-confirm-submit-button" datatype="html">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="modal-confirm-cancel-button" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+
       <!--Create user-->
       <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
         <source>Create New User</source>
@@ -112,7 +123,7 @@
         <target>Create user successfully</target>
       </trans-unit>
       <!--End create user-->
-      
+
       <!--Edit user-->
       <trans-unit id="user-edit_user-h4-edit_user_title" datatype="html">
         <source>Edit User</source>
@@ -122,11 +133,11 @@
         <source>Edit access information of an user account</source>
         <target>Edit access information of an user account</target>
       </trans-unit>
-       <trans-unit id="user-edit_user-label-is_active" datatype="html">
+      <trans-unit id="user-edit_user-label-is_active" datatype="html">
         <source>Is Active</source>
         <target>Is Active</target>
       </trans-unit>
-       <trans-unit id="user-edit_user-button-update" datatype="html">
+      <trans-unit id="user-edit_user-button-update" datatype="html">
         <source>Update</source>
         <target>Update</target>
       </trans-unit>

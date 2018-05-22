@@ -9,9 +9,9 @@
     <p>{{message}}</p>
   </div>
   <div class="modal-footer" #footerElem>
-    <button type="button" class="btn btn-success" *ngIf="actionButtonLabel != undefined && actionButtonLabel != ''" #actionButtonElem
+    <button type="button" i18n="@@modal-confirm-submit-button" class="btn btn-success" *ngIf="actionButtonLabel != undefined && actionButtonLabel != ''" #actionButtonElem
       (click)="action()">Submit</button>
-    <button type="button" class="btn btn-light" data-dismiss="modal" *ngIf="closeButtonLabel != undefined && closeButtonLabel != ''"
+    <button type="button" i18n="@@modal-confirm-cancel-button" class="btn btn-light" data-dismiss="modal" *ngIf="closeButtonLabel != undefined && closeButtonLabel != ''"
       #closeButtonElem (click)="close()">Cancel</button>
   </div>
 </div>
