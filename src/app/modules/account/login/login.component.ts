@@ -1,30 +1,35 @@
-import { Component, OnInit, ViewChild, Inject, LOCALE_ID, AfterViewInit } from '@angular/core';
+import { AuthenticationService } from './../../../shared/services/authentication.service';
+import { NavigateConstant } from './../../../shared/constants/navigate.constant';
+import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../shared/services/translate.service';
-import {
-  GenericValidator,
-  IValidationMessage
-} from '../../../shared/validation/generic-validator';
-import { InvisibleReCaptchaComponent } from 'ngx-captcha';
+import { GenericValidator, IValidationMessage } from '../../../shared/validation/generic-validator';
+// import { RecaptchaComponent } from 'ng-recaptcha'; //TODO
+import { AccountMessages } from '../account.message';
+import { SignedUser } from '../../../shared/models/user.model';
+import { HttpExceptionResponse } from '../../../shared/models/http-exception-response.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends AbstractFormComponent implements OnInit, AfterViewInit {
-  captchaResponse: string;
-  errorMessage: { [key: string]: string } = {};
+export class LoginComponent extends AbstractFormComponent implements OnInit {
+  // @ViewChild('captchaRef') captchaRef: RecaptchaComponent; //TODO
+  errorMessage: { [key: string]: string } = {}; // Error message for login form validation
+  loginError: string; // Error message when login failed
   protected genericValidator: GenericValidator;
-  @ViewChild('captchaElem') captchaElem: InvisibleReCaptchaComponent;
 
   constructor(
     private fb: FormBuilder,
     private translateService: TranslateService,
-    @Inject(LOCALE_ID) protected localeId: string) {
-
+    private router: Router,
+    private authService: AuthenticationService
+  ) {
     super();
+
     // Create an instance of the generic validator
     this.genericValidator = new GenericValidator(
       this.validationMessages,
@@ -36,21 +41,17 @@ export class LoginComponent extends AbstractFormComponent implements OnInit, Aft
   protected validationMessages: {
     [key: string]: { [key: string]: IValidationMessage };
   } = {
-    username: {
-      required: {
-        message: 'account-login-validation-emptyUsername'
+      username: {
+        required: {
+          message: AccountMessages.EmptyUserName
+        }
+      },
+      password: {
+        required: {
+          message: AccountMessages.EmptyPassword
+        }
       }
-    },
-    password: {
-      required: {
-        message: 'account-login-validation-emptyPassword'
-      }
-    }
-  };
-
-  ngAfterViewInit() {
-    this.captchaElem.hl = this.localeId;
-  }
+    };
 
   ngOnInit() {
     // Build login form
@@ -60,27 +61,58 @@ export class LoginComponent extends AbstractFormComponent implements OnInit, Aft
     });
   }
 
-  onReCaptchaResolved(responde) {
-    this.captchaResponse = responde;
-    console.log(`Resolved captcha with response ${this.captchaResponse}:`);
-    if (this.captchaResponse) {
-      this.captchaElem.resetCaptcha();
+  reCaptchaCallback(token) {
+    if (!token || token.length === 0) {
+      // Reset recaptcha
+      // this.captchaRef.reset(); //TODO
+      // Raise error reCaptcha invalid
+      this.loginError = this.translateService.translate(AccountMessages.InvalidRECAPTCHA);
+    } else {
+      const signedUser = new SignedUser();
+      signedUser.username = this.username;
+      signedUser.password = this.password;
+      signedUser.usertoken = token;
+
+      // Call api login
+      this.authService.login(signedUser)
+        .catch(error => {
+          // this.captchaRef.reset(); TODO
+          // Failed to login
+          const httpException = error.json() as HttpExceptionResponse;
+          this.onHandleException(httpException);
+        });
     }
   }
 
   protected onSubmit() {
-    // Execute check captcha
-    console.log('onSubmit');
-    this.captchaElem.execute();
+    // Reset login error
+    this.loginError = null;
+    // Execute check captcha and login if recaptcha is valid
+    // this.captchaRef.execute(); //TODO
   }
 
   protected onCancel() {
-    // Ignore
+    // Not implementation
   }
 
   // Overload in base class to implement custom validation
   protected onValidate() {
     // Validate
     this.errorMessage = this.genericValidator.validate(this.formGroup);
+  }
+
+  private onHandleException(httpException: HttpExceptionResponse) {
+    if (httpException.message.message) {
+      const errorMsg = httpException.message.message.content[this.translateService.currentLocale];
+      this.loginError = errorMsg;
+    }
+  }
+
+  get username() {
+    return this.formGroup.get('username').value;
+  }
+
+  get password() {
+    return this.formGroup.get('password').value;
   }
 }

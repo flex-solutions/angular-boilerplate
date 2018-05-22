@@ -1,5 +1,5 @@
 import { StringExtension } from './../../utilities/string.extension';
-import { Injectable, TRANSLATIONS, Inject } from '@angular/core';
+import { Injectable, TRANSLATIONS, Inject, LOCALE_ID } from '@angular/core';
 import { Xliff } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class TranslateService {
   private _source: string;
   private _translations: any;
+  private _locale: string;
 
-  constructor(@Inject(TRANSLATIONS) source: string) {
+  constructor(@Inject(TRANSLATIONS) source: string, @Inject(LOCALE_ID) localeId) {
     const xliff = new Xliff();
     this._source = source;
     this._translations = xliff.load(this._source, '');
+    this._locale = localeId;
   }
 
   translate(resourceKey: string) {
@@ -29,5 +31,9 @@ export class TranslateService {
   translateWithParams(resourceKey: string, params) {
     const value = this.translate(resourceKey);
     return StringExtension.format(value, params);
+  }
+
+  get currentLocale() {
+    return this._locale;
   }
 }

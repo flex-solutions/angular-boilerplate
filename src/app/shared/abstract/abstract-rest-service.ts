@@ -4,6 +4,7 @@ import { catchError, retry, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SharedModule } from '../shared.module';
 import { LoaderService } from '../ui-common/loading-bar/loader.service';
+import { appVariables } from '../../app.constant';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -90,6 +91,13 @@ export abstract class AbstractRestService {
 
   protected getApiWithoutController(api: string) {
     return `${this.baseUrl}/${api}`;
+  }
+
+  refreshToken(res: Response) {
+    const token = res.headers.get(appVariables.accessTokenServer);
+    if (token) {
+      localStorage.setItem(appVariables.accessTokenLocalStorage, `${token}`);
+    }
   }
 
   private handleError(error: HttpErrorResponse) {

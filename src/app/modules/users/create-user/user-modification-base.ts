@@ -1,4 +1,3 @@
-import { User } from './../../../models/user.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {
   GenericValidator,
@@ -7,6 +6,7 @@ import {
 import { TranslateService } from '../../../shared/services/translate.service';
 import { OnInit } from '@angular/core/src/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
+import { User } from '../../../shared/models/user.model';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {

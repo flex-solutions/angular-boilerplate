@@ -14,6 +14,7 @@ import { UsersRoutingModule } from './modules/users/users-routing.module';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
+import { MdModule } from './md/md.module';
 import { ModalDemoModule } from './modules/modal-demo/modal-demo.module';
 import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.module';
 
@@ -32,7 +33,8 @@ import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.
     DemoModule,
     DemoRoutingModule,
     ModalDemoModule,
-    ModalDemoRoutingModule
+    ModalDemoRoutingModule,
+    MdModule
   ],
   providers: [
     {
