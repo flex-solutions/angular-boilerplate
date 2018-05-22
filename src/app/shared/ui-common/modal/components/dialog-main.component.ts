@@ -169,7 +169,7 @@ export class DialogMainComponent {
   clickOutside(event) {
     if (
       this.content.closeByClickOutside &&
-      event.target.classList.contains('dialog-frame')
+      event.target.classList.contains('modal-backdrop')
     ) {
       this.content.dialogResult();
     }

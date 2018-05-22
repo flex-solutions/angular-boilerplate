@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { DialogComponent } from './dialog.component';
 import { DialogService } from '../services/dialog.service';
+import { Observable } from 'rxjs';
 
 @Component({
   moduleId: module.id,
@@ -18,7 +19,7 @@ import { DialogService } from '../services/dialog.service';
 export class BasicDialogComponent extends DialogComponent
   implements AfterViewInit {
 
-  public message: string;
+  message: string;
 
   constructor(dialogService: DialogService, private renderer: Renderer) {
     super(dialogService);
@@ -94,6 +95,14 @@ export class BasicDialogComponent extends DialogComponent
         true
       );
     }
+  }
+
+  fillData(data: any = {}): Observable<any> {
+    this.message = data.message;
+    if (!data.title) {
+      data.title = 'Confirm';
+    }
+    return super.fillData(data);
   }
 
   action() {

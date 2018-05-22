@@ -14,9 +14,10 @@ export class ExDialog {
     this.dialogService.addDialog(BasicDialogComponent, params);
   }
 
-  openConfirm(param: any, title?: string, icon?: string): Observable<any> {
-    const params: any = this.getParams(param, title, icon);
+  openConfirm(message: string, title?: string, options?: any): Observable<any> {
+    const params: any = this.getParams(options, title, undefined);
     params.basicType = 'confirm';
+    params.message = message;
     return this.dialogService.addDialog(BasicDialogComponent, params);
   }
 

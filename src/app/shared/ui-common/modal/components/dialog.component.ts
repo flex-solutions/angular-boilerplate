@@ -3,7 +3,7 @@ import { Observable, Observer } from 'rxjs';
 import { DialogMainComponent } from './dialog-main.component';
 import { DialogService } from '../services/dialog.service';
 
-export class DialogComponent {
+export abstract class DialogComponent {
   private observer: Observer<any>;
   protected result: any;
   dialogMain: DialogMainComponent;
@@ -52,7 +52,7 @@ export class DialogComponent {
   constructor(protected dialogService: DialogService) {}
 
   // Set input parameters to component properties.
-  fillData(data: any = {}): Observable<any> {
+  public fillData(data: any = {}): Observable<any> {
     const keys = Object.keys(data);
     for (let idx = 0, length = keys.length; idx < length; idx++) {
       const key = keys[idx];
