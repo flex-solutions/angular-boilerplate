@@ -14,9 +14,11 @@ import { UsersRoutingModule } from './modules/users/users-routing.module';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
-import { MdModule } from './md/md.module';
 import { ModalDemoModule } from './modules/modal-demo/modal-demo.module';
 import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.module';
+import { DatagridDemoRoutingModule } from './modules/datagrid-demo/datagrid-demo-routing.module';
+import { DatagridModule } from './shared/ui-common/datagrid/datagrid.module';
+import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +36,8 @@ import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.
     DemoRoutingModule,
     ModalDemoModule,
     ModalDemoRoutingModule,
-    MdModule
+    DatagridDemoRoutingModule,
+    DatagridDemoModule
   ],
   providers: [
     {

@@ -10,7 +10,7 @@ import * as moment from 'moment';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  hasAuthenticated: boolean;
+  hasAuthenticated: boolean = true;
 
   languages = [
     { code: 'vi', label: 'Tiếng Việt' },
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // * Check authenticate
-        this.hasAuthenticated = this.authenticationService.authenticated();
+       // this.hasAuthenticated = this.authenticationService.authenticated();
       }
     });
   }
