@@ -14,7 +14,7 @@ import { NotificationItemComponent } from './notification-item/notification-item
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    BreadcrumbComponent,
+    BreadcrumbComponent
   ],
   declarations: [
     SidebarComponent,
@@ -22,7 +22,7 @@ import { NotificationItemComponent } from './notification-item/notification-item
     FooterComponent,
     BreadcrumbComponent,
     NotificationComponent,
-    NotificationItemComponent,
+    NotificationItemComponent
   ],
 })
 export class LayoutModule {}

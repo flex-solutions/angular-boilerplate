@@ -28,6 +28,16 @@
               <label id="fullname-error" class="error mt-2 text-danger" for="fullname" *ngIf="errorMessage.fullname"> {{ errorMessage.fullname }}</label>
             </div>
 
+            <!-- Branch field -->
+            <div class="form-group">
+              <label for="branchId" i18n="@@user-create_user-label-branchId_field">Branch </label>
+              <label class="require">*</label>
+              <select id="branchId" class="form-control" formControlName="branchId">
+                <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.name}}</option>
+              </select>
+              <label id="branchId-error" class="error mt-2 text-danger" for="branch" *ngIf="errorMessage.branchId"> {{ errorMessage.branchId }}</label>
+            </div>
+
             <!-- Username field -->
             <div class="form-group">
               <label for="username" i18n="@@user-create_user-label-username_field">Username </label>

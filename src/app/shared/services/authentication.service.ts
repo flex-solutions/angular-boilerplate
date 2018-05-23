@@ -1,13 +1,10 @@
-import { async } from '@angular/core/testing';
-import { Router, CanActivate } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
 import { ApplicationConfigurationService } from './application-configuration.service';
 import { NavigateConstant } from '../constants/navigate.constant';
 import { Authentication } from '../models/authentication.model';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
-import { NumberFormatStyle } from '@angular/common';
 import { SignedUser } from '../models/user.model';
 import { appVariables } from '../../app.constant';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
@@ -91,12 +88,6 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   getAuthorizationToken(): string {
-    return '';
+    return AuthenticationTokenHelper.localToken;
   }
-
-  hasAuthRemember(): boolean {
-    const remember = sessionStorage.getItem(ApplicationConstant.AUTH_REMEMBER);
-    return remember === '1';
-  }
-
 }

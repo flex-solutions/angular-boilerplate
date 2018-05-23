@@ -121,6 +121,14 @@
         <source>Create user successfully</source>
         <target>Tạo user thành công </target>
       </trans-unit>
+      <trans-unit id="user-create_user-label-branchId_field" datatype="html">
+        <source>Branch</source>
+        <target>Chi nhánh</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireBranch" datatype="html">
+        <source>Please select branch</source>
+        <target>Vui lòng chọn chi nhánh</target>
+      </trans-unit>
       <!--End create user-->
 
       <!--Edit user-->

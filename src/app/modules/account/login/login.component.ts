@@ -76,7 +76,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
       // Call api login
       this.authService.login(signedUser)
         .catch(error => {
-          // this.captchaRef.reset(); TODO
+          this.captchaRef.resetCaptcha();
           // Failed to login
           const httpException = error.json() as HttpExceptionResponse;
           this.onHandleException(httpException);

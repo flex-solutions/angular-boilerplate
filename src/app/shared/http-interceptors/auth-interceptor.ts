@@ -19,7 +19,7 @@ import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     /*
@@ -42,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
   createRequestOptions() {
     // Get auth token
     const token: string = this.auth.getAuthorizationToken();
-    const header = { 'Content-Type': 'application/json', Authorization: token };
+    const header = { 'Content-Type': 'application/json', Authorization: token ? token : '' };
 
     return header;
   }

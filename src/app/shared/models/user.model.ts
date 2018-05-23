@@ -32,6 +32,9 @@ export class User {
 
   // total count of fail log in
   failedLoginCount = 0;
+
+  // id of branch
+  branchId: string;
 }
 
 export class SignedUser {

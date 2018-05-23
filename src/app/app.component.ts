@@ -10,7 +10,7 @@ import * as moment from 'moment';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  hasAuthenticated: boolean;
+  hasAuthenticated: boolean = true;
 
   languages = [
     { code: 'vi', label: 'Tiếng Việt' },
@@ -26,17 +26,17 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // * Check authenticate
-        this.hasAuthenticated = this.authenticationService.authenticated();
+       // this.hasAuthenticated = this.authenticationService.authenticated();
       }
     });
   }
 
   ngOnInit(): void {
-    if (
-      this.authenticationService.authenticated() &&
-      this.authenticationService.hasAuthRemember()
-    ) {
-      // Have authenticate to login CMS
+    if (this.authenticationService.authenticated()) {
+      // Have authenticate to login CMS. Verify can get new token on server side
+      this.authenticationService.verifyToken().catch(err => {
+        this.authenticationService.navigateToLoginPage();
+      });
     } else {
       this.authenticationService.navigateToLoginPage();
     }

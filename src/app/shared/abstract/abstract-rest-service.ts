@@ -1,10 +1,13 @@
 import { ApplicationConfigurationService } from '../services/application-configuration.service';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { catchError, retry, finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { SharedModule } from '../shared.module';
 import { LoaderService } from '../ui-common/loading-bar/loader.service';
 import { appVariables } from '../../app.constant';
+import { HttpExceptionResponse } from '../models/http-exception-response.model';
+import { NotificationService } from '../services/notification.service';
+import { TranslateService } from '../services/translate.service';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -12,15 +15,19 @@ export abstract class AbstractRestService {
   private configurationService: ApplicationConfigurationService;
   protected httpClient: HttpClient;
   protected loaderService: LoaderService;
+  protected notifier: NotificationService;
+  protected translateService: TranslateService;
 
   constructor() {
     // Get base url provide by application configuration service
     this.configurationService = SharedModule.injector.get(
       ApplicationConfigurationService
     );
+    this.notifier = SharedModule.injector.get(NotificationService);
     this.baseUrl = this.configurationService.getApiUri();
     this.httpClient = SharedModule.injector.get(HttpClient);
     this.loaderService = SharedModule.injector.get(LoaderService);
+    this.translateService = SharedModule.injector.get(TranslateService);
   }
 
   get<T>(relativeUrl: string) {
@@ -28,7 +35,10 @@ export abstract class AbstractRestService {
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient
       .get<T>(url)
-      .pipe(catchError(this.handleError), finalize(() => this.hideLoader()));
+      .pipe(
+        catchError(err => this.handleError(err)),
+        finalize(() => this.hideLoader())
+      );
   }
 
   getWithRetry<T>(relativeUrl: string, retryTimes: number) {
@@ -93,25 +103,37 @@ export abstract class AbstractRestService {
     return `${this.baseUrl}/${api}`;
   }
 
-  refreshToken(res: Response) {
-    const token = res.headers.get(appVariables.accessTokenServer);
-    if (token) {
-      localStorage.setItem(appVariables.accessTokenLocalStorage, `${token}`);
-    }
-  }
-
   private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
+    if (error && error.status === 404) {
+      this.notifier.showError(error.message);
+      return throwError(error);
     }
-    // return an observable with a user-facing error message
-    return Observable.throw('Something bad happened; please try again later.');
+
+    const errorMsg = error.error as HttpExceptionResponse;
+    if (errorMsg && errorMsg.message && errorMsg.message.message) {
+      const messageType = errorMsg.message.message.type;
+      const displayError =
+        errorMsg.message.message.content[this.translateService.currentLocale];
+      if (displayError) {
+        switch (messageType) {
+          case 0:
+            break;
+          case 1:
+            this.notifier.showInfoPersist(displayError);
+            break;
+          case 2:
+            this.notifier.showWarningPersist(displayError);
+            break;
+          case 3:
+            this.notifier.showErrorPersist(displayError);
+            break;
+          default:
+            console.log(displayError);
+            break;
+        }
+      }
+    }
+
+    return throwError('Something bad happened; please try again later.');
   }
 }
