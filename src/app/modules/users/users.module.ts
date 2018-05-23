@@ -8,10 +8,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserService } from './services/user.service';
 import { UsersComponent } from './users.component';
 import { UsersService } from './users-service';
-import { MdModule } from '../../md/md.module';
 
 @NgModule({
-  imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, MdModule],
+  imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule],
   declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent],
   providers: [UserService, UsersService]
 })
