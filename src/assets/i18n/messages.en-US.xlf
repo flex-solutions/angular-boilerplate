@@ -122,6 +122,14 @@
         <source>Create user successfully</source>
         <target>Create user successfully</target>
       </trans-unit>
+      <trans-unit id="user-create_user-label-branchId_field" datatype="html">
+        <source>Branch</source>
+        <target>Branch</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireBranch" datatype="html">
+        <source>Please select branch</source>
+        <target>Please select branch</target>
+      </trans-unit>
       <!--End create user-->
 
       <!--Edit user-->

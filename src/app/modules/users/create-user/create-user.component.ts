@@ -38,7 +38,8 @@ export class CreateUserComponent extends UserModificationBase {
       fullname: ['', [Validators.required]],
       username: ['', [Validators.required]],
       password: ['', []],
-      createAnother: ['', []]
+      createAnother: ['', []],
+      branchId: ['', []]
     });
   }
 
@@ -57,7 +58,7 @@ export class CreateUserComponent extends UserModificationBase {
         this.user.username = this.getUserNameValue();
         this.user.fullname = this.getFullNameValue();
         this.user.password = this.getPassword();
-
+        this.user.branchId = this.branch.id;
         // * Call API to create new user
         this.userService.create(this.user).then(
           respond => {
