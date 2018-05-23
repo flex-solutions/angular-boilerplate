@@ -24,22 +24,36 @@
           </thead>
           <tbody>
             <tr *ngFor="let row of dataTable.dataRows">
-              <td>{{row[0]}}</td>
-              <td>{{row[1]}}</td>
-              <td>{{row[2]}}</td>
-              <td>{{row[3]}}</td>
+              <td class="change-color">
+                <div class="user">
+                  <img src="{{imagePath}}" class="img-sm rounded " alt="profile image" />
+                  <p class="u-name" style="float: left;" (click)="navigateToEditPage()">{{row[0]}}</p>
+                </div>
+              </td>
+              <td>
+                <p class="text-gray mb-0 ellipsor">{{row[1]}}</p>
+                <span class="change-color ellipsor">{{row[1]}}</span>
+              </td>
+              <td>
+                  
+                      <div><strong class="dropdown">Count: </strong>45</div>
+                      <strong class="dropdown">Last: </strong>{{row[2]}}
+                  
+              </td>
+              <td class="change-color">{{row[3]}}</td>
               <td>
                 <label class="badge badge-{{row[4]}}">On hold</label>
               </td>
+
               <td>
-                <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToUserDetailPage()">
                   <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>Edit</button>
-                <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="mdi mdi-dots-horizontal"></i>
+                <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-dots-horizontal btn-option-custom"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" (click)="editUserGroup()" href="javascript:;">Edit user groups</a>
-                  <a class="dropdown-item" (click)="getUserInfomation()" href="javascript:;">Delete user</a>
+                  <a class="dropdown-item" (click)="showEditUserGroup()" href="javascript:;">Edit user groups</a>
+                  <a class="dropdown-item" (click)="showConfirm()" href="javascript:;">Delete user</a>
                 </div>
               </td>
             </tr>

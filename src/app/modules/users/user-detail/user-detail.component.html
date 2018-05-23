@@ -1,10 +1,10 @@
 <div *ngIf="userdetail" class="row profile-page">
   <div class="col-12">
     <div class="d-flex flex-row">
-      <img src="{{userdetail.imagePath}}" class="img-lg rounded" alt="profile image" />
+      <img src="{{userdetail.avatar}}" class="img-lg rounded" alt="profile image" />
       <div class="ml-3 col-md-9">
-        <h6>{{userdetail.fullName}}</h6>
-        <p class="text-muted">{{userdetail.accountName}}</p>
+        <h6>{{userdetail.fullname}}</h6>
+        <p class="text-muted">{{userdetail.username}}</p>
         <p class="text-muted none-lineheight">{{userdetail.email}}</p>
         <p class="mt-2 text-success font-weight-bold">{{userdetail.position}}</p>
       </div>
@@ -36,7 +36,7 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">User "{{userdetail.accountName}}" will be permanently deleted. Are you sure want to delete?</label>
+                    <label for="recipient-name" class="col-form-label">User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</label>
                   </div>
                 </form>
               </div>
@@ -61,7 +61,7 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Select other group for user "{{userdetail.accountName}}"</label>
+                    <label for="recipient-name" class="col-form-label">Select other group for user "{{userdetail.username}}"</label>
                     <table>
 
                     </table>
