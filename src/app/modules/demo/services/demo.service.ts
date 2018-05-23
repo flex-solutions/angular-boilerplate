@@ -25,6 +25,6 @@ export class DemoService extends AbstractRestService {
   }
 
   testException(): Observable<string> {
-    return this.get<string>('testexception');
+    return this.get<string>('testexceptioddn');
   }
 }

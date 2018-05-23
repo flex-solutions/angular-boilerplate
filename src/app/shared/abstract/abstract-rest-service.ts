@@ -104,8 +104,13 @@ export abstract class AbstractRestService {
   }
 
   private handleError(error: HttpErrorResponse) {
+    if (error && error.status === 404) {
+      this.notifier.showError(error.message);
+      return throwError(error);
+    }
+
     const errorMsg = error.error as HttpExceptionResponse;
-    if (errorMsg) {
+    if (errorMsg && errorMsg.message && errorMsg.message.message) {
       const messageType = errorMsg.message.message.type;
       const displayError =
         errorMsg.message.message.content[this.translateService.currentLocale];
