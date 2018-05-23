@@ -3,7 +3,7 @@ import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
 import { UserGroup } from '../../../models/user-group.model';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
-import { userConfiguration } from '../../user.configuration';
+import { USER_CONFIGURATION } from '../../user.configuration';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { User } from '../../../shared/models/user.model';
 
@@ -51,7 +51,7 @@ export class UserDetailComponent implements OnInit {
 
   // Handle navigate to Edit user page.
   navigateToEditPage() {
-    this.router.navigate([userConfiguration.editPageUrl], { relativeTo: this.route });
+    this.router.navigate([USER_CONFIGURATION.ROUTES.EDIT_USER], { relativeTo: this.route });
   }
 
   private goBack() {

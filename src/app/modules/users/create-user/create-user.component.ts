@@ -8,6 +8,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { getBase64 } from '../../../utilities/convert-image-to-base64';
 import { User } from '../../../shared/models/user.model';
 import { UserMessages } from '../user.message';
+import { Router } from '@angular/router';
+import { USER_CONFIGURATION } from '../../user.configuration';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-user',
@@ -20,7 +23,9 @@ export class CreateUserComponent extends UserModificationBase {
     fb: FormBuilder,
     translateService: TranslateService,
     private userService: UserService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router,
+    private location: Location
   ) {
     super(fb, translateService);
     this.tooltipContent = this.translateService.translate(
@@ -79,7 +84,7 @@ export class CreateUserComponent extends UserModificationBase {
   }
 
   protected onCancel() {
-    throw new Error('Method not implemented.');
+    this.location.back();
   }
 
   private onHandleCreateUserSuccessful() {
@@ -87,6 +92,8 @@ export class CreateUserComponent extends UserModificationBase {
     const createOtherAsString = String(createOther);
     if (createOtherAsString === 'true') {
       this.resetForm();
+    } else {
+      this.router.navigate([USER_CONFIGURATION.ROUTES.USERS]);
     }
   }
 }

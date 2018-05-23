@@ -6,6 +6,7 @@ import { TranslateService } from '../../../shared/services/translate.service';
 import { User } from '../../../shared/models/user.model';
 import { UserMessages } from '../user.message';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-user',
@@ -16,7 +17,8 @@ export class EditUserComponent extends UserModificationBase {
   constructor(fb: FormBuilder,
     translateService: TranslateService,
     private readonly userService: UserService,
-    private readonly notificationService: NotificationService) {
+    private readonly notificationService: NotificationService,
+    private location: Location) {
     super(fb, translateService);
   }
 
@@ -54,6 +56,6 @@ export class EditUserComponent extends UserModificationBase {
   }
 
   protected onCancel() {
-    // Ignore
+    this.location.back();
   }
 }
