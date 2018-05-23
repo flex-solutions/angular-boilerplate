@@ -13,6 +13,8 @@ export class User {
 
   avatar: string;
 
+  position: string;
+
   // the current login failed attempt
   loginAttempts = 0;
 
