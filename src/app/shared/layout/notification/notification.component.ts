@@ -30,7 +30,7 @@ export class NotificationComponent implements OnDestroy {
 
   onReceiveMessage(message: MessageItem) {
     if (this.messages.length === 5) {
-      init(this.messages);
+      this.messages = init(this.messages);
     }
 
     const newMessage = new MessageItemFormat(
@@ -40,7 +40,7 @@ export class NotificationComponent implements OnDestroy {
     );
 
     newMessage.parseTime();
-    append(newMessage, this.messages);
+    this.messages = append(newMessage, this.messages);
   }
 
   isLast(message: MessageItemFormat) {
