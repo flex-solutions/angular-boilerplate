@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class DatagridDemoComponent implements OnInit {
 
     public items: DgTestModel[] = [];
-
+    public totalItems: 100;
     constructor() {
         const item1 = new DgTestModel();
         item1.orderNumber = 1;
@@ -32,6 +32,10 @@ export class DatagridDemoComponent implements OnInit {
 
     ngOnInit() {
 
+    }
+
+    onPageChanged(eventArg: any) {
+        console.log(eventArg);
     }
 }
 

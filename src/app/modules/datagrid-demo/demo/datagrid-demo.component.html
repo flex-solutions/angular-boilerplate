@@ -1,7 +1,7 @@
 <app-card title="Datatable Demo">
   <div class="row">
     <div class="col-12">
-      <app-dg>
+      <app-dg totalItems="totalItems" (pageChanged)="onPageChanged($event)">
         <tr>
           <th>Order #</th>
           <th>Purchased On</th>
