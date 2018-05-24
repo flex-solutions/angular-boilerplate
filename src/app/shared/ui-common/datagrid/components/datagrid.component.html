@@ -1,41 +1,46 @@
 <div class="row">
   <div class="col-12">
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <div class="dataTables_length">
-          <label>Show
-            <select name="order-listing_length" aria-controls="order-listing" class="form-control" (change)="onItemsPerPageChange($event.target.value)">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select> entries</label>
+    <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="dataTables_length">
+            <label>
+              Show
+              <select name="order-listing_length" aria-controls="order-listing" style="display: inline-block" class="form-control" (change)="onItemsPerPageChange($event.target.value)">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select> entries</label>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div id="order-listing_filter" class="dataTables_filter">
+            <label>
+              <input type="text" [(ngModel)]="searchKey" class="form-control" placeholder="{{searchLabel}}" aria-controls="order-listing">
+            </label>
+          </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-6">
-        <div id="order-listing_filter" class="dataTables_filter">
-          <label>
-            <input type="text" [(ngModel)]="searchKey" class="form-control" placeholder="{{searchLabel}}" aria-controls="order-listing">
-          </label>
+      <div class=row>
+        <div class="col-sm-12">
+          <table class="table dataTable no-footer">
+            <thead>
+              <ng-content select="tr"></ng-content>
+            </thead>
+            <ng-content select="tbody"></ng-content>
+          </table>
         </div>
       </div>
-    </div>
-    <div class=row>
-      <div class="col-sm-12">
-        <table class="table">
-          <thead>
-            <ng-content select="tr"></ng-content>
-          </thead>
-          <ng-content select="tbody"></ng-content>
-        </table>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-5">
-        <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div>
-      </div>
-      <div class="col-sm-12 col-md-7">
-        <app-pagination [boundaryLinks]="true" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [maxSize]="5" (pageChanged)="onPageChanged($event)"></app-pagination>
+      <div class="row" style="margin-top: 0.5rem">
+        <div class="col-sm-12 col-md-5">
+          <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+          <div class="dataTables_paginate paging_simple_numbers">
+            <app-pagination [boundaryLinks]="true" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [maxSize]="5" (pageChanged)="onPageChanged($event)"></app-pagination>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -11,7 +11,8 @@ import { PageChangedEvent } from '../../pagination/pagination.component';
 
 @Component({
   selector: 'app-dg',
-  templateUrl: 'datagrid.component.html'
+  templateUrl: 'datagrid.component.html',
+  styleUrls: ['datagrid.component.css']
 })
 export class DatagridComponent implements OnInit, AfterViewInit {
   @Output() pageChanged = new EventEmitter<PageChangedEvent>();
@@ -22,6 +23,8 @@ export class DatagridComponent implements OnInit, AfterViewInit {
 
   itemsPerPage = 10;
   currentPage = 1;
+  currentPageStartEntry: number;
+  currentPageEndEntry: number;
 
   @Input()
   public get searchKey() {
@@ -49,10 +52,15 @@ export class DatagridComponent implements OnInit, AfterViewInit {
     this.raisePageChangedEvent();
   }
   raisePageChangedEvent() {
+    this.countPageEntry();
     const pageChangedEvent: PageChangedEvent = {
       itemsPerPage: this.itemsPerPage,
       page: this.currentPage
     };
     this.pageChanged.emit(pageChangedEvent);
+  }
+  countPageEntry() {
+    this.currentPageEndEntry = this.currentPage * this.itemsPerPage;
+    this.currentPageStartEntry = this.currentPageEndEntry - this.itemsPerPage + 1;
   }
 }
