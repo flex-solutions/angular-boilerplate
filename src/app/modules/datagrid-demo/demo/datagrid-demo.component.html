@@ -1,7 +1,7 @@
 <app-card title="Datatable Demo">
   <div class="row">
     <div class="col-12">
-      <app-dg totalItems="totalItems" (pageChanged)="onPageChanged($event)">
+      <app-dg #dg totalItems="{{totalCount}}" searchLabel="Search by Customer, Ship to" (pageChanged)="onPageChanged($event)">
         <tr>
           <th>Order #</th>
           <th>Purchased On</th>
@@ -13,7 +13,7 @@
           <th>Actions</th>
         </tr>
         <tbody>
-          <tr *ngFor="let item of items">
+          <tr *ngFor="let item of items | demoFilter: dg.searchKey">
             <td>{{item.orderNumber}}</td>
             <td>{{item.purchasedOn}}</td>
             <td>{{item.customer}}</td>

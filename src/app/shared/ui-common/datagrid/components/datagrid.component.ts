@@ -16,9 +16,21 @@ import { PageChangedEvent } from '../../pagination/pagination.component';
 export class DatagridComponent implements OnInit, AfterViewInit {
   @Output() pageChanged = new EventEmitter<PageChangedEvent>();
   @Input() totalItems: number;
-  itemsPerPage = 10;
+  @Input() searchLabel = 'Search by...';
 
+  private _searchKey: string;
+
+  itemsPerPage = 10;
   currentPage = 1;
+
+  @Input()
+  public get searchKey() {
+    return this._searchKey;
+  }
+
+  public set searchKey(v: any) {
+    this._searchKey = v;
+  }
 
   constructor() {}
 

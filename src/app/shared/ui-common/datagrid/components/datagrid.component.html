@@ -15,7 +15,7 @@
       <div class="col-sm-12 col-md-6">
         <div id="order-listing_filter" class="dataTables_filter">
           <label>
-            <input type="search" class="form-control" placeholder="Search" aria-controls="order-listing">
+            <input type="text" [(ngModel)]="searchKey" class="form-control" placeholder="{{searchLabel}}" aria-controls="order-listing">
           </label>
         </div>
       </div>
