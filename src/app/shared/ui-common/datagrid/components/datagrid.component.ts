@@ -19,7 +19,7 @@ export interface IFilterChangedEvent {
   templateUrl: 'datagrid.component.html',
   styleUrls: ['datagrid.component.css']
 })
-export class DatagridComponent implements OnInit, AfterViewInit {
+export class DatagridComponent implements OnInit {
   @Output() pageChanged = new EventEmitter<PageChangedEvent>();
   @Output() filterChanged = new EventEmitter<IFilterChangedEvent>();
   @Input() totalItems: number;
@@ -30,8 +30,8 @@ export class DatagridComponent implements OnInit, AfterViewInit {
 
   itemsPerPage = 10;
   currentPage = 1;
-  currentPageStartEntry: number;
-  currentPageEndEntry: number;
+  currentPageStartEntry = 0;
+  currentPageEndEntry = 0;
 
   @Input()
   public get searchKey() {
@@ -42,13 +42,12 @@ export class DatagridComponent implements OnInit, AfterViewInit {
     this._searchKey = v;
   }
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
-
-  ngAfterViewInit() {
+  ngOnInit() {
     this.raisePageChangedEvent();
   }
+
   submitFilter() {
     if (this.searchKey === this._thePreviouseSearchKey) {
       return;
