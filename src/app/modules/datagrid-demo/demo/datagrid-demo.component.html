@@ -1,0 +1,34 @@
+<app-card title="Datatable Demo">
+  <div class="row">
+    <div class="col-12">
+      <app-dg #dg totalItems="{{totalCount}}" searchLabel="Search by Customer, Ship to" (pageChanged)="onPageChanged($event)" (filterChanged)="onFilterChanged($event)">
+        <tr role="row">
+          <th>Order #</th>
+          <th>Purchased On</th>
+          <th>Customer</th>
+          <th>Ship to</th>
+          <th>Base Price</th>
+          <th>Purchased Price</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let item of items | demoFilter: dg.searchKey">
+            <td>{{item.orderNumber}}</td>
+            <td>{{item.purchasedOn}}</td>
+            <td>{{item.customer}}</td>
+            <td>{{item.shipTo}}</td>
+            <td>{{item.basePrice}}</td>
+            <td>{{item.purchasedPrice}}</td>
+            <td>
+              <label class="badge badge-info">{{item.status}}</label>
+            </td>
+            <td>
+              <button class="btn btn-outline-primary">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </app-dg>
+    </div>
+  </div>
+</app-card>

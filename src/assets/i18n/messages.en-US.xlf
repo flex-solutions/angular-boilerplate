@@ -37,6 +37,50 @@
         <target>Cancel</target>
       </trans-unit>
 
+      <!--Datagrid-->
+      <trans-unit id="dg-items-per-page-show-label" datatype="html">
+        <source>Show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-label" datatype="html">
+        <source>entries</source>
+        <target>entries</target>
+      </trans-unit>
+      <trans-unit id="dg-search-by" datatype="html">
+        <source>Search by ...</source>
+        <target>Search by ...</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-info-show-label" datatype="html">
+        <source>Showing</source>
+        <target>Showing</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-info-to-label" datatype="html">
+        <source>to</source>
+        <target>to</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-info-of-label" datatype="html">
+        <source>of</source>
+        <target>of</target>
+      </trans-unit>
+
+      <!--Pagination-->
+      <trans-unit id="pagination-first-label" datatype="html">
+        <source>First</source>
+        <target>First</target>
+      </trans-unit>
+      <trans-unit id="pagination-last-label" datatype="html">
+        <source>Last</source>
+        <target>Last</target>
+      </trans-unit>
+      <trans-unit id="pagination-previous-label" datatype="html">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="pagination-next-label" datatype="html">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+
       <!--Create user-->
       <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
         <source>Create New User</source>

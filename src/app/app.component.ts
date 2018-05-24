@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     moment.locale(this.localeId);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        // * Check authenticate
+        // Check authenticate
         this.hasAuthenticated = this.authenticationService.authenticated();
       }
     });

@@ -23,4 +23,8 @@ export class DemoService extends AbstractRestService {
 
     return this.post<DemoDto>('create', dto);
   }
+
+  testException(): Observable<string> {
+    return this.get<string>('testexceptioddn');
+  }
 }

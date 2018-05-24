@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
+
     <body>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
@@ -34,6 +35,50 @@
       <trans-unit id="modal-confirm-cancel-button" datatype="html">
         <source>Cancel</source>
         <target>Huỷ</target>
+      </trans-unit>
+
+      <!--Datagrid-->
+      <trans-unit id="dg-items-per-page-show-label" datatype="html">
+        <source>Show</source>
+        <target>Hiển thị</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-label" datatype="html">
+        <source>entries</source>
+        <target>dòng</target>
+      </trans-unit>
+      <trans-unit id="dg-search-by" datatype="html">
+        <source>Search by ...</source>
+        <target>Tìm kiếm với ...</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-info-show-label" datatype="html">
+        <source>Showing</source>
+        <target>Đang hiển thị từ dòng thứ</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-info-to-label" datatype="html">
+        <source>to</source>
+        <target>tới dòng thứ</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-info-of-label" datatype="html">
+        <source>of</source>
+        <target>của</target>
+      </trans-unit>
+
+      <!--Pagination-->
+      <trans-unit id="pagination-first-label" datatype="html">
+        <source>First</source>
+        <target>Trang đầu</target>
+      </trans-unit>
+      <trans-unit id="pagination-last-label" datatype="html">
+        <source>Last</source>
+        <target>Trang cuối</target>
+      </trans-unit>
+      <trans-unit id="pagination-previous-label" datatype="html">
+        <source>Previous</source>
+        <target>Trang trước</target>
+      </trans-unit>
+      <trans-unit id="pagination-next-label" datatype="html">
+        <source>Next</source>
+        <target>Trang sau</target>
       </trans-unit>
 
       <!--Create user-->
@@ -77,7 +122,7 @@
         <source>Enter email</source>
         <target>Nhập địa chỉ email</target>
       </trans-unit>
-       <trans-unit id="user-create_user-input-fullname_place_holder" datatype="html">
+      <trans-unit id="user-create_user-input-fullname_place_holder" datatype="html">
         <source>Enter full name</source>
         <target>Nhập tên đầy đủ</target>
       </trans-unit>
@@ -140,11 +185,11 @@
         <source>Edit access information of an user account</source>
         <target>Sửa thông tin truy cập của user</target>
       </trans-unit>
-       <trans-unit id="user-edit_user-label-is_active" datatype="html">
+      <trans-unit id="user-edit_user-label-is_active" datatype="html">
         <source>Is Active</source>
         <target>Cho phép đăng nhập</target>
       </trans-unit>
-       <trans-unit id="user-edit_user-button-update" datatype="html">
+      <trans-unit id="user-edit_user-button-update" datatype="html">
         <source>Update</source>
         <target>Cập Nhật</target>
       </trans-unit>
@@ -181,7 +226,8 @@
       </trans-unit>
       <trans-unit id="account-login-validation-blockedAccount" datatype="html">
         <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
-        <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để mở khóa.</target>
+        <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để
+          mở khóa.</target>
       </trans-unit>
       <trans-unit id="account-login-validation-invalidRecaptcha" datatype="html">
         <source>Recaptcha is invalid. Please make sure that you are not a robot.</source>

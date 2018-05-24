@@ -37,6 +37,7 @@
     "@angular/cli": "^6.0.3",
     "@angular/compiler-cli": "^6.0.2",
     "@angular/language-service": "^6.0.2",
+    "@mdi/font": "^2.4.85",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/moment": "^2.13.0",

@@ -29,37 +29,42 @@ export class NotificationService {
 
   showSuccess(message: string) {
     toastNotifier.success(message, '', this.options);
-
-    const messageItem = new MessageItem(
-      message,
-      MessageType.Success,
-      new Date()
-    );
-    this.messageService.sendMessage(messageItem);
   }
 
   showError(message: string) {
     toastNotifier.error(message, '', this.options);
-
-    const messageItem = new MessageItem(message, MessageType.Error, new Date());
-    this.messageService.sendMessage(messageItem);
   }
 
   showInfo(message: string) {
     toastNotifier.info(message, '', this.options);
-
-    const messageItem = new MessageItem(message, MessageType.Info, new Date());
-    this.messageService.sendMessage(messageItem);
   }
 
   showWarning(message: string) {
     toastNotifier.warning(message, '', this.options);
+  }
 
-    const messageItem = new MessageItem(
-      message,
-      MessageType.Warning,
-      new Date()
-    );
+  showSuccessPersist(message: string) {
+    this.showSuccess(message);
+    this.sendMessage(message, MessageType.Success);
+  }
+
+  showInfoPersist(message: string) {
+    this.showInfo(message);
+    this.sendMessage(message, MessageType.Info);
+  }
+
+  showWarningPersist(message: string) {
+    this.showWarning(message);
+    this.sendMessage(message, MessageType.Warning);
+  }
+
+  showErrorPersist(message: string) {
+    this.showError(message);
+    this.sendMessage(message, MessageType.Error);
+  }
+
+  private sendMessage(message: string, type: MessageType) {
+    const messageItem = new MessageItem(message, type, new Date());
     this.messageService.sendMessage(messageItem);
   }
 }
