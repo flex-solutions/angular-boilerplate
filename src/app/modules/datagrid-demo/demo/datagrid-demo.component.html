@@ -1,7 +1,7 @@
 <app-card title="Datatable Demo">
   <div class="row">
     <div class="col-12">
-      <app-dg #dg totalItems="{{totalCount}}" searchLabel="Search by Customer, Ship to" (pageChanged)="onPageChanged($event)">
+      <app-dg #dg totalItems="{{totalCount}}" searchLabel="Search by Customer, Ship to" (pageChanged)="onPageChanged($event)" (filterChanged)="onFilterChanged($event)">
         <tr role="row">
           <th>Order #</th>
           <th>Purchased On</th>

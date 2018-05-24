@@ -9,6 +9,11 @@ import {
 import { PaginationConfig } from '../../pagination/pagination.config';
 import { PageChangedEvent } from '../../pagination/pagination.component';
 
+export interface IFilterChangedEvent {
+  pagination: PageChangedEvent;
+  searchKey: string;
+}
+
 @Component({
   selector: 'app-dg',
   templateUrl: 'datagrid.component.html',
@@ -16,9 +21,11 @@ import { PageChangedEvent } from '../../pagination/pagination.component';
 })
 export class DatagridComponent implements OnInit, AfterViewInit {
   @Output() pageChanged = new EventEmitter<PageChangedEvent>();
+  @Output() filterChanged = new EventEmitter<IFilterChangedEvent>();
   @Input() totalItems: number;
   @Input() searchLabel = 'Search by...';
 
+  private _thePreviouseSearchKey: string;
   private _searchKey: string;
 
   itemsPerPage = 10;
@@ -42,7 +49,19 @@ export class DatagridComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.raisePageChangedEvent();
   }
+  submitFilter() {
+    if (this.searchKey === this._thePreviouseSearchKey) {
+      return;
+    }
 
+    this._thePreviouseSearchKey = this.searchKey;
+
+    const filterChangedEvent: IFilterChangedEvent = {
+      pagination: { itemsPerPage: this.itemsPerPage, page: this.currentPage },
+      searchKey: this.searchKey
+    };
+    this.filterChanged.emit(filterChangedEvent);
+  }
   onItemsPerPageChange(itemsPerPage: any) {
     this.itemsPerPage = +itemsPerPage;
     this.raisePageChangedEvent();
@@ -61,6 +80,13 @@ export class DatagridComponent implements OnInit, AfterViewInit {
   }
   countPageEntry() {
     this.currentPageEndEntry = this.currentPage * this.itemsPerPage;
-    this.currentPageStartEntry = this.currentPageEndEntry - this.itemsPerPage + 1;
+    this.currentPageStartEntry =
+      this.currentPageEndEntry - this.itemsPerPage + 1;
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.submitFilter();
+    }
   }
 }

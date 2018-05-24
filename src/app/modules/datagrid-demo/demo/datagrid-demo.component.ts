@@ -54,6 +54,10 @@ export class DatagridDemoComponent implements OnInit {
   onPageChanged(eventArg: any) {
     console.log(eventArg);
   }
+
+  onFilterChanged(eventArg: any) {
+    console.log(eventArg);
+  }
 }
 
 export class DgTestModel {

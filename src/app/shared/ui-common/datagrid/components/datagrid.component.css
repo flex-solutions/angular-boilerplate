@@ -54,6 +54,7 @@ div.dataTables_wrapper div.dataTables_filter i {
     right: 23px;
     top: 6px;
     font-size: larger;
+    cursor: pointer;
 }
 
 .dataTables_filter {
