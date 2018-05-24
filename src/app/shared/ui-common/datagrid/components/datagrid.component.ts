@@ -1,3 +1,4 @@
+import { TranslateService } from './../../../services/translate.service';
 import {
   Component,
   OnInit,
@@ -25,6 +26,11 @@ export class DatagridComponent implements OnInit {
   @Input() totalItems: number;
   @Input() searchLabel = 'Search by...';
 
+  previousText: string;
+  nextText: string;
+  firstText: string;
+  lastText: string;
+
   private _thePreviouseSearchKey: string;
   private _searchKey: string;
 
@@ -42,7 +48,13 @@ export class DatagridComponent implements OnInit {
     this._searchKey = v;
   }
 
-  constructor() { }
+  constructor(private translateService: TranslateService) {
+    this.searchLabel = translateService.translate('dg-default-search-placeholder');
+    this.previousText = translateService.translate('pagination-previous-label');
+    this.nextText = translateService.translate('pagination-next-label');
+    this.firstText = translateService.translate('pagination-first-label');
+    this.lastText = translateService.translate('pagination-last-label');
+  }
 
   ngOnInit() {
     this.raisePageChangedEvent();

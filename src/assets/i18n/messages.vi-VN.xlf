@@ -38,7 +38,11 @@
       </trans-unit>
 
       <!--Datagrid-->
-      <trans-unit id="dg-items-per-page-show-label" datatype="html">
+      <trans-unit id="dg-entries-info" datatype="html">
+        <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
+        <target>Hiển thị từ dòng {{currentPageStartEntry}} tới dòng {{currentPageEndEntry}} của {{totalItems}} dòng</target>
+      </trans-unit>
+      <trans-unit id="dg-show-label" datatype="html">
         <source>Show</source>
         <target>Hiển thị</target>
       </trans-unit>
@@ -46,21 +50,9 @@
         <source>entries</source>
         <target>dòng</target>
       </trans-unit>
-      <trans-unit id="dg-search-by" datatype="html">
-        <source>Search by ...</source>
-        <target>Tìm kiếm với ...</target>
-      </trans-unit>
-      <trans-unit id="dg-entries-info-show-label" datatype="html">
-        <source>Showing</source>
-        <target>Đang hiển thị từ dòng thứ</target>
-      </trans-unit>
-      <trans-unit id="dg-entries-info-to-label" datatype="html">
-        <source>to</source>
-        <target>tới dòng thứ</target>
-      </trans-unit>
-      <trans-unit id="dg-entries-info-of-label" datatype="html">
-        <source>of</source>
-        <target>của</target>
+      <trans-unit id="dg-default-search-placeholder" datatype="html">
+        <source>Search by...</source>
+        <target>Tìm kiếm với...</target>
       </trans-unit>
 
       <!--Pagination-->
