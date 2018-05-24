@@ -224,6 +224,25 @@
         <target>Recaptcha is invalid. Please make sure that you are not a robot.</target>
       </trans-unit>
       <!--End login-->
+
+      <!-- Notification -->
+      <trans-unit id="notification-browser-title-success" datatype="html">
+        <source>Success</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-info" datatype="html">
+        <source>Info</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-warning" datatype="html">
+        <source>Warning</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-error" datatype="html">
+        <source>Error</source>
+        <target>Success</target>
+      </trans-unit>
+      <!-- End Notification -->
     </body>
   </file>
 </xliff>

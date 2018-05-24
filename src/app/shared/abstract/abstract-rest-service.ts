@@ -8,6 +8,7 @@ import { appVariables } from '../../app.constant';
 import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
+import { BrowserNotificationService } from '../services/browser-notification.service';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -17,6 +18,7 @@ export abstract class AbstractRestService {
   protected loaderService: LoaderService;
   protected notifier: NotificationService;
   protected translateService: TranslateService;
+  protected browserNotifer: BrowserNotificationService;
 
   constructor() {
     // Get base url provide by application configuration service
@@ -28,6 +30,7 @@ export abstract class AbstractRestService {
     this.httpClient = SharedModule.injector.get(HttpClient);
     this.loaderService = SharedModule.injector.get(LoaderService);
     this.translateService = SharedModule.injector.get(TranslateService);
+    this.browserNotifer = SharedModule.injector.get(BrowserNotificationService);
   }
 
   get<T>(relativeUrl: string) {
@@ -117,15 +120,48 @@ export abstract class AbstractRestService {
       if (displayError) {
         switch (messageType) {
           case 0:
+            this.notifier.showSuccessPersist(displayError);
+            this.browserNotifer.generateNotification([
+              {
+                title: this.translateService.translate(
+                  'notification-browser-title-success'
+                ),
+                alertContent: displayError
+              }
+            ]);
             break;
           case 1:
             this.notifier.showInfoPersist(displayError);
+            this.browserNotifer.generateNotification([
+              {
+                title: this.translateService.translate(
+                  'notification-browser-title-info'
+                ),
+                alertContent: displayError
+              }
+            ]);
             break;
           case 2:
             this.notifier.showWarningPersist(displayError);
+            this.browserNotifer.generateNotification([
+              {
+                title: this.translateService.translate(
+                  'notification-browser-title-warning'
+                ),
+                alertContent: displayError
+              }
+            ]);
             break;
           case 3:
             this.notifier.showErrorPersist(displayError);
+            this.browserNotifer.generateNotification([
+              {
+                title: this.translateService.translate(
+                  'notification-browser-title-error'
+                ),
+                alertContent: displayError
+              }
+            ]);
             break;
           default:
             console.log(displayError);

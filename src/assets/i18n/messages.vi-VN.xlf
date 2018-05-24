@@ -226,6 +226,25 @@
         <target>Vui lòng đảm bảo bạn không phải là robot.</target>
       </trans-unit>
       <!--End login-->
+
+      <!-- Notification -->
+      <trans-unit id="notification-browser-title-success" datatype="html">
+        <source>Success</source>
+        <target>Thành Công</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-info" datatype="html">
+        <source>Info</source>
+        <target>Thông Báo</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-warning" datatype="html">
+        <source>Warning</source>
+        <target>Cảnh Báo</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-error" datatype="html">
+        <source>Error</source>
+        <target>Lỗi</target>
+      </trans-unit>
+      <!-- End Notification -->
     </body>
   </file>
 </xliff>
