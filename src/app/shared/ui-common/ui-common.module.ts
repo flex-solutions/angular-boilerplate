@@ -6,11 +6,13 @@ import { NgModule } from '@angular/core';
 import { DialogModule } from './modal/dialog.module';
 import { DatagridModule } from './datagrid/datagrid.module';
 import { CardComponent } from './card/card.component';
+import { PaginationModule } from './pagination/pagination.module';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
   exports: [
-    LoaderComponent, DialogModule, DatagridModule, CardComponent
+    LoaderComponent, CardComponent,
+    DialogModule, DatagridModule, PaginationModule
   ],
   declarations: [
     LoaderComponent,

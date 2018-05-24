@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class DatagridDemoComponent implements OnInit {
 
     public items: DgTestModel[] = [];
+
     constructor() {
         const item1 = new DgTestModel();
         item1.orderNumber = 1;
