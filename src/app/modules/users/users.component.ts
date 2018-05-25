@@ -1,16 +1,44 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, PipeTransform, Pipe, } from '@angular/core';
 import * as jquery from 'jquery';
 import { Router, ActivatedRoute } from '@angular/router';
 import { userConfiguration } from '../user.configuration';
 import { ModalSize } from '../../shared/ui-common/modal/components/dialog.component';
 import { ExDialog } from '../../shared/ui-common/modal/services/ex-dialog.service';
 
-declare interface DataTable {
-     headerRow: string[];
-     footerRow: string[];
-     dataRows: string[][];
-}
-declare var $: any;
+// declare interface DataTable {
+//      headerRow: string[];
+//      footerRow: string[];
+//      dataRows: string[][];
+// }
+// declare var $: any;
+@Pipe({
+    name: 'demoFilter'
+  })
+  export class FilterPipe implements PipeTransform {
+    transform(items: DataTable[], searchText: string): any[] {
+      if (!items) {
+        return [];
+      }
+      if (!searchText) {
+        return items;
+      }
+      searchText = searchText.toLowerCase();
+      return items.filter(it => {
+        return it.customer.toLowerCase().includes(searchText)
+        || it.shipTo.toLowerCase().includes(searchText);
+      });
+    }
+  }
+
+export class DataTable {
+    orderNumber: number;
+    purchasedOn: Date;
+    customer: string;
+    shipTo: string;
+    basePrice: number;
+    purchasedPrice: number;
+    status: boolean;
+  }
 
 @Component({
      moduleId: module.id,
@@ -20,7 +48,7 @@ declare var $: any;
 })
 export class UsersComponent implements OnInit {
 
-     public dataTable: DataTable;
+     public items: DataTable[] = [];
      public imagePath = 'https://placehold.it/100x100';
      constructor(
           private router: Router,
@@ -28,14 +56,34 @@ export class UsersComponent implements OnInit {
           private exDialog: ExDialog) { }
 
      ngOnInit(): void {
-          this.dataTable = {
-               headerRow: ['Full Name', 'Username', 'Login Details', 'Group Name', 'Status', 'Actions'],
-               footerRow: [],
-               dataRows: [
-                    ['Airi Satou', 'Andrew Mike', 'Develop', '2013', 'success'],
-                    ['Angelica Ramos', 'John Doe', 'Design', '2012', 'danger'],
-               ]
-          };
+        const item1 = new DataTable();
+        item1.orderNumber = 1;
+        item1.basePrice = 5000000;
+        item1.customer = 'Think Digital';
+        item1.purchasedOn = new Date();
+        item1.purchasedPrice = 500000000;
+        item1.shipTo = 'Quan 1';
+        item1.status = true;
+
+        const item2 = new DataTable();
+        item2.orderNumber = 2;
+        item2.basePrice = 6000000;
+        item2.customer = 'SNOB';
+        item2.purchasedOn = new Date();
+        item2.purchasedPrice = 600000000;
+        item2.shipTo = 'Quan go vap';
+        item2.status = false;
+
+        this.items = [item1, item2];
+        //   this.dataTable = {
+        //        headerRow: ['Full Name', 'Username', 'Login Details', 'Group Name', 'Status', 'Actions'],
+        //        footerRow: [],
+        //        dataRows: [
+        //             ['Airi Satou', 'Andrew Mike', 'Develop', '2013', 'success'],
+        //             ['Angelica Ramos', 'John Doe', 'Design', '2012', 'danger'],
+        //        ]
+        //   };
+
      }
 
      getUserInfomation() { }
@@ -68,44 +116,5 @@ export class UsersComponent implements OnInit {
 
      navigateToUserDetailPage() {
           this.router.navigate([userConfiguration.userDetailPage], { relativeTo: this.route });
-     }
-
-     // tslint:disable-next-line:use-life-cycle-interface
-     ngAfterViewInit() {
-          $('#datatables').DataTable({
-               'pagingType': 'full_numbers',
-               'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'All']],
-               responsive: true,
-               language: {
-                    search: '_INPUT_',
-                    searchPlaceholder: 'Search by username, fullname or email',
-               }
-          });
-
-          // const table = $('#datatables').DataTable();
-
-
-          // // Edit record
-          // table.on('click', '.edit', function () {
-          //      const $tr = $(this).closest('tr');
-
-          //      const data = table.row($tr).data();
-          //      alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-          // });
-
-          // // Delete a record
-          // table.on('click', '.remove', function (e) {
-          //      const $tr = $(this).closest('tr');
-          //      table.row($tr).remove().draw();
-          //      e.preventDefault();
-          // });
-
-          // // Like record
-          // table.on('click', '.like', function () {
-          //      alert('You clicked on Like button');
-          // });
-
-          //  Activate the tooltips
-          $('[rel="tooltip"]').tooltip();
      }
 }

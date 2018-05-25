@@ -8,10 +8,13 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserService } from './services/user.service';
 import { UsersComponent } from './users.component';
 import { UsersService } from './users-service';
+import { DatagridModule } from '../../shared/ui-common/datagrid/datagrid.module';
+import { UICommonModule } from '../../shared/ui-common/ui-common.module';
+import { FilterPipe } from '../datagrid-demo/demo/datagrid-demo.component';
 
 @NgModule({
-  imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule],
-  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent],
+  imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
+  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent, FilterPipe],
   providers: [UserService, UsersService]
 })
 export class UsersModule { }
