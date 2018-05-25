@@ -8,6 +8,7 @@ import { HelperService } from './services/helper.service';
 import { CustomErrorHandlerService } from './services/custom-error-handler.service';
 import { httpInterceptorProviders } from './http-interceptors';
 import { UICommonModule } from './ui-common/ui-common.module';
+import { BrowserNotificationService } from './services/browser-notification.service';
 
 @NgModule({
   imports: [CommonModule],
@@ -19,6 +20,7 @@ import { UICommonModule } from './ui-common/ui-common.module';
     HelperService,
     CustomErrorHandlerService,
     httpInterceptorProviders,
+    BrowserNotificationService
   ],
   declarations: []
 })

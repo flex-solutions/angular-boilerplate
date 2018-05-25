@@ -37,6 +37,42 @@
         <target>Cancel</target>
       </trans-unit>
 
+            <!--Datagrid-->
+      <trans-unit id="dg-entries-info" datatype="html">
+        <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
+        <target>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</target>
+      </trans-unit>
+      <trans-unit id="dg-show-label" datatype="html">
+        <source>Show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-label" datatype="html">
+        <source>entries</source>
+        <target>entries</target>
+      </trans-unit>
+      <trans-unit id="dg-default-search-placeholder" datatype="html">
+        <source>Search by...</source>
+        <target>Search by...</target>
+      </trans-unit>
+
+      <!--Pagination-->
+      <trans-unit id="pagination-first-label" datatype="html">
+        <source>First</source>
+        <target>First</target>
+      </trans-unit>
+      <trans-unit id="pagination-last-label" datatype="html">
+        <source>Last</source>
+        <target>Last</target>
+      </trans-unit>
+      <trans-unit id="pagination-previous-label" datatype="html">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="pagination-next-label" datatype="html">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+
       <!--Create user-->
       <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
         <source>Create New User</source>
@@ -188,6 +224,25 @@
         <target>Recaptcha is invalid. Please make sure that you are not a robot.</target>
       </trans-unit>
       <!--End login-->
+
+      <!-- Notification -->
+      <trans-unit id="notification-browser-title-success" datatype="html">
+        <source>Success</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-info" datatype="html">
+        <source>Info</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-warning" datatype="html">
+        <source>Warning</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-error" datatype="html">
+        <source>Error</source>
+        <target>Success</target>
+      </trans-unit>
+      <!-- End Notification -->
     </body>
   </file>
 </xliff>
