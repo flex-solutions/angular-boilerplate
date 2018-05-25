@@ -1,14 +1,11 @@
-import { Branch } from './../../../shared/models/branch.model';
+import { Branch } from './../../../../shared/models/branch.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import {
-  GenericValidator,
-  IValidationMessage
-} from '../../../shared/validation/generic-validator';
-import { TranslateService } from '../../../shared/services/translate.service';
+import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
+import { TranslateService } from '../../../../shared/services/translate.service';
 import { OnInit } from '@angular/core/src/core';
-import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
-import { User } from '../../../shared/models/user.model';
-import ArrayExtension from '../../../utilities/array.extension';
+import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
+import { User } from '../../../../shared/models/user.model';
+import ArrayExtension from '../../../../utilities/array.extension';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {
@@ -48,8 +45,7 @@ export abstract class UserModificationBase extends AbstractFormComponent
           }
         }
       },
-      branchId: {
-      }
+      branchId: {}
     };
 
   constructor(

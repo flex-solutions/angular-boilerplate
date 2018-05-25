@@ -1,5 +1,17 @@
-export class User {
-  id: string;
+export interface BasicUserInfo {
+  email: string;
+
+  fullname: string;
+
+  username: string;
+
+  avatar: string;
+
+  branch_id: string;
+}
+
+export class User implements BasicUserInfo {
+  _id: string;
 
   email: string;
 
@@ -34,7 +46,7 @@ export class User {
   failedLoginCount = 0;
 
   // id of branch
-  branchId: string;
+  branch_id: string;
 }
 
 export class SignedUser {

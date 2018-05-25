@@ -1,13 +1,13 @@
-import { NotificationService } from './../../../shared/services/notification.service';
-import { UserService } from './../services/user.service';
+import { NotificationService } from './../../../../shared/services/notification.service';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
-import { TranslateService } from '../../../shared/services/translate.service';
-import { GenericValidator } from '../../../shared/validation/generic-validator';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { GenericValidator } from '../../../../shared/validation/generic-validator';
 import { FormBuilder, Validators } from '@angular/forms';
-import { getBase64 } from '../../../utilities/convert-image-to-base64';
-import { User } from '../../../shared/models/user.model';
-import { UserMessages } from '../user.message';
+import { getBase64 } from '../../../../utilities/convert-image-to-base64';
+import { User } from '../../../../shared/models/user.model';
+import { UserMessages } from '../../user.message';
 import { Router } from '@angular/router';
 import { USER_CONFIGURATION } from '../../user.configuration';
 import { Location } from '@angular/common';
@@ -63,22 +63,14 @@ export class CreateUserComponent extends UserModificationBase {
         this.user.username = this.getUserNameValue();
         this.user.fullname = this.getFullNameValue();
         this.user.password = this.getPassword();
-        this.user.branchId = this.branch.id;
+        this.user.branch_id = this.branch.id;
         // * Call API to create new user
-        this.userService.create(this.user).then(
+        this.userService.create(this.user).subscribe(
           respond => {
             // * Create user successful, display success notification
-            const msg = this.translateService.translate(
-              UserMessages.CreateUserSuccessfull
-            );
-
+            const msg = this.translateService.translate(UserMessages.CreateUserSuccessfull);
             this.notificationService.showSuccess(msg);
-
             this.onHandleCreateUserSuccessful();
-          })
-          .catch(error => {
-            // * Failed to create user
-            this.notificationService.showError(error);
           });
       });
   }

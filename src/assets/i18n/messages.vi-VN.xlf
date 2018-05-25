@@ -172,7 +172,7 @@
       </trans-unit>
       <trans-unit id="user-create_user-label-validation_requireBranch" datatype="html">
         <source>Please select branch</source>
-        <target>Vui lòng chọn chi nhánh</target>
+        <target>Vui lòng chọn một chi nhánh cho user</target>
       </trans-unit>
       <!--End create user-->
 

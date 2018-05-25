@@ -1,12 +1,12 @@
-import { UserService } from './../services/user.service';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserModificationBase } from '../create-user/user-modification-base';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TranslateService } from '../../../shared/services/translate.service';
-import { User } from '../../../shared/models/user.model';
-import { UserMessages } from '../user.message';
-import { NotificationService } from '../../../shared/services/notification.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { User } from '../../../../shared/models/user.model';
+import { UserMessages } from '../../user.message';
 import { Location } from '@angular/common';
+import { NotificationService } from '../../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -40,18 +40,16 @@ export class EditUserComponent extends UserModificationBase {
     this.user.email = this.getEmailValue();
     this.user.username = this.getUserNameValue();
     this.user.fullname = this.getFullNameValue();
+    this.user.branch_id = this.branch.id;
 
     // * Call API to update user
-    this.userService.update(this.user).then(respond => {
+    this.userService.update(this.user).subscribe(respond => {
       // * Save user successful, display success notification
       const msg = this.translateService.translate(
         UserMessages.EditUserSuccessfull
       );
 
       this.notificationService.showSuccess(msg);
-    }).catch(error => {
-      // * Failed to update user
-      this.notificationService.showError(error);
     });
   }
 

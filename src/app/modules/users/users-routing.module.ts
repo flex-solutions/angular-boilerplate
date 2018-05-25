@@ -1,10 +1,10 @@
-import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { UsersComponent } from './users.component';
-import { USER_CONFIGURATION } from '../user.configuration';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { UsersComponent } from './users/users.component';
+import { USER_CONFIGURATION } from './user.configuration';
 
 const userRoutes: Routes = [
   {

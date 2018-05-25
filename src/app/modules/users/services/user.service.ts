@@ -7,14 +7,22 @@ export class UserService extends AbstractRestService {
   protected controllerName: string;
   constructor() {
     super();
-    this.controllerName = 'user';
+    this.controllerName = 'users';
   }
 
   create(user: User) {
-    return this.post('create', user).toPromise();
+    return this.post('', user);
   }
 
   update(user: User) {
-    return this.put('update', user).toPromise();
+    return this.put(user._id, user);
+  }
+
+  remove(userId: string) {
+    return this.delete(userId, userId);
+  }
+
+  findOne(userId: string) {
+    return this.get(userId);
   }
 }

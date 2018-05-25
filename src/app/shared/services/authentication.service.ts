@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
 import { ApplicationConfigurationService } from './application-configuration.service';
 import { NavigateConstant } from '../constants/navigate.constant';
-import { Authentication } from '../models/authentication.model';
+import { AuthenticationResponse } from '../models/authentication.model';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
 import { SignedUser } from '../models/user.model';
@@ -42,7 +42,7 @@ export class AuthenticationService extends AbstractRestService {
     const authData = AuthenticationTokenHelper.localToken;
     if (authData) {
       this.get('logout').subscribe(res => {
-        AuthenticationTokenHelper.clearTokenInCookie();
+        AuthenticationTokenHelper.removeTokenInCookie();
         this.router.navigate([NavigateConstant.LOGIN]);
       });
     }
@@ -58,29 +58,33 @@ export class AuthenticationService extends AbstractRestService {
     }
     // ! JUST FOR TESTING. REMOVE LATER
 
-    return this.post('login', signedUser).toPromise().then((tokenResponse: Authentication) => {
-      // Save token into cookies
-      AuthenticationTokenHelper.saveTokenInCookie(tokenResponse, signedUser.username);
+    return this.post('login', signedUser)
+      .subscribe((tokenResponse: AuthenticationResponse) => {
+        // Save token into cookies
+        AuthenticationTokenHelper.saveTokenInCookie(tokenResponse);
+        // Navigate to home page
+        this.router.navigate([NavigateConstant.HOME]);
+      });
+  }
 
-      // Navigate to home page
-      this.router.navigate([NavigateConstant.HOME]);
+  autoLogin() {
+    this.renewToken().subscribe((newToken: AuthenticationResponse) => {
+      AuthenticationTokenHelper.saveTokenInCookie(newToken);
+    }, err => {
+      AuthenticationTokenHelper.removeTokenInCookie();
+      this.navigateToLoginPage();
     });
   }
 
-  async validateUserToken(userToken: string) {
-    return await this.post('verify', { usertoken: userToken }).toPromise();
+  verifyRecaptchaToken(userToken: string) {
+    return this.post('verify', { usertoken: userToken });
   }
 
-  verifyToken() {
-    const usernameInCookie = localStorage.getItem(appVariables.accessTokenOwner);
-    const refreshTokenInCookie = localStorage.getItem(appVariables.accessTokenOwner);
+  private renewToken() {
+    const usernameInCookie = AuthenticationTokenHelper.localUserInfo.username;
+    const refreshTokenInCookie = AuthenticationTokenHelper.refreshToken;
 
-    return this.post('token', { username: usernameInCookie, refreshToken: refreshTokenInCookie })
-      .toPromise()
-      .then((newToken: Authentication) => {
-        AuthenticationTokenHelper.clearTokenInCookie();
-        AuthenticationTokenHelper.saveTokenInCookie(newToken, usernameInCookie);
-      });
+    return this.post('token', { username: usernameInCookie, refreshToken: refreshTokenInCookie });
   }
 
   navigateToLoginPage() {
