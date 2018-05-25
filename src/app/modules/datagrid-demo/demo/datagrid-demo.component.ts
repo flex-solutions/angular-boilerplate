@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Pipe, PipeTransform } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { IFilterChangedEvent } from '../../../shared/ui-common/datagrid/components/datagrid.component';
 @Pipe({
   name: 'demoFilter'
 })
@@ -26,7 +28,6 @@ export class FilterPipe implements PipeTransform {
 })
 export class DatagridDemoComponent implements OnInit {
   public items: DgTestModel[] = [];
-  public totalCount = 100;
   constructor() {
     const item1 = new DgTestModel();
     item1.orderNumber = 1;
@@ -49,15 +50,18 @@ export class DatagridDemoComponent implements OnInit {
     this.items = [item1, item2];
   }
 
+  public count = (searchKey: string): Observable<number> => {
+    console.log('only should get count when init datagrid of filter changed');
+    // call count method in data service class
+    return of(300);
+  }
+
   ngOnInit() {}
 
-  onPageChanged(eventArg: any) {
+  onPageChanged(eventArg: IFilterChangedEvent) {
     console.log(eventArg);
   }
 
-  onFilterChanged(eventArg: any) {
-    console.log(eventArg);
-  }
 }
 
 export class DgTestModel {
