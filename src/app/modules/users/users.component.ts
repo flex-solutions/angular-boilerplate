@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { userConfiguration } from '../user.configuration';
 import { ModalSize } from '../../shared/ui-common/modal/components/dialog.component';
 import { ExDialog } from '../../shared/ui-common/modal/services/ex-dialog.service';
+import { GroupUserModalComponent } from './component/group-user-modal';
 
 // declare interface DataTable {
 //      headerRow: string[];
@@ -98,8 +99,8 @@ export class UsersComponent implements OnInit {
                });
      }
 
-     showEditUserGroup() {
-          this.exDialog.openConfirm('Edit user group dialog', 'Navigate to edit user group page?', ModalSize.Normal).subscribe(result => {
+     showChangeUserGroup() {
+          this.exDialog.openPrime(GroupUserModalComponent, 'Change user group', ModalSize.Normal).subscribe(result => {
                if (result) {
                     alert('you clicked Submit button');
                }

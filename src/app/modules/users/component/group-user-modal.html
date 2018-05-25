@@ -1,0 +1,38 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Change user group</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <div class="modal-body card">
+    <p class="text-gray mb-0 ellipsor">15:00 PM Mon, 14 Jan 2018</p>
+    <table id="datatables" class="table">
+      <thead>
+        <tr>
+          <th>{{ dataTable.headerRow[0] }}</th>
+          <th>{{ dataTable.headerRow[1] }}</th>
+          <th>{{ dataTable.headerRow[2] }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of dataTable.dataRows">
+          <td>
+            <input class="checkbox" type="checkbox">
+          </td>
+          <td>
+            asdf
+          </td>
+          <td>
+            asdf
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+  </div>
+</div>

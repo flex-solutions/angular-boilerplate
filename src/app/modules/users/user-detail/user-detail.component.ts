@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
-import { UserGroup } from '../../../models/user-group.model';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { userConfiguration } from '../../user.configuration';
 import { NotificationService } from '../../../shared/services/notification.service';

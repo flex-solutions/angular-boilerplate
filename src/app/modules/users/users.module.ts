@@ -14,7 +14,8 @@ import { FilterPipe } from '../datagrid-demo/demo/datagrid-demo.component';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
-  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent, FilterPipe],
-  providers: [UserService, UsersService]
+  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent, FilterPipe, GroupUserModalComponent],
+  providers: [UserService, UsersService],
+  entryComponents: [GroupUserModalComponent]
 })
 export class UsersModule { }
