@@ -2,6 +2,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { BrowserNotificationService } from './shared/services/browser-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(LOCALE_ID) protected localeId: string,
     public authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private browserNotificationService: BrowserNotificationService
   ) {
     moment.locale(this.localeId);
     this.router.events.subscribe(event => {
@@ -29,6 +31,9 @@ export class AppComponent implements OnInit {
         this.hasAuthenticated = this.authenticationService.authenticated();
       }
     });
+
+    // Request permission for notification
+    this.browserNotificationService.requestPermission();
   }
 
   ngOnInit(): void {

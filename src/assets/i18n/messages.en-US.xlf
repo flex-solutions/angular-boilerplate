@@ -37,8 +37,12 @@
         <target>Cancel</target>
       </trans-unit>
 
-      <!--Datagrid-->
-      <trans-unit id="dg-items-per-page-show-label" datatype="html">
+            <!--Datagrid-->
+      <trans-unit id="dg-entries-info" datatype="html">
+        <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
+        <target>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</target>
+      </trans-unit>
+      <trans-unit id="dg-show-label" datatype="html">
         <source>Show</source>
         <target>Show</target>
       </trans-unit>
@@ -46,21 +50,9 @@
         <source>entries</source>
         <target>entries</target>
       </trans-unit>
-      <trans-unit id="dg-search-by" datatype="html">
-        <source>Search by ...</source>
-        <target>Search by ...</target>
-      </trans-unit>
-      <trans-unit id="dg-entries-info-show-label" datatype="html">
-        <source>Showing</source>
-        <target>Showing</target>
-      </trans-unit>
-      <trans-unit id="dg-entries-info-to-label" datatype="html">
-        <source>to</source>
-        <target>to</target>
-      </trans-unit>
-      <trans-unit id="dg-entries-info-of-label" datatype="html">
-        <source>of</source>
-        <target>of</target>
+      <trans-unit id="dg-default-search-placeholder" datatype="html">
+        <source>Search by...</source>
+        <target>Search by...</target>
       </trans-unit>
 
       <!--Pagination-->
@@ -232,6 +224,25 @@
         <target>Recaptcha is invalid. Please make sure that you are not a robot.</target>
       </trans-unit>
       <!--End login-->
+
+      <!-- Notification -->
+      <trans-unit id="notification-browser-title-success" datatype="html">
+        <source>Success</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-info" datatype="html">
+        <source>Info</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-warning" datatype="html">
+        <source>Warning</source>
+        <target>Success</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-error" datatype="html">
+        <source>Error</source>
+        <target>Success</target>
+      </trans-unit>
+      <!-- End Notification -->
     </body>
   </file>
 </xliff>
