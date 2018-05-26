@@ -11,42 +11,38 @@
 
     <div class="row">
       <div class="col-12">
-        <!-- <table id="datatables" class="table">
-          <thead>
-            <tr>
-              <th>{{ dataTable.headerRow[0] }}</th>
-              <th>{{ dataTable.headerRow[1] }}</th>
-              <th>{{ dataTable.headerRow[2] }}</th>
-              <th>{{ dataTable.headerRow[3] }}</th>
-              <th>{{ dataTable.headerRow[4] }}</th>
-              <th>{{ dataTable.headerRow[5] }}</th>
-            </tr>
-          </thead>
+        <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" (pageChanged)="onPageChanged($event)">
+          <tr role="row">
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Login Details</th>
+            <th>Group Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
           <tbody>
-            <tr *ngFor="let row of dataTable.dataRows">
+            <tr *ngFor="let item of items | demoFilter: dg.searchKey">
               <td class="change-color">
                 <div class="user">
-                  <img src="{{imagePath}}" class="img-sm rounded " alt="profile image" />
-                  <p class="u-name" style="float: left;" (click)="navigateToEditPage()">{{row[0]}}</p>
+                  <img src="{{imagePath}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"/>
+                  <p class="u-name" style="float: left;" (click)="navigateToEditPage()">{{item.customer}}</p>
                 </div>
               </td>
               <td>
-                <p class="text-gray mb-0 ellipsor">{{row[1]}}</p>
+                <p class="text-gray mb-0 ellipsor">{{item.customer}}</p>
                 <span class="change-color ellipsor">
-                  <a href="mailto:webmaster@example.com">webmaster@example.com</a></span>
+                  <a href="mailto:webmaster@example.com">webmaster@example.com</a>
+                </span>
               </td>
               <td>
-
                 <div>
                   <strong class="dropdown">Count: </strong>45</div>
-                <strong class="dropdown">Last: </strong>{{row[2]}}
-
+                <strong class="dropdown">Last: </strong>{{item.purchasedOn}}
               </td>
-              <td class="change-color">{{row[3]}}</td>
+              <td class="change-color">{{item.shipTo}}</td>
               <td>
-                <label class="badge badge-{{row[4]}}">On hold</label>
+                <label class="badge badge-info">{{item.status}}</label>
               </td>
-
               <td>
                 <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToUserDetailPage()">
                   <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>Edit</button>
@@ -54,37 +50,9 @@
                   <i class="mdi mdi-dots-horizontal btn-option-custom"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" (click)="showChangeUserGroup()" href="javascript:;">Change user group</a>
+                  <a class="dropdown-item" (click)="navigateToChangeUserGroup()" href="javascript:;">Change user group</a>
                   <a class="dropdown-item" (click)="showConfirm()" href="javascript:;">Delete user</a>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
-        <app-dg #dg [countFunction]="count" searchLabel="Search by Customer, Ship to" (pageChanged)="onPageChanged($event)">
-          <tr role="row">
-            <th>Order #</th>
-            <th>Purchased On</th>
-            <th>Customer</th>
-            <th>Ship to</th>
-            <th>Base Price</th>
-            <th>Purchased Price</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-          <tbody>
-            <tr *ngFor="let item of items | demoFilter: dg.searchKey">
-              <td>{{item.orderNumber}}</td>
-              <td>{{item.purchasedOn}}</td>
-              <td>{{item.customer}}</td>
-              <td>{{item.shipTo}}</td>
-              <td>{{item.basePrice}}</td>
-              <td>{{item.purchasedPrice}}</td>
-              <td>
-                <label class="badge badge-info">{{item.status}}</label>
-              </td>
-              <td>
-                <button class="btn btn-outline-primary">View</button>
               </td>
             </tr>
           </tbody>
