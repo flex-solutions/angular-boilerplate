@@ -10,6 +10,8 @@ import { InvisibleReCaptchaComponent } from 'ngx-captcha';
 import { AccountMessages } from '../account.message';
 import { SignedUser } from '../../../shared/models/user.model';
 import { HttpExceptionResponse } from '../../../shared/models/http-exception-response.model';
+import { AuthenticationResponse } from '../../../shared/models/authentication.model';
+import { AuthenticationTokenHelper } from '../../../utilities/authentication-token';
 
 @Component({
   selector: 'app-login',
@@ -75,7 +77,12 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
 
       // Call api login
       this.authService.login(signedUser)
-        .catch(error => {
+        .subscribe((tokenResponse: AuthenticationResponse) => {
+          // Save token into cookies
+          AuthenticationTokenHelper.saveTokenInCookie(tokenResponse);
+          // Navigate to home page
+          this.router.navigate([NavigateConstant.HOME]);
+        }, error => {
           this.captchaRef.resetCaptcha();
           // Failed to login
           const httpException = error.json() as HttpExceptionResponse;

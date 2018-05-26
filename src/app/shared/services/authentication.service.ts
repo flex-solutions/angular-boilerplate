@@ -9,7 +9,7 @@ import { SignedUser } from '../models/user.model';
 import { appVariables } from '../../app.constant';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 import { AbstractRestService } from '../abstract/abstract-rest-service';
-import { ApplicationConstant } from '../constants/application.constant';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService extends AbstractRestService {
@@ -40,11 +40,16 @@ export class AuthenticationService extends AbstractRestService {
 
   logOut() {
     const authData = AuthenticationTokenHelper.localToken;
-    if (authData) {
-      this.get('logout').subscribe(res => {
-        AuthenticationTokenHelper.removeTokenInCookie();
-        this.router.navigate([NavigateConstant.LOGIN]);
-      });
+    const userInfo = AuthenticationTokenHelper.localUserInfo;
+    if (authData && userInfo) {
+      this.put(`${AuthenticationTokenHelper.localUserInfo._id}/logout`, '')
+        .subscribe(res => {
+          AuthenticationTokenHelper.removeTokenInCookie();
+          this.router.navigate([NavigateConstant.LOGIN]);
+        });
+    } else {
+      AuthenticationTokenHelper.removeTokenInCookie();
+      this.router.navigate([NavigateConstant.LOGIN]);
     }
   }
 
@@ -54,17 +59,11 @@ export class AuthenticationService extends AbstractRestService {
       // Navigate to home page
       this.username = 'admin';
       this.router.navigate([NavigateConstant.HOME]);
-      return new Promise((r) => 'true');
+      return new Observable(sub => { });
     }
     // ! JUST FOR TESTING. REMOVE LATER
 
-    return this.post('login', signedUser)
-      .subscribe((tokenResponse: AuthenticationResponse) => {
-        // Save token into cookies
-        AuthenticationTokenHelper.saveTokenInCookie(tokenResponse);
-        // Navigate to home page
-        this.router.navigate([NavigateConstant.HOME]);
-      });
+    return this.post('login', signedUser);
   }
 
   autoLogin() {

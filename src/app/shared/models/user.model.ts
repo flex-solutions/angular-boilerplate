@@ -1,4 +1,6 @@
 export interface BasicUserInfo {
+  _id: string;
+
   email: string;
 
   fullname: string;

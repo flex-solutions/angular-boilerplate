@@ -3,9 +3,9 @@ import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
 import { UserGroup } from '../../../models/user-group.model';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
-import { USER_CONFIGURATION } from '../../user.configuration';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { User } from '../../../shared/models/user.model';
+import { USER_CONFIGURATION } from '../user.configuration';
 
 @Component({
   selector: 'app-user-detail',

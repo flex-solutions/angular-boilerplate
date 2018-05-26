@@ -31,6 +31,14 @@ export class AuthenticationTokenHelper {
     }
 
     static get localUserInfo(): BasicUserInfo {
-        return <BasicUserInfo>JSON.parse(localStorage.getItem(appVariables.accessTokenOwner));
+        const userInfo = localStorage.getItem(appVariables.accessTokenOwner);
+        if (userInfo) {
+            try {
+                const localUser = JSON.parse(userInfo);
+                return localUser as BasicUserInfo;
+            } catch {
+                return null;
+            }
+        }
     }
 }

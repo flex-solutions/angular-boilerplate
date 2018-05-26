@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
 declare let $: any;
 
 @Component({
@@ -7,13 +8,13 @@ declare let $: any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
     const body = $('body');
-    $('[data-toggle="minimize"]').on('click', function() {
+    $('[data-toggle="minimize"]').on('click', function () {
       if (
         body.hasClass('sidebar-toggle-display') ||
         body.hasClass('sidebar-absolute')
@@ -23,5 +24,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         body.toggleClass('sidebar-icon-only');
       }
     });
+  }
+
+  signOut() {
+    this.authenticationService.logOut();
   }
 }
