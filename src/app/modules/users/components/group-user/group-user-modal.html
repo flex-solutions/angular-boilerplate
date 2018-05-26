@@ -1,0 +1,37 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" i18n="@@user-detail-change-user-group">Change user group</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <div class="modal-body card">
+    <table id="datatables" class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th i18n="@@users-group-name">Group Name</th>
+          <th i18n="@@users-permission-scheme">Permission Scheme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let group of groupUsers">
+          <td>
+            <input class="checkbox" type="checkbox">
+          </td>
+          <td>
+            {{group.groupName}}
+          </td>
+          <td>
+            {{group.permissionScheme}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()" i18n="@@group-user-modal-ok">Ok</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@group-user-modal-cancel">Cancel</button>
+  </div>
+</div>

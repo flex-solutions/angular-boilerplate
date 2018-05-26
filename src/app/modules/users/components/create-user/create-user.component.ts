@@ -7,10 +7,9 @@ import { GenericValidator } from '../../../../shared/validation/generic-validato
 import { FormBuilder, Validators } from '@angular/forms';
 import { getBase64 } from '../../../../utilities/convert-image-to-base64';
 import { User } from '../../../../shared/models/user.model';
-import { UserMessages } from '../../user.message';
 import { Router } from '@angular/router';
-import { USER_CONFIGURATION } from '../../user.configuration';
 import { Location } from '@angular/common';
+import { UserMessages, UserNavigationRoute } from '../../users.constant';
 
 @Component({
   selector: 'app-create-user',
@@ -85,7 +84,7 @@ export class CreateUserComponent extends UserModificationBase {
     if (createOtherAsString === 'true') {
       this.resetForm();
     } else {
-      this.router.navigate([USER_CONFIGURATION.USERS_PAGE]);
+      this.router.navigate([UserNavigationRoute.USERS_PAGE]);
     }
   }
 }

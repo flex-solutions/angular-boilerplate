@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UsersService } from '../users-service';
 import { Location } from '@angular/common';
-import { UserGroup } from '../../../models/user-group.model';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
-import { NotificationService } from '../../../shared/services/notification.service';
-import { User } from '../../../shared/models/user.model';
-import { USER_CONFIGURATION } from '../user.configuration';
+import { User } from '../../../../shared/models/user.model';
+import { UserService } from '../../services/user.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { UserNavigationRoute } from '../../users.constant';
 
 @Component({
   selector: 'app-user-detail',
@@ -18,7 +17,7 @@ export class UserDetailComponent implements OnInit {
   userdetail: User = new User;
 
   // Constructor
-  constructor(private userService: UsersService,
+  constructor(private userService: UserService,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
@@ -32,12 +31,13 @@ export class UserDetailComponent implements OnInit {
   // Handle get user detail information.
   getUserInfomation() {
     if (this.userdetail !== null) {
-      this.userService.getUserByEmail(this.userdetail.email).subscribe(user => this.userdetail = user);
+      this.userService.getUserById(this.userdetail._id).subscribe(user => this.userdetail = user);
     }
   }
 
   // Handle delete user.
   deleteUser() {
+    // Just 4 test
     this.userService.deleteUser(this.userdetail).subscribe(() => {
       this.goBack();
       this.notifier.showSuccess('success');
@@ -51,7 +51,7 @@ export class UserDetailComponent implements OnInit {
 
   // Handle navigate to Edit user page.
   navigateToEditPage() {
-    this.router.navigate([USER_CONFIGURATION.ROUTES.EDIT_USER], { relativeTo: this.route });
+    this.router.navigate([UserNavigationRoute.EDIT_USER_PAGE], { relativeTo: this.route });
   }
 
   private goBack() {

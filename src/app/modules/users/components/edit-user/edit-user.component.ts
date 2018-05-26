@@ -4,9 +4,9 @@ import { UserModificationBase } from '../create-user/user-modification-base';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { User } from '../../../../shared/models/user.model';
-import { UserMessages } from '../../user.message';
 import { Location } from '@angular/common';
 import { NotificationService } from '../../../../shared/services/notification.service';
+import { UserMessages } from '../../users.constant';
 
 @Component({
   selector: 'app-edit-user',

@@ -1,16 +1,16 @@
 <div *ngIf="userdetail" class="row profile-page">
   <div class="col-12">
     <div class="d-flex flex-row">
-      <img src="{{userdetail.imagePath}}" class="img-lg rounded" alt="profile image" />
+      <img src="{{userdetail.avatar}}" class="img-lg rounded" alt="profile image" />
       <div class="ml-3 col-md-9">
-        <h6>{{userdetail.fullName}}</h6>
-        <p class="text-muted">{{userdetail.accountName}}</p>
+        <h6>{{userdetail.fullname}}</h6>
+        <p class="text-muted">{{userdetail.username}}</p>
         <p class="text-muted none-lineheight">{{userdetail.email}}</p>
         <p class="mt-2 text-success font-weight-bold">{{userdetail.position}}</p>
       </div>
 
       <div class="ml-3">
-        <button type="button" class="btn btn-primary btn-sm none-underline" (click)="navigateToEditPage()">
+        <button type="button" class="btn btn-primary btn-sm none-underline" (click)="navigateToEditPage()" i18n="@@user-detail-edit-btn">
           <i class="mdi mdi-pencil" aria-hidden="false"></i>Edit User
         </button>
 
@@ -19,8 +19,8 @@
         </button>
 
         <div class="dropdown-menu">
-          <a class="dropdown-item" data-toggle="modal" data-target="#userGroupModal" href="javascript:;">Change user group</a>
-          <button class="dropdown-item pointer" data-toggle="modal" data-target="#userModal" href="javascript:;">Delete user</button>
+          <a class="dropdown-item" data-toggle="modal" data-target="#userGroupModal" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+          <button class="dropdown-item pointer" data-toggle="modal" data-target="#userModal" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</button>
         </div>
 
         <!-- Delete Modal -->
@@ -28,7 +28,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="userModalLabel">Confirm</h5>
+                <h5 class="modal-title" id="userModalLabel" i18n="@@user-detail-delete-user">Confirm</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,13 +36,13 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">User "{{userdetail.accountName}}" will be permanently deleted. Are you sure want to delete?</label>
+                    <label for="recipient-name" class="col-form-label" i18n="@@user-detail-delete-message">User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</label>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=deleteUser()>OK</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=deleteUser() i18n="@@group-user-modal-ok">OK</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal" i18n="@@group-user-modal-cancel">Cancel</button>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="userGroupModalLabel">Change user group</h5>
+                <h5 class="modal-title" id="userGroupModalLabel" i18n="@@user-detail-change-user-group">Change user group</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -61,7 +61,7 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Select other group for user "{{userdetail.accountName}}"</label>
+                    <label for="recipient-name" class="col-form-label" i18n="@@user-detail-change-group-message">Select other group for user "{{userdetail.username}}"</label>
                     <table>
 
                     </table>
@@ -69,8 +69,8 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=changeUserGroup()>OK</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=changeUserGroup() i18n="@@group-user-modal-ok">OK</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal" i18n="@@group-user-modal-cancel">Cancel</button>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@
       <ul class="nav tab-switch" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info"
-            aria-selected="true">User Statistics</a>
+            aria-selected="true" i18n="@@user-detail-user-statistics">User Statistics</a>
         </li>
 
       </ul>
@@ -94,21 +94,21 @@
               <table class="table table-borderless w-100 mt-4">
                 <tr>
                   <td>
-                    <strong>Login Count :</strong> {{userdetail.loginCount}}</td>
+                    <strong i18n="@@user-detail-login-count">Login Count :</strong> {{userdetail.loginCount}}</td>
                   <td>
-                    <strong>Last Failed Login :</strong> {{userdetail.lastFailedLogin}}</td>
+                    <strong i18n="@@user-detail-last-failed-login">Last Failed Login :</strong> {{userdetail.lastFailedLogin}}</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>Last Login :</strong> {{userdetail.lastLogin}}</td>
+                    <strong i18n="@@user-detail-last-login">Last Login :</strong> {{userdetail.lastLogin}}</td>
                   <td>
-                    <strong>Current Failed Logins :</strong> {{userdetail.currentFailedLogin}}</td>
+                    <strong i18n="@@user-detail-current-failed-logins">Current Failed Logins :</strong> {{userdetail.currentFailedLogin}}</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>Previous Login :</strong> {{userdetail.previousLogin}}</td>
+                    <strong i18n="@@user-detail-previous-login">Previous Login :</strong> {{userdetail.previousLogin}}</td>
                   <td>
-                    <strong>Total Failed Login :</strong> {{userdetail.totalFailedLogin}}</td>
+                    <strong i18n="@@user-detail-total-failed-login">Total Failed Login :</strong> {{userdetail.totalFailedLogin}}</td>
                 </tr>
               </table>
 
