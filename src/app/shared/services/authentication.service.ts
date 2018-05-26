@@ -5,7 +5,7 @@ import { NavigateConstant } from '../constants/navigate.constant';
 import { AuthenticationResponse } from '../models/authentication.model';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
-import { SignedUser } from '../models/user.model';
+import { SignedUser, BasicUserInfo } from '../models/user.model';
 import { appVariables } from '../../app.constant';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 import { AbstractRestService } from '../abstract/abstract-rest-service';
@@ -92,5 +92,9 @@ export class AuthenticationService extends AbstractRestService {
 
   getAuthorizationToken(): string {
     return AuthenticationTokenHelper.localToken;
+  }
+
+  getCurrentUser(): BasicUserInfo {
+    return AuthenticationTokenHelper.localUserInfo;
   }
 }

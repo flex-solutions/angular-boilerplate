@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ExDialog } from '../../ui-common/modal/services/ex-dialog.service';
 import { TranslateService } from '../../services/translate.service';
+import { BasicUserInfo } from '../../models/user.model';
 declare let $: any;
 
 @Component({
@@ -13,7 +14,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   constructor(private authenticationService: AuthenticationService, private exDialog: ExDialog,
     private translateService: TranslateService) { }
 
-  ngOnInit() { }
+  currentUser: BasicUserInfo;
+
+  ngOnInit() {
+    this.currentUser = this.authenticationService.getCurrentUser();
+  }
 
   ngAfterViewInit(): void {
     const body = $('body');
