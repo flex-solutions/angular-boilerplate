@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { ExDialog } from '../../ui-common/modal/services/ex-dialog.service';
+import { TranslateService } from '../../services/translate.service';
 declare let $: any;
 
 @Component({
@@ -8,7 +10,8 @@ declare let $: any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private exDialog: ExDialog,
+    private translateService: TranslateService) { }
 
   ngOnInit() { }
 
@@ -27,6 +30,19 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   signOut() {
-    this.authenticationService.logOut();
+    this.exDialog.openConfirm(this.confirmMessage, this.confirmTitle).subscribe(result => {
+      if (result) {
+        // Submit button has clicked
+        this.authenticationService.logOut();
+      }
+    });
+  }
+
+  get confirmTitle() {
+    return this.translateService.translate('account-logout-dialog-confirm_title');
+  }
+
+  get confirmMessage() {
+    return this.translateService.translate('account-logout-dialog-confirm_message');
   }
 }

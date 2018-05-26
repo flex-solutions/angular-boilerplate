@@ -243,6 +243,18 @@
         <target>Success</target>
       </trans-unit>
       <!-- End Notification -->
+
+       <!--Logout-->
+      <trans-unit id="account-logout-dialog-confirm_title" datatype="html">
+        <source>Confirm</source>
+        <target>Confirm</target>
+      </trans-unit>
+      <trans-unit id="account-logout-dialog-confirm_message" datatype="html">
+        <source>Are you sure you want to log out SNOB CMS?</source>
+        <target>Are you sure you want to log out SNOB CMS?</target>
+      </trans-unit>
+      <!--End Logout-->
+      
     </body>
   </file>
 </xliff>

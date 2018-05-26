@@ -12,6 +12,7 @@ import { SignedUser } from '../../../shared/models/user.model';
 import { HttpExceptionResponse } from '../../../shared/models/http-exception-response.model';
 import { AuthenticationResponse } from '../../../shared/models/authentication.model';
 import { AuthenticationTokenHelper } from '../../../utilities/authentication-token';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -82,10 +83,10 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
           AuthenticationTokenHelper.saveTokenInCookie(tokenResponse);
           // Navigate to home page
           this.router.navigate([NavigateConstant.HOME]);
-        }, error => {
+        }, (httpError: HttpErrorResponse) => {
           this.captchaRef.resetCaptcha();
           // Failed to login
-          const httpException = error.json() as HttpExceptionResponse;
+          const httpException = httpError.error as HttpExceptionResponse;
           this.onHandleException(httpException);
         });
     }
