@@ -3,3 +3,14 @@
   background-size: auto auto;
   background-size: cover;
 }
+
+.action-row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.forgot-container {
+  padding: 0px;
+  text-align: right;
+  vertical-align: middle;
+}
