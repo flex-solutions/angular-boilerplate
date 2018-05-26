@@ -1,5 +1,6 @@
 .login-background {
-  background: url('../../../../assets/images/login-bg.jpg') no-repeat center center;
+  background: url('../../../../assets/images/login-bg.jpg') no-repeat center
+    center;
   background-size: auto auto;
   background-size: cover;
 }
@@ -13,4 +14,10 @@
   padding: 0px;
   text-align: right;
   vertical-align: middle;
+}
+
+.form-container {
+  width: 100% !important;
+  vertical-align: middle;
+  margin-right: 0px;
 }

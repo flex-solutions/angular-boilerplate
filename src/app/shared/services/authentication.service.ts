@@ -54,17 +54,26 @@ export class AuthenticationService extends AbstractRestService {
       // Navigate to home page
       this.username = 'admin';
       this.router.navigate([NavigateConstant.HOME]);
-      return new Promise((r) => 'true');
+      return new Promise(r => 'true');
     }
     // ! JUST FOR TESTING. REMOVE LATER
 
-    return this.post('login', signedUser).toPromise().then((tokenResponse: Authentication) => {
-      // Save token into cookies
-      AuthenticationTokenHelper.saveTokenInCookie(tokenResponse, signedUser.username);
+    return this.post('login', signedUser)
+      .toPromise()
+      .then((tokenResponse: Authentication) => {
+        // Save token into cookies
+        AuthenticationTokenHelper.saveTokenInCookie(
+          tokenResponse,
+          signedUser.username
+        );
 
-      // Navigate to home page
-      this.router.navigate([NavigateConstant.HOME]);
-    });
+        // Navigate to home page
+        this.router.navigate([NavigateConstant.HOME]);
+      });
+  }
+
+  recoverPassword(email: string) {
+    return this.post('recover-password', { email: email });
   }
 
   async validateUserToken(userToken: string) {
@@ -72,10 +81,17 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   verifyToken() {
-    const usernameInCookie = localStorage.getItem(appVariables.accessTokenOwner);
-    const refreshTokenInCookie = localStorage.getItem(appVariables.accessTokenOwner);
+    const usernameInCookie = localStorage.getItem(
+      appVariables.accessTokenOwner
+    );
+    const refreshTokenInCookie = localStorage.getItem(
+      appVariables.accessTokenOwner
+    );
 
-    return this.post('token', { username: usernameInCookie, refreshToken: refreshTokenInCookie })
+    return this.post('token', {
+      username: usernameInCookie,
+      refreshToken: refreshTokenInCookie
+    })
       .toPromise()
       .then((newToken: Authentication) => {
         AuthenticationTokenHelper.clearTokenInCookie();

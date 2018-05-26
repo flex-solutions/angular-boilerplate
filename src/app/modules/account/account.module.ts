@@ -5,6 +5,7 @@ import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
+import { RecoveryPasswordComponent } from './recovery-password/recovery-password.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { environment } from '../../../environments/environment';
       invisibleCaptchaSiteKey: environment.INVISIBLE_RECAPTCHA_SITEKEY,
     }),
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent, RecoveryPasswordComponent]
 })
 export class AccountModule {}
