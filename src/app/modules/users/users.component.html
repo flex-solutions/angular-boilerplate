@@ -2,9 +2,9 @@
 <div class="card">
   <div class="card-body">
     <div class="row">
-      <h4 class="card-title col-md-10">Users</h4>
+      <h4 class="card-title col-md-10" i18n="@@users-name">Users</h4>
       <div class="col-md-2">
-        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()" i18n="@@users-create-user">
           <i class="mdi mdi-plus"></i>Create User</button>
       </div>
     </div>
@@ -13,45 +13,45 @@
       <div class="col-12">
         <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" (pageChanged)="onPageChanged($event)">
           <tr role="row">
-            <th>Full Name</th>
-            <th>Username</th>
-            <th>Login Details</th>
-            <th>Group Name</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th i18n="@@users-fullname">Full Name</th>
+            <th i18n="@@users-username">Username</th>
+            <th i18n="@@users-login-details">Login Details</th>
+            <th i18n="@@users-group-name">Group Name</th>
+            <th i18n="@@users-status">Status</th>
+            <th i18n="@@users-actions">Actions</th>
           </tr>
           <tbody>
-            <tr *ngFor="let item of items | demoFilter: dg.searchKey">
+            <tr *ngFor="let item of items | userFilter: dg.searchKey">
               <td class="change-color">
                 <div class="user">
-                  <img src="{{imagePath}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"/>
-                  <p class="u-name" style="float: left;" (click)="navigateToEditPage()">{{item.customer}}</p>
+                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"/>
+                  <p class="u-name" style="float: left;" (click)="navigateToEditPage(item)">{{item.fullname}}</p>
                 </div>
               </td>
               <td>
-                <p class="text-gray mb-0 ellipsor">{{item.customer}}</p>
+                <p class="text-gray mb-0 ellipsor">{{item.username}}</p>
                 <span class="change-color ellipsor">
-                  <a href="mailto:webmaster@example.com">webmaster@example.com</a>
+                  <a href="mailto:{{item.email}}">{{item.email}}</a>
                 </span>
               </td>
               <td>
                 <div>
-                  <strong class="dropdown">Count: </strong>45</div>
-                <strong class="dropdown">Last: </strong>{{item.purchasedOn}}
+                  <strong class="dropdown" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}</div>
+                <strong class="dropdown" i18n="@@users-list">Last: </strong>{{item.lastTimeLogin}}
               </td>
-              <td class="change-color">{{item.shipTo}}</td>
+              <td class="change-color">{{item.groupname}}</td>
               <td>
                 <label class="badge badge-info">{{item.status}}</label>
               </td>
               <td>
-                <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToUserDetailPage()">
+                <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToUserDetailPage(item)" i18n="@@users-edit">
                   <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>Edit</button>
                 <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="mdi mdi-dots-horizontal btn-option-custom"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" (click)="navigateToChangeUserGroup()" href="javascript:;">Change user group</a>
-                  <a class="dropdown-item" (click)="showConfirm()" href="javascript:;">Delete user</a>
+                  <a class="dropdown-item" (click)="navigateToChangeUserGroup(item)" href="javascript:;"  i18n="@@user-detail-change-user-group">Change user group</a>
+                  <a class="dropdown-item" (click)="showConfirm(item)" href="javascript:;"  i18n="@@user-detail-delete-user">Delete user</a>
                 </div>
               </td>
             </tr>

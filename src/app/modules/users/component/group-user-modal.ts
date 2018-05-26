@@ -1,12 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 import { DialogComponent } from '../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../shared/ui-common/modal/services/dialog.service';
 import { UserGroup } from '../../../shared/models/user-group.model';
+import { TranslateService } from '../../../shared/services/translate.service';
 
-declare interface DataTable {
-  headerRow: string[];
-  footerRow: string[];
-  dataRows: string[][];
+@Pipe({
+  name: 'userGroupFilter'
+})
+export class GroupFilterPipe implements PipeTransform {
+  transform(items: UserGroup[], searchText: string): any[] {
+    if (!items) {
+      return [];
+    }
+    if (!searchText) {
+      return items;
+    }
+    searchText = searchText.toLowerCase();
+    return items.filter(it => {
+      return it.groupName.toLowerCase().includes(searchText)
+        || it.permissionScheme.toLowerCase().includes(searchText);
+    });
+  }
 }
 
 @Component({
@@ -18,19 +32,10 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   constructor(protected dialogService: DialogService) {
     super(dialogService);
   }
-  public dataTable: DataTable;
-  userGroup: UserGroup = new UserGroup;
+  public groupUsers: UserGroup[] = [];
 
   ngOnInit() {
-    this.userGroup.groupName = 'a';
-    this.dataTable = {
-      headerRow: ['', 'Group Name', 'Permission Scheme'],
-      footerRow: [],
-      dataRows: [
-        ['Airi Satou', 'Andrew Mike'],
-        ['Angelica Ramos', 'John Doe'],
-      ]
-    };
+
   }
 
   public cancel() {

@@ -1,17 +1,22 @@
 import { Component, OnInit, PipeTransform, Pipe, } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { userConfiguration } from '../user.configuration';
+import { userModuleNavigationRoute } from '../userModuleNavigationRoute';
 import { ModalSize } from '../../shared/ui-common/modal/components/dialog.component';
 import { ExDialog } from '../../shared/ui-common/modal/services/ex-dialog.service';
 import { GroupUserModalComponent } from './component/group-user-modal';
 import { Observable, of } from 'rxjs';
 import { IFilterChangedEvent } from '../../shared/ui-common/datagrid/components/datagrid.component';
+import { User } from '../../shared/models/user.model';
+import { UserService } from './services/user.service';
+import { NotificationService } from '../../shared/services/notification.service';
+import { UserMessages } from './user.message';
+import { TranslateService } from '../../shared/services/translate.service';
 
 @Pipe({
-  name: 'demoFilter'
+  name: 'userFilter'
 })
-export class FilterPipe1 implements PipeTransform {
-  transform(items: DataTable[], searchText: string): any[] {
+export class UserFilterPipe implements PipeTransform {
+  transform(items: User[], searchText: string): any[] {
     if (!items) {
       return [];
     }
@@ -20,20 +25,11 @@ export class FilterPipe1 implements PipeTransform {
     }
     searchText = searchText.toLowerCase();
     return items.filter(it => {
-      return it.customer.toLowerCase().includes(searchText)
-        || it.shipTo.toLowerCase().includes(searchText);
+      return it.username.toLowerCase().includes(searchText)
+        || it.fullname.toLowerCase().includes(searchText)
+        || it.email.toLowerCase().includes(searchText);
     });
   }
-}
-
-export class DataTable {
-  orderNumber: number;
-  purchasedOn: Date;
-  customer: string;
-  shipTo: string;
-  basePrice: number;
-  purchasedPrice: number;
-  status: boolean;
 }
 
 @Component({
@@ -43,40 +39,20 @@ export class DataTable {
 })
 export class UsersComponent implements OnInit {
 
-  public items: DataTable[] = [];
-  public imagePath = 'https://placehold.it/100x100';
-  constructor(
+  public items: User[] = [];
+  constructor(private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
-    private exDialog: ExDialog) { }
+    private exDialog: ExDialog,
+    private notifier: NotificationService,
+    private translateService: TranslateService) { }
 
   ngOnInit(): void {
-    const item1 = new DataTable();
-    item1.orderNumber = 1;
-    item1.basePrice = 5000000;
-    item1.customer = 'Think Digital';
-    item1.purchasedOn = new Date();
-    item1.purchasedPrice = 500000000;
-    item1.shipTo = 'Quan 1';
-    item1.status = true;
-
-    const item2 = new DataTable();
-    item2.orderNumber = 2;
-    item2.basePrice = 6000000;
-    item2.customer = 'SNOB';
-    item2.purchasedOn = new Date();
-    item2.purchasedPrice = 600000000;
-    item2.shipTo = 'Quan go vap';
-    item2.status = false;
-
-    this.items = [item1, item2];
-
+    this.userService.getAllUser().subscribe(users => this.items = users);
   }
 
   public count = (searchKey: string): Observable<number> => {
-    console.log('only should get count when init datagrid of filter changed');
-    // call count method in data service class
-    return of(300);
+    return of(this.items.length);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -85,30 +61,32 @@ export class UsersComponent implements OnInit {
 
   getUserInfomation() { }
 
-  showConfirm() {
-    this.exDialog.openConfirm('User "hieutran" will be permanently deleted. Are you sure want to delete?',
-      'Confirm', ModalSize.Normal)
+  showConfirm(user: User) {
+    const msg = this.translateService.translate(
+      UserMessages.DeleteUserMessage
+    );
+    this.exDialog.openConfirm(msg,
+      'Confirm')
       .subscribe(result => {
         if (result) {
-          alert('Submited');
+          this.userService.deleteUser(user).subscribe(() => { this.notifier.showSuccess('success'); });
         }
       });
   }
 
-  navigateToChangeUserGroup() {
-    // this.router.navigate([userConfiguration.editUserPageUrl]);
-    alert('Redirect to user group page.');
+  navigateToChangeUserGroup(user: User) {
+    this.router.navigate([userModuleNavigationRoute.EDIT_GROUP_PAGE, user.groupname]);
   }
 
   navigateToCreatePage() {
-    this.router.navigate([userConfiguration.createPageUrl], { relativeTo: this.route });
+    this.router.navigate([userModuleNavigationRoute.CREATE_PAGE]);
   }
 
-  navigateToEditPage() {
-    this.router.navigate([userConfiguration.editUserPageUrl]);
+  navigateToEditPage(user: User) {
+    this.router.navigate([userModuleNavigationRoute.EDIT_USER_PAGE, user.id]);
   }
 
-  navigateToUserDetailPage() {
-    this.router.navigate([userConfiguration.userDetailPage], { relativeTo: this.route });
+  navigateToUserDetailPage(user: User) {
+    this.router.navigate([userModuleNavigationRoute.USER_DETAIL_PAGE, user.id]);
   }
 }

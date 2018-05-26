@@ -15,6 +15,9 @@ export class User {
 
   position: string;
 
+  // Name of group user belong to.
+  groupname: string;
+
   // the current login failed attempt
   loginAttempts = 0;
 

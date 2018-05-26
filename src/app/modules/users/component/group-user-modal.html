@@ -1,38 +1,37 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title">Change user group</h5>
+    <h5 class="modal-title" i18n="@@user-detail-change-user-group">Change user group</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
 
   <div class="modal-body card">
-    <p class="text-gray mb-0 ellipsor">15:00 PM Mon, 14 Jan 2018</p>
     <table id="datatables" class="table">
       <thead>
         <tr>
-          <th>{{ dataTable.headerRow[0] }}</th>
-          <th>{{ dataTable.headerRow[1] }}</th>
-          <th>{{ dataTable.headerRow[2] }}</th>
+          <th></th>
+          <th i18n="@@users-group-name">Group Name</th>
+          <th i18n="@@users-permission-scheme">Permission Scheme</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of dataTable.dataRows">
+        <tr *ngFor="let group of groupUsers">
           <td>
             <input class="checkbox" type="checkbox">
           </td>
           <td>
-            asdf
+            {{group.groupName}}
           </td>
           <td>
-            asdf
+            {{group.permissionScheme}}
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
-    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="submit()" i18n="@@group-user-modal-ok">Ok</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@group-user-modal-cancel">Cancel</button>
   </div>
 </div>

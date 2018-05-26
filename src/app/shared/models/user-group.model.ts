@@ -1,6 +1,7 @@
 
 export class UserGroup {
-     id: number;
+     id: string;
      groupName: string;
-     permissonScheme: string;
+     permissionSchemeId: string;
+     permissionScheme: string;
 }
