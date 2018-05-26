@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit {
     }
 
     navigateToCreatePage() {
-        this.router.navigate([USER_CONFIGURATION.ROUTES.CREATE_USER], { relativeTo: this.route });
+        this.router.navigate([USER_CONFIGURATION.CREATE_USER_PAGE], { relativeTo: this.route });
     }
 
     // tslint:disable-next-line:use-life-cycle-interface

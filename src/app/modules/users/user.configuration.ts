@@ -1,8 +1,6 @@
 export const USER_CONFIGURATION = {
-    ROUTES: {
-        USERS: 'users',
-        CREATE_USER: 'users/create-user',
-        EDIT_USER: 'users/edit-user',
-        DETAIL_USER: 'users/user-detail'
-    }
+    USERS_PAGE: 'users',
+    CREATE_USER_PAGE: 'create',
+    EDIT_USER_PAGE: 'edit/',
+    DETAIL_USER_PAGE: 'users/user-detail'
 };

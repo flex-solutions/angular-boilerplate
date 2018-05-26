@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { AccountRoutingModule } from './account-routing.module';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
@@ -18,4 +18,4 @@ import { environment } from '../../../environments/environment';
   ],
   declarations: [LoginComponent]
 })
-export class AccountModule {}
+export class AccountModule { }

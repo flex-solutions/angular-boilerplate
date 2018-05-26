@@ -1,7 +1,5 @@
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
-import { AccountRoutingModule } from './modules/account/account-routing.module';
-import { AccountModule } from './modules/account/account.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, TRANSLATIONS, LOCALE_ID } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
@@ -9,8 +7,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { i18nFactory } from './i18n.factory';
-import { UsersModule } from './modules/users/users.module';
-import { UsersRoutingModule } from './modules/users/users-routing.module';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
@@ -28,10 +24,6 @@ import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    AccountModule,
-    AccountRoutingModule,
-    UsersModule,
-    UsersRoutingModule,
     DemoModule,
     DemoRoutingModule,
     ModalDemoModule,
@@ -50,4 +42,4 @@ import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,17 +1,17 @@
-import { AuthenticationService } from './../../../shared/services/authentication.service';
-import { NavigateConstant } from './../../../shared/constants/navigate.constant';
+import { AuthenticationService } from './../../../../shared/services/authentication.service';
+import { NavigateConstant } from './../../../../shared/constants/navigate.constant';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
+import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TranslateService } from '../../../shared/services/translate.service';
-import { GenericValidator, IValidationMessage } from '../../../shared/validation/generic-validator';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
 import { InvisibleReCaptchaComponent } from 'ngx-captcha';
-import { AccountMessages } from '../account.message';
-import { SignedUser } from '../../../shared/models/user.model';
-import { HttpExceptionResponse } from '../../../shared/models/http-exception-response.model';
-import { AuthenticationResponse } from '../../../shared/models/authentication.model';
-import { AuthenticationTokenHelper } from '../../../utilities/authentication-token';
+import { AccountMessages } from '../../account.message';
+import { SignedUser } from '../../../../shared/models/user.model';
+import { HttpExceptionResponse } from '../../../../shared/models/http-exception-response.model';
+import { AuthenticationResponse } from '../../../../shared/models/authentication.model';
+import { AuthenticationTokenHelper } from '../../../../utilities/authentication-token';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

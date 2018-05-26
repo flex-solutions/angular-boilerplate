@@ -85,7 +85,7 @@ export class CreateUserComponent extends UserModificationBase {
     if (createOtherAsString === 'true') {
       this.resetForm();
     } else {
-      this.router.navigate([USER_CONFIGURATION.ROUTES.USERS]);
+      this.router.navigate([USER_CONFIGURATION.USERS_PAGE]);
     }
   }
 }
