@@ -285,7 +285,7 @@
       </trans-unit>
       <trans-unit id="user-detail-delete-user" datatype="html">
         <source>Delete user</source>
-        <target>Xóa người dùng</target>
+        <target>Xóa user</target>
       </trans-unit>
       <!-- End User detail -->
 
@@ -323,23 +323,23 @@
       </trans-unit>
       <trans-unit id="users-fullname" datatype="html">
         <source>Full Name</source>
-        <target>Họ và Tên</target>
+        <target>Tên Đầy Đủ</target>
       </trans-unit>
       <trans-unit id="users-username" datatype="html">
         <source>Username</source>
-        <target>Tài khoản</target>
+        <target>Tên Đăng Nhập</target>
       </trans-unit>
       <trans-unit id="users-login-details" datatype="html">
         <source>Login Details</source>
-        <target>Chi tiết đăng nhập</target>
+        <target>Thông Tin Đăng Nhập</target>
       </trans-unit>
       <trans-unit id="users-group-name" datatype="html">
         <source>Group Name</source>
-        <target>Tên nhóm</target>
+        <target>Nhóm User</target>
       </trans-unit>
       <trans-unit id="users-status" datatype="html">
         <source>Status</source>
-        <target>Trạng thái</target>
+        <target>Tình Trạng</target>
       </trans-unit>
       <trans-unit id="users-actions" datatype="html">
         <source>Actions</source>
@@ -349,9 +349,9 @@
         <source>Count: </source>
         <target>Số lượng: </target>
       </trans-unit>
-      <trans-unit id="users-list" datatype="html">
-        <source>List: </source>
-        <target>Danh sách: </target>
+      <trans-unit id="users-last" datatype="html">
+        <source>Last: </source>
+        <target>Lần cuối: </target>
       </trans-unit>
       <trans-unit id="users-edit" datatype="html">
         <source>Edit</source>
@@ -360,6 +360,10 @@
       <trans-unit id="users-permission-scheme" datatype="html">
         <source>Permission Scheme</source>
         <target>Cấu trúc phân quyền</target>
+      </trans-unit>
+      <trans-unit id="users-edit-user-group" datatype="html">
+        <source>Edit user groups</source>
+        <target>Sửa nhóm user</target>
       </trans-unit>
       <!-- Users -->
 

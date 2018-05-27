@@ -347,9 +347,9 @@
         <source>Count: </source>
         <target>Count: </target>
       </trans-unit>
-      <trans-unit id="users-list" datatype="html">
-        <source>List: </source>
-        <target>List: </target>
+      <trans-unit id="users-last" datatype="html">
+        <source>Last: </source>
+        <target>Last: </target>
       </trans-unit>
       <trans-unit id="users-edit" datatype="html">
         <source>Edit</source>
@@ -358,6 +358,10 @@
       <trans-unit id="users-permission-scheme" datatype="html">
         <source>Permission Scheme</source>
         <target>Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="users-edit-user-group" datatype="html">
+        <source>Edit user groups</source>
+        <target>Edit user groups</target>
       </trans-unit>
       <!-- Users -->
 
