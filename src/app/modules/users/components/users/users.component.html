@@ -40,11 +40,11 @@
               <td>
                 <div>
                   <strong class="dropdown" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}</div>
-                <strong class="dropdown" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin}}
+                <strong class="dropdown" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
               </td>
               <td class="change-color">{{item.groupname}}</td>
               <td>
-                <label class="badge badge-info">{{item.status}}</label>
+                <label class="badge badge-success">{{item.isLocked}}</label>
               </td>
               <td>
                 <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">

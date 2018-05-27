@@ -8,13 +8,14 @@ import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { UsersComponent, UserFilterPipe } from './components/users/users.component';
+import { UsersComponent } from './components/users/users.component';
 import { GroupUserModalComponent, GroupFilterPipe } from './components/group-user/group-user-modal';
+import { UserFilterPipe, SatusPipe } from './components/users/custom.pipe';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
   declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent, GroupUserModalComponent,
-    UserFilterPipe, GroupFilterPipe],
+    UserFilterPipe, GroupFilterPipe, SatusPipe],
   providers: [UserService]
 })
 export class UsersModule { }

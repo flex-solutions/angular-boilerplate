@@ -9,26 +9,6 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
 
-@Pipe({
-  name: 'userFilter'
-})
-export class UserFilterPipe implements PipeTransform {
-  transform(items: User[], searchText: string): any[] {
-    if (!items) {
-      return [];
-    }
-    if (!searchText) {
-      return items;
-    }
-    searchText = searchText.toLowerCase();
-    return items.filter(it => {
-      return it.username.toLowerCase().includes(searchText)
-        || it.fullname.toLowerCase().includes(searchText)
-        || it.email.toLowerCase().includes(searchText);
-    });
-  }
-}
-
 @Component({
   moduleId: module.id,
   selector: 'app-users',
