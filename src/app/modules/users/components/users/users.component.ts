@@ -45,11 +45,15 @@ export class UsersComponent implements OnInit {
     private translateService: TranslateService) { }
 
   ngOnInit(): void {
-    this.userService.getAllUser().subscribe(users => this.items = users);
+    this.loadData();
   }
 
   public count = (searchKey: string): Observable<number> => {
     return of(this.items.length);
+  }
+
+  loadData() {
+    this.userService.getAllUser().subscribe(users => this.items = users);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -58,6 +62,8 @@ export class UsersComponent implements OnInit {
 
   async deleteUser(user: User) {
     await this.userService.remove(user);
+
+    this.loadData();
   }
 
 
