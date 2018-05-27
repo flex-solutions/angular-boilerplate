@@ -110,7 +110,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   }
 
   private onHandleException(httpException: HttpExceptionResponse) {
-    if (httpException.message.message) {
+    if (httpException.hasOwnProperty('message') && httpException.message.message) {
       const errorMsg = httpException.message.message.content[this.translateService.currentLocale];
       this.loginError = errorMsg;
     }

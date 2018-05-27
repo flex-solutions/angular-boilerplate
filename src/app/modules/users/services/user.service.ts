@@ -39,44 +39,11 @@ export class UserService extends AbstractRestService {
   }
 
   getAllUser(): Observable<User[]> {
-    // Just 4 test
-    const user = new User;
-    user._id = 'sdjf';
-    user.fullname = 'Hieu Trung Tran';
-    user.username = 'hieutran';
-    user.email = 'hieutran@abc.com';
-    user.avatar = 'https://placehold.it/100x100';
-    user.position = 'Software Engineering';
-
-    const users: User[] = [];
-    users.push(user);
-    users.push(user);
-
-    return of(users);
-    // return this.get<User[]>('users').pipe();
+    return this.get<User[]>('');
   }
 
   // Handle get user by email.
   getUserById(userId: string): Observable<User> {
-    // Mock
-    const url = `$''/${userId}`;
-    const user = new User;
-    user._id = '1';
-    user.fullname = 'Hieu Trung Tran';
-    user.username = 'hieutran';
-    user.email = 'hieutran@abc.com';
-    user.avatar = 'https://placehold.it/100x100';
-    user.position = 'Software Engineering';
-    // return this.http.get<User>(url).pipe();
-    return of(user).pipe();
+    return this.get<User>(userId);
   }
-
-  // Handle delete user.
-  deleteUser(user: User): Observable<User> {
-    // Just 4 test
-    const url = `$''/${user._id}`;
-    return this.delete<User>(url, user).pipe();
-  }
-
-
 }

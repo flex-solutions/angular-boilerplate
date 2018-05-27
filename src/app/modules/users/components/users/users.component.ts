@@ -58,17 +58,8 @@ export class UsersComponent implements OnInit {
 
   getUserInfomation() { }
 
-  showConfirm(user: User) {
-    const msg = this.translateService.translate(
-      UserMessages.DeleteUserMessage
-    );
-    this.exDialog.openConfirm(msg,
-      'Confirm')
-      .subscribe(result => {
-        if (result) {
-          this.userService.deleteUser(user).subscribe(() => { this.notifier.showSuccess('success'); });
-        }
-      });
+  async deleteUser(user: User) {
+    await this.userService.remove(user);
   }
 
   navigateToChangeUserGroup(user: User) {

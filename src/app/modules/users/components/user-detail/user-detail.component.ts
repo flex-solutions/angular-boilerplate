@@ -37,11 +37,7 @@ export class UserDetailComponent implements OnInit {
 
   // Handle delete user.
   deleteUser() {
-    // Just 4 test
-    this.userService.deleteUser(this.userdetail).subscribe(() => {
-      this.goBack();
-      this.notifier.showSuccess('success');
-    });
+    this.userService.remove(this.userdetail);
   }
 
   // Handle change user group.
@@ -51,7 +47,7 @@ export class UserDetailComponent implements OnInit {
 
   // Handle navigate to Edit user page.
   navigateToEditPage() {
-    this.router.navigate([UserNavigationRoute.EDIT_USER_PAGE], { relativeTo: this.route });
+    this.router.navigate([UserNavigationRoute.EDIT_USER_PAGE, this.userdetail._id]);
   }
 
   private goBack() {

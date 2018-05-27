@@ -1,8 +1,8 @@
 const UserNavigationRoute = {
     EDIT_GROUP_PAGE: '.usergroup/update',
-    CREATE_PAGE: './create',
-    EDIT_USER_PAGE: './update',
-    USER_DETAIL_PAGE: '../user-detail',
+    CREATE_PAGE: 'users/create',
+    EDIT_USER_PAGE: 'users/update/',
+    USER_DETAIL_PAGE: 'users/user-detail',
     USERS_PAGE: 'users'
 };
 
