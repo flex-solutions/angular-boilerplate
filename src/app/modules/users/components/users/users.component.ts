@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit {
   }
 
   public count = (searchKey: string): Observable<number> => {
-    return of(this.items.length);
+    return of(10);
   }
 
   loadData() {

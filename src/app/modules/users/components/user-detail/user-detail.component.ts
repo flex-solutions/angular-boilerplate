@@ -25,13 +25,18 @@ export class UserDetailComponent implements OnInit {
 
   // Init user detail component
   ngOnInit() {
-    this.getUserInfomation();
+    const userId = this.route.snapshot.params['id'];
+    if (userId) {
+      this.getUserInfomation(userId);
+    }
   }
 
   // Handle get user detail information.
-  getUserInfomation() {
-    if (this.userdetail !== null) {
-      this.userService.getUserById(this.userdetail._id).subscribe(user => this.userdetail = user);
+  getUserInfomation(userId: string) {
+    if (userId !== null) {
+      this.userService.getUserById(userId).subscribe(user => {
+        this.userdetail = user;
+      });
     }
   }
 
@@ -50,7 +55,12 @@ export class UserDetailComponent implements OnInit {
     this.router.navigate([UserNavigationRoute.EDIT_USER_PAGE, this.userdetail._id]);
   }
 
+  navigateToUserDetailPage(user: User) {
+    this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
+  }
+
   private goBack() {
     this.location.back();
   }
+
 }

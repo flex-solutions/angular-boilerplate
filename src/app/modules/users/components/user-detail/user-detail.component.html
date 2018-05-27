@@ -5,13 +5,14 @@
       <div class="ml-3 col-md-9">
         <h6>{{userdetail.fullname}}</h6>
         <p class="text-muted">{{userdetail.username}}</p>
-        <p class="text-muted none-lineheight">{{userdetail.email}}</p>
+        <a href="mailto:{{userdetail.email}}"><p class="text-muted none-lineheight">{{userdetail.email}}</p></a>
         <p class="mt-2 text-success font-weight-bold">{{userdetail.position}}</p>
       </div>
 
       <div class="ml-3">
-        <button type="button" class="btn btn-primary btn-sm none-underline" (click)="navigateToEditPage()" i18n="@@user-detail-edit-btn">
-          <i class="mdi mdi-pencil" aria-hidden="false"></i>Edit User
+        <button type="button" class="btn btn-primary btn-sm none-underline" (click)="navigateToEditPage()">
+          <i class="mdi mdi-pencil" aria-hidden="false"></i>
+          <span i18n="@@user-detail-edit-btn">Edit User</span>
         </button>
 
         <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
