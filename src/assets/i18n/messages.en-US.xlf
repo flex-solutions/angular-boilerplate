@@ -375,6 +375,21 @@
         <target>Are you sure you want to log out SNOB CMS?</target>
       </trans-unit>
       <!--End Logout-->
+
+      <!--Delete user-->
+      <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
+        <source>User {{0}} will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User {{0}} will be permanently deleted. Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-notification_message" datatype="html">
+        <source>Delete user {{0}} successfully</source>
+        <target>Delete user {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-delete_action" datatype="html">
+        <source>Delete user</source>
+        <target>Delete user</target>
+      </trans-unit>
+      <!--End Delete user-->
     </body>
   </file>
 </xliff>

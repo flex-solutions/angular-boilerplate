@@ -377,6 +377,21 @@
         <target>Bạn có chắc muốn đăng xuất SNOB CMS?</target>
       </trans-unit>
       <!--End Logout-->
+
+      <!--Delete user-->
+      <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
+        <source>User {{0}} will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User {{0}} sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-notification_message" datatype="html">
+        <source>Delete user {{0}} successfully</source>
+        <target>Xóa user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-delete_action" datatype="html">
+        <source>Delete user</source>
+        <target>Xóa user</target>
+      </trans-unit>
+      <!--End Delete user-->
     </body>
   </file>
 </xliff>
