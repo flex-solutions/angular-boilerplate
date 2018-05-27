@@ -28,7 +28,7 @@ export class TranslateService {
     }
   }
 
-  translateWithParams(resourceKey: string, params) {
+  translateWithParams(resourceKey: string, ...params) {
     const value = this.translate(resourceKey);
     return StringExtension.format(value, params);
   }
