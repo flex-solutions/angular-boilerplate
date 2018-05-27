@@ -56,10 +56,17 @@ export class UsersComponent implements OnInit {
     console.log(eventArg);
   }
 
-  getUserInfomation() { }
-
-  async deleteUser(user: User) {
-    await this.userService.remove(user);
+  showConfirm(user: User) {
+    const msg = this.translateService.translate(
+      UserMessages.DeleteUserMessage
+    );
+    this.exDialog.openConfirm(msg,
+      'Confirm')
+      .subscribe(result => {
+        if (result) {
+          this.userService.deleteUser(user).subscribe(() => { this.notifier.showSuccess('success'); });
+        }
+      });
   }
 
   navigateToChangeUserGroup(user: User) {
