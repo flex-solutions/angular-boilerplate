@@ -1,3 +1,4 @@
+import { PubSubClientModule } from './pubsub.client/pubsub-client.module';
 import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from './layout/layout.module';
