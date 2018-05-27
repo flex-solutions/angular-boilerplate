@@ -1,3 +1,5 @@
+import { NotificationService } from './shared/services/notification.service';
+import { IPubSubConfig, PubSubConfigService } from './shared/pubsub.client/config';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { AccountRoutingModule } from './modules/account/account-routing.module';
@@ -19,6 +21,8 @@ import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.
 import { DatagridDemoRoutingModule } from './modules/datagrid-demo/datagrid-demo-routing.module';
 import { DatagridModule } from './shared/ui-common/datagrid/datagrid.module';
 import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module';
+import { PubSubClientModule } from './shared/pubsub.client/pubsub-client.module';
+import { NotificationChannelFactory } from './shared/pubsub.client/core/factory';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +41,8 @@ import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module
     ModalDemoModule,
     ModalDemoRoutingModule,
     DatagridDemoRoutingModule,
-    DatagridDemoModule
+    DatagridDemoModule,
+    PubSubClientModule
   ],
   providers: [
     {
@@ -50,4 +55,13 @@ import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(pubsubConfigService: PubSubConfigService,
+    private notificationChannelFactory: NotificationChannelFactory) {
+    // Set config for pubsub
+    const pubsubConfig: IPubSubConfig = { host: environment.host };
+    pubsubConfigService.config = pubsubConfig;
+    // Host a subscriber
+    notificationChannelFactory.host();
+  }
+}
