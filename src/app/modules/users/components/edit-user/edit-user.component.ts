@@ -7,6 +7,7 @@ import { User } from '../../../../shared/models/user.model';
 import { Location } from '@angular/common';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { UserMessages } from '../../users.constant';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
@@ -18,8 +19,15 @@ export class EditUserComponent extends UserModificationBase {
     translateService: TranslateService,
     private readonly userService: UserService,
     private readonly notificationService: NotificationService,
-    private location: Location) {
+    private location: Location,
+    private activatedRoute: ActivatedRoute,
+  ) {
     super(fb, translateService);
+    // Detect page is update mode
+    const userId = this.activatedRoute.snapshot.params['id'];
+    if (userId) {
+      this.getUser(userId);
+    }
   }
 
   protected onCreateUserForm() {
@@ -31,9 +39,14 @@ export class EditUserComponent extends UserModificationBase {
       ],
       fullname: ['', [Validators.required]],
       username: ['', [Validators.required]],
-      isActive: ['', []]
+      isActive: ['', []],
+      branchId: ['', []],
     });
+
+    // Load user data into form
   }
+
+
 
   protected onSubmit() {
     // Update new value
@@ -55,5 +68,20 @@ export class EditUserComponent extends UserModificationBase {
 
   protected onCancel() {
     this.location.back();
+  }
+
+  private getUser(userId: string) {
+    this.userService.getUserById(userId).subscribe(user => {
+      this.user = new User();
+      Object.assign(this.user, user);
+      this.formGroup.patchValue({
+        email: this.user.email,
+        fullname: this.user.fullname,
+        username: this.user.username,
+        isActive: true,
+        branchId: this.user.branch_id
+      });
+      this.branch.id = this.user.branch_id !== null ? this.user.branch_id : 'HO';
+    });
   }
 }

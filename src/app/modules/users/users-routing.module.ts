@@ -28,7 +28,7 @@ const userRoutes: Routes = [
     }
   },
   {
-    path: 'user-detail',
+    path: 'user/:id',
     component: UserDetailComponent,
     data: {
       breadcrumb: 'View User Detail'
