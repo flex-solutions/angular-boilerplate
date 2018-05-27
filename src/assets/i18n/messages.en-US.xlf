@@ -245,6 +245,10 @@
       <!-- End Notification -->
 
       <!-- User detail -->
+      <trans-unit id="user-detail-view-user-detail" datatype="html">
+        <source>View User Detail</source>
+        <target>View User Detail</target>
+      </trans-unit>
       <trans-unit id="user-detail-edit-btn" datatype="html">
         <source>Edit User</source>
         <target>Edit User</target>
