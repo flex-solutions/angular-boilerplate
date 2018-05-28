@@ -26,6 +26,10 @@
         <source>User Management</source>
         <target>User Management</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
+        <source>User Groups</source>
+        <target>User Groups</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -394,6 +398,79 @@
         <target>Delete user {{0}} successfully</target>
       </trans-unit>
       <!--End Delete user-->
+
+      <!-- Global -->
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+
+      <!-- User Group -->
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
+        <source>Create User Group</source>
+        <target>Create User Group</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_desc" datatype="html">
+        <source>Create a new user group with basic information</source>
+        <target>Create a new user group with basic information</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_user_group_title" datatype="html">
+        <source>Update User Group</source>
+        <target>Update User Group</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-update_user_group_desc" datatype="html">
+        <source>Update user group with basic information</source>
+        <target>Update user group with basic information</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_label" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_placeholder" datatype="html">
+        <source>Enter Group Name</source>
+        <target>Enter Group Name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_label" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_placeholder" datatype="html">
+        <source>Enter Description</source>
+        <target>Enter description</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_another_field_label" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_required" datatype="html">
+        <source>Please provide group name</source>
+        <target>Please provide group name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_unique" datatype="html">
+        <source>Group "{{0}}" is duplicated</source>
+        <target>Group "{{0}}" is duplicated</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ok" datatype="html">
+        <source>Create user group {{0}} successfully</source>
+        <target>Create user group {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ng" datatype="html">
+        <source>Create user group {{0}} failed</source>
+        <target>Create user group {{0}} failed</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
+        <source>Update user group {{0}} successfully</source>
+        <target>Update user group {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
+        <source>Update user group {{0}} failed</source>
+        <target>Update user group {{0}} failed</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -26,6 +26,10 @@
         <source>User Management</source>
         <target>Quản Lý User</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
+        <source>User Management</source>
+        <target>Quản Lý Nhóm User</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -400,6 +404,79 @@
         <target>Xóa user {{0}} thành công</target>
       </trans-unit>
       <!--End Delete user-->
+
+      <!-- Global -->
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+
+      <!-- User Group -->
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
+        <source>Create User Group</source>
+        <target>Tạo nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_desc" datatype="html">
+        <source>Create a new user group with basic information</source>
+        <target>Tạo nhóm user với những thông tin cơ bản</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_user_group_title" datatype="html">
+        <source>Update User Group</source>
+        <target>Cập nhật nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-update_user_group_desc" datatype="html">
+        <source>Update user group with basic information</source>
+        <target>Cập nhật nhóm User với thông tin cơ bản</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_label" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_placeholder" datatype="html">
+        <source>Enter Group Name</source>
+        <target>Nhập tên nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_label" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_placeholder" datatype="html">
+        <source>Enter Description</source>
+        <target>Nhập vào mô tả</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_another_field_label" datatype="html">
+        <source>Create another</source>
+        <target>Tạo nhóm user khác</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_required" datatype="html">
+        <source>Please provide group name</source>
+        <target>Vui lòng nhập tên nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_unique" datatype="html">
+        <source>Group "{{0}}" is duplicated</source>
+        <target>Nhóm user "{{0}}" đã có</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ok" datatype="html">
+        <source>Create user group {{0}} successfully</source>
+        <target>Tạo nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ng" datatype="html">
+        <source>Create user group {{0}} failed</source>
+        <target>Tạo nhóm user {{0}} thất bại</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
+        <source>Update user group {{0}} successfully</source>
+        <target>Cập nhật nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
+        <source>Update user group {{0}} failed</source>
+        <target>Cập nhật nhóm user {{0}} thất bại</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

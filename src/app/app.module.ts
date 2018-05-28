@@ -19,6 +19,9 @@ import { DatagridModule } from './shared/ui-common/datagrid/datagrid.module';
 import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module';
 import { PubSubClientModule } from './shared/pubsub.client/pubsub-client.module';
 import { NotificationChannelFactory } from './shared/pubsub.client/core/factory';
+import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
+import { UserGroupsModule } from './modules/user-groups/usergroup.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +37,9 @@ import { NotificationChannelFactory } from './shared/pubsub.client/core/factory'
     ModalDemoRoutingModule,
     DatagridDemoRoutingModule,
     DatagridDemoModule,
-    PubSubClientModule
+    PubSubClientModule,
+    UserGroupsRoutingModule,
+    UserGroupsModule,
   ],
   providers: [
     {
@@ -43,7 +48,7 @@ import { NotificationChannelFactory } from './shared/pubsub.client/core/factory'
       deps: [LOCALE_ID]
     },
     ApplicationConfigurationService,
-    AuthenticationService
+    AuthenticationService,
   ],
   bootstrap: [AppComponent]
 })
