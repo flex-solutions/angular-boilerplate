@@ -78,7 +78,7 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
       this.userGroupService.getById(this.userGroupId).subscribe(
         (value: UserGroup) => {
           if (value) {
-            this.groupname.setValue(value.group_name);
+            this.groupname.setValue(value.name);
             this.description.setValue(value.description);
           } else {
             // Navigate to home if user group not found
@@ -105,15 +105,11 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
           // * Create user successful, display success notification
           const msg = this.getMessage(
             Errors.Create_User_Group_Sucess,
-            this.userGroup.group_name
+            this.userGroup.name
           );
 
           this.notificationService.showSuccess(msg);
           this.doPostAction();
-        },
-        error => {
-          // * Failed to create user
-          this.notificationService.showError(error);
         }
       );
     } else {
@@ -122,15 +118,10 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
           // * Create user successful, display success notification
           const msg = this.getMessage(
             Errors.Edit_User_Group_Success,
-            this.userGroup.group_name
+            this.userGroup.name
           );
 
           this.notificationService.showSuccess(msg);
-          this.doPostAction();
-        },
-        error => {
-          // * Failed to create user
-          this.notificationService.showError(error);
         }
       );
     }

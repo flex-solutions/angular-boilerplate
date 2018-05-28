@@ -1,9 +1,9 @@
 export class UserGroup {
-  id: string;
-  group_name: string;
+  _id: string;
+  name: string;
   description: string;
-  users: number[];
-  schema_id: number;
+  users: string[];
+  permissionScheme: string;
 }
 
 export class UserGroupScheme {
