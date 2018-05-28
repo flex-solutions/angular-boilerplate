@@ -9,7 +9,7 @@ const userGroupRoutes: Routes = [
     path: '',
     component: UserGroupHomeComponent,
     data: {
-      breadcrumb: 'User Group'
+      breadcrumb: 'User Groups'
     },
     children: [
     ]

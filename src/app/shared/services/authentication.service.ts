@@ -95,6 +95,12 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   getCurrentUser(): BasicUserInfo {
-    return AuthenticationTokenHelper.localUserInfo;
+    const userInfo = AuthenticationTokenHelper.localUserInfo;
+    if (userInfo) {
+      return userInfo;
+    }
+
+    const info: BasicUserInfo = {_id: '', email: '', username: '', branch_id: '', avatar: '', fullname: '' };
+    return info;
   }
 }

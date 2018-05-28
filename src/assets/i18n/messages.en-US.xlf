@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
 
     <body>
@@ -41,7 +42,7 @@
         <target>Cancel</target>
       </trans-unit>
 
-            <!--Datagrid-->
+      <!--Datagrid-->
       <trans-unit id="dg-entries-info" datatype="html">
         <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
         <target>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</target>
@@ -377,7 +378,7 @@
       </trans-unit>
       <!-- Users -->
 
-       <!--Logout-->
+      <!--Logout-->
       <trans-unit id="account-logout-dialog-confirm_title" datatype="html">
         <source>Confirm</source>
         <target>Confirm</target>
@@ -470,6 +471,39 @@
       <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
         <source>Update user group {{0}} failed</source>
         <target>Update user group {{0}} failed</target>
+      </trans-unit>
+      <!--Usergroup list-->
+      <trans-unit id="user_groups-list-tbl-title" datatype="html">
+        <source>User Groups</source>
+        <target>User Groups</target>
+      </trans-unit>
+       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+        <source>Create User Group</source>
+        <target>Create User Group</target>
+      </trans-unit
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Search by group name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-user-count" datatype="html">
+        <source>Users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Permission Schemen</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
+        <source>Edit members</source>
+        <target>Edit members</target>
       </trans-unit>
     </body>
   </file>

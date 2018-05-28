@@ -18,7 +18,7 @@
             <div class="form-group">
               <label for="groupname" i18n="@@user_groups-create_user_group-group_name_field_label">Group Name </label>
               <label class="require">*</label>
-              <input [(ngModel)]="userGroup.name" required id="groupname" class="form-control" formControlName="groupname" type="text"
+              <input [(ngModel)]="userGroup.groupName" required id="groupname" class="form-control" formControlName="groupname" type="text"
                 i18n-placeholder="@@user_groups-create_user_group-group_name_field_placeholder" [ngClass]="{'has-danger': groupname.invalid && (groupname.dirty || groupname.touched) }"
                 placeholder="Enter Group Name">
               <div class="form-control-feedback" *ngFor="let error of errors.groupname">
