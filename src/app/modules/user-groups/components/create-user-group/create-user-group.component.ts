@@ -7,13 +7,14 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { UserGroup } from '../../../../shared/models/user-group.model';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { UserGroupService } from '../../services/usergroup.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { Errors } from '../../errors/errors';
+import { RouteNames } from '../../constants/user-groups.constant';
 
 @Component({
   selector: 'app-create-edit-user-group',
@@ -52,11 +53,12 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
 
   constructor(
     private location: Location,
-    protected formbuilder: FormBuilder,
-    protected translateService: TranslateService,
-    protected userGroupService: UserGroupService,
+    private formbuilder: FormBuilder,
+    private translateService: TranslateService,
+    private userGroupService: UserGroupService,
     private notificationService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     super();
   }
@@ -75,8 +77,13 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
     if (this.editMode) {
       this.userGroupService.getById(this.userGroupId).subscribe(
         (value: UserGroup) => {
-          this.groupname.setValue(value.groupName);
-          this.description.setValue(value.description);
+          if (value) {
+            this.groupname.setValue(value.group_name);
+            this.description.setValue(value.description);
+          } else {
+            // Navigate to home if user group not found
+            this.router.navigate([RouteNames.HOME]);
+          }
         },
         error => this.notificationService.showError(error)
       );
