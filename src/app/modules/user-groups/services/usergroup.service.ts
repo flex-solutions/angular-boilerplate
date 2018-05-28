@@ -15,11 +15,11 @@ export class UserGroupService extends AbstractRestService {
   }
 
   public create(usergroup: UserGroup) {
-    return this.post('create', usergroup);
+    return this.post('', usergroup);
   }
 
   public update(usergroup: UserGroup) {
-    return this.put(`update/${usergroup.id}`, usergroup);
+    return this.put(usergroup.id, usergroup);
   }
 
   public delete(_id: string) {
@@ -27,6 +27,6 @@ export class UserGroupService extends AbstractRestService {
   }
 
   public getById(_id: string) {
-    return this.get(`${_id}`);
+    return this.get(_id);
   }
 }
