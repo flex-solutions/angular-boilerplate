@@ -22,4 +22,8 @@ export class SidebarComponent implements OnInit {
   navigateToUsersPage() {
     this.router.navigate(['/users'], { relativeTo: this.route });
   }
+
+  navigateToUserGroupsPage() {
+    this.router.navigate(['/user-groups'], { relativeTo: this.route });
+  }
 }
