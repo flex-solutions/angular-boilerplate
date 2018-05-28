@@ -33,7 +33,7 @@ export class UserGroupHomeComponent implements OnInit {
     });
   }
 
-  navigate() {
+  createNewUserGroup() {
     this.router.navigate([RouteNames.CREATE]);
   }
 }

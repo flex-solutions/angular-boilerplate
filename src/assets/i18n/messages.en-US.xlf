@@ -477,6 +477,10 @@
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
+       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+        <source>Create User Group</source>
+        <target>Create User Group</target>
+      </trans-unit
       <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
         <source>Search by group name</source>
         <target>Search by group name</target>

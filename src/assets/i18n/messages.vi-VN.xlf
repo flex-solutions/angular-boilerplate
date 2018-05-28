@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
 
     <body>
@@ -189,7 +190,7 @@
         <source>Update</source>
         <target>Cập Nhật</target>
       </trans-unit>
-       <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
+      <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
         <source>Edit user successfully</source>
         <target>Cập nhật user thành công</target>
       </trans-unit>
@@ -481,6 +482,10 @@
       <trans-unit id="user_groups-list-tbl-title" datatype="html">
         <source>User Groups</source>
         <target>Nhóm User	</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+        <source>Create User Group</source>
+        <target>Tạo Nhóm User</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
         <source>Search by group name</source>
