@@ -20,17 +20,22 @@ export class UserService extends AbstractRestService {
     return this.put(user._id, user);
   }
 
-  async remove(user: User) {
-    const confirmMsg = this.translateService.translateWithParams('users-delete-dialog-confirm_message', user.username);
-    await this.exDialog.openConfirm(confirmMsg).subscribe(result => {
-      if (result) {
-        // Submit button has clicked
-        this.delete(user._id, user._id).subscribe(res => {
-          // Show confirm message when delete success
-          const notificationMsg = this.translateService.translateWithParams('users-delete-dialog-notification_message', user.username);
-          this.notifier.showSuccess(notificationMsg);
-        });
-      }
+  remove(user: User) {
+    return new Promise((resolve, reject) => {
+      const confirmMsg = this.translateService.translateWithParams('users-delete-dialog-confirm_message', user.username);
+      this.exDialog.openConfirm(confirmMsg).subscribe(result => {
+        if (result) {
+          // Submit button has clicked
+          this.delete(user._id, user._id).subscribe(res => {
+            // Show confirm message when delete success
+            const notificationMsg = this.translateService.translateWithParams('users-delete-dialog-notification_message', user.username);
+            this.notifier.showSuccess(notificationMsg);
+            resolve(true);
+          });
+        } else {
+          reject(false);
+        }
+      });
     });
   }
 
