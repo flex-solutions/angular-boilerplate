@@ -110,10 +110,6 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
 
           this.notificationService.showSuccess(msg);
           this.doPostAction();
-        },
-        error => {
-          // * Failed to create user
-          this.notificationService.showError(error);
         }
       );
     } else {
@@ -126,11 +122,6 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
           );
 
           this.notificationService.showSuccess(msg);
-          this.doPostAction();
-        },
-        error => {
-          // * Failed to create user
-          this.notificationService.showError(error);
         }
       );
     }

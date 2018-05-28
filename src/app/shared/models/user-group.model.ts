@@ -1,8 +1,7 @@
 export class UserGroup {
-  id: string;
+  _id: string;
   groupName: string;
   description: string;
-  users: number[];
   permisionScheme: any;
   userCount: number;
 }

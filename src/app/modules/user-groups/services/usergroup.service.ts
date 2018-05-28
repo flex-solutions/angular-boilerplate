@@ -19,7 +19,7 @@ export class UserGroupService extends AbstractRestService {
   }
 
   public update(usergroup: UserGroup) {
-    return this.put(usergroup.id, usergroup);
+    return this.put(usergroup._id, usergroup);
   }
 
   public delete(_id: string) {
