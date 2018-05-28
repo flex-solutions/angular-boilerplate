@@ -360,7 +360,7 @@
       </trans-unit>
       <trans-unit id="users-actions" datatype="html">
         <source>Actions</source>
-        <target>Hành động</target>
+        <target>Actions</target>
       </trans-unit>
       <trans-unit id="users-count" datatype="html">
         <source>Count: </source>

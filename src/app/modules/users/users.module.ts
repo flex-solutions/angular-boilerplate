@@ -10,12 +10,11 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { UsersComponent } from './components/users/users.component';
 import { GroupUserModalComponent, GroupFilterPipe } from './components/group-user/group-user-modal';
-import { UserFilterPipe, SatusPipe } from './components/users/custom.pipe';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
   declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent, GroupUserModalComponent,
-    UserFilterPipe, GroupFilterPipe, SatusPipe],
+    GroupFilterPipe],
   providers: [UserService]
 })
 export class UsersModule { }
