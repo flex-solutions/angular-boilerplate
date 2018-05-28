@@ -25,25 +25,25 @@ export class UsersComponent implements OnInit {
     private translateService: TranslateService) { }
 
   ngOnInit(): void {
-    this.loadData();
   }
 
   public count = (searchKey: string): Observable<number> => {
-    return of(10);
+    return this.userService.count(searchKey);
   }
 
-  loadData() {
-    this.userService.getAllUser().subscribe(users => this.items = users);
+  private loadData(eventArg: IFilterChangedEvent) {
+    this.userService.getUsers(eventArg.pagination.itemsPerPage, eventArg.pagination.itemsPerPage, eventArg.searchKey)
+      .subscribe(users => this.items = users);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
-    console.log(eventArg);
+    this.loadData(eventArg);
   }
 
   async deleteUser(user: User) {
     await this.userService.remove(user);
-    this.items = [];
-    this.loadData();
+    // this.items = [];
+    // this.loadData();
   }
 
 

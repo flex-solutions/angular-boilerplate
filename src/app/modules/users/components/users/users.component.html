@@ -13,7 +13,8 @@
 
     <div class="row">
       <div class="col-12">
-        <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" (pageChanged)="onPageChanged($event)">
+        <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" i18n-searchLabel="@@users-list-tbl-search-label"
+          (pageChanged)="onPageChanged($event)">
           <tr role="row">
             <th i18n="@@users-fullname">Full Name</th>
             <th i18n="@@users-username">Username</th>
@@ -23,11 +24,10 @@
             <th i18n="@@users-actions">Actions</th>
           </tr>
           <tbody>
-            <tr *ngFor="let item of items | userFilter: dg.searchKey">
+            <tr *ngFor="let item of items">
               <td class="change-color">
                 <div class="user">
-                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"
-                  />
+                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"/>
                   <p class="u-name" style="float: left;" (click)="navigateToUserDetailPage(item)">{{item.fullname}}</p>
                 </div>
               </td>
@@ -39,7 +39,8 @@
               </td>
               <td>
                 <div>
-                  <strong class="dropdown" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}</div>
+                  <strong class="dropdown" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}
+                </div>
                 <strong class="dropdown" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
               </td>
               <td class="change-color">{{item.groupname}}</td>
@@ -66,4 +67,5 @@
     </div>
   </div>
 </div>
+<!-- partial -->
 <!-- partial -->
