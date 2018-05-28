@@ -74,14 +74,16 @@ export class EditUserComponent extends UserModificationBase {
     this.userService.getUserById(userId).subscribe(user => {
       this.user = new User();
       Object.assign(this.user, user);
-      this.selectedBranch = this.branches.find(b => b.id === this.user.branch_id);
-      this.formGroup.setValue({
+      this.formGroup.patchValue({
         email: this.user.email,
         fullname: this.user.fullname,
         username: this.user.username,
         isActive: this.user.isActive ? this.user.isActive : true,
-        branchId: this.selectedBranch
       });
+      this.selectedBranch = this.branches.find(b => b.id === this.user.branch_id);
+      if (this.selectedBranch) {
+        this.formGroup.patchValue({ branchId: this.selectedBranch });
+      }
     });
   }
 

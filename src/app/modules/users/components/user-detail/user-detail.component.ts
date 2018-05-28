@@ -41,8 +41,11 @@ export class UserDetailComponent implements OnInit {
   }
 
   // Handle delete user.
-  deleteUser() {
-    this.userService.remove(this.userdetail);
+  async deleteUser() {
+    await this.userService.remove(this.userdetail);
+
+    // Back to user list page
+    this.goBack();
   }
 
   // Handle change user group.
