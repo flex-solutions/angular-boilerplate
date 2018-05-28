@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
 
   async deleteUser(user: User) {
     await this.userService.remove(user);
-
+    this.items = [];
     this.loadData();
   }
 

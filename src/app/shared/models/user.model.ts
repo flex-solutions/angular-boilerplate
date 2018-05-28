@@ -23,7 +23,7 @@ export class User implements BasicUserInfo {
 
   password: string;
 
-  isLocked: boolean;
+  isActive: boolean;
 
   avatar: string;
 

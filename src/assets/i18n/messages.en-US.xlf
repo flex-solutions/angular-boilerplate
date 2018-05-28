@@ -185,6 +185,10 @@
         <source>Update</source>
         <target>Update</target>
       </trans-unit>
+      <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
+        <source>Edit user successfully</source>
+        <target>Edit user successfully</target>
+      </trans-unit>
       <!--End edit user-->
       <!--Login-->
       <trans-unit id="account-login-input-username_place_holder" datatype="html">

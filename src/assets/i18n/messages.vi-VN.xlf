@@ -185,6 +185,10 @@
         <source>Update</source>
         <target>Cập Nhật</target>
       </trans-unit>
+       <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
+        <source>Edit user successfully</source>
+        <target>Cập nhật user thành công</target>
+      </trans-unit>
       <!--End edit user-->
 
       <!--Login-->
