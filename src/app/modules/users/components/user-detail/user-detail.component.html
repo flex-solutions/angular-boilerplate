@@ -5,7 +5,9 @@
       <div class="ml-3 col-md-9">
         <h6>{{userdetail.fullname}}</h6>
         <p class="text-muted">{{userdetail.username}}</p>
-        <a href="mailto:{{userdetail.email}}"><p class="text-muted none-lineheight">{{userdetail.email}}</p></a>
+        <a href="mailto:{{userdetail.email}}">
+          <p class="text-muted none-lineheight">{{userdetail.email}}</p>
+        </a>
         <p class="mt-2 text-success font-weight-bold">{{userdetail.position}}</p>
       </div>
 
@@ -21,7 +23,7 @@
 
         <div class="dropdown-menu">
           <a class="dropdown-item" data-toggle="modal" data-target="#userGroupModal" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
-          <button class="dropdown-item pointer" data-toggle="modal" data-target="#userModal" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</button>
+          <button class="dropdown-item pointer" (click)="deleteUser()" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</button>
         </div>
 
         <!-- Delete Modal -->
