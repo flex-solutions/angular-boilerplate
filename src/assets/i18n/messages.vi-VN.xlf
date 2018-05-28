@@ -477,6 +477,35 @@
         <source>Update user group {{0}} failed</source>
         <target>Cập nhật nhóm user {{0}} thất bại</target>
       </trans-unit>
+      <!--Usergroup list-->
+      <trans-unit id="user_groups-list-tbl-title" datatype="html">
+        <source>User Groups</source>
+        <target>Nhóm User	</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Tìm kiếm với tên nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-user-count" datatype="html">
+        <source>Users</source>
+        <target>SL User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
+        <source>Edit members</source>
+        <target>Sửa thành viên</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

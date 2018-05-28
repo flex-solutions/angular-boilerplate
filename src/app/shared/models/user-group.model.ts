@@ -1,9 +1,10 @@
 export class UserGroup {
   id: string;
-  group_name: string;
+  groupName: string;
   description: string;
   users: number[];
-  schema_id: number;
+  permisionScheme: any;
+  userCount: number;
 }
 
 export class UserGroupScheme {

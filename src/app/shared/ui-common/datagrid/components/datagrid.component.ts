@@ -106,6 +106,9 @@ export class DatagridComponent implements OnInit {
   }
 
   countPageEntry() {
+    if (this.totalItems === 0) {
+      return;
+    }
     this.currentPageEndEntry = this.currentPage * this.itemsPerPage;
     this.currentPageStartEntry =
       this.currentPageEndEntry - this.itemsPerPage + 1;

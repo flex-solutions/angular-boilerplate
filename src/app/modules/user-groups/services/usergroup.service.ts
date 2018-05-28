@@ -29,4 +29,12 @@ export class UserGroupService extends AbstractRestService {
   public getById(_id: string) {
     return this.get(`${_id}`);
   }
+
+  public count(searchKey?: string): Observable<number> {
+    return this.get(`count?searchKey=${searchKey}`);
+  }
+
+  public find(pageSize: number, pageNumber: number, searchKey?: string): Observable<UserGroup[]> {
+    return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
 }
