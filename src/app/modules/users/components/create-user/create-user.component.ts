@@ -10,6 +10,7 @@ import { User } from '../../../../shared/models/user.model';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserMessages, UserNavigationRoute } from '../../users.constant';
+import { BranchService } from '../../services/branch.service';
 
 @Component({
   selector: 'app-create-user',
@@ -24,9 +25,10 @@ export class CreateUserComponent extends UserModificationBase {
     private userService: UserService,
     private notificationService: NotificationService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    branchService: BranchService
   ) {
-    super(fb, translateService);
+    super(fb, translateService, branchService);
     this.tooltipContent = this.translateService.translate(
       'user-create_user-div-password_tooltip'
     );

@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { UserMessages } from '../../users.constant';
 import { ActivatedRoute } from '@angular/router';
+import { BranchService } from '../../services/branch.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -21,8 +22,9 @@ export class EditUserComponent extends UserModificationBase {
     private readonly notificationService: NotificationService,
     private location: Location,
     private activatedRoute: ActivatedRoute,
+    branchService: BranchService
   ) {
-    super(fb, translateService);
+    super(fb, translateService, branchService);
     // Detect page is update mode
     const userId = this.activatedRoute.snapshot.params['id'];
     if (userId) {
