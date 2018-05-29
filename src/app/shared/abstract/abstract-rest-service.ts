@@ -59,10 +59,7 @@ export abstract class AbstractRestService {
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient
       .post<T>(url, postBody)
-      .pipe(
-        catchError(err => this.handleError(err)),
-        finalize(() => this.hideLoader())
-      );
+      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
   }
 
   put<T>(relativeUrl, putData) {
@@ -70,10 +67,7 @@ export abstract class AbstractRestService {
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient
       .put<T>(url, putData)
-      .pipe(
-        catchError(err => this.handleError(err)),
-        finalize(() => this.hideLoader())
-      );
+      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
   }
 
   delete<T>(relativeUrl, postBody: any) {
@@ -81,10 +75,7 @@ export abstract class AbstractRestService {
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient
       .delete<T>(url)
-      .pipe(
-        catchError(err => this.handleError(err)),
-        finalize(() => this.hideLoader())
-      );
+      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
   }
 
   showLoader() {

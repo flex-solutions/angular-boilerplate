@@ -1,21 +1,20 @@
-import { Authentication } from '../shared/models/authentication.model';
+import { AuthenticationResponse } from '../shared/models/authentication.model';
 import { appVariables } from '../app.constant';
+import { BasicUserInfo } from '../shared/models/user.model';
 
 export class AuthenticationTokenHelper {
-    static saveTokenInCookie(tokenResponse: Authentication, username?: string) {
+    static saveTokenInCookie(tokenResponse: AuthenticationResponse) {
         localStorage.setItem(appVariables.accessTokenLocalStorage, tokenResponse.token);
         localStorage.setItem(appVariables.accessTokenExpireTime, tokenResponse.expireTime.toString());
         localStorage.setItem(appVariables.accessRefreshToken, tokenResponse.refreshToken.toString());
-
-        if (username) {
-            localStorage.setItem(appVariables.accessTokenOwner, username);
-        }
+        localStorage.setItem(appVariables.accessTokenOwner, JSON.stringify(tokenResponse.user));
     }
 
-    static clearTokenInCookie() {
+    static removeTokenInCookie() {
         localStorage.removeItem(appVariables.accessTokenLocalStorage);
         localStorage.removeItem(appVariables.accessTokenExpireTime);
         localStorage.removeItem(appVariables.accessRefreshToken);
+        localStorage.removeItem(appVariables.accessTokenOwner);
         localStorage.removeItem(appVariables.accessTokenOwner);
     }
 
@@ -31,7 +30,15 @@ export class AuthenticationTokenHelper {
         return localStorage.getItem(appVariables.accessRefreshToken);
     }
 
-    static get username() {
-        return localStorage.getItem(appVariables.accessTokenOwner);
+    static get localUserInfo(): BasicUserInfo {
+        const userInfo = localStorage.getItem(appVariables.accessTokenOwner);
+        if (userInfo) {
+            try {
+                const localUser = JSON.parse(userInfo);
+                return localUser as BasicUserInfo;
+            } catch {
+                return null;
+            }
+        }
     }
 }

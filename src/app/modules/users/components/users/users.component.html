@@ -1,0 +1,69 @@
+<!-- partial -->
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h4 class="card-title col-md-10" i18n="@@users-name">Users</h4>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+          <i class="mdi mdi-plus"></i>
+          <span i18n="@@users-create-user">Create User</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" (pageChanged)="onPageChanged($event)">
+          <tr role="row">
+            <th i18n="@@users-fullname">Full Name</th>
+            <th i18n="@@users-username">Username</th>
+            <th i18n="@@users-login-details">Login Details</th>
+            <th i18n="@@users-group-name">Group Name</th>
+            <th i18n="@@users-status">Status</th>
+            <th i18n="@@users-actions">Actions</th>
+          </tr>
+          <tbody>
+            <tr *ngFor="let item of items | userFilter: dg.searchKey">
+              <td class="change-color">
+                <div class="user">
+                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"
+                  />
+                  <p class="u-name" style="float: left;" (click)="navigateToUserDetailPage(item)">{{item.fullname}}</p>
+                </div>
+              </td>
+              <td>
+                <p class="text-gray mb-0 ellipsor">{{item.username}}</p>
+                <span class="change-color ellipsor">
+                  <a href="mailto:{{item.email}}">{{item.email}}</a>
+                </span>
+              </td>
+              <td>
+                <div>
+                  <strong class="dropdown" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}</div>
+                <strong class="dropdown" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
+              </td>
+              <td class="change-color">{{item.groupname}}</td>
+              <td>
+                <label class="badge badge-success">{{item.isLocked}}</label>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
+                  <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
+                  <span i18n="@@users-edit">Edit</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-dots-horizontal btn-option-custom"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="navigateToChangeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+                  <a class="dropdown-item" (click)="deleteUser(item)" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </app-dg>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->

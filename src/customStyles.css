@@ -14,3 +14,39 @@
 .require {
   color: #ff7474;
 }
+
+.btn-pink {
+  color: palevioletred;
+}
+
+.btn-fw {
+  line-height: 18px;
+  float: right;
+  padding: 5px;
+}
+
+.btn-custom-css {
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-right: 5px;
+}
+
+.btn-option-custom {
+  text-align: center;
+}
+
+.change-color {
+  color: blue;
+  cursor: pointer;
+}
+
+.img-sm {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin-right: 5px;
+}
+
+.dataTables_wrapper label {
+  display: inline-flex;
+}

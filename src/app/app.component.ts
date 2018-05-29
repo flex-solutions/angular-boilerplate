@@ -39,9 +39,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (this.authenticationService.authenticated()) {
       // Have authenticate to login CMS. Verify can get new token on server side
-      this.authenticationService.verifyToken().catch(err => {
-        this.authenticationService.navigateToLoginPage();
-      });
+      this.authenticationService.autoLogin();
     } else {
       this.authenticationService.navigateToLoginPage();
     }

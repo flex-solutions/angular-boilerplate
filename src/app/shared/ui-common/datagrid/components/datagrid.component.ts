@@ -106,6 +106,15 @@ export class DatagridComponent implements OnInit {
   }
 
   countPageEntry() {
+    if (this.totalItems < this.itemsPerPage) {
+      if (this.totalItems === 0) {
+        this.currentPageEndEntry = this.currentPageStartEntry = 0;
+      } else {
+        this.currentPageStartEntry = 1;
+        this.currentPageEndEntry = this.totalItems;
+      }
+      return;
+    }
     this.currentPageEndEntry = this.currentPage * this.itemsPerPage;
     this.currentPageStartEntry =
       this.currentPageEndEntry - this.itemsPerPage + 1;
@@ -119,7 +128,6 @@ export class DatagridComponent implements OnInit {
 
   countAndRasePageChangedForTheFirstPage() {
     if (this.countFunction) {
-      console.log(this.countFunction);
       this.countFunction(this.searchKey).subscribe(result => {
         this.totalItems = result;
         this.raisePageChangedEvent();

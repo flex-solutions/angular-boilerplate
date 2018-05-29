@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <!-- Nav Bar -->
@@ -24,6 +25,10 @@
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
         <source>User Management</source>
         <target>User Management</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
+        <source>User Groups</source>
+        <target>User Groups</target>
       </trans-unit>
 
       <!-- Modal -->
@@ -184,6 +189,10 @@
         <source>Update</source>
         <target>Update</target>
       </trans-unit>
+      <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
+        <source>Edit user successfully</source>
+        <target>Edit user successfully</target>
+      </trans-unit>
       <!--End edit user-->
 
       <!--Login-->
@@ -243,6 +252,259 @@
         <target>Success</target>
       </trans-unit>
       <!-- End Notification -->
+
+      <!-- User detail -->
+      <trans-unit id="user-detail-view-user-detail" datatype="html">
+        <source>View User Detail</source>
+        <target>View User Detail</target>
+      </trans-unit>
+      <trans-unit id="user-detail-edit-btn" datatype="html">
+        <source>Edit User</source>
+        <target>Edit User</target>
+      </trans-unit>
+      <trans-unit id="user-detail-user-statistics" datatype="html">
+        <source>User Statistics</source>
+        <target>User Statistics</target>
+      </trans-unit>
+      <trans-unit id="user-detail-login-count" datatype="html">
+        <source>Login Count :</source>
+        <target>Login Count :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-last-login" datatype="html">
+        <source>Last Login :</source>
+        <target>Last Login :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-previous-login" datatype="html">
+        <source>Previous Login :</source>
+        <target>Previous Login :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-last-failed-login" datatype="html">
+        <source>Last Failed Login :</source>
+        <target>Last Failed Login :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-current-failed-logins" datatype="html">
+        <source>Current Failed Logins :</source>
+        <target>Current Failed Logins :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-total-failed-login" datatype="html">
+        <source>Total Failed Login :</source>
+        <target>Total Failed Login :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-change-user-group" datatype="html">
+        <source>Change user group</source>
+        <target>Change user group</target>
+      </trans-unit>
+      <trans-unit id="user-detail-delete-user" datatype="html">
+        <source>Delete user</source>
+        <target>Delete user</target>
+      </trans-unit>
+      <!-- End User detail -->
+
+      <!-- Group user modal -->
+      <trans-unit id="group-user-modal-ok" datatype="html">
+        <source>Ok</source>
+        <target>Ok</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-confirm" datatype="html">
+        <source>Confirm</source>
+        <target>Confirm</target>
+      </trans-unit>
+      <trans-unit id="user-detail-delete-message" datatype="html">
+        <source>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</source>
+        <target>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</target>
+      </trans-unit>
+      <trans-unit id="user-detail-change-group-message" datatype="html">
+        <source>Select other group for user "{{userdetail.username}}"</source>
+        <target>Select other group for user "{{userdetail.username}}"</target>
+      </trans-unit>
+      <!-- End group user modal -->
+
+      <!-- Users -->
+      <trans-unit id="users-name" datatype="html">
+        <source>Users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="users-create-user" datatype="html">
+        <source>Create User</source>
+        <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="users-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Full Name</target>
+      </trans-unit>
+      <trans-unit id="users-username" datatype="html">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="users-login-details" datatype="html">
+        <source>Login Details</source>
+        <target>Login Details</target>
+      </trans-unit>
+      <trans-unit id="users-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name</target>
+      </trans-unit>
+      <trans-unit id="users-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="users-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="users-count" datatype="html">
+        <source>Count: </source>
+        <target>Count: </target>
+      </trans-unit>
+      <trans-unit id="users-last" datatype="html">
+        <source>Last: </source>
+        <target>Last: </target>
+      </trans-unit>
+      <trans-unit id="users-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="users-permission-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="users-edit-user-group" datatype="html">
+        <source>Edit user groups</source>
+        <target>Edit user groups</target>
+      </trans-unit>
+      <!-- Users -->
+
+      <!--Logout-->
+      <trans-unit id="account-logout-dialog-confirm_title" datatype="html">
+        <source>Confirm</source>
+        <target>Confirm</target>
+      </trans-unit>
+      <trans-unit id="account-logout-dialog-confirm_message" datatype="html">
+        <source>Are you sure you want to log out SNOB CMS?</source>
+        <target>Are you sure you want to log out SNOB CMS?</target>
+      </trans-unit>
+      <!--End Logout-->
+
+      <!--Delete user-->
+      <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
+        <source>User {{0}} will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User {{0}} will be permanently deleted. Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-notification_message" datatype="html">
+        <source>Delete user {{0}} successfully</source>
+        <target>Delete user {{0}} successfully</target>
+      </trans-unit>
+      <!--End Delete user-->
+
+      <!-- Global -->
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+
+      <!-- User Group -->
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
+        <source>Create User Group</source>
+        <target>Create User Group</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_desc" datatype="html">
+        <source>Create a new user group with basic information</source>
+        <target>Create a new user group with basic information</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_user_group_title" datatype="html">
+        <source>Update User Group</source>
+        <target>Update User Group</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-update_user_group_desc" datatype="html">
+        <source>Update user group with basic information</source>
+        <target>Update user group with basic information</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_label" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_placeholder" datatype="html">
+        <source>Enter Group Name</source>
+        <target>Enter Group Name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_label" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_placeholder" datatype="html">
+        <source>Enter Description</source>
+        <target>Enter description</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_another_field_label" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_required" datatype="html">
+        <source>Please provide group name</source>
+        <target>Please provide group name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_unique" datatype="html">
+        <source>Group "{{0}}" is duplicated</source>
+        <target>Group "{{0}}" is duplicated</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ok" datatype="html">
+        <source>Create user group {{0}} successfully</source>
+        <target>Create user group {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ng" datatype="html">
+        <source>Create user group {{0}} failed</source>
+        <target>Create user group {{0}} failed</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
+        <source>Update user group {{0}} successfully</source>
+        <target>Update user group {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
+        <source>Update user group {{0}} failed</source>
+        <target>Update user group {{0}} failed</target>
+      </trans-unit>
+      <!--Usergroup list-->
+      <trans-unit id="user_groups-list-tbl-title" datatype="html">
+        <source>User Groups</source>
+        <target>User Groups</target>
+      </trans-unit>
+       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+        <source>Create User Group</source>
+        <target>Create User Group</target>
+      </trans-unit
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Search by group name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-user-count" datatype="html">
+        <source>Users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Permission Schemen</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
+        <source>Edit members</source>
+        <target>Edit members</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">

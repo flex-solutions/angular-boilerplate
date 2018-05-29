@@ -25,11 +25,10 @@ interface IBreadcrumb {
   styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent implements OnInit {
-  public innerBreadcrumbs: IBreadcrumb[];
+  public innerBreadcrumbs: IBreadcrumb[] = [];
   public activeBreadcrumb: IBreadcrumb;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-    this.innerBreadcrumbs = [];
   }
 
   ngOnInit() {

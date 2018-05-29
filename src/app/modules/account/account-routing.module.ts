@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RecoveryPasswordComponent } from './recovery-password/recovery-password.component';
+import { LoginComponent } from './components/login/login.component';
+import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AccountRoutingModule {}
+export class AccountRoutingModule { }

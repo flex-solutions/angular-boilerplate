@@ -1,5 +1,19 @@
-export class User {
-  id: string;
+export interface BasicUserInfo {
+  _id: string;
+
+  email: string;
+
+  fullname: string;
+
+  username: string;
+
+  avatar: string;
+
+  branch_id: string;
+}
+
+export class User implements BasicUserInfo {
+  _id: string;
 
   email: string;
 
@@ -9,11 +23,14 @@ export class User {
 
   password: string;
 
-  isLocked: boolean;
+  isActive: boolean;
 
   avatar: string;
 
   position: string;
+
+  // Name of group user belong to.
+  groupname: string;
 
   // the current login failed attempt
   loginAttempts = 0;
@@ -34,7 +51,7 @@ export class User {
   failedLoginCount = 0;
 
   // id of branch
-  branchId: string;
+  branch_id: string;
 }
 
 export class SignedUser {

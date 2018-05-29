@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <!-- Nav Bar -->
@@ -24,6 +25,10 @@
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
         <source>User Management</source>
         <target>Quản Lý User</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
+        <source>User Management</source>
+        <target>Quản Lý Nhóm User</target>
       </trans-unit>
 
       <!-- Modal -->
@@ -163,7 +168,7 @@
       </trans-unit>
       <trans-unit id="user-create_user-label-validation_requireBranch" datatype="html">
         <source>Please select branch</source>
-        <target>Vui lòng chọn chi nhánh</target>
+        <target>Vui lòng chọn một chi nhánh cho user</target>
       </trans-unit>
       <!--End create user-->
 
@@ -183,6 +188,10 @@
       <trans-unit id="user-edit_user-button-update" datatype="html">
         <source>Update</source>
         <target>Cập Nhật</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
+        <source>Edit user successfully</source>
+        <target>Cập nhật user thành công</target>
       </trans-unit>
       <!--End edit user-->
 
@@ -244,6 +253,263 @@
         <target>Lỗi</target>
       </trans-unit>
       <!-- End Notification -->
+
+      <!-- User detail -->
+      <trans-unit id="user-detail-view-user-detail" datatype="html">
+        <source>View User Detail</source>
+        <target>Xem Thông Tin User</target>
+      </trans-unit>
+      <trans-unit id="user-detail-edit-btn" datatype="html">
+        <source>Edit User</source>
+        <target>Sửa User</target>
+      </trans-unit>
+      <trans-unit id="user-detail-user-statistics" datatype="html">
+        <source>User Statistics</source>
+        <target>Thống Kê Hoạt Động</target>
+      </trans-unit>
+      <trans-unit id="user-detail-login-count" datatype="html">
+        <source>Login Count :</source>
+        <target>Số lần đăng nhập :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-last-login" datatype="html">
+        <source>Last Login :</source>
+        <target>Lần cuối đăng nhập :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-previous-login" datatype="html">
+        <source>Previous Login :</source>
+        <target>Lần đăng nhập trước :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-last-failed-login" datatype="html">
+        <source>Last Failed Login :</source>
+        <target>Lần cuối đăng nhập thất bại :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-current-failed-logins" datatype="html">
+        <source>Current Failed Logins :</source>
+        <target>Lần đăng nhập thất bại hiện tại :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-total-failed-login" datatype="html">
+        <source>Total Failed Login :</source>
+        <target>Tổng số lần đăng nhập thất bại :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-change-user-group" datatype="html">
+        <source>Change user group</source>
+        <target>Đổi nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user-detail-delete-user" datatype="html">
+        <source>Delete user</source>
+        <target>Xóa user</target>
+      </trans-unit>
+      <!-- End User detail -->
+
+      <!-- Group user modal -->
+      <trans-unit id="group-user-modal-ok" datatype="html">
+        <source>Ok</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-confirm" datatype="html">
+        <source>Confirm</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="user-detail-delete-message" datatype="html">
+        <source>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</source>
+        <target>Người dùng "{{userdetail.username}}" sẽ bị xóa vĩnh viễn. Bạn chắc chắn muốn xóa?</target>
+      </trans-unit>
+      <trans-unit id="user-detail-change-group-message" datatype="html">
+        <source>Select other group for user "{{userdetail.username}}"</source>
+        <target>Thay đổi nhóm cho người dùng "{{userdetail.username}}"</target>
+      </trans-unit>
+      <!-- End group user modal -->
+
+      <!-- Users -->
+      <trans-unit id="users-list" datatype="html">
+        <source>User List</source>
+        <target>Danh Sách User</target>
+      </trans-unit>
+      <trans-unit id="users-name" datatype="html">
+        <source>Users</source>
+        <target>Người dùng</target>
+      </trans-unit>
+      <trans-unit id="users-create-user" datatype="html">
+        <source>Create User</source>
+        <target>Tạo mới</target>
+      </trans-unit>
+      <trans-unit id="users-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Tên Đầy Đủ</target>
+      </trans-unit>
+      <trans-unit id="users-username" datatype="html">
+        <source>Username</source>
+        <target>Tên Đăng Nhập</target>
+      </trans-unit>
+      <trans-unit id="users-login-details" datatype="html">
+        <source>Login Details</source>
+        <target>Thông Tin Đăng Nhập</target>
+      </trans-unit>
+      <trans-unit id="users-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Nhóm User</target>
+      </trans-unit>
+      <trans-unit id="users-status" datatype="html">
+        <source>Status</source>
+        <target>Tình Trạng</target>
+      </trans-unit>
+      <trans-unit id="users-actions" datatype="html">
+        <source>Actions</source>
+        <target>Hành động</target>
+      </trans-unit>
+      <trans-unit id="users-count" datatype="html">
+        <source>Count: </source>
+        <target>Số lượng: </target>
+      </trans-unit>
+      <trans-unit id="users-last" datatype="html">
+        <source>Last: </source>
+        <target>Lần cuối: </target>
+      </trans-unit>
+      <trans-unit id="users-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="users-permission-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Cấu trúc phân quyền</target>
+      </trans-unit>
+      <trans-unit id="users-edit-user-group" datatype="html">
+        <source>Edit user groups</source>
+        <target>Sửa nhóm user</target>
+      </trans-unit>
+      <!-- Users -->
+
+      <!--Logout-->
+      <trans-unit id="account-logout-dialog-confirm_title" datatype="html">
+        <source>Confirm</source>
+        <target>Xác Nhận</target>
+      </trans-unit>
+      <trans-unit id="account-logout-dialog-confirm_message" datatype="html">
+        <source>Are you sure you want to log out SNOB CMS?</source>
+        <target>Bạn có chắc muốn đăng xuất SNOB CMS?</target>
+      </trans-unit>
+      <!--End Logout-->
+
+      <!--Delete user-->
+      <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
+        <source>User {{0}} will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User {{0}} sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-notification_message" datatype="html">
+        <source>Delete user {{0}} successfully</source>
+        <target>Xóa user {{0}} thành công</target>
+      </trans-unit>
+      <!--End Delete user-->
+
+      <!-- Global -->
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+
+      <!-- User Group -->
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
+        <source>Create User Group</source>
+        <target>Tạo nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_desc" datatype="html">
+        <source>Create a new user group with basic information</source>
+        <target>Tạo nhóm user với những thông tin cơ bản</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_user_group_title" datatype="html">
+        <source>Update User Group</source>
+        <target>Cập nhật nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-update_user_group_desc" datatype="html">
+        <source>Update user group with basic information</source>
+        <target>Cập nhật nhóm User với thông tin cơ bản</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_label" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_placeholder" datatype="html">
+        <source>Enter Group Name</source>
+        <target>Nhập tên nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_label" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_placeholder" datatype="html">
+        <source>Enter Description</source>
+        <target>Nhập vào mô tả</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_another_field_label" datatype="html">
+        <source>Create another</source>
+        <target>Tạo nhóm user khác</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_required" datatype="html">
+        <source>Please provide group name</source>
+        <target>Vui lòng nhập tên nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_unique" datatype="html">
+        <source>Group "{{0}}" is duplicated</source>
+        <target>Nhóm user "{{0}}" đã có</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ok" datatype="html">
+        <source>Create user group {{0}} successfully</source>
+        <target>Tạo nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ng" datatype="html">
+        <source>Create user group {{0}} failed</source>
+        <target>Tạo nhóm user {{0}} thất bại</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
+        <source>Update user group {{0}} successfully</source>
+        <target>Cập nhật nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
+        <source>Update user group {{0}} failed</source>
+        <target>Cập nhật nhóm user {{0}} thất bại</target>
+      </trans-unit>
+      <!--Usergroup list-->
+      <trans-unit id="user_groups-list-tbl-title" datatype="html">
+        <source>User Groups</source>
+        <target>Nhóm User	</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+        <source>Create User Group</source>
+        <target>Tạo Nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Tìm kiếm với tên nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-user-count" datatype="html">
+        <source>Users</source>
+        <target>SL User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
+        <source>Edit members</source>
+        <target>Sửa thành viên</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">
