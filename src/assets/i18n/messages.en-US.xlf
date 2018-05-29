@@ -505,6 +505,18 @@
         <source>Edit members</source>
         <target>Edit members</target>
       </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-change-permission-scheme" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Change permission scheme</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-group-info" datatype="html">
+        <source>Edit group information</source>
+        <target>Edit group information</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-del-user-group" datatype="html">
+        <source>Delete user group</source>
+        <target>Delete user group</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">

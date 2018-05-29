@@ -36,4 +36,8 @@ export class UserGroupHomeComponent implements OnInit {
   createNewUserGroup() {
     this.router.navigate([RouteNames.CREATE]);
   }
+
+  editGroup(usergroup: UserGroup) {
+    this.router.navigate([RouteNames.EDIT, usergroup._id]);
+  }
 }
