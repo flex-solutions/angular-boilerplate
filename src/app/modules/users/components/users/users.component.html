@@ -13,8 +13,8 @@
 
     <div class="row">
       <div class="col-12">
-        <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" i18n-searchLabel="@@users-list-tbl-search-label"
-          (pageChanged)="onPageChanged($event)">
+        <app-dg searchLabel="Search username, fullname or email" i18n-searchLabel="@@users-list-tbl-search-label"
+          (pageChanged)="onPageChanged($event)" [countFunction]="count">
           <tr role="row">
             <th i18n="@@users-fullname">Full Name</th>
             <th i18n="@@users-username">Username</th>
@@ -45,7 +45,7 @@
               </td>
               <td class="change-color">{{item.groupname}}</td>
               <td>
-                <label class="badge badge-success">{{item.isLocked}}</label>
+                <label class="badge badge-success">{{item.isActive}}</label>
               </td>
               <td>
                 <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
