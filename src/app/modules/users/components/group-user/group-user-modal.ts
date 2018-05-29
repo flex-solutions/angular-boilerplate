@@ -1,14 +1,14 @@
+import { UserGroup } from './../../../../shared/models/user-group.model';
 import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
-import { UserGroupScheme } from '../../../../shared/models/user-group.model';
 import { TranslateService } from '../../../../shared/services/translate.service';
 
 @Pipe({
   name: 'userGroupFilter'
 })
 export class GroupFilterPipe implements PipeTransform {
-  transform(items: UserGroupScheme[], searchText: string): any[] {
+  transform(items: UserGroup[], searchText: string): any[] {
     if (!items) {
       return [];
     }
@@ -17,8 +17,8 @@ export class GroupFilterPipe implements PipeTransform {
     }
     searchText = searchText.toLowerCase();
     return items.filter(it => {
-      return it.groupName.toLowerCase().includes(searchText)
-        || it.permissionScheme.toLowerCase().includes(searchText);
+      return it.name.toLowerCase().includes(searchText)
+        || it.permissionScheme.name.toLowerCase().includes(searchText);
     });
   }
 }
@@ -32,7 +32,7 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   constructor(protected dialogService: DialogService) {
     super(dialogService);
   }
-  public groupUsers: UserGroupScheme[] = [];
+  public groupUsers: UserGroup[] = [];
 
   ngOnInit() {
 

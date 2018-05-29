@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserGroupService } from './services/usergroup.service';
 import { UserGroupHomeComponent } from './home/user-group-home.component';
 import { CreateEditUserGroupComponent } from './components/create-user-group/create-user-group.component';
+import { UserGroupPipes } from './pipes';
 
 @NgModule({
   imports: [
@@ -15,7 +16,11 @@ import { CreateEditUserGroupComponent } from './components/create-user-group/cre
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [CreateEditUserGroupComponent, UserGroupHomeComponent],
-  providers: [UserGroupService]
+  declarations: [
+    ...UserGroupPipes,
+    CreateEditUserGroupComponent,
+    UserGroupHomeComponent],
+  providers: [
+    UserGroupService]
 })
-export class UserGroupsModule {}
+export class UserGroupsModule { }
