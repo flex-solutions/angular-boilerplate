@@ -22,11 +22,24 @@
         <td>
           <a href="#">{{usergroup.permissionScheme.name}}</a>
         </td>
-        <td class="text-right">
-          <button class="btn btn-light">
-            <i class="mdi mdi-account-multiple text-primary"></i>
-            <span i18n="@@user_groups-list-tbl-actions-edit-members">Edit members</span>
-          </button>
+        <td>
+          <div class="row">
+            <button class="btn btn-light">
+              <i class="mdi mdi-account-multiple text-primary"></i>
+              <span i18n="@@user_groups-list-tbl-actions-edit-members">Edit members</span>
+            </button>
+            <div class="dropdown">
+              <button type="button" class="btn btn-light icon-btn dropdown-toggle dropdown-toggle-split more-actions-dropdown-btn" id="dropdownMenuIconButton3" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="mdi mdi-dots-horizontal"></i>
+              </button>
+              <div class="dropdown-menu more-actions-dropdown" aria-labelledby="dropdownMenuIconButton3" x-placement="bottom-start">
+                <a class="dropdown-item" href="#">Change permission scheme</a>
+                <a class="dropdown-item" href="#">Edit group information</a>
+                <a class="dropdown-item" href="#">Delete user group</a>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
