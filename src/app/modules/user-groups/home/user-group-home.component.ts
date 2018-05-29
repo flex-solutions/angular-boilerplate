@@ -6,6 +6,7 @@ import { OnInit, Component } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteNames } from '../constants/user-groups.constant';
+import { DefaultUserGroup } from '../../../shared/constants/const';
 
 @Component({
   moduleId: module.id,
@@ -39,5 +40,9 @@ export class UserGroupHomeComponent implements OnInit {
 
   editGroup(usergroup: UserGroup) {
     this.router.navigate([RouteNames.EDIT, usergroup._id]);
+  }
+
+  canAction(usergroup: UserGroup) {
+    return usergroup.name !== DefaultUserGroup.ADMINISTRATORS && usergroup.name !== DefaultUserGroup.USERS;
   }
 }
