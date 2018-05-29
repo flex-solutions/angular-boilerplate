@@ -62,7 +62,7 @@ export class RecoveryPasswordComponent extends AbstractFormComponent
   }
 
   protected onSubmit() {
-    this.authService.recoverPassword(this.email).subscribe(t => console.log(t));
+    this.authService.recoverPassword(this.email);
   }
 
   protected onValidate(): void {
