@@ -34,7 +34,7 @@
                 <i class="mdi mdi-dots-horizontal"></i>
               </button>
               <div class="dropdown-menu more-actions-dropdown" aria-labelledby="dropdownMenuIconButton3" x-placement="bottom-start">
-                <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-change-permission-scheme">Change permission scheme</a>
+                <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-change-permission-scheme" (click)="changePermissionScheme(usergroup)">Change permission scheme</a>
                 <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-edit-group-info" (click)="editGroup(usergroup)">Edit group information</a>
                 <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group">Delete user group</a>
               </div>
