@@ -78,7 +78,7 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
       this.userGroupService.getById(this.userGroupId).subscribe(
         (value: UserGroup) => {
           if (value) {
-            this.groupname.setValue(value.groupName);
+            this.groupname.setValue(value.name);
             this.description.setValue(value.description);
           } else {
             // Navigate to home if user group not found
@@ -105,7 +105,7 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
           // * Create user successful, display success notification
           const msg = this.getMessage(
             Errors.Create_User_Group_Sucess,
-            this.userGroup.groupName
+            this.userGroup.name
           );
 
           this.notificationService.showSuccess(msg);
@@ -118,7 +118,7 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
           // * Create user successful, display success notification
           const msg = this.getMessage(
             Errors.Edit_User_Group_Success,
-            this.userGroup.groupName
+            this.userGroup.name
           );
 
           this.notificationService.showSuccess(msg);
