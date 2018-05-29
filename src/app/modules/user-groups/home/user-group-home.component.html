@@ -5,7 +5,7 @@
       <span i18n="@@user_groups-list-tbl-btn-create">Create User Group</span>
     </button>
   </div>
-  <app-dg searchLabel="Search by group name" i18n-searchLabel="@@user_groups-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
+  <app-dg #dg searchLabel="Search by group name" i18n-searchLabel="@@user_groups-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
     [countFunction]="count">
     <tr>
       <th i18n="@@user_groups-list-tbl-group-name">Group Name</th>
@@ -14,7 +14,7 @@
       <th i18n="@@user_groups-list-tbl-actions">Actions</th>
     </tr>
     <tbody>
-      <tr *ngFor="let usergroup of usergroups">
+      <tr *ngFor="let usergroup of usergroups | userGroupListFilter: dg.searchKey">
         <td>{{usergroup.name}}</td>
         <td>
           <a href="#">{{usergroup.userCount}}</a>
