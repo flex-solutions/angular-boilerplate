@@ -1,3 +1,4 @@
+import { UserModulePipes } from './pipes/pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
@@ -9,13 +10,17 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { UsersComponent } from './components/users/users.component';
-import { GroupUserModalComponent, GroupFilterPipe } from './components/group-user/group-user-modal';
-import { UserFilterPipe, SatusPipe } from './components/users/custom.pipe';
+import { GroupUserModalComponent } from './components/group-user/group-user-modal';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
-  declarations: [CreateUserComponent, UserDetailComponent, EditUserComponent, UsersComponent, GroupUserModalComponent,
-    UserFilterPipe, GroupFilterPipe, SatusPipe],
+  declarations: [
+    CreateUserComponent,
+    UserDetailComponent,
+    EditUserComponent,
+    UsersComponent,
+    GroupUserModalComponent,
+    ...UserModulePipes],
   providers: [UserService]
 })
 export class UsersModule { }

@@ -4,25 +4,6 @@ import { DialogComponent } from '../../../../shared/ui-common/modal/components/d
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 
-@Pipe({
-  name: 'userGroupFilter'
-})
-export class GroupFilterPipe implements PipeTransform {
-  transform(items: UserGroup[], searchText: string): any[] {
-    if (!items) {
-      return [];
-    }
-    if (!searchText) {
-      return items;
-    }
-    searchText = searchText.toLowerCase();
-    return items.filter(it => {
-      return it.name.toLowerCase().includes(searchText)
-        || it.permissionScheme.name.toLowerCase().includes(searchText);
-    });
-  }
-}
-
 @Component({
   selector: 'app-group-user-modal',
   templateUrl: 'group-user-modal.html'
