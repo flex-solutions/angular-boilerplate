@@ -72,8 +72,8 @@ export class AuthenticationService extends AbstractRestService {
       });
   }
 
-  recoverPassword(email: string) {
-    return this.post('recover-password', { email: email });
+  recoverPassword<T>(email: string) {
+    return this.post<T>('recover-password', { email: email });
   }
 
   async validateUserToken(userToken: string) {

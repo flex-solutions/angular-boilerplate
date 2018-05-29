@@ -9,6 +9,7 @@ import { AccountMessages } from '../account.message';
 import { TranslateService } from '../../../shared/services/translate.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Location } from '@angular/common';
+import { ResetResponse } from '../model/reset-response.model';
 
 @Component({
   selector: 'app-recovery-password',
@@ -19,6 +20,7 @@ export class RecoveryPasswordComponent extends AbstractFormComponent
   implements OnInit {
   formGroup: FormGroup;
   submitted: boolean;
+  isSuccess: boolean;
   errorMessage: { [key: string]: string } = {};
   protected genericValidator: GenericValidator;
   protected validationMessages: {
@@ -62,7 +64,13 @@ export class RecoveryPasswordComponent extends AbstractFormComponent
   }
 
   protected onSubmit() {
-    this.authService.recoverPassword(this.email);
+    this.authService.recoverPassword<ResetResponse>(this.email).subscribe(t => {
+      if (t.token) {
+        this.isSuccess = true;
+      } else {
+        this.isSuccess = false;
+      }
+    });
   }
 
   protected onValidate(): void {
