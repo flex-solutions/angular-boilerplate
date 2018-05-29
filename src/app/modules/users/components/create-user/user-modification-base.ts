@@ -6,6 +6,7 @@ import { OnInit } from '@angular/core/src/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { User } from '../../../../shared/models/user.model';
 import ArrayExtension from '../../../../utilities/array.extension';
+import { BranchService } from '../../services/branch.service';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {
@@ -50,7 +51,8 @@ export abstract class UserModificationBase extends AbstractFormComponent
 
   constructor(
     protected fb: FormBuilder,
-    protected translateService: TranslateService
+    protected translateService: TranslateService,
+    protected branchService: BranchService
   ) {
     super();
 
@@ -68,10 +70,10 @@ export abstract class UserModificationBase extends AbstractFormComponent
 
   protected initializeBranches() {
     this.branches = [];
-    const defaultBranch = new Branch();
-    defaultBranch.id = 'HO';
-    defaultBranch.name = 'HO';
-    ArrayExtension.addItem(this.branches, defaultBranch);
+    // Call service to get list branch
+    this.branchService.getAll().subscribe(result => {
+      this.branches = result;
+    });
   }
 
   protected abstract onCreateUserForm();

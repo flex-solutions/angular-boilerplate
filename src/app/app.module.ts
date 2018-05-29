@@ -22,6 +22,7 @@ import { NotificationChannelFactory } from './shared/pubsub.client/core/factory'
 import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
 import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AuthGuard } from './shared/guards/auth-guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +50,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     },
     ApplicationConfigurationService,
     AuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
