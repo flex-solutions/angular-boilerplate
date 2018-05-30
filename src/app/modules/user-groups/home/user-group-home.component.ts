@@ -18,6 +18,8 @@ import { DefaultUserGroup } from '../../../shared/constants/const';
 export class UserGroupHomeComponent implements OnInit {
 
   usergroups: UserGroup[] = [];
+  currentPaging: IFilterChangedEvent;
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private service: UserGroupService,
@@ -32,9 +34,16 @@ export class UserGroupHomeComponent implements OnInit {
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
-    this.service.find(eventArg.pagination.itemsPerPage, eventArg.pagination.page, eventArg.searchKey).subscribe(result => {
-      this.usergroups = result;
-    });
+    this.currentPaging = eventArg;
+    this.getUserGroups();
+  }
+
+  getUserGroups() {
+    this.service.find(this.currentPaging.pagination.itemsPerPage,
+      this.currentPaging.pagination.page,
+      this.currentPaging.searchKey).subscribe(result => {
+        this.usergroups = result;
+      });
   }
 
   createNewUserGroup() {
@@ -47,7 +56,9 @@ export class UserGroupHomeComponent implements OnInit {
 
   changePermissionScheme(usergroup) {
     this.dialogManager.openPrime(ChangePermissionSchemeComponent, { callerData: usergroup }).subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.getUserGroups();
+      }
     });
   }
 

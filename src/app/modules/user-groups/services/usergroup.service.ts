@@ -41,4 +41,8 @@ export class UserGroupService extends AbstractRestService {
   public getPermissionScheme(): Observable<any[]> {
     return this.getWithAbsoluteUrl(`permission?fields=name`);
   }
+
+  public updatePermissionSchemeForUserGroup(usergroupId: string, schemeId: string) {
+    return this.put(`updateSchemeForUserGroup/${usergroupId}`, { schemeId });
+  }
 }

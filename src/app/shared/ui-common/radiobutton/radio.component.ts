@@ -11,6 +11,7 @@ export class RadioButtonComponent implements OnInit {
     @Output() valueChanged = new EventEmitter<any>();
     @Input() name: string;
     @Input() isEnable = true;
+    @Input() isChecked: boolean;
     @Input() value: any;
 
     private _content: any;

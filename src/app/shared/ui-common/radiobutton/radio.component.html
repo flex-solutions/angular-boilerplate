@@ -1,6 +1,6 @@
 <div class="form-radio non-margin-top form-radio-flat">
   <label class="form-check-label">
-    <input type="radio" name="{{name}}" value="{{value}}" class="form-check-input" (change)="onCheckingChanged($event.target.value)"> {{content}}
+    <input type="radio" name="{{name}}" [checked]="isChecked" value="{{value}}" class="form-check-input" (change)="onCheckingChanged($event.target.value)"> {{content}}
     <i class="input-helper"></i>
   </label>
 </div>

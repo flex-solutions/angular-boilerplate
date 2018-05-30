@@ -1,6 +1,6 @@
 import { UserGroupService } from './../../services/usergroup.service';
 import { UserGroup } from './../../../../shared/models/user-group.model';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 
@@ -10,9 +10,10 @@ import { DialogService } from '../../../../shared/ui-common/modal/services/dialo
     styleUrls: ['change-permission-scheme.component.css']
 })
 
-export class ChangePermissionSchemeComponent extends DialogComponent implements OnInit, AfterViewInit {
+export class ChangePermissionSchemeComponent extends DialogComponent implements OnInit {
 
     userGroup: UserGroup = new UserGroup();
+    selectedSchemeId: string;
     schemes: any[] = [];
 
     constructor(protected dialogService: DialogService,
@@ -22,9 +23,7 @@ export class ChangePermissionSchemeComponent extends DialogComponent implements 
 
     ngOnInit() {
         this.userGroup = this.callerData as UserGroup;
-    }
-
-    ngAfterViewInit() {
+        this.selectedSchemeId = this.userGroup.permissionScheme._id;
         this.getPermissionSchemes();
     }
 
@@ -34,12 +33,18 @@ export class ChangePermissionSchemeComponent extends DialogComponent implements 
     }
 
     submit() {
-        this.result = true;
-        this.dialogResult();
+        if (this.selectedSchemeId === this.userGroup.permissionScheme._id) {
+            this.cancel();
+        } else {
+            this.usergroupService.updatePermissionSchemeForUserGroup(this.userGroup._id, this.selectedSchemeId).subscribe(result => {
+                this.result = true;
+                this.dialogResult();
+            });
+        }
     }
 
     onValueChanged(value) {
-        console.log(value);
+        this.selectedSchemeId = value;
     }
 
     private getPermissionSchemes() {
