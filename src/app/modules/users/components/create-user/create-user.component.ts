@@ -64,7 +64,7 @@ export class CreateUserComponent extends UserModificationBase {
         this.user.username = this.getUserNameValue();
         this.user.fullname = this.getFullNameValue();
         this.user.password = this.getPassword();
-        this.user.branch_id = this.branch.id;
+        this.user.branch = this.branch._id;
         this.user.isActive = true;
         // * Call API to create new user
         this.userService.create(this.user).subscribe(

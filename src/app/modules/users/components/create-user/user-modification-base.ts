@@ -7,6 +7,7 @@ import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form
 import { User } from '../../../../shared/models/user.model';
 import ArrayExtension from '../../../../utilities/array.extension';
 import { BranchService } from '../../services/branch.service';
+import { EventEmitter } from 'events';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {
@@ -15,6 +16,7 @@ export abstract class UserModificationBase extends AbstractFormComponent
   selectedBranch: Branch;
   protected genericValidator: GenericValidator;
   protected user: User;
+  protected eventEmmiter = new EventEmitter();
 
   // Define validation message
   protected validationMessages: {
@@ -73,9 +75,9 @@ export abstract class UserModificationBase extends AbstractFormComponent
     // Call service to get list branch
     this.branchService.getAll().subscribe(result => {
       this.branches = result;
+      this.eventEmmiter.emit('onBranchLoaded');
     });
   }
-
   protected abstract onCreateUserForm();
 
   getEmailValue(): string {

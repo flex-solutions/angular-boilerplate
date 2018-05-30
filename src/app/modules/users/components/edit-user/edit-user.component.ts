@@ -16,6 +16,7 @@ import { BranchService } from '../../services/branch.service';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent extends UserModificationBase {
+  private _userId: string;
   constructor(fb: FormBuilder,
     translateService: TranslateService,
     private readonly userService: UserService,
@@ -28,8 +29,10 @@ export class EditUserComponent extends UserModificationBase {
     // Detect page is update mode
     const userId = this.activatedRoute.snapshot.params['id'];
     if (userId) {
-      this.getUser(userId);
+      this._userId = userId;
     }
+
+    this.eventEmmiter.on('onBranchLoaded', () => this.getUser(this._userId));
   }
 
   protected onCreateUserForm() {
@@ -55,7 +58,7 @@ export class EditUserComponent extends UserModificationBase {
     this.user.email = this.getEmailValue();
     this.user.username = this.getUserNameValue();
     this.user.fullname = this.getFullNameValue();
-    this.user.branch_id = this.branch.id;
+    this.user.branch = this.branch._id;
     this.user.isActive = this.isActive;
     // * Call API to update user
     this.userService.update(this.user).subscribe(respond => {
@@ -80,9 +83,9 @@ export class EditUserComponent extends UserModificationBase {
         email: this.user.email,
         fullname: this.user.fullname,
         username: this.user.username,
-        isActive: this.user.isActive ? this.user.isActive : true,
+        isActive: this.user.isActive
       });
-      this.selectedBranch = this.branches.find(b => b.id === this.user.branch_id);
+      this.selectedBranch = this.branches.find(b => b._id === this.user.branch);
       if (this.selectedBranch) {
         this.formGroup.patchValue({ branchId: this.selectedBranch });
       }
