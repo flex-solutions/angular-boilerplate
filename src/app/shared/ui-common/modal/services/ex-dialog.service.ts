@@ -6,7 +6,7 @@ import { DialogComponent, ModalSize } from '../components/dialog.component';
 
 @Injectable()
 export class ExDialog {
-  constructor(injector: Injector, private dialogService: DialogService) {}
+  constructor(injector: Injector, private dialogService: DialogService) { }
 
   openMessage(param: any, title?: string, icon?: string) {
     const params: any = this.getParams(param, title, icon);
@@ -39,7 +39,7 @@ export class ExDialog {
     if (!params) {
       params = {};
     }
-    params = Object.assign({modalSize: size});
+    Object.assign(params, { modalSize: size });
     return this.dialogService.addDialog(component, params);
   }
 

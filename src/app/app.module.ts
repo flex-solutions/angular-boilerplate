@@ -1,7 +1,7 @@
+import { NotificationService } from './shared/services/notification.service';
+import { IPubSubConfig, PubSubConfigService } from './shared/pubsub.client/config';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
-import { AccountRoutingModule } from './modules/account/account-routing.module';
-import { AccountModule } from './modules/account/account.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, TRANSLATIONS, LOCALE_ID } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
@@ -9,8 +9,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { i18nFactory } from './i18n.factory';
-import { UsersModule } from './modules/users/users.module';
-import { UsersRoutingModule } from './modules/users/users-routing.module';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
 import { DemoModule } from './modules/demo/demo.module';
 import { DemoRoutingModule } from './modules/demo/demo-routing.module';
@@ -19,6 +17,11 @@ import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.
 import { DatagridDemoRoutingModule } from './modules/datagrid-demo/datagrid-demo-routing.module';
 import { DatagridModule } from './shared/ui-common/datagrid/datagrid.module';
 import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module';
+import { PubSubClientModule } from './shared/pubsub.client/pubsub-client.module';
+import { NotificationChannelFactory } from './shared/pubsub.client/core/factory';
+import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
+import { UserGroupsModule } from './modules/user-groups/usergroup.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 
 @NgModule({
@@ -29,16 +32,15 @@ import { PermissionSchemeModule } from './modules/permission-scheme/permission-s
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    AccountModule,
-    AccountRoutingModule,
-    UsersModule,
-    UsersRoutingModule,
     DemoModule,
     DemoRoutingModule,
     ModalDemoModule,
     ModalDemoRoutingModule,
     DatagridDemoRoutingModule,
     DatagridDemoModule,
+    PubSubClientModule,
+    UserGroupsRoutingModule,
+    UserGroupsModule,
     PermissionSchemeModule
   ],
   providers: [
@@ -48,8 +50,17 @@ import { PermissionSchemeModule } from './modules/permission-scheme/permission-s
       deps: [LOCALE_ID]
     },
     ApplicationConfigurationService,
-    AuthenticationService
+    AuthenticationService,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(pubsubConfigService: PubSubConfigService,
+    private notificationChannelFactory: NotificationChannelFactory) {
+    // Set config for pubsub
+    const pubsubConfig: IPubSubConfig = { host: environment.host };
+    pubsubConfigService.config = pubsubConfig;
+    // Host a subscriber
+    notificationChannelFactory.host();
+  }
+}

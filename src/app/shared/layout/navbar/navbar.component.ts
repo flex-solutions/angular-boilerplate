@@ -1,4 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { ExDialog } from '../../ui-common/modal/services/ex-dialog.service';
+import { TranslateService } from '../../services/translate.service';
+import { BasicUserInfo } from '../../models/user.model';
 declare let $: any;
 
 @Component({
@@ -7,13 +11,18 @@ declare let $: any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService, private exDialog: ExDialog,
+    private translateService: TranslateService) { }
 
-  ngOnInit() {}
+  currentUser: BasicUserInfo;
+
+  ngOnInit() {
+    this.currentUser = this.authenticationService.getCurrentUser();
+  }
 
   ngAfterViewInit(): void {
     const body = $('body');
-    $('[data-toggle="minimize"]').on('click', function() {
+    $('[data-toggle="minimize"]').on('click', function () {
       if (
         body.hasClass('sidebar-toggle-display') ||
         body.hasClass('sidebar-absolute')
@@ -23,5 +32,22 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         body.toggleClass('sidebar-icon-only');
       }
     });
+  }
+
+  signOut() {
+    this.exDialog.openConfirm(this.confirmMessage, this.confirmTitle).subscribe(result => {
+      if (result) {
+        // Submit button has clicked
+        this.authenticationService.logOut();
+      }
+    });
+  }
+
+  get confirmTitle() {
+    return this.translateService.translate('account-logout-dialog-confirm_title');
+  }
+
+  get confirmMessage() {
+    return this.translateService.translate('account-logout-dialog-confirm_message');
   }
 }

@@ -1,7 +1,10 @@
-
 export class UserGroup {
-     id: string;
-     groupName: string;
-     permissionSchemeId: string;
-     permissionScheme: string;
+  _id: string;
+  name: string;
+  description: string;
+  permissionScheme: {
+    _id: any;
+    name: string;
+  };
+  userCount: number;
 }

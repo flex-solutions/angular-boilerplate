@@ -42,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
   createRequestOptions() {
     // Get auth token
     const token: string = this.auth.getAuthorizationToken();
-    const header = { 'Content-Type': 'application/json', Authorization: token ? token : '' };
+    const header = { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '' };
 
     return header;
   }

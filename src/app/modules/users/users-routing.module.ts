@@ -1,34 +1,34 @@
-import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { UsersComponent } from './users.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 const userRoutes: Routes = [
   {
-    path: 'users',
+    path: '',
     component: UsersComponent,
     data: {
       breadcrumb: 'Users'
     }
   },
   {
-    path: 'users/create',
+    path: 'create',
     component: CreateUserComponent,
     data: {
       breadcrumb: 'Create User'
     }
   },
   {
-    path: 'users/update',
+    path: 'edit/:id',
     component: EditUserComponent,
     data: {
       breadcrumb: 'Edit User'
     }
   },
   {
-    path: 'users/user-detail',
+    path: 'user/:id',
     component: UserDetailComponent,
     data: {
       breadcrumb: 'View User Detail'
@@ -37,7 +37,7 @@ const userRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(userRoutes)],
+  imports: [RouterModule.forChild(userRoutes)],
   exports: [RouterModule]
 })
-export class UsersRoutingModule {}
+export class UsersRoutingModule { }

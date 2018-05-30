@@ -2,14 +2,14 @@ import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
 import { ApplicationConfigurationService } from './application-configuration.service';
 import { NavigateConstant } from '../constants/navigate.constant';
-import { Authentication } from '../models/authentication.model';
+import { AuthenticationResponse } from '../models/authentication.model';
 import { CustomErrorHandlerService } from './custom-error-handler.service';
 import { HelperService } from './helper.service';
-import { SignedUser } from '../models/user.model';
+import { SignedUser, BasicUserInfo } from '../models/user.model';
 import { appVariables } from '../../app.constant';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 import { AbstractRestService } from '../abstract/abstract-rest-service';
-import { ApplicationConstant } from '../constants/application.constant';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService extends AbstractRestService {
@@ -40,11 +40,18 @@ export class AuthenticationService extends AbstractRestService {
 
   logOut() {
     const authData = AuthenticationTokenHelper.localToken;
-    if (authData) {
-      this.get('logout').subscribe(res => {
-        AuthenticationTokenHelper.clearTokenInCookie();
+    const userInfo = AuthenticationTokenHelper.localUserInfo;
+    if (authData && userInfo) {
+      this.put(
+        `${AuthenticationTokenHelper.localUserInfo._id}/logout`,
+        ''
+      ).subscribe(res => {
+        AuthenticationTokenHelper.removeTokenInCookie();
         this.router.navigate([NavigateConstant.LOGIN]);
       });
+    } else {
+      AuthenticationTokenHelper.removeTokenInCookie();
+      this.router.navigate([NavigateConstant.LOGIN]);
     }
   }
 
@@ -54,33 +61,37 @@ export class AuthenticationService extends AbstractRestService {
       // Navigate to home page
       this.username = 'admin';
       this.router.navigate([NavigateConstant.HOME]);
-      return new Promise((r) => 'true');
+      return new Observable(sub => {});
     }
     // ! JUST FOR TESTING. REMOVE LATER
 
-    return this.post('login', signedUser).toPromise().then((tokenResponse: Authentication) => {
-      // Save token into cookies
-      AuthenticationTokenHelper.saveTokenInCookie(tokenResponse, signedUser.username);
+    return this.post('login', signedUser);
+  }
 
-      // Navigate to home page
-      this.router.navigate([NavigateConstant.HOME]);
+  autoLogin() {
+    this.renewToken().subscribe(
+      (newToken: AuthenticationResponse) => {
+        AuthenticationTokenHelper.saveTokenInCookie(newToken);
+      },
+      err => {
+        AuthenticationTokenHelper.removeTokenInCookie();
+        this.navigateToLoginPage();
+      }
+    );
+  }
+
+  verifyRecaptchaToken(userToken: string) {
+    return this.post('verify', { usertoken: userToken });
+  }
+
+  private renewToken() {
+    const usernameInCookie = AuthenticationTokenHelper.localUserInfo.username;
+    const refreshTokenInCookie = AuthenticationTokenHelper.refreshToken;
+
+    return this.post('token', {
+      username: usernameInCookie,
+      refreshToken: refreshTokenInCookie
     });
-  }
-
-  async validateUserToken(userToken: string) {
-    return await this.post('verify', { usertoken: userToken }).toPromise();
-  }
-
-  verifyToken() {
-    const usernameInCookie = localStorage.getItem(appVariables.accessTokenOwner);
-    const refreshTokenInCookie = localStorage.getItem(appVariables.accessTokenOwner);
-
-    return this.post('token', { username: usernameInCookie, refreshToken: refreshTokenInCookie })
-      .toPromise()
-      .then((newToken: Authentication) => {
-        AuthenticationTokenHelper.clearTokenInCookie();
-        AuthenticationTokenHelper.saveTokenInCookie(newToken, usernameInCookie);
-      });
   }
 
   navigateToLoginPage() {
@@ -89,5 +100,26 @@ export class AuthenticationService extends AbstractRestService {
 
   getAuthorizationToken(): string {
     return AuthenticationTokenHelper.localToken;
+  }
+
+  getCurrentUser(): BasicUserInfo {
+    const userInfo = AuthenticationTokenHelper.localUserInfo;
+    if (userInfo) {
+      return userInfo;
+    }
+
+    const info: BasicUserInfo = {
+      _id: '',
+      email: '',
+      username: '',
+      branch_id: '',
+      avatar: '',
+      fullname: ''
+    };
+    return info;
+  }
+
+  recoverPassword<T>(lang: string, email: string) {
+    return this.post<T>('recover-password', { lang: lang, email: email });
   }
 }
