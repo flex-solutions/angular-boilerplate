@@ -18,7 +18,13 @@
       <div class="dialog-row">
         <div class="form-group radio-container">
           <div *ngFor="let scheme of schemes | userGroupPermissionSchemeListFilter: txtSearch.searchKey" class="radio-a-group">
-            <app-radio name="permission-scheme" value="{{scheme._id}}" (valueChanged)="onValueChanged($event)"></app-radio>
+            <div class="form-radio non-margin-top form-radio-flat">
+              <label class="form-check-label">
+                <input type="radio" name="permission-scheme" [checked]="selectedSchemeId === scheme._id" value="{{scheme._id}}" class="form-check-input"
+                  (change)="onValueChanged($event.target.value)"> {{content}}
+                <i class="input-helper"></i>
+              </label>
+            </div>
             <a href="">{{scheme.name}}</a>
           </div>
         </div>

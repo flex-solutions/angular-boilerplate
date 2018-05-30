@@ -13,3 +13,8 @@
     margin-bottom: 0px;
     margin-top: 7px;
 }
+
+.non-margin-top {
+    margin-top: 0px;
+    margin-bottom: 23px;
+}

@@ -8,20 +8,18 @@ import { DialogModule } from './modal/dialog.module';
 import { DatagridModule } from './datagrid/datagrid.module';
 import { CardComponent } from './card/card.component';
 import { PaginationModule } from './pagination/pagination.module';
-import { RadioButtonComponent } from './radiobutton/radio.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
   exports: [
-    LoaderComponent, CardComponent, RadioButtonComponent,
+    LoaderComponent, CardComponent,
     SearchTextboxComponent,
     DialogModule, DatagridModule, PaginationModule
   ],
   declarations: [
     LoaderComponent,
     CardComponent,
-    RadioButtonComponent,
     SearchTextboxComponent
   ],
   providers: [
