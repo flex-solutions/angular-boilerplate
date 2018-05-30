@@ -22,7 +22,7 @@ export class UsersComponent {
   }
 
   private loadData(eventArg: IFilterChangedEvent) {
-    this.userService.getUsers(eventArg.pagination.itemsPerPage, eventArg.pagination.itemsPerPage, eventArg.searchKey)
+    this.userService.getUsers(eventArg.pagination.itemsPerPage, eventArg.pagination.page, eventArg.searchKey)
       .subscribe(users => this.items = users);
   }
 
