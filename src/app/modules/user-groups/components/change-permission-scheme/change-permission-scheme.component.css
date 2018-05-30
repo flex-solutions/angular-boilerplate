@@ -1,0 +1,10 @@
+.radio-a-group {
+    display: flex;
+    margin-bottom: 13px;
+    overflow-y: scroll;
+}
+
+.radio-a-group a {
+    font-size: 0.8rem;
+    margin-top: 2px;
+}

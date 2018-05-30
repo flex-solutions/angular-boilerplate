@@ -5,7 +5,8 @@ import { DialogService } from '../../../../shared/ui-common/modal/services/dialo
 
 @Component({
     selector: 'app-change-permision-scheme-dlg',
-    templateUrl: 'change-permission-scheme.component.html'
+    templateUrl: 'change-permission-scheme.component.html',
+    styleUrls: ['change-permission-scheme.component.css']
 })
 
 export class ChangePermissionSchemeComponent extends DialogComponent implements OnInit, AfterViewInit {
@@ -32,5 +33,9 @@ export class ChangePermissionSchemeComponent extends DialogComponent implements 
     submit() {
         this.result = true;
         this.dialogResult();
+    }
+
+    onValueChanged(value) {
+        console.log(value);
     }
 }

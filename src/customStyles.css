@@ -62,3 +62,17 @@
 .more-actions-dropdown-btn {
   margin-left: 5px;
 }
+
+.dialog-body {
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-top: 20px;
+  padding-left: 20px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.dialog-row {
+  display: flex;
+  flex-wrap: wrap;
+}

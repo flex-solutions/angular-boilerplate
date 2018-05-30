@@ -1,18 +1,29 @@
 <div class="modal-content">
   <div class="modal-header">
     <div>
-      <h5 class="modal-title">Change permission scheme</h5>
-      <p>Select other permission scheme for user group "{{userGroup.name}}"</p>
+      <h5 class="modal-title" i18n="@@user_groups-list-change-permission-scheme-title">Change permission scheme</h5>
+      <p i18n="@@user_groups-list-change-permission-scheme-sub-title">Select other permission scheme for user group "{{userGroup.name}}"</p>
     </div>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <div class="modal-body card">
-
+  <div class="modal-body card dialog-body">
+    <div class="dialog-row">
+      <div class="form-group">
+        <div class="radio-a-group">
+          <app-radio name="permission-scheme" value="2" (valueChanged)="onValueChanged($event)"></app-radio>
+          <a href="">default-administrator-permission-scheme</a>
+        </div>
+        <div class="radio-a-group">
+          <app-radio name="permission-scheme" isEnable="false" value="1" (valueChanged)="onValueChanged($event)"></app-radio>
+          <a href="">default-user-permission-scheme</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="submit()" i18n="@@group-user-modal-ok">OK</button>
-    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@group-user-modal-cancel">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="submit()">OK</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@user_groups-list-change-permission-scheme-cancel">Cancel</button>
   </div>
 </div>

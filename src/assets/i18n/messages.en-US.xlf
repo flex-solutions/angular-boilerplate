@@ -517,6 +517,18 @@
         <source>Delete user group</source>
         <target>Delete user group</target>
       </trans-unit>
+            <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Change permission scheme</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-sub-title" datatype="html">
+        <source>Select other permission scheme for user group "{{userGroup.name}}"</source>
+        <target>Select other permission scheme for user group "{{userGroup.name}}"</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">
