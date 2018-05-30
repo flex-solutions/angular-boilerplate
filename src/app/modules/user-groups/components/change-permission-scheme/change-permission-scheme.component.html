@@ -8,12 +8,19 @@
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <div class="modal-body card dialog-body">
-    <div class="dialog-row">
-      <div class="form-group radio-container">
-        <div *ngFor="let scheme of schemes" class="radio-a-group">
-          <app-radio name="permission-scheme" isChecked="selectedSchemeId === scheme._id" value="{{scheme._id}}" (valueChanged)="onValueChanged($event)"></app-radio>
-          <a href="">{{scheme.name}}</a>
+  <div class="modal-body">
+    <div class="row" style="margin: 0px">
+      <div class="col-12" style="padding: 0px">
+        <app-txt-search #txtSearch i18n-searchPlaceholder="@@user_groups-list-change-permission-scheme-search-holder" searchPlaceholder="Search by permission scheme name"></app-txt-search>
+      </div>
+    </div>
+    <div class="card dialog-body">
+      <div class="dialog-row">
+        <div class="form-group radio-container">
+          <div *ngFor="let scheme of schemes | userGroupPermissionSchemeListFilter: txtSearch.searchKey" class="radio-a-group">
+            <app-radio name="permission-scheme" isChecked="selectedSchemeId === value" value="{{scheme._id}}" (valueChanged)="onValueChanged($event)"></app-radio>
+            <a href="">{{scheme.name}}</a>
+          </div>
         </div>
       </div>
     </div>

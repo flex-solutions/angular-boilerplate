@@ -1,4 +1,5 @@
-import { UserGroupListFilterPipe } from './usergroup.pipe';
+import { UserGroupListFilterPipe, UserGroupPermissionSchemeListFilterPipe } from './usergroup.pipe';
 
 
-export const UserGroupPipes = [ UserGroupListFilterPipe ];
+export const UserGroupPipes = [UserGroupListFilterPipe,
+    UserGroupPermissionSchemeListFilterPipe];
