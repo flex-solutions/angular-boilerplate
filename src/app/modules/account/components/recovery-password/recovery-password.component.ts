@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import {
@@ -37,6 +37,7 @@ export class RecoveryPasswordComponent extends AbstractFormComponent
   };
 
   constructor(
+    @Inject(LOCALE_ID) protected localeId: string,
     private location: Location,
     private fb: FormBuilder,
     private translateService: TranslateService,
@@ -64,13 +65,15 @@ export class RecoveryPasswordComponent extends AbstractFormComponent
   }
 
   protected onSubmit() {
-    this.authService.recoverPassword<ResetResponse>(this.email).subscribe(t => {
-      if (t.token) {
-        this.isSuccess = true;
-      } else {
-        this.isSuccess = false;
-      }
-    });
+    this.authService
+      .recoverPassword<ResetResponse>(this.localeId, this.email)
+      .subscribe(t => {
+        if (t.token) {
+          this.isSuccess = true;
+        } else {
+          this.isSuccess = false;
+        }
+      });
   }
 
   protected onValidate(): void {
