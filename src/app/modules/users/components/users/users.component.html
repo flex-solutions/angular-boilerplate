@@ -44,7 +44,7 @@
                 <strong class="font-weight-bold" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
               </td>
               <td>
-                <a href="#" (click)="navigateToGroup(item.userGroup._id)">{{item.userGroup.name}}</a>
+                <a href="#" (click)="navigateToGroup()">{{item.userGroup.name}}</a>
               </td>
               <td>
                 <label class="badge" [ngClass]="item.isActive ? 'badge-success' : 'badge-danger'">{{item.isActive ? 'Active' : 'Deactive'}}</label>

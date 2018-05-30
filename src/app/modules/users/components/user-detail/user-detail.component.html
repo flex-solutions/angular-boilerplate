@@ -8,7 +8,9 @@
         <a href="mailto:{{userdetail.email}}">
           <p class="text-muted none-lineheight">{{userdetail.email}}</p>
         </a>
-        <p class="mt-2 text-success font-weight-bold">{{userdetail.position}}</p>
+        <a href="#" (click)="navigateToGroups()">
+          <p class="mt-2 text-success font-weight-bold">{{userdetail.userGroup}}</p>
+        </a>
       </div>
 
       <div class="ml-3">
@@ -97,21 +99,21 @@
               <table class="table table-borderless w-100 mt-4">
                 <tr>
                   <td>
-                    <strong i18n="@@user-detail-login-count">Login Count :</strong> {{userdetail.loginCount}}</td>
+                    <strong i18n="@@user-detail-login-count">Login Count :</strong> {{userdetail.successLoginCount}}</td>
                   <td>
-                    <strong i18n="@@user-detail-last-failed-login">Last Failed Login :</strong> {{userdetail.lastFailedLogin}}</td>
+                    <strong i18n="@@user-detail-last-failed-login">Last Failed Login :</strong> {{userdetail.lastTimeFailedLogin | date:"EEEE h: mma"}}</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong i18n="@@user-detail-last-login">Last Login :</strong> {{userdetail.lastLogin}}</td>
+                    <strong i18n="@@user-detail-last-login">Last Login :</strong> {{userdetail.lastTimeLogin | date:"EEEE h: mma"}}</td>
                   <td>
-                    <strong i18n="@@user-detail-current-failed-logins">Current Failed Logins :</strong> {{userdetail.currentFailedLogin}}</td>
+                    <strong i18n="@@user-detail-current-failed-logins">Current Failed Logins :</strong> {{userdetail.loginAttempts}}</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong i18n="@@user-detail-previous-login">Previous Login :</strong> {{userdetail.previousLogin}}</td>
+                    <strong i18n="@@user-detail-previous-login">Previous Login :</strong> {{userdetail.previousTimeLogin | date:"EEEE h: mma"}}</td>
                   <td>
-                    <strong i18n="@@user-detail-total-failed-login">Total Failed Login :</strong> {{userdetail.totalFailedLogin}}</td>
+                    <strong i18n="@@user-detail-total-failed-login">Total Failed Login :</strong> {{userdetail.failedLoginCount}}</td>
                 </tr>
               </table>
 

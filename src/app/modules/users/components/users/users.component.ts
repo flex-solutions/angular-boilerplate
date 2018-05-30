@@ -54,7 +54,7 @@ export class UsersComponent {
     this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
   }
 
-  navigateToGroup(groupId: string) {
-    alert('Go to group details');
+  navigateToGroup() {
+    this.router.navigate([UserNavigationRoute.GROUPS_PAGE]);
   }
 }
