@@ -79,8 +79,7 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
       this.userGroupService.getById(this.userGroupId).subscribe(
         (value: UserGroup) => {
           if (value) {
-            this.groupname.setValue(value.name);
-            this.description.setValue(value.description);
+            this.userGroup = value;
           } else {
             // Navigate to home if user group not found
             this.router.navigate([RouteNames.HOME]);
