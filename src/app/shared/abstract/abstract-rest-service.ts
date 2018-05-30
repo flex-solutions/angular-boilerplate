@@ -44,6 +44,17 @@ export abstract class AbstractRestService {
       );
   }
 
+  getWithAbsoluteUrl<T>(absoluteUrl: string) {
+    this.showLoader();
+    const url = this.getApiWithoutController(absoluteUrl);
+    return this.httpClient
+      .get<T>(url)
+      .pipe(
+        catchError(err => this.handleError(err)),
+        finalize(() => this.hideLoader())
+      );
+  }
+
   getWithRetry<T>(relativeUrl: string, retryTimes: number) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);

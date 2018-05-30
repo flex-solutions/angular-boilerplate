@@ -534,6 +534,22 @@
         <source>Delete user group</source>
         <target>Xoá nhóm user</target>
       </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Đổi kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-sub-title" datatype="html">
+        <source>Select other permission scheme for user group "{{userGroup.name}}"</source>
+        <target>Chọn một kết hoạch phân quyền khác cho nhóm user "{{userGroup.name}}"</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-search-holder" datatype="html">
+        <source>Search by permission scheme name</source>
+        <target>Tìm kiếm với tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">
