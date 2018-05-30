@@ -9,7 +9,7 @@ import { DialogService } from '../../../../shared/ui-common/modal/services/dialo
     styleUrls: ['change-permission-scheme.component.css']
 })
 
-export class ChangePermissionSchemeComponent extends DialogComponent implements OnInit, AfterViewInit {
+export class ChangePermissionSchemeComponent extends DialogComponent implements OnInit {
 
     userGroup: UserGroup = new UserGroup();
 
@@ -18,10 +18,6 @@ export class ChangePermissionSchemeComponent extends DialogComponent implements 
     }
 
     ngOnInit() {
-
-    }
-
-    ngAfterViewInit() {
         this.userGroup = this.callerData as UserGroup;
     }
 
