@@ -22,8 +22,8 @@ export class UserGroupService extends AbstractRestService {
     return this.put(usergroup._id, usergroup);
   }
 
-  public delete(_id: string) {
-    return this.delete(_id);
+  public remove(_id: string) {
+    return this.delete(_id, {});
   }
 
   public getById(_id: string) {

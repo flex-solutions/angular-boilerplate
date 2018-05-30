@@ -22,6 +22,7 @@ import { NotificationChannelFactory } from './shared/pubsub.client/core/factory'
 import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
 import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { DialogModule } from './shared/ui-common/modal/dialog.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     PubSubClientModule,
     UserGroupsRoutingModule,
     UserGroupsModule,
+    DialogModule
   ],
   providers: [
     {

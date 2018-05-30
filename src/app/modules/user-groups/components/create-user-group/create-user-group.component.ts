@@ -17,6 +17,7 @@ import { Errors } from '../../errors/errors';
 import { RouteNames } from '../../constants/user-groups.constant';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-create-edit-user-group',
   templateUrl: './create-user-group.component.html',
   styleUrls: ['./create-user-group.component.css']
@@ -141,11 +142,11 @@ export class CreateEditUserGroupComponent extends AbstractFormComponent
   }
 
   private doPostAction() {
-    if (!this.editMode || (this.createAnother && this.createAnother.value)) {
+    if (this.editMode || (this.createAnother && !this.createAnother.value)) {
+      this.location.back();
+    } else {
       this.groupname.reset();
       this.description.reset();
-    } else {
-      this.location.back();
     }
   }
 }

@@ -50,3 +50,15 @@
 .dataTables_wrapper label {
   display: inline-flex;
 }
+
+.more-actions-dropdown {
+  position: absolute;
+  transform: translate3d(0px, 33px, 0px);
+  top: 0px;
+  left: 0px;
+  will-change: transform;
+}
+
+.more-actions-dropdown-btn {
+  margin-left: 5px;
+}
