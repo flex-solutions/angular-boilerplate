@@ -39,7 +39,7 @@ export class UsersComponent {
 
 
   navigateToChangeUserGroup(user: User) {
-    this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.groupname]);
+    this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
   }
 
   navigateToCreatePage() {
@@ -52,5 +52,9 @@ export class UsersComponent {
 
   navigateToUserDetailPage(user: User) {
     this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
+  }
+
+  navigateToGroup(groupId: string) {
+    alert('Go to group details');
   }
 }
