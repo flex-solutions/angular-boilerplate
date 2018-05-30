@@ -10,14 +10,10 @@
   </div>
   <div class="modal-body card dialog-body">
     <div class="dialog-row">
-      <div class="form-group">
-        <div class="radio-a-group">
-          <app-radio name="permission-scheme" value="2" (valueChanged)="onValueChanged($event)"></app-radio>
-          <a href="">default-administrator-permission-scheme</a>
-        </div>
-        <div class="radio-a-group">
-          <app-radio name="permission-scheme" isEnable="false" value="1" (valueChanged)="onValueChanged($event)"></app-radio>
-          <a href="">default-user-permission-scheme</a>
+      <div class="form-group radio-container">
+        <div *ngFor="let scheme of schemes" class="radio-a-group">
+          <app-radio name="permission-scheme" value="{{scheme._id}}" (valueChanged)="onValueChanged($event)"></app-radio>
+          <a href="">{{scheme.name}}</a>
         </div>
       </div>
     </div>
