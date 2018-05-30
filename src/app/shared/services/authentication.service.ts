@@ -42,11 +42,13 @@ export class AuthenticationService extends AbstractRestService {
     const authData = AuthenticationTokenHelper.localToken;
     const userInfo = AuthenticationTokenHelper.localUserInfo;
     if (authData && userInfo) {
-      this.put(`${AuthenticationTokenHelper.localUserInfo._id}/logout`, '')
-        .subscribe(res => {
-          AuthenticationTokenHelper.removeTokenInCookie();
-          this.router.navigate([NavigateConstant.LOGIN]);
-        });
+      this.put(
+        `${AuthenticationTokenHelper.localUserInfo._id}/logout`,
+        ''
+      ).subscribe(res => {
+        AuthenticationTokenHelper.removeTokenInCookie();
+        this.router.navigate([NavigateConstant.LOGIN]);
+      });
     } else {
       AuthenticationTokenHelper.removeTokenInCookie();
       this.router.navigate([NavigateConstant.LOGIN]);
@@ -59,7 +61,7 @@ export class AuthenticationService extends AbstractRestService {
       // Navigate to home page
       this.username = 'admin';
       this.router.navigate([NavigateConstant.HOME]);
-      return new Observable(sub => { });
+      return new Observable(sub => {});
     }
     // ! JUST FOR TESTING. REMOVE LATER
 
@@ -67,12 +69,15 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   autoLogin() {
-    this.renewToken().subscribe((newToken: AuthenticationResponse) => {
-      AuthenticationTokenHelper.saveTokenInCookie(newToken);
-    }, err => {
-      AuthenticationTokenHelper.removeTokenInCookie();
-      this.navigateToLoginPage();
-    });
+    this.renewToken().subscribe(
+      (newToken: AuthenticationResponse) => {
+        AuthenticationTokenHelper.saveTokenInCookie(newToken);
+      },
+      err => {
+        AuthenticationTokenHelper.removeTokenInCookie();
+        this.navigateToLoginPage();
+      }
+    );
   }
 
   verifyRecaptchaToken(userToken: string) {
@@ -83,7 +88,10 @@ export class AuthenticationService extends AbstractRestService {
     const usernameInCookie = AuthenticationTokenHelper.localUserInfo.username;
     const refreshTokenInCookie = AuthenticationTokenHelper.refreshToken;
 
-    return this.post('token', { username: usernameInCookie, refreshToken: refreshTokenInCookie });
+    return this.post('token', {
+      username: usernameInCookie,
+      refreshToken: refreshTokenInCookie
+    });
   }
 
   navigateToLoginPage() {
@@ -100,11 +108,18 @@ export class AuthenticationService extends AbstractRestService {
       return userInfo;
     }
 
-    const info: BasicUserInfo = {_id: '', email: '', username: '', branch_id: '', avatar: '', fullname: '' };
+    const info: BasicUserInfo = {
+      _id: '',
+      email: '',
+      username: '',
+      branch_id: '',
+      avatar: '',
+      fullname: ''
+    };
     return info;
   }
 
-  recoverPassword<T>(email: string) {
-    return this.post<T>('recover-password', { email: email });
+  recoverPassword<T>(lang: string, email: string) {
+    return this.post<T>('recover-password', { lang: lang, email: email });
   }
 }
