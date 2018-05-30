@@ -11,6 +11,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { UsersComponent } from './components/users/users.component';
 import { GroupUserModalComponent } from './components/group-user/group-user-modal';
+import { BranchService } from './services/branch.service';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
@@ -21,6 +22,6 @@ import { GroupUserModalComponent } from './components/group-user/group-user-moda
     UsersComponent,
     GroupUserModalComponent,
     ...UserModulePipes],
-  providers: [UserService]
+  providers: [UserService, BranchService]
 })
 export class UsersModule { }
