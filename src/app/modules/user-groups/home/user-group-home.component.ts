@@ -24,10 +24,10 @@ export class UserGroupHomeComponent implements OnInit {
   // @ViewChild('exampleModal-2')
   usergroups: UserGroup[] = [];
   messageContentTemplate = 'user_groups-user_groups_list-delete_user_group_action_message';
-
   selectedUserGroup: UserGroup;
-  constructor(
-    private router: Router,
+  currentPaging: IFilterChangedEvent;
+
+  constructor(private router: Router,
     private route: ActivatedRoute,
     private service: UserGroupService,
     private dialogManager: ExDialog,
@@ -42,13 +42,14 @@ export class UserGroupHomeComponent implements OnInit {
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
-    this.service
-      .find(
-        eventArg.pagination.itemsPerPage,
-        eventArg.pagination.page,
-        eventArg.searchKey
-      )
-      .subscribe(result => {
+    this.currentPaging = eventArg;
+    this.getUserGroups();
+  }
+
+  getUserGroups() {
+    this.service.find(this.currentPaging.pagination.itemsPerPage,
+      this.currentPaging.pagination.page,
+      this.currentPaging.searchKey).subscribe(result => {
         this.usergroups = result;
       });
   }
@@ -63,7 +64,9 @@ export class UserGroupHomeComponent implements OnInit {
 
   changePermissionScheme(usergroup) {
     this.dialogManager.openPrime(ChangePermissionSchemeComponent, { callerData: usergroup }).subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.getUserGroups();
+      }
     });
   }
 

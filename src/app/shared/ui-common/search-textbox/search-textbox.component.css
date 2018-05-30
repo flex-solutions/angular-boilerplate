@@ -1,0 +1,13 @@
+.search-container {
+    display: inline;
+}
+
+.search-container label {
+    width: 100%;
+}
+
+.search-container i {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+}

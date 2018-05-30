@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" 
-  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
+
     <body>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
@@ -481,13 +481,12 @@
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
-       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+      <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
         <source>Create User Group</source>
         <target>Create User Group</target>
-      </trans-unit
-      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
-        <source>Search by group name</source>
-        <target>Search by group name</target>
+      </trans-unit <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+      <source>Search by group name</source>
+      <target>Search by group name</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
         <source>Group Name</source>
@@ -528,6 +527,22 @@
         <target>
         The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
         </target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Change permission scheme</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-sub-title" datatype="html">
+        <source>Select other permission scheme for user group "{{userGroup.name}}"</source>
+        <target>Select other permission scheme for user group "{{userGroup.name}}"</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-search-holder" datatype="html">
+        <source>Search by permission scheme name</source>
+        <target>Search by permission scheme name</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
       </trans-unit>
 
       <!-- Recovery Password -->
