@@ -42,7 +42,7 @@
                                   <div class="col-md-4">
                                     <div class="search-container">
                                       <label>
-                                        <input type="text" class="form-control" placeholder="cc" aria-controls="order-listing">
+                                        <input type="text" class="form-control" placeholder="cc" aria-controls="order-listing"  [(ngModel)]="Keyword" name="Keyword">
                                         <i class="mdi mdi-table-search"></i>
                                       </label>
                                     </div>
@@ -60,7 +60,7 @@
                                             <th style="">
                                               <div class="form-check form-check-flat align-center">
                                                 <label class="form-check-label">
-                                                  <input type="checkbox" class="form-check-input" checked="">
+                                                  <input type="checkbox" class="form-check-input" (click)="onChanged($event)">
                                                   Bussiness
                                                 <i class="input-helper"></i></label>
                                               </div>
@@ -68,12 +68,12 @@
                                           </tr>
                                           </thead>
                                           <tbody>
-                                            <tr *ngFor="let item of items">
-                                              <td>
+                                            <tr *ngFor="let item of (items | controllerFilter: Keyword);let index = index">
+                                              <td disa>
                                                 <div class="form-check form-check-flat align-center">
                                                   <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" checked="">
-                                                    {{item.name}}
+                                                    <input type="checkbox" class="form-check-input"  [(ngModel)]="items[index].is_check" name="isCheck[{{index}}]">
+                                                    {{item.controller.name}}
                                                   <i class="input-helper"></i></label>
                                                 </div>
                                               </td>
@@ -82,7 +82,7 @@
                                     </table>
                                   </div>
                                   <div class="col-md-1 on-top">
-                                    <button type="button" class="btn btn-primary btn-sm ">
+                                    <button type="button" class="btn btn-primary btn-sm" (click)="addPermission()">
                                       <i class="icon-plus"></i>ADD</button>
                                   </div>
                                   <div class="col-md-7">
@@ -99,18 +99,23 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr >
-                                          <td>Jacob</td>
+                                        <tr *ngFor="let permission of (permissionDetails | permissionFilter: Keyword) ;let index = index">
+                                          <td>{{permission.controller_name}}</td>
                                           <td >
-                                              <select class="js-example-basic-single select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
-                                                  <option value="AL">Full</option>
-                                                  <option value="WY">Branch</option>
+                                              <select class="js-example-basic-single select2-hidden-accessible" 
+                                              style="width:100%" 
+                                              tabindex="-1" 
+                                              aria-hidden="true"
+                                              name = "datascope[{{index}}]"
+                                              [(ngModel)]="permissionDetails[index].data_scope">
+                                                  <option value="0" selected="selected">Branch</option>
+                                                  <option value="1">Full</option>
                                                 </select>
                                           </td>
                                           <td class="jsgrid-cell" style="width: 100px;">
                                             <div class="form-check mt-0 center-form align-center">
                                               <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input">
+                                                <input type="checkbox" class="form-check-input" [(ngModel)]="permissionDetails[index].is_insert" name="is_insert[{{index}}]">
                                                 <i class="custom-input-helper"></i>
                                               </label>
                                             </div>
@@ -118,7 +123,7 @@
                                           <td class="jsgrid-cell" style="width: 100px;">
                                             <div class="form-check mt-0 center-form align-center">
                                               <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input">
+                                                <input type="checkbox" class="form-check-input"[(ngModel)]="permissionDetails[index].is_update" name="is_update[{{index}}]">
                                                 <i class="custom-input-helper"></i>
                                               </label>
                                             </div>
@@ -126,7 +131,7 @@
                                           <td class="jsgrid-cell" style="width: 100px;">
                                             <div class="form-check mt-0 center-form align-center">
                                               <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input">
+                                                <input type="checkbox" class="form-check-input" [(ngModel)]="permissionDetails[index].is_delete" name="is_delete[{{index}}]">
                                                 <i class="custom-input-helper"></i>
                                               </label>
                                             </div>

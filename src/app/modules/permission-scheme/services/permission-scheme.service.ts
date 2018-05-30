@@ -1,5 +1,5 @@
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { ControllerModel } from '../../../shared/models/controller.model';
+import { ControllerModel } from '../../../shared/models/permission-scheme.model';
 import { Observable } from 'rxjs';
 
 export class PermissionSchemeServcie extends AbstractRestService {
@@ -8,10 +8,10 @@ export class PermissionSchemeServcie extends AbstractRestService {
 
     constructor() {
         super();
-        this.controllerName = 'Permission Scheme';
+        this.controllerName = 'permission';
     }
 
     getAllController(): Observable<ControllerModel[]> {
-        return this.get('/permission/get_controllers');
+        return this.get('get_controllers');
     }
 }
