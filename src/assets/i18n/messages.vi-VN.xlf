@@ -2,7 +2,6 @@
 <xliff version="1.2" 
   xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
-
     <body>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
@@ -523,6 +522,57 @@
         <source>Edit members</source>
         <target>Sửa thành viên</target>
       </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-change-permission-scheme" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Đổi kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-group-info" datatype="html">
+        <source>Edit group information</source>
+        <target>Sửa thông tin nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-del-user-group" datatype="html">
+        <source>Delete user group</source>
+        <target>Xoá nhóm user</target>
+      </trans-unit>
+
+      <!-- Recovery Password -->
+      <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">
+        <source>Forgot Password</source>
+        <target>Quên mật khẩu?</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-label-recovery-password" datatype="html">
+        <source>Recovery Password</source>
+        <target>Phục Hồi Mật Khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-label-enter-email" datatype="html">
+        <source>Enter your email address below and we'll send you a secure link to reset your password</source>
+        <target>Nhập địa chỉ email của bạn vào bên dưới, hệ thống sẽ gởi bạn một liên kết bảo mật để phục hồi mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-input-email-address" datatype="html">
+        <source>Email address</source>
+        <target>Địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-button-back" datatype="html">
+        <source>BACK</source>
+        <target>VỀ TRƯỚC</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-button-reset" datatype="html">
+        <source>RESET PASSWORD</source>
+        <target>PHỤC HỒI MẬT KHẨU</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-validation-email-empty" datatype="html">
+        <source>Please provide email address</source>
+        <target>Vui lòng cung cấp địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-validation-email-invalid" datatype="html">
+        <source>Email address is invalid</source>
+        <target>Địa chỉ email không đúng</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-label-send-success" datatype="html">
+        <source>A password reset email was sent successfully</source>
+        <target>Đã gởi email phục hồi mật khẩu thành công</target>
+      </trans-unit>
+      <!-- End Revovery Password -->
     </body>
   </file>
 </xliff>

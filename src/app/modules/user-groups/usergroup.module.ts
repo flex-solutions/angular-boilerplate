@@ -1,3 +1,4 @@
+import { ChangePermissionSchemeComponent } from './components/change-permission-scheme/change-permission-scheme.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserGroupsRoutingModule } from './usergroup-routing.module';
@@ -19,8 +20,12 @@ import { UserGroupPipes } from './pipes';
   declarations: [
     ...UserGroupPipes,
     CreateEditUserGroupComponent,
-    UserGroupHomeComponent],
+    UserGroupHomeComponent,
+    ChangePermissionSchemeComponent],
   providers: [
-    UserGroupService]
+    UserGroupService],
+  entryComponents: [
+    ChangePermissionSchemeComponent
+  ]
 })
 export class UserGroupsModule { }

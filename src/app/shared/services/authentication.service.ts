@@ -89,4 +89,8 @@ export class AuthenticationService extends AbstractRestService {
     const info: BasicUserInfo = { _id: '', email: '', username: '', branch_id: '', avatar: '', fullname: '', userGroup: '' };
     return info;
   }
+
+  recoverPassword<T>(email: string) {
+    return this.post<T>('recover-password', { email: email });
+  }
 }

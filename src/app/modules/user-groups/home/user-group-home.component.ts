@@ -1,3 +1,5 @@
+import { ChangePermissionSchemeComponent } from './../components/change-permission-scheme/change-permission-scheme.component';
+import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 import { UserGroup } from './../../../shared/models/user-group.model';
 import { IFilterChangedEvent } from './../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Observable } from 'rxjs';
@@ -6,6 +8,7 @@ import { OnInit, Component } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteNames } from '../constants/user-groups.constant';
+import { DefaultUserGroup } from '../../../shared/constants/const';
 
 @Component({
   moduleId: module.id,
@@ -17,7 +20,8 @@ export class UserGroupHomeComponent implements OnInit {
   usergroups: UserGroup[] = [];
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private service: UserGroupService) {
+    private service: UserGroupService,
+    private dialogManager: ExDialog) {
   }
 
   ngOnInit(): void {
@@ -35,5 +39,19 @@ export class UserGroupHomeComponent implements OnInit {
 
   createNewUserGroup() {
     this.router.navigate([RouteNames.CREATE]);
+  }
+
+  editGroup(usergroup: UserGroup) {
+    this.router.navigate([RouteNames.EDIT, usergroup._id]);
+  }
+
+  changePermissionScheme(usergroup) {
+    this.dialogManager.openPrime(ChangePermissionSchemeComponent, { callerData: usergroup }).subscribe(result => {
+      console.log(result);
+    });
+  }
+
+  canAction(usergroup: UserGroup) {
+    return usergroup.name !== DefaultUserGroup.ADMINISTRATORS && usergroup.name !== DefaultUserGroup.USERS;
   }
 }
