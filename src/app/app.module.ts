@@ -19,6 +19,7 @@ import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.
 import { DatagridDemoRoutingModule } from './modules/datagrid-demo/datagrid-demo-routing.module';
 import { DatagridModule } from './shared/ui-common/datagrid/datagrid.module';
 import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module';
+import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,8 @@ import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module
     ModalDemoModule,
     ModalDemoRoutingModule,
     DatagridDemoRoutingModule,
-    DatagridDemoModule
+    DatagridDemoModule,
+    PermissionSchemeModule
   ],
   providers: [
     {
