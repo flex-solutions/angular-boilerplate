@@ -477,17 +477,13 @@
         <source>Create user group {{0}} successfully</source>
         <target>Tạo nhóm user {{0}} thành công</target>
       </trans-unit>
-      <trans-unit id="user_groups-create_user_group-create_group_name_ng" datatype="html">
-        <source>Create user group {{0}} failed</source>
-        <target>Tạo nhóm user {{0}} thất bại</target>
-      </trans-unit>
       <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
         <source>Update user group {{0}} successfully</source>
         <target>Cập nhật nhóm user {{0}} thành công</target>
       </trans-unit>
-      <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
-        <source>Update user group {{0}} failed</source>
-        <target>Cập nhật nhóm user {{0}} thất bại</target>
+      <trans-unit id="user_groups-create_user_group-delete_group_name_ok" datatype="html">
+        <source>Delete user group {{0}} successfully</source>
+        <target>Xoá nhóm user {{0}} thành công</target>
       </trans-unit>
       <!--Usergroup list-->
       <trans-unit id="user_groups-list-tbl-title" datatype="html">
@@ -533,6 +529,14 @@
       <trans-unit id="user_groups-list-tbl-actions-del-user-group" datatype="html">
         <source>Delete user group</source>
         <target>Xoá nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
+        <source>
+        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        </source>
+        <target>
+        Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có chắc muốn tiếp tục?
+        </target>
       </trans-unit>
       <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
         <source>Change permission scheme</source>

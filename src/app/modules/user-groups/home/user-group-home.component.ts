@@ -1,33 +1,41 @@
 import { ChangePermissionSchemeComponent } from './../components/change-permission-scheme/change-permission-scheme.component';
-import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 import { UserGroup } from './../../../shared/models/user-group.model';
 import { IFilterChangedEvent } from './../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Observable } from 'rxjs';
 import { UserGroupService } from './../services/usergroup.service';
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteNames } from '../constants/user-groups.constant';
 import { DefaultUserGroup } from '../../../shared/constants/const';
+import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
+import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { DialogTitleConstant } from '../../../shared/constants/dialog-title.constant';
+import { TranslateService } from '../../../shared/services/translate.service';
+import { NotificationService } from '../../../shared/services/notification.service';
+import { Errors } from '../errors/errors';
 
 @Component({
   moduleId: module.id,
   selector: 'app-user-group-home',
-  templateUrl: './user-group-home.component.html',
+  templateUrl: './user-group-home.component.html'
 })
 export class UserGroupHomeComponent implements OnInit {
-
+  // @ViewChild('exampleModal-2')
   usergroups: UserGroup[] = [];
+  messageContentTemplate = 'user_groups-user_groups_list-delete_user_group_action_message';
+  selectedUserGroup: UserGroup;
   currentPaging: IFilterChangedEvent;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     private service: UserGroupService,
-    private dialogManager: ExDialog) {
-  }
+    private dialogManager: ExDialog,
+    private notificationService: NotificationService,
+    private translateService: TranslateService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public count = (searchKey: string): Observable<number> => {
     return this.service.count(searchKey);
@@ -64,5 +72,38 @@ export class UserGroupHomeComponent implements OnInit {
 
   canAction(usergroup: UserGroup) {
     return usergroup.name !== DefaultUserGroup.ADMINISTRATORS && usergroup.name !== DefaultUserGroup.USERS;
+    }
+
+  private buildMessageContent(value: string) {
+    return this.getMessage(
+      this.messageContentTemplate,
+      value
+    );
+  }
+
+  private getMessage(code: string, ...params) {
+    if (params.length) {
+      return this.translateService.translateWithParams(code, params);
+    } else {
+      return this.translateService.translate(code);
+    }
+  }
+
+  deleteUserGroup(userGroup: UserGroup) {
+    const content = this.buildMessageContent(userGroup.name);
+    this.dialogManager
+      .openConfirm(content, DialogTitleConstant.Confirmation, ModalSize.Normal)
+      .subscribe(result => {
+        if (result) {
+          this.service.remove(userGroup._id).subscribe(success => {
+            const msg = this.getMessage(
+              Errors.Delete_User_Group_Success,
+              userGroup.name
+            );
+            this.notificationService.showSuccess(msg);
+          });
+        } else {
+        }
+      });
   }
 }

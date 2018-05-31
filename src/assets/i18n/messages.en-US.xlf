@@ -484,6 +484,10 @@
         <source>Update user group {{0}} failed</source>
         <target>Update user group {{0}} failed</target>
       </trans-unit>
+      <trans-unit id="user_groups-create_user_group-delete_group_name_ok" datatype="html">
+        <source>Delete user group {{0}} successfully</source>
+        <target>Delete user group {{0}} successfully</target>
+      </trans-unit>
       <!--Usergroup list-->
       <trans-unit id="user_groups-list-tbl-title" datatype="html">
         <source>User Groups</source>
@@ -527,6 +531,14 @@
       <trans-unit id="user_groups-list-tbl-actions-del-user-group" datatype="html">
         <source>Delete user group</source>
         <target>Delete user group</target>
+      </trans-unit>
+      <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
+        <source>
+        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        </source>
+        <target>
+        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        </target>
       </trans-unit>
       <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
         <source>Change permission scheme</source>
