@@ -39,7 +39,7 @@ export class UsersComponent {
   }
 
   // Handle to change group of user.
-  navigateToChangeUserGroup(user: User) {
+  changeUserGroup(user: User) {
     this.userService.changeGroup(user);
     // this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
   }

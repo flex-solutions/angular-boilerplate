@@ -33,11 +33,10 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-
   // Handle get user detail information.
-  getUserInfomation(userName: string) {
-    if (userName !== null) {
-      this.userService.getUserById(userName).subscribe(user => {
+  getUserInfomation(userId: string) {
+    if (userId !== null) {
+      this.userService.getUserById(userId).subscribe(user => {
         this.userdetail = user;
       });
     }
@@ -65,8 +64,8 @@ export class UserDetailComponent implements OnInit {
     this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
   }
 
-  navigateToGroups() {
-    this.router.navigate([UserNavigationRoute.GROUPS_PAGE]);
+  navigateToGroups(user: User) {
+    this.router.navigate([UserNavigationRoute.GROUPS_PAGE, user.userGroup._id]);
   }
 
   private goBack() {

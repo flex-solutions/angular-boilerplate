@@ -363,7 +363,7 @@
       </trans-unit>
       <trans-unit id="users-count" datatype="html">
         <source>Count: </source>
-        <target>Số lượng: </target>
+        <target>Số lần: </target>
       </trans-unit>
       <trans-unit id="users-last" datatype="html">
         <source>Last: </source>
