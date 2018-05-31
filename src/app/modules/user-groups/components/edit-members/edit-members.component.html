@@ -1,0 +1,48 @@
+<app-card title="Bulk edit group members" subTitle="This page allows you to edit the user memberships for group 'nhan vien tong dai'"
+  searchLabel="Search by username, full name or email">
+  <div>
+    <app-dg>
+      <tr>
+        <th></th>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>User Group</th>
+      </tr>
+      <tbody>
+        <tr>
+          <td>
+            <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:0px">
+              <label class="form-check-label" style="margin-top:0px;padding-left:0px">
+                <input type="checkbox" class="form-check-input">
+                <i class="input-helper"></i>
+              </label>
+            </div>
+          </td>
+          <td>Hieu Tran</td>
+          <td>Hieu Trung Tran</td>
+          <td>trantrunghieu3010@gmail.com</td>
+          <td>snob-cms-users</td>
+        </tr>
+      </tbody>
+    </app-dg>
+    <div style="margin-left: 14px">
+      <button type="button" class="btn btn-sm btn-primary">
+        <i class="mdi mdi-plus"></i>
+        <span>ADD</span>
+      </button>
+      <p style="margin-top: 14px;font-weight: 200">Selected 0 user(s) for group "nhan-vien-tong-dai"</p>
+      <div id="tags_tagsinput" class="tagsinput" style="width: 100%; min-height: 75%;">
+        <span class="tag tag-light">
+          <span>London&nbsp;&nbsp;</span>
+          <a title="Removing tag">x</a>
+        </span>
+      </div>
+    </div>
+    <div style="margin-top: 30px">
+      <!-- Form buttons -->
+      <button class="btn btn-success mr-2">Submit</button>
+      <button class="btn btn-light">Cancel</button>
+    </div>
+  </div>
+</app-card>

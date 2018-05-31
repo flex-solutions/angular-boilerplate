@@ -111,4 +111,8 @@ export class UserGroupHomeComponent implements OnInit {
         }
       });
   }
+
+  editMembers(usergroup: UserGroup) {
+    this.router.navigate([RouteNames.EDIT_MEMBERS, usergroup._id]);
+  }
 }

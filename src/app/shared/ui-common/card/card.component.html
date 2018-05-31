@@ -1,9 +1,12 @@
 <div class="card">
   <div class="card-body">
     <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
         <h4 class="card-title">{{title}}</h4>
-        <ng-content select=".command-region">
-        </ng-content>
+        <p class="card-description">{{subTitle}}</p>
+      </div>
+      <ng-content select=".command-region">
+      </ng-content>
     </div>
     <ng-content></ng-content>
   </div>
