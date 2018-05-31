@@ -42,7 +42,7 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
     PubSubClientModule,
     UserGroupsRoutingModule,
     UserGroupsModule,
-    DialogModule
+    DialogModule,
     PermissionSchemeModule
   ],
   providers: [
@@ -52,8 +52,7 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
       deps: [LOCALE_ID]
     },
     ApplicationConfigurationService,
-    AuthenticationService,
-    AuthGuard
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

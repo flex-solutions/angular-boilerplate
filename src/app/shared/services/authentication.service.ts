@@ -30,6 +30,7 @@ export class AuthenticationService extends AbstractRestService {
       }
       return true;
     }
+    this.logOut();
     return false;
   }
 
