@@ -6,8 +6,7 @@ import { DialogService } from '../../../../shared/ui-common/modal/services/dialo
 
 @Component({
     selector: 'app-change-permision-scheme-dlg',
-    templateUrl: 'change-permission-scheme.component.html',
-    styleUrls: ['change-permission-scheme.component.css']
+    templateUrl: 'change-permission-scheme.component.html'
 })
 
 export class ChangePermissionSchemeComponent extends DialogComponent implements OnInit {
