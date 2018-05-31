@@ -593,6 +593,31 @@
         <target>Đã gởi email phục hồi mật khẩu thành công</target>
       </trans-unit>
       <!-- End Revovery Password -->
+
+       <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
+        <source>Scheme Name</source>
+        <target>Tên Kế Hoạch</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-input-name-placeholder" datatype="html">
+        <source>Enter permission scheme name</source>
+        <target>Nhập tên kế hoạch</target>
+      </trans-unit>
+        <trans-unit id="permissiom-scheme-create-a-permission" datatype="html">
+        <source>Permission</source>
+        <target>Quyền hạn</target>
+      </trans-unit>
+        <trans-unit id="permissiom-scheme-create-a-information" datatype="html">
+        <source>Information</source>
+        <target>Thông Tin</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Tạo kế hoạch phân quyền</target>
+      </trans-unit>
+         <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
+        <source>Type a name and choose which the permissions to include in this scheme</source>
+        <target>Nhập tên và chọn quyền hạn cho kế hoạch phân quyền này</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

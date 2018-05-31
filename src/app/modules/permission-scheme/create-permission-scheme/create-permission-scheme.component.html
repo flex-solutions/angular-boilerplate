@@ -1,0 +1,176 @@
+<div class="row">
+  <div class="col-md-12 d-flex align-items-stretch grid-margin">
+    <div class="row flex-grow">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title" i18n="@@permissiom-scheme-create-h4-title">
+              Create Permission Scheme
+            </h4>
+            <p class="card-description" i18n="@@permissiom-scheme-create-p-desciption">
+              Type a name and choose which the permissions to include in this scheme
+            </p>
+            <form class="cmxform">
+              <div class="row profile-page">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div>
+                      <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                          <li class="nav-item">
+                            <a aria-controls="user-profile-info" aria-selected="true" class="nav-link active show" data-toggle="pill" i18n="@@permissiom-scheme-create-a-information"
+                              href="#user-profile-info" id="user-profile-info-tab" role="tab">Information</a>
+                          </li>
+                          <li class="nav-item">
+                            <a aria-controls="user-profile-activity" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@permissiom-scheme-create-a-permission"
+                              href="#user-profile-activity" id="user-profile-activity-tab" role="tab">Permission</a>
+                          </li>
+                        </ul>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="tab-content tab-body" id="profile-log-switch">
+                              <div aria-labelledby="user-profile-info-tab" class="tab-pane fade pr-3 active show" id="user-profile-info" role="tabpanel">
+                                <div class="form-group OnTop">
+                                  <label i18n="@@permissiom-scheme-create-input-name">Scheme Name</label>
+                                  <label class="require">*</label>
+                                  <input class="form-control" i18n-placeholder="@@permissiom-scheme-create-input-name-placeholder" placeholder="Enter permission scheme name">
+                                  <label id="name-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
+                                </div>
+                              </div>
+                              <div aria-labelledby="user-profile-activity-tab" class="tab-pane fade" id="user-profile-activity" role="tabpanel">
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="search-container">
+                                      <label>
+                                        <input type="text" class="form-control" placeholder="cc" aria-controls="order-listing"  [(ngModel)]="Keyword" name="Keyword">
+                                        <i class="mdi mdi-table-search"></i>
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-1">
+                                  </div>
+                                  <div class="col-md-7">
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th style="">
+                                              <div class="form-check form-check-flat align-center">
+                                                <label class="form-check-label">
+                                                  <input type="checkbox" class="form-check-input" (click)="onChanged($event)">
+                                                  Bussiness
+                                                <i class="input-helper"></i></label>
+                                              </div>
+                                            </th>
+                                          </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr *ngFor="let item of (items | controllerFilter: Keyword);let index = index">
+                                              <td disa>
+                                                <div class="form-check form-check-flat align-center">
+                                                  <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input"  [(ngModel)]="items[index].is_check" name="isCheck[{{index}}]">
+                                                    {{item.controller.name}}
+                                                  <i class="input-helper"></i></label>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="col-md-1 on-top">
+                                    <button type="button" class="btn btn-primary btn-sm" (click)="addPermission()">
+                                      <i class="icon-plus"></i>ADD</button>
+                                  </div>
+                                  <div class="col-md-7">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th style="width: 30%">Bussiness Name</th>
+                                          <th style="width: 20%">Data Scope</th>
+                                          <th>Insert</th>
+                                          <th>Update</th>
+                                          <th>Delete</th>
+                                          <th>FullControl</th>
+                                          <th>Actions</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let permission of (permissionDetails | permissionFilter: Keyword) ;let index = index">
+                                          <td>{{permission.controller_name}}</td>
+                                          <td >
+                                              <select class="js-example-basic-single select2-hidden-accessible" 
+                                              style="width:100%" 
+                                              tabindex="-1" 
+                                              aria-hidden="true"
+                                              name = "datascope[{{index}}]"
+                                              [(ngModel)]="permissionDetails[index].data_scope">
+                                                  <option value="0" selected="selected">Branch</option>
+                                                  <option value="1">Full</option>
+                                                </select>
+                                          </td>
+                                          <td class="jsgrid-cell" style="width: 100px;">
+                                            <div class="form-check mt-0 center-form align-center">
+                                              <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" [(ngModel)]="permissionDetails[index].is_insert" name="is_insert[{{index}}]">
+                                                <i class="custom-input-helper"></i>
+                                              </label>
+                                            </div>
+                                          </td>
+                                          <td class="jsgrid-cell" style="width: 100px;">
+                                            <div class="form-check mt-0 center-form align-center">
+                                              <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input"[(ngModel)]="permissionDetails[index].is_update" name="is_update[{{index}}]">
+                                                <i class="custom-input-helper"></i>
+                                              </label>
+                                            </div>
+                                          </td>
+                                          <td class="jsgrid-cell" style="width: 100px;">
+                                            <div class="form-check mt-0 center-form align-center">
+                                              <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" [(ngModel)]="permissionDetails[index].is_delete" name="is_delete[{{index}}]">
+                                                <i class="custom-input-helper"></i>
+                                              </label>
+                                            </div>
+                                          </td>
+                                          <td class="jsgrid-cell" style="width: 100px;  ">
+                                            <div class="form-check mt-0 center-form align-center">
+                                              <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input">
+                                                <i class="custom-input-helper"></i>
+                                              </label>
+                                            </div>
+                                          </td>
+                                          <td>
+                                            <div class="col-md-1">
+                                              <button type="button" class="btn btn-light">
+                                                <i class="icon-close"></i>
+                                              Delete</button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success mr-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
