@@ -58,15 +58,4 @@ export class UserService extends AbstractRestService {
   getUserById(userId: string): Observable<User> {
     return this.get<User>(`name/${userId}`);
   }
-
-  // Handle to change group of user
-  changeGroup(user: User) {
-    this.exDialog.openPrime(GroupUserModalComponent, 'This is hosted modal component', ModalSize.Large).subscribe(result => {
-    //   if (result) {
-    //     alert('you clicked Submit button');
-    //   } else {
-    //     alert('you clicked cancel button');
-    //   }
-    });
-  }
 }

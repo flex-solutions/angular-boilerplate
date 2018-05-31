@@ -7,6 +7,11 @@ import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/compo
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
 import ArrayExtension from '../../../../utilities/array.extension';
 import { ModuleRoute } from '../../../../shared/constants/const';
+import { GroupUserModalComponent } from '../group-user/group-user-modal';
+import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { UserGroupService } from '../../../user-groups/services/usergroup.service';
+import { UserGroup } from '../../../../shared/models/user-group.model';
 
 @Component({
   moduleId: module.id,
@@ -16,7 +21,11 @@ import { ModuleRoute } from '../../../../shared/constants/const';
 export class UsersComponent {
 
   public items: User[] = [];
-  constructor(private userService: UserService, private router: Router) { }
+  public groupUsers: UserGroup[] = [];
+  constructor(private exDialog: ExDialog,
+    private userService: UserService,
+    private grService: UserGroupService,
+    private router: Router) { }
 
   public count = (searchKey: string): Observable<number> => {
     return this.userService.count(searchKey);
@@ -40,8 +49,13 @@ export class UsersComponent {
 
   // Handle to change group of user.
   changeUserGroup(user: User) {
-    this.userService.changeGroup(user);
-    // this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: user }).subscribe(result => {
+      //   if (result) {
+      //     alert('you clicked Submit button');
+      //   } else {
+      //     alert('you clicked cancel button');
+      //   }
+    });
   }
 
   navigateToCreatePage() {
@@ -58,5 +72,13 @@ export class UsersComponent {
 
   navigateToGroup(userGroup: string) {
     this.router.navigate([UserNavigationRoute.GROUPS_PAGE, userGroup]);
+  }
+
+  private getGroupUsers() {
+    this.grService.find(100, 1).subscribe(gr => {
+      if (gr) {
+        this.groupUsers = gr;
+      }
+    });
   }
 }

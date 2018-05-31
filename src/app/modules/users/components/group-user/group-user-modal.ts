@@ -15,20 +15,27 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
     private grService: UserGroupService) {
     super(dialogService);
   }
-  @Input() currentGroup: string;
-  public groupUsers: UserGroup[] = [];
+  currentGroup: UserGroup = new UserGroup();
+  groupUsers: UserGroup[] = [];
+  selectedGroup: string;
 
   ngOnInit() {
-    this.grService.find(100, 1).subscribe(gr => this.groupUsers = gr);
+    this.currentGroup = this.callerData as UserGroup;
+    this.selectedGroup = this.currentGroup._id;
   }
 
-  public cancel() {
+  onValueChanged(value) {
+    this.selectedGroup = value;
+  }
+
+  cancel() {
     this.result = false;
     this.dialogResult();
   }
 
-  public submit() {
+  submit() {
     this.result = true;
     this.dialogResult();
   }
+
 }

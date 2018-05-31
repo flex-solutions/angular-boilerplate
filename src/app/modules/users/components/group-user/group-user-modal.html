@@ -2,20 +2,18 @@
   <div class="modal-header">
     <div>
       <h5 class="modal-title" i18n="@@user-detail-change-user-group">Change user group</h5>
-      <p i18n="">Select other permission scheme for user group "{{userGroup.name}}"</p>
+      <p i18n="">Select other permission scheme for user group "hieutran"</p>
     </div>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-
   <div class="modal-body">
     <div class="row" style="margin: 0px">
       <div class="col-12" style="padding: 0px">
         <app-txt-search #txtSearch i18n-searchLabel="@@user_groups-list-tbl-search-label" searchPlaceholder="Select other group for user ''"></app-txt-search>
       </div>
     </div>
-
     <div class="card dialog-body">
       <table #dg i18n-searchLabel="@@user_groups-list-tbl-search-label">
         <tr>
@@ -28,7 +26,7 @@
             <td>
               <div class="form-radio non-margin-top form-radio-flat">
                 <label class="form-check-label">
-                  <input type="radio" name="permission-scheme" [checked]="selectedSchemeId === scheme._id" value="{{scheme._id}}" class="form-check-input"
+                  <input type="radio" name="permission-scheme" [checked]="selectedGroup === group._id" value="{{group._id}}" class="form-check-input"
                     (change)="onValueChanged($event.target.value)"> {{content}}
                   <i class="input-helper"></i>
                 </label>
