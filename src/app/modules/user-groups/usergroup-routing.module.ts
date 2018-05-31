@@ -15,7 +15,7 @@ const userGroupRoutes: Routes = [
     ]
   },
   {
-    path: ':name',
+    path: 'filter/:name',
     component: UserGroupHomeComponent,
     data: {
       breadcrumb: 'User Groups'

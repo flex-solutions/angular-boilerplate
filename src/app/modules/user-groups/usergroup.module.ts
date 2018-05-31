@@ -1,14 +1,12 @@
-import { ChangePermissionSchemeComponent } from './components/change-permission-scheme/change-permission-scheme.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserGroupsRoutingModule } from './usergroup-routing.module';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserGroupService } from './services/usergroup.service';
-import { UserGroupHomeComponent } from './home/user-group-home.component';
-import { CreateEditUserGroupComponent } from './components/create-user-group/create-user-group.component';
 import { UserGroupPipes } from './pipes';
 import { DialogModule } from '../../shared/ui-common/modal/dialog.module';
+import { UserGroupModuleComponents, UserGroupModuleEntryComponents } from './components';
 
 @NgModule({
   imports: [
@@ -21,13 +19,12 @@ import { DialogModule } from '../../shared/ui-common/modal/dialog.module';
   ],
   declarations: [
     ...UserGroupPipes,
-    CreateEditUserGroupComponent,
-    UserGroupHomeComponent,
-    ChangePermissionSchemeComponent],
+    ...UserGroupModuleComponents
+  ],
   providers: [
     UserGroupService],
   entryComponents: [
-    ChangePermissionSchemeComponent
+    ...UserGroupModuleEntryComponents
   ]
 })
 export class UserGroupsModule { }

@@ -57,6 +57,6 @@ export class UsersComponent {
   }
 
   navigateToGroup(userGroup: string) {
-    this.router.navigate([UserNavigationRoute.GROUPS_PAGE, userGroup]);
+    this.router.navigate([`${UserNavigationRoute.GROUPS_PAGE}/filter`, userGroup]);
   }
 }
