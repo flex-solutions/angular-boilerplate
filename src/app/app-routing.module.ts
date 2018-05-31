@@ -11,13 +11,11 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: 'app/modules/users/users.module#UsersModule', // Lazy loading users module
-    canActivate: [AuthGuard]
   },
   {
     path: 'user-groups',
     // component: UserGroupHomeComponent
     loadChildren: 'app/modules/user-groups/usergroup.module#UserGroupsModule', // Lazy loading user groups module
-    canActivate: [AuthGuard]
   }
 ];
 
