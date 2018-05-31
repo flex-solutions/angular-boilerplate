@@ -13,7 +13,8 @@
 
     <div class="row">
       <div class="col-12">
-        <app-dg #dg [countFunction]="count" searchLabel="Search username, fullname or email" (pageChanged)="onPageChanged($event)">
+        <app-dg #dg searchLabel="Search username, fullname or email" i18n-searchLabel="@@users-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
+          [countFunction]="count">
           <tr role="row">
             <th i18n="@@users-fullname">Full Name</th>
             <th i18n="@@users-username">Username</th>
@@ -26,27 +27,27 @@
             <tr *ngFor="let item of items | userFilter: dg.searchKey">
               <td class="change-color">
                 <div class="user">
-                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 15px !important; height: 15px !important;"
-                  />
-                  <p class="u-name" style="float: left;" (click)="navigateToUserDetailPage(item)">{{item.fullname}}</p>
+                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 20px !important; height: 20px !important;"/>
+                  <p class="u-name pull-left" (click)="navigateToUserDetailPage(item)">{{item.fullname}}</p>
                 </div>
               </td>
               <td>
-                <p class="text-gray mb-0 ellipsor">{{item.username}}</p>
-                <span class="change-color ellipsor">
+                <p class="text-gray mb-2">{{item.username}}</p>
+                <span class="change-color">
                   <a href="mailto:{{item.email}}">{{item.email}}</a>
                 </span>
               </td>
               <td>
-                <div>
-                  <strong class="dropdown" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}</div>
-                <strong class="dropdown" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
-              </td>
-              <td class="change-color">
-                <a (click)="navigateToUserGroup(item.groupName)">{{item.groupname}}</a>
+                <div class="mb-2">
+                  <strong class="font-weight-bold" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}
+                </div>
+                <strong class="font-weight-bold" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
               </td>
               <td>
-                <label class="badge badge-success">{{item.isLocked}}</label>
+                <a href="#" (click)="navigateToGroup()">{{item.userGroup.name}}</a>
+              </td>
+              <td>
+                <label class="badge" [ngClass]="item.isActive ? 'badge-success' : 'badge-danger'">{{item.isActive ? 'Active' : 'Deactive'}}</label>
               </td>
               <td>
                 <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
@@ -54,7 +55,7 @@
                   <span i18n="@@users-edit">Edit</span>
                 </button>
                 <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="mdi mdi-dots-horizontal btn-option-custom"></i>
+                  <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" (click)="navigateToChangeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
@@ -68,4 +69,3 @@
     </div>
   </div>
 </div>
-<!-- partial -->

@@ -14,15 +14,17 @@ import { UserNavigationRoute } from '../../users.constant';
 
 export class UserDetailComponent implements OnInit {
 
-  userdetail: User = new User;
+  public userdetail: User = new User();
 
   // Constructor
   constructor(private userService: UserService,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
-    private notifier: NotificationService) { }
+    private notifier: NotificationService) {
 
+  }
+  public na: string;
   // Init user detail component
   ngOnInit() {
     const userId = this.route.snapshot.params['id'];
@@ -31,10 +33,11 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
+
   // Handle get user detail information.
-  getUserInfomation(userId: string) {
-    if (userId !== null) {
-      this.userService.getUserById(userId).subscribe(user => {
+  getUserInfomation(userName: string) {
+    if (userName !== null) {
+      this.userService.getUserById(userName).subscribe(user => {
         this.userdetail = user;
       });
     }
@@ -60,6 +63,10 @@ export class UserDetailComponent implements OnInit {
 
   navigateToUserDetailPage(user: User) {
     this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
+  }
+
+  navigateToGroups() {
+    this.router.navigate([UserNavigationRoute.GROUPS_PAGE]);
   }
 
   private goBack() {

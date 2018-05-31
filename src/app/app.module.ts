@@ -23,6 +23,7 @@ import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing
 import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
+import { AuthGuard } from './shared/guards/auth-guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,6 +52,7 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
     },
     ApplicationConfigurationService,
     AuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
