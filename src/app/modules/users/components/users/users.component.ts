@@ -37,9 +37,10 @@ export class UsersComponent {
     ArrayExtension.removeItemFromArray(this.items, user);
   }
 
-
+  // Handle to change group of user.
   navigateToChangeUserGroup(user: User) {
-    this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
+    this.userService.changeGroup(user);
+    // this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
   }
 
   navigateToCreatePage() {

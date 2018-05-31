@@ -22,6 +22,7 @@ import { BranchService } from './services/branch.service';
     UsersComponent,
     GroupUserModalComponent,
     ...UserModulePipes],
-  providers: [UserService, BranchService]
+  providers: [UserService, BranchService],
+  entryComponents: [GroupUserModalComponent]
 })
 export class UsersModule { }

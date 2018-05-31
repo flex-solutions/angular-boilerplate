@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
+import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { GroupUserModalComponent } from '../components/group-user/group-user-modal';
 
 @Injectable()
 export class UserService extends AbstractRestService {
@@ -60,5 +62,16 @@ export class UserService extends AbstractRestService {
   // Handle get user by unique name.
   getUserByName(userName: string): Observable<User> {
     return this.get<User>(`name/${userName}`);
+  }
+
+  // Handle to change group of user
+  changeGroup(user: User) {
+    this.exDialog.openPrime(GroupUserModalComponent, 'This is hosted modal component', ModalSize.Large).subscribe(result => {
+      if (result) {
+        alert('you clicked Submit button');
+      } else {
+        alert('you clicked cancel button');
+      }
+    });
   }
 }
