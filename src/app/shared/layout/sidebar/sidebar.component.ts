@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { BasicUserInfo } from '../../models/user.model';
+import { ModuleRoute } from '../../constants/const';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,10 +21,10 @@ export class SidebarComponent implements OnInit {
   }
 
   navigateToUsersPage() {
-    this.router.navigate(['/users'], { relativeTo: this.route });
+    this.router.navigate([ModuleRoute.USER], { relativeTo: this.route });
   }
 
   navigateToUserGroupsPage() {
-    this.router.navigate(['/user-groups'], { relativeTo: this.route });
+    this.router.navigate([ModuleRoute.USER_GROUP], { relativeTo: this.route });
   }
 }

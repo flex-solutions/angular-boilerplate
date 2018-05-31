@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
 import ArrayExtension from '../../../../utilities/array.extension';
+import { ModuleRoute } from '../../../../shared/constants/const';
 
 @Component({
   moduleId: module.id,

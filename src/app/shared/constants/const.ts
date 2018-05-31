@@ -3,4 +3,9 @@ const DefaultUserGroup = {
     USERS: 'snob-cms-users'
 };
 
-export { DefaultUserGroup };
+const ModuleRoute = {
+    USER: 'users',
+    USER_GROUP: 'user-groups'
+};
+
+export { DefaultUserGroup, ModuleRoute };
