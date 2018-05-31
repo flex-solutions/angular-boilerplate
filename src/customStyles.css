@@ -74,3 +74,24 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.radio-a-group {
+  display: flex;
+  margin-bottom: 13px;
+}
+
+.radio-a-group a {
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.radio-container {
+  margin-bottom: 0px;
+  margin-top: 7px;
+}
+
+.non-margin-top {
+  margin-top: 0px;
+  margin-bottom: 23px;
+}
+
