@@ -8,6 +8,7 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
+import { ModuleRoute } from '../../../../shared/constants/const';
 
 @Component({
   moduleId: module.id,
@@ -61,5 +62,9 @@ export class UsersComponent implements OnInit {
 
   navigateToUserDetailPage(user: User) {
     this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
+  }
+
+  navigateToUserGroup(groupName: string) {
+    this.router.navigate([ModuleRoute.USER_GROUP, groupName]);
   }
 }

@@ -6,7 +6,7 @@
     </button>
   </div>
   <app-dg #dg searchLabel="Search by group name" i18n-searchLabel="@@user_groups-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
-    [countFunction]="count">
+    [countFunction]="count" [searchKey]="usergroup">
     <tr>
       <th i18n="@@user_groups-list-tbl-group-name">Group Name</th>
       <th i18n="@@user_groups-list-tbl-user-count">Users</th>
