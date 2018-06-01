@@ -10,8 +10,7 @@ import { ModuleRoute } from '../../../../shared/constants/const';
 import { GroupUserModalComponent } from '../group-user/group-user-modal';
 import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
-import { UserGroupService } from '../../../user-groups/services/usergroup.service';
-import { UserGroup } from '../../../../shared/models/user-group.model';
+import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
 
 @Component({
   moduleId: module.id,
@@ -21,10 +20,9 @@ import { UserGroup } from '../../../../shared/models/user-group.model';
 export class UsersComponent {
 
   public items: User[] = [];
-  public groupUsers: UserGroup[] = [];
+  private transferData = new TransferGroupData();
   constructor(private exDialog: ExDialog,
     private userService: UserService,
-    private grService: UserGroupService,
     private router: Router) { }
 
   public count = (searchKey: string): Observable<number> => {
@@ -37,6 +35,7 @@ export class UsersComponent {
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
+    this.transferData.filterEvent = eventArg;
     this.loadData(eventArg);
   }
 
@@ -49,7 +48,10 @@ export class UsersComponent {
 
   // Handle to change group of user.
   changeUserGroup(user: User) {
-    this.exDialog.openPrime(GroupUserModalComponent, { callerData: user }).subscribe(result => {
+    this.transferData.userId = user._id;
+    this.transferData.userName = user.username;
+    this.transferData.groupId = user.userGroup._id;
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData }).subscribe(result => {
       //   if (result) {
       //     alert('you clicked Submit button');
       //   } else {
@@ -74,11 +76,4 @@ export class UsersComponent {
     this.router.navigate([UserNavigationRoute.GROUPS_PAGE, userGroup]);
   }
 
-  private getGroupUsers() {
-    this.grService.find(100, 1).subscribe(gr => {
-      if (gr) {
-        this.groupUsers = gr;
-      }
-    });
-  }
 }

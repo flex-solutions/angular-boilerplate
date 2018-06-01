@@ -4,6 +4,7 @@ import { DialogComponent } from '../../../../shared/ui-common/modal/components/d
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { UserGroupService } from '../../../user-groups/services/usergroup.service';
+import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
 
 @Component({
   selector: 'app-group-user-modal',
@@ -12,20 +13,22 @@ import { UserGroupService } from '../../../user-groups/services/usergroup.servic
 
 export class GroupUserModalComponent extends DialogComponent implements OnInit {
   constructor(protected dialogService: DialogService,
-    private grService: UserGroupService) {
+    private grService: UserGroupService,
+    private translateService: TranslateService) {
     super(dialogService);
   }
-  currentGroup: UserGroup = new UserGroup();
+  groupInfo = new TransferGroupData();
   groupUsers: UserGroup[] = [];
-  selectedGroup: string;
+  selectedGroupId: string;
 
   ngOnInit() {
-    this.currentGroup = this.callerData as UserGroup;
-    this.selectedGroup = this.currentGroup._id;
+    this.groupInfo = this.callerData as TransferGroupData;
+    this.selectedGroupId = this.groupInfo.groupId;
+    this.getGroups();
   }
 
   onValueChanged(value) {
-    this.selectedGroup = value;
+    this.selectedGroupId = value;
   }
 
   cancel() {
@@ -38,4 +41,8 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
     this.dialogResult();
   }
 
+  private getGroups() {
+    this.grService.find(this.groupInfo.filterEvent.pagination.itemsPerPage, this.groupInfo.filterEvent.pagination.page)
+      .subscribe(groups => this.groupUsers = groups);
+  }
 }
