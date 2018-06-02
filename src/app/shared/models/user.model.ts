@@ -10,6 +10,8 @@ export interface BasicUserInfo {
   avatar: string;
 
   branch_id: string;
+
+  userGroup?: {};
 }
 
 export class User implements BasicUserInfo {
@@ -29,9 +31,6 @@ export class User implements BasicUserInfo {
 
   position: string;
 
-  // Name of group user belong to.
-  groupname: string;
-
   // the current login failed attempt
   loginAttempts = 0;
 
@@ -50,8 +49,17 @@ export class User implements BasicUserInfo {
   // total count of fail log in
   failedLoginCount = 0;
 
-  // id of branch
+  // branch id
   branch_id: string;
+
+  // Id of branch
+  branch: string;
+
+  // The group user belong to
+  userGroup?: {
+    _id: any;
+    name: string;
+  };
 }
 
 export class SignedUser {

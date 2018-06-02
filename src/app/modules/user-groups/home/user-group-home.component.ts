@@ -26,14 +26,19 @@ export class UserGroupHomeComponent implements OnInit {
   messageContentTemplate = 'user_groups-user_groups_list-delete_user_group_action_message';
   selectedUserGroup: UserGroup;
   currentPaging: IFilterChangedEvent;
+  usergroup: string;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     private service: UserGroupService,
     private dialogManager: ExDialog,
     private notificationService: NotificationService,
-    private translateService: TranslateService
-  ) {}
+    private translateService: TranslateService,
+    private activatedRoute: ActivatedRoute
+  ) {
+     // Detect page is update mode
+     this.usergroup = this.activatedRoute.snapshot.params['name'];
+  }
 
   ngOnInit(): void {}
 

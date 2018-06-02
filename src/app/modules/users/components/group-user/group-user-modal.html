@@ -7,16 +7,14 @@
   </div>
 
   <div class="modal-body card">
-    <table id="datatables" class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th i18n="@@users-group-name">Group Name</th>
-          <th i18n="@@users-permission-scheme">Permission Scheme</th>
-        </tr>
-      </thead>
+    <table #dg searchLabel="Search by group name" i18n-searchLabel="@@user_groups-list-tbl-search-label">
+      <tr>
+        <th></th>
+        <th i18n="@@users-group-name">Group Name</th>
+        <th i18n="@@users-permission-scheme">Permission Scheme</th>
+      </tr>
       <tbody>
-        <tr *ngFor="let group of groupUsers">
+        <tr *ngFor="let group of groupUsers | userGroupFilter: dg.searchKey">
           <td>
             <input class="checkbox" type="checkbox">
           </td>

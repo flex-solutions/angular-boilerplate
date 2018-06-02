@@ -15,6 +15,15 @@ const userGroupRoutes: Routes = [
     ]
   },
   {
+    path: ':name',
+    component: UserGroupHomeComponent,
+    data: {
+      breadcrumb: 'User Groups'
+    },
+    children: [
+    ]
+  },
+  {
     path: 'create',
     component: CreateEditUserGroupComponent,
     data: {
@@ -34,4 +43,4 @@ const userGroupRoutes: Routes = [
   imports: [RouterModule.forChild(userGroupRoutes)],
   exports: [RouterModule]
 })
-export class UserGroupsRoutingModule {}
+export class UserGroupsRoutingModule { }

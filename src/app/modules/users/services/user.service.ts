@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
+import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { GroupUserModalComponent } from '../components/group-user/group-user-modal';
 
 @Injectable()
 export class UserService extends AbstractRestService {
@@ -23,7 +25,8 @@ export class UserService extends AbstractRestService {
   remove(user: User) {
     return new Promise((resolve, reject) => {
       const confirmMsg = this.translateService.translateWithParams('users-delete-dialog-confirm_message', user.username);
-      this.exDialog.openConfirm(confirmMsg).subscribe(result => {
+      const confirmTle = this.translateService.translateWithParams('users-list-title-confirm-dialog');
+      this.exDialog.openConfirm(confirmMsg, confirmTle).subscribe(result => {
         if (result) {
           // Submit button has clicked
           this.delete(user._id, user._id).subscribe(res => {
@@ -43,12 +46,32 @@ export class UserService extends AbstractRestService {
     return this.get(userId);
   }
 
-  getAllUser(): Observable<User[]> {
-    return this.get<User[]>('');
+  getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<User[]> {
+    return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
+
+  public count(searchKey?: string): Observable<number> {
+    return this.get(`count?searchKey=${searchKey}`);
   }
 
   // Handle get user by email.
   getUserById(userId: string): Observable<User> {
     return this.get<User>(userId);
+  }
+
+  // Handle get user by unique name.
+  getUserByName(userName: string): Observable<User> {
+    return this.get<User>(`name/${userName}`);
+  }
+
+  // Handle to change group of user
+  changeGroup(user: User) {
+    this.exDialog.openPrime(GroupUserModalComponent, 'This is hosted modal component', ModalSize.Large).subscribe(result => {
+      if (result) {
+        alert('you clicked Submit button');
+      } else {
+        alert('you clicked cancel button');
+      }
+    });
   }
 }

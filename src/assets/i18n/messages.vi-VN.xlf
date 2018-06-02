@@ -359,7 +359,7 @@
       </trans-unit>
       <trans-unit id="users-actions" datatype="html">
         <source>Actions</source>
-        <target>Hành động</target>
+        <target>Actions</target>
       </trans-unit>
       <trans-unit id="users-count" datatype="html">
         <source>Count: </source>
@@ -381,6 +381,18 @@
         <source>Edit user groups</source>
         <target>Sửa nhóm user</target>
       </trans-unit>
+      <trans-unit id="users-list-tbl-search-label" datatype="html">
+        <source>Search username, fullname or email</source>
+        <target>Tìm kiếm với tên đăng nhập, tên đầy đủ hoặc email</target>
+      </trans-unit>
+      <trans-unit id="users-list-title-confirm-dialog" datatype="html">
+        <source>Confirm</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="users-list-title-change-group" datatype="html">
+        <source>Change user group</source>
+        <target>Thay đổi nhóm user</target>
+      </trans-unit>
       <!-- Users -->
 
       <!--Logout-->
@@ -396,8 +408,8 @@
 
       <!--Delete user-->
       <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
-        <source>User {{0}} will be permanently deleted. Are you sure you want to delete?</source>
-        <target>User {{0}} sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+        <source>User "{{0}}" will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User "{{0}}" sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="users-delete-dialog-notification_message" datatype="html">
         <source>Delete user {{0}} successfully</source>
