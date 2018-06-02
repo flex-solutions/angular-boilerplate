@@ -104,6 +104,7 @@ export class EditMembersComponent implements OnInit {
         const selectableModel = ArrayExtension.getItem(this.users, u => u.model.username === user.username);
         if (selectableModel) {
             selectableModel.isAdded = false;
+            selectableModel.isSelected = false;
         }
         this.updateSelectedUserCount();
         this.updateCanAddUser();
