@@ -8,6 +8,7 @@ import { User } from '../../../../shared/models/user.model';
 import ArrayExtension from '../../../../utilities/array.extension';
 import { BranchService } from '../../services/branch.service';
 import { EventEmitter } from 'events';
+import { appVariables } from '../../../../app.constant';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {
@@ -75,6 +76,12 @@ export abstract class UserModificationBase extends AbstractFormComponent
     // Call service to get list branch
     this.branchService.getAll().subscribe(result => {
       this.branches = result;
+      // selected default branch
+      this.selectedBranch = this.branches.find(b => b.name === appVariables.defaultHOBranch);
+      if (this.selectedBranch) {
+        this.formGroup.patchValue({ branchId: this.selectedBranch });
+      }
+
       this.eventEmmiter.emit('onBranchLoaded');
     });
   }

@@ -7,27 +7,9 @@
       </div>
       <div class="profile-name">
         <p class="name">{{currentUser.fullname}}</p>
-        <p class="designation">Administrator</p>
+        <p class="designation"></p>
       </div>
     </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/datagrid-demo">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/01.png" alt="menu icon">
-      <span class="menu-title">Datagrid Demo</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/modal-demo">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/01.png" alt="menu icon">
-      <span class="menu-title">Modal Demo</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/demo">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/01.png" alt="menu icon">
-      <span class="menu-title" i18n="@@layout-sidebar-anchor-demo">Demo</span>
-    </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="cursor: pointer;" (click)="navigateToUsersPage()" aria-controls="icons">
@@ -36,9 +18,24 @@
     </a>
   </li>
   <li class="nav-item">
-      <a class="nav-link" style="cursor: pointer;" (click)="navigateToUserGroupsPage()" aria-controls="icons">
-        <img class="menu-icon" src="../../../../assets/images/menu_icons/01.png" alt="menu icon">
-        <span class="menu-title" i18n="@@layout-sidebar-anchor-user-group-management">User Groups</span>
-      </a>
+    <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-controls="page-layouts">
+      <img class="menu-icon" src="../../../../assets/images/menu_icons/01.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-permission-management">Permission Management</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse show" id="page-layouts">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToPermissionSchemesPage()" aria-controls="icons">
+            <span class="menu-title" i18n="@@layout-sidebar-anchor-permission-schemes">Permisson Schemes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToUserGroupsPage()" aria-controls="icons">
+            <span class="menu-title" i18n="@@layout-sidebar-anchor-user-group-management">User Groups</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </li>
 </ul>

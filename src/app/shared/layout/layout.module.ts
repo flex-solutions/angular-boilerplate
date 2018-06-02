@@ -7,6 +7,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification-item/notification-item.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { HomeLayoutComponent } from './home-layout/home-layout.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
@@ -22,7 +24,9 @@ import { NotificationItemComponent } from './notification-item/notification-item
     FooterComponent,
     BreadcrumbComponent,
     NotificationComponent,
-    NotificationItemComponent
+    NotificationItemComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent
   ],
 })
-export class LayoutModule {}
+export class LayoutModule { }

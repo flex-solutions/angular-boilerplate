@@ -29,6 +29,14 @@
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
+        <source>Permission Management</source>
+        <target>Permission Management</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Permission Schemes</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -644,6 +652,178 @@
         <target>A password reset email was sent successfully</target>
       </trans-unit>
       <!-- End Revovery Password -->
+      <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
+        <source>Scheme Name</source>
+        <target>Scheme Name</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-input-name-placeholder" datatype="html">
+        <source>Enter permission scheme namee</source>
+        <target>Enter permission scheme name</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-a-permission" datatype="html">
+        <source>Permission</source>
+        <target>Permission</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-a-information" datatype="html">
+        <source>Information</source>
+        <target>Information</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-h4-Title" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Create Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
+        <source>Type a name and choose which the permissions to include in this scheme</source>
+        <target>Type a name and choose which the permissions to include in this scheme</target>
+      </trans-unit>
+         <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+        <source>Business</source>
+        <target>Business</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
+        <source>Business Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
+        <source>Data Scope</source>
+        <target>Data Scope</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-insert" datatype="html">
+        <source>Insert</source>
+        <target>Insert</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+        <source>Update</source>
+        <target>Update</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-delete" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-fullcontrol" datatype="html">
+        <source>Full Control</source>
+        <target>Full Control</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-add" datatype="html">
+        <source>ADD</source>
+        <target>ADD</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-createanother" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-remove" datatype="html">
+        <source>Remove</source>
+        <target>Remove</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-createsuccessfully" datatype="html">
+        <source>Created the permission scheme successfully</source>
+        <target>Created the permission scheme {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-editsuccessfully" datatype="html">
+        <source>Updated the permission scheme successfully</source>
+        <target>Updated the permission scheme {{0}} successfully</target>
+      </trans-unit>
+      <!-- Permission Schemes -->
+      <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Permission Schemes</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-button-create_permissions" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Create Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-search-label" datatype="html">
+        <source>Search by permission sheme name</source>
+        <target>Search by permission sheme name</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-user_groups_header" datatype="html">
+        <source>User Groups</source>
+        <target>User Groups</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-actions_header" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-a-copy" datatype="html">
+        <source>Copy</source>
+        <target>Copy</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-a-assign_to_user_groups" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Assign to the user groups</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Edit Permission Scheme</target>
+      </trans-unit>
+      <!-- End Permission Schemes -->
+      
+      <!-- Copy Permission Schemes -->
+      <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
+        <source>Copy Permission Scheme</source>
+        <target>Copy Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_description" datatype="html">
+        <source>You can clone "{{0}}" to a new one</source>
+        <target>You can clone "{{0}}" to a new one</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_name" datatype="html">
+        <source>Scheme name</source>
+        <target>Scheme name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
+        <source>Please provide the scheme name</source>
+        <target>Please provide the scheme name</target>
+      </trans-unit>
+      <!-- END Permission Schemes -->
+
+       <!-- Assign the user group to permission schemes -->
+      <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Assign to the user groups</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-assign_description" datatype="html">
+        <source>Select the user group to assign to the permission scheme "{{0}}"</source>
+        <target>Select the user group to assign to the permission scheme "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-group_name_header" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-notification-assign_successful" datatype="html">
+        <source>Assigned the user groups to "{{0}}" successfully</source>
+        <target>Assigned the user groups to "{{0}}" successfully</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-place_holder-search_description" datatype="html">
+        <source>Search by group name, permission scheme name</source>
+        <target>Search by group name, permission scheme name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-count_selected_group" datatype="html">
+        <source>Selected {{0}} groups(s)</source>
+        <target>Selected {{0}} groups(s)</target>
+      </trans-unit>
+      <!-- END Assign the user group to permission schemes -->
     </body>
   </file>
 </xliff>
