@@ -1,4 +1,5 @@
 interface IUserModel {
+    _id: any;
     username: string;
     fullName: string;
     email: string;

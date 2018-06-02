@@ -4,17 +4,17 @@
     <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" i18n-searchLabel="@@edit-members-search-label" searchLabel="Search by username, full name or email">
       <tr>
         <th></th>
-        <th>Username</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>User Group</th>
+        <th i18n="@@edit-members-tbl-username">Username</th>
+        <th i18n="@@edit-members-tbl-fullname">Full Name</th>
+        <th i18n="@@edit-members-tbl-email">Email</th>
+        <th i18n="@@edit-members-tbl-usergroup">User Group</th>
       </tr>
       <tbody>
         <tr *ngFor="let user of users | userListForBulkEditFilter: dg.searchKey" [class.disable-row]="user.isAdded">
           <td>
             <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:0px">
               <label class="form-check-label" style="margin-top:0px;padding-left:0px">
-                <input [disabled]="user.isAdded" type="checkbox" [(ngModel)]="user.isSelected" [checked]="user.isSelected" class="form-check-input">
+                <input [disabled]="user.isAdded" type="checkbox" [(ngModel)]="user.isSelected" [checked]="user.isSelected" class="form-check-input" (change)="updateCanAddUser()">
                 <i class="input-helper"></i>
               </label>
             </div>
@@ -27,7 +27,7 @@
       </tbody>
     </app-dg>
     <div style="margin-left: 14px">
-      <button type="button" class="btn btn-sm btn-primary" (click)="addToSelectedUsers()" [disabled]="!canAddMoreUser">
+      <button type="button" class="btn btn-sm btn-outline-primary" (click)="addToSelectedUsers()" [disabled]="!canAddMoreUser">
         <i class="mdi mdi-plus"></i>
         <span i18n="@@edit-members-add-btn">ADD</span>
       </button>
@@ -39,9 +39,9 @@
         </span>
       </div>
     </div>
-    <div style="margin-top: 30px">
+    <div style="margin-top: 30px; margin-left: 14px">
       <!-- Form buttons -->
-      <button class="btn btn-success mr-2">Submit</button>
+      <button class="btn btn-success mr-2" (click)="submit()">Submit</button>
       <button class="btn btn-light" (click)="cancel()" i18n="@@edit-members-cancel">Cancel</button>
     </div>
   </div>

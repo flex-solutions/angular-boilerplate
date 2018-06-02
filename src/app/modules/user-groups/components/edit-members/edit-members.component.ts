@@ -1,3 +1,5 @@
+import { NotificationService } from './../../../../shared/services/notification.service';
+import { TranslateService } from './../../../../shared/services/translate.service';
 import { Location } from '@angular/common';
 import { UserGroup } from './../../../../shared/models/user-group.model';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { IUserModel } from '../../model';
 import { SelectAndAddedModel } from '../../../../shared/models/selectable.model';
-import { isEmpty, forEach, find, propEq, filter, any } from 'ramda';
+import { isEmpty, forEach, find, propEq, filter, any, map } from 'ramda';
 import ArrayExtension from '../../../../utilities/array.extension';
 import { Observable } from 'rxjs';
 
@@ -31,7 +33,9 @@ export class EditMembersComponent implements OnInit {
 
     constructor(private ugService: UserGroupService,
         private activatedRoute: ActivatedRoute,
-        private location: Location) {
+        private location: Location,
+        private translateService: TranslateService,
+        private notificationService: NotificationService) {
         activatedRoute.params.subscribe(((params: Params) => {
             this.ugId = params['id'];
             this.getUserGroupInfo();
@@ -108,5 +112,21 @@ export class EditMembersComponent implements OnInit {
 
     cancel() {
         this.location.back();
+    }
+
+    submit() {
+        if (isEmpty(this.selectedUsers)) {
+            return;
+        }
+
+        const userIds = map((u: IUserModel) => u._id, this.selectedUsers);
+
+        console.log(userIds);
+
+        return;
+
+        // this.ugService.updateMembersUserGroup(this.ugId, userIds).subscribe(result => {
+        //     this.notificationService.showSuccess('Điều chỉnh thành viên nhóm "<group-name>" thành công');
+        // });
     }
 }

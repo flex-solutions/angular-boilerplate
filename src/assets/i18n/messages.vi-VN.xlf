@@ -568,6 +568,22 @@
         <source>Search by username, full name and email</source>
         <target>Tìm kiếm với tên đăng nhập, tên đầy đủ và email</target>
       </trans-unit>
+      <trans-unit id="edit-members-tbl-username" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-usergroup" datatype="html">
+        <source>User Group</source>
+        <target>Nhóm hiện tại</target>
+      </trans-unit>
       <trans-unit id="edit-members-add-btn" datatype="html">
         <source>ADD</source>
         <target>CHỌN</target>

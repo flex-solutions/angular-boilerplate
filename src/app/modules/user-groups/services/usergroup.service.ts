@@ -54,4 +54,8 @@ export class UserGroupService extends AbstractRestService {
   public getUserListExceptInGroup (ugId: string, searchKey: string, pageSize: number, pageNumber: number): Observable<IUserModel[]> {
     return this.get<IUserModel[]>(`getUserListExceptInGroup/${ugId}?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
+
+  public updateMembersUserGroup(id: string, userIds: string[]) {
+    return this.put(`updateMembersUserGroup/${id}`, userIds);
+  }
 }

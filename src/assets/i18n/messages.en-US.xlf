@@ -570,6 +570,22 @@
         <source>Search by username, full name and email</source>
         <target>Search by username, full name and email</target>
       </trans-unit>
+      <trans-unit id="edit-members-tbl-username" datatype="html">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Full Name</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-usergroup" datatype="html">
+        <source>User Group</source>
+        <target>User Group</target>
+      </trans-unit>
       <trans-unit id="edit-members-add-btn" datatype="html">
         <source>ADD</source>
         <target>ADD</target>
