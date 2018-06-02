@@ -3,7 +3,10 @@ interface IUserModel {
     username: string;
     fullname: string;
     email: string;
-    userGroup: string;
+    userGroup: {
+        _id: any;
+        name: string;
+    };
 }
 
 export { IUserModel };
