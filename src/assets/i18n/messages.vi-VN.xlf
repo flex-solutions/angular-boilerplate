@@ -780,15 +780,15 @@
       <!-- Copy Permission Schemes -->
       <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
         <source>Copy Permission Scheme</source>
-        <target>Copy Permission Scheme</target>
+        <target>Sao chép kế hoạch</target>
       </trans-unit>
       <trans-unit id="permission-scheme-copy-label-scheme_description" datatype="html">
         <source>You can clone "{{0}}" to a new one</source>
-        <target>You can clone "{{0}}" to a new one</target>
+        <target>Bạn có thể sao chép kế hoạch "{{0}}"</target>
       </trans-unit>
       <trans-unit id="permission-scheme-copy-label-scheme_name" datatype="html">
         <source>Scheme name</source>
-        <target>Scheme name</target>
+        <target>Tên kế hoạch</target>
       </trans-unit>
        <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
         <source>Please provide the scheme name</source>

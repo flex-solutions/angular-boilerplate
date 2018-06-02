@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 import { IPermissionScheme } from '../../../../shared/models/permission-scheme.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IValidationMessage, GenericValidator } from '../../../../shared/validation/generic-validator';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { PermissionSchemeServcie } from '../../services/permission-scheme.service';
@@ -33,9 +33,13 @@ export class CopySchemeComponent extends DialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.copiedPermissionScheme = this.callerData as IPermissionScheme;
+    // Clone permission scheme
+    const selectScheme = {};
+    Object.assign(selectScheme, this.callerData);
+    this.copiedPermissionScheme = selectScheme as IPermissionScheme;
+
     this.formGroup = this.fb.group({
-      schemeName: ['', []]
+      schemeName: ['', [Validators.required]]
     });
 
     // Build scheme description
