@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../shared/ui-common/datagrid/components/datagrid.component';
-import { PermissionSchemes } from '../../../shared/models/permission-scheme.model';
+import { IPermissionSchemes } from '../../../shared/models/permission-scheme.model';
 import { PermissionSchemeServcie } from '../services/permission-scheme.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { PermissionSchemeServcie } from '../services/permission-scheme.service';
   styleUrls: ['./permission-schemes.component.css']
 })
 export class PermissionSchemesComponent implements OnInit {
-  items: PermissionSchemes[];
+  items: IPermissionSchemes[];
   currentFilterArgs: IFilterChangedEvent;
 
   constructor(private permissionService: PermissionSchemeServcie) { }
@@ -33,18 +33,19 @@ export class PermissionSchemesComponent implements OnInit {
   }
 
   public count = (searchKey: string): Observable<number> => {
-    return null;
+    return this.permissionService.count(searchKey);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
     this.currentFilterArgs = eventArg;
+    this.loadPermissionSchemes();
   }
 
   loadPermissionSchemes() {
     const pagination = this.currentFilterArgs.pagination;
     this.permissionService.getPermissionSchemes(pagination.itemsPerPage, pagination.page,
-      this.currentFilterArgs.searchKey).subscribe(response => {
-        Object.assign(this.items, response);
+      this.currentFilterArgs.searchKey).subscribe((response: IPermissionSchemes[]) => {
+        this.items = response;
       });
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
-import { UserGroupHomeComponent } from './modules/user-groups/home/user-group-home.component';
 import { AuthGuard } from './shared/guards/auth-guard';
 
 const routes: Routes = [
@@ -14,9 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'user-groups',
-    // component: UserGroupHomeComponent
     loadChildren: 'app/modules/user-groups/usergroup.module#UserGroupsModule', // Lazy loading user groups module
-  }
+  },
+  {
+    path: 'permission-schemes',
+    loadChildren: 'app/modules/permission-scheme/permission-scheme.module#PermissionSchemeModule', // Lazy loading permission scheme module
+  },
 ];
 
 @NgModule({

@@ -29,11 +29,12 @@ enum DataScope {
     Full = 1,
 }
 
-class PermissionSchemes {
+
+interface IPermissionSchemes {
     _id: any;
     name: string;
     userGroups: UserGroup[];
 }
 
-export { ControllerSelectedItem, ControllerModel, PermissionDetail, DataScope, PermissionSchemes };
+export { ControllerSelectedItem, ControllerModel, PermissionDetail, DataScope, IPermissionSchemes };
 

@@ -29,7 +29,11 @@
               </td>
               <td>
                 <span class="change-color">
-                  <a href="#" *ngFor="let userGroup of item.userGroups">{{userGroup.name}}</a>
+                  <ul class="list-unstyled">
+                    <li *ngFor="let userGroup of item.userGroups">
+                      <a href="#">{{userGroup.name}}</a>
+                    </li>
+                  </ul>
                 </span>
               </td>
               <td>
