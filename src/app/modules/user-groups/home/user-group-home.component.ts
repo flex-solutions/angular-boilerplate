@@ -101,6 +101,7 @@ export class UserGroupHomeComponent implements OnInit {
               userGroup.name
             );
             this.notificationService.showSuccess(msg);
+            this.getUserGroups();
           });
         } else {
         }
