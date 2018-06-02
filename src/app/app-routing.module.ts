@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router, Route } from '@angular/router';
-import { HomeLayoutComponentComponent } from './shared/layout/home-layout-component/home-layout-component.component';
+import { HomeLayoutComponent } from './shared/layout/home-layout/home-layout.component';
 import { AuthGuard } from './shared/guards/auth-guard';
-import { LoginLayoutComponentComponent } from './shared/layout/login-layout-component/login-layout-component.component';
+import { LoginLayoutComponent } from './shared/layout/login-layout/login-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeLayoutComponentComponent,
+    component: HomeLayoutComponent,
     canActivate: [AuthGuard],
     children: [{
       path: 'users',
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LoginLayoutComponentComponent,
+    component: LoginLayoutComponent,
     children: [{
       path: 'account',
       loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
