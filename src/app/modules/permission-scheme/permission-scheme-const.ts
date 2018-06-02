@@ -21,9 +21,9 @@ const PermissionEndPoints = {
 };
 
 const PermissionNavigationRoute = {
-    EDIT_PAGE: 'permission-scheme/update',
-    CREATE_PAGE: 'permission-scheme/create',
-    LIST_PAGE: 'permission-scheme'
+    EDIT_PAGE: 'permission-schemes/update',
+    CREATE_PAGE: 'permission-schemes/create',
+    LIST_PAGE: 'permission-schemes'
 };
 
 export {

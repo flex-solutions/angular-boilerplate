@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PermissionSchemeRoutingModule } from './permission-scheme-routing.module';
 import { PermissionSchemeServcie } from './services/permission-scheme.service';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
@@ -10,7 +10,7 @@ import { PermissionSchemeModuleComponents, PermissionSchemeModuleEntryComponents
   imports: [
     CommonModule,
     PermissionSchemeRoutingModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     UICommonModule
   ],
   declarations: [...PermissionSchemeModuleComponents],
