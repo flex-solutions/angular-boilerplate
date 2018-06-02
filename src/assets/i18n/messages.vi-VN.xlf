@@ -600,6 +600,10 @@
         <source>Cancel</source>
         <target>Huỷ</target>
       </trans-unit>
+      <trans-unit id="edit-members-success" datatype="html">
+        <source>The user memberships for group {{0}} are saved successfully</source>
+        <target>Điều chỉnh thành viên nhóm {{0}} thành công</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">

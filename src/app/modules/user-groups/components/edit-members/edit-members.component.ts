@@ -26,6 +26,7 @@ export class EditMembersComponent implements OnInit {
     usergroup: UserGroup = new UserGroup();
     selectedUserCount = 0;
     canAddMoreUser = true;
+    successMessage: string;
 
     public count = (searchKey: string): Observable<number> => {
         return this.ugService.countUserListExceptInGroup(this.ugId, this.currentPaging ? this.currentPaging.searchKey : undefined);
@@ -50,9 +51,14 @@ export class EditMembersComponent implements OnInit {
         this.getUserList();
     }
 
+    getSuccessMessage() {
+        this.successMessage = this.translateService.translateWithParams('edit-members-success', this.usergroup.name);
+    }
+
     getUserGroupInfo() {
         this.ugService.getById(this.ugId).subscribe(ug => {
             this.usergroup = ug;
+            this.getSuccessMessage();
         });
     }
 
@@ -121,12 +127,9 @@ export class EditMembersComponent implements OnInit {
 
         const userIds = map((u: IUserModel) => u._id, this.selectedUsers);
 
-        console.log(userIds);
-
-        return;
-
-        // this.ugService.updateMembersUserGroup(this.ugId, userIds).subscribe(result => {
-        //     this.notificationService.showSuccess('Điều chỉnh thành viên nhóm "<group-name>" thành công');
-        // });
+        this.ugService.updateMembersUserGroup(this.ugId, userIds).subscribe(result => {
+            this.notificationService.showSuccess(this.successMessage);
+            this.location.back();
+        });
     }
 }
