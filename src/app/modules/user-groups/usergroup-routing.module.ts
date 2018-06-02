@@ -1,3 +1,4 @@
+import { EditMembersComponent } from './components/edit-members/edit-members.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,13 +16,18 @@ const userGroupRoutes: Routes = [
     ]
   },
   {
-    path: ':name',
+    path: 'filter/:name',
     component: UserGroupHomeComponent,
     data: {
       breadcrumb: 'User Groups'
     },
-    children: [
-    ]
+  },
+  {
+    path: 'edit-members/:id',
+    component: EditMembersComponent,
+    data: {
+      breadcrumb: 'Edit members'
+    },
   },
   {
     path: 'create',

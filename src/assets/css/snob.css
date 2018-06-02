@@ -38025,8 +38025,8 @@ body.avgrund-active {
 
 /* Tags */
 div.tagsinput {
-  padding: 15px 15px 10px;
-  border-color: #f3f3f3;
+  padding: 8px;
+  border: 1px solid #f3f3f3;
 }
 div.tagsinput span.tag {
   background: #857bff;
@@ -38035,7 +38035,8 @@ div.tagsinput span.tag {
   padding: 6px 14px;
   font-size: 0.8125rem;
   font-family: inherit;
-  line-height: 1;
+  line-height: 2.7;
+  margin-right: 5px;
 }
 div.tagsinput span.tag a {
   color: #ffffff;

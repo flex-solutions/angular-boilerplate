@@ -107,3 +107,16 @@
   color: #0056b3 !important;
 }
 
+.tag-light {
+  background: #f3f5f6 !important;
+  color: #000000 !important
+}
+
+.tag-light a {
+  color: #000000 !important;
+}
+
+.disable-row {
+  cursor: not-allowed;
+  color: #f3f3f3;
+}
