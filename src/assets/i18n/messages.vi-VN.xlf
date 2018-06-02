@@ -570,7 +570,7 @@
       </trans-unit>
       <trans-unit id="edit-members-sub-title" datatype="html">
         <source>This page allows you to edit the user memberships for group {{usergroup.name}}</source>
-        <target>Trang này cho phép bạn thêm/xoá thành viên cho nhóm {{usergroup.name}}</target>
+        <target>Trang này cho phép bạn chỉnh sửa thành viên cho nhóm {{usergroup.name}}</target>
       </trans-unit>
       <trans-unit id="edit-members-search-label" datatype="html">
         <source>Search by username, full name and email</source>
@@ -599,10 +599,6 @@
       <trans-unit id="edit-members-selected-count" datatype="html">
         <source>Selected {{selectedUserCount}} user(s) for group {{usergroup.name}}</source>
         <target>Chọn {{selectedUserCount}} thành viên cho nhóm {{usergroup.name}}</target>
-      </trans-unit>
-      <trans-unit id="edit-members-edit-success" datatype="html">
-        <source>The user memberships for group "" are saved successfully</source>
-        <target>Điều chỉnh thành viên nhóm "" thành công</target>
       </trans-unit>
       <trans-unit id="edit-members-cancel" datatype="html">
         <source>Cancel</source>

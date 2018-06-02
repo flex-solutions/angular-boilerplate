@@ -602,10 +602,6 @@
         <source>Selected {{selectedUserCount}} user(s) for group {{usergroup.name}}</source>
         <target>Selected {{selectedUserCount}} user(s) for group {{usergroup.name}}</target>
       </trans-unit>
-      <trans-unit id="edit-members-edit-success" datatype="html">
-        <source>The user memberships for group "" are saved successfully</source>
-        <target>The user memberships for group "" are saved successfully</target>
-      </trans-unit>
       <trans-unit id="edit-members-cancel" datatype="html">
         <source>Cancel</source>
         <target>Cancel</target>
