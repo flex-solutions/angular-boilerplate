@@ -7,7 +7,7 @@ import { OnInit, Component, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteNames } from '../constants/user-groups.constant';
-import { DefaultUserGroup } from '../../../shared/constants/const';
+import { DefaultUserGroup, ModuleRoute } from '../../../shared/constants/const';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
 import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
 import { DialogTitleConstant } from '../../../shared/constants/dialog-title.constant';
@@ -115,5 +115,9 @@ export class UserGroupHomeComponent implements OnInit {
 
   editMembers(usergroup: UserGroup) {
     this.router.navigate([RouteNames.EDIT_MEMBERS, usergroup._id]);
+  }
+
+  navigateToFilterUsers(usergroup: UserGroup) {
+    this.router.navigate([`${ModuleRoute.USER}/filter`, usergroup.name]);
   }
 }

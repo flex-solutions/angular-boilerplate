@@ -1,5 +1,5 @@
 import { Component, PipeTransform, Pipe, } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../../../../shared/models/user.model';
 import { UserService } from '../../services/user.service';
@@ -21,9 +21,14 @@ export class UsersComponent {
 
   public items: User[] = [];
   private transferData = new TransferGroupData();
+  groupName: string;
+
   constructor(private exDialog: ExDialog,
     private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
+      this.groupName = this.activatedRoute.snapshot.params['groupName'];
+    }
 
   public count = (searchKey: string): Observable<number> => {
     return this.userService.count(searchKey);
