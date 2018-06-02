@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { Injectable } from '@angular/core';
 import { UserGroup } from '../../../shared/models/user-group.model';
+import { IUserModel } from '../model';
 
 @Injectable()
 export class UserGroupService extends AbstractRestService {
@@ -44,5 +45,9 @@ export class UserGroupService extends AbstractRestService {
 
   public updatePermissionSchemeForUserGroup(usergroupId: string, schemeId: string) {
     return this.put(`updateSchemeForUserGroup/${usergroupId}`, { schemeId });
+  }
+
+  public getUserListExceptInGroup (ugId: string, searchKey: string, pageSize: number, pageNumber: number): Observable<IUserModel[]> {
+    return this.get<IUserModel[]>(`getUserListExceptInGroup/${ugId}?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 }
