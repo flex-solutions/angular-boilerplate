@@ -11,7 +11,6 @@ import { BrowserNotificationService } from './shared/services/browser-notificati
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  hasAuthenticated: boolean;
 
   languages = [
     { code: 'vi', label: 'Tiếng Việt' },
@@ -25,15 +24,6 @@ export class AppComponent implements OnInit {
     private browserNotificationService: BrowserNotificationService
   ) {
     moment.locale(this.localeId);
-
-    // Register event to handle check authenticate
-    this.router.events.subscribe(event => {
-      if ((event instanceof NavigationStart) || (event instanceof RoutesRecognized)) {
-        // Everything else must be authenticated.
-        this.hasAuthenticated = this.authenticationService.authenticated();
-      }
-    });
-
     // Request permission for notification
     this.browserNotificationService.requestPermission();
   }

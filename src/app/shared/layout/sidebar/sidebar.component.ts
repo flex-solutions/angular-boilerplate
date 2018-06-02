@@ -21,14 +21,14 @@ export class SidebarComponent implements OnInit {
   }
 
   navigateToUsersPage() {
-    this.router.navigate([ModuleRoute.USER], { relativeTo: this.route });
+    this.router.navigate([ModuleRoute.USER]);
   }
 
   navigateToUserGroupsPage() {
-    this.router.navigate([ModuleRoute.USER_GROUP], { relativeTo: this.route });
+    this.router.navigate([ModuleRoute.USER_GROUP]);
   }
 
   navigateToPermissionSchemesPage() {
-    this.router.navigate([ModuleRoute.PERMISSION_SCHEMES], { relativeTo: this.route });
+    this.router.navigate([ModuleRoute.PERMISSION_SCHEMES]);
   }
 }
