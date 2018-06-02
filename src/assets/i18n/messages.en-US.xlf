@@ -556,6 +556,56 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
+      
+      <!--Edit usergroup membership-->
+      <trans-unit id="edit-members-title" datatype="html">
+        <source>Bulk edit group members</source>
+        <target>Bulk edit group members</target>
+      </trans-unit>
+      <trans-unit id="edit-members-sub-title" datatype="html">
+        <source>This page allows you to edit the user memberships for group {{usergroup.name}}</source>
+        <target>This page allows you to edit the user memberships for group {{usergroup.name}}</target>
+      </trans-unit>
+      <trans-unit id="edit-members-search-label" datatype="html">
+        <source>Search by username, full name and email</source>
+        <target>Search by username, full name and email</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-username" datatype="html">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Full Name</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-usergroup" datatype="html">
+        <source>User Group</source>
+        <target>User Group</target>
+      </trans-unit>
+      <trans-unit id="edit-members-add-btn" datatype="html">
+        <source>ADD</source>
+        <target>ADD</target>
+      </trans-unit>
+      <trans-unit id="edit-members-selected-count" datatype="html">
+        <source>Selected {{selectedUserCount}} user(s) for group {{usergroup.name}}</source>
+        <target>Selected {{selectedUserCount}} user(s) for group {{usergroup.name}}</target>
+      </trans-unit>
+      <trans-unit id="edit-members-edit-success" datatype="html">
+        <source>The user memberships for group "" are saved successfully</source>
+        <target>The user memberships for group "" are saved successfully</target>
+      </trans-unit>
+      <trans-unit id="edit-members-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="edit-members-success" datatype="html">
+        <source>The user memberships for group {{0}} are saved successfully</source>
+        <target>The user memberships for group {{0}} are saved successfully</target>
+      </trans-unit>
 
       <!-- Recovery Password -->
       <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">

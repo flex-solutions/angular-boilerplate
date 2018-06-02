@@ -106,9 +106,14 @@ export class UserGroupHomeComponent implements OnInit {
               userGroup.name
             );
             this.notificationService.showSuccess(msg);
+            this.getUserGroups();
           });
         } else {
         }
       });
+  }
+
+  editMembers(usergroup: UserGroup) {
+    this.router.navigate([RouteNames.EDIT_MEMBERS, usergroup._id]);
   }
 }
