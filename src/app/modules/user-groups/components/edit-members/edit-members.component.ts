@@ -44,6 +44,7 @@ export class EditMembersComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.updateCanAddUser();
     }
 
     onPageChanged(eventArg: IFilterChangedEvent) {
