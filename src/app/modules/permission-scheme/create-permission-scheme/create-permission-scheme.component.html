@@ -10,7 +10,7 @@
             <p class="card-description" i18n="@@permissiom-scheme-create-p-desciption">
               Type a name and choose which the permissions to include in this scheme
             </p>
-            <form  class="cmxform" (ngSubmit)="onSubmit()">
+            <form  class="cmxform" (ngSubmit)="onSubmit()" #f="ngForm">
               <div class="row profile-page permission-container">
                 <div class="col-md-12">
                   <div class="card">
@@ -30,12 +30,20 @@
                           <div class="col-md-12">
                             <div class="tab-content tab-body" id="profile-log-switch">
                               <div aria-labelledby="user-profile-info-tab" class="tab-pane fade pr-3 active show" id="user-profile-info" role="tabpanel">
-                                <div class="form-group OnTop">
+                                <div class="form-group OnTop"
+                                [ngClass]="{
+                                  'has-danger': permissionName.invalid && (permissionName.dirty || permissionName.touched),
+                                  'has-success': permissionName.valid && (permissionName.dirty || permissionName.touched)
+                             }"
+                                >
                                   <label i18n="@@permissiom-scheme-create-input-name">Scheme Name</label>
                                   <label class="require">*</label>
                                   <input class="form-control" i18n-placeholder="@@permissiom-scheme-create-input-name-placeholder" 
-                                   placeholder="Enter permission scheme name" [(ngModel)]="permissionModel.name" name="permissionName" required="required">
-                                  <label id="name-error" class="error mt-2 text-danger" for="name" *ngIf="errorMessage.name"> {{ errorMessage.name }}</label>
+                                   placeholder="Enter permission scheme name" [(ngModel)]="permissionModel.name" name='permissionName' #permissionName="ngModel" required>
+                                  <label id="name-error" class="error mt-2 text-danger" for="name" 
+                                  i18n="@@permissiom-scheme-create-error-namerequired" 
+                                  *ngIf="permissionName.invalid && (permissionName.dirty || permissionName.touched)">
+                                  </label>
                                 </div>
                               </div>
                               <div aria-labelledby="user-profile-activity-tab" class="tab-pane fade" id="user-profile-activity" role="tabpanel">
@@ -197,7 +205,7 @@
                 </label>
               </div>
             </div>
-              <button type="submit" class="btn btn-success mr-2" i18n="permissiom-scheme-create-button-submit">Submit</button>
+              <button type="submit" class="btn btn-success mr-2" i18n="permissiom-scheme-create-button-submit" [disabled]="f.invalid">Submit</button>
               <a class="btn btn-light" i18n="@@permissiom-scheme-create-button-cancel" (click)="onCancel()">Cancel</a>
             </form>
           </div>

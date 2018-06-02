@@ -44,11 +44,11 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
     private service: PermissionSchemeServcie,
   ) {}
 
-  protected abstract OnValidated();
+  protected abstract onValidated();
 
-  protected abstract Execute();
+  protected abstract execute();
 
-  protected abstract Cancel();
+  protected abstract cancel();
 
   ngOnInit() {
     this.initializeModel();
@@ -56,14 +56,14 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
 
   onSubmit() {
       // validate value of binding model
-      this.OnValidated();
+      this.onValidated();
 
       // do some logic here
-      this.Execute();
+      this.execute();
   }
 
   onCancel() {
-    this.Cancel();
+    this.cancel();
   }
 
   initializeModel() {

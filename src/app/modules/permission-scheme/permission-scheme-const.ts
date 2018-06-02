@@ -17,7 +17,7 @@ const SchemeField = {
 };
 
 const PermissionEndPoints = {
-    GetAllController: 'get_controllers',
+    GetAllController: 'controllers',
 };
 
 const PermissionNavigationRoute = {

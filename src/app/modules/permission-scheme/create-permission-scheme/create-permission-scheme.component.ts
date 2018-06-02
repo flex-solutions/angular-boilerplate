@@ -21,9 +21,11 @@ import { PermissionSchemeComponentBase } from '../base/editor.permission-scheme.
 })
 export class CreatePermissionSchemeComponent extends PermissionSchemeComponentBase {
 
-  protected OnValidated() {
+  protected onValidated() {
+
   }
-  protected Execute() {
+
+  protected execute() {
     this.schemeService.addPermissionScheme(JSON.stringify(this.permissionModel, (key, value) => {
       return this.replacer(key, value);
     })).subscribe(() => {
@@ -32,7 +34,9 @@ export class CreatePermissionSchemeComponent extends PermissionSchemeComponentBa
       this.onHandleCreateUserSuccessful();
     });
   }
-  protected Cancel() {
+
+  protected cancel() {
+    this.router.navigate([PermissionNavigationRoute.LIST_PAGE]);
   }
 
   constructor(private schemeService: PermissionSchemeServcie,
