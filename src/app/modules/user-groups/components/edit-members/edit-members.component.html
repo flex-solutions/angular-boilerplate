@@ -10,11 +10,11 @@
         <th>User Group</th>
       </tr>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users" [class.disable-row]="user.isAdded">
           <td>
             <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:0px">
               <label class="form-check-label" style="margin-top:0px;padding-left:0px">
-                <input type="checkbox" [(ngModel)]="user.isSelected" [checked]="user.isSelected" class="form-check-input">
+                <input [disabled]="user.isAdded" type="checkbox" [(ngModel)]="user.isSelected" [checked]="user.isSelected" class="form-check-input">
                 <i class="input-helper"></i>
               </label>
             </div>

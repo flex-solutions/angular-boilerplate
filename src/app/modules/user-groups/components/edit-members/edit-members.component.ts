@@ -3,8 +3,8 @@ import { UserGroupService } from './../../services/usergroup.service';
 import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { IUserModel } from '../../model';
-import { SelectableModel } from '../../../../shared/models/selectable.model';
-import { isEmpty, forEach, find, propEq, filter, remove } from 'ramda';
+import { SelectAndAddedModel } from '../../../../shared/models/selectable.model';
+import { isEmpty, forEach, find, propEq, filter, remove, equal } from 'ramda';
 import ArrayExtension from '../../../../utilities/array.extension';
 
 @Component({
@@ -16,7 +16,7 @@ export class EditMembersComponent implements OnInit {
 
     ugId: string;
     currentPaging: IFilterChangedEvent;
-    users: SelectableModel<IUserModel>[] = [];
+    users: SelectAndAddedModel<IUserModel>[] = [];
     selectedUsers: IUserModel[] = [];
 
     constructor(private ugService: UserGroupService,
@@ -50,7 +50,7 @@ export class EditMembersComponent implements OnInit {
 
                 forEach((u: IUserModel) => {
                     const selectedUser = find(propEq('username', u.username))(this.selectedUsers);
-                    const model = new SelectableModel<IUserModel>();
+                    const model = new SelectAndAddedModel<IUserModel>();
                     if (selectedUser) {
                         model.isSelected = true;
                     }
@@ -62,13 +62,18 @@ export class EditMembersComponent implements OnInit {
     }
 
     addToSelectedUsers() {
-        const tempSelectedUsers = filter((u: SelectableModel<IUserModel>) => u.isSelected, this.users);
-        forEach((u: SelectableModel<IUserModel>) => {
+        const tempSelectedUsers = filter((u: SelectAndAddedModel<IUserModel>) => u.isSelected && !u.isAdded, this.users);
+        forEach((u: SelectAndAddedModel<IUserModel>) => {
+            u.isAdded = true;
             this.selectedUsers.push(u.model);
         }, tempSelectedUsers);
     }
 
     removeUser(user: IUserModel) {
         ArrayExtension.removeItemFromArray(this.selectedUsers, user);
+        const selectableModel  = ArrayExtension.getItem(this.users, u => u.model.username === user.username);
+        if (selectableModel) {
+            selectableModel.isAdded = false;
+        }
     }
 }
