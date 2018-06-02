@@ -1,5 +1,19 @@
 import { UserGroup } from './user-group.model';
 
+class ControllerSelectedItem {
+
+    is_check: Boolean;
+
+    is_disable: Boolean;
+
+    controller: ControllerModel;
+}
+
+class SchemeDataSource {
+    is_check_all: Boolean;
+    data: ControllerSelectedItem[];
+}
+
 class ControllerModel {
     _id: string;
 
@@ -8,20 +22,19 @@ class ControllerModel {
     name: string;
 }
 
-class ControllerSelectedItem {
-
-    is_check: Boolean;
-
-    controller: ControllerModel;
-}
-
 class PermissionDetail {
     controller_name: String;
-    controller_id: string;
+    controller: string;
     is_insert: Boolean;
     is_update: Boolean;
     is_delete: Boolean;
+    is_fullcontrol: Boolean;
     data_scope: DataScope;
+}
+
+class PermissionScheme {
+    name: string;
+    permission_details: PermissionDetail[];
 }
 
 enum DataScope {
@@ -36,5 +49,8 @@ interface IPermissionScheme {
     userGroups: UserGroup[];
 }
 
-export { ControllerSelectedItem, ControllerModel, PermissionDetail, DataScope, IPermissionScheme };
+export {
+    ControllerSelectedItem, ControllerModel,
+    PermissionDetail, PermissionScheme, DataScope, SchemeDataSource, IPermissionScheme
+};
 
