@@ -17,7 +17,7 @@
       <tr *ngFor="let usergroup of usergroups | userGroupListFilter: dg.searchKey">
         <td>{{usergroup.name}}</td>
         <td>
-          <a href="#">{{usergroup.userCount}}</a>
+          <a class="a-clickable" (click)="navigateToFilterUsers(usergroup)">{{usergroup.userCount}}</a>
         </td>
         <td>
           <a href="#">{{usergroup.permissionScheme.name}}</a>
