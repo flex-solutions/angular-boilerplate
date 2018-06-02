@@ -21,6 +21,7 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   authenticated(): boolean {
+    console.log('authenticated');
     if (AuthenticationTokenHelper.localToken) {
       const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
       const dateNow = Date.now() / 1000;
@@ -30,6 +31,7 @@ export class AuthenticationService extends AbstractRestService {
       }
       return true;
     }
+    this.logOut();
     return false;
   }
 

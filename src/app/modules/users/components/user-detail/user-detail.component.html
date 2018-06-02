@@ -8,8 +8,8 @@
         <a href="mailto:{{userdetail.email}}">
           <p class="text-muted none-lineheight">{{userdetail.email}}</p>
         </a>
-        <a href="#" (click)="navigateToGroups()">
-          <p class="mt-2 text-success font-weight-bold">{{userdetail.userGroup}}</p>
+        <a href="#" (click)="navigateToGroups(this.userdetail)">
+          <p class="mt-2 text-success font-weight-bold">{{this.userdetail.userGroup.name}}</p>
         </a>
       </div>
 

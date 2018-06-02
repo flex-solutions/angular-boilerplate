@@ -1,3 +1,5 @@
+import { UserGroup } from './user-group.model';
+
 class ControllerSelectedItem {
 
     is_check: Boolean;
@@ -39,8 +41,16 @@ enum DataScope {
     Branch = 0,
     Full = 1,
 }
+
+
+interface IPermissionScheme {
+    _id: any;
+    name: string;
+    userGroups: UserGroup[];
+}
+
 export {
     ControllerSelectedItem, ControllerModel,
-    PermissionDetail, PermissionScheme, DataScope, SchemeDataSource
+    PermissionDetail, PermissionScheme, DataScope, SchemeDataSource, IPermissionScheme
 };
 

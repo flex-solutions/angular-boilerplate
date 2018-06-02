@@ -37,5 +37,6 @@ export const appVariables = {
   msOfficeDocViewerPath: 'https://view.officeapps.live.com/op/embed.aspx?src=',
   goodleDocViewerPath: url => {
     return `http://docs.google.com/gview?url=${url}&embedded=true`;
-  }
+  },
+  defaultHOBranch: 'Head Office'
 };

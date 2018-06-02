@@ -1,0 +1,68 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div>
+      <h5 class="modal-title" style="width: 100%" i18n="@@permission-scheme-assign-permission-h5-title">Assign to the user groups</h5>
+      <p class="row col-12">{{schemeDescription}}</p>
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-body">
+        <div class="row dataTables_wrapper">
+          <div class="col-sm-12">
+            <app-txt-search #txtSearch searchPlaceholder="Search by group name, permission scheme name" i18n-searchPlaceholder="@@permission-scheme-assign-permission-place_holder-search_description"></app-txt-search>
+          </div>
+        </div>
+        <div class=row>
+          <div class="col-sm-12">
+            <table class="table dataTable no-footer">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th i18n="@@permission-scheme-assign-permission-label-group_name_header">Group Name</th>
+                  <th i18n="@@permission-scheme-assign-permission-label-permission_scheme_header">Permission Scheme</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userGroups" [class.disable-row]="user.isAdded">
+                  <td>
+                    <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:0px">
+                      <label class="form-check-label" style="margin-top:0px;padding-left:0px">
+                        <input [disabled]="user.isAdded" type="checkbox" [(ngModel)]="user.isSelected" [checked]="user.isSelected" class="form-check-input"
+                          (change)="updateCanAddUserGroups()">
+                        <i class="input-helper"></i>
+                      </label>
+                    </div>
+                  </td>
+                  <td>{{user.model.name}}</td>
+                  <td>{{user.model.permissionScheme.name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="margin-left: 14px; margin-top: 14px;">
+          <button type="button" class="btn btn-sm btn-outline-primary" (click)="addToSelectedUserGroups()" [disabled]="!canAddMoreUserGroup">
+            <i class="mdi mdi-plus"></i>
+            <span i18n="@@edit-members-add-btn">ADD</span>
+          </button>
+          <p style="margin-top: 14px;font-weight: 200">{{selectedUserGroupCountMsg}}</p>
+          <div id="tags_tagsinput" class="tagsinput" style="width: 100%; min-height: 75%;">
+            <span *ngFor="let selectedUserGroup of selectedUserGroups" class="tag tag-light">
+              <span>{{selectedUserGroup.name}}&nbsp;&nbsp;</span>
+              <a style="cursor: pointer;" title="Removing tag" (click)="removeUserGroups(selectedUserGroup)">x</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+  </div>
+</div>

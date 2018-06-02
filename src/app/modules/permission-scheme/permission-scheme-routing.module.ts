@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreatePermissionSchemeComponent } from './create-permission-scheme/create-permission-scheme.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PermissionSchemesComponent } from './components/permission-schemes/permission-schemes.component';
+import { CreatePermissionSchemeComponent } from './components/create-permission-scheme/create-permission-scheme.component';
 
 const routes: Routes = [
   {
-    path: 'permission-scheme',
-    component: CreatePermissionSchemeComponent,
+    path: '',
+    component: PermissionSchemesComponent,
     data: {
-      breadcrumb: 'aa'
+      breadcrumb: 'Permission Schemes'
     }
   },
   {
-    path: 'permission-scheme/create',
+    path: 'create',
     component: CreatePermissionSchemeComponent,
     data: {
-      breadcrumb: 'cc'
+      breadcrumb: 'Create Permission Scheme'
     }
   }
 ];
