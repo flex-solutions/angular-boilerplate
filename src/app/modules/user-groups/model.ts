@@ -1,7 +1,7 @@
 interface IUserModel {
     _id: any;
     username: string;
-    fullName: string;
+    fullname: string;
     email: string;
     userGroup: string;
 }
