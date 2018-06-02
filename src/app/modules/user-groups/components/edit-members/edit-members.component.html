@@ -1,7 +1,7 @@
-<app-card title="Bulk edit group members" subTitle="This page allows you to edit the user memberships for group 'nhan vien tong dai'"
-  searchLabel="Search by username, full name or email">
+<app-card i18n-title="@@edit-members-title" title="Bulk edit group members" 
+          i18n-subTitle="@@edit-members-sub-title" subTitle="This page allows you to edit the user memberships for group {{usergroup.name}}">
   <div>
-    <app-dg (pageChanged)="onPageChanged($event)">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" i18n-searchLabel="@@edit-members-search-label" searchLabel="Search by username, full name or email">
       <tr>
         <th></th>
         <th>Username</th>
@@ -10,7 +10,7 @@
         <th>User Group</th>
       </tr>
       <tbody>
-        <tr *ngFor="let user of users" [class.disable-row]="user.isAdded">
+        <tr *ngFor="let user of users | userListForBulkEditFilter: dg.searchKey" [class.disable-row]="user.isAdded">
           <td>
             <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:0px">
               <label class="form-check-label" style="margin-top:0px;padding-left:0px">
@@ -27,11 +27,11 @@
       </tbody>
     </app-dg>
     <div style="margin-left: 14px">
-      <button type="button" class="btn btn-sm btn-primary" (click)="addToSelectedUsers()">
+      <button type="button" class="btn btn-sm btn-primary" (click)="addToSelectedUsers()" [disabled]="!canAddMoreUser">
         <i class="mdi mdi-plus"></i>
-        <span>ADD</span>
+        <span i18n="@@edit-members-add-btn">ADD</span>
       </button>
-      <p style="margin-top: 14px;font-weight: 200">Selected 0 user(s) for group "nhan-vien-tong-dai"</p>
+      <p style="margin-top: 14px;font-weight: 200" i18n="@@edit-members-selected-count">Selected {{selectedUserCount}} user(s) for group "{{usergroup.name}}"</p>
       <div id="tags_tagsinput" class="tagsinput" style="width: 100%; min-height: 75%;">
         <span *ngFor="let selectedUser of selectedUsers" class="tag tag-light">
           <span>{{selectedUser.username}}&nbsp;&nbsp;</span>
@@ -42,7 +42,7 @@
     <div style="margin-top: 30px">
       <!-- Form buttons -->
       <button class="btn btn-success mr-2">Submit</button>
-      <button class="btn btn-light">Cancel</button>
+      <button class="btn btn-light" (click)="cancel()" i18n="@@edit-members-cancel">Cancel</button>
     </div>
   </div>
 </app-card>

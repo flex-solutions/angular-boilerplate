@@ -27,7 +27,7 @@ export class UserGroupService extends AbstractRestService {
     return this.delete(_id, {});
   }
 
-  public getById(_id: string) {
+  public getById(_id: string): Observable<UserGroup> {
     return this.get(_id);
   }
 
@@ -45,6 +45,10 @@ export class UserGroupService extends AbstractRestService {
 
   public updatePermissionSchemeForUserGroup(usergroupId: string, schemeId: string) {
     return this.put(`updateSchemeForUserGroup/${usergroupId}`, { schemeId });
+  }
+
+  public countUserListExceptInGroup(ugId: string, searchKey: string): Observable<number> {
+    return this.get(`getUserListExceptInGroup/${ugId}/count?searchKey=${searchKey}`);
   }
 
   public getUserListExceptInGroup (ugId: string, searchKey: string, pageSize: number, pageNumber: number): Observable<IUserModel[]> {
