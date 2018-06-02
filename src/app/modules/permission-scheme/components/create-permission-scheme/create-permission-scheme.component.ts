@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractFormComponent } from '../../../shared/abstract/abstract-form-component';
+import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import {
   ControllerModel, ControllerSelectedItem, PermissionDetail,
   DataScope, PermissionScheme, SchemeDataSource
-} from '../../../shared/models/permission-scheme.model';
-import { PermissionSchemeServcie } from '../services/permission-scheme.service';
+} from '../../../../shared/models/permission-scheme.model';
+import { PermissionSchemeServcie } from '../../services/permission-scheme.service';
 import { filter, isNil, isEmpty, contains, map, reject, remove, findIndex, propEq } from 'ramda';
-import { PermissionFilterPipe } from '../pipes/permission-scheme.pipe';
-import { NotificationService } from '../../../shared/services/notification.service';
-import { TranslateService } from '../../../shared/services/translate.service';
-import { NotificationConst, IgnoreField, SchemeField, PermissionNavigationRoute } from '../permission-scheme-const';
+import { PermissionFilterPipe } from '../../pipes/permission-scheme.pipe';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { NotificationConst, IgnoreField, SchemeField, PermissionNavigationRoute } from '../../permission-scheme-const';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 

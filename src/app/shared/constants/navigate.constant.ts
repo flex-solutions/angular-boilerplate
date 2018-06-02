@@ -1,4 +1,4 @@
 export enum NavigateConstant {
   HOME = '',
-  LOGIN = 'account/login'
+  LOGIN = 'login'
 }

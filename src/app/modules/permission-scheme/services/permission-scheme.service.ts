@@ -1,5 +1,5 @@
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { ControllerModel, PermissionScheme } from '../../../shared/models/permission-scheme.model';
+import { ControllerModel, PermissionScheme, IPermissionScheme } from '../../../shared/models/permission-scheme.model';
 import { Observable } from 'rxjs';
 import { SchemeCommonConst, PermissionEndPoints } from '../permission-scheme-const';
 
@@ -28,5 +28,9 @@ export class PermissionSchemeServcie extends AbstractRestService {
     count(searchKey?: string) {
         const query = `count?searchKey=${searchKey}`;
         return this.get<number>(query);
+    }
+
+    clone(permissionSchemes: IPermissionScheme) {
+        return this.post('clone', permissionSchemes);
     }
 }

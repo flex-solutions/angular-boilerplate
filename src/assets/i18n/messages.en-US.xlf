@@ -30,6 +30,14 @@
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
+        <source>Permission Management</source>
+        <target>Permission Management</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Permission Schemes</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -780,6 +788,10 @@
       <trans-unit id="permission-scheme-copy-label-scheme_name" datatype="html">
         <source>Scheme name</source>
         <target>Scheme name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
+        <source>Please provide the scheme name</source>
+        <target>Please provide the scheme name</target>
       </trans-unit>
       <!-- END Permission Schemes -->
     </body>

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreatePermissionSchemeComponent } from './create-permission-scheme/create-permission-scheme.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PermissionSchemesComponent } from './permission-schemes/permission-schemes.component';
+import { PermissionSchemesComponent } from './components/permission-schemes/permission-schemes.component';
+import { CreatePermissionSchemeComponent } from './components/create-permission-scheme/create-permission-scheme.component';
 
 const routes: Routes = [
   {
@@ -13,17 +13,10 @@ const routes: Routes = [
     }
   },
   {
-    path: 'permission-scheme',
+    path: 'create',
     component: CreatePermissionSchemeComponent,
     data: {
-      breadcrumb: 'aa'
-    }
-  },
-  {
-    path: 'permission-scheme/create',
-    component: CreatePermissionSchemeComponent,
-    data: {
-      breadcrumb: 'cc'
+      breadcrumb: 'Create Permission Scheme'
     }
   }
 ];

@@ -5,11 +5,7 @@ import { RecoveryPasswordComponent } from './components/recovery-password/recove
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'recovery-password',
+    path: 'auth/recovery-password',
     component: RecoveryPasswordComponent
   }
 ];

@@ -27,4 +27,8 @@ export class SidebarComponent implements OnInit {
   navigateToUserGroupsPage() {
     this.router.navigate([ModuleRoute.USER_GROUP], { relativeTo: this.route });
   }
+
+  navigateToPermissionSchemesPage() {
+    this.router.navigate([ModuleRoute.PERMISSION_SCHEMES], { relativeTo: this.route });
+  }
 }
