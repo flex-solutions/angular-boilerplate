@@ -20,7 +20,8 @@ export class UserFilterPipe implements PipeTransform {
         return items.filter(it => {
             return it.username.toLowerCase().includes(searchText)
                 || it.fullname.toLowerCase().includes(searchText)
-                || it.email.toLowerCase().includes(searchText);
+                || it.email.toLowerCase().includes(searchText)
+                || it.userGroup.name.toLowerCase().includes(searchText);
         });
     }
 }

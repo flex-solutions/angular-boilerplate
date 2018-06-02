@@ -54,24 +54,8 @@ export class UserService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
-  // Handle get user by email.
+  // Handle get user by id.
   getUserById(userId: string): Observable<User> {
-    return this.get<User>(userId);
-  }
-
-  // Handle get user by unique name.
-  getUserByName(userName: string): Observable<User> {
-    return this.get<User>(`name/${userName}`);
-  }
-
-  // Handle to change group of user
-  changeGroup(user: User) {
-    this.exDialog.openPrime(GroupUserModalComponent, 'This is hosted modal component', ModalSize.Large).subscribe(result => {
-      if (result) {
-        alert('you clicked Submit button');
-      } else {
-        alert('you clicked cancel button');
-      }
-    });
+    return this.get<User>(`name/${userId}`);
   }
 }

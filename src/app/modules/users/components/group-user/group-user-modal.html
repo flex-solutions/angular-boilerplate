@@ -1,32 +1,49 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title" i18n="@@user-detail-change-user-group">Change user group</h5>
+    <div>
+      <h5 class="modal-title" i18n="@@user-detail-change-user-group">Change user group</h5>
+      <p i18n="@@group-user-modal-message">Select other group for user "{{groupInfo.user.username}}"</p>
+    </div>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-
-  <div class="modal-body card">
-    <table #dg searchLabel="Search by group name" i18n-searchLabel="@@user_groups-list-tbl-search-label">
-      <tr>
-        <th></th>
-        <th i18n="@@users-group-name">Group Name</th>
-        <th i18n="@@users-permission-scheme">Permission Scheme</th>
-      </tr>
-      <tbody>
-        <tr *ngFor="let group of groupUsers | userGroupFilter: dg.searchKey">
-          <td>
-            <input class="checkbox" type="checkbox">
-          </td>
-          <td>
-            {{group.groupName}}
-          </td>
-          <td>
-            {{group.permissionScheme}}
-          </td>
+  <div class="modal-body">
+    <div class="row" style="margin: 0px">
+      <div class="col-12" style="padding: 0px">
+        <app-txt-search #txtSearch i18n-searchPlaceholder="@@group-user-modal-search-place-holder" searchPlaceholder="Search by group name, permission sheme name"></app-txt-search>
+      </div>
+    </div>
+    <div class="card dialog-body">
+      <table>
+        <tr>
+          <th class="custom-header" style="color: white;">ID</th>
+          <th i18n="@@users-group-name">Group Name</th>
+          <th i18n="@@users-permission-scheme">Permission Scheme</th>
         </tr>
-      </tbody>
-    </table>
+        <tbody>
+          <tr *ngFor="let group of groupUsers | userGroupFilter: txtSearch.searchKey">
+            <td class="custom-header">
+              <div class="form-radio non-margin-top form-radio-flat">
+                <label class="form-check-label">
+                  <input type="radio" name="permission-scheme" [checked]="selectedGroupId === group._id" value="{{group._id}}" class="form-check-input"
+                    (change)="onValueChanged($event.target.value)"> {{content}}
+                  <i class="input-helper"></i>
+                </label>
+              </div>
+            </td>
+            <td>
+              {{group.name}}
+            </td>
+            <td>
+              <span class="change-color">
+                <a (click)="navigateToPermissionScheme(group.permissionScheme._id)">{{group.permissionScheme.name}}</a>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="submit()" i18n="@@group-user-modal-ok">Ok</button>

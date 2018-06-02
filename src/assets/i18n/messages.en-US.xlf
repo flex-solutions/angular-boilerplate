@@ -19,8 +19,7 @@
 
       <!-- Side Bar -->
       <trans-unit id="layout-sidebar-anchor-demo" datatype="html">
-        <source>Demo</source>
-        <target>Demo</target>
+        <source>Demo</source><target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
         <source>User Management</source>
@@ -325,9 +324,13 @@
         <source>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</source>
         <target>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</target>
       </trans-unit>
-      <trans-unit id="user-detail-change-group-message" datatype="html">
-        <source>Select other group for user "{{userdetail.username}}"</source>
-        <target>Select other group for user "{{userdetail.username}}"</target>
+      <trans-unit id="group-user-modal-message" datatype="html">
+        <source>Select other group for user "{{groupInfo.user.username}}"</source>
+        <target>Select other group for user "{{groupInfo.user.username}}"</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-search-place-holder" datatype="html">
+        <source>Search by group name, permission sheme name</source>
+        <target>Search by group name, permission sheme name</target>
       </trans-unit>
       <!-- End group user modal -->
 

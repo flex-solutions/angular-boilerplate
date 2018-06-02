@@ -7,6 +7,10 @@ import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/compo
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
 import ArrayExtension from '../../../../utilities/array.extension';
 import { ModuleRoute } from '../../../../shared/constants/const';
+import { GroupUserModalComponent } from '../group-user/group-user-modal';
+import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
 
 @Component({
   moduleId: module.id,
@@ -16,7 +20,10 @@ import { ModuleRoute } from '../../../../shared/constants/const';
 export class UsersComponent {
 
   public items: User[] = [];
-  constructor(private userService: UserService, private router: Router) { }
+  private transferData = new TransferGroupData();
+  constructor(private exDialog: ExDialog,
+    private userService: UserService,
+    private router: Router) { }
 
   public count = (searchKey: string): Observable<number> => {
     return this.userService.count(searchKey);
@@ -28,6 +35,7 @@ export class UsersComponent {
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
+    this.transferData.filterEvent = eventArg;
     this.loadData(eventArg);
   }
 
@@ -39,9 +47,9 @@ export class UsersComponent {
   }
 
   // Handle to change group of user.
-  navigateToChangeUserGroup(user: User) {
-    this.userService.changeGroup(user);
-    // this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
+  changeUserGroup(user: User) {
+    this.transferData.user = user;
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
   }
 
   navigateToCreatePage() {
@@ -59,4 +67,5 @@ export class UsersComponent {
   navigateToGroup(userGroup: string) {
     this.router.navigate([`${UserNavigationRoute.GROUPS_PAGE}/filter`, userGroup]);
   }
+
 }
