@@ -9,7 +9,7 @@
           <p class="text-muted none-lineheight">{{userdetail.email}}</p>
         </a>
         <a href="#" (click)="navigateToGroups(this.userdetail)">
-          <p class="mt-2 text-success font-weight-bold">{{this.userdetail.userGroup.name}}</p>
+          <p class="mt-2 text-success font-weight-bold">{{groupName}}</p>
         </a>
       </div>
 
@@ -24,7 +24,7 @@
         </button>
 
         <div class="dropdown-menu">
-          <a class="dropdown-item" data-toggle="modal" data-target="#userGroupModal" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+          <a class="dropdown-item" (click)=changeUserGroup(userdetail) href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
           <button class="dropdown-item pointer" (click)="deleteUser()" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</button>
         </div>
 
@@ -52,35 +52,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Change user group Modal -->
-        <div class="modal fade" id="userGroupModal" tabindex="-1" role="dialog" aria-labelledby="userGroupModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="userGroupModalLabel" i18n="@@user-detail-change-user-group">Change user group</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label" i18n="@@user-detail-change-group-message">Select other group for user "{{userdetail.username}}"</label>
-                    <table>
-
-                    </table>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=changeUserGroup() i18n="@@group-user-modal-ok">OK</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal" i18n="@@group-user-modal-cancel">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
 
       </div>
     </div>

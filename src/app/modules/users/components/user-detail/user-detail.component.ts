@@ -5,6 +5,9 @@ import { User } from '../../../../shared/models/user.model';
 import { UserService } from '../../services/user.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { UserNavigationRoute } from '../../users.constant';
+import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
+import { GroupUserModalComponent } from '../group-user/group-user-modal';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -15,22 +18,25 @@ import { UserNavigationRoute } from '../../users.constant';
 export class UserDetailComponent implements OnInit {
 
   public userdetail: User = new User();
+  groupName: string;
+  private transferData = new TransferGroupData();
 
   // Constructor
   constructor(private userService: UserService,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
+    private exDialog: ExDialog,
     private notifier: NotificationService) {
 
   }
-  public na: string;
   // Init user detail component
   ngOnInit() {
     const userId = this.route.snapshot.params['id'];
     if (userId) {
       this.getUserInfomation(userId);
     }
+    this.groupName = this.userdetail.userGroup.name;
   }
 
   // Handle get user detail information.
@@ -52,8 +58,9 @@ export class UserDetailComponent implements OnInit {
   }
 
   // Handle change user group.
-  changeUserGroup() {
-    this.goBack();
+  changeUserGroup(user: User) {
+    this.transferData.user = user;
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
   }
 
   // Handle navigate to Edit user page.
