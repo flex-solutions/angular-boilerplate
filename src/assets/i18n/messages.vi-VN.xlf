@@ -318,9 +318,13 @@
         <source>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</source>
         <target>Người dùng "{{userdetail.username}}" sẽ bị xóa vĩnh viễn. Bạn chắc chắn muốn xóa?</target>
       </trans-unit>
-      <trans-unit id="user-detail-change-group-message" datatype="html">
-        <source>Select other group for user "{{userdetail.username}}"</source>
-        <target>Thay đổi nhóm cho người dùng "{{userdetail.username}}"</target>
+      <trans-unit id="group-user-modal-message" datatype="html">
+        <source>Select other group for user "{{groupInfo.user.username}}"</source>
+        <target>Thay đổi nhóm cho người dùng "{{groupInfo.user.username}}"</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-search-place-holder" datatype="html">
+        <source>Search by group name, permission sheme name</source>
+        <target>Tìm kiếm với nhóm user, kế hoạch phân quyền</target>
       </trans-unit>
       <!-- End group user modal -->
 

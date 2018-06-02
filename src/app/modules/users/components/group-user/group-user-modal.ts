@@ -2,9 +2,12 @@ import { UserGroup } from './../../../../shared/models/user-group.model';
 import { Component, OnInit, PipeTransform, Pipe, Input } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
-import { TranslateService } from '../../../../shared/services/translate.service';
 import { UserGroupService } from '../../../user-groups/services/usergroup.service';
 import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
+import { Router } from '@angular/router';
+import { UserNavigationRoute, UserMessages } from '../../users.constant';
+import { UserService } from '../../services/user.service';
+import { User } from '../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-group-user-modal',
@@ -14,7 +17,8 @@ import { TransferGroupData } from '../../../../shared/models/transfer-group-data
 export class GroupUserModalComponent extends DialogComponent implements OnInit {
   constructor(protected dialogService: DialogService,
     private grService: UserGroupService,
-    private translateService: TranslateService) {
+    private userService: UserService,
+    private router: Router) {
     super(dialogService);
   }
   groupInfo = new TransferGroupData();
@@ -23,12 +27,16 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
 
   ngOnInit() {
     this.groupInfo = this.callerData as TransferGroupData;
-    this.selectedGroupId = this.groupInfo.groupId;
+    this.selectedGroupId = this.groupInfo.user.userGroup._id;
     this.getGroups();
   }
 
   onValueChanged(value) {
     this.selectedGroupId = value;
+  }
+
+  navigateToPermissionScheme(schemeId: string) {
+    this.router.navigate([UserNavigationRoute.SCHEME_DETAIL_PAGE, schemeId]);
   }
 
   cancel() {
@@ -37,7 +45,14 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   }
 
   submit() {
-    this.result = true;
+    if (this.selectedGroupId !== this.groupInfo.user.userGroup._id) {
+      let updateUser = new User();
+      updateUser = this.groupInfo.user;
+      updateUser.userGroup._id = this.selectedGroupId;
+      this.userService.update(updateUser);
+    } else {
+      this.result = false;
+    }
     this.dialogResult();
   }
 
@@ -45,4 +60,5 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
     this.grService.find(this.groupInfo.filterEvent.pagination.itemsPerPage, this.groupInfo.filterEvent.pagination.page)
       .subscribe(groups => this.groupUsers = groups);
   }
+
 }

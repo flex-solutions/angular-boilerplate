@@ -38,7 +38,8 @@ export class UserDetailComponent implements OnInit {
     if (userId !== null) {
       this.userService.getUserById(userId).subscribe(user => {
         this.userdetail = user;
-      });
+      },
+        () => { this.goBack(); });
     }
   }
 

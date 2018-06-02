@@ -48,16 +48,8 @@ export class UsersComponent {
 
   // Handle to change group of user.
   changeUserGroup(user: User) {
-    this.transferData.userId = user._id;
-    this.transferData.userName = user.username;
-    this.transferData.groupId = user.userGroup._id;
-    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData }).subscribe(result => {
-      //   if (result) {
-      //     alert('you clicked Submit button');
-      //   } else {
-      //     alert('you clicked cancel button');
-      //   }
-    });
+    this.transferData.user = user;
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
   }
 
   navigateToCreatePage() {

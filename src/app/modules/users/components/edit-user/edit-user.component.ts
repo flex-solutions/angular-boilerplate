@@ -76,7 +76,7 @@ export class EditUserComponent extends UserModificationBase {
   }
 
   private getUser(userId: string) {
-    this.userService.getUserById(userId).subscribe(user => {
+    this.userService.findOne(userId).subscribe(user => {
       this.user = new User();
       Object.assign(this.user, user);
       this.formGroup.patchValue({

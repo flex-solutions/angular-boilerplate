@@ -1,9 +1,8 @@
 import { UserGroup } from './user-group.model';
 import { IFilterChangedEvent } from '../ui-common/datagrid/components/datagrid.component';
+import { User } from './user.model';
 
 export class TransferGroupData {
-     userId: string;
-     userName: string;
-     groupId: string;
+     user: User;
      filterEvent: IFilterChangedEvent;
 }
