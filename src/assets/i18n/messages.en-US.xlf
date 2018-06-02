@@ -658,6 +658,22 @@
         <target>Edit Permission Scheme</target>
       </trans-unit>
       <!-- End Permission Schemes -->
+      
+      <!-- Copy Permission Schemes -->
+      <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
+        <source>Copy Permission Scheme</source>
+        <target>Copy Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_description" datatype="html">
+        <source>You can clone "{{0}}" to a new one</source>
+        <target>You can clone "{{0}}" to a new one</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_name" datatype="html">
+        <source>Scheme name</source>
+        <target>Scheme name</target>
+      </trans-unit>
+      <!-- END Permission Schemes -->
+
     </body>
   </file>
 </xliff>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../shared/ui-common/datagrid/components/datagrid.component';
-import { IPermissionSchemes } from '../../../shared/models/permission-scheme.model';
+import { IPermissionScheme } from '../../../shared/models/permission-scheme.model';
 import { PermissionSchemeServcie } from '../services/permission-scheme.service';
+import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
+import { CopySchemeComponent } from '../copy-scheme/copy-scheme.component';
 
 @Component({
   selector: 'app-permission-schemes',
@@ -10,10 +12,11 @@ import { PermissionSchemeServcie } from '../services/permission-scheme.service';
   styleUrls: ['./permission-schemes.component.css']
 })
 export class PermissionSchemesComponent implements OnInit {
-  items: IPermissionSchemes[];
+  items: IPermissionScheme[];
   currentFilterArgs: IFilterChangedEvent;
 
-  constructor(private permissionService: PermissionSchemeServcie) { }
+  constructor(private permissionService: PermissionSchemeServcie,
+    private dialogManager: ExDialog) { }
 
   ngOnInit() { }
 
@@ -22,7 +25,11 @@ export class PermissionSchemesComponent implements OnInit {
   }
 
   copy(item) {
-
+    this.dialogManager.openPrime(CopySchemeComponent, { callerData: item }).subscribe(result => {
+      if (result) {
+        this.loadPermissionSchemes();
+      }
+    });
   }
 
   navigateToEditPage(item) {
@@ -44,7 +51,7 @@ export class PermissionSchemesComponent implements OnInit {
   loadPermissionSchemes() {
     const pagination = this.currentFilterArgs.pagination;
     this.permissionService.getPermissionSchemes(pagination.itemsPerPage, pagination.page,
-      this.currentFilterArgs.searchKey).subscribe((response: IPermissionSchemes[]) => {
+      this.currentFilterArgs.searchKey).subscribe((response: IPermissionScheme[]) => {
         this.items = response;
       });
   }

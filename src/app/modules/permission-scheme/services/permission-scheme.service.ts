@@ -1,5 +1,5 @@
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { ControllerModel, IPermissionSchemes } from '../../../shared/models/permission-scheme.model';
+import { ControllerModel, IPermissionScheme } from '../../../shared/models/permission-scheme.model';
 import { Observable } from 'rxjs';
 
 export class PermissionSchemeServcie extends AbstractRestService {
