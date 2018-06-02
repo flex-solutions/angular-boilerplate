@@ -5,7 +5,8 @@ const DefaultUserGroup = {
 
 const ModuleRoute = {
     USER: 'users',
-    USER_GROUP: 'user-groups'
+    USER_GROUP: 'user-groups',
+    PERMISSION_SCHEMES: 'permission-schemes'
 };
 
 export { DefaultUserGroup, ModuleRoute };

@@ -30,6 +30,14 @@
         <source>User Management</source>
         <target>Quản Lý Nhóm User</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
+        <source>Permission Management</source>
+        <target>Quản Lý Phân Quyền</target>
+      </trans-unit>   
+      <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -643,6 +651,181 @@
         <target>Đã gởi email phục hồi mật khẩu thành công</target>
       </trans-unit>
       <!-- End Revovery Password -->
+
+      <!-- Permission scheme -->
+       <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
+        <source>Scheme Name</source>
+        <target>Tên Kế Hoạch</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-input-name-placeholder" datatype="html">
+        <source>Enter permission scheme name</source>
+        <target>Nhập tên kế hoạch</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-a-permission" datatype="html">
+        <source>Permission</source>
+        <target>Quyền hạn</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-a-information" datatype="html">
+        <source>Information</source>
+        <target>Thông Tin</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Tạo kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
+        <source>Type a name and choose which the permissions to include in this scheme</source>
+        <target>Nhập tên và chọn quyền hạn cho kế hoạch phân quyền này</target>
+       </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+        <source>Business</source>
+        <target>Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
+        <source>Business Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
+        <source>Data Scope</source>
+        <target>Phạm Vi Dữ Liệu</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-insert" datatype="html">
+        <source>Insert</source>
+        <target>Thêm</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+        <source>Update</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-fullcontrol" datatype="html">
+        <source>Full Control</source>
+        <target>Toàn Quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-add" datatype="html">
+        <source>ADD</source>
+        <target>THÊM</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-createanother" datatype="html">
+        <source>Create another</source>
+        <target>Tạo kế hoạch khác</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
+        <source>Submit</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-remove" datatype="html">
+        <source>Remove</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+        <source>Actions</source>
+        <target>Tác Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-createsuccessfully" datatype="html">
+        <source>Created the permission scheme successfully</source>
+        <target>Tạo kế hoạch phân quyền {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-editsuccessfully" datatype="html">
+        <source>Updated the permission scheme successfully</source>
+        <target>Cập nhật hoạch phân quyền {{0}} thành công</target>
+      </trans-unit>
+
+      <!-- Permission Schemes -->
+      <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-button-create_permissions" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Tạo Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-search-label" datatype="html">
+        <source>Search by permission sheme name</source>
+        <target>Tìm kiếm với tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Tên Kế Hoạch</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-user_groups_header" datatype="html">
+        <source>Nhóm User</source>
+        <target>User Groups</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-actions_header" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-a-copy" datatype="html">
+        <source>Copy</source>
+        <target>Copy</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-a-assign_to_user_groups" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Gán cho các nhóm users</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Sửa phân quyền</target>
+      </trans-unit>
+      <!-- End Permission Schemes -->
+
+      <!-- Copy Permission Schemes -->
+      <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
+        <source>Copy Permission Scheme</source>
+        <target>Sao chép kế hoạch</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_description" datatype="html">
+        <source>You can clone "{{0}}" to a new one</source>
+        <target>Bạn có thể sao chép kế hoạch "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_name" datatype="html">
+        <source>Scheme name</source>
+        <target>Tên kế hoạch</target>
+      </trans-unit>
+       <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
+        <source>Please provide the scheme name</source>
+        <target>Vui lòng nhập tên kế hoạch</target>
+      </trans-unit>
+      <!-- END Permission Schemes -->
+
+        <!-- Assign the user group to permission schemes -->
+      <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Gán cho các nhóm users</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-assign_description" datatype="html">
+        <source>Select the user group to assign to the permission scheme "{{0}}"</source>
+        <target>Chọn nhóm user gán vào kế hoạch phần quyền "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-group_name_header" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-notification-assign_successful" datatype="html">
+        <source>Assigned the user groups to "{{0}}" successfully</source>
+        <target>Gán các nhóm user cho kế hoạch phân quyền "{{0}}" thành công</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-place_holder-search_description" datatype="html">
+        <source>Search by group name, permission scheme name</source>
+        <target>Tìm kiếm với tên nhóm, tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-count_selected_group" datatype="html">
+        <source>Selected {{0}} groups(s)</source>
+        <target>Đã chọn {{0}} nhóm</target>
+      </trans-unit>
+      <!-- END Assign the user group to permission schemes -->
     </body>
   </file>
 </xliff>

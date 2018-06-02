@@ -22,8 +22,8 @@ import { NotificationChannelFactory } from './shared/pubsub.client/core/factory'
 import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
 import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
-import { AuthGuard } from './shared/guards/auth-guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,7 +42,8 @@ import { AuthGuard } from './shared/guards/auth-guard';
     PubSubClientModule,
     UserGroupsRoutingModule,
     UserGroupsModule,
-    DialogModule
+    DialogModule,
+    PermissionSchemeModule
   ],
   providers: [
     {
@@ -51,8 +52,7 @@ import { AuthGuard } from './shared/guards/auth-guard';
       deps: [LOCALE_ID]
     },
     ApplicationConfigurationService,
-    AuthenticationService,
-    AuthGuard
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

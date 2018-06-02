@@ -1,4 +1,4 @@
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';
@@ -11,7 +11,6 @@ import { BrowserNotificationService } from './shared/services/browser-notificati
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  hasAuthenticated: boolean;
 
   languages = [
     { code: 'vi', label: 'Tiếng Việt' },
@@ -25,13 +24,6 @@ export class AppComponent implements OnInit {
     private browserNotificationService: BrowserNotificationService
   ) {
     moment.locale(this.localeId);
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        // Check authenticate
-        this.hasAuthenticated = this.authenticationService.authenticated();
-      }
-    });
-
     // Request permission for notification
     this.browserNotificationService.requestPermission();
   }
