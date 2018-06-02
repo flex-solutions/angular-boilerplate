@@ -795,6 +795,37 @@
         <target>Vui lòng nhập tên kế hoạch</target>
       </trans-unit>
       <!-- END Permission Schemes -->
+
+        <!-- Assign the user group to permission schemes -->
+      <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Gán cho các nhóm users</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-assign_description" datatype="html">
+        <source>Select the user group to assign to the permission scheme "{{0}}"</source>
+        <target>Chọn nhóm user gán vào kế hoạch phần quyền "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-group_name_header" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-notification-assign_successful" datatype="html">
+        <source>Assigned the user groups to "{{0}}" successfully</source>
+        <target>Gán các nhóm user cho kế hoạch phân quyền "{{0}}" thành công</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-place_holder-search_description" datatype="html">
+        <source>Search by group name, permission scheme name</source>
+        <target>Tìm kiếm với tên nhóm, tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-count_selected_group" datatype="html">
+        <source>Selected {{0}} groups(s)</source>
+        <target>Đã chọn {{0}} nhóm</target>
+      </trans-unit>
+      <!-- END Assign the user group to permission schemes -->
     </body>
   </file>
 </xliff>

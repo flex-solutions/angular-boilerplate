@@ -794,6 +794,37 @@
         <target>Please provide the scheme name</target>
       </trans-unit>
       <!-- END Permission Schemes -->
+
+       <!-- Assign the user group to permission schemes -->
+      <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Assign to the user groups</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-assign_description" datatype="html">
+        <source>Select the user group to assign to the permission scheme "{{0}}"</source>
+        <target>Select the user group to assign to the permission scheme "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-group_name_header" datatype="html">
+        <source>Group Name</source>
+        <target>Group Name  </target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-notification-assign_successful" datatype="html">
+        <source>Assigned the user groups to "{{0}}" successfully</source>
+        <target>Assigned the user groups to "{{0}}" successfully</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-place_holder-search_description" datatype="html">
+        <source>Search by group name, permission scheme name</source>
+        <target>Search by group name, permission scheme name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-count_selected_group" datatype="html">
+        <source>Selected {{0}} groups(s)</source>
+        <target>Selected {{0}} groups(s)</target>
+      </trans-unit>
+      <!-- END Assign the user group to permission schemes -->
     </body>
   </file>
 </xliff>
