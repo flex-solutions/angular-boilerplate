@@ -10,7 +10,7 @@ import { PermissionSchemeModuleComponents, PermissionSchemeModuleEntryComponents
   imports: [
     CommonModule,
     PermissionSchemeRoutingModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule,
     UICommonModule
   ],
   declarations: [...PermissionSchemeModuleComponents],

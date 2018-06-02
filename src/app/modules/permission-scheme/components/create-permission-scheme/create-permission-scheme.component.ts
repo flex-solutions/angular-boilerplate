@@ -12,7 +12,7 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { NotificationConst, IgnoreField, SchemeField, PermissionNavigationRoute } from '../../permission-scheme-const';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { PermissionSchemeComponentBase } from '../base/editor.permission-scheme.componentbase';
+import { PermissionSchemeComponentBase } from '../../base/editor.permission-scheme.componentbase';
 
 @Component({
   selector: 'app-create-permission-scheme',
