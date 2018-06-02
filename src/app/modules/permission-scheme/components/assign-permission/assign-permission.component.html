@@ -13,9 +13,7 @@
       <div class="card-body">
         <div class="row dataTables_wrapper">
           <div class="col-sm-12">
-            <input type="text" [(ngModel)]="searchKey" class="form-control" i18n-placeholder="@@permission-scheme-assign-permission-place_holder-search_description"
-              placeholder="Search by group name, permission scheme name">
-            <i class="mdi mdi-table-search" (click)="submitFilter()"></i>
+            <app-txt-search #txtSearch searchPlaceholder="Search by group name, permission scheme name" i18n-searchPlaceholder="@@permission-scheme-assign-permission-place_holder-search_description"></app-txt-search>
           </div>
         </div>
         <div class=row>

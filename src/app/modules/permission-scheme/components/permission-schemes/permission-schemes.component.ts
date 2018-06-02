@@ -23,7 +23,7 @@ export class PermissionSchemesComponent implements OnInit {
   ngOnInit() { }
 
   assignToUserGroups(item) {
-    this.dialogManager.openPrime(AssignPermissionComponent, { callerData: item }, ModalSize.Large)
+    this.dialogManager.openPrime(AssignPermissionComponent, { callerData: item })
       .subscribe(result => {
         if (result) {
           this.loadPermissionSchemes();

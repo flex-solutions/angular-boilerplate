@@ -42,11 +42,9 @@ export class PermissionSchemeServcie extends AbstractRestService {
         return this.get('');
     }
 
-    async updateSchemeForUserGroup(schemeId: string, userGroupsId: string[]) {
-        for (let i = 0; i < userGroupsId.length; i++) {
-            const query = `updateSchemeForUserGroup/${userGroupsId[i]}`;
-            await this.put(query, schemeId);
-        }
+    updateSchemeForUserGroup(schemeId: string, userGroupsId: string[]) {
+        const query = `updateSchemeForUserGroup/${schemeId}`;
+        return this.put(query, userGroupsId);
     }
 
     getAllUserGroups() {

@@ -117,7 +117,7 @@ export class AssignPermissionComponent extends DialogComponent implements OnInit
         const userGroupIds = map((u: UserGroup) => u._id, this.selectedUserGroups);
 
         this.permissionSchemeService.updateSchemeForUserGroup(this.permissionScheme._id, userGroupIds)
-            .then(result => {
+            .subscribe(result => {
                 this.result = true;
                 this.dialogResult();
                 this.notificationService.showSuccess(this.successMessage);
