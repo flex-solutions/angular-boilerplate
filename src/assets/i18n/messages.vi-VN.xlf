@@ -562,6 +562,7 @@
       </trans-unit>
       <!-- End Revovery Password -->
 
+      <!-- Permission scheme -->
        <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
         <source>Scheme Name</source>
         <target>Tên Kế Hoạch</target>
@@ -585,6 +586,66 @@
          <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
         <source>Type a name and choose which the permissions to include in this scheme</source>
         <target>Nhập tên và chọn quyền hạn cho kế hoạch phân quyền này</target>
+       </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+        <source>Business</source>
+        <target>Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
+        <source>Business Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
+        <source>Data Scope</source>
+        <target>Phạm Vi Dữ Liệu</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-insert" datatype="html">
+        <source>Insert</source>
+        <target>Thêm</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+        <source>Update</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-fullcontrol" datatype="html">
+        <source>Full Control</source>
+        <target>Toàn Quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-add" datatype="html">
+        <source>ADD</source>
+        <target>THÊM</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-createanother" datatype="html">
+        <source>Create another</source>
+        <target>Tạo kế hoạch khác</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
+        <source>Submit</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-remove" datatype="html">
+        <source>Remove</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+        <source>Actions</source>
+        <target>Tác Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-createsuccessfully" datatype="html">
+        <source>Created the permission scheme successfully</source>
+        <target>Tạo kế hoạch phân quyền {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-editsuccessfully" datatype="html">
+        <source>Updated the permission scheme successfully</source>
+        <target>Cập nhật hoạch phân quyền {{0}} thành công</target>
       </trans-unit>
     </body>
   </file>

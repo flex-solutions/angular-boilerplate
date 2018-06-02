@@ -581,6 +581,66 @@
         <source>Type a name and choose which the permissions to include in this scheme</source>
         <target>Type a name and choose which the permissions to include in this scheme</target>
       </trans-unit>
+         <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+        <source>Business</source>
+        <target>Business</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
+        <source>Business Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
+        <source>Data Scope</source>
+        <target>Data Scope</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-insert" datatype="html">
+        <source>Insert</source>
+        <target>Insert</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+        <source>Update</source>
+        <target>Update</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-delete" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-fullcontrol" datatype="html">
+        <source>Full Control</source>
+        <target>Full Control</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-add" datatype="html">
+        <source>ADD</source>
+        <target>ADD</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-createanother" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-remove" datatype="html">
+        <source>Remove</source>
+        <target>Remove</target>
+      </trans-unit>
+       <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-createsuccessfully" datatype="html">
+        <source>Created the permission scheme successfully</source>
+        <target>Created the permission scheme {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-editsuccessfully" datatype="html">
+        <source>Updated the permission scheme successfully</source>
+        <target>Updated the permission scheme {{0}} successfully</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

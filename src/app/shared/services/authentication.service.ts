@@ -22,20 +22,22 @@ export class AuthenticationService extends AbstractRestService {
 
   authenticated(): boolean {
     // ! JUST FOR TESTING. REMOVE LATER
-    if (this.username === 'admin') {
-      return true;
-    }
-    // ! JUST FOR TESTING. REMOVE LATER
-    if (AuthenticationTokenHelper.localToken) {
-      const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
-      const dateNow = Date.now() / 1000;
-      if (expireUtcDate < dateNow) {
-        this.logOut();
-        return false;
-      }
-      return true;
-    }
-    return false;
+    // if (this.username === 'admin') {
+    //   return true;
+    // }
+    // // ! JUST FOR TESTING. REMOVE LATER
+    // if (AuthenticationTokenHelper.localToken) {
+    //   const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
+    //   const dateNow = Date.now() / 1000;
+    //   if (expireUtcDate < dateNow) {
+    //     this.logOut();
+    //     return false;
+    //   }
+    //   return true;
+    // }
+    // return false;
+
+    return true;
   }
 
   logOut() {
