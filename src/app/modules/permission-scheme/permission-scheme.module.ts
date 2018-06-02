@@ -6,14 +6,18 @@ import { CreatePermissionSchemeComponent } from './create-permission-scheme/crea
 import { EditPermissionSchemeComponent } from './edit-permission-scheme/edit-permission-scheme.component';
 import { PermissionSchemeServcie } from './services/permission-scheme.service';
 import { ControllerFilterPipe, PermissionFilterPipe } from './pipes/permission-scheme.pipe';
+import { PermissionSchemesComponent } from './permission-schemes/permission-schemes.component';
+import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 
 @NgModule({
   imports: [
     CommonModule,
     PermissionSchemeRoutingModule,
-    FormsModule
+    FormsModule,
+    UICommonModule
   ],
-  declarations: [CreatePermissionSchemeComponent, EditPermissionSchemeComponent, ControllerFilterPipe, PermissionFilterPipe],
+  declarations: [CreatePermissionSchemeComponent, EditPermissionSchemeComponent,
+    ControllerFilterPipe, PermissionFilterPipe, PermissionSchemesComponent],
   providers: [PermissionSchemeServcie]
 })
 export class PermissionSchemeModule { }

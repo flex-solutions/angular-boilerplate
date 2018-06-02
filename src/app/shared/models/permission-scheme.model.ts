@@ -1,3 +1,5 @@
+import { UserGroup } from './user-group.model';
+
 class ControllerModel {
     _id: string;
 
@@ -26,5 +28,12 @@ enum DataScope {
     Branch = 0,
     Full = 1,
 }
-export{ ControllerSelectedItem, ControllerModel, PermissionDetail, DataScope};
+
+class PermissionSchemes {
+    _id: any;
+    name: string;
+    userGroups: UserGroup[];
+}
+
+export { ControllerSelectedItem, ControllerModel, PermissionDetail, DataScope, PermissionSchemes };
 

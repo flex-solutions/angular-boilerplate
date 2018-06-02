@@ -618,6 +618,54 @@
         <source>Type a name and choose which the permissions to include in this scheme</source>
         <target>Nhập tên và chọn quyền hạn cho kế hoạch phân quyền này</target>
       </trans-unit>
+
+      <!-- Permission Schemes -->
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-button-create_permissions" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Tạo Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-tbl-search-label" datatype="html">
+        <source>Search by permission sheme name</source>
+        <target>Tìm kiếm với tên kế hoạch phân quyền</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-tbl-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Tên Kế Hoạch</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-tbl-user_groups_header" datatype="html">
+        <source>Nhóm User</source>
+        <target>User Groups</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-tbl-actions_header" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-a-copy" datatype="html">
+        <source>Copy</source>
+        <target>Copy</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-a-assign_to_user_groups" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Gán cho các nhóm users</target>
+      </trans-unit>
+      </trans-unit>
+         <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Sửa phân quyền</target>
+      </trans-unit>
+      <!-- End Permission Schemes -->
     </body>
   </file>
 </xliff>

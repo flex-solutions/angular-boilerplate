@@ -1,0 +1,54 @@
+<!-- partial -->
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h4 class="card-title col-md-10" i18n="@@permission_scheme-permission_schemes-h4-title">Permission Schemes</h4>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+          <i class="mdi mdi-plus"></i>
+          <span i18n="@@permission_scheme-permission_schemes-button-create_permissions">Create Permission Scheme</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-dg #dg searchLabel="Search by permission sheme name" i18n-searchLabel="@@permission_scheme-permission_schemes-tbl-search-label"
+          (pageChanged)="onPageChanged($event)" [countFunction]="count">
+          <tr role="row">
+            <th i18n="@@permission_scheme-permission_schemes-tbl-permission_scheme_header">Permission Scheme</th>
+            <th i18n="@@permission_scheme-permission_schemes-tbl-user_groups_header">User Groups</th>
+            <th i18n="@@permission_scheme-permission_schemes-tbl-actions_header">Actions</th>
+          </tr>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>
+                <span class="change-color">
+                  <a href="#">{{item.name}}</a>
+                </span>
+              </td>
+              <td>
+                <span class="change-color">
+                  <a href="#" *ngFor="let userGroup of item.userGroups">{{userGroup.name}}</a>
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
+                  <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
+                  <span i18n="@@permission_scheme-permission_schemes-button-edit_permission">Edit Permission</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="copy(item)" href="javascript:;" i18n="@@permission_scheme-permission_schemes-a-copy">Copy</a>
+                  <a class="dropdown-item" (click)="assignToUserGroups(item)" href="javascript:;" i18n="@@permission_scheme-permission_schemes-a-assign_to_user_groups">Assign to the user groups</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </app-dg>
+      </div>
+    </div>
+  </div>
+</div>
