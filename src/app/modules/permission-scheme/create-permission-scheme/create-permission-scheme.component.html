@@ -58,7 +58,7 @@
                                     <table class="table">
                                         <thead>
                                           <tr>
-                                            <th style="">
+                                            <th>
                                               <div class="form-check form-check-flat align-center">
                                                 <label class="form-check-label">
                                                   <input type="checkbox" class="form-check-input"
@@ -71,15 +71,15 @@
                                           </tr>
                                           </thead>
                                           <tbody>
-                                            <tr *ngFor="let item of (dataSource.data | controllerFilter: keyword);let index = index">
-                                              <td >
+                                            <tr *ngFor="let item of (dataSource.data | controllerFilter: keyword);let index = index"  [class.disable-row]="item.is_disable">
+                                              <td>
                                                 <div class="form-check form-check-flat align-center">
                                                   <label class="form-check-label">
                                                     <input type="checkbox" class="form-check-input"
                                                      [(ngModel)]="dataSource.data[index].is_check" 
-                                                     [(disabled)]="item.is_disable" 
-                                                     name="isCheck[{{index}}]"
-                                                     (change)="onControllerCheckedChange()" >
+                                                      name="isCheck[{{index}}]"
+                                                     (change)="onControllerCheckedChange()"
+                                                     [disabled]="item.is_disable" >
                                                     {{item.controller.name}}
                                                   <i class="input-helper"></i></label>
                                                 </div>
@@ -193,13 +193,12 @@
                 <label class="form-check-label">
                   <input type="checkbox" class="form-check-input form-control" name="isCreateAnother" [(ngModel)]="isCreateAnother">
                   <i class="input-helper"></i>
-                  <label class="form-check-label" i18n="@@user-create_user-label-create_another_field"> Create another</label>
+                  <label class="form-check-label" i18n="@@permissiom-scheme-create-p-createanother"> Create another</label>
                 </label>
               </div>
             </div>
               <button type="submit" class="btn btn-success mr-2" i18n="permissiom-scheme-create-button-submit">Submit</button>
               <a class="btn btn-light" i18n="@@permissiom-scheme-create-button-cancel" (click)="onCancel()">Cancel</a>
-     
             </form>
           </div>
         </div>
