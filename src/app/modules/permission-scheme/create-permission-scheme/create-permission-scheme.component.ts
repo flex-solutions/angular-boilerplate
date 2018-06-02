@@ -107,8 +107,6 @@ export class CreatePermissionSchemeComponent implements OnInit {
       this.dataSource.is_check_all = true;
       this.dataSource.data.forEach((item) => {
         this.dataSource.is_check_all = this.dataSource.is_check_all && item.is_check;
-        console.log(this.dataSource.is_check_all);
-        console.log(item);
       });
     } else {
       this.dataSource.data.forEach((item) => {

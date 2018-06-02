@@ -24,6 +24,7 @@ import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { AuthGuard } from './shared/guards/auth-guard';
+import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,7 +43,8 @@ import { AuthGuard } from './shared/guards/auth-guard';
     PubSubClientModule,
     UserGroupsRoutingModule,
     UserGroupsModule,
-    DialogModule
+    DialogModule,
+    PermissionSchemeModule
   ],
   providers: [
     {
