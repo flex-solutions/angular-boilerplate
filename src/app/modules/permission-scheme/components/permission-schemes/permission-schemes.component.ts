@@ -5,6 +5,8 @@ import { IPermissionScheme } from '../../../../shared/models/permission-scheme.m
 import { PermissionSchemeServcie } from '../../services/permission-scheme.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { CopySchemeComponent } from '../copy-scheme/copy-scheme.component';
+import { AssignPermissionComponent } from '../assign-permission/assign-permission.component';
+import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
 
 @Component({
   selector: 'app-permission-schemes',
@@ -21,7 +23,12 @@ export class PermissionSchemesComponent implements OnInit {
   ngOnInit() { }
 
   assignToUserGroups(item) {
-
+    this.dialogManager.openPrime(AssignPermissionComponent, { callerData: item }, ModalSize.Large)
+      .subscribe(result => {
+        if (result) {
+          this.loadPermissionSchemes();
+        }
+      });
   }
 
   copy(item) {

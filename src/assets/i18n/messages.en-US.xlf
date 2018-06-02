@@ -802,7 +802,7 @@
       </trans-unit>
       <trans-unit id="permission-scheme-assign-permission-label-group_name_header" datatype="html">
         <source>Group Name</source>
-        <target>Group Name  </target>
+        <target>Group Name</target>
       </trans-unit>
       <trans-unit id="permission-scheme-assign-permission-label-permission_scheme_header" datatype="html">
         <source>Permission Scheme</source>

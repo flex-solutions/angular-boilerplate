@@ -33,4 +33,23 @@ export class PermissionSchemeServcie extends AbstractRestService {
     clone(permissionSchemes: IPermissionScheme) {
         return this.post('clone', permissionSchemes);
     }
+
+    findOneById(id) {
+        return this.get(id);
+    }
+
+    getAllPermissionSchemes() {
+        return this.get('');
+    }
+
+    async updateSchemeForUserGroup(schemeId: string, userGroupsId: string[]) {
+        for (let i = 0; i < userGroupsId.length; i++) {
+            const query = `updateSchemeForUserGroup/${userGroupsId[i]}`;
+            await this.put(query, schemeId);
+        }
+    }
+
+    getAllUserGroups() {
+        return this.get('user-groups');
+    }
 }
