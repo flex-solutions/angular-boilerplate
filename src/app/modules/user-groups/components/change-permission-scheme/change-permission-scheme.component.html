@@ -1,18 +1,38 @@
 <div class="modal-content">
   <div class="modal-header">
     <div>
-      <h5 class="modal-title">Change permission scheme</h5>
-      <p>Select other permission scheme for user group "{{userGroup.name}}"</p>
+      <h5 class="modal-title" i18n="@@user_groups-list-change-permission-scheme-title">Change permission scheme</h5>
+      <p i18n="@@user_groups-list-change-permission-scheme-sub-title">Select other permission scheme for user group "{{userGroup.name}}"</p>
     </div>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <div class="modal-body card">
-
+  <div class="modal-body">
+    <div class="row" style="margin: 0px">
+      <div class="col-12" style="padding: 0px">
+        <app-txt-search #txtSearch i18n-searchPlaceholder="@@user_groups-list-change-permission-scheme-search-holder" searchPlaceholder="Search by permission scheme name"></app-txt-search>
+      </div>
+    </div>
+    <div class="card dialog-body">
+      <div class="dialog-row">
+        <div class="form-group radio-container">
+          <div *ngFor="let scheme of schemes | userGroupPermissionSchemeListFilter: txtSearch.searchKey" class="radio-a-group">
+            <div class="form-radio non-margin-top form-radio-flat">
+              <label class="form-check-label">
+                <input type="radio" name="permission-scheme" [checked]="selectedSchemeId === scheme._id" value="{{scheme._id}}" class="form-check-input"
+                  (change)="onValueChanged($event.target.value)"> {{content}}
+                <i class="input-helper"></i>
+              </label>
+            </div>
+            <a href="">{{scheme.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="submit()" i18n="@@group-user-modal-ok">OK</button>
-    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@group-user-modal-cancel">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="submit()">OK</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@user_groups-list-change-permission-scheme-cancel">Cancel</button>
   </div>
 </div>

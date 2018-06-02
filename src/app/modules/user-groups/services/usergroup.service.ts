@@ -22,8 +22,8 @@ export class UserGroupService extends AbstractRestService {
     return this.put(usergroup._id, usergroup);
   }
 
-  public delete(_id: string) {
-    return this.delete(_id);
+  public remove(_id: string) {
+    return this.delete(_id, {});
   }
 
   public getById(_id: string) {
@@ -36,5 +36,13 @@ export class UserGroupService extends AbstractRestService {
 
   public find(pageSize: number, pageNumber: number, searchKey?: string): Observable<UserGroup[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
+
+  public getPermissionScheme(): Observable<any[]> {
+    return this.getWithAbsoluteUrl(`permission?fields=name`);
+  }
+
+  public updatePermissionSchemeForUserGroup(usergroupId: string, schemeId: string) {
+    return this.put(`updateSchemeForUserGroup/${usergroupId}`, { schemeId });
   }
 }

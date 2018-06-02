@@ -6,7 +6,7 @@
     </button>
   </div>
   <app-dg #dg searchLabel="Search by group name" i18n-searchLabel="@@user_groups-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
-    [countFunction]="count">
+    [countFunction]="count" [searchKey]="usergroup">
     <tr>
       <th i18n="@@user_groups-list-tbl-group-name">Group Name</th>
       <th i18n="@@user_groups-list-tbl-user-count">Users</th>
@@ -36,7 +36,7 @@
               <div class="dropdown-menu more-actions-dropdown" aria-labelledby="dropdownMenuIconButton3" x-placement="bottom-start">
                 <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-change-permission-scheme" (click)="changePermissionScheme(usergroup)">Change permission scheme</a>
                 <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-edit-group-info" (click)="editGroup(usergroup)">Edit group information</a>
-                <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group">Delete user group</a>
+                <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group" (click)="deleteUserGroup(usergroup)">Delete user group</a>
               </div>
             </div>
           </div>

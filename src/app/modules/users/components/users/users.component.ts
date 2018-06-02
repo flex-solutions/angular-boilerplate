@@ -1,54 +1,47 @@
-import { Component, OnInit, PipeTransform, Pipe, } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, PipeTransform, Pipe, } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../../../../shared/models/user.model';
 import { UserService } from '../../services/user.service';
-import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
-import { NotificationService } from '../../../../shared/services/notification.service';
-import { TranslateService } from '../../../../shared/services/translate.service';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
+import ArrayExtension from '../../../../utilities/array.extension';
+import { ModuleRoute } from '../../../../shared/constants/const';
 
 @Component({
   moduleId: module.id,
   selector: 'app-users',
   templateUrl: './users.component.html',
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
 
   public items: User[] = [];
-  constructor(private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private exDialog: ExDialog,
-    private notifier: NotificationService,
-    private translateService: TranslateService) { }
-
-  ngOnInit(): void {
-    this.loadData();
-  }
+  constructor(private userService: UserService, private router: Router) { }
 
   public count = (searchKey: string): Observable<number> => {
-    return of(10);
+    return this.userService.count(searchKey);
   }
 
-  loadData() {
-    this.userService.getAllUser().subscribe(users => this.items = users);
+  private loadData(eventArg: IFilterChangedEvent) {
+    this.userService.getUsers(eventArg.pagination.itemsPerPage, eventArg.pagination.page, eventArg.searchKey)
+      .subscribe(users => this.items = users);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
-    console.log(eventArg);
+    this.loadData(eventArg);
   }
 
   async deleteUser(user: User) {
+    // Call service to delete user
     await this.userService.remove(user);
-    this.items = [];
-    this.loadData();
+    // Remove user in user list
+    ArrayExtension.removeItemFromArray(this.items, user);
   }
 
-
+  // Handle to change group of user.
   navigateToChangeUserGroup(user: User) {
-    this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.groupname]);
+    this.userService.changeGroup(user);
+    // this.router.navigate([UserNavigationRoute.EDIT_GROUP_PAGE, user.userGroup._id]);
   }
 
   navigateToCreatePage() {
@@ -61,5 +54,9 @@ export class UsersComponent implements OnInit {
 
   navigateToUserDetailPage(user: User) {
     this.router.navigate([UserNavigationRoute.USER_DETAIL_PAGE, user._id]);
+  }
+
+  navigateToGroup(userGroup: string) {
+    this.router.navigate([UserNavigationRoute.GROUPS_PAGE, userGroup]);
   }
 }

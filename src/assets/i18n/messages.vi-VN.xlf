@@ -359,7 +359,7 @@
       </trans-unit>
       <trans-unit id="users-actions" datatype="html">
         <source>Actions</source>
-        <target>Hành động</target>
+        <target>Actions</target>
       </trans-unit>
       <trans-unit id="users-count" datatype="html">
         <source>Count: </source>
@@ -381,6 +381,18 @@
         <source>Edit user groups</source>
         <target>Sửa nhóm user</target>
       </trans-unit>
+      <trans-unit id="users-list-tbl-search-label" datatype="html">
+        <source>Search username, fullname or email</source>
+        <target>Tìm kiếm với tên đăng nhập, tên đầy đủ hoặc email</target>
+      </trans-unit>
+      <trans-unit id="users-list-title-confirm-dialog" datatype="html">
+        <source>Confirm</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="users-list-title-change-group" datatype="html">
+        <source>Change user group</source>
+        <target>Thay đổi nhóm user</target>
+      </trans-unit>
       <!-- Users -->
 
       <!--Logout-->
@@ -396,8 +408,8 @@
 
       <!--Delete user-->
       <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
-        <source>User {{0}} will be permanently deleted. Are you sure you want to delete?</source>
-        <target>User {{0}} sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+        <source>User "{{0}}" will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User "{{0}}" sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="users-delete-dialog-notification_message" datatype="html">
         <source>Delete user {{0}} successfully</source>
@@ -465,17 +477,13 @@
         <source>Create user group {{0}} successfully</source>
         <target>Tạo nhóm user {{0}} thành công</target>
       </trans-unit>
-      <trans-unit id="user_groups-create_user_group-create_group_name_ng" datatype="html">
-        <source>Create user group {{0}} failed</source>
-        <target>Tạo nhóm user {{0}} thất bại</target>
-      </trans-unit>
       <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
         <source>Update user group {{0}} successfully</source>
         <target>Cập nhật nhóm user {{0}} thành công</target>
       </trans-unit>
-      <trans-unit id="user_groups-create_user_group-edit_group_name_ng" datatype="html">
-        <source>Update user group {{0}} failed</source>
-        <target>Cập nhật nhóm user {{0}} thất bại</target>
+      <trans-unit id="user_groups-create_user_group-delete_group_name_ok" datatype="html">
+        <source>Delete user group {{0}} successfully</source>
+        <target>Xoá nhóm user {{0}} thành công</target>
       </trans-unit>
       <!--Usergroup list-->
       <trans-unit id="user_groups-list-tbl-title" datatype="html">
@@ -521,6 +529,30 @@
       <trans-unit id="user_groups-list-tbl-actions-del-user-group" datatype="html">
         <source>Delete user group</source>
         <target>Xoá nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
+        <source>
+        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        </source>
+        <target>
+        Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có chắc muốn tiếp tục?
+        </target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Đổi kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-sub-title" datatype="html">
+        <source>Select other permission scheme for user group "{{userGroup.name}}"</source>
+        <target>Chọn một kết hoạch phân quyền khác cho nhóm user "{{userGroup.name}}"</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-search-holder" datatype="html">
+        <source>Search by permission scheme name</source>
+        <target>Tìm kiếm với tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
       </trans-unit>
 
       <!-- Recovery Password -->

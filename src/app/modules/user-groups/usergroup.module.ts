@@ -8,6 +8,7 @@ import { UserGroupService } from './services/usergroup.service';
 import { UserGroupHomeComponent } from './home/user-group-home.component';
 import { CreateEditUserGroupComponent } from './components/create-user-group/create-user-group.component';
 import { UserGroupPipes } from './pipes';
+import { DialogModule } from '../../shared/ui-common/modal/dialog.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { UserGroupPipes } from './pipes';
     UICommonModule,
     UserGroupsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule
   ],
   declarations: [
     ...UserGroupPipes,

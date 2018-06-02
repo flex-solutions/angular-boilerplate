@@ -33,9 +33,20 @@ export abstract class AbstractRestService {
     this.browserNotifer = SharedModule.injector.get(BrowserNotificationService);
   }
 
-  get<T>(relativeUrl: string) {
+  get<T>(relativeUrl?: string) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
+    return this.httpClient
+      .get<T>(url)
+      .pipe(
+        catchError(err => this.handleError(err)),
+        finalize(() => this.hideLoader())
+      );
+  }
+
+  getWithAbsoluteUrl<T>(absoluteUrl: string) {
+    this.showLoader();
+    const url = this.getApiWithoutController(absoluteUrl);
     return this.httpClient
       .get<T>(url)
       .pipe(
@@ -99,7 +110,7 @@ export abstract class AbstractRestService {
 
   // Build full path for api
   protected getApiWithController(api: string) {
-    return `${this.baseUrl}/${this.controllerName}/${api}`;
+    return api ? `${this.baseUrl}/${this.controllerName}/${api}` : `${this.baseUrl}/${this.controllerName}`;
   }
 
   protected getApiWithoutController(api: string) {

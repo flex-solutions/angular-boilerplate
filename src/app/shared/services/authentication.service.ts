@@ -21,23 +21,16 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   authenticated(): boolean {
-    // ! JUST FOR TESTING. REMOVE LATER
-    // if (this.username === 'admin') {
-    //   return true;
-    // }
-    // // ! JUST FOR TESTING. REMOVE LATER
-    // if (AuthenticationTokenHelper.localToken) {
-    //   const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
-    //   const dateNow = Date.now() / 1000;
-    //   if (expireUtcDate < dateNow) {
-    //     this.logOut();
-    //     return false;
-    //   }
-    //   return true;
-    // }
-    // return false;
-
-    return true;
+    if (AuthenticationTokenHelper.localToken) {
+      const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
+      const dateNow = Date.now() / 1000;
+      if (expireUtcDate < dateNow) {
+        this.logOut();
+        return false;
+      }
+      return true;
+    }
+    return false;
   }
 
   logOut() {
@@ -58,15 +51,6 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   login(signedUser: SignedUser) {
-    // ! JUST FOR TESTING. REMOVE LATER
-    if (signedUser.username === 'admin') {
-      // Navigate to home page
-      this.username = 'admin';
-      this.router.navigate([NavigateConstant.HOME]);
-      return new Observable(sub => {});
-    }
-    // ! JUST FOR TESTING. REMOVE LATER
-
     return this.post('login', signedUser);
   }
 
@@ -110,14 +94,7 @@ export class AuthenticationService extends AbstractRestService {
       return userInfo;
     }
 
-    const info: BasicUserInfo = {
-      _id: '',
-      email: '',
-      username: '',
-      branch_id: '',
-      avatar: '',
-      fullname: ''
-    };
+    const info: BasicUserInfo = { _id: '', email: '', username: '', branch_id: '', avatar: '', fullname: '', userGroup: '' };
     return info;
   }
 
