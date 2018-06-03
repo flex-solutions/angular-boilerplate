@@ -54,7 +54,7 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
   protected abstract cancel();
 
   ngOnInit() {
-    this.initializeModel();
+    this.Initialize();
   }
 
   onSubmit() {
@@ -69,27 +69,7 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
     this.cancel();
   }
 
-  initializeModel() {
-    this.dataSource = new SchemeDataSource();
-    this.dataSource.data = [];
-    this.dataSource.is_check_all = false;
-
-    this.service.getAllController().subscribe(controllers => {
-      controllers.forEach(controller => {
-        const controllerItem = new ControllerSelectedItem();
-        controllerItem.controller = controller;
-        controllerItem.is_check = false;
-        controllerItem.is_disable = false;
-        this.dataSource.data.push(controllerItem);
-      });
-    });
-
-    this.permissionModel = new PermissionScheme();
-    this.permissionModel.permission_details = [];
-    this.permissionModel.name = '';
-
-    this.isCreateAnother = false;
-  }
+  abstract Initialize();
 
   removePermission(id: string) {
     const deleteIndex = findIndex(

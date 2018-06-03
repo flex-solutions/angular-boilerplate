@@ -11,7 +11,6 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationConst, IgnoreField, SchemeField, PermissionNavigationRoute } from '../../permission-scheme-const';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
 import { PermissionSchemeComponentBase } from '../../base/editor.permission-scheme.componentbase';
 
 @Component({
@@ -21,6 +20,9 @@ import { PermissionSchemeComponentBase } from '../../base/editor.permission-sche
 })
 export class CreatePermissionSchemeComponent extends PermissionSchemeComponentBase {
 
+  Initialize() {
+    this.initializeModel();
+  }
   protected onValidated() {
 
   }
@@ -42,9 +44,30 @@ export class CreatePermissionSchemeComponent extends PermissionSchemeComponentBa
   constructor(private schemeService: PermissionSchemeServcie,
     private readonly translateService: TranslateService,
     private router: Router,
-    protected fb: FormBuilder,
     private notificationService: NotificationService) {
       super(schemeService);
+  }
+
+  protected initializeModel()  {
+    this.dataSource = new SchemeDataSource();
+    this.dataSource.data = [];
+    this.dataSource.is_check_all = false;
+
+    this.schemeService.getAllController().subscribe(controllers => {
+      controllers.forEach(controller => {
+        const controllerItem = new ControllerSelectedItem();
+        controllerItem.controller = controller;
+        controllerItem.is_check = false;
+        controllerItem.is_disable = false;
+        this.dataSource.data.push(controllerItem);
+      });
+    });
+
+    this.permissionModel = new PermissionScheme();
+    this.permissionModel.permission_details = [];
+    this.permissionModel.name = '';
+
+    this.isCreateAnother = false;
   }
 
   private onHandleCreateUserSuccessful() {
