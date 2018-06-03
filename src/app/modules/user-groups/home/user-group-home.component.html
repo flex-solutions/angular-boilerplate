@@ -20,13 +20,13 @@
           <a class="a-clickable" (click)="navigateToFilterUsers(usergroup)">{{usergroup.userCount}}</a>
         </td>
         <td>
-          <a href="#">{{usergroup.permissionScheme.name}}</a>
+          <a class="a-clickable" (click)="viewPermissionDetail(usergroup)">{{usergroup.permissionScheme.name}}</a>
         </td>
         <td>
           <div class="row">
             <button class="btn btn-light" (click)="editMembers(usergroup)">
               <i class="mdi mdi-account-multiple text-primary"></i>
-              <span i18n="@@user_groups-list-tbl-actions-edit-members">Edit members</span>
+              <span i18n="@@user_groups-list-tbl-actions-edit-members">Add members</span>
             </button>
             <div class="dropdown" *ngIf="canAction(usergroup)">
               <button type="button" class="btn btn-light icon-btn dropdown-toggle dropdown-toggle-split more-actions-dropdown-btn" id="dropdownMenuIconButton3" data-toggle="dropdown"

@@ -399,6 +399,10 @@
         <source>Change user group</source>
         <target>Change user group</target>
       </trans-unit>
+        <trans-unit id="user-detail-change-group-message" datatype="html">
+        <source>Select other group for user "{{userdetail.username}}"</source>
+        <target>Select other group for user "{{userdetail.username}}"</target>
+      </trans-unit>
       <!-- Users -->
 
       <!--Logout-->
@@ -528,8 +532,8 @@
         <target>Actions</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
-        <source>Edit members</source>
-        <target>Edit members</target>
+        <source>Add members</source>
+        <target>Add members</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions-change-permission-scheme" datatype="html">
         <source>Change permission scheme</source>
@@ -739,6 +743,14 @@
         <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
         <target>Please provide the scheme name</target>
       </trans-unit>
+      <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
+        <source>Full</source>
+        <target>Tất cả</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-datascope-branch" datatype="html">
+        <source>Branch</source>
+        <target>Chi nhánh</target>
+      </trans-unit>
       <!-- Permission Schemes -->
       <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
         <source>Permission Schemes</source>
@@ -827,6 +839,44 @@
         <target>Selected {{0}} groups(s)</target>
       </trans-unit>
       <!-- END Assign the user group to permission schemes -->
+      <!--START Permission Scheme Detail Dialog-->
+      <trans-unit id="permission-scheme-detail-dlg-title" datatype="html">
+        <source>View permission scheme detail</source>
+        <target>View permission scheme detail</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-dlg-sub-title" datatype="html">
+        <source>View permission detail of schema {{scheme.name}}</source>
+        <target>View permission detail of schema {{scheme.name}}</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-dlg-search-holder" datatype="html">
+        <source>Search by module name</source>
+        <target>Search by module name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-module-name" datatype="html">
+        <source>Module Name</source>
+        <target>Module Name</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-data-scope" datatype="html">
+        <source>Data Scope</source>
+        <target>Data Scope</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-insert" datatype="html">
+        <source>Insert</source>
+        <target>Insert</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-update" datatype="html">
+        <source>Update</source>
+        <target>Update</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-delete" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-full-control" datatype="html">
+        <source>Full Control</source>
+        <target>Full Control</target>
+      </trans-unit>
+      <!--END Permission Scheme Detail Dialog-->
     </body>
   </file>
 </xliff>

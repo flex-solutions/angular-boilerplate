@@ -48,6 +48,11 @@ import { AuthGuard } from './shared/guards/auth-guard';
   ],
   providers: [
     {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+      useValue: '/'
+    },
+    {
       provide: TRANSLATIONS,
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]

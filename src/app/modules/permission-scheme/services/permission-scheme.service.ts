@@ -1,7 +1,19 @@
-import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { ControllerModel, PermissionScheme, IPermissionScheme, PermissionDetail } from '../../../shared/models/permission-scheme.model';
-import { Observable } from 'rxjs';
-import { SchemeCommonConst, PermissionEndPoints } from '../permission-scheme-const';
+import {
+    AbstractRestService
+} from '../../../shared/abstract/abstract-rest-service';
+import {
+    ControllerModel,
+    PermissionScheme,
+    IPermissionScheme,
+    IPermissionSchemeDetail
+} from '../../../shared/models/permission-scheme.model';
+import {
+    Observable
+} from 'rxjs';
+import {
+    SchemeCommonConst,
+    PermissionEndPoints
+} from '../permission-scheme-const';
 
 export class PermissionSchemeServcie extends AbstractRestService {
 
@@ -29,6 +41,7 @@ export class PermissionSchemeServcie extends AbstractRestService {
         return this.get(query);
     }
 
+
     getPermissionDetails(id: string): Observable<any[]> {
         const query = `${id}/getControllers`;
         return this.get(query);
@@ -37,6 +50,7 @@ export class PermissionSchemeServcie extends AbstractRestService {
     count(searchKey?: string) {
         const query = `count?searchKey=${searchKey}`;
         return this.get<number>(query);
+
     }
 
     clone(permissionSchemes: IPermissionScheme) {
@@ -46,7 +60,6 @@ export class PermissionSchemeServcie extends AbstractRestService {
     findOneById(id): Observable<PermissionScheme> {
         return this.get(id);
     }
-
     getAllPermissionSchemes() {
         return this.get('');
     }
@@ -58,5 +71,9 @@ export class PermissionSchemeServcie extends AbstractRestService {
 
     getAllUserGroups() {
         return this.get('user-groups');
+    }
+
+    getPermissionSchemeDetail(id: any): Observable<IPermissionSchemeDetail[]> {
+        return this.get(`${id}/getControllers`);
     }
 }

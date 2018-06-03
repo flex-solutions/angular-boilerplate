@@ -64,8 +64,7 @@
 }
 
 .dialog-body {
-  padding-top: 7px;
-  padding-left: 15px;
+  padding: 15px;
   max-height: 400px;
   overflow: auto;
 }
@@ -119,4 +118,8 @@
 .disable-row {
   cursor: not-allowed;
   color: #f3f3f3;
+}
+
+.label-readonly {
+  pointer-events: none;
 }

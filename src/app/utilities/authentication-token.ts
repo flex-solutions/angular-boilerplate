@@ -8,6 +8,7 @@ export class AuthenticationTokenHelper {
         localStorage.setItem(appVariables.accessTokenExpireTime, tokenResponse.expireTime.toString());
         localStorage.setItem(appVariables.accessRefreshToken, tokenResponse.refreshToken.toString());
         localStorage.setItem(appVariables.accessTokenOwner, JSON.stringify(tokenResponse.user));
+        localStorage.setItem(appVariables.userPermission, JSON.stringify(tokenResponse.permissions));
     }
 
     static removeTokenInCookie() {
@@ -15,7 +16,7 @@ export class AuthenticationTokenHelper {
         localStorage.removeItem(appVariables.accessTokenExpireTime);
         localStorage.removeItem(appVariables.accessRefreshToken);
         localStorage.removeItem(appVariables.accessTokenOwner);
-        localStorage.removeItem(appVariables.accessTokenOwner);
+        localStorage.removeItem(appVariables.userPermission);
     }
 
     static get localToken() {
@@ -40,5 +41,9 @@ export class AuthenticationTokenHelper {
                 return null;
             }
         }
+    }
+
+    static get userPermissions() {
+        return localStorage.getItem(appVariables.userPermission);
     }
 }

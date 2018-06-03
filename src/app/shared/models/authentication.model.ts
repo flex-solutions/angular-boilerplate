@@ -5,4 +5,5 @@ export interface AuthenticationResponse {
   token: string;
   expireTime: number;
   refreshToken: string;
+  permissions: any;
 }

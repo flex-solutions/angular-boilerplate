@@ -1,3 +1,4 @@
+import { PermissionSchemeModule } from './../permission-scheme/permission-scheme.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserGroupsRoutingModule } from './usergroup-routing.module';
@@ -15,7 +16,8 @@ import { UserGroupModuleComponents, UserGroupModuleEntryComponents } from './com
     UserGroupsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DialogModule
+    DialogModule,
+    PermissionSchemeModule
   ],
   declarations: [
     ...UserGroupPipes,
