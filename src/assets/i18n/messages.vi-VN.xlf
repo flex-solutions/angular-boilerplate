@@ -731,7 +731,7 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
         <source>Actions</source>
-        <target>Tác Vụ</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-notification-createsuccessfully" datatype="html">
         <source>Created the permission scheme successfully</source>
@@ -741,6 +741,10 @@
         <source>Updated the permission scheme successfully</source>
         <target>Cập nhật hoạch phân quyền {{0}} thành công</target>
       </trans-unit>
+       <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
+        <target>Vui lòng nhập tên kế hoạch phân quyền</target>
+      </trans-unit>
+
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
         <source>Full</source>
         <target>Tất cả</target>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PermissionSchemesComponent } from './components/permission-schemes/permission-schemes.component';
 import { CreatePermissionSchemeComponent } from './components/create-permission-scheme/create-permission-scheme.component';
+import { EditPermissionSchemeComponent } from './components/edit-permission-scheme/edit-permission-scheme.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,13 @@ const routes: Routes = [
     component: CreatePermissionSchemeComponent,
     data: {
       breadcrumb: 'Create Permission Scheme'
+    }
+  },
+  {
+    path: 'edit/:id',
+    component: EditPermissionSchemeComponent,
+    data: {
+      breadcrumb: 'Edit Permission Scheme'
     }
   }
 ];
