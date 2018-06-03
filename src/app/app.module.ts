@@ -47,6 +47,11 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
   ],
   providers: [
     {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+      useValue: '/'
+    },
+    {
       provide: TRANSLATIONS,
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]

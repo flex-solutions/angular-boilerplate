@@ -4,6 +4,7 @@ import { PermissionFilterPipe, ControllerFilterPipe } from '../pipes/permission-
 import { CopySchemeComponent } from './copy-scheme/copy-scheme.component';
 import { PermissionSchemesComponent } from './permission-schemes/permission-schemes.component';
 import { AssignPermissionComponent } from './assign-permission/assign-permission.component';
+import { PermissionSchemeDetailComponent } from './scheme-detail/permission-scheme-detail.component';
 
 
 export const PermissionSchemeModuleComponents = [
@@ -13,10 +14,16 @@ export const PermissionSchemeModuleComponents = [
     PermissionSchemesComponent,
     CopySchemeComponent,
     ControllerFilterPipe,
-    AssignPermissionComponent
+    AssignPermissionComponent,
+    PermissionSchemeDetailComponent
 ];
 
 export const PermissionSchemeModuleEntryComponents = [
     CopySchemeComponent,
-    AssignPermissionComponent
+    AssignPermissionComponent,
+    PermissionSchemeDetailComponent
+];
+
+export const PermissionSchemeExport = [
+    PermissionSchemeDetailComponent
 ];

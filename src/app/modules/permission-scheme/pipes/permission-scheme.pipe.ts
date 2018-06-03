@@ -5,7 +5,7 @@ import { ControllerSelectedItem, PermissionDetail } from '../../../shared/models
     name: 'controllerFilter'
 })
 class ControllerFilterPipe implements PipeTransform {
-    transform(items: ControllerSelectedItem[], searchText: string): any[] {
+    transform(items: any[], searchText: string): any[] {
         if (!items) {
             return [];
         }
