@@ -9,7 +9,7 @@ export abstract class ObservableEventBase<T> {
     }
 
     public subscribe(next, error?, complete?) {
-        return this.subject.subscribe(next, error, complete);
+        return this.observable.subscribe(next, error, complete);
     }
 
     public unsubscribe() {

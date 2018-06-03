@@ -18,7 +18,10 @@ export class AuthenticationService extends AbstractRestService {
   constructor(private router: Router) {
     super();
     this.controllerName = 'auth';
-    this.forbiddenEvent.subscribe(this.logOut);
+    this.forbiddenEvent.observable.subscribe(() => {
+      console.log('hear event');
+      this.logOut();
+    });
   }
 
   authenticated(): boolean {
