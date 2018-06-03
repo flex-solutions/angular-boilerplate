@@ -371,7 +371,7 @@
       </trans-unit>
       <trans-unit id="users-actions" datatype="html">
         <source>Actions</source>
-        <target>Actions</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="users-count" datatype="html">
         <source>Count: </source>

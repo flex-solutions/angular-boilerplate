@@ -14,22 +14,20 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
-
 export class UserDetailComponent implements OnInit {
-
   public userdetail: User = new User();
   private transferData = new TransferGroupData();
   public groupName: string;
 
   // Constructor
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
     private exDialog: ExDialog,
-    private notifier: NotificationService) {
-
-  }
+    private notifier: NotificationService
+  ) {}
   // Init user detail component
   ngOnInit() {
     const userId = this.route.snapshot.params['id'];
@@ -41,13 +39,17 @@ export class UserDetailComponent implements OnInit {
   // Handle get user detail information.
   getUserInfomation(userId: string) {
     if (userId !== null) {
-      this.userService.getUserById(userId).subscribe(user => {
-        this.userdetail = user[0];
-        this.groupName = this.userdetail.userGroup.name;
+      this.userService.getUserById(userId).subscribe(
+        user => {
+          this.userdetail = user[0];
+          this.groupName = this.userdetail.userGroup.name;
 
-        this.transferData.user = user[0];
-      },
-        () => { this.goBack(); });
+          this.transferData.user = user[0];
+        },
+        () => {
+          this.goBack();
+        }
+      );
     }
   }
 
@@ -61,16 +63,24 @@ export class UserDetailComponent implements OnInit {
 
   // Handle change user group.
   changeUserGroup() {
-    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData }).subscribe(result => {
-      if (result) {
-
-      }
-    });
+    this.exDialog
+      .openPrime(GroupUserModalComponent, { callerData: this.transferData })
+      .subscribe(result => {
+        if (result) {
+          const userId = this.route.snapshot.params['id'];
+          if (userId) {
+            this.getUserInfomation(userId);
+          }
+        }
+      });
   }
 
   // Handle navigate to Edit user page.
   navigateToEditPage() {
-    this.router.navigate([UserNavigationRoute.EDIT_USER_PAGE, this.userdetail._id]);
+    this.router.navigate([
+      UserNavigationRoute.EDIT_USER_PAGE,
+      this.userdetail._id
+    ]);
   }
 
   navigateToUserDetailPage(user: User) {
@@ -78,11 +88,13 @@ export class UserDetailComponent implements OnInit {
   }
 
   navigateToGroups(user: User) {
-    this.router.navigate([UserNavigationRoute.GROUPS_PAGE, user.userGroup._id]);
+    this.router.navigate([
+      `${UserNavigationRoute.GROUPS_PAGE}/filter`,
+      user.userGroup.name
+    ]);
   }
 
   private goBack() {
     this.location.back();
   }
-
 }
