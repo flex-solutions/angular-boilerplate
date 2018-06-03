@@ -17,14 +17,15 @@ import { TranslateService } from '../../../../shared/services/translate.service'
   selector: 'app-group-user-modal',
   templateUrl: 'group-user-modal.html'
 })
-
 export class GroupUserModalComponent extends DialogComponent implements OnInit {
-  constructor(protected dialogService: DialogService,
+  constructor(
+    protected dialogService: DialogService,
     private grService: UserGroupService,
     private userService: UserService,
     private readonly notificationService: NotificationService,
     private translateService: TranslateService,
-    private router: Router) {
+    private router: Router
+  ) {
     super(dialogService);
   }
   groupInfo = new TransferGroupData();
@@ -63,11 +64,12 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
 
         this.notificationService.showSuccess(msg);
         this.result = true;
+        this.dialogResult();
       });
     } else {
       this.result = false;
+      this.dialogResult();
     }
-    this.dialogResult();
   }
 
   private getGroups() {
@@ -77,8 +79,8 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
       items = this.groupInfo.filterEvent.pagination.itemsPerPage;
       page = this.groupInfo.filterEvent.pagination.page;
     }
-    this.grService.find(items, page)
-      .subscribe(groups => this.groupUsers = groups);
+    this.grService
+      .find(items, page)
+      .subscribe(groups => (this.groupUsers = groups));
   }
-
 }

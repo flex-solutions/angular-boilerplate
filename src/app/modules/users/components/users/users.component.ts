@@ -1,4 +1,4 @@
-import { Component, PipeTransform, Pipe, } from '@angular/core';
+import { Component, PipeTransform, Pipe } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../../../../shared/models/user.model';
@@ -15,28 +15,34 @@ import { TransferGroupData } from '../../../../shared/models/transfer-group-data
 @Component({
   moduleId: module.id,
   selector: 'app-users',
-  templateUrl: './users.component.html',
+  templateUrl: './users.component.html'
 })
 export class UsersComponent {
-
   public items: User[] = [];
   private transferData = new TransferGroupData();
   groupName: string;
 
-  constructor(private exDialog: ExDialog,
+  constructor(
+    private exDialog: ExDialog,
     private userService: UserService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute
+  ) {
     this.groupName = this.activatedRoute.snapshot.params['groupName'];
   }
 
   public count = (searchKey: string): Observable<number> => {
     return this.userService.count(searchKey);
-  }
+  };
 
   private loadData(eventArg: IFilterChangedEvent) {
-    this.userService.getUsers(eventArg.pagination.itemsPerPage, eventArg.pagination.page, eventArg.searchKey)
-      .subscribe(users => this.items = users);
+    this.userService
+      .getUsers(
+        eventArg.pagination.itemsPerPage,
+        eventArg.pagination.page,
+        eventArg.searchKey
+      )
+      .subscribe(users => (this.items = users));
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -54,7 +60,15 @@ export class UsersComponent {
   // Handle to change group of user.
   changeUserGroup(user: User) {
     this.transferData.user = user;
-    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
+    this.exDialog
+      .openPrime(GroupUserModalComponent, {
+        callerData: this.transferData
+      })
+      .subscribe(t => {
+        if (t) {
+          this.loadData(this.transferData.filterEvent);
+        }
+      });
   }
 
   navigateToCreatePage() {
@@ -70,7 +84,9 @@ export class UsersComponent {
   }
 
   navigateToGroup(userGroup: string) {
-    this.router.navigate([`${UserNavigationRoute.GROUPS_PAGE}/filter`, userGroup]);
+    this.router.navigate([
+      `${UserNavigationRoute.GROUPS_PAGE}/filter`,
+      userGroup
+    ]);
   }
-
 }

@@ -3,6 +3,6 @@ import { IFilterChangedEvent } from '../ui-common/datagrid/components/datagrid.c
 import { User } from './user.model';
 
 export class TransferGroupData {
-     user: User;
-     filterEvent: IFilterChangedEvent;
+  user: User;
+  filterEvent: IFilterChangedEvent;
 }
