@@ -9,4 +9,8 @@ const ModuleRoute = {
     PERMISSION_SCHEMES: 'permission-schemes'
 };
 
-export { DefaultUserGroup, ModuleRoute };
+const PagingDefault = {
+    ITEM_PER_PAGE: -1
+};
+
+export { DefaultUserGroup, ModuleRoute, PagingDefault };

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { UserNavigationRoute, UserMessages } from '../../users.constant';
 import { UserService } from '../../services/user.service';
 import { User } from '../../../../shared/models/user.model';
+import { isNullOrUndefined } from 'util';
+import { PagingDefault } from '../../../../shared/constants/const';
 
 @Component({
   selector: 'app-group-user-modal',
@@ -57,7 +59,13 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   }
 
   private getGroups() {
-    this.grService.find(this.groupInfo.filterEvent.pagination.itemsPerPage, this.groupInfo.filterEvent.pagination.page)
+    let items = PagingDefault.ITEM_PER_PAGE;
+    let page = PagingDefault.ITEM_PER_PAGE;
+    if (!isNullOrUndefined(this.groupInfo.filterEvent)) {
+      items = this.groupInfo.filterEvent.pagination.itemsPerPage;
+      page = this.groupInfo.filterEvent.pagination.page;
+    }
+    this.grService.find(items, page)
       .subscribe(groups => this.groupUsers = groups);
   }
 

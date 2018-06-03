@@ -18,8 +18,8 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
 export class UserDetailComponent implements OnInit {
 
   public userdetail: User = new User();
-  groupName: string;
   private transferData = new TransferGroupData();
+  public groupName: string;
 
   // Constructor
   constructor(private userService: UserService,
@@ -36,14 +36,16 @@ export class UserDetailComponent implements OnInit {
     if (userId) {
       this.getUserInfomation(userId);
     }
-    this.groupName = this.userdetail.userGroup.name;
   }
 
   // Handle get user detail information.
   getUserInfomation(userId: string) {
     if (userId !== null) {
       this.userService.getUserById(userId).subscribe(user => {
-        this.userdetail = user;
+        this.userdetail = user[0];
+        this.groupName = this.userdetail.userGroup.name;
+
+        this.transferData.user = user[0];
       },
         () => { this.goBack(); });
     }
@@ -58,8 +60,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   // Handle change user group.
-  changeUserGroup(user: User) {
-    this.transferData.user = user;
+  changeUserGroup() {
     this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
   }
 
