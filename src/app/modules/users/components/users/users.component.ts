@@ -33,7 +33,7 @@ export class UsersComponent {
 
   public count = (searchKey: string): Observable<number> => {
     return this.userService.count(searchKey);
-  };
+  }
 
   private loadData(eventArg: IFilterChangedEvent) {
     this.userService

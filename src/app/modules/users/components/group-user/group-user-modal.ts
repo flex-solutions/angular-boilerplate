@@ -1,6 +1,9 @@
 import { UserGroup } from './../../../../shared/models/user-group.model';
 import { Component, OnInit, PipeTransform, Pipe, Input } from '@angular/core';
-import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
+import {
+  DialogComponent,
+  ModalSize
+} from '../../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 import { UserGroupService } from '../../../user-groups/services/usergroup.service';
 import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
@@ -12,6 +15,8 @@ import { isNullOrUndefined } from 'util';
 import { PagingDefault } from '../../../../shared/constants/const';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { PermissionSchemeDetailComponent } from '../../../permission-scheme/components/scheme-detail/permission-scheme-detail.component';
 
 @Component({
   selector: 'app-group-user-modal',
@@ -24,7 +29,8 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
     private userService: UserService,
     private readonly notificationService: NotificationService,
     private translateService: TranslateService,
-    private router: Router
+    private router: Router,
+    private dialogManager: ExDialog
   ) {
     super(dialogService);
   }
@@ -42,8 +48,12 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
     this.selectedGroupId = value;
   }
 
-  navigateToPermissionScheme(schemeId: string) {
-    this.router.navigate([UserNavigationRoute.SCHEME_DETAIL_PAGE, schemeId]);
+  navigateToPermissionScheme(schemeId: string, schemeName: string) {
+    this.dialogManager.openPrime(
+      PermissionSchemeDetailComponent,
+      { callerData: { _id: schemeId, name: schemeName } },
+      ModalSize.Large
+    );
   }
 
   cancel() {
