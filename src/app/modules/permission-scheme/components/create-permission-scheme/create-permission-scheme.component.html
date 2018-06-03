@@ -96,11 +96,11 @@
                                         </tbody>
                                     </table>
                                   </div>
-                                  <div class="col-md-1 command-region">
-                                      <button type="button" class="btn btn-primary btn-fw pull-right middle-view"  (click)="addPermission()">
-                                          <i class="mdi mdi-plus"></i>
-                                          <span i18n="@@permissiom-scheme-create-button-add">ADD</span>
-                                        </button>
+                                  <div class="col-md-1">
+                                    <button type="button" class="btn btn-primary btn-sm pull-right middle-view" (click)="addPermission()" [disabled]="!isCanAdd">
+                                      <i class="mdi mdi-plus"></i>
+                                      <span i18n="@@permissiom-scheme-create-button-add">ADD</span>
+                                    </button>
                                   </div>
                                   <div class="col-md-8">
                                     <table class="table">
@@ -175,10 +175,10 @@
                                           </td>
                                           <td>
                                             <div class="col-md-1">
-                                              <button type="button" class="btn btn-light" i18n="@@permissiom-scheme-create-button-remove"
-                                              (click)="removePermission(permission.controller)">
-                                                <i class="icon-close"></i>
-                                              Remove</button>
+                                                <button type="button" class="btn btn-light btn-custom-css" (click)="removePermission(permission.controller)">
+                                                    <i class="mdi mdi- btn-pink" aria-hidden="false"></i>
+                                                    <span i18n="@@permissiom-scheme-create-button-remove">Remove</span>
+                                                  </button>
                                             </div>
                                           </td>
                                         </tr>

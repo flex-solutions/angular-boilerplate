@@ -18,7 +18,8 @@ import {
   reject,
   remove,
   findIndex,
-  propEq
+  propEq,
+  any
 } from 'ramda';
 import { PermissionFilterPipe } from '../pipes/permission-scheme.pipe';
 import {
@@ -39,6 +40,8 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
   public keyword = '';
 
   public isCreateAnother = false;
+
+  public isCanAdd = false;
 
   constructor(
     private service: PermissionSchemeServcie,
@@ -108,6 +111,8 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
       controller.is_disable = false;
       controller.is_check = false;
     });
+
+    this.onControllerCheckedChange();
   }
 
   addPermission() {
@@ -118,6 +123,8 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
     // filter the selected controller and add to permission array
     const selectedControllers = filter(selectedFilter, this.dataSource.data);
     this.addToPermissionList(selectedControllers);
+
+    this.isCanAdd =  any((u: ControllerSelectedItem) => u.is_check && !u.is_disable, this.dataSource.data);
   }
 
   onControllerCheckedChange(ischeckAll = false) {
@@ -132,6 +139,8 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
         item.is_check = this.dataSource.is_check_all;
       });
     }
+
+    this.isCanAdd =  any((u: ControllerSelectedItem) => u.is_check && !u.is_disable, this.dataSource.data);
   }
 
   onPermissionChanged(id: string, ischeckAll: boolean) {
@@ -176,7 +185,7 @@ export abstract class PermissionSchemeComponentBase implements OnInit {
 
           this.permissionModel.permission_details.push(permissionDetail);
 
-          // permission.is_disable = true;
+          permission.is_disable = true;
         }
       });
     }
