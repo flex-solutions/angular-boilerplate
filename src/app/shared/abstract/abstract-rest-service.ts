@@ -127,13 +127,13 @@ export abstract class AbstractRestService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error &&
-    (error.status === 404 || error.status === 401 || error.status === 403)) {
-      if (error.status === 401 || error.status === 403) {
-        this.forbiddenEvent.publish(true);
-      }
+    if (error && error.status === 404) {
       this.notifier.showError(error.message);
       return throwError(error);
+    }
+
+    if (error && (error.status === 401 || error.status === 403)) {
+      this.forbiddenEvent.publish(true);
     }
 
     const errorMsg = error.error as HttpExceptionResponse;
