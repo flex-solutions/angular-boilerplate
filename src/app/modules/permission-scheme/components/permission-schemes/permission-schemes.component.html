@@ -16,7 +16,7 @@
       <tr *ngFor="let item of items">
         <td>
           <span class="change-color">
-            <a href="#">{{item.name}}</a>
+            <a class="a-clickable" (click)="viewPermissionDetail(item)">{{item.name}}</a>
           </span>
         </td>
         <td>
@@ -30,15 +30,16 @@
         </td>
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
-            <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
+            <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
             <span i18n="@@permission_scheme-permission_schemes-button-edit_permission">Edit Permission</span>
           </button>
           <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" (click)="copy(item)" href="javascript:;" i18n="@@permission_scheme-permission_schemes-a-copy">Copy</a>
-            <a class="dropdown-item" (click)="assignToUserGroups(item)" href="javascript:;" i18n="@@permission_scheme-permission_schemes-a-assign_to_user_groups">Assign to the user groups</a>
+            <a class="dropdown-item" (click)="copy(item)" i18n="@@permission_scheme-permission_schemes-a-copy">Copy</a>
+            <a class="dropdown-item" (click)="assignToUserGroups(item)" i18n="@@permission_scheme-permission_schemes-a-assign_to_user_groups">Assign to the user groups</a>
+            <a class="dropdown-item" *ngIf="canDeletePermissionScheme(item)" (click)="deletePermissionScheme(item)" i18n="@@permission_scheme-list-delete">Delete permission scheme</a>
           </div>
         </td>
       </tr>

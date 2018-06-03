@@ -84,7 +84,7 @@ export abstract class AbstractRestService {
       .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
   }
 
-  delete<T>(relativeUrl, postBody: any) {
+  delete<T>(relativeUrl, postBody?: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient

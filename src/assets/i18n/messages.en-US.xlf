@@ -788,6 +788,18 @@
         <source>Edit Permission Scheme</source>
         <target>Edit Permission Scheme</target>
       </trans-unit>
+      <trans-unit id="permission_scheme-list-delete" datatype="html">
+        <source>Delete permission scheme</source>
+        <target>Delete permission scheme</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-confirm" datatype="html">
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
+        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-success" datatype="html">
+        <source>Deleted scheme "{{0}}" successfully</source>
+        <target>Deleted scheme "{{0}}" successfully</target>
+      </trans-unit>
       <!-- End Permission Schemes -->
       
       <!-- Copy Permission Schemes -->

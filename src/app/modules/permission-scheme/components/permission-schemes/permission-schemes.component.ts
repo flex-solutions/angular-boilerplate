@@ -1,3 +1,6 @@
+import { NotificationService } from './../../../../shared/services/notification.service';
+import { TranslateService } from './../../../../shared/services/translate.service';
+import { PermissionSchemeDetailComponent } from './../scheme-detail/permission-scheme-detail.component';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
@@ -9,6 +12,8 @@ import { AssignPermissionComponent } from '../assign-permission/assign-permissio
 import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { PermissionNavigationRoute } from '../../permission-scheme-const';
 import { Router } from '@angular/router';
+import { contains } from 'ramda';
+import { DefaultPermissionScheme } from '../../../../shared/constants/const';
 
 @Component({
   selector: 'app-permission-schemes',
@@ -19,8 +24,12 @@ export class PermissionSchemesComponent implements OnInit {
   items: IPermissionScheme[];
   currentFilterArgs: IFilterChangedEvent;
 
-  constructor(private permissionService: PermissionSchemeServcie, private router: Router,
-    private dialogManager: ExDialog) { }
+  constructor(private permissionService: PermissionSchemeServcie,
+    private router: Router,
+    private dialogManager: ExDialog,
+    private translateService: TranslateService,
+    private notificationService: NotificationService) {
+  }
 
   ngOnInit() { }
 
@@ -44,7 +53,7 @@ export class PermissionSchemesComponent implements OnInit {
   navigateToEditPage(item) {
     this.router.navigate([`${PermissionNavigationRoute.EDIT_PAGE}${item._id}`]);
   }
-  
+
   navigateToCreatePage() {
     this.router.navigate([PermissionNavigationRoute.CREATE_PAGE]);
   }
@@ -64,5 +73,25 @@ export class PermissionSchemesComponent implements OnInit {
       this.currentFilterArgs.searchKey).subscribe((response: IPermissionScheme[]) => {
         this.items = response;
       });
+  }
+
+  viewPermissionDetail(scheme) {
+    this.dialogManager.openPrime(PermissionSchemeDetailComponent, { callerData: scheme }, ModalSize.Large);
+  }
+
+  canDeletePermissionScheme(scheme) {
+    return !contains(scheme.name, [DefaultPermissionScheme.ADMINISTRATOR, DefaultPermissionScheme.USER]);
+  }
+
+  deletePermissionScheme(scheme) {
+    const confirmMsg = this.translateService.translateWithParams('permission_scheme-delete-confirm', scheme.name);
+    this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translateWithParams('permission_scheme-delete-success', scheme.name);
+        this.permissionService.deleteScheme(scheme._id).subscribe(res => {
+          this.notificationService.showSuccess(successMessage);
+        });
+      }
+    });
   }
 }

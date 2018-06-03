@@ -76,4 +76,8 @@ export class PermissionSchemeServcie extends AbstractRestService {
     getPermissionSchemeDetail(id: any): Observable<IPermissionSchemeDetail[]> {
         return this.get(`${id}/getControllers`);
     }
+
+    deleteScheme(id: any) {
+        return this.delete(`${id}`);
+    }
 }
