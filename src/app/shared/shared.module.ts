@@ -10,6 +10,7 @@ import { CustomErrorHandlerService } from './services/custom-error-handler.servi
 import { httpInterceptorProviders } from './http-interceptors';
 import { UICommonModule } from './ui-common/ui-common.module';
 import { BrowserNotificationService } from './services/browser-notification.service';
+import { ForbiddenHandler } from './services/forbidden-handler.service';
 
 @NgModule({
   imports: [CommonModule],
@@ -21,7 +22,8 @@ import { BrowserNotificationService } from './services/browser-notification.serv
     HelperService,
     CustomErrorHandlerService,
     httpInterceptorProviders,
-    BrowserNotificationService
+    BrowserNotificationService,
+    ForbiddenHandler
   ],
   declarations: []
 })
