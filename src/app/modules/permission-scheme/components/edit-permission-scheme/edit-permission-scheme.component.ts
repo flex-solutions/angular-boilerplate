@@ -4,7 +4,7 @@ import { PermissionSchemeServcie } from '../../services/permission-scheme.servic
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { PermissionSchemeComponentBase } from '../../base/editor.permission-scheme.componentbase';
-import { SchemeDataSource, ControllerSelectedItem, PermissionDetail } from '../../../../shared/models/permission-scheme.model';
+import { SchemeDataSource, ControllerSelectedItem, PermissionDetail, PermissionScheme } from '../../../../shared/models/permission-scheme.model';
 import { NotificationConst, PermissionNavigationRoute } from '../../permission-scheme-const';
 import { map, contains } from 'ramda';
 @Component({
@@ -49,6 +49,13 @@ export class EditPermissionSchemeComponent extends PermissionSchemeComponentBase
   }
 
   Initialize() {
+    // create default data
+    this.permissionModel = new PermissionScheme();
+
+    this.dataSource = new SchemeDataSource();
+    this.dataSource.data = [];
+    this.dataSource.is_check_all = false;
+
     this.schemeService.findOneById(this.id).subscribe((scheme) => {
       this.permissionModel = scheme;
       this.permissionModel.permission_details = [];
@@ -70,10 +77,6 @@ export class EditPermissionSchemeComponent extends PermissionSchemeComponentBase
 
         this.permissionModel.permission_details.push(item);
       });
-
-      this.dataSource = new SchemeDataSource();
-      this.dataSource.data = [];
-      this.dataSource.is_check_all = false;
 
       this.loadDataForControllers();
     });

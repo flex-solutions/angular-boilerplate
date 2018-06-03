@@ -8,6 +8,10 @@
   transform: translateY(-50%);
 }
 
+.none-border{
+  border: none;
+}
+
 .center-form{
     padding-bottom: 15px
 }
