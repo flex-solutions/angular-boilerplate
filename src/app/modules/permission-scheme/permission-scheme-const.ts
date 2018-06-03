@@ -17,13 +17,13 @@ const SchemeField = {
 };
 
 const PermissionEndPoints = {
-    GetAllController: 'get_controllers',
+    GetAllController: 'controllers',
 };
 
 const PermissionNavigationRoute = {
-    EDIT_PAGE: 'permission-scheme/update',
-    CREATE_PAGE: 'permission-scheme/create',
-    LIST_PAGE: 'permission-scheme'
+    EDIT_PAGE: 'permission-schemes/edit/',
+    CREATE_PAGE: 'permission-schemes/create',
+    LIST_PAGE: 'permission-schemes'
 };
 
 export {
