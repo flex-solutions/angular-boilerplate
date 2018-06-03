@@ -677,6 +677,10 @@
         <source>Information</source>
         <target>Thông Tin</target>
       </trans-unit>
+      <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Sửa kế hoạch phân quyền</target>
+      </trans-unit>
       <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
         <source>Create Permission Scheme</source>
         <target>Tạo kế hoạch phân quyền</target>
