@@ -1,0 +1,61 @@
+.dataTables_wrapper {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 12.5px;
+    padding-left: 12.5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.dataTables_wrapper label {
+    font-size: 0.8125rem;
+}
+
+label {
+    display: inline-block !important;
+    margin-bottom: 0.5rem !important;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0.85em;
+    white-space: nowrap;
+}
+
+.dataTables_wrapper .dataTables_info {
+    font-size: 0.8rem;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    min-width: 250px;
+    width: auto;
+    padding-right: 30px;
+}
+
+div.dataTables_wrapper div.dataTables_filter i {
+    position: absolute;
+    right: 23px;
+    top: 6px;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.dataTables_filter {
+    text-align: right;
+}

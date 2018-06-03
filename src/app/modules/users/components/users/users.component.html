@@ -1,0 +1,71 @@
+<!-- partial -->
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h4 class="card-title col-md-10" i18n="@@users-name">Users</h4>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+          <i class="mdi mdi-plus"></i>
+          <span i18n="@@users-create-user">Create User</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-dg #dg searchLabel="Search username, fullname or email" i18n-searchLabel="@@users-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
+          [countFunction]="count" [searchKey]="groupName">
+          <tr role="row">
+            <th i18n="@@users-fullname">Full Name</th>
+            <th i18n="@@users-username">Username</th>
+            <th i18n="@@users-login-details">Login Details</th>
+            <th i18n="@@users-group-name">Group Name</th>
+            <th i18n="@@users-status">Status</th>
+            <th i18n="@@users-actions">Actions</th>
+          </tr>
+          <tbody>
+            <tr *ngFor="let item of items | userFilter: dg.searchKey">
+              <td class="change-color">
+                <div class="user">
+                  <img src="{{item.avatar}}" class="img-sm rounded " alt="profile image" style="width: 20px !important; height: 20px !important;"/>
+                  <p class="a-clickable pull-left" (click)="navigateToUserDetailPage(item)">{{item.fullname}}</p>
+                </div>
+              </td>
+              <td>
+                <p class="text-gray mb-2">{{item.username}}</p>
+                <span class="change-color">
+                  <a href="mailto:{{item.email}}">{{item.email}}</a>
+                </span>
+              </td>
+              <td>
+                <div class="mb-2">
+                  <strong class="font-weight-bold" i18n="@@users-count">Count: </strong>{{item.successLoginCount}}
+                </div>
+                <strong class="font-weight-bold" i18n="@@users-last">Last: </strong>{{item.lastTimeLogin | date:"EEEE h: mma"}}
+              </td>
+              <td>
+                <a class="a-clickable" (click)="navigateToGroup(item.userGroup.name)">{{item.userGroup.name}}</a>
+              </td>
+              <td>
+                <label class="badge" [ngClass]="item.isActive ? 'badge-success' : 'badge-danger'">{{item.isActive ? 'Active' : 'Deactive'}}</label>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
+                  <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
+                  <span i18n="@@users-edit">Edit</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="changeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+                  <a class="dropdown-item" (click)="deleteUser(item)" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </app-dg>
+      </div>
+    </div>
+  </div>
+</div>

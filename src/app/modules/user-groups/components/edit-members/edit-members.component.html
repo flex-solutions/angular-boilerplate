@@ -1,0 +1,48 @@
+<app-card i18n-title="@@edit-members-title" title="Bulk edit group members" 
+          i18n-subTitle="@@edit-members-sub-title" subTitle="This page allows you to edit the user memberships for group {{usergroup.name}}">
+  <div>
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" i18n-searchLabel="@@edit-members-search-label" searchLabel="Search by username, full name or email">
+      <tr>
+        <th></th>
+        <th i18n="@@edit-members-tbl-username">Username</th>
+        <th i18n="@@edit-members-tbl-fullname">Full Name</th>
+        <th i18n="@@edit-members-tbl-email">Email</th>
+        <th i18n="@@edit-members-tbl-usergroup">User Group</th>
+      </tr>
+      <tbody>
+        <tr *ngFor="let user of users | userListForBulkEditFilter: dg.searchKey" [class.disable-row]="user.isAdded">
+          <td>
+            <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:0px">
+              <label class="form-check-label" style="margin-top:0px;padding-left:0px">
+                <input [disabled]="user.isAdded" type="checkbox" [(ngModel)]="user.isSelected" [checked]="user.isSelected" class="form-check-input" (change)="updateCanAddUser()">
+                <i class="input-helper"></i>
+              </label>
+            </div>
+          </td>
+          <td>{{user.model.username}}</td>
+          <td>{{user.model.fullname}}</td>
+          <td>{{user.model.email}}</td>
+          <td>{{user.model.userGroup.name}}</td>
+        </tr>
+      </tbody>
+    </app-dg>
+    <div style="margin-left: 14px">
+      <button type="button" class="btn btn-sm btn-outline-primary" (click)="addToSelectedUsers()" [disabled]="!canAddMoreUser">
+        <i class="mdi mdi-plus"></i>
+        <span i18n="@@edit-members-add-btn">ADD</span>
+      </button>
+      <p style="margin-top: 14px;font-weight: 200" i18n="@@edit-members-selected-count">Selected {{selectedUserCount}} user(s) for group "{{usergroup.name}}"</p>
+      <div id="tags_tagsinput" class="tagsinput" style="width: 100%; min-height: 75%;">
+        <span *ngFor="let selectedUser of selectedUsers" class="tag tag-light">
+          <span>{{selectedUser.username}}&nbsp;&nbsp;</span>
+          <a style="cursor: pointer;" title="Removing tag" (click)="removeUser(selectedUser)">x</a>
+        </span>
+      </div>
+    </div>
+    <div style="margin-top: 30px; margin-left: 14px">
+      <!-- Form buttons -->
+      <button class="btn btn-success mr-2" (click)="submit()">Submit</button>
+      <button class="btn btn-light" (click)="cancel()" i18n="@@edit-members-cancel">Cancel</button>
+    </div>
+  </div>
+</app-card>

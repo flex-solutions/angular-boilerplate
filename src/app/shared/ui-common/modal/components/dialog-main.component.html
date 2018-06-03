@@ -1,0 +1,13 @@
+﻿<!-- <div class="dialog-frame dialog-fade" [ngClass]="{'in': shown, 'dialog-backgray': isGrayBackground}"
+     role="dialog" (click)="clickOutside($event)" >
+    <div class="dialog-main" [ngClass]="{'dialog-no-animation': !isAnimation}" [style.width]="dialogWidth" appModalDraggable="isDraggable" appModalVerticalCenter>
+        <template #element>
+        </template>
+    </div>
+</div> -->
+<div class="modal-backdrop fade show" tabindex="-1" role="dialog" (click)="clickOutside($event)">
+  <div class="modal-dialog" role="document" [ngClass]="{'modal-sm': content.modalSize === 1, 'modal-lg': content.modalSize === 2}">
+    <template #element>
+    </template>
+  </div>
+</div>

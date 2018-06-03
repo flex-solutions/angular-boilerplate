@@ -1,0 +1,125 @@
+.inside-control-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.require {
+  color: #ff7474;
+}
+
+.btn-pink {
+  color: palevioletred;
+}
+
+.btn-fw {
+  line-height: 18px;
+  float: right;
+  padding: 5px;
+}
+
+.btn-custom-css {
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-right: 5px;
+}
+
+.btn-option-custom {
+  text-align: center;
+}
+
+.change-color {
+  color: blue;
+  cursor: pointer;
+}
+
+.img-sm {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin-right: 5px;
+}
+
+.dataTables_wrapper label {
+  display: inline-flex;
+}
+
+.more-actions-dropdown {
+  position: absolute;
+  transform: translate3d(0px, 33px, 0px);
+  top: 0px;
+  left: 0px;
+  will-change: transform;
+}
+
+.more-actions-dropdown-btn {
+  margin-left: 5px;
+}
+
+.dialog-body {
+  padding: 15px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.dialog-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radio-a-group {
+  display: flex;
+  margin-bottom: 13px;
+}
+
+.radio-a-group a {
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.radio-container {
+  margin-bottom: 0px;
+  margin-top: 7px;
+}
+
+.non-margin-top {
+  margin-top: 0px;
+  margin-bottom: 23px;
+}
+
+.a-clickable {
+  color: #007bff !important;
+  text-decoration: none !important;
+  background-color: transparent;
+}
+
+.a-clickable:hover {
+  cursor: pointer;
+  text-decoration: underline !important;
+  color: #0056b3 !important;
+}
+
+.tag-light {
+  background: #f3f5f6 !important;
+  color: #000000 !important
+}
+
+.tag-light a {
+  color: #000000 !important;
+}
+
+.disable-row {
+  cursor: not-allowed;
+  color: #f3f3f3;
+}
+
+.label-readonly {
+  pointer-events: none;
+}
