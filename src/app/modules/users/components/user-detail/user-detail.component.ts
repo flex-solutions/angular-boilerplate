@@ -88,7 +88,10 @@ export class UserDetailComponent implements OnInit {
   }
 
   navigateToGroups(user: User) {
-    this.router.navigate([UserNavigationRoute.GROUPS_PAGE, user.userGroup._id]);
+    this.router.navigate([
+      `${UserNavigationRoute.GROUPS_PAGE}/filter`,
+      user.userGroup.name
+    ]);
   }
 
   private goBack() {
