@@ -10,7 +10,7 @@ export class NotificationService {
     debug: false,
     tapToDismiss: true,
     positionClass: 'toast-top-right',
-    preventDuplicates: false,
+    preventDuplicates: true,
     progressBar: true,
     newestOnTop: true,
     closeButton: true,
@@ -22,7 +22,7 @@ export class NotificationService {
     showEasing: 'swing',
     hideEasing: 'linear',
     showMethod: 'fadeIn',
-    hideMethod: 'fadeOut'
+    hideMethod: 'fadeOut',
   };
 
   constructor(private messageService: MessageService) {}
