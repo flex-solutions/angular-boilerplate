@@ -15,18 +15,14 @@
     <tbody>
       <tr *ngFor="let item of items">
         <td>
-          <span class="change-color">
-            <a class="a-clickable" (click)="viewPermissionDetail(item)">{{item.name}}</a>
-          </span>
+          <a class="a-clickable" (click)="viewPermissionDetail(item)">{{item.name}}</a>
         </td>
         <td>
-          <span class="change-color">
-            <ul class="list-unstyled">
-              <li *ngFor="let userGroup of item.userGroups">
-                <a href="#">{{userGroup.name}}</a>
-              </li>
-            </ul>
-          </span>
+          <ul class="list-unstyled">
+            <li *ngFor="let userGroup of item.userGroups">
+              <a>{{userGroup.name}}</a>
+            </li>
+          </ul>
         </td>
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
