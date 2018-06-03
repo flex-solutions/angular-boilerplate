@@ -1,3 +1,4 @@
+import { PermissionSchemeDetailComponent } from './../../permission-scheme/components/scheme-detail/permission-scheme-detail.component';
 import { ChangePermissionSchemeComponent } from './../components/change-permission-scheme/change-permission-scheme.component';
 import { UserGroup } from './../../../shared/models/user-group.model';
 import { IFilterChangedEvent } from './../../../shared/ui-common/datagrid/components/datagrid.component';
@@ -119,5 +120,10 @@ export class UserGroupHomeComponent implements OnInit {
 
   navigateToFilterUsers(usergroup: UserGroup) {
     this.router.navigate([`${ModuleRoute.USER}/filter`, usergroup.name]);
+  }
+
+  viewPermissionDetail(usergroup: UserGroup) {
+    this.dialogManager.openPrime(PermissionSchemeDetailComponent,
+      {callerData: usergroup.permissionScheme}, ModalSize.Large);
   }
 }

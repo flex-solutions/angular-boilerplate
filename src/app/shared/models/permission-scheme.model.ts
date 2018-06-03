@@ -32,7 +32,20 @@ class PermissionDetail {
     data_scope: DataScope;
 }
 
+interface IPermissionSchemeDetail {
+    controller: {
+        _id: any;
+        code: string;
+        name: string;
+    };
+    data_scope: DataScope;
+    is_delete: boolean;
+    is_insert: boolean;
+    is_update: boolean;
+}
+
 class PermissionScheme {
+    id: any;
     name: string;
     permission_details: PermissionDetail[];
 }
@@ -51,6 +64,6 @@ interface IPermissionScheme {
 
 export {
     ControllerSelectedItem, ControllerModel,
-    PermissionDetail, PermissionScheme, DataScope, SchemeDataSource, IPermissionScheme
+    PermissionDetail, PermissionScheme, DataScope, SchemeDataSource, IPermissionScheme, IPermissionSchemeDetail
 };
 

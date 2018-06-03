@@ -33,7 +33,7 @@
       <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
         <source>Permission Management</source>
         <target>Quản Lý Phân Quyền</target>
-      </trans-unit>   
+      </trans-unit>
       <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
         <source>Permission Schemes</source>
         <target>Kế Hoạch Phân Quyền</target>
@@ -405,7 +405,7 @@
         <source>Change user group</source>
         <target>Thay đổi nhóm user</target>
       </trans-unit>
-       <trans-unit id="user-detail-change-group-message" datatype="html">
+      <trans-unit id="user-detail-change-group-message" datatype="html">
         <source>Select other group for user "{{userdetail.username}}"</source>
         <target>Thay đổi nhóm cho người dùng "{{userdetail.username}}"</target>
       </trans-unit>
@@ -531,8 +531,8 @@
         <target></target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
-        <source>Edit members</source>
-        <target>Sửa thành viên</target>
+        <source>Add members</source>
+        <target>Thêm thành viên</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions-change-permission-scheme" datatype="html">
         <source>Change permission scheme</source>
@@ -657,7 +657,7 @@
       <!-- End Revovery Password -->
 
       <!-- Permission scheme -->
-       <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
+      <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
         <source>Scheme Name</source>
         <target>Tên Kế Hoạch</target>
       </trans-unit>
@@ -680,7 +680,7 @@
       <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
         <source>Type a name and choose which the permissions to include in this scheme</source>
         <target>Nhập tên và chọn quyền hạn cho kế hoạch phân quyền này</target>
-       </trans-unit>
+      </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
         <source>Business</source>
         <target>Nghiệp Vụ</target>
@@ -697,7 +697,7 @@
         <source>Insert</source>
         <target>Thêm</target>
       </trans-unit>
-       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
         <source>Update</source>
         <target>Sửa</target>
       </trans-unit>
@@ -794,13 +794,13 @@
         <source>Scheme name</source>
         <target>Tên kế hoạch</target>
       </trans-unit>
-       <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
+      <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
         <source>Please provide the scheme name</source>
         <target>Vui lòng nhập tên kế hoạch</target>
       </trans-unit>
       <!-- END Permission Schemes -->
 
-        <!-- Assign the user group to permission schemes -->
+      <!-- Assign the user group to permission schemes -->
       <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
         <source>Assign to the user groups</source>
         <target>Gán cho các nhóm users</target>
@@ -830,6 +830,45 @@
         <target>Đã chọn {{0}} nhóm</target>
       </trans-unit>
       <!-- END Assign the user group to permission schemes -->
+
+      <!--START Permission Scheme Detail Dialog-->
+      <trans-unit id="permission-scheme-detail-dlg-title" datatype="html">
+        <source>View permission scheme detail</source>
+        <target>Chi tiết kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-dlg-sub-title" datatype="html">
+        <source>View permission detail of schema {{scheme.name}}</source>
+        <target>Xem chi tiết kế hoạch phân quyền {{scheme.name}}</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-dlg-search-holder" datatype="html">
+        <source>Search by module name</source>
+        <target>Tìm kiếm với tên nghiệp vụ</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-module-name" datatype="html">
+        <source>Module Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-data-scope" datatype="html">
+        <source>Data Scope</source>
+        <target>Phạm Vi Dữ Liệu</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-insert" datatype="html">
+        <source>Insert</source>
+        <target>Thêm</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-update" datatype="html">
+        <source>Update</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-full-control" datatype="html">
+        <source>Full Control</source>
+        <target>Toàn Quyền</target>
+      </trans-unit>
+      <!--END Permission Scheme Detail Dialog-->
     </body>
   </file>
 </xliff>

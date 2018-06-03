@@ -1,6 +1,8 @@
+import { PermissionSchemeServcie } from './../../services/permission-scheme.service';
 import { DialogService } from './../../../../shared/ui-common/modal/services/dialog.service';
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { PermissionScheme, IPermissionSchemeDetail } from '../../../../shared/models/permission-scheme.model';
 
 @Component({
     selector: 'app-permission-scheme-detail',
@@ -8,9 +10,28 @@ import { DialogComponent } from '../../../../shared/ui-common/modal/components/d
 })
 
 export class PermissionSchemeDetailComponent extends DialogComponent implements OnInit {
-    constructor(protected dialogService: DialogService) {
+
+    scheme: PermissionScheme = new PermissionScheme();
+    schemeDetails: IPermissionSchemeDetail[] = [];
+
+    constructor(protected dialogService: DialogService,
+        private service: PermissionSchemeServcie) {
         super(dialogService);
+    }
+
+    ngOnInit() {
+        this.scheme.name = this.callerData.name;
+        this.scheme.id = this.callerData._id;
+        this.getPermissionScheme();
      }
 
-    ngOnInit() { }
+    private getPermissionScheme() {
+        this.service.getPermissionSchemeDetail(this.scheme.id).subscribe(scheme => {
+            this.schemeDetails = scheme;
+        });
+    }
+
+    cancel() {}
+
+    submit() {}
 }

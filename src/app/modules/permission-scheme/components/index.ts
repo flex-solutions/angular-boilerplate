@@ -23,3 +23,7 @@ export const PermissionSchemeModuleEntryComponents = [
     AssignPermissionComponent,
     PermissionSchemeDetailComponent
 ];
+
+export const PermissionSchemeExport = [
+    PermissionSchemeDetailComponent
+];
