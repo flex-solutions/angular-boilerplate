@@ -13,12 +13,12 @@
       <th i18n="@@permission_scheme-permission_schemes-tbl-actions_header">Actions</th>
     </tr>
     <tbody>
-      <tr *ngFor="let item of items">
-        <td>
+      <tr *ngFor="let item of items | schemeFilter: dg.searchKey">
+        <td [class.auto-align-top]="needToAlignTop(item)">
           <a class="a-clickable" (click)="viewPermissionDetail(item)">{{item.name}}</a>
         </td>
         <td>
-          <ul class="list-unstyled">
+          <ul class="list-unstyled" style="margin-bottom: 0px">
             <li *ngFor="let userGroup of item.userGroups">
               <a>{{userGroup.name}}</a>
             </li>

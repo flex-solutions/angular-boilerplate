@@ -6,6 +6,7 @@ import { PermissionSchemeServcie } from './services/permission-scheme.service';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { PermissionSchemeModuleComponents, PermissionSchemeModuleEntryComponents, PermissionSchemeExport } from './components';
 import { PermissionSchemeDirectives } from './directives';
+import { PermissionSchemePipes } from './pipes/permission-scheme.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { PermissionSchemeDirectives } from './directives';
   ],
   declarations: [
     ...PermissionSchemeModuleComponents,
-    ...PermissionSchemeDirectives
+    ...PermissionSchemeDirectives,
+    ...PermissionSchemePipes
   ],
   providers: [PermissionSchemeServcie],
   entryComponents: [...PermissionSchemeModuleEntryComponents],

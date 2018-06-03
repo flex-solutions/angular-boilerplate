@@ -79,6 +79,10 @@ export class PermissionSchemesComponent implements OnInit {
     this.dialogManager.openPrime(PermissionSchemeDetailComponent, { callerData: scheme }, ModalSize.Large);
   }
 
+  needToAlignTop(scheme: IPermissionScheme) {
+    return scheme.userGroups && scheme.userGroups.length > 1;
+  }
+
   canDeletePermissionScheme(scheme) {
     return !contains(scheme.name, [DefaultPermissionScheme.ADMINISTRATOR, DefaultPermissionScheme.USER]);
   }

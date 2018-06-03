@@ -660,6 +660,10 @@
         <source>Scheme Name</source>
         <target>Scheme Name</target>
       </trans-unit>
+      <trans-unit id="permissiom-scheme-create-search" datatype="html">
+        <source>Search by business name</source>
+        <target>Search by business name</target>
+      </trans-unit>
       <trans-unit id="permissiom-scheme-create-input-name-placeholder" datatype="html">
         <source>Enter permission scheme namee</source>
         <target>Enter permission scheme name</target>

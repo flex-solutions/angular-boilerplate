@@ -657,6 +657,10 @@
       <!-- End Revovery Password -->
 
       <!-- Permission scheme -->
+      <trans-unit id="permissiom-scheme-create-search" datatype="html">
+        <source>Search by business name</source>
+        <target>Tìm với tên nghiệp vụ</target>
+      </trans-unit>
       <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
         <source>Scheme Name</source>
         <target>Tên Kế Hoạch</target>
@@ -744,7 +748,6 @@
       <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
         <target>Vui lòng nhập tên kế hoạch phân quyền</target>
       </trans-unit>
-
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
         <source>Full</source>
         <target>Tất cả</target>
@@ -772,12 +775,12 @@
         <target>Tên Kế Hoạch</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-tbl-user_groups_header" datatype="html">
-        <source>Nhóm User</source>
-        <target>User Groups</target>
+        <source>User Groups</source>
+        <target>Nhóm User</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-tbl-actions_header" datatype="html">
         <source>Actions</source>
-        <target>Actions</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-a-copy" datatype="html">
         <source>Copy</source>
