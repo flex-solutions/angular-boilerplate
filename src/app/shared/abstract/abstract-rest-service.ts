@@ -9,6 +9,10 @@ import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
 import { BrowserNotificationService } from '../services/browser-notification.service';
+import { ObservableEventBase } from './observable.base';
+
+export class ForbiddenEvent extends ObservableEventBase<any> {
+}
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -19,6 +23,8 @@ export abstract class AbstractRestService {
   protected notifier: NotificationService;
   protected translateService: TranslateService;
   protected browserNotifer: BrowserNotificationService;
+
+  protected forbiddenEvent: ForbiddenEvent = new ForbiddenEvent();
 
   constructor() {
     // Get base url provide by application configuration service
@@ -118,8 +124,12 @@ export abstract class AbstractRestService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error && error.status === 404) {
-      this.notifier.showError(error.message);
+    if (error) {
+      if (error.status === 404) {
+        this.notifier.showError(error.message);
+      } else if (error.status === 401 || error.status === 403) {
+        this.forbiddenEvent.publish(true);
+      }
       return throwError(error);
     }
 

@@ -8,7 +8,7 @@ export abstract class ObservableEventBase<T> {
         this.observable = this.subject.asObservable();
     }
 
-    public subscribe(next, error, complete) {
+    public subscribe(next, error?, complete?) {
         return this.subject.subscribe(next, error, complete);
     }
 
