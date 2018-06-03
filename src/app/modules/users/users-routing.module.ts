@@ -14,6 +14,13 @@ const userRoutes: Routes = [
     }
   },
   {
+    path: 'filter/:groupName',
+    component: UsersComponent,
+    data: {
+      breadcrumb: 'Users'
+    }
+  },
+  {
     path: 'create',
     component: CreateUserComponent,
     data: {
@@ -33,7 +40,7 @@ const userRoutes: Routes = [
     data: {
       breadcrumb: 'View User Detail'
     }
-  }
+  },
 ];
 
 @NgModule({

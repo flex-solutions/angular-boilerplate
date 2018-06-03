@@ -405,6 +405,10 @@
         <source>Change user group</source>
         <target>Thay đổi nhóm user</target>
       </trans-unit>
+       <trans-unit id="user-detail-change-group-message" datatype="html">
+        <source>Select other group for user "{{userdetail.username}}"</source>
+        <target>Thay đổi nhóm cho người dùng "{{userdetail.username}}"</target>
+      </trans-unit>
       <!-- Users -->
 
       <!--Logout-->
