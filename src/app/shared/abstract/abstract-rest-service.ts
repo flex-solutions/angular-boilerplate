@@ -12,6 +12,9 @@ import { BrowserNotificationService } from '../services/browser-notification.ser
 import { ObservableEventBase } from './observable.base';
 
 export class ForbiddenEvent extends ObservableEventBase<any> {
+  constructor() {
+    super();
+  }
 }
 
 export abstract class AbstractRestService {
@@ -124,12 +127,12 @@ export abstract class AbstractRestService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error) {
-      if (error.status === 404) {
-        this.notifier.showError(error.message);
-      } else if (error.status === 401 || error.status === 403) {
+    if (error &&
+    (error.status === 404 || error.status === 401 || error.status === 403)) {
+      if (error.status === 401 || error.status === 403) {
         this.forbiddenEvent.publish(true);
       }
+      this.notifier.showError(error.message);
       return throwError(error);
     }
 
