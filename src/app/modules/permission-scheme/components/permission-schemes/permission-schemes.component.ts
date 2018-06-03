@@ -7,6 +7,8 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
 import { CopySchemeComponent } from '../copy-scheme/copy-scheme.component';
 import { AssignPermissionComponent } from '../assign-permission/assign-permission.component';
 import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { PermissionNavigationRoute } from '../../permission-scheme-const';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-permission-schemes',
@@ -17,7 +19,7 @@ export class PermissionSchemesComponent implements OnInit {
   items: IPermissionScheme[];
   currentFilterArgs: IFilterChangedEvent;
 
-  constructor(private permissionService: PermissionSchemeServcie,
+  constructor(private permissionService: PermissionSchemeServcie, private router: Router,
     private dialogManager: ExDialog) { }
 
   ngOnInit() { }
@@ -40,10 +42,11 @@ export class PermissionSchemesComponent implements OnInit {
   }
 
   navigateToEditPage(item) {
-
+    this.router.navigate([`${PermissionNavigationRoute.EDIT_PAGE}${item._id}`]);
   }
+  
   navigateToCreatePage() {
-
+    this.router.navigate([PermissionNavigationRoute.CREATE_PAGE]);
   }
 
   public count = (searchKey: string): Observable<number> => {

@@ -34,7 +34,7 @@ export class EditPermissionSchemeComponent extends PermissionSchemeComponentBase
     this.schemeService.updatePermissionScheme(JSON.stringify(this.permissionModel, (key, value) => {
       return this.replacer(key, value);
     })).subscribe(() => {
-      const message = this.translateService.translateWithParams(NotificationConst.CreateSuccessfully, this.permissionModel.name);
+      const message = this.translateService.translateWithParams(NotificationConst.EditSuccessfully, this.permissionModel.name);
       this.notificationService.showSuccess(message);
       this.onHandleEditUserSuccessful();
     });
@@ -52,27 +52,30 @@ export class EditPermissionSchemeComponent extends PermissionSchemeComponentBase
     this.schemeService.findOneById(this.id).subscribe((scheme) => {
       this.permissionModel = scheme;
       this.permissionModel.permission_details = [];
+      this.loadDataForPermissionDetails();
+    });
+  }
 
-      this.schemeService.getPermissionDetails(this.id).subscribe(permissionDetails => {
-        permissionDetails.forEach(permissionDetail => {
-            const item = new PermissionDetail();
-            item.controller = permissionDetail.controller._id;
-            item.controller_name = permissionDetail.controller.name;
-            item.is_insert = permissionDetail.is_insert;
-            item.is_update = permissionDetail.is_update;
-            item.is_delete = permissionDetail.is_delete;
-            item.is_fullcontrol = item.is_insert && item.is_update && item.is_delete;
-            item.data_scope = permissionDetail.data_scope;
+  loadDataForPermissionDetails() {
+    this.schemeService.getPermissionDetails(this.id).subscribe(permissionDetails => {
+      permissionDetails.forEach(permissionDetail => {
+        const item = new PermissionDetail();
+        item.controller = permissionDetail.controller._id;
+        item.controller_name = permissionDetail.controller.name;
+        item.is_insert = permissionDetail.is_insert;
+        item.is_update = permissionDetail.is_update;
+        item.is_delete = permissionDetail.is_delete;
+        item.is_fullcontrol = item.is_insert && item.is_update && item.is_delete;
+        item.data_scope = permissionDetail.data_scope;
 
-            this.permissionModel.permission_details.push(item);
-        });
-
-        this.dataSource = new SchemeDataSource();
-        this.dataSource.data = [];
-        this.dataSource.is_check_all = false;
-
-        this.loadDataForControllers();
+        this.permissionModel.permission_details.push(item);
       });
+
+      this.dataSource = new SchemeDataSource();
+      this.dataSource.data = [];
+      this.dataSource.is_check_all = false;
+
+      this.loadDataForControllers();
     });
   }
 
