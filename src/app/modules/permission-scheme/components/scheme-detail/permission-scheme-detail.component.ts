@@ -31,7 +31,7 @@ export class PermissionSchemeDetailComponent extends DialogComponent implements 
         });
     }
 
-    cancel() {}
-
-    submit() {}
+    close() {
+        this.dialogResult();
+    }
 }

@@ -1,4 +1,3 @@
-import { DataScopeDirective } from './directives/data-scope.directive';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +16,7 @@ import { PermissionSchemeDirectives } from './directives';
   ],
   declarations: [
     ...PermissionSchemeModuleComponents,
-    DataScopeDirective
+    ...PermissionSchemeDirectives
   ],
   providers: [PermissionSchemeServcie],
   entryComponents: [...PermissionSchemeModuleEntryComponents],

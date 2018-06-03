@@ -119,3 +119,7 @@
   cursor: not-allowed;
   color: #f3f3f3;
 }
+
+.label-readonly {
+  pointer-events: none;
+}
