@@ -14,7 +14,6 @@ import { PermissionNavigationRoute } from '../../permission-scheme-const';
 import { Router } from '@angular/router';
 import { contains } from 'ramda';
 import { DefaultPermissionScheme } from '../../../../shared/constants/const';
-import { PermissionSchemeDetailComponent } from '../scheme-detail/permission-scheme-detail.component';
 import { UserGroup } from '../../../../shared/models/user-group.model';
 import { ModuleRoute } from '../../../../shared/constants/const';
 import { UserNavigationRoute } from '../../../users/users.constant';
