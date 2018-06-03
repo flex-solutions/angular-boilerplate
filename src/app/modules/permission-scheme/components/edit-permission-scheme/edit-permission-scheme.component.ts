@@ -10,7 +10,7 @@ import { map, contains } from 'ramda';
 @Component({
   selector: 'app-edit-permission-scheme',
   templateUrl: './edit-permission-scheme.component.html',
-  styleUrls: ['./edit-permission-scheme.component.css']
+  styleUrls: ['../../base/editor-permission-scheme.component.css']
 })
 export class EditPermissionSchemeComponent extends PermissionSchemeComponentBase {
 

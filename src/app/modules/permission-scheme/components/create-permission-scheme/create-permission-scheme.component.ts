@@ -16,7 +16,7 @@ import { PermissionSchemeComponentBase } from '../../base/editor.permission-sche
 @Component({
   selector: 'app-create-permission-scheme',
   templateUrl: './create-permission-scheme.component.html',
-  styleUrls: ['./create-permission-scheme.component.css']
+  styleUrls: ['../../base/editor-permission-scheme.component.css']
 })
 export class CreatePermissionSchemeComponent extends PermissionSchemeComponentBase {
 
