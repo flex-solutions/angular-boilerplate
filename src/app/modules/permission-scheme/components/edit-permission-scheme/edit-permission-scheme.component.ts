@@ -4,7 +4,8 @@ import { PermissionSchemeServcie } from '../../services/permission-scheme.servic
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { PermissionSchemeComponentBase } from '../../base/editor.permission-scheme.componentbase';
-import { SchemeDataSource, ControllerSelectedItem, PermissionDetail, PermissionScheme } from '../../../../shared/models/permission-scheme.model';
+import { SchemeDataSource, ControllerSelectedItem, PermissionDetail,
+   PermissionScheme } from '../../../../shared/models/permission-scheme.model';
 import { NotificationConst, PermissionNavigationRoute } from '../../permission-scheme-const';
 import { map, contains } from 'ramda';
 @Component({
