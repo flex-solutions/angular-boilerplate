@@ -16,14 +16,14 @@
       <tr *ngFor="let item of items">
         <td>
           <span class="change-color">
-            <a href="#">{{item.name}}</a>
+            <a class="a-clickable" (click)="viewPermissionDetail(item)">{{item.name}}</a>
           </span>
         </td>
         <td>
           <span class="change-color">
             <ul class="list-unstyled">
               <li *ngFor="let userGroup of item.userGroups">
-                <a href="#">{{userGroup.name}}</a>
+                <a class="a-clickable" (click)="navigateToGroup(userGroup)">{{userGroup.name}}</a>
               </li>
             </ul>
           </span>

@@ -9,6 +9,10 @@ import { AssignPermissionComponent } from '../assign-permission/assign-permissio
 import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { PermissionNavigationRoute } from '../../permission-scheme-const';
 import { Router } from '@angular/router';
+import { PermissionSchemeDetailComponent } from '../scheme-detail/permission-scheme-detail.component';
+import { UserGroup } from '../../../../shared/models/user-group.model';
+import { ModuleRoute } from '../../../../shared/constants/const';
+import { UserNavigationRoute } from '../../../users/users.constant';
 
 @Component({
   selector: 'app-permission-schemes',
@@ -19,13 +23,17 @@ export class PermissionSchemesComponent implements OnInit {
   items: IPermissionScheme[];
   currentFilterArgs: IFilterChangedEvent;
 
-  constructor(private permissionService: PermissionSchemeServcie, private router: Router,
-    private dialogManager: ExDialog) { }
+  constructor(
+    private permissionService: PermissionSchemeServcie,
+    private router: Router,
+    private dialogManager: ExDialog
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   assignToUserGroups(item) {
-    this.dialogManager.openPrime(AssignPermissionComponent, { callerData: item })
+    this.dialogManager
+      .openPrime(AssignPermissionComponent, { callerData: item })
       .subscribe(result => {
         if (result) {
           this.loadPermissionSchemes();
@@ -34,17 +42,19 @@ export class PermissionSchemesComponent implements OnInit {
   }
 
   copy(item) {
-    this.dialogManager.openPrime(CopySchemeComponent, { callerData: item }).subscribe(result => {
-      if (result) {
-        this.loadPermissionSchemes();
-      }
-    });
+    this.dialogManager
+      .openPrime(CopySchemeComponent, { callerData: item })
+      .subscribe(result => {
+        if (result) {
+          this.loadPermissionSchemes();
+        }
+      });
   }
 
   navigateToEditPage(item) {
     this.router.navigate([`${PermissionNavigationRoute.EDIT_PAGE}${item._id}`]);
   }
-  
+
   navigateToCreatePage() {
     this.router.navigate([PermissionNavigationRoute.CREATE_PAGE]);
   }
@@ -60,9 +70,29 @@ export class PermissionSchemesComponent implements OnInit {
 
   loadPermissionSchemes() {
     const pagination = this.currentFilterArgs.pagination;
-    this.permissionService.getPermissionSchemes(pagination.itemsPerPage, pagination.page,
-      this.currentFilterArgs.searchKey).subscribe((response: IPermissionScheme[]) => {
+    this.permissionService
+      .getPermissionSchemes(
+        pagination.itemsPerPage,
+        pagination.page,
+        this.currentFilterArgs.searchKey
+      )
+      .subscribe((response: IPermissionScheme[]) => {
         this.items = response;
       });
+  }
+
+  viewPermissionDetail(permissionScheme: IPermissionScheme) {
+    this.dialogManager.openPrime(
+      PermissionSchemeDetailComponent,
+      { callerData: permissionScheme },
+      ModalSize.Large
+    );
+  }
+
+  navigateToGroup(userGroup: UserGroup) {
+    this.router.navigate([
+      `${UserNavigationRoute.GROUPS_PAGE}/filter`,
+      userGroup.name
+    ]);
   }
 }
