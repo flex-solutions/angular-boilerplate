@@ -61,7 +61,11 @@ export class UserDetailComponent implements OnInit {
 
   // Handle change user group.
   changeUserGroup() {
-    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData }).subscribe(result => {
+      if (result) {
+
+      }
+    });
   }
 
   // Handle navigate to Edit user page.

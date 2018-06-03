@@ -27,8 +27,8 @@ export class UsersComponent {
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
-      this.groupName = this.activatedRoute.snapshot.params['groupName'];
-    }
+    this.groupName = this.activatedRoute.snapshot.params['groupName'];
+  }
 
   public count = (searchKey: string): Observable<number> => {
     return this.userService.count(searchKey);
@@ -54,7 +54,10 @@ export class UsersComponent {
   // Handle to change group of user.
   changeUserGroup(user: User) {
     this.transferData.user = user;
-    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData });
+    this.exDialog.openPrime(GroupUserModalComponent, { callerData: this.transferData }).subscribe(result => {
+      if (result) {
+      }
+    });
   }
 
   navigateToCreatePage() {

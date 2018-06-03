@@ -10,6 +10,8 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../../../shared/models/user.model';
 import { isNullOrUndefined } from 'util';
 import { PagingDefault } from '../../../../shared/constants/const';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
 
 @Component({
   selector: 'app-group-user-modal',
@@ -20,6 +22,8 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   constructor(protected dialogService: DialogService,
     private grService: UserGroupService,
     private userService: UserService,
+    private readonly notificationService: NotificationService,
+    private translateService: TranslateService,
     private router: Router) {
     super(dialogService);
   }
@@ -51,7 +55,15 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
       let updateUser = new User();
       updateUser = this.groupInfo.user;
       updateUser.userGroup._id = this.selectedGroupId;
-      this.userService.update(updateUser);
+      this.userService.update(updateUser).subscribe(respond => {
+        // * Save user successful, display success notification
+        const msg = this.translateService.translate(
+          UserMessages.EditUserSuccessfull
+        );
+
+        this.notificationService.showSuccess(msg);
+        this.result = true;
+      });
     } else {
       this.result = false;
     }
