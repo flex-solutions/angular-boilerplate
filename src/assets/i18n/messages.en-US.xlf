@@ -740,6 +740,14 @@
         <source>Updated the permission scheme successfully</source>
         <target>Updated the permission scheme {{0}} successfully</target>
       </trans-unit>
+      <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
+        <source>Full</source>
+        <target>Tất cả</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-datascope-branch" datatype="html">
+        <source>Branch</source>
+        <target>Chi nhánh</target>
+      </trans-unit>
       <!-- Permission Schemes -->
       <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
         <source>Permission Schemes</source>
