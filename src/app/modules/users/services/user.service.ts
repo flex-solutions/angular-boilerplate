@@ -56,6 +56,6 @@ export class UserService extends AbstractRestService {
 
   // Handle get user by id.
   getUserById(userId: string): Observable<User> {
-    return this.get<User>(`name/${userId}`);
+    return this.get(`${userId}/populate`);
   }
 }
