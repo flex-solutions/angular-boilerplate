@@ -727,7 +727,7 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
         <source>Submit</source>
-        <target></target>
+        <target>Submit</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
         <source>Cancel</source>
@@ -750,6 +750,7 @@
         <target>Cập nhật hoạch phân quyền {{0}} thành công</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
+        <source>Please provide the scheme name</source>
         <target>Vui lòng nhập tên kế hoạch phân quyền</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">

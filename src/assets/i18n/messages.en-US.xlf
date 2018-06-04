@@ -511,7 +511,8 @@
       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
         <source>Create User Group</source>
         <target>Create User Group</target>
-      </trans-unit <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+      </trans-unit>
+       <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
       <source>Search by group name</source>
       <target>Search by group name</target>
       </trans-unit>
@@ -676,9 +677,13 @@
         <source>Information</source>
         <target>Information</target>
       </trans-unit>
-      <trans-unit id="permissiom-scheme-create-h4-Title" datatype="html">
+      <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
         <source>Create Permission Scheme</source>
         <target>Create Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Edit Permission Scheme</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
         <source>Type a name and choose which the permissions to include in this scheme</source>
@@ -745,6 +750,7 @@
         <target>Updated the permission scheme {{0}} successfully</target>
       </trans-unit>
         <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
+        <source>Please provide the scheme name</source>
         <target>Please provide the scheme name</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
