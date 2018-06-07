@@ -371,7 +371,7 @@
       </trans-unit>
       <trans-unit id="users-actions" datatype="html">
         <source>Actions</source>
-        <target>Actions</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="users-count" datatype="html">
         <source>Count: </source>
@@ -657,6 +657,10 @@
       <!-- End Revovery Password -->
 
       <!-- Permission scheme -->
+      <trans-unit id="permissiom-scheme-create-search" datatype="html">
+        <source>Search by business name</source>
+        <target>Tìm với tên nghiệp vụ</target>
+      </trans-unit>
       <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
         <source>Scheme Name</source>
         <target>Tên Kế Hoạch</target>
@@ -672,6 +676,10 @@
       <trans-unit id="permissiom-scheme-create-a-information" datatype="html">
         <source>Information</source>
         <target>Thông Tin</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Sửa kế hoạch phân quyền</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
         <source>Create Permission Scheme</source>
@@ -719,7 +727,7 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
         <source>Submit</source>
-        <target></target>
+        <target>Submit</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
         <source>Cancel</source>
@@ -741,10 +749,9 @@
         <source>Updated the permission scheme successfully</source>
         <target>Cập nhật hoạch phân quyền {{0}} thành công</target>
       </trans-unit>
-       <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
+      <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
         <target>Vui lòng nhập tên kế hoạch phân quyền</target>
       </trans-unit>
-
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
         <source>Full</source>
         <target>Tất cả</target>
@@ -772,12 +779,12 @@
         <target>Tên Kế Hoạch</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-tbl-user_groups_header" datatype="html">
-        <source>Nhóm User</source>
-        <target>User Groups</target>
+        <source>User Groups</source>
+        <target>Nhóm User</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-tbl-actions_header" datatype="html">
         <source>Actions</source>
-        <target>Actions</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-a-copy" datatype="html">
         <source>Copy</source>
@@ -790,6 +797,18 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit Permission Scheme</source>
         <target>Sửa phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-list-delete" datatype="html">
+        <source>Delete permission scheme</source>
+        <target>Xoá kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-confirm" datatype="html">
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
+        <target>Kế hoạch phân quyền "{{0}}" sẽ bị xoá vĩnh viễn và tất cả các nhóm user của kế hoạch này sẽ được gán cho kế hoạch phân quyền "default-user-permission-scheme". Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-success" datatype="html">
+        <source>Deleted scheme "{{0}}" successfully</source>
+        <target>Xoá kế hoạch phân quyền "{{0}}" thành công</target>
       </trans-unit>
       <!-- End Permission Schemes -->
 

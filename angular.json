@@ -11,10 +11,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cms-vi",
+            "outputPath": "dist/cms-en",
             "aot": true,
-            "i18nFile": "src/assets/i18n/messages.vi-VN.xlf",
-            "i18nLocale": "vi",
+            "i18nFile": "src/assets/i18n/messages.en-US.xlf",
+            "i18nLocale": "en",
             "i18nFormat": "xlf",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -34,6 +34,48 @@
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "production-vi": {
+              "outputPath": "dist/cms-vi",
+              "i18nFile": "src/assets/i18n/messages.vi-VN.xlf",
+              "i18nLocale": "vi",
+              "i18nFormat": "xlf",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "production-en": {
+              "outputPath": "dist/cms-en",
+              "i18nFile": "src/assets/i18n/messages.en-US.xlf",
+              "i18nLocale": "en",
+              "i18nFormat": "xlf",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

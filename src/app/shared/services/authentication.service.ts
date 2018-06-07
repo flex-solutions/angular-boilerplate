@@ -10,6 +10,7 @@ import { appVariables } from '../../app.constant';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 import { AbstractRestService } from '../abstract/abstract-rest-service';
 import { Observable } from 'rxjs';
+import { ForbiddenHandler } from './forbidden-handler.service';
 
 @Injectable()
 export class AuthenticationService extends AbstractRestService {
@@ -18,7 +19,9 @@ export class AuthenticationService extends AbstractRestService {
   constructor(private router: Router) {
     super();
     this.controllerName = 'auth';
-    this.forbiddenEvent.subscribe(this.logOut);
+    this.forbiddenHandler.subscribe(() => {
+      this.logOut();
+    });
   }
 
   authenticated(): boolean {

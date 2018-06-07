@@ -9,10 +9,7 @@ import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
 import { BrowserNotificationService } from '../services/browser-notification.service';
-import { ObservableEventBase } from './observable.base';
-
-export class ForbiddenEvent extends ObservableEventBase<any> {
-}
+import { ForbiddenHandler } from '../services/forbidden-handler.service';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -23,8 +20,7 @@ export abstract class AbstractRestService {
   protected notifier: NotificationService;
   protected translateService: TranslateService;
   protected browserNotifer: BrowserNotificationService;
-
-  protected forbiddenEvent: ForbiddenEvent = new ForbiddenEvent();
+  protected forbiddenHandler: ForbiddenHandler;
 
   constructor() {
     // Get base url provide by application configuration service
@@ -37,6 +33,7 @@ export abstract class AbstractRestService {
     this.loaderService = SharedModule.injector.get(LoaderService);
     this.translateService = SharedModule.injector.get(TranslateService);
     this.browserNotifer = SharedModule.injector.get(BrowserNotificationService);
+    this.forbiddenHandler = SharedModule.injector.get(ForbiddenHandler);
   }
 
   get<T>(relativeUrl?: string) {
@@ -87,7 +84,7 @@ export abstract class AbstractRestService {
       .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
   }
 
-  delete<T>(relativeUrl, postBody: any) {
+  delete<T>(relativeUrl, postBody?: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
     return this.httpClient
@@ -124,13 +121,13 @@ export abstract class AbstractRestService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error) {
-      if (error.status === 404) {
-        this.notifier.showError(error.message);
-      } else if (error.status === 401 || error.status === 403) {
-        this.forbiddenEvent.publish(true);
-      }
+    if (error && error.status === 404) {
+      this.notifier.showError(error.message);
       return throwError(error);
+    }
+
+    if (error && (error.status === 401 || error.status === 403)) {
+      this.forbiddenHandler.publish();
     }
 
     const errorMsg = error.error as HttpExceptionResponse;

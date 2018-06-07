@@ -1,99 +1,100 @@
-<div *ngIf="userdetail" class="row profile-page">
-  <div class="col-12">
-    <div class="d-flex flex-row">
-      <img src="{{userdetail.avatar}}" class="img-lg rounded" alt="profile image" />
-      <div class="ml-3 col-md-9">
-        <h6>{{userdetail.fullname}}</h6>
-        <p class="text-muted">{{userdetail.username}}</p>
-        <a href="mailto:{{userdetail.email}}">
-          <p class="text-muted none-lineheight">{{userdetail.email}}</p>
-        </a>
-        <a href="#" (click)="navigateToGroups(this.userdetail)">
-          <p class="mt-2 text-success font-weight-bold">{{groupName}}</p>
-        </a>
-      </div>
-
-      <div class="ml-3">
-        <button type="button" class="btn btn-primary btn-sm none-underline" (click)="navigateToEditPage()">
-          <i class="mdi mdi-pencil" aria-hidden="false"></i>
-          <span i18n="@@user-detail-edit-btn">Edit User</span>
-        </button>
-
-        <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="mdi mdi-dots-horizontal"></i>
-        </button>
-
-        <div class="dropdown-menu">
-          <a class="dropdown-item" (click)=changeUserGroup() href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
-          <button class="dropdown-item pointer" (click)="deleteUser()" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</button>
+<app-card>
+  <div *ngIf="userdetail" class="row profile-page custom-card-body">
+    <div class="col-12">
+      <div class="d-flex flex-row">
+        <img src="{{userdetail.avatar}}" class="img-lg rounded" alt="profile image" />
+        <div class="ml-3">
+          <h6>{{userdetail.fullname}}</h6>
+          <p class="text-muted">{{userdetail.username}}</p>
+          <a href="mailto:{{userdetail.email}}">
+            <p class="text-muted none-lineheight">{{userdetail.email}}</p>
+          </a>
+          <a class="a-clickable" (click)="navigateToGroups(this.userdetail)">
+            <p class="mt-2 text-success font-weight-bold">{{groupName}}</p>
+          </a>
         </div>
 
-        <!-- Delete Modal -->
-        <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="userModalLabel" i18n="@@user-detail-delete-user">Confirm</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label" i18n="@@user-detail-delete-message">User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</label>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)=deleteUser() i18n="@@group-user-modal-ok">OK</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal" i18n="@@group-user-modal-cancel">Cancel</button>
+        <div class="ml-3 action-container">
+          <button type="button" class="btn btn-primary btn-sm none-underline" (click)="navigateToEditPage()">
+            <i class="mdi mdi-pencil" aria-hidden="false"></i>
+            <span i18n="@@user-detail-edit-btn">Edit User</span>
+          </button>
+
+          <button type="button" class="btn btn-sm btn-light dropdown-container" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal"></i>
+          </button>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)=changeUserGroup() href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+            <button class="dropdown-item pointer" (click)="deleteUser()" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</button>
+          </div>
+
+          <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="userModalLabel" i18n="@@user-detail-delete-user">Confirm</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label" i18n="@@user-detail-delete-message">User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</label>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)=deleteUser() i18n="@@group-user-modal-ok">OK</button>
+                  <button type="button" class="btn btn-light" data-dismiss="modal" i18n="@@group-user-modal-cancel">Cancel</button>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
-
       </div>
-    </div>
-    <div class="profile-body">
-      <ul class="nav tab-switch" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info"
-            aria-selected="true" i18n="@@user-detail-user-statistics">User Statistics</a>
-        </li>
+      <div class="profile-body">
+        <ul class="nav tab-switch" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info"
+              aria-selected="true" i18n="@@user-detail-user-statistics">User Statistics</a>
+          </li>
 
-      </ul>
-      <div class="row">
-        <div class="col-md-9">
-          <div class="tab-content tab-body" id="profile-log-switch">
-            <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
-              <table class="table table-borderless w-100 mt-4">
-                <tr>
-                  <td>
-                    <strong i18n="@@user-detail-login-count">Login Count :</strong> {{userdetail.successLoginCount}}</td>
-                  <td>
-                    <strong i18n="@@user-detail-last-failed-login">Last Failed Login :</strong> {{userdetail.lastTimeFailedLogin | date:"EEEE h: mma"}}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong i18n="@@user-detail-last-login">Last Login :</strong> {{userdetail.lastTimeLogin | date:"EEEE h: mma"}}</td>
-                  <td>
-                    <strong i18n="@@user-detail-current-failed-logins">Current Failed Logins :</strong> {{userdetail.loginAttempts}}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong i18n="@@user-detail-previous-login">Previous Login :</strong> {{userdetail.previousTimeLogin | date:"EEEE h: mma"}}</td>
-                  <td>
-                    <strong i18n="@@user-detail-total-failed-login">Total Failed Login :</strong> {{userdetail.failedLoginCount}}</td>
-                </tr>
-              </table>
+        </ul>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="tab-content tab-body" id="profile-log-switch">
+              <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                <table class="table table-borderless w-100 mt-4">
+                  <tr>
+                    <td>
+                      <strong i18n="@@user-detail-login-count">Login Count :</strong> {{userdetail.successLoginCount}}</td>
+                    <td>
+                      <strong i18n="@@user-detail-last-failed-login">Last Failed Login :</strong> {{userdetail.lastTimeFailedLogin | date:"EEEE h: mma"}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong i18n="@@user-detail-last-login">Last Login :</strong> {{userdetail.lastTimeLogin | date:"EEEE h: mma"}}</td>
+                    <td>
+                      <strong i18n="@@user-detail-current-failed-logins">Current Failed Logins :</strong> {{userdetail.loginAttempts}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong i18n="@@user-detail-previous-login">Previous Login :</strong> {{userdetail.previousTimeLogin | date:"EEEE h: mma"}}</td>
+                    <td>
+                      <strong i18n="@@user-detail-total-failed-login">Total Failed Login :</strong> {{userdetail.failedLoginCount}}</td>
+                  </tr>
+                </table>
+
+              </div>
 
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
+</app-card>

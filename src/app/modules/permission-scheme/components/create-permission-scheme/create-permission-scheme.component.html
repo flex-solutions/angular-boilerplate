@@ -1,217 +1,175 @@
-<div class="row">
-  <div class="col-md-12 d-flex align-items-stretch grid-margin">
-    <div class="row flex-grow">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title" i18n="@@permissiom-scheme-create-h4-title">
-              Create Permission Scheme
-            </h4>
-            <p class="card-description" i18n="@@permissiom-scheme-create-p-desciption">
-              Type a name and choose which the permissions to include in this scheme
-            </p>
-            <form  class="cmxform" (ngSubmit)="onSubmit()" #f="ngForm">
-              <div class="row profile-page permission-container">
-                <div class="col-md-12">
-                  <div class="card">
-                    <div>
-                      <div class="profile-body">
-                        <ul class="nav tab-switch" role="tablist">
-                          <li class="nav-item">
-                            <a aria-controls="user-profile-info" aria-selected="true" class="nav-link active show" data-toggle="pill" i18n="@@permissiom-scheme-create-a-information"
-                              href="#user-profile-info" id="user-profile-info-tab" role="tab">Information</a>
-                          </li>
-                          <li class="nav-item">
-                            <a aria-controls="user-profile-activity" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@permissiom-scheme-create-a-permission"
-                              href="#user-profile-activity" id="user-profile-activity-tab" role="tab">Permission</a>
-                          </li>
-                        </ul>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="tab-content tab-body" id="profile-log-switch">
-                              <div aria-labelledby="user-profile-info-tab" class="tab-pane fade pr-3 active show" id="user-profile-info" role="tabpanel">
-                                <div class="form-group OnTop"
-                                [ngClass]="{
-                                  'has-danger': permissionName.invalid && (permissionName.dirty || permissionName.touched),
-                                  'has-success': permissionName.valid && (permissionName.dirty || permissionName.touched)
-                             }"
-                                >
-                                  <label i18n="@@permissiom-scheme-create-input-name">Scheme Name</label>
-                                  <label class="require">*</label>
-                                  <input class="form-control" i18n-placeholder="@@permissiom-scheme-create-input-name-placeholder" 
-                                   placeholder="Enter permission scheme name" [(ngModel)]="permissionModel.name" name='permissionName' #permissionName="ngModel" required>
-                                  <label id="name-error" class="error mt-2 text-danger" for="name" 
-                                  i18n="@@permissiom-scheme-create-error-namerequired" 
-                                  *ngIf="permissionName.invalid && (permissionName.dirty || permissionName.touched)">
-                                  </label>
-                                </div>
-                              </div>
-                              <div aria-labelledby="user-profile-activity-tab" class="tab-pane fade" id="user-profile-activity" role="tabpanel">
-                                <div class="row">
-                                  <div class="col-md-3">
-                                    <div class="search-container">
-                                      <label>
-                                        <input type="text" class="form-control" placeholder="cc" aria-controls="order-listing"  [(ngModel)]="keyword" name="Keyword">
-                                        <i class="mdi mdi-table-search"></i>
-                                      </label>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-1">
-                                  </div>
-                                  <div class="col-md-8">
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-3">
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th>
-                                              <div class="form-check form-check-flat align-center">
-                                                <label class="form-check-label">
-                                                  <input type="checkbox" class="form-check-input"
-                                                  [(ngModel)]="dataSource.is_check_all" name="controller_is_check_all"
-                                                   (change)="onControllerCheckedChange(true)">
-                                                  Business
-                                                <i class="input-helper"></i></label>
-                                              </div>
-                                            </th>
-                                          </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr *ngFor="let item of (dataSource.data | controllerFilter: keyword);let index = index"  [class.disable-row]="item.is_disable">
-                                              <td>
-                                                <div class="form-check form-check-flat align-center">
-                                                  <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input"
-                                                     [(ngModel)]="dataSource.data[index].is_check" 
-                                                      name="isCheck[{{index}}]"
-                                                     (change)="onControllerCheckedChange()"
-                                                     [disabled]="item.is_disable" >
-                                                    {{item.controller.name}}
-                                                  <i class="input-helper"></i></label>
-                                                </div>
-                                              </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                  </div>
-                                  <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-sm pull-right middle-view" (click)="addPermission()" [disabled]="!isCanAdd">
-                                      <i class="mdi mdi-plus"></i>
-                                      <span i18n="@@permissiom-scheme-create-button-add">ADD</span>
-                                    </button>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <table class="table">
-                                      <thead>
-                                        <tr>
-                                          <th style="width: 30%" i18n="@@permissiom-scheme-create-p-bussinessname">Business Name</th>
-                                          <th style="width: 20%" i18n="@@permissiom-scheme-create-p-datascope">Data Scope</th>
-                                          <th i18n="@@permissiom-scheme-create-p-insert" >Insert</th>
-                                          <th i18n="@@permissiom-scheme-create-p-update">Update</th>
-                                          <th i18n="@@permissiom-scheme-create-p-delete">Delete</th>
-                                          <th i18n="@@permissiom-scheme-create-p-fullcontrol">FullControl</th>
-                                          <th i18n="@@permissiom-scheme-create-p-actions">Actions</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr *ngFor="let permission of (permissionModel.permission_details | permissionFilter: keyword) ;let index = index">
-                                          <td>{{permission.controller_name}}</td>
-                                          <td >
-                                              <select class="js-example-basic-single select2-hidden-accessible" 
-                                              style="width:100%" 
-                                              tabindex="-1" 
-                                              aria-hidden="true"
-                                              name = "datascope[{{index}}]"
-                                              [(ngModel)]="permissionModel.permission_details[index].data_scope">
-                                                  <option value="0" selected="selected">Branch</option>
-                                                  <option value="1">Full</option>
-                                                </select>
-                                          </td>
-                                          <td class="jsgrid-cell" style="width: 100px;">
-                                            <div class="form-check mt-0 center-form align-center">
-                                              <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" 
-                                                [(ngModel)]="permissionModel.permission_details[index].is_insert" 
-                                                (change) = "onPermissionChanged(permission.controller, false)"
-                                                name="is_insert[{{index}}]">
-                                                <i class="custom-input-helper"></i>
-                                              </label>
-                                            </div>
-                                          </td>
-                                          <td class="jsgrid-cell" style="width: 100px;">
-                                            <div class="form-check mt-0 center-form align-center">
-                                              <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input"
-                                                [(ngModel)]="permissionModel.permission_details[index].is_update" 
-                                                (change) = "onPermissionChanged(permission.controller, false)"
-                                                name="is_update[{{index}}]">
-                                                <i class="custom-input-helper"></i>
-                                              </label>
-                                            </div>
-                                          </td>
-                                          <td class="jsgrid-cell" style="width: 100px;">
-                                            <div class="form-check mt-0 center-form align-center">
-                                              <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input"
-                                                 [(ngModel)]="permissionModel.permission_details[index].is_delete"
-                                                 (change) = "onPermissionChanged(permission.controller, false)"
-                                                  name="is_delete[{{index}}]">
-                                                <i class="custom-input-helper"></i>
-                                              </label>
-                                            </div>
-                                          </td>
-                                          <td class="jsgrid-cell" style="width: 100px;  ">
-                                            <div class="form-check mt-0 center-form align-center">
-                                              <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input"
-                                                 [(ngModel)]="permissionModel.permission_details[index].is_fullcontrol"
-                                                 (change) = "onPermissionChanged(permission.controller, true)"
-                                                  name="is_fullcontrol[{{index}}]">
-                                                <i class="custom-input-helper"></i>
-                                              </label>
-                                            </div>
-                                          </td>
-                                          <td>
-                                            <div class="col-md-1">
-                                                <button type="button" class="btn btn-light btn-custom-css" (click)="removePermission(permission.controller)">
-                                                    <i class="mdi mdi- btn-pink" aria-hidden="false"></i>
-                                                    <span i18n="@@permissiom-scheme-create-button-remove">Remove</span>
-                                                  </button>
-                                            </div>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+<app-card i18n-title="@@permissiom-scheme-create-h4-title" title="Create Permission Scheme" subTitle="Type a name and choose which the permissions to include in this scheme"
+  i18n-subTitle="@@permissiom-scheme-create-p-desciption">
+  <form class="cmxform" (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="row profile-page permission-container">
+      <div class="col-md-12">
+        <div class="profile-body" style="padding-top: 0px">
+          <ul class="nav tab-switch" role="tablist">
+            <li class="nav-item">
+              <a aria-controls="user-profile-info" aria-selected="true" class="nav-link active show" data-toggle="pill" i18n="@@permissiom-scheme-create-a-information"
+                href="#user-profile-info" id="user-profile-info-tab" role="tab">Information</a>
+            </li>
+            <li class="nav-item">
+              <a aria-controls="user-profile-activity" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@permissiom-scheme-create-a-permission"
+                href="#user-profile-activity" id="user-profile-activity-tab" role="tab">Permission</a>
+            </li>
+          </ul>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="tab-content tab-body" id="profile-log-switch">
+                <div aria-labelledby="user-profile-info-tab" class="tab-pane fade pr-3 active show" id="user-profile-info" role="tabpanel">
+                  <div class="form-group OnTop" [ngClass]="{
+                          'has-danger': permissionName.invalid && (permissionName.dirty || permissionName.touched),
+                          'has-success': permissionName.valid && (permissionName.dirty || permissionName.touched)
+                     }">
+                    <label i18n="@@permissiom-scheme-create-input-name">Scheme Name</label>
+                    <label class="require">*</label>
+                    <input class="form-control" i18n-placeholder="@@permissiom-scheme-create-input-name-placeholder" placeholder="Enter permission scheme name"
+                      [(ngModel)]="permissionModel.name" name='permissionName' #permissionName="ngModel" required>
+                    <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@permissiom-scheme-create-error-namerequired" *ngIf="permissionName.invalid && (permissionName.dirty || permissionName.touched)">
+                    </label>
+                  </div>
+                </div>
+                <div aria-labelledby="user-profile-activity-tab" class="tab-pane fade" id="user-profile-activity" role="tabpanel">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="search-container">
+                        <label>
+                          <input type="text" class="form-control" i18n-placeholder="@@permissiom-scheme-create-search" placeholder="Search by business name"
+                            aria-controls="order-listing" [(ngModel)]="keyword" name="Keyword">
+                          <i class="mdi mdi-table-search"></i>
+                        </label>
                       </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="display: flex">
+                              <div class="form-check form-check-flat align-center" style="margin-bottom: 0px">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" [(ngModel)]="dataSource.is_check_all" name="controller_is_check_all" (change)="onControllerCheckedChange(true)">
+                                  <i class="input-helper"></i>
+                                </label>
+                              </div>
+                              <span i18n="@@permissiom-scheme-create-p-bussinessname" style="margin-top: 4px">Business</span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of (dataSource.data | controllerFilter: keyword);let index = index" [class.disable-row]="item.is_disable">
+                            <td>
+                              <div class="form-check form-check-flat align-center" style="margin-bottom: 0px">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" [(ngModel)]="dataSource.data[index].is_check" name="isCheck[{{index}}]" (change)="onControllerCheckedChange()"
+                                    [disabled]="item.is_disable"> {{item.controller.name}}
+                                  <i class="input-helper"></i>
+                                </label>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-md-1">
+                      <button type="button" class="btn btn-primary btn-sm pull-right middle-view" (click)="addPermission()" [disabled]="!isCanAdd">
+                        <i class="mdi mdi-plus"></i>
+                        <span i18n="@@permissiom-scheme-create-button-add">ADD</span>
+                      </button>
+                    </div>
+                    <div class="col-md-8">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="width: 30%" i18n="@@permissiom-scheme-create-p-bussinessname">Business Name</th>
+                            <th style="width: 20%" i18n="@@permissiom-scheme-create-p-datascope">Data Scope</th>
+                            <th i18n="@@permissiom-scheme-create-p-insert">Insert</th>
+                            <th i18n="@@permissiom-scheme-create-p-update">Update</th>
+                            <th i18n="@@permissiom-scheme-create-p-delete">Delete</th>
+                            <th i18n="@@permissiom-scheme-create-p-fullcontrol">FullControl</th>
+                            <th i18n="@@permissiom-scheme-create-p-actions">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let permission of (permissionModel.permission_details | permissionFilter: keyword) ;let index = index">
+                            <td>{{permission.controller_name}}</td>
+                            <td>
+                              <select class="js-example-basic-single select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true" name="datascope[{{index}}]"
+                                [(ngModel)]="permissionModel.permission_details[index].data_scope">
+                                <option value="0" selected="selected" i18n="@@permissiom-scheme-datascope-branch">Branch</option>
+                                <option value="1" i18n="@@permissiom-scheme-datascope-full">Full</option>
+                              </select>
+                            </td>
+                            <td class="jsgrid-cell" style="width: 100px;">
+                              <div class="form-check mt-0 center-form align-center">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" [(ngModel)]="permissionModel.permission_details[index].is_insert" (change)="onPermissionChanged(permission.controller, false)"
+                                    name="is_insert[{{index}}]">
+                                  <i class="custom-input-helper"></i>
+                                </label>
+                              </div>
+                            </td>
+                            <td class="jsgrid-cell" style="width: 100px;">
+                              <div class="form-check mt-0 center-form align-center">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" [(ngModel)]="permissionModel.permission_details[index].is_update" (change)="onPermissionChanged(permission.controller, false)"
+                                    name="is_update[{{index}}]">
+                                  <i class="custom-input-helper"></i>
+                                </label>
+                              </div>
+                            </td>
+                            <td class="jsgrid-cell" style="width: 100px;">
+                              <div class="form-check mt-0 center-form align-center">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" [(ngModel)]="permissionModel.permission_details[index].is_delete" (change)="onPermissionChanged(permission.controller, false)"
+                                    name="is_delete[{{index}}]">
+                                  <i class="custom-input-helper"></i>
+                                </label>
+                              </div>
+                            </td>
+                            <td class="jsgrid-cell" style="width: 100px;  ">
+                              <div class="form-check mt-0 center-form align-center">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" [(ngModel)]="permissionModel.permission_details[index].is_fullcontrol" (change)="onPermissionChanged(permission.controller, true)"
+                                    name="is_fullcontrol[{{index}}]">
+                                  <i class="custom-input-helper"></i>
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-light btn-sm" (click)="removePermission(permission.controller)">
+                                <i class="mdi mdi-delete btn-pink" aria-hidden="false"></i>
+                                <span i18n="@@permissiom-scheme-create-button-remove">Remove</span>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
-        
-                  <!-- Create another field -->
-            <div class="form-group">
-              <div class="form-check form-check-flat">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input form-control" name="isCreateAnother" [(ngModel)]="isCreateAnother">
-                  <i class="input-helper"></i>
-                  <label class="form-check-label" i18n="@@permissiom-scheme-create-p-createanother"> Create another</label>
-                </label>
-              </div>
             </div>
-              <button type="submit" class="btn btn-success mr-2" i18n="permissiom-scheme-create-button-submit" [disabled]="f.invalid">Submit</button>
-              <a class="btn btn-light" i18n="@@permissiom-scheme-create-button-cancel" (click)="onCancel()">Cancel</a>
-            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <!-- Create another field -->
+    <div class="row">
+      <div style="margin-left: 13px;">
+        <button type="submit" class="btn btn-success mr-2" i18n="@@permissiom-scheme-create-button-submit" [disabled]="f.invalid">Submit</button>
+        <a class="btn btn-light" i18n="@@permissiom-scheme-create-button-cancel" (click)="onCancel()">Cancel</a>
+      </div>
+      <div class="form-check form-check-flat" style="margin-top: 7px; margin-left: 20px">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input form-control" name="isCreateAnother" [(ngModel)]="isCreateAnother">
+          <i class="input-helper"></i>
+          <label class="form-check-label" style="padding-left: 3px;margin-top: 2px;" i18n="@@permissiom-scheme-create-p-createanother"> Create another</label>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-card>

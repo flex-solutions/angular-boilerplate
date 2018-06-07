@@ -511,7 +511,8 @@
       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
         <source>Create User Group</source>
         <target>Create User Group</target>
-      </trans-unit <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+      </trans-unit>
+       <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
       <source>Search by group name</source>
       <target>Search by group name</target>
       </trans-unit>
@@ -660,6 +661,10 @@
         <source>Scheme Name</source>
         <target>Scheme Name</target>
       </trans-unit>
+      <trans-unit id="permissiom-scheme-create-search" datatype="html">
+        <source>Search by business name</source>
+        <target>Search by business name</target>
+      </trans-unit>
       <trans-unit id="permissiom-scheme-create-input-name-placeholder" datatype="html">
         <source>Enter permission scheme namee</source>
         <target>Enter permission scheme name</target>
@@ -672,9 +677,13 @@
         <source>Information</source>
         <target>Information</target>
       </trans-unit>
-      <trans-unit id="permissiom-scheme-create-h4-Title" datatype="html">
+      <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
         <source>Create Permission Scheme</source>
         <target>Create Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Edit Permission Scheme</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
         <source>Type a name and choose which the permissions to include in this scheme</source>
@@ -740,7 +749,7 @@
         <source>Updated the permission scheme successfully</source>
         <target>Updated the permission scheme {{0}} successfully</target>
       </trans-unit>
-        <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
+      <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
         <target>Please provide the scheme name</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
@@ -787,6 +796,18 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit Permission Scheme</source>
         <target>Edit Permission Scheme</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-list-delete" datatype="html">
+        <source>Delete permission scheme</source>
+        <target>Delete permission scheme</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-confirm" datatype="html">
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
+        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-success" datatype="html">
+        <source>Deleted scheme "{{0}}" successfully</source>
+        <target>Deleted scheme "{{0}}" successfully</target>
       </trans-unit>
       <!-- End Permission Schemes -->
       
