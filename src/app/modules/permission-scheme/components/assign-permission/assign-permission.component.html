@@ -26,7 +26,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of userGroups" [class.disable-row]="user.isAdded">
+              <tr *ngFor="let user of userGroups | userGroupFilter: txtSearch.searchKey" [class.disable-row]="user.isAdded">
                 <td>
                   <div class="form-check form-check-flat" style="margin-top:-11px;padding-left:20px">
                     <label class="form-check-label" style="margin-top:0px;padding-left:0px">
