@@ -877,6 +877,60 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+      <!--START View Create Edit Page -->
+      <trans-unit id="view-create_edit_view-h4-create_news" datatype="html">
+        <source>Create news</source>
+        <target>Create news </target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-h4-create_news_description" datatype="html">
+        <source>This page allows you creating a news and pulishing it if you want</source>
+        <target>This page allows you creating a news and pulishing it if you want</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-h4-edit_news" datatype="html">
+        <source>Edit news</source>
+        <target>Edit news</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-h4-edit_news_description" datatype="html">
+        <source>This page allows you edit a news</source>
+        <target>This page allows you edit a news</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-input-title_place_holder" datatype="html">
+        <source>Enter title</source>
+        <target>Enter title</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-input-banner_place_holder" datatype="html">
+        <source>Enter banner</source>
+        <target>Enter banner</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-input-content_place_holder" datatype="html">
+        <source>Enter content</source>
+        <target>Enter content</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-button-submit_publish" datatype="html">
+        <source>Submit & publish</source>
+        <target>Submit & publish</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <!--END View Create Edit Page-->
     </body>
   </file>
 </xliff>

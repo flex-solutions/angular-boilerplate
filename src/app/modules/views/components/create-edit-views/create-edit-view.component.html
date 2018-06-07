@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-2 grid-margin stretch-card">
+    </div>
+    <div class="col-md-8 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+        <div>
+          <h4 class="card-title" i18n="@@view-create_edit_view-h4-create_news">Create news</h4>
+          <p class="card-description" i18n="@@view-create_edit_view-h4-create_news_description">
+            This page allows you creating a news and pulishing it if you want
+          </p>
+        </div>
+        <div>
+          <h4 class="card-title" i18n="@@view-create_edit_view-h4-edit_news">Edit news</h4>
+          <p class="card-description" i18n="@@view-create_edit_view-h4-edit_news_description">
+            This page allows you edit a news
+          </p>
+        </div>
+          <form class="cmxform" id="signupForm">
+            <fieldset>
+              <!-- Title field -->
+              <div class="form-group">
+                <label for="email" i18n="@@view-create_edit_view-label-title_field">Title </label>
+                <label class="require">*</label>
+                <input id="email" class="form-control" formControlName="title" 
+                  i18n-placeholder="@@view-create_edit_view-input-title_place_holder" placeholder="Enter title">
+                <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
+              </div>
+  
+              <!-- Banner field -->
+              <div class="form-group">
+                <label for="banner" i18n="@@view-create_edit_view-label-banner_field">Banner </label>
+                <label class="require">*</label>
+                <input id="banner" class="form-control" formControlName="banner" type="text"
+                  i18n-placeholder="@@view-create_edit_view-input-banner_place_holder" placeholder="Enter banner">
+                <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
+              </div>
+  
+              <!-- Content field -->
+              <div class="form-group">
+                <label for="content" i18n="@@view-create_edit_view-label-content_field">Content </label>
+                <label class="require">*</label>
+                <input id="content" class="form-control" formControlName="content" type="text" 
+                  i18n-placeholder="@@view-create_edit_view-input-content_place_holder" placeholder="Enter content">
+                <!-- <label id="content-error" class="error mt-2 text-danger" for="branch" *ngIf="errorMessage.content"> {{ errorMessage.content }}</label>-->
+              </div>
+  
+              <!-- Form buttons -->
+              <button class="btn btn-success mr-2" i18n="@@view-create_edit_view-button-submit" (click)="submit()">Submit</button>
+              <button class="btn btn-light" i18n="@@view-create_edit_view-button-submit_publish" (click)="cancel()">Submit & publish</button>
+              <button class="btn btn-light" i18n="@@view-create_edit_view-button-cancel" (click)="cancel()">Cancel</button>
+
+              <!-- TODO: create a new one check box-->
+            </fieldset>
+          </form>
+        </div>
+      </div>
+  
+    </div>
+    <div class="col-md-2 grid-margin stretch-card">
+    </div>
+  </div>
