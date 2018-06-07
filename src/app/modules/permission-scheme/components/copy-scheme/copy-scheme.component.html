@@ -1,0 +1,27 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div>
+      <h5 class="modal-title" style="width: 100%" i18n="@@permission-scheme-copy-h5-copy_title">Copy permission scheme</h5>
+      <p class="row col-12">{{schemeDescription}}</p>
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="cmxform" id="copySchemeForm" [formGroup]="formGroup">
+      <fieldset>
+        <div class="form-group">
+          <label for="schemeName" i18n="@@permission-scheme-copy-label-scheme_name">Scheme Name</label>
+          <label class="require">*</label>
+          <input id="schemeName" class="form-control" formControlName="schemeName" type="text" [ngClass]="{'form-control-danger': errorMessage.schemeName }">
+          <label id="schemeName-error" class="error mt-2 text-danger" for="schemeName" *ngIf="errorMessage.schemeName"> {{ errorMessage.schemeName }}</label>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+  </div>
+</div>

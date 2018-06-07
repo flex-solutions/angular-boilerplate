@@ -1,0 +1,44 @@
+<app-card title="Permission Schemes" i18n-title="@@permission_scheme-permission_schemes-h4-title">
+  <div class="command-region">
+    <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+      <i class="mdi mdi-plus"></i>
+      <span i18n="@@permission_scheme-permission_schemes-button-create_permissions">Create Permission Scheme</span>
+    </button>
+  </div>
+  <app-dg #dg searchLabel="Search by permission sheme name" i18n-searchLabel="@@permission_scheme-permission_schemes-tbl-search-label"
+    (pageChanged)="onPageChanged($event)" [countFunction]="count">
+    <tr>
+      <th i18n="@@permission_scheme-permission_schemes-tbl-permission_scheme_header">Permission Scheme</th>
+      <th i18n="@@permission_scheme-permission_schemes-tbl-user_groups_header">User Groups</th>
+      <th i18n="@@permission_scheme-permission_schemes-tbl-actions_header">Actions</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let item of items | schemeFilter: dg.searchKey">
+        <td [class.auto-align-top]="needToAlignTop(item)">
+          <a class="a-clickable" (click)="viewPermissionDetail(item)">{{item.name}}</a>
+        </td>
+        <td>
+          <ul class="list-unstyled" style="margin-bottom: 0px">
+            <li *ngFor="let userGroup of item.userGroups">
+              <a>{{userGroup.name}}</a>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
+            <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
+            <span i18n="@@permission_scheme-permission_schemes-button-edit_permission">Edit Permission</span>
+          </button>
+          <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="copy(item)" i18n="@@permission_scheme-permission_schemes-a-copy">Copy</a>
+            <a class="dropdown-item" (click)="assignToUserGroups(item)" i18n="@@permission_scheme-permission_schemes-a-assign_to_user_groups">Assign to the user groups</a>
+            <a class="dropdown-item" *ngIf="canDeletePermissionScheme(item)" (click)="deletePermissionScheme(item)" i18n="@@permission_scheme-list-delete">Delete permission scheme</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </app-dg>
+</app-card>

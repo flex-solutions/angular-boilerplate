@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <!-- Nav Bar -->
+      <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
+        <source>Change Password</source>
+        <target>Đổi Mật Khẩu</target>
+      </trans-unit>
+      <trans-unit id="layout-navbar-anchor-logout" datatype="html">
+        <source>Sign Out</source>
+        <target>Đăng Xuất</target>
+      </trans-unit>
+      <trans-unit id="layout-navbar-label-notification" datatype="html">
+        <source>You have {{messages.length}} new notifications</source>
+        <target>Bạn có {{messages.length}} thông báo mới trong phiên làm việc</target>
+      </trans-unit>
+
+      <!-- Side Bar -->
+      <trans-unit id="layout-sidebar-anchor-demo" datatype="html">
+        <source>Demo</source>
+        <target>Demo</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
+        <source>User Management</source>
+        <target>Quản Lý User</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
+        <source>User Management</source>
+        <target>Quản Lý Nhóm User</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
+        <source>Permission Management</source>
+        <target>Quản Lý Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+
+      <!-- Modal -->
+      <trans-unit id="modal-confirm-submit-button" datatype="html">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="modal-confirm-cancel-button" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+
+      <!--Datagrid-->
+      <trans-unit id="dg-entries-info" datatype="html">
+        <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
+        <target>Hiển thị từ dòng {{currentPageStartEntry}} tới dòng {{currentPageEndEntry}} của {{totalItems}} dòng</target>
+      </trans-unit>
+      <trans-unit id="dg-show-label" datatype="html">
+        <source>Show</source>
+        <target>Hiển thị</target>
+      </trans-unit>
+      <trans-unit id="dg-entries-label" datatype="html">
+        <source>entries</source>
+        <target>dòng</target>
+      </trans-unit>
+      <trans-unit id="dg-default-search-placeholder" datatype="html">
+        <source>Search by...</source>
+        <target>Tìm kiếm với...</target>
+      </trans-unit>
+
+      <!--Pagination-->
+      <trans-unit id="pagination-first-label" datatype="html">
+        <source>First</source>
+        <target>Trang đầu</target>
+      </trans-unit>
+      <trans-unit id="pagination-last-label" datatype="html">
+        <source>Last</source>
+        <target>Trang cuối</target>
+      </trans-unit>
+      <trans-unit id="pagination-previous-label" datatype="html">
+        <source>Previous</source>
+        <target>Trang trước</target>
+      </trans-unit>
+      <trans-unit id="pagination-next-label" datatype="html">
+        <source>Next</source>
+        <target>Trang sau</target>
+      </trans-unit>
+
+      <!--Create user-->
+      <trans-unit id="user-create_user-h4-create_new_user_title" datatype="html">
+        <source>Create New User</source>
+        <target>Tạo User Mới</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-h4-create_new_user_description" datatype="html">
+        <source>Create a new user account to access SNOB CMS</source>
+        <target>Tạo user mới truy cập hệ thống SNOB CMS</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-email_field" datatype="html">
+        <source>Email</source>
+        <target>Địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-fullname_field" datatype="html">
+        <source>Full name</source>
+        <target>Tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-username_field" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-password_field" datatype="html">
+        <source>Password</source>
+        <target>Mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-create_another_field" datatype="html">
+        <source>Create another</source>
+        <target>Tạo user khác</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-email_place_holder" datatype="html">
+        <source>Enter email</source>
+        <target>Nhập địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-fullname_place_holder" datatype="html">
+        <source>Enter full name</source>
+        <target>Nhập tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-username_place_holder" datatype="html">
+        <source>Enter username</source>
+        <target>Nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-input-password_place_holder" datatype="html">
+        <source>Enter password if required</source>
+        <target>Nhập mật khẩu nếu cần thiết</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-div-password_tooltip" datatype="html">
+        <source>If you do not enter a password, one will be generated automatically</source>
+        <target>Nếu bạn không nhập mật khẩu, hệ thống sẽ tự động tạo</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireEmail" datatype="html">
+        <source>Please provide email address</source>
+        <target>Vui lòng cung cấp địa chỉ email </target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalidEmail" datatype="html">
+        <source>Email address is invalid</source>
+        <target>Địa chỉ email không đúng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueEmail" datatype="html">
+        <source>Email address {{0}} has already been taken</source>
+        <target>Địa chỉ email {{0}} đã được sử dụng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireFullname" datatype="html">
+        <source>Please provide full name</source>
+        <target>Vui lòng cung cấp tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireUserName" datatype="html">
+        <source>Please provide username</source>
+        <target>Vui lòng nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_uniqueUserName" datatype="html">
+        <source>Username {{0}} has already been taken</source>
+        <target>Tên đăng nhập {{0}} đã được sử dụng</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-notification-create_user_successfully" datatype="html">
+        <source>Create user successfully</source>
+        <target>Tạo user thành công </target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-branchId_field" datatype="html">
+        <source>Branch</source>
+        <target>Chi nhánh</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_requireBranch" datatype="html">
+        <source>Please select branch</source>
+        <target>Vui lòng chọn một chi nhánh cho user</target>
+      </trans-unit>
+      <!--End create user-->
+
+      <!--Edit user-->
+      <trans-unit id="user-edit_user-h4-edit_user_title" datatype="html">
+        <source>Edit User</source>
+        <target>Sửa User</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-h4-edit_user_description" datatype="html">
+        <source>Edit access information of an user account</source>
+        <target>Sửa thông tin truy cập của user</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-label-is_active" datatype="html">
+        <source>Is Active</source>
+        <target>Cho phép đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-button-update" datatype="html">
+        <source>Update</source>
+        <target>Cập Nhật</target>
+      </trans-unit>
+      <trans-unit id="user-edit_user-notification-edit_user_successfully" datatype="html">
+        <source>Edit user successfully</source>
+        <target>Cập nhật user thành công</target>
+      </trans-unit>
+      <!--End edit user-->
+
+      <!--Login-->
+      <trans-unit id="account-login-input-username_place_holder" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="account-login-input-password_place_holder" datatype="html">
+        <source>Password</source>
+        <target>Mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-login-paragraph-copyright" datatype="html">
+        <source>Copyright © 2018 SNOB. All rights reserved.</source>
+        <target>Bản quyền © 2018 SNOB. Đã đăng ký bản quyền.</target>
+      </trans-unit>
+      <trans-unit id="account-login-button-sign_in" datatype="html">
+        <source>SIGN IN</source>
+        <target>ĐĂNG NHẬP</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-emptyUsername" datatype="html">
+        <source>Please enter your username</source>
+        <target>Vui lòng nhập tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-emptyPassword" datatype="html">
+        <source>Please enter your password</source>
+        <target>Vui lòng nhập mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-incorrectUsernamePassowrd" datatype="html">
+        <source>Username or password is incorrect. You have {{0}} login attempts remain.</source>
+        <target>Tên đăng nhập hoặc mật khẩu không chính xác. Bạn còn lại {{0}} lần đăng nhập.</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-blockedAccount" datatype="html">
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
+        <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để
+          mở khóa.</target>
+      </trans-unit>
+      <trans-unit id="account-login-validation-invalidRecaptcha" datatype="html">
+        <source>Recaptcha is invalid. Please make sure that you are not a robot.</source>
+        <target>Vui lòng đảm bảo bạn không phải là robot.</target>
+      </trans-unit>
+      <!--End login-->
+
+      <!-- Notification -->
+      <trans-unit id="notification-browser-title-success" datatype="html">
+        <source>Success</source>
+        <target>Thành Công</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-info" datatype="html">
+        <source>Info</source>
+        <target>Thông Báo</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-warning" datatype="html">
+        <source>Warning</source>
+        <target>Cảnh Báo</target>
+      </trans-unit>
+      <trans-unit id="notification-browser-title-error" datatype="html">
+        <source>Error</source>
+        <target>Lỗi</target>
+      </trans-unit>
+      <!-- End Notification -->
+
+      <!-- User detail -->
+      <trans-unit id="user-detail-view-user-detail" datatype="html">
+        <source>View User Detail</source>
+        <target>Xem Thông Tin User</target>
+      </trans-unit>
+      <trans-unit id="user-detail-edit-btn" datatype="html">
+        <source>Edit User</source>
+        <target>Sửa User</target>
+      </trans-unit>
+      <trans-unit id="user-detail-user-statistics" datatype="html">
+        <source>User Statistics</source>
+        <target>Thống Kê Hoạt Động</target>
+      </trans-unit>
+      <trans-unit id="user-detail-login-count" datatype="html">
+        <source>Login Count :</source>
+        <target>Số lần đăng nhập :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-last-login" datatype="html">
+        <source>Last Login :</source>
+        <target>Lần cuối đăng nhập :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-previous-login" datatype="html">
+        <source>Previous Login :</source>
+        <target>Lần đăng nhập trước :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-last-failed-login" datatype="html">
+        <source>Last Failed Login :</source>
+        <target>Lần cuối đăng nhập thất bại :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-current-failed-logins" datatype="html">
+        <source>Current Failed Logins :</source>
+        <target>Lần đăng nhập thất bại hiện tại :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-total-failed-login" datatype="html">
+        <source>Total Failed Login :</source>
+        <target>Tổng số lần đăng nhập thất bại :</target>
+      </trans-unit>
+      <trans-unit id="user-detail-change-user-group" datatype="html">
+        <source>Change user group</source>
+        <target>Đổi nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user-detail-delete-user" datatype="html">
+        <source>Delete user</source>
+        <target>Xóa user</target>
+      </trans-unit>
+      <!-- End User detail -->
+
+      <!-- Group user modal -->
+      <trans-unit id="group-user-modal-ok" datatype="html">
+        <source>Ok</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-confirm" datatype="html">
+        <source>Confirm</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="user-detail-delete-message" datatype="html">
+        <source>User "{{userdetail.username}}" will be permanently deleted. Are you sure want to delete?</source>
+        <target>Người dùng "{{userdetail.username}}" sẽ bị xóa vĩnh viễn. Bạn chắc chắn muốn xóa?</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-message" datatype="html">
+        <source>Select other group for user "{{groupInfo.user.username}}"</source>
+        <target>Thay đổi nhóm cho người dùng "{{groupInfo.user.username}}"</target>
+      </trans-unit>
+      <trans-unit id="group-user-modal-search-place-holder" datatype="html">
+        <source>Search by group name, permission sheme name</source>
+        <target>Tìm kiếm với nhóm user, kế hoạch phân quyền</target>
+      </trans-unit>
+      <!-- End group user modal -->
+
+      <!-- Users -->
+      <trans-unit id="users-list" datatype="html">
+        <source>User List</source>
+        <target>Danh Sách User</target>
+      </trans-unit>
+      <trans-unit id="users-name" datatype="html">
+        <source>Users</source>
+        <target>Người dùng</target>
+      </trans-unit>
+      <trans-unit id="users-create-user" datatype="html">
+        <source>Create User</source>
+        <target>Tạo mới</target>
+      </trans-unit>
+      <trans-unit id="users-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Tên Đầy Đủ</target>
+      </trans-unit>
+      <trans-unit id="users-username" datatype="html">
+        <source>Username</source>
+        <target>Tên Đăng Nhập</target>
+      </trans-unit>
+      <trans-unit id="users-login-details" datatype="html">
+        <source>Login Details</source>
+        <target>Thông Tin Đăng Nhập</target>
+      </trans-unit>
+      <trans-unit id="users-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Nhóm User</target>
+      </trans-unit>
+      <trans-unit id="users-status" datatype="html">
+        <source>Status</source>
+        <target>Tình Trạng</target>
+      </trans-unit>
+      <trans-unit id="users-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="users-count" datatype="html">
+        <source>Count: </source>
+        <target>Số lần: </target>
+      </trans-unit>
+      <trans-unit id="users-last" datatype="html">
+        <source>Last: </source>
+        <target>Lần cuối: </target>
+      </trans-unit>
+      <trans-unit id="users-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="users-permission-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Cấu trúc phân quyền</target>
+      </trans-unit>
+      <trans-unit id="users-edit-user-group" datatype="html">
+        <source>Edit user groups</source>
+        <target>Sửa nhóm user</target>
+      </trans-unit>
+      <trans-unit id="users-list-tbl-search-label" datatype="html">
+        <source>Search username, fullname or email</source>
+        <target>Tìm kiếm với tên đăng nhập, tên đầy đủ hoặc email</target>
+      </trans-unit>
+      <trans-unit id="users-list-title-confirm-dialog" datatype="html">
+        <source>Confirm</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="users-list-title-change-group" datatype="html">
+        <source>Change user group</source>
+        <target>Thay đổi nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user-detail-change-group-message" datatype="html">
+        <source>Select other group for user "{{userdetail.username}}"</source>
+        <target>Thay đổi nhóm cho người dùng "{{userdetail.username}}"</target>
+      </trans-unit>
+      <!-- Users -->
+
+      <!--Logout-->
+      <trans-unit id="account-logout-dialog-confirm_title" datatype="html">
+        <source>Confirm</source>
+        <target>Xác Nhận</target>
+      </trans-unit>
+      <trans-unit id="account-logout-dialog-confirm_message" datatype="html">
+        <source>Are you sure you want to log out SNOB CMS?</source>
+        <target>Bạn có chắc muốn đăng xuất SNOB CMS?</target>
+      </trans-unit>
+      <!--End Logout-->
+
+      <!--Delete user-->
+      <trans-unit id="users-delete-dialog-confirm_message" datatype="html">
+        <source>User "{{0}}" will be permanently deleted. Are you sure you want to delete?</source>
+        <target>User "{{0}}" sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="users-delete-dialog-notification_message" datatype="html">
+        <source>Delete user {{0}} successfully</source>
+        <target>Xóa user {{0}} thành công</target>
+      </trans-unit>
+      <!--End Delete user-->
+
+      <!-- Global -->
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+
+      <!-- User Group -->
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
+        <source>Create User Group</source>
+        <target>Tạo nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_new_user_group_desc" datatype="html">
+        <source>Create a new user group with basic information</source>
+        <target>Tạo nhóm user với những thông tin cơ bản</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_user_group_title" datatype="html">
+        <source>Update User Group</source>
+        <target>Cập nhật nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-update_user_group_desc" datatype="html">
+        <source>Update user group with basic information</source>
+        <target>Cập nhật nhóm User với thông tin cơ bản</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_label" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-group_name_field_placeholder" datatype="html">
+        <source>Enter Group Name</source>
+        <target>Nhập tên nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_label" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-description_field_placeholder" datatype="html">
+        <source>Enter Description</source>
+        <target>Nhập vào mô tả</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_another_field_label" datatype="html">
+        <source>Create another</source>
+        <target>Tạo nhóm user khác</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_required" datatype="html">
+        <source>Please provide group name</source>
+        <target>Vui lòng nhập tên nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-error_group_name_unique" datatype="html">
+        <source>Group "{{0}}" is duplicated</source>
+        <target>Nhóm user "{{0}}" đã có</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-create_group_name_ok" datatype="html">
+        <source>Create user group {{0}} successfully</source>
+        <target>Tạo nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-edit_group_name_ok" datatype="html">
+        <source>Update user group {{0}} successfully</source>
+        <target>Cập nhật nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="user_groups-create_user_group-delete_group_name_ok" datatype="html">
+        <source>Delete user group {{0}} successfully</source>
+        <target>Xoá nhóm user {{0}} thành công</target>
+      </trans-unit>
+      <!--Usergroup list-->
+      <trans-unit id="user_groups-list-tbl-title" datatype="html">
+        <source>User Groups</source>
+        <target>Nhóm User	</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
+        <source>Create User Group</source>
+        <target>Tạo Nhóm User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Tìm kiếm với tên nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-user-count" datatype="html">
+        <source>Users</source>
+        <target>SL User</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-members" datatype="html">
+        <source>Add members</source>
+        <target>Thêm thành viên</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-change-permission-scheme" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Đổi kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-edit-group-info" datatype="html">
+        <source>Edit group information</source>
+        <target>Sửa thông tin nhóm</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-tbl-actions-del-user-group" datatype="html">
+        <source>Delete user group</source>
+        <target>Xoá nhóm user</target>
+      </trans-unit>
+      <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
+        <source>
+        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        </source>
+        <target>
+        Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có chắc muốn tiếp tục?
+        </target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
+        <source>Change permission scheme</source>
+        <target>Đổi kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-sub-title" datatype="html">
+        <source>Select other permission scheme for user group "{{userGroup.name}}"</source>
+        <target>Chọn một kết hoạch phân quyền khác cho nhóm user "{{userGroup.name}}"</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-search-holder" datatype="html">
+        <source>Search by permission scheme name</source>
+        <target>Tìm kiếm với tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="user_groups-list-change-permission-scheme-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+
+      <!--Edit usergroup membership-->
+      <trans-unit id="edit-members-title" datatype="html">
+        <source>Bulk edit group members</source>
+        <target>Chỉnh sửa thành viên nhóm</target>
+      </trans-unit>
+      <trans-unit id="edit-members-sub-title" datatype="html">
+        <source>This page allows you to edit the user memberships for group {{usergroup.name}}</source>
+        <target>Trang này cho phép bạn chỉnh sửa thành viên cho nhóm {{usergroup.name}}</target>
+      </trans-unit>
+      <trans-unit id="edit-members-search-label" datatype="html">
+        <source>Search by username, full name and email</source>
+        <target>Tìm kiếm với tên đăng nhập, tên đầy đủ và email</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-username" datatype="html">
+        <source>Username</source>
+        <target>Tên đăng nhập</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-fullname" datatype="html">
+        <source>Full Name</source>
+        <target>Tên đầy đủ</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="edit-members-tbl-usergroup" datatype="html">
+        <source>User Group</source>
+        <target>Nhóm hiện tại</target>
+      </trans-unit>
+      <trans-unit id="edit-members-add-btn" datatype="html">
+        <source>ADD</source>
+        <target>CHỌN</target>
+      </trans-unit>
+      <trans-unit id="edit-members-selected-count" datatype="html">
+        <source>Selected {{selectedUserCount}} user(s) for group {{usergroup.name}}</source>
+        <target>Chọn {{selectedUserCount}} thành viên cho nhóm {{usergroup.name}}</target>
+      </trans-unit>
+      <trans-unit id="edit-members-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="edit-members-success" datatype="html">
+        <source>The user memberships for group {{0}} are saved successfully</source>
+        <target>Điều chỉnh thành viên nhóm {{0}} thành công</target>
+      </trans-unit>
+
+      <!-- Recovery Password -->
+      <trans-unit id="account-recovery-anchor-forgot-password" datatype="html">
+        <source>Forgot Password</source>
+        <target>Quên mật khẩu?</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-label-recovery-password" datatype="html">
+        <source>Recovery Password</source>
+        <target>Phục Hồi Mật Khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-label-enter-email" datatype="html">
+        <source>Enter your email address below and we'll send you a secure link to reset your password</source>
+        <target>Nhập địa chỉ email của bạn vào bên dưới, hệ thống sẽ gởi bạn một liên kết bảo mật để phục hồi mật khẩu</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-input-email-address" datatype="html">
+        <source>Email address</source>
+        <target>Địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-button-back" datatype="html">
+        <source>BACK</source>
+        <target>VỀ TRƯỚC</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-button-reset" datatype="html">
+        <source>RESET PASSWORD</source>
+        <target>PHỤC HỒI MẬT KHẨU</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-validation-email-empty" datatype="html">
+        <source>Please provide email address</source>
+        <target>Vui lòng cung cấp địa chỉ email</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-validation-email-invalid" datatype="html">
+        <source>Email address is invalid</source>
+        <target>Địa chỉ email không đúng</target>
+      </trans-unit>
+      <trans-unit id="account-recovery-label-send-success" datatype="html">
+        <source>A password reset email was sent successfully</source>
+        <target>Đã gởi email phục hồi mật khẩu thành công</target>
+      </trans-unit>
+      <!-- End Revovery Password -->
+
+      <!-- Permission scheme -->
+      <trans-unit id="permissiom-scheme-create-search" datatype="html">
+        <source>Search by business name</source>
+        <target>Tìm với tên nghiệp vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-input-name" datatype="html">
+        <source>Scheme Name</source>
+        <target>Tên Kế Hoạch</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-input-name-placeholder" datatype="html">
+        <source>Enter permission scheme name</source>
+        <target>Nhập tên kế hoạch</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-a-permission" datatype="html">
+        <source>Permission</source>
+        <target>Quyền hạn</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-a-information" datatype="html">
+        <source>Information</source>
+        <target>Thông Tin</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Sửa kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Tạo kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
+        <source>Type a name and choose which the permissions to include in this scheme</source>
+        <target>Nhập tên và chọn quyền hạn cho kế hoạch phân quyền này</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+        <source>Business</source>
+        <target>Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
+        <source>Business Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
+        <source>Data Scope</source>
+        <target>Phạm Vi Dữ Liệu</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-insert" datatype="html">
+        <source>Insert</source>
+        <target>Thêm</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+        <source>Update</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-fullcontrol" datatype="html">
+        <source>Full Control</source>
+        <target>Toàn Quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-add" datatype="html">
+        <source>ADD</source>
+        <target>THÊM</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-createanother" datatype="html">
+        <source>Create another</source>
+        <target>Tạo kế hoạch khác</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-button-remove" datatype="html">
+        <source>Remove</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-createsuccessfully" datatype="html">
+        <source>Created the permission scheme successfully</source>
+        <target>Tạo kế hoạch phân quyền {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-notification-editsuccessfully" datatype="html">
+        <source>Updated the permission scheme successfully</source>
+        <target>Cập nhật hoạch phân quyền {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-create-error-namerequired" datatype="html">
+        <target>Vui lòng nhập tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
+        <source>Full</source>
+        <target>Tất cả</target>
+      </trans-unit>
+      <trans-unit id="permissiom-scheme-datascope-branch" datatype="html">
+        <source>Branch</source>
+        <target>Chi nhánh</target>
+      </trans-unit>
+
+      <!-- Permission Schemes -->
+      <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
+        <source>Permission Schemes</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-button-create_permissions" datatype="html">
+        <source>Create Permission Scheme</source>
+        <target>Tạo Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-search-label" datatype="html">
+        <source>Search by permission sheme name</source>
+        <target>Tìm kiếm với tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Tên Kế Hoạch</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-user_groups_header" datatype="html">
+        <source>User Groups</source>
+        <target>Nhóm User</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-tbl-actions_header" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-a-copy" datatype="html">
+        <source>Copy</source>
+        <target>Copy</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-a-assign_to_user_groups" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Gán cho các nhóm users</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
+        <source>Edit Permission Scheme</source>
+        <target>Sửa phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-list-delete" datatype="html">
+        <source>Delete permission scheme</source>
+        <target>Xoá kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-confirm" datatype="html">
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
+        <target>Kế hoạch phân quyền "{{0}}" sẽ bị xoá vĩnh viễn và tất cả các nhóm user của kế hoạch này sẽ được gán cho kế hoạch phân quyền "default-user-permission-scheme". Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="permission_scheme-delete-success" datatype="html">
+        <source>Deleted scheme "{{0}}" successfully</source>
+        <target>Xoá kế hoạch phân quyền "{{0}}" thành công</target>
+      </trans-unit>
+      <!-- End Permission Schemes -->
+
+      <!-- Copy Permission Schemes -->
+      <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
+        <source>Copy Permission Scheme</source>
+        <target>Sao chép kế hoạch</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_description" datatype="html">
+        <source>You can clone "{{0}}" to a new one</source>
+        <target>Bạn có thể sao chép kế hoạch "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-label-scheme_name" datatype="html">
+        <source>Scheme name</source>
+        <target>Tên kế hoạch</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-copy-validation-scheme_name" datatype="html">
+        <source>Please provide the scheme name</source>
+        <target>Vui lòng nhập tên kế hoạch</target>
+      </trans-unit>
+      <!-- END Permission Schemes -->
+
+      <!-- Assign the user group to permission schemes -->
+      <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
+        <source>Assign to the user groups</source>
+        <target>Gán cho các nhóm users</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-assign_description" datatype="html">
+        <source>Select the user group to assign to the permission scheme "{{0}}"</source>
+        <target>Chọn nhóm user gán vào kế hoạch phần quyền "{{0}}"</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-group_name_header" datatype="html">
+        <source>Group Name</source>
+        <target>Tên Nhóm</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-permission_scheme_header" datatype="html">
+        <source>Permission Scheme</source>
+        <target>Kế Hoạch Phân Quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-notification-assign_successful" datatype="html">
+        <source>Assigned the user groups to "{{0}}" successfully</source>
+        <target>Gán các nhóm user cho kế hoạch phân quyền "{{0}}" thành công</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-place_holder-search_description" datatype="html">
+        <source>Search by group name, permission scheme name</source>
+        <target>Tìm kiếm với tên nhóm, tên kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-assign-permission-label-count_selected_group" datatype="html">
+        <source>Selected {{0}} groups(s)</source>
+        <target>Đã chọn {{0}} nhóm</target>
+      </trans-unit>
+      <!-- END Assign the user group to permission schemes -->
+
+      <!--START Permission Scheme Detail Dialog-->
+      <trans-unit id="permission-scheme-detail-dlg-title" datatype="html">
+        <source>View permission scheme detail</source>
+        <target>Chi tiết kế hoạch phân quyền</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-dlg-sub-title" datatype="html">
+        <source>View permission detail of schema {{scheme.name}}</source>
+        <target>Xem chi tiết kế hoạch phân quyền {{scheme.name}}</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-dlg-search-holder" datatype="html">
+        <source>Search by module name</source>
+        <target>Tìm kiếm với tên nghiệp vụ</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-module-name" datatype="html">
+        <source>Module Name</source>
+        <target>Tên Nghiệp Vụ</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-data-scope" datatype="html">
+        <source>Data Scope</source>
+        <target>Phạm Vi Dữ Liệu</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-insert" datatype="html">
+        <source>Insert</source>
+        <target>Thêm</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-update" datatype="html">
+        <source>Update</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="permission-scheme-detail-tbl-full-control" datatype="html">
+        <source>Full Control</source>
+        <target>Toàn Quyền</target>
+      </trans-unit>
+      <!--END Permission Scheme Detail Dialog-->
+    </body>
+  </file>
+</xliff>

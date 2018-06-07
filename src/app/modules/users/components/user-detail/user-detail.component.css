@@ -1,0 +1,35 @@
+.none-underline {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.none-lineheight {
+  line-height: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1800px) {
+  .none-underline {
+    margin-left: 100px;
+  }
+
+  .dropdown-menu.show {
+    margin-right: 37px;
+  }
+}
+
+.custom-card-body {
+  margin-top: -39.7px;
+}
+
+.action-container {
+  margin-left: auto !important;
+  margin-right: 0px;
+}
+
+.dropdown-container {
+  margin-left: 5px;
+}

@@ -1,0 +1,11 @@
+<ol class="breadcrumb breadcrumb-custom">
+  <li class="breadcrumb-item">
+    <a routerLink="">Home</a>
+  </li>
+  <li class="breadcrumb-item" *ngIf="!activeBreadcrumb">
+  </li>
+  <li *ngFor="let breadcrumb of innerBreadcrumbs" class="breadcrumb-item">
+    <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
+  </li>
+  <li *ngIf="activeBreadcrumb" class="active breadcrumb-item" aria-current="page">{{activeBreadcrumb.label}}</li>
+</ol>

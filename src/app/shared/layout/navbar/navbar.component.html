@@ -1,0 +1,29 @@
+<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+  <a class="navbar-brand brand-logo" routerLink=""></a>
+  <a class="navbar-brand brand-logo-mini" routerLink=""></a>
+</div>
+<div class="navbar-menu-wrapper d-flex align-items-center">
+  <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+    <span class="mdi mdi-menu"></span>
+  </button>
+  <ul class="navbar-nav navbar-nav-right">
+    <app-notification></app-notification>
+    <li class="nav-item dropdown d-none d-xl-inline-block">
+      <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        <span class="mr-3">Hello, {{currentUser.fullname}} !</span>
+        <img class="img-xs rounded-circle" src="{{currentUser.avatar}}" alt="Profile image">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+        <a class="dropdown-item mt-2" i18n="@@layout-navbar-anchor-changepassword">
+          Change Password
+        </a>
+        <a class="dropdown-item" i18n="@@layout-navbar-anchor-logout" (click)="signOut()">
+          Sign Out
+        </a>
+      </div>
+    </li>
+  </ul>
+  <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+    <span class="icon-menu"></span>
+  </button>
+</div>

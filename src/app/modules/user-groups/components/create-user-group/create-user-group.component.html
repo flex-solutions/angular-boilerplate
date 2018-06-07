@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-2 grid-margin stretch-card">
+  </div>
+  <div class="col-md-8 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" *ngIf="!editMode" i18n="@@user_groups-create_user_group-create_new_user_group_title">Create User Group</h4>
+        <h4 class="card-title" *ngIf="editMode" i18n="@@user_groups-create_user_group-edit_user_group_title">Update User Group</h4>
+        <p class="card-description" *ngIf="!editMode" i18n="@@user_groups-create_user_group-create_new_user_group_desc">
+          Create a new user group with basic information
+        </p>
+        <p class="card-description" *ngIf="editMode" i18n="@@user_groups-create_user_group-update_user_group_desc">
+          Update user group with basic information
+        </p>
+        <form class="cmxform" id="createUserGroupForm" [formGroup]="formGroup">
+          <fieldset>
+            <!-- Group Name field -->
+            <div class="form-group">
+              <label for="groupname" i18n="@@user_groups-create_user_group-group_name_field_label">Group Name </label>
+              <label class="require">*</label>
+              <input [(ngModel)]="userGroup.name" required id="groupname" class="form-control" formControlName="groupname" type="text"
+                i18n-placeholder="@@user_groups-create_user_group-group_name_field_placeholder" [ngClass]="{'has-danger': groupname.invalid && (groupname.dirty || groupname.touched) }"
+                placeholder="Enter Group Name">
+              <div class="form-control-feedback" *ngFor="let error of errors.groupname">
+                <p *ngIf="groupname.hasError(error.type) && (groupname.dirty || groupname.touched)" class="error mt-2 text-danger">{{getMessage(error.message, groupname.value)}}</p>
+              </div>
+            </div>
+
+            <!-- Description field -->
+            <div class="form-group">
+              <label for="description" i18n="@@user_groups-create_user_group-description_field_label">Description </label>
+              <textarea [(ngModel)]="userGroup.description" id=description class=form-control formControlName="description" type="text"
+                i18n-placeholder="@@user_groups-create_user_group-description_field_placeholder" placeholder="Enter description"></textarea>
+            </div>
+
+            <!-- Create another field -->
+            <div class="form-group" *ngIf="!editMode">
+              <div class="form-check form-check-flat">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input form-control" formControlName="createAnother">
+                  <i class="input-helper"></i>
+                  <label class="form-check-label" i18n="@@user_groups-create_user_group-create_another_field_label">Create another</label>
+                </label>
+              </div>
+            </div>
+
+            <!-- Form buttons -->
+            <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="groupname.errors">Submit</button>
+            <button class="btn btn-light" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2 grid-margin stretch-card">
+  </div>
+</div>
