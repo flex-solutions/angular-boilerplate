@@ -68,6 +68,7 @@ export class EditUserComponent extends UserModificationBase {
       );
 
       this.notificationService.showSuccess(msg);
+      this.location.back();
     });
   }
 
