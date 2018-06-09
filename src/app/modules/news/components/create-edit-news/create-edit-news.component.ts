@@ -8,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { getBase64 } from '../../../../utilities/convert-image-to-base64';
 import { User } from '../../../../shared/models/user.model';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
-import { Router } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { NewsType } from '../../../../shared/enums/news-type.enum';
 
@@ -22,15 +22,62 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   isEdit : boolean = false;
   isPublish: boolean = false;
   news: News = new News();
+  newsId: string;
   constructor(
-    // fb: FormBuilder,
+    private formbuilder: FormBuilder,
     private newsService: NewsService,
     translateService: TranslateService,
     private notificationService: NotificationService,
+    private activeRoute: ActivatedRoute,
     private router: Router,
     private location: Location
   ) {
     super();
+  }
+
+  ngOnInit() {
+    this.activeRoute.params.subscribe((params: Params) => {
+      this.newsId = params['id'] ? params['id'] : '';
+      this.isEdit = params['id'] ? true : false;
+      this.initForm();
+    });
+    this.onCreateForm();
+  }
+
+  private initForm() {
+    if (this.isEdit) {
+      this.newsService.getById(this.newsId).subscribe(
+        (value: News) => {
+          if (value) {
+            this.news = value;
+          } else {
+            // Navigate to previous if user group not found
+            this.location.back();
+          }
+        },
+        error => this.notificationService.showError(error)
+      );
+    }
+  }
+
+  get title() {
+    return this.formGroup.get('title');
+  }
+
+  get content() {
+    return this.formGroup.get('content');
+  }
+
+  get banner() {
+    return this.formGroup.get('banner');
+  }
+
+  protected onCreateForm() {
+    this.formGroup = this.formbuilder.group({
+      title: ['', [Validators.required]],
+      banner: ['', [Validators.required]],
+      content: ['', [Validators.required]]
+    });
   }
 
   protected onSubmit() {

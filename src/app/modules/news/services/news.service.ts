@@ -25,8 +25,8 @@ export class NewsService extends AbstractRestService {
   remove(news: News) {
   }
 
-  findOne(userId: string) {
-    return this.get(userId);
+  public getById(_id: string): Observable<News> {
+    return this.get(_id);
   }
 
   getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
@@ -37,8 +37,4 @@ export class NewsService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
-  // Handle get user by id.
-  getUserById(newId: string): Observable<News> {
-    return this.get(`${newId}/combinegroupname`);
-  }
 }

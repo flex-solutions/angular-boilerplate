@@ -6,4 +6,5 @@ export class News {
     banner: string;
     content: string;
     status: NewsType = NewsType.New ;
+    viewCount: number = 0;
 }
