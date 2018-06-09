@@ -20,6 +20,10 @@ const routes: Routes = [
     {
       path: 'permission-schemes',
       loadChildren: 'app/modules/permission-scheme/permission-scheme.module#PermissionSchemeModule',
+    },
+    {
+      path: 'views',
+      loadChildren: 'app/modules/views/views.module#ViewsModule', // Lazy loading views module
     }]
   },
   {

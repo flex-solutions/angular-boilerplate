@@ -38,6 +38,10 @@
         <source>Permission Schemes</source>
         <target>Kế Hoạch Phân Quyền</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-view-management" datatype="html">
+        <source>View Management</source>
+        <target>Quản Lý Tin Tức</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-create-edit-view',
   templateUrl: './create-edit-view.component.html',
 })
