@@ -38,8 +38,8 @@
         <source>Permission Schemes</source>
         <target>Kế Hoạch Phân Quyền</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-view-management" datatype="html">
-        <source>View Management</source>
+      <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
+        <source>News Management</source>
         <target>Quản Lý Tin Tức</target>
       </trans-unit>
 
@@ -905,36 +905,36 @@
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
 
-      <!--START View Create Edit Page -->
-      <trans-unit id="view-create_edit_view-h4-create_news" datatype="html">
+      <!--START News Create Edit Page -->
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
         <source>Create news</source>
         <target>TODO </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-h4-create_news_description" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-create_news_description" datatype="html">
         <source>This page allows you creating a news and pulishing it if you want</source>
         <target>TODO</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-h4-edit_news" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-edit_news" datatype="html">
         <source>Edit news</source>
         <target>TODO</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-h4-edit_news_description" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-edit_news_description" datatype="html">
         <source>This page allows you edit a news</source>
         <target>TODO</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-label-title_field" datatype="html">
+      <trans-unit id="news-create_edit_news-label-title_field" datatype="html">
         <source>Title</source>
         <target>TODO</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-input-title_place_holder" datatype="html">
+      <trans-unit id="news-create_edit_news-input-title_place_holder" datatype="html">
         <source>Enter title</source>
         <target>TODO</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-label-banner_field" datatype="html">
+      <trans-unit id="news-create_edit_news-label-banner_field" datatype="html">
         <source>Banner</source>
         <target>TODO</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-input-banner_place_holder" datatype="html">
+      <trans-unit id="news-create_edit_news-input-banner_place_holder" datatype="html">
         <source>Enter banner</source>
         <target>TODO</target>
       </trans-unit>
@@ -958,7 +958,7 @@
         <source>Cancel</source>
         <target>TODO</target>
       </trans-unit>
-      <!--END View Create Edit Page-->
+      <!--END News Create Edit Page-->
     </body>
   </file>
 </xliff>

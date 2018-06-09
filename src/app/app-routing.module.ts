@@ -22,8 +22,8 @@ const routes: Routes = [
       loadChildren: 'app/modules/permission-scheme/permission-scheme.module#PermissionSchemeModule',
     },
     {
-      path: 'views',
-      loadChildren: 'app/modules/views/views.module#ViewsModule', // Lazy loading views module
+      path: 'news',
+      loadChildren: 'app/modules/news/news.module#NewsModule', // Lazy loading views module
     }]
   },
   {

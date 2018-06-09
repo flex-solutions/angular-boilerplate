@@ -1,4 +1,4 @@
-import { View } from './../../../shared/models/view.model';
+import { News } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
@@ -7,29 +7,29 @@ import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.com
 
 
 @Injectable()
-export class ViewService extends AbstractRestService {
+export class NewsService extends AbstractRestService {
   protected controllerName: string;
   constructor(private exDialog: ExDialog) {
     super();
-    this.controllerName = 'views';
+    this.controllerName = 'news';
   }
 
-  create(view: View) {
-    return this.post('', view);
+  create(news: News) {
+    return this.post('', news);
   }
 
-  update(view: View) {
-    return this.put(view._id, view);
+  update(news: News) {
+    return this.put(news._id, news);
   }
 
-  remove(view: View) {
+  remove(news: News) {
   }
 
   findOne(userId: string) {
     return this.get(userId);
   }
 
-  getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<View[]> {
+  getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 
@@ -38,7 +38,7 @@ export class ViewService extends AbstractRestService {
   }
 
   // Handle get user by id.
-  getUserById(viewId: string): Observable<View> {
-    return this.get(`${viewId}/combinegroupname`);
+  getUserById(newId: string): Observable<News> {
+    return this.get(`${newId}/combinegroupname`);
   }
 }

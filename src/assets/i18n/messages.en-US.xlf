@@ -37,9 +37,9 @@
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-view-management" datatype="html">
-        <source>View Management</source>
-        <target>View Management</target>
+      <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
+        <source>News Management</source>
+        <target>News Management</target>
       </trans-unit>
 
       <!-- Modal -->
@@ -902,60 +902,60 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
-      <!--START View Create Edit Page -->
-      <trans-unit id="view-create_edit_view-h4-create_news" datatype="html">
+      <!--START News Create Edit Page -->
+      <trans-unit id="news-news-h4-create_news" datatype="html">
         <source>Create news</source>
         <target>Create news </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-h4-create_news_description" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-create_news_description" datatype="html">
         <source>This page allows you creating a news and pulishing it if you want</source>
         <target>This page allows you creating a news and pulishing it if you want</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-h4-edit_news" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-edit_news" datatype="html">
         <source>Edit news</source>
         <target>Edit news</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-h4-edit_news_description" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-edit_news_description" datatype="html">
         <source>This page allows you edit a news</source>
         <target>This page allows you edit a news</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-label-title_field" datatype="html">
+      <trans-unit id="news-create_edit_news-label-title_field" datatype="html">
         <source>Title</source>
         <target>Title</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-input-title_place_holder" datatype="html">
+      <trans-unit id="news-create_edit_news-input-title_place_holder" datatype="html">
         <source>Enter title</source>
         <target>Enter title</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-label-banner_field" datatype="html">
+      <trans-unit id="news-create_edit_news-label-banner_field" datatype="html">
         <source>Banner</source>
         <target>Banner</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-input-banner_place_holder" datatype="html">
+      <trans-unit id="news-create_edit_news-input-banner_place_holder" datatype="html">
         <source>Enter banner</source>
         <target>Enter banner</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-label-content_field" datatype="html">
+      <trans-unit id="news-create_edit_news-label-content_field" datatype="html">
         <source>Content</source>
         <target>Content</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-input-content_place_holder" datatype="html">
+      <trans-unit id="news-create_edit_news-input-content_place_holder" datatype="html">
         <source>Enter content</source>
         <target>Enter content</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-button-submit" datatype="html">
+      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
         <source>Submit</source>
         <target>Submit</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-button-submit_publish" datatype="html">
+      <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
         <source>Submit & publish</source>
         <target>Submit & publish</target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-button-cancel" datatype="html">
+      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
-      <!--END View Create Edit Page-->
+      <!--END News Create Edit Page-->
     </body>
   </file>
 </xliff>
