@@ -12,10 +12,8 @@ import { appVariables } from '../../../../app.constant';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {
-  errorMessage: { [key: string]: string } = {};
   branches: Branch[];
   selectedBranch: Branch;
-  protected genericValidator: GenericValidator;
   protected user: User;
   protected eventEmmiter = new EventEmitter();
 
@@ -106,7 +104,6 @@ export abstract class UserModificationBase extends AbstractFormComponent
   // Overload in base class to implement custom validation
   protected onValidate() {
     // Validate
-    this.errorMessage = this.genericValidator.validate(this.formGroup);
     this.validateBranch();
   }
 
