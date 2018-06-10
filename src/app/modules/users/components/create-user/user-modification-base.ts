@@ -74,16 +74,21 @@ export abstract class UserModificationBase extends AbstractFormComponent
     // Call service to get list branch
     this.branchService.getAll().subscribe(result => {
       this.branches = result;
-      // selected default branch
-      this.selectedBranch = this.branches.find(b => b.name === appVariables.defaultHOBranch);
-      if (this.selectedBranch) {
-        this.formGroup.patchValue({ branchId: this.selectedBranch });
-      }
+      this.selectDefaultBranch();
 
       this.eventEmmiter.emit('onBranchLoaded');
     });
   }
+
   protected abstract onCreateUserForm();
+
+  protected selectDefaultBranch() {
+    // selected default branch
+    this.selectedBranch = this.branches.find(b => b.name === appVariables.defaultHOBranch);
+    if (this.selectedBranch) {
+      this.formGroup.patchValue({ branchId: this.selectedBranch });
+    }
+  }
 
   getEmailValue(): string {
     return this.formGroup.get('email').value;
