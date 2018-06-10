@@ -1,0 +1,3 @@
+.sidebar .nav.sub-menu .nav-item .nav-link {
+    height: 52px !important; /* Ovrride style at line 22862 snobr.css. Value 52px is style of .nav-link, was define at line 22677 snobs.css */
+}
