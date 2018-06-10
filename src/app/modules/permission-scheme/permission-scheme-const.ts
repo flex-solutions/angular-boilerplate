@@ -26,7 +26,9 @@ const PermissionNavigationRoute = {
     LIST_PAGE: 'permission-schemes'
 };
 
+const DefaultSchemeName = ['default-admin-permission-scheme', 'default-user-permission-scheme'];
+
 export {
     IgnoreField, NotificationConst,
     SchemeCommonConst, SchemeField,
-    PermissionEndPoints, PermissionNavigationRoute };
+    PermissionEndPoints, PermissionNavigationRoute, DefaultSchemeName };
