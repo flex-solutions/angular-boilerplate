@@ -1,0 +1,44 @@
+<app-card title="Permission Schemes" i18n-title="@@list-news-title-news">
+  <div class="command-region">
+    <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreate()">
+      <i class="mdi mdi-plus"></i>
+      <span i18n="@@list-news-button-create-news">Create news</span>
+    </button>
+  </div>
+  <app-dg #dg searchLabel="Search by title, content" i18n-searchLabel="@@list-news-filter-placeholders"
+    (pageChanged)="onPageChanged($event)" [countFunction]="count">
+    <tr>
+      <th i18n="@@list-news-th-title" style="width: 15%">Title</th>
+      <th i18n="@@list-news-th-content" style="width: 30%">Content</th>
+      <th i18n="@@list-news-th-status">Status</th>
+      <th i18n="@@list-news-th-created-on">Created on</th>
+      <th i18n="@@list-news-th-published-on">Published on</th>
+      <th i18n="@@list-news-btn-actions">Actions</th>
+    </tr>
+    <tbody>
+      <tr  *ngFor="let item of items">
+        <td><p class="a-clickable pull-left">{{item.title}}</p></td>
+        <td class="cut-text">{{item.content}}
+        </td>
+        <td appNewStatus [status]="item.status"></td>
+        <td>{{item.create_date}}</td>
+        <td>{{item.publish_date}}</td>
+        <td>
+          <button type="button" class="btn btn-light btn-custom-css">
+            <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
+            <span i18n="@@list-news-btn-edit">Edit</span>
+          </button>
+          <button type="button" class="btn btn-light btn-custom-css"  appPublishButton [status]="item.status" >
+          </button>
+          <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-delete">Delete news</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </app-dg>
+</app-card>

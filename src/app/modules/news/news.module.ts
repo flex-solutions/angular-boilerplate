@@ -7,16 +7,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsModuleComponents } from './components';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
-//import { TinyMceModule } from 'angular-tinymce';
+import { NewsDirective } from './directives';
 
 @NgModule({
   imports: [
     CommonModule, NewsRoutingModule,
     FormsModule, ReactiveFormsModule,
-    UICommonModule,//TinyMceModule
+    UICommonModule,
   ],
   declarations: [
-    ...NewsModuleComponents
+    ...NewsModuleComponents,
+    ...NewsDirective
   ],
   providers: [NewsService],
 

@@ -3,4 +3,3 @@ export enum NewsType {
     Publish,
     Deactive
   }
-  

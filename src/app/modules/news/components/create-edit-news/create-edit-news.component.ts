@@ -19,8 +19,8 @@ import { NewsType } from '../../../../shared/enums/news-type.enum';
 })
 
 export class CreateEditNewsComponent extends AbstractFormComponent {
-  isEdit : boolean = false;
-  isPublish: boolean = false;
+  isEdit = false;
+  isPublish = false;
   news: News = new News();
   newsId: string;
   constructor(

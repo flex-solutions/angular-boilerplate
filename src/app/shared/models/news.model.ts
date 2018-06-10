@@ -1,10 +1,19 @@
-import { NewsType } from "../enums/news-type.enum";
+import { NewsType } from '../enums/news-type.enum';
 
-export class News {
+class News {
     _id: string;
     title: string;
     banner: string;
     content: string;
-    status: NewsType = NewsType.New ;
-    viewCount: number = 0;
+    status: NewsType = NewsType.New;
+    viewCount = 0;
 }
+
+class NewViewModel extends News {
+    create_date: string;
+    publish_date: string;
+    create_on: Date;
+    publish_on: Date;
+}
+
+export { NewViewModel, News };

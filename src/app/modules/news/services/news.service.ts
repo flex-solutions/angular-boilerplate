@@ -29,12 +29,11 @@ export class NewsService extends AbstractRestService {
     return this.get(_id);
   }
 
-  getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
+  getNews(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 
   public count(searchKey?: string): Observable<number> {
     return this.get(`count?searchKey=${searchKey}`);
   }
-
 }

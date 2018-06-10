@@ -959,6 +959,73 @@
         <target>TODO</target>
       </trans-unit>
       <!--END News Create Edit Page-->
+       <!-- List news -->
+      <trans-unit id="list-news-menu-new-managements" datatype="html">
+        <source>News Management</source>
+        <target>Quản Lý Tin Tức</target>
+      </trans-unit>
+      <trans-unit id="list-news-title-news" datatype="html">
+        <source>News</source>
+        <target>Tin Tức</target>
+      </trans-unit>
+       <trans-unit id="list-news-button-create-news" datatype="html">
+        <source>Create news</source>
+        <target>Tạo tin tức</target>
+      </trans-unit>
+       <trans-unit id="list-news-th-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-content" datatype="html">
+        <source>Content</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-status" datatype="html">
+        <source>Status</source>
+        <target>Trạng Thái</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-created-on" datatype="html">
+        <source>Created on</source>
+        <target>Được tạo vào</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-published-on" datatype="html">
+        <source>Published on</source>
+        <target>Được đăng vào</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="list-news-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Tìm kiếm với tiêu đề, nội dung</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-new" datatype="html">
+        <source>New</source>
+        <target>Mới tạo</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-deactivated" datatype="html">
+        <source>Deactivated</source>
+        <target>Đã vô hiệu hóa</target>
+      </trans-unit>
+         <trans-unit id="list-news-status-publish" datatype="html">
+        <source>Publish</source>
+        <target>Đăng tải</target>
+      </trans-unit>
+     <trans-unit id="list-news-btn-publishs" datatype="html">
+        <source>Publish</source>
+        <target>Đăng tải</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+        <trans-unit id="list-news-btn-delete" datatype="html">
+        <source>Delete news</source>
+        <target>Xoá bản tin </target>
+      </trans-unit>
+      <!-- END List News -->
+    </body>
     </body>
   </file>
 </xliff>
