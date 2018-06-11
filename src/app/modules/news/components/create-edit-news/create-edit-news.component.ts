@@ -99,4 +99,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     // if check new one, refresh page
     // if uncheck new one, return previous
   }
+
+  onHtmlEditorChange(text: string) {
+    this.news.content = text;
+  }
 }
