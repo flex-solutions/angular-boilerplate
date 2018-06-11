@@ -1,3 +1,4 @@
+
 import { SearchTextboxComponent } from './search-textbox/search-textbox.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,18 +10,19 @@ import { DatagridModule } from './datagrid/datagrid.module';
 import { CardComponent } from './card/card.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { FormsModule } from '@angular/forms';
+import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
   exports: [
     LoaderComponent, CardComponent,
-    SearchTextboxComponent,
-    DialogModule, DatagridModule, PaginationModule
+    SearchTextboxComponent, TynimceEditorComponent,
+    DialogModule, DatagridModule, PaginationModule,
   ],
   declarations: [
     LoaderComponent,
     CardComponent,
-    SearchTextboxComponent
+    SearchTextboxComponent, TynimceEditorComponent,
   ],
   providers: [
     LoaderService
