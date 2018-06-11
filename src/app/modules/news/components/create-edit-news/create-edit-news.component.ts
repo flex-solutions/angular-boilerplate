@@ -87,7 +87,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
 
   public submitAndPublishNews() {
     // TODO: check boxNewsStatusType
-    this.news.status = NewsStatusType.Publish;
+    this.news.status = NewsStatusType.Published;
     this.newsService.create(this.news)
   }
 
