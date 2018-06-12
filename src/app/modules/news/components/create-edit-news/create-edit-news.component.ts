@@ -10,7 +10,7 @@ import { User } from '../../../../shared/models/user.model';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { NewsType } from '../../../../shared/enums/news-type.enum';
+import { NewsStatusType} from '../../../../shared/enums/news-type.enum';
 
 @Component({
   moduleId: module.id,
@@ -86,8 +86,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   public submitAndPublishNews() {
-    // TODO: check box
-    this.news.status = NewsType.Publish;
+    // TODO: check boxNewsStatusType
+    this.news.status = NewsStatusType.Published;
     this.newsService.create(this.news)
   }
 
@@ -98,5 +98,9 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   private onHandleCreateNewsSuccessful() {
     // if check new one, refresh page
     // if uncheck new one, return previous
+  }
+
+  onHtmlEditorChange(text: string) {
+    this.news.content = text;
   }
 }

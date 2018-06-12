@@ -1,13 +1,14 @@
-import { NewsType } from '../enums/news-type.enum';
+import { NewsStatusType } from "../enums/news-type.enum";
 
 class News {
     _id: string;
     title: string;
     banner: string;
     content: string;
-    status: NewsType = NewsType.New;
-    viewCount = 0;
+    status: NewsStatusType = NewsStatusType.New ;
+    viewCount: number = 0;
 }
+
 
 class NewViewModel extends News {
     create_date: string;

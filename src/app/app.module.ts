@@ -25,6 +25,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { AuthGuard } from './shared/guards/auth-guard';
+import { NewsModule } from './modules/news/news.module';
+//import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,7 +46,8 @@ import { AuthGuard } from './shared/guards/auth-guard';
     UserGroupsRoutingModule,
     UserGroupsModule,
     DialogModule,
-    PermissionSchemeModule
+    PermissionSchemeModule,
+    NewsModule
   ],
   providers: [
     {

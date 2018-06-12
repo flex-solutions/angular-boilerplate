@@ -20,13 +20,11 @@
 
         </div>
         <div class="col">
-              <!-- <angular-tinymce [(ngModel)]="news.content">
-              </angular-tinymce>-->
-              <!-- <input id="content" class="form-control" formControlName="content"
-                type="text" i18n-placeholder="@@news-create_edit_news-input-content_place_holder"
-                placeholder="Enter content" [(ngModel)]="news.content"> -->
-              <!-- <label id="content-error" class="error mt-2 text-danger" for="branch" *ngIf="errorMessage.content"> {{ errorMessage.content }}</label>-->
-
+          <div class="form-group">
+            <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Content </label>
+            <label class="require">*</label>
+            <app-tinymce-editor elementId="newsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
+          </div>
         </div>
         <!-- TODO: create a new one check box -->
         </div>
