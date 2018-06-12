@@ -28,7 +28,7 @@
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
             <span i18n="@@list-news-btn-edit">Edit</span>
           </button>
-          <button type="button" class="btn btn-light btn-custom-css"  appPublishButton [status]="item.status" >
+          <button type="button" class="btn btn-light btn-custom-css"  appPublishButton [status]="item.status" (click) = "NewProcessing(item._id,item.status)">
           </button>
           <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" 
           aria-haspopup="true" aria-expanded="false">

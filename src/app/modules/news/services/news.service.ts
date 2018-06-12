@@ -4,6 +4,7 @@ import { AbstractRestService } from '../../../shared/abstract/abstract-rest-serv
 import { of, Observable } from 'rxjs';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
 import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 
 
 @Injectable()
@@ -35,5 +36,9 @@ export class NewsService extends AbstractRestService {
 
   public count(searchKey?: string): Observable<number> {
     return this.get(`count?searchKey=${searchKey}`);
+  }
+
+  processNew(newObject: News) {
+    return this.put('processnew', newObject);
   }
 }
