@@ -37,6 +37,10 @@
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
+        <source>News Management</source>
+        <target>News Management</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -898,6 +902,28 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+      <!-- START News Management -->
+      <trans-unit id="news_management-news_detail-news_information_tab" datatype="html">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_detail-news_statistic_tab" datatype="html">
+        <source>Statistic</source>
+        <target>Statistic</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_edit_button" datatype="html">
+        <source>Edit News</source>
+        <target>Edit News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivate_button" datatype="html">
+        <source>Deactivate</source>
+        <target>Deactivate</target>
+      </trans-unit>
+      <!-- END News Management -->
     </body>
   </file>
 </xliff>

@@ -1,0 +1,128 @@
+<app-card>
+  <div class="command-region">
+    <div class="template-demo">
+      <button type="button" class="btn btn-primary btn-md">
+        <i class="mdi mdi-pencil"></i>Edit News</button>
+      <button type="button" class="btn btn-success btn-md">
+        <i class="mdi mdi-eye"></i>Publish</button>
+      <button type="button" class="btn btn-danger btn-md">
+        <i class="mdi mdi-eye-off"></i>Deactivate</button>
+      <div class="dropdown">
+        <button class="btn btn-light icon-btn dropdown-toggle" type="button" id="dropdownMenuIconButton3" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="mdi mdi-dots-horizontal"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+          <h6 class="dropdown-header">Settings</h6>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row profile-page">
+    <div class="col-md-12">
+      <div class="profile-body" style="padding-top: 0px">
+        <ul class="nav tab-switch" role="tablist">
+          <li class="nav-item">
+            <a aria-controls="user-profile-info" aria-selected="true" class="nav-link active show" data-toggle="pill" i18n="@@news_management-news_detail-news_information_tab"
+              href="#user-profile-info" id="user-profile-info-tab" role="tab">News</a>
+          </li>
+          <li class="nav-item">
+            <a aria-controls="user-profile-activity" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@news_management-news_detail-news_statistic_tab"
+              href="#user-profile-activity" id="user-profile-activity-tab" role="tab">Statistic</a>
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab-content tab-body" id="profile-log-switch">
+              <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                <div class="row">
+                  <div class="col-7">
+                    <div class="row">
+                      <div class="col-12">
+                        <img class="img-fluid" src="https://placehold.it/1834x1218" alt="banner image">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-5">
+                    <div class="row">
+                      <div class="col-9">
+                        <h4>SNOB tung ra đồ uống mới mùa hè từ 14/5 SNOB tung ra đồ uống mới mùa hè từ 14/5</h4>
+                      </div>
+                      <div class="col-3">
+                        <div class="badge badge-info">New</div>
+                      </div>
+                    </div>
+                    <div class="row text-gray d-md-flex d-none">
+                      <div class="col-6 d-flex">
+                        <p class="mb-0 mr-2 text-muted text-muted">Created on</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">3 hours ago</p>
+                      </div>
+                      <div class="col-6 d-flex">
+                        <p class="mb-0 mr-2 text-muted text-muted">Last edited on</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">2 days ago</p>
+                      </div>
+                    </div>
+                    <div class="row text-gray d-md-flex d-none">
+                      <div class="col-6 d-flex">
+                        <p class="mb-0 mr-2 text-muted text-muted">Created by</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">Khang Bui</p>
+                      </div>
+                      <div class="col-6 d-flex">
+                        <p class="mb-0 mr-2 text-muted text-muted">Last edited by</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">Khang Bui</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="lead">
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                          text ever since the 1500s, when an unknown printer took a galley not only five centuries,
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row text-gray d-md-flex d-none">
+                      <div class="col-6 d-flex">
+                        <p class="mb-0 mr-2 text-muted text-muted">Created by</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">Khang Bui</p>
+                      </div>
+                      <div class="col-6 d-flex">
+                        <p class="mb-0 mr-2 text-muted text-muted">Last edited by</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">Khang Bui</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                <div class="md-6">
+                  <app-card title="Statistic">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-inline-block pt-3">
+                        <div class="d-flex">
+                          <h2 class="mb-0">$10,200</h2>
+                          <div class="d-flex align-items-center ml-2">
+                            <i class="mdi mdi-clock text-muted"></i>
+                            <small class=" ml-1 mb-0">Updated: 9:10am</small>
+                          </div>
+                        </div>
+                        <small class="text-gray">Raised from 89 orders.</small>
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="bg-success px-4 py-2 rounded">
+                          <i class="mdi mdi-buffer text-white icon-lg"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </app-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-card>

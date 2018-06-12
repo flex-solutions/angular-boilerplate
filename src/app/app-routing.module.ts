@@ -20,7 +20,12 @@ const routes: Routes = [
     {
       path: 'permission-schemes',
       loadChildren: 'app/modules/permission-scheme/permission-scheme.module#PermissionSchemeModule',
-    }]
+    },
+    {
+      path: 'news',
+      loadChildren: 'app/modules/news/news.module#NewsModule',
+    }
+  ]
   },
   {
     path: '',
@@ -29,7 +34,7 @@ const routes: Routes = [
       path: 'account',
       loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
     }]
-  }
+  },
 ];
 
 @NgModule({
