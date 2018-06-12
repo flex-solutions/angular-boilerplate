@@ -23,9 +23,8 @@ const routes: Routes = [
     },
     {
       path: 'news',
-      loadChildren: 'app/modules/news/news.module#NewsModule',
-    }
-  ]
+      loadChildren: 'app/modules/news/news.module#NewsModule', // Lazy loading views module
+    }]
   },
   {
     path: '',

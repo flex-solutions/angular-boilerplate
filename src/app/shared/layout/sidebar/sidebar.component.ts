@@ -35,4 +35,8 @@ export class SidebarComponent implements OnInit {
   navigateToNewsPage() {
     this.router.navigate([ModuleRoute.NEWS]);
   }
+
+  navigateToViewsPage() {
+    this.router.navigate([ModuleRoute.VIEW]);
+  }
 }

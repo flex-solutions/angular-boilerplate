@@ -14,6 +14,6 @@ export class NewsHomeComponent implements OnInit {
   }
 
   navigateToNewsDetails() {
-    this.router.navigate(['news/', 123]);
+    this.router.navigate(['news/', '5b1fe9118926690df3c1d67c']);
   }
 }

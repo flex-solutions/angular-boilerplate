@@ -904,6 +904,62 @@
         <target>Toàn Quyền</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+
+      <!--START News Create Edit Page -->
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
+        <source>Create news</source>
+        <target>TODO </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-create_news_description" datatype="html">
+        <source>This page allows you creating a news and pulishing it if you want</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-edit_news" datatype="html">
+        <source>Edit news</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-edit_news_description" datatype="html">
+        <source>This page allows you edit a news</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-title_place_holder" datatype="html">
+        <source>Enter title</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-banner_place_holder" datatype="html">
+        <source>Enter banner</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-input-content_place_holder" datatype="html">
+        <source>Enter content</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-button-submit_publish" datatype="html">
+        <source>Submit & publish</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="view-create_edit_view-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>TODO</target>
+      </trans-unit>
+      <!--END News Create Edit Page-->
+
       <!-- START News Management -->
       <trans-unit id="news_management-news_detail-news_information_tab" datatype="html">
         <source>News</source>

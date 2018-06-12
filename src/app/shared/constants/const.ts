@@ -12,7 +12,8 @@ const ModuleRoute = {
     USER: 'users',
     USER_GROUP: 'user-groups',
     PERMISSION_SCHEMES: 'permission-schemes',
-    NEWS: 'news'
+    NEWS: 'news',
+    VIEW: 'news'
 };
 
 const PagingDefault = {

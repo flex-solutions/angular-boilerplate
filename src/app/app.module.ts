@@ -27,6 +27,7 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { AuthGuard } from './shared/guards/auth-guard';
 import { NewsModule } from './modules/news/news.module';
 import { NewsRoutingModule } from './modules/news/news-routing.module';
+//import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,0 +1,36 @@
+<app-card title="" subTitle="">
+    <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
+      <div class="row">
+        <div class="col">
+          <!-- Title field -->
+          <div class="form-group">
+            <label for="email" i18n="@@news-create_edit_news-label-title_field">Title </label>
+            <label class="require">*</label>
+            <input id="email" class="form-control" formControlName="title" i18n-placeholder="@@news-create_edit_news-input-title_place_holder"
+              placeholder="Enter title" [(ngModel)]="news.title">
+            <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
+          </div>
+          <div class="form-group">
+            <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Banner </label>
+            <label class="require">*</label>
+            <input id="banner" class="form-control" formControlName="banner" type="text" i18n-placeholder="@@news-create_edit_news-input-banner_place_holder"
+              placeholder="Enter banner" [(ngModel)]="news.banner">
+            <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Content </label>
+            <label class="require">*</label>
+            <app-tinymce-editor elementId="newsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
+          </div>
+        </div>
+        <!-- TODO: create a new one check box -->
+        </div>
+          <!-- Form buttons -->
+        <button class="btn btn-success mr-2" i18n="@@news-create_edit_news-button-submit" (click)="submit()">Submit</button>
+        <button class="btn btn-success " i18n="@@news-create_edit_news-button-submit_publish" (click)="submitAndPublishNews()">Submit & publish</button>
+        <button class="btn btn-light" i18n="@@news-create_edit_news-button-cancel" (click)="cancel()">Cancel</button>
+    </form>
+</app-card>

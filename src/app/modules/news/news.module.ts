@@ -1,12 +1,23 @@
-import { NgModule } from '@angular/core';
-import { NewsModuleComponents } from './components';
-import { CommonModule } from '@angular/common';
 import { NewsRoutingModule } from './news-routing.module';
-import { FormsModule } from '@angular/forms';
+import { NewsService } from './services/news.service';
+
+import { CreateEditNewsComponent } from './components/create-edit-news/create-edit-news.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewsModuleComponents } from './components';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 
 @NgModule({
-  imports: [CommonModule, NewsRoutingModule, FormsModule, UICommonModule],
-  declarations: [...NewsModuleComponents]
+  imports: [
+    CommonModule, NewsRoutingModule,
+    FormsModule, ReactiveFormsModule,
+    UICommonModule
+  ],
+  declarations: [
+    ...NewsModuleComponents
+  ],
+  providers: [NewsService],
+
 })
-export class NewsModule {}
+export class NewsModule { }
