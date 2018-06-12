@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnChanges, AfterViewInit } from '@angular/core';
-import { NewsType } from '../../../shared/enums/news-type.enum';
+import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 import { TranslateService } from '../../../shared/services/translate.service';
 import { NewMessageConst } from '../constant/message.const';
 declare let $: any;
@@ -9,7 +9,7 @@ declare let $: any;
 })
 export class NewStatusDirective implements OnChanges, AfterViewInit {
 
-  @Input() status: NewsType;
+  @Input() status: NewsStatusType;
     host: any;
     publicText: string;
     newText: string;
@@ -33,13 +33,13 @@ export class NewStatusDirective implements OnChanges, AfterViewInit {
 
     private createStatusCtrl() {
         switch (this.status) {
-            case NewsType.New:
+            case NewsStatusType.New:
                 $(this.host).html(`<label class="badge badge-info">${this.newText}</label>`);
                 break;
-            case NewsType.Publish:
+            case NewsStatusType.Published:
                 $(this.host).html(`<label class="badge badge-success">${this.publicText}</label>`);
                 break;
-            case NewsType.Deactive:
+            case NewsStatusType.Deactived:
                 $(this.host).html(`<label class="badge badge-danger">${this.deactivedText}</label>`);
                 break;
         }

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnChanges, AfterViewInit } from '@angular/core';
-import { NewsType } from '../../../shared/enums/news-type.enum';
+import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 import { TranslateService } from '../../../shared/services/translate.service';
 import { NewMessageConst } from '../constant/message.const';
 declare let $: any;
@@ -9,7 +9,7 @@ declare let $: any;
 })
 export class PublishButtonDirective implements OnChanges, AfterViewInit {
 
-    @Input() status: NewsType;
+    @Input() status: NewsStatusType;
     host: any;
     text: string;
 
@@ -28,7 +28,7 @@ export class PublishButtonDirective implements OnChanges, AfterViewInit {
 
     private createStatusCtrl() {
         switch (this.status) {
-            case NewsType.Publish:
+            case NewsStatusType.Published:
                 {
                     this.text = this.translateService.translate(NewMessageConst.DeactivedStatus);
                     $(this.host).html(`<i class="mdi mdi-eye-off btn-pink" aria-hidden="false"></i>
