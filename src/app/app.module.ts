@@ -25,10 +25,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { AuthGuard } from './shared/guards/auth-guard';
-import { CreatePromotionComponent } from './create-promotion/create-promotion.component';
 
 @NgModule({
-  declarations: [AppComponent, CreatePromotionComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -1,0 +1,31 @@
+<form id="example-form" action="#">
+  <div role="application" class="wizard clearfix" id="steps-uid-0">
+    <div class="steps clearfix">
+      <ul role="tablist">
+        <li role="tab" *ngFor="let step of wizardSteps; let i = index" [ngClass]="step.headerClasses">
+          <a>
+            <span class="number">{{i + 1}}.</span> {{step.title}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="content clearfix">
+      <ng-content></ng-content>
+    </div>
+    <div class="actions clearfix">
+      <ul role="menu" aria-label="Pagination">
+        <li>
+          <a role="menuitem" (click)="onPrevious()">Previous</a>
+        </li>
+        <li>
+          <a role="menuitem" (click)="onNext()">Next</a>
+        </li>
+        <li aria-hidden="true" style="display: none;">
+          <a role="menuitem">Finish</a>
+        </li>
+        <li aria-hidden="true" style="display: none;">
+          <a role="menuitem">Cancel</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

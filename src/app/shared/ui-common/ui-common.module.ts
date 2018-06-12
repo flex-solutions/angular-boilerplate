@@ -1,3 +1,4 @@
+import { WizardComponent } from './wizard/wizard/wizard.component';
 import { SearchTextboxComponent } from './search-textbox/search-textbox.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,6 +10,7 @@ import { DatagridModule } from './datagrid/datagrid.module';
 import { CardComponent } from './card/card.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { FormsModule } from '@angular/forms';
+import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -20,7 +22,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     LoaderComponent,
     CardComponent,
-    SearchTextboxComponent
+    SearchTextboxComponent,
+    WizardComponent,
+    WizardStepComponent
   ],
   providers: [
     LoaderService
