@@ -13,7 +13,8 @@ const UserMessages = {
     EditUserSuccessfull: 'user-edit_user-notification-edit_user_successfully',
     DeleteUserMessage: 'user-detail-delete-message',
     ChangeUserGroupMessage: 'user-change-group-message',
-    ChangeUserGroupPlaceHolder: 'group-user-modal-search-place-holder'
+    ChangeUserGroupPlaceHolder: 'group-user-modal-search-place-holder',
+    ChangeGroupSuccess: 'group-user-modal-change-user-success'
 };
 
 export { UserNavigationRoute, UserMessages };

@@ -332,6 +332,10 @@
         <source>Search by group name, permission sheme name</source>
         <target>Search by group name, permission sheme name</target>
       </trans-unit>
+      <trans-unit id="group-user-modal-change-user-success" datatype="html">
+        <source>User "{{0}}" is moved to group "{{1}}" successfully</source>
+        <target>User "{{0}}" is moved to group "{{1}}" successfully</target>
+      </trans-unit>
       <!-- End group user modal -->
 
       <!-- Users -->
