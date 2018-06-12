@@ -9,23 +9,10 @@ export class CreatePromotionComponent implements OnInit {
   title: string;
   subTitle: string;
 
-  currentStep: number;
-  isLastStep: boolean;
-  totalSteps: number;
-
   constructor() { }
 
   ngOnInit() {
     this.title = 'Create Promotion';
     this.subTitle = 'This page allows you creating a promotion and starts it if you want';
-    this.currentStep = 1;
-    this.isLastStep = false;
-    this.totalSteps = 4;
   }
-
-  onNext() {
-    this.currentStep++;
-    this.isLastStep = this.totalSteps - this.currentStep === 0;
-  }
-
 }

@@ -3,7 +3,6 @@ import { RouterModule, Routes, Router, Route } from '@angular/router';
 import { HomeLayoutComponent } from './shared/layout/home-layout/home-layout.component';
 import { AuthGuard } from './shared/guards/auth-guard';
 import { LoginLayoutComponent } from './shared/layout/login-layout/login-layout.component';
-import { CreatePromotionComponent } from './modules/promotions/components/create-promotion/create-promotion.component';
 
 const routes: Routes = [
   {
@@ -34,10 +33,6 @@ const routes: Routes = [
       path: 'account',
       loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
     }]
-  },
-  {
-    path: 'promotion',
-    component: CreatePromotionComponent
   }
 ];
 
