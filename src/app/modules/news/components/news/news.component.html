@@ -24,7 +24,7 @@
         <td>{{item.create_date}}</td>
         <td>{{item.publish_date}}</td>
         <td>
-          <button type="button" class="btn btn-light btn-custom-css">
+          <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
             <span i18n="@@list-news-btn-edit">Edit</span>
           </button>

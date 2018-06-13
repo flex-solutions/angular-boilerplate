@@ -67,4 +67,8 @@ export class NewsComponent implements OnInit {
   navigateToCreate() {
     this.route.navigate([NewNavigationRoute.CREATE_PAGE]);
   }
+
+  navigateToEdit(id: string) {
+    this.route.navigate([`${NewNavigationRoute.EDIT_PAGE}/${id}`]);
+  }
 }

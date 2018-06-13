@@ -18,7 +18,7 @@ import { NewsStatusType} from '../../../../shared/enums/news-type.enum';
   templateUrl: './create-edit-news.component.html',
 })
 
-export class CreateEditNewsComponent extends AbstractFormComponent {
+export class CreateEditNewsComponent extends AbstractFormComponent implements OnInit {
   isEdit = false;
   isPublish = false;
   news: News = new News();
@@ -82,13 +82,13 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
 
   protected onSubmit() {
     // TODO: check box
-    this.newsService.create(this.news)
+    this.newsService.create(this.news);
   }
 
   public submitAndPublishNews() {
     // TODO: check boxNewsStatusType
     this.news.status = NewsStatusType.Published;
-    this.newsService.create(this.news)
+    this.newsService.create(this.news);
   }
 
   protected onCancel() {

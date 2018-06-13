@@ -17,9 +17,17 @@ const newRoutes: Routes = [
      path: 'create',
      component: CreateEditNewsComponent,
      data: {
-       breadcrumb: 'create'
+       breadcrumb: 'Create news'
      }
-  }
+  },
+  {
+    // TODO: update after finish create news
+    path: 'edit/:id',
+    component: CreateEditNewsComponent,
+    data: {
+      breadcrumb: 'Edit news'
+    }
+ }
 ];
 
 @NgModule({
