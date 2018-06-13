@@ -1,14 +1,12 @@
-import { Component, PipeTransform, Pipe } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../../../../shared/models/user.model';
 import { UserService } from '../../services/user.service';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { UserNavigationRoute, UserMessages } from '../../users.constant';
+import { UserNavigationRoute } from '../../users.constant';
 import ArrayExtension from '../../../../utilities/array.extension';
-import { ModuleRoute } from '../../../../shared/constants/const';
 import { GroupUserModalComponent } from '../group-user/group-user-modal';
-import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
 
