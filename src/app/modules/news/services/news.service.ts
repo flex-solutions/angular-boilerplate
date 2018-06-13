@@ -1,4 +1,4 @@
-import { News } from './../../../shared/models/news.model';
+import { News, NewViewModel } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
@@ -38,7 +38,7 @@ export class NewsService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
-  processNew(newObject: News) {
+  processNew(newObject: News): Observable<NewViewModel> {
     return this.put('processnew', newObject);
   }
 }

@@ -23,7 +23,7 @@ class NewViewModel extends News {
     create_date: string;
     publish_date: string;
     create_on: Date;
-    publish_on: Date;
+    published_on: Date;
 }
 
 export { NewViewModel, News, NewsFields };

@@ -50,6 +50,7 @@ export class NewsComponent implements OnInit {
         this.items = response;
         this.items.forEach(item => {
           item.create_date = this.convertTime(item.create_on);
+          item.publish_date = this.convertTime(item.published_on);
         });
       });
   }
@@ -57,12 +58,9 @@ export class NewsComponent implements OnInit {
   NewProcessing(id: string, status: NewsStatusType) {
     const processedItem = head(filter(c => equals(c[NewsFields.ID], id), this.items));
 
-    this.service.processNew(processedItem).subscribe(() => {
-       if (status === NewsStatusType.Deactived || status === NewsStatusType.New) {
-        processedItem.status = NewsStatusType.Published;
-      } else {
-        processedItem.status = NewsStatusType.Deactived;
-      }
+    this.service.processNew(processedItem).subscribe((updateNew) => {
+      processedItem.status = updateNew.status;
+      processedItem.publish_date = this.convertTime(updateNew.published_on);
     });
   }
 
