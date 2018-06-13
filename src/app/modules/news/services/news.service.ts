@@ -39,6 +39,6 @@ export class NewsService extends AbstractRestService {
   }
 
   processNew(newObject: News): Observable<NewViewModel> {
-    return this.put('processnew', newObject);
+    return this.patch('', newObject);
   }
 }

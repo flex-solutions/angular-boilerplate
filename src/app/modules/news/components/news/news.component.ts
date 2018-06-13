@@ -55,7 +55,7 @@ export class NewsComponent implements OnInit {
       });
   }
 
-  NewProcessing(id: string, status: NewsStatusType) {
+  NewProcessing(id: string) {
     const processedItem = head(filter(c => equals(c[NewsFields.ID], id), this.items));
 
     this.service.processNew(processedItem).subscribe((updateNew) => {
