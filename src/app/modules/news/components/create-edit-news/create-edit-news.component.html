@@ -1,7 +1,8 @@
 <app-card title="" subTitle="">
-    <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
+  <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
+    <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col-sm-6">
           <!-- Title field -->
           <div class="form-group">
             <label for="email" i18n="@@news-create_edit_news-label-title_field">Title </label>
@@ -13,13 +14,14 @@
           <div class="form-group">
             <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Banner </label>
             <label class="require">*</label>
-            <input id="banner" class="form-control" formControlName="banner" type="text" i18n-placeholder="@@news-create_edit_news-input-banner_place_holder"
-              placeholder="Enter banner" [(ngModel)]="news.banner">
+            <!--<input id="banner" class="form-control" formControlName="banner" type="text" i18n-placeholder="@@news-create_edit_news-input-banner_place_holder"
+              placeholder="Enter banner" [(ngModel)]="news.banner">-->
             <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
+            <app-dropify></app-dropify>
           </div>
 
         </div>
-        <div class="col">
+        <div class="col-sm-6">
           <div class="form-group">
             <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Content </label>
             <label class="require">*</label>
@@ -27,10 +29,11 @@
           </div>
         </div>
         <!-- TODO: create a new one check box -->
-        </div>
-          <!-- Form buttons -->
-        <button class="btn btn-success mr-2" i18n="@@news-create_edit_news-button-submit" (click)="submit()">Submit</button>
-        <button class="btn btn-success " i18n="@@news-create_edit_news-button-submit_publish" (click)="submitAndPublishNews()">Submit & publish</button>
-        <button class="btn btn-light" i18n="@@news-create_edit_news-button-cancel" (click)="cancel()">Cancel</button>
-    </form>
+      </div>
+    </div>
+    <!-- Form buttons -->
+    <button class="btn btn-success mr-2" i18n="@@news-create_edit_news-button-submit" (click)="submit()">Submit</button>
+    <button class="btn btn-success " i18n="@@news-create_edit_news-button-submit_publish" (click)="submitAndPublishNews()">Submit & publish</button>
+    <button class="btn btn-light" i18n="@@news-create_edit_news-button-cancel" (click)="cancel()">Cancel</button>
+  </form>
 </app-card>
