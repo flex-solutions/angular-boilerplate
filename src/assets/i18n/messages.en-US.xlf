@@ -898,6 +898,62 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+      <!--Wizard control-->
+      <trans-unit id="wizard-wizard-actions-previous_button" datatype="html">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-next_button" datatype="html">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-finish_button" datatype="html">
+        <source>Finish</source>
+        <target>Finish</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-cancel_button" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <!--END Wizard control-->
+      <!--Create edit promotion-->
+      <trans-unit id="promotions-create_edit_promotion-app-card-promotions_title_field" datatype="html">
+        <source>Create Promotion</source>
+        <target>Create Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-app-card-promotions_subtitle_field" datatype="html">
+        <source>This page allows you creating a promotion and starts it if you want</source>
+        <target>This page allows you creating a promotion and starts it if you want</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-promotions_title_field" datatype="html">
+        <source>Promotion News</source>
+        <target>Promotion News</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-vouchers_title_field" datatype="html">
+        <source>Voucher</source>
+        <target>Voucher</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
+        <source>Customer Target</source>
+        <target>Customer Target</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
+        <source>Enter news title</source>
+        <target>Enter news title</target>
+      </trans-unit>
+      <!--END Create edit promotion-->
     </body>
   </file>
 </xliff>

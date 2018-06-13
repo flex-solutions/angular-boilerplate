@@ -1,21 +1,22 @@
-<app-card>
+<app-card i18n-title="@@promotions-create_edit_promotion-app-card-promotions_title_field" 
+i18n-subTitle="@@promotions-create_edit_promotion-app-card-promotions_subtitle_field">
   <form id="promotionForm" [formGroup]="formGroup">
     <app-wizard>
-      <app-wizard-step isFirstStep="true" title="Promotion News">
+      <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" title="Promotion News">
         <div class="row">
           <div class="col">
             <!-- Title field -->
             <div class="form-group">
               <label for="email" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
-              <input id="email" class="form-control" formControlName="title" i18n-placeholder="@@promotions-create_edit_news-input-title_place_holder"
+              <input id="email" class="form-control" formControlName="title" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder"
                 placeholder="Enter title">
               <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
             </div>
             <div class="form-group">
               <label for="banner" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
-              <input id="banner" class="form-control" formControlName="banner" type="text" i18n-placeholder="@@promotions-create_edit_promotion-input-banner_place_holder"
+              <input id="banner" class="form-control" formControlName="banner" type="text"
                 placeholder="Enter banner">
               <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
             </div>
@@ -23,17 +24,17 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="banner" i18n="@@promotions-create_edit_promotion-label-banner_field">Content </label>
+              <label for="banner" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
               <label class="require">*</label>
               <!-- <app-tinymce-editor elementId="promotionsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor> -->
             </div>
           </div>
         </div>
       </app-wizard-step>
-      <app-wizard-step title="Vouchers">
+      <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers">
         <p>COMING SOON</p>
       </app-wizard-step>
-      <app-wizard-step isLastStep="true" title="Customer Target">
+      <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Customer Target">
         <p>COMING SOON</p>
       </app-wizard-step>
     </app-wizard>

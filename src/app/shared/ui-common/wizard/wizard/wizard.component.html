@@ -13,16 +13,16 @@
   <div class="actions clearfix" style="text-align: left;">
     <ul role="menu" aria-label="Pagination">
       <li [ngClass]="{'disabled': selectedStep.isFirstStep}">
-        <a role="menuitem" (click)="onPrevious()">Previous</a>
+        <a role="menuitem" (click)="onPrevious()" i18n="@@wizard-wizard-actions-previous_button">Previous</a>
       </li>
       <li *ngIf="!selectedStep.isLastStep">
-        <a role="menuitem" (click)="onNext()">Next</a>
+        <a role="menuitem" (click)="onNext()" i18n="@@wizard-wizard-actions-next_button">Next</a>
       </li>
       <li *ngIf="selectedStep.isLastStep">
-        <a role="menuitem" (click)="onFinish()">Finish</a>
+        <a role="menuitem" (click)="onFinish()" i18n="@@wizard-wizard-actions-finish_button">Finish</a>
       </li>
       <li>
-        <a role="menuitem" (click)="onCancel()">Cancel</a>
+        <a role="menuitem" (click)="onCancel()" i18n="@@wizard-wizard-actions-cancel_button">Cancel</a>
       </li>
     </ul>
   </div>
