@@ -3,28 +3,27 @@
     <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)">
       <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" title="Promotion News">
         <div class="row">
-          <div class="col">
+          <div class="col col-md-6" style="min-height: 500">
             <!-- Title field -->
             <div class="form-group">
               <label for="email" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
-              <input id="email" class="form-control" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder"
-                placeholder="Enter title">
+              <input id="email" class="form-control" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" placeholder="Enter title">
               <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
             </div>
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
-              <input id="banner" class="form-control" type="text" placeholder="Enter banner">
+              <app-dropify></app-dropify>
               <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
             </div>
 
           </div>
-          <div class="col">
+          <div class="col col-md-6" style="min-height: 500">
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
               <label class="require">*</label>
-              <!-- <app-tinymce-editor elementId="promotionsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor> -->
+              <app-tinymce-editor elementId="newsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
             </div>
           </div>
         </div>
