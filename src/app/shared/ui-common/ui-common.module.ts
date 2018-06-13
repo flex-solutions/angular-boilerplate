@@ -16,15 +16,15 @@ import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component'
   imports: [CommonModule, RouterModule, FormsModule],
   exports: [
     LoaderComponent, CardComponent,
-    SearchTextboxComponent,
+    SearchTextboxComponent, WizardStepComponent, WizardComponent,
     DialogModule, DatagridModule, PaginationModule
   ],
   declarations: [
     LoaderComponent,
     CardComponent,
     SearchTextboxComponent,
-    WizardComponent,
-    WizardStepComponent
+    WizardStepComponent,
+    WizardComponent
   ],
   providers: [
     LoaderService

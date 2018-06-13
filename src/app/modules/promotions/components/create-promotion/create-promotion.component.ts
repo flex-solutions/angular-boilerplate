@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-promotion',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-promotion.component.css']
 })
 export class CreatePromotionComponent implements OnInit {
+
   title: string;
   subTitle: string;
+  formGroup: FormGroup;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.title = 'Create Promotion';

@@ -1,3 +1,4 @@
+import { WizardComponent } from './wizard/wizard.component';
 import { Injectable } from '@angular/core';
 import { WizardStepComponent } from './wizard-step/wizard-step.component';
 
@@ -6,14 +7,16 @@ export class WizardNavigator {
     wizardSteps: WizardStepComponent[];
     defaultSelectedStep: number;
     private _currentStep: number;
+    private _wizard: WizardComponent;
 
     constructor() {
         this.defaultSelectedStep = 0;
         this._currentStep = this.defaultSelectedStep;
     }
 
-    updateWizardSteps(steps: WizardStepComponent[]) {
+    updateWizardSteps(steps: WizardStepComponent[], wizard: WizardComponent) {
         this.wizardSteps = steps;
+        this._wizard = wizard;
         this._updateSelectedStep(this.defaultSelectedStep);
     }
 
@@ -23,6 +26,9 @@ export class WizardNavigator {
             const step = this.wizardSteps[i];
             step.selected = id === i;
             step.updateClasses();
+            if (step.selected) {
+                this._wizard.onSelectedStepChanged(step);
+            }
         }
     }
 
@@ -31,7 +37,6 @@ export class WizardNavigator {
         if (this._canNext(nextIdStep)) {
             this._updateSelectedStep(nextIdStep);
         }
-
     }
 
     private _canNext(nextIdStep: number) {

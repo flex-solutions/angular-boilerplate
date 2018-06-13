@@ -1,40 +1,64 @@
-import { Component, AfterContentInit, QueryList, ContentChildren } from '@angular/core';
+import { Component, AfterContentInit, QueryList, ContentChildren, EventEmitter, Output } from '@angular/core';
 import { WizardNavigator } from '../wizard-navigator';
 import { WizardStepComponent } from '../wizard-step/wizard-step.component';
 
 @Component({
-  selector: 'app-wizard',
-  templateUrl: './wizard.component.html',
-  styleUrls: ['./wizard.component.css'],
-  providers: [WizardNavigator]
+    selector: 'app-wizard',
+    templateUrl: './wizard.component.html',
+    styleUrls: ['./wizard.component.css'],
+    providers: [WizardNavigator]
 })
 export class WizardComponent implements AfterContentInit {
 
-  constructor(public wizardNavigator: WizardNavigator) {
+    //  Call when cancel button clicked
+    @Output()
+    cancelClicked = new EventEmitter();
 
-  }
-  /**
- * A QueryList containing all [[WizardStep]]s inside this wizard
- */
-  @ContentChildren(WizardStepComponent)
-  public wizardSteps: QueryList<WizardStepComponent>;
+    // Call when finish clicked
+    @Output()
+    finishClicked = new EventEmitter();
 
-  ngAfterContentInit(): void {
-      // add a subscriber to the wizard steps QueryList to listen to changes in the DOM
-      this.wizardSteps.changes.subscribe(changedWizardSteps => {
-          this.wizardNavigator.updateWizardSteps(changedWizardSteps.toArray());
-      });
+    /**
+    * A QueryList containing all [[WizardStep]]s inside this wizard
+    */
+    @ContentChildren(WizardStepComponent)
+    wizardSteps: QueryList<WizardStepComponent>;
 
-      // initialize the model
-      this.wizardNavigator.updateWizardSteps(this.wizardSteps.toArray());
-  }
+    // A wizard step was showed
+    selectedStep: WizardStepComponent;
 
-  onPrevious() {
-      this.wizardNavigator.previous();
-  }
+    constructor(public wizardNavigator: WizardNavigator) {
 
-  onNext() {
-      this.wizardNavigator.next();
-  }
+    }
+
+    ngAfterContentInit(): void {
+        // add a subscriber to the wizard steps QueryList to listen to changes in the DOM
+        this.wizardSteps.changes.subscribe(changedWizardSteps => {
+            this.wizardNavigator.updateWizardSteps(changedWizardSteps.toArray(), this);
+        });
+
+        // initialize the model
+        this.wizardNavigator.updateWizardSteps(this.wizardSteps.toArray(), this);
+    }
+
+    onPrevious() {
+        this.wizardNavigator.previous();
+    }
+
+    onNext() {
+        this.wizardNavigator.next();
+    }
+
+    onCancel() {
+        this.cancelClicked.emit();
+    }
+
+    onFinish() {
+        this.finishClicked.emit();
+    }
+
+    onSelectedStepChanged(selectedStep: WizardStepComponent) {
+        this.selectedStep = selectedStep;
+    }
 
 }
