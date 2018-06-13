@@ -1,4 +1,4 @@
-<app-card i18n-title="@@promotions-create_edit_promotion-app-card-promotions_title_field" i18n-subTitle="@@promotions-create_edit_promotion-app-card-promotions_subtitle_field">
+<app-card title="{{title}}" subTitle="{{subTitle}}">
   <form id="promotionForm" [formGroup]="formGroup">
     <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)">
       <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" title="Promotion News">
@@ -6,14 +6,14 @@
           <div class="col">
             <!-- Title field -->
             <div class="form-group">
-              <label for="email" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
+              <label for="email" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
               <input id="email" class="form-control" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder"
                 placeholder="Enter title">
               <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
             </div>
             <div class="form-group">
-              <label for="banner" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
+              <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
               <input id="banner" class="form-control" type="text" placeholder="Enter banner">
               <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
@@ -22,7 +22,7 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="banner" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
+              <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
               <label class="require">*</label>
               <!-- <app-tinymce-editor elementId="promotionsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor> -->
             </div>
@@ -43,7 +43,7 @@
         <label class="form-check-label">
           <input type="checkbox" class="form-check-input form-control">
           <i class="input-helper"></i>
-          <label class="form-check-label" i18n="@@user-create_user-label-create_another_field"> Create another</label>
+          <label class="form-check-label" i18n="@@promotion-create_promotion-label-create_another_field"> Create another</label>
         </label>
       </div>
 

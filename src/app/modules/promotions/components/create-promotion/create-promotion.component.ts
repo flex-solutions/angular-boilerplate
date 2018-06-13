@@ -2,6 +2,7 @@ import { WizardStep } from './../../../../shared/ui-common/wizard/wizard-step/wi
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
+import { MessageConstant } from '../../messages';
 
 @Component({
   selector: 'app-create-promotion',
@@ -14,18 +15,24 @@ export class CreatePromotionComponent implements OnInit {
   subTitle: string;
   formGroup: FormGroup;
   currentStep: WizardStep;
+  isEditableMode: boolean;
 
   constructor(
     protected fb: FormBuilder,
     protected translateService: TranslateService,
   ) {
-
+    this.isEditableMode = false;
     this.formGroup = this.fb.group({});
   }
 
   ngOnInit() {
-    this.title = 'Create Promotion';
-    this.subTitle = 'This page allows you creating a promotion and starts it if you want';
+    if (!this.isEditableMode) {
+      this.title = this.translateService.translate(MessageConstant.CreatePromotionTitle);
+      this.subTitle = this.translateService.translate(MessageConstant.CreatePromotionDescription);
+    } else {
+      this.title = this.translateService.translate(MessageConstant.EditPromotionTitle);
+      this.subTitle = this.translateService.translate(MessageConstant.EditPromotionDescription);
+    }
   }
 
   onFinshAndStart() {
