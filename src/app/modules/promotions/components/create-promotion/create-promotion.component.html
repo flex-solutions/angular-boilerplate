@@ -1,7 +1,6 @@
-<app-card i18n-title="@@promotions-create_edit_promotion-app-card-promotions_title_field" 
-i18n-subTitle="@@promotions-create_edit_promotion-app-card-promotions_subtitle_field">
+<app-card i18n-title="@@promotions-create_edit_promotion-app-card-promotions_title_field" i18n-subTitle="@@promotions-create_edit_promotion-app-card-promotions_subtitle_field">
   <form id="promotionForm" [formGroup]="formGroup">
-    <app-wizard>
+    <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)">
       <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" title="Promotion News">
         <div class="row">
           <div class="col">
@@ -9,15 +8,14 @@ i18n-subTitle="@@promotions-create_edit_promotion-app-card-promotions_subtitle_f
             <div class="form-group">
               <label for="email" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
-              <input id="email" class="form-control" formControlName="title" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder"
+              <input id="email" class="form-control" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder"
                 placeholder="Enter title">
               <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
             </div>
             <div class="form-group">
               <label for="banner" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
-              <input id="banner" class="form-control" formControlName="banner" type="text"
-                placeholder="Enter banner">
+              <input id="banner" class="form-control" type="text" placeholder="Enter banner">
               <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
             </div>
 
@@ -37,6 +35,18 @@ i18n-subTitle="@@promotions-create_edit_promotion-app-card-promotions_subtitle_f
       <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Customer Target">
         <p>COMING SOON</p>
       </app-wizard-step>
+      <!--Extend wizard button-->
+      <button *ngIf="currentStep===2" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()" i18n="@@wizard-wizard-actions-finish_start_button">Finish & Start</button>
+
+      <!--Create another checkbox-->
+      <div *ngIf="currentStep===2" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input form-control">
+          <i class="input-helper"></i>
+          <label class="form-check-label" i18n="@@user-create_user-label-create_another_field"> Create another</label>
+        </label>
+      </div>
+
     </app-wizard>
   </form>
 </app-card>

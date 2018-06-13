@@ -44,7 +44,7 @@ export class WizardStepComponent {
         if (this.selected) {
             classes += ' current ';
         } else {
-            classes += ' disabled ';
+            classes += ' current unselected';
         }
 
         if (this.isFirstStep) {
@@ -59,5 +59,10 @@ export class WizardStepComponent {
     }
 }
 
+export enum WizardStep {
+    Unknow,
 
+    First,
 
+    Last
+}

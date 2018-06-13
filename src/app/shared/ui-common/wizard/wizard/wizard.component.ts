@@ -1,6 +1,6 @@
 import { Component, AfterContentInit, QueryList, ContentChildren, EventEmitter, Output } from '@angular/core';
 import { WizardNavigator } from '../wizard-navigator';
-import { WizardStepComponent } from '../wizard-step/wizard-step.component';
+import { WizardStepComponent, WizardStep } from '../wizard-step/wizard-step.component';
 
 @Component({
     selector: 'app-wizard',
@@ -17,6 +17,10 @@ export class WizardComponent implements AfterContentInit {
     // Call when finish clicked
     @Output()
     finishClicked = new EventEmitter();
+
+    // Call when selected step changed
+    @Output()
+    stepChanged = new EventEmitter<WizardStep>();
 
     /**
     * A QueryList containing all [[WizardStep]]s inside this wizard
@@ -59,6 +63,9 @@ export class WizardComponent implements AfterContentInit {
 
     onSelectedStepChanged(selectedStep: WizardStepComponent) {
         this.selectedStep = selectedStep;
+        const step = this.selectedStep.isFirstStep ? WizardStep.First :
+            (this.selectedStep.isLastStep ? WizardStep.Last : WizardStep.Unknow);
+        this.stepChanged.emit(step);
     }
 
 }
