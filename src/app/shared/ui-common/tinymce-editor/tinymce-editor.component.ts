@@ -11,7 +11,6 @@ declare let tinymce: any;
 export class TynimceEditorComponent implements OnInit, AfterViewInit {
     @Input() content: string;
     @Input() elementId: string;
-    @ViewChild('tinymce') myElement: ElementRef
 
     @Output() onEditorContentChange = new EventEmitter();
     editor;

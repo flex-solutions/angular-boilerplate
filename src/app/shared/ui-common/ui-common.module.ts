@@ -1,4 +1,4 @@
-
+import { DropifyComponent } from './dropify/dropify.component';
 import { SearchTextboxComponent } from './search-textbox/search-textbox.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -18,11 +18,14 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
     LoaderComponent, CardComponent,
     SearchTextboxComponent, TynimceEditorComponent,
     DialogModule, DatagridModule, PaginationModule,
+    DropifyComponent
   ],
   declarations: [
     LoaderComponent,
     CardComponent,
-    SearchTextboxComponent, TynimceEditorComponent,
+    SearchTextboxComponent, 
+    TynimceEditorComponent,
+    DropifyComponent
   ],
   providers: [
     LoaderService
