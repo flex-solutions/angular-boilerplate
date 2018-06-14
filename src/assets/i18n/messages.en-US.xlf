@@ -985,6 +985,14 @@
         <source>Promotion is updated successfully</source>
         <target>Promotion is updated successfully</target>
       </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_title" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_content" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
       <!--END Create edit promotion-->
     </body>
   </file>

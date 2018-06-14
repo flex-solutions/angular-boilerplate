@@ -1,7 +1,11 @@
-import { log } from 'util';
+import { Location } from '@angular/common';
+import { isNil } from 'ramda';
+import { NotificationService } from './../../../../shared/services/notification.service';
+import { IPromotion } from './../../interfaces/promotion';
+import { PromotionService } from './../../services/promotion.service';
 import { WizardStep } from './../../../../shared/ui-common/wizard/wizard-step/wizard-step.component';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -18,33 +22,46 @@ export class CreatePromotionComponent implements OnInit {
   subTitle: string;
   formGroup: FormGroup;
   currentStep: WizardStep;
+  promotion: IPromotion;
+  banerInvalid: boolean;
+  contentInvalid: boolean;
+  isCreateAnother: boolean;
 
   // For editable mode
-  private _isEditableMode: boolean;
-  private _promotionId: any;
+  isEditableMode: boolean;
 
   constructor(
     protected fb: FormBuilder,
     protected translateService: TranslateService,
-    private _activeRoute: ActivatedRoute
+    private _activeRoute: ActivatedRoute,
+    private _promotionService: PromotionService,
+    private _notificationService: NotificationService,
+    private _location: Location
   ) {
-    this._isEditableMode = false;
-    this.formGroup = this.fb.group({});
+    this.banerInvalid = false;
+    this.contentInvalid = false;
+    this.isEditableMode = false;
+    this.formGroup = this.fb.group({
+      title: ['', [Validators.required]]
+    });
   }
 
   ngOnInit() {
     this._activeRoute.params.subscribe((params: Params) => {
-      this._promotionId = params['id'] ? params['id'] : '';
-      this._isEditableMode = params['id'] ? true : false;
+      const promotionId = params['id'] ? params['id'] : '';
+      this.isEditableMode = promotionId ? true : false;
 
       this.resolveTitle();
 
+      if (this.isEditableMode) {
+        this.loadPromotion(promotionId);
+      }
     });
   }
 
   // Resolve multilangual message for app card title and sub title
   private resolveTitle() {
-    if (!this._isEditableMode) {
+    if (!this.isEditableMode) {
       this.title = this.translateService.translate(MessageConstant.CreatePromotionTitle);
       this.subTitle = this.translateService.translate(MessageConstant.CreatePromotionDescription);
     } else {
@@ -54,8 +71,10 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   // Load promotion info from server
-  private loadPromotion() {
-
+  private loadPromotion(promotionId) {
+    this._promotionService.getPromotion(promotionId).subscribe(p => {
+      this.promotion = p as IPromotion;
+    });
   }
 
   onFinshAndStart() {
@@ -63,20 +82,48 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onWizardCancel() {
-    console.log('[CreatePromotionComponent] onCancel');
+    this._location.back();
   }
 
   onWizardFinish() {
-    console.log('[CreatePromotionComponent] onFinish');
+    if (this.isEditableMode) {
+      // Update promotion
+      this._promotionService.update(this.promotion).subscribe(p => {
+        this.showNotification(MessageConstant.UpdatePromotionSuccess);
+      });
+    } else {
+      // Create promotion
+      this._promotionService.create(this.promotion).subscribe(p => {
+        this.showNotification(MessageConstant.CreatePromotionSuccess);
+        this.onHandleCreateSuccess();
+      });
+    }
   }
 
   onStepChanged(step: WizardStep) {
-    console.log('[CreatePromotionComponent] Step change: ' + step);
     this.currentStep = step;
   }
 
-  onHtmlEditorChange(content) {
-    console.log(content);
+  onHtmlEditorChange(htmlContent) {
+    this.promotion.content = htmlContent;
+    this.contentInvalid = isNil(htmlContent) || htmlContent === '';
+  }
 
+  private showNotification(messageKey) {
+    const message = this.translateService.translate(messageKey);
+    this._notificationService.showSuccess(message);
+  }
+
+  private onHandleCreateSuccess() {
+    if (this.isCreateAnother) {
+      this.formGroup.reset();
+      // Reset drotify control
+
+      // Reset tinycme control
+
+
+    } else {
+      this._location.back();
+    }
   }
 }

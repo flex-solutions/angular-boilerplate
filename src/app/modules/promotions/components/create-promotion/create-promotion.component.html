@@ -5,17 +5,19 @@
         <div class="row">
           <div class="col col-md-6" style="min-height: 500">
             <!-- Title field -->
-            <div class="form-group">
-              <label for="email" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
+            <div class="form-group" [ngClass]="{'has-danger': title.invalid && (title.dirty || title.touched)}">
+              <label for="title" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
-              <input id="email" class="form-control" i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" placeholder="Enter title">
-              <!-- <label id="title-error" class="error mt-2 text-danger" for="title" *ngIf="errorMessage.title"> {{ errorMessage.title }}</label>-->
+              <input id="title" class="form-control" formControlName="title" form i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" placeholder="Enter title">
+              <label id="title-error" class="error mt-2 text-danger" for="title" i18n="@@promotion-create_promotion-error-require_title"
+                *ngIf="title.invalid && (title.dirty || title.touched)"></label>
             </div>
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
               <app-dropify></app-dropify>
-              <!-- <label id="banner-error" class="error mt-2 text-danger" for="banner" *ngIf="errorMessage.banner"> {{ errorMessage.fullname }}</label>-->
+              <label id="title-error" class="error mt-2 text-danger" for="name" i18n="@@promotion-create_promotion-error-banner_exceed_size"
+                *ngIf="banerInvalid"></label>
             </div>
 
           </div>
@@ -24,6 +26,8 @@
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
               <label class="require">*</label>
               <app-tinymce-editor elementId="newsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
+              <label id="title-error" class="error mt-2 text-danger" for="name" i18n="@@promotion-create_promotion-error-require_content"
+                *ngIf="contentInvalid"></label>
             </div>
           </div>
         </div>
@@ -35,12 +39,12 @@
         <p>COMING SOON</p>
       </app-wizard-step>
       <!--Extend wizard button-->
-      <button *ngIf="currentStep===2" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()" i18n="@@wizard-wizard-actions-finish_start_button">Finish & Start</button>
+      <button *ngIf="currentStep===2 && isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()" i18n="@@wizard-wizard-actions-finish_start_button">Finish & Start</button>
 
       <!--Create another checkbox-->
-      <div *ngIf="currentStep===2" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
+      <div *ngIf="currentStep===2 && isEditableMode" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
         <label class="form-check-label">
-          <input type="checkbox" class="form-check-input form-control">
+          <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
           <i class="input-helper"></i>
           <label class="form-check-label" i18n="@@promotion-create_promotion-label-create_another_field"> Create another</label>
         </label>
