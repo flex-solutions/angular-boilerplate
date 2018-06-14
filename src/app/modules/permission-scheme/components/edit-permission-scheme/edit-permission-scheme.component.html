@@ -22,16 +22,29 @@ i18n-subTitle="@@permissiom-scheme-create-p-desciption">
                             [ngClass]="{
                               'has-danger': permissionName.invalid && (permissionName.dirty || permissionName.touched),
                               'has-success': permissionName.valid && (permissionName.dirty || permissionName.touched)
-                         }"
+                         }" *ngIf="!isDefault"
                             >
                               <label i18n="@@permissiom-scheme-create-input-name">Scheme Name</label>
                               <label class="require">*</label>
                               <input class="form-control" i18n-placeholder="@@permissiom-scheme-create-input-name-placeholder" 
-                               placeholder="Enter permission scheme name" [(ngModel)]="permissionModel.name" name='permissionName' #permissionName="ngModel" required>
+                               placeholder="Enter permission scheme name" [(ngModel)]="permissionModel.name" name='permissionName' #permissionName="ngModel" 
+                               required >
+                             
                               <label id="name-error" class="error mt-2 text-danger" for="name" 
                               i18n="@@permissiom-scheme-create-error-namerequired" 
                               *ngIf="permissionName.invalid && (permissionName.dirty || permissionName.touched)">
                               </label>
+                            </div>
+                            <div class="form-group OnTop" *ngIf="isDefault"
+                            >
+                            <div>
+                              <label i18n="@@permissiom-scheme-create-input-name">Scheme Name</label>
+                              <label class="require">*</label>
+                            </div>
+                           <div>
+                            <label>{{permissionModel.name}}</label>
+                           </div>
+                        
                             </div>
                           </div>
                           <div aria-labelledby="user-profile-activity-tab" class="tab-pane fade" id="user-profile-activity" role="tabpanel">

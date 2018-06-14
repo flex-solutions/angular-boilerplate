@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, LOCALE_ID, Inject } from '@angular/core';
 import {
   HttpEvent,
   HttpInterceptor,
@@ -15,11 +15,13 @@ import {
 } from '@angular/http';
 
 import { AuthenticationService } from '../services/authentication.service';
-import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private auth: AuthenticationService) { }
+  private _locale: string;
+  constructor(private auth: AuthenticationService, @Inject(LOCALE_ID) localeId) {
+    this._locale = localeId;
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     /*
@@ -42,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
   createRequestOptions() {
     // Get auth token
     const token: string = this.auth.getAuthorizationToken();
-    const header = { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '' };
+    const header = { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '', LangCode:  this._locale};
 
     return header;
   }
