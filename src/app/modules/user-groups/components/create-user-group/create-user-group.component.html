@@ -15,7 +15,7 @@
         <form class="cmxform" id="createUserGroupForm" [formGroup]="formGroup">
           <fieldset>
             <!-- Group Name field -->
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-danger': groupname.invalid && (groupname.dirty || groupname.touched)}">
               <label for="groupname" i18n="@@user_groups-create_user_group-group_name_field_label">Group Name </label>
               <label class="require">*</label>
               <input [(ngModel)]="userGroup.name" required id="groupname" class="form-control" formControlName="groupname" type="text"
@@ -45,7 +45,7 @@
             </div>
 
             <!-- Form buttons -->
-            <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="groupname.errors">Submit</button>
+            <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
             <button class="btn btn-light" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
           </fieldset>
         </form>

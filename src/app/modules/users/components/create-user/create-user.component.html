@@ -11,25 +11,25 @@
         <form class="cmxform" id="signupForm" [formGroup]="formGroup">
           <fieldset>
             <!-- Email field -->
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-danger': errorMessage.email}">
               <label for="email" i18n="@@user-create_user-label-email_field">Email </label>
               <label class="require">*</label>
-              <input id="email" class="form-control" formControlName="email" type="email" [ngClass]="{'form-control-danger': errorMessage.email }"
-                i18n-placeholder="@@user-create_user-input-email_place_holder" placeholder="Enter email">
+              <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@user-create_user-input-email_place_holder"
+                placeholder="Enter email">
               <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
             </div>
 
             <!-- Fullname field -->
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-danger': errorMessage.fullname}">
               <label for="fullname" i18n="@@user-create_user-label-fullname_field">Full name </label>
               <label class="require">*</label>
-              <input id="fullname" class="form-control" formControlName="fullname" type="text" [ngClass]="{'form-control-danger': errorMessage.fullname }"
-                i18n-placeholder="@@user-create_user-input-fullname_place_holder" placeholder="Enter full name">
+              <input id="fullname" class="form-control" formControlName="fullname" type="text" i18n-placeholder="@@user-create_user-input-fullname_place_holder"
+                placeholder="Enter full name">
               <label id="fullname-error" class="error mt-2 text-danger" for="fullname" *ngIf="errorMessage.fullname"> {{ errorMessage.fullname }}</label>
             </div>
 
             <!-- Branch field -->
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-danger': errorMessage.branchId}">
               <label for="branchId" i18n="@@user-create_user-label-branchId_field">Branch </label>
               <label class="require">*</label>
               <select id="branchId" class="form-control" formControlName="branchId">
@@ -39,11 +39,11 @@
             </div>
 
             <!-- Username field -->
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-danger': errorMessage.username}">
               <label for="username" i18n="@@user-create_user-label-username_field">Username </label>
               <label class="require">*</label>
-              <input id="username" class="form-control" formControlName="username" type="text" [ngClass]="{'form-control-danger': errorMessage.username }"
-                i18n-placeholder="@@user-create_user-input-username_place_holder" placeholder="Enter username">
+              <input id="username" class="form-control" formControlName="username" type="text" i18n-placeholder="@@user-create_user-input-username_place_holder"
+                placeholder="Enter username">
               <label id="username-error" class="error mt-2 text-danger" for="username" *ngIf="errorMessage.username">
                 {{ errorMessage.username }}</label>
             </div>
@@ -70,14 +70,11 @@
             </div>
 
             <!-- Form buttons -->
-            <button class="btn btn-success mr-2" i18n="@@user-create_user-button-submit" (click)="submit()">Submit</button>
+            <button class="btn btn-success mr-2" i18n="@@user-create_user-button-submit" [disabled]="formGroup.invalid" (click)="submit()">Submit</button>
             <button class="btn btn-light" i18n="@@user-create_user-button-cancel" (click)="cancel()">Cancel</button>
           </fieldset>
         </form>
       </div>
     </div>
-
-  </div>
-  <div class="col-md-2 grid-margin stretch-card">
   </div>
 </div>
