@@ -979,6 +979,22 @@
         <source>Deactivate</source>
         <target>Deactivate</target>
       </trans-unit>
+      <trans-unit id="news_management-news_details-news_new_status" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivated_status" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_published_status" datatype="html">
+        <source>Published</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="news_detail-delete_news-ok" datatype="html">
+        <source>Delete news successfully</source>
+        <target>Delete news successfully</target>
+      </trans-unit>
       <!-- END News Management -->
     </body>
   </file>

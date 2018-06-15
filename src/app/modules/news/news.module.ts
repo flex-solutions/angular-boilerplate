@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsModuleComponents } from './components';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
+import { NewsStatusDirective } from './directives/news-status.directive';
+import { NewsActionButtonDirective } from './directives/news-action-button.directive';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { UICommonModule } from '../../shared/ui-common/ui-common.module';
     UICommonModule
   ],
   declarations: [
-    ...NewsModuleComponents
+    ...NewsModuleComponents,
+    NewsStatusDirective,
+    NewsActionButtonDirective
   ],
   providers: [NewsService],
 

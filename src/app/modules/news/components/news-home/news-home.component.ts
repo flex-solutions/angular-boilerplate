@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NewsRouteNames } from '../../constants/news.constant';
 
 @Component({
   selector: 'app-news-home',
@@ -13,7 +14,7 @@ export class NewsHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  navigateToNewsDetails() {
-    this.router.navigate(['news/', '5b1fe9118926690df3c1d67c']);
+  navigateToNewsDetails(id: string) {
+    this.router.navigate([NewsRouteNames.VIEW, id]);
   }
 }

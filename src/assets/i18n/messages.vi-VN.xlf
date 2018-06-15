@@ -981,6 +981,26 @@
         <source>Deactivate</source>
         <target>Vô hiệu hoá</target>
       </trans-unit>
+      <trans-unit id="news_management-news_details-news_new_status" datatype="html">
+        <source>New</source>
+        <target>Mới tạo</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivated_status" datatype="html">
+        <source>Deactivated</source>
+        <target>Đã vô hiệu hoá</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_published_status" datatype="html">
+        <source>Published</source>
+        <target>Đã đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-delete_news-ok" datatype="html">
+        <source>Delete news successfully</source>
+        <target>Xoá tin tức thành công</target>
+      </trans-unit>
+      <trans-unit id="news_detail-change_status_news-ok" datatype="html">
+        <source>Update status {{0}} of news title successfully</source>
+        <target>Cập nhật trạng thái {{0}} cho tin tức thành công</target>
+      </trans-unit>
       <!-- END News Management -->
     </body>
   </file>

@@ -1,4 +1,4 @@
-import { NewsStatusType } from "../enums/news-type.enum";
+import { NewsStatusType } from '../enums/news-type.enum';
 
 export class News {
     _id: string;
@@ -6,5 +6,7 @@ export class News {
     banner: string;
     content: string;
     status: NewsStatusType = NewsStatusType.New ;
-    viewCount: number = 0;
+    viewCount = 0;
+    publishedOn: number;
+    publishedBy: string;
 }
