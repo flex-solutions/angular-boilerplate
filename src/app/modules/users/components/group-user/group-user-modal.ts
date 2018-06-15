@@ -63,14 +63,11 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
 
   submit() {
     if (this.selectedGroup._id !== this.groupInfo.user.userGroup._id) {
-      let updateUser = new User();
-      updateUser = this.groupInfo.user;
-      updateUser.userGroup._id = this.selectedGroup._id;
       // * Save user successful, display success notification
       const msg = this.translateService.translateWithParams(
-        UserMessages.ChangeGroupSuccess, updateUser.username, this.selectedGroup.name
+        UserMessages.ChangeGroupSuccess, this.groupInfo.user.username, this.selectedGroup.name
       );
-      this.userService.update(updateUser).subscribe(respond => {
+      this.userService.changeUserGroup(this.groupInfo.user._id, this.selectedGroup._id).subscribe(respond => {
         this.notificationService.showSuccess(msg);
         this.result = true;
         this.dialogResult();

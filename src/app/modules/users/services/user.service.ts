@@ -54,6 +54,10 @@ export class UserService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
+  changeUserGroup(userId: string, ugId: string) {
+    return this.put(`${userId}/changeUserGroup?ugId=${ugId}`, {});
+  }
+
   // Handle get user by id.
   getUserById(userId: string): Observable<User> {
     return this.get(`${userId}/combinegroupname`);
