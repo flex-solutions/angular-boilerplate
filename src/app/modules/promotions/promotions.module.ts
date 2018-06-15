@@ -1,3 +1,4 @@
+import { PromotionService } from './services/promotion.service';
 import { CreatePromotionComponent } from './components/create-promotion/create-promotion.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,7 @@ import { UICommonModule } from '../../shared/ui-common/ui-common.module';
     ReactiveFormsModule,
     UICommonModule
   ],
+  providers: [PromotionService],
   declarations: [
     CreatePromotionComponent
   ]

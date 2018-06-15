@@ -4,22 +4,23 @@ import { NotificationService } from './../../../../shared/services/notification.
 import { IPromotion } from './../../interfaces/promotion';
 import { PromotionService } from './../../services/promotion.service';
 import { WizardStep } from './../../../../shared/ui-common/wizard/wizard-step/wizard-step.component';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-create-promotion',
   templateUrl: './create-promotion.component.html',
   styleUrls: ['./create-promotion.component.css']
 })
-export class CreatePromotionComponent implements OnInit {
+export class CreatePromotionComponent implements OnInit, AfterViewInit {
 
   // Properties
-  title: string;
-  subTitle: string;
+  cardTitle: string;
+  cardSubTitle: string;
   formGroup: FormGroup;
   currentStep: WizardStep;
   promotion: IPromotion;
@@ -30,6 +31,8 @@ export class CreatePromotionComponent implements OnInit {
   // For editable mode
   isEditableMode: boolean;
 
+  get title() { return this.formGroup.get('title'); }
+
   constructor(
     protected fb: FormBuilder,
     protected translateService: TranslateService,
@@ -38,14 +41,14 @@ export class CreatePromotionComponent implements OnInit {
     private _notificationService: NotificationService,
     private _location: Location
   ) {
+    this.promotion = { title: '', content: '', banner: '' } as IPromotion;
     this.banerInvalid = false;
     this.contentInvalid = false;
     this.isEditableMode = false;
     this.formGroup = this.fb.group({
-      title: ['', [Validators.required]]
+      'title': new FormControl(this.promotion.title, [Validators.required])
     });
   }
-
   ngOnInit() {
     this._activeRoute.params.subscribe((params: Params) => {
       const promotionId = params['id'] ? params['id'] : '';
@@ -59,14 +62,18 @@ export class CreatePromotionComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    { $('.dropify').dropify({}); }
+  }
+
   // Resolve multilangual message for app card title and sub title
   private resolveTitle() {
     if (!this.isEditableMode) {
-      this.title = this.translateService.translate(MessageConstant.CreatePromotionTitle);
-      this.subTitle = this.translateService.translate(MessageConstant.CreatePromotionDescription);
+      this.cardTitle = this.translateService.translate(MessageConstant.CreatePromotionTitle);
+      this.cardSubTitle = this.translateService.translate(MessageConstant.CreatePromotionDescription);
     } else {
-      this.title = this.translateService.translate(MessageConstant.EditPromotionTitle);
-      this.subTitle = this.translateService.translate(MessageConstant.EditPromotionDescription);
+      this.cardTitle = this.translateService.translate(MessageConstant.EditPromotionTitle);
+      this.cardSubTitle = this.translateService.translate(MessageConstant.EditPromotionDescription);
     }
   }
 
@@ -107,6 +114,14 @@ export class CreatePromotionComponent implements OnInit {
   onHtmlEditorChange(htmlContent) {
     this.promotion.content = htmlContent;
     this.contentInvalid = isNil(htmlContent) || htmlContent === '';
+  }
+
+  onFileChanged($event) {
+    console.log($event);
+  }
+
+  onErrors($event) {
+    console.log($event);
   }
 
   private showNotification(messageKey) {
