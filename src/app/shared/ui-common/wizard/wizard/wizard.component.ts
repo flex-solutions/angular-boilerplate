@@ -1,4 +1,4 @@
-import { Component, AfterContentInit, QueryList, ContentChildren, EventEmitter, Output } from '@angular/core';
+import { Component, AfterContentInit, QueryList, ContentChildren, EventEmitter, Output, Input } from '@angular/core';
 import { WizardNavigator } from '../wizard-navigator';
 import { WizardStepComponent, WizardStep } from '../wizard-step/wizard-step.component';
 
@@ -22,6 +22,16 @@ export class WizardComponent implements AfterContentInit {
     @Output()
     stepChanged = new EventEmitter<WizardStep>();
 
+    @Output()
+    validated = new EventEmitter();
+
+    // Call before execute next action
+    canNext: boolean;
+
+    // Call before excute previous action
+    canPrevious: boolean;
+
+
     /**
     * A QueryList containing all [[WizardStep]]s inside this wizard
     */
@@ -32,7 +42,8 @@ export class WizardComponent implements AfterContentInit {
     selectedStep: WizardStepComponent;
 
     constructor(public wizardNavigator: WizardNavigator) {
-
+        this.canNext = true;
+        this.canPrevious = true;
     }
 
     ngAfterContentInit(): void {
@@ -46,11 +57,18 @@ export class WizardComponent implements AfterContentInit {
     }
 
     onPrevious() {
-        this.wizardNavigator.previous();
+        if (this.canPrevious) {
+            this.wizardNavigator.previous();
+        }
     }
 
     onNext() {
-        this.wizardNavigator.next();
+        console.log('onNext...');
+        this.validated.emit();
+        console.log('onNext...DONE' + this.canNext);
+        if (this.canNext) {
+            this.wizardNavigator.next();
+        }
     }
 
     onCancel() {

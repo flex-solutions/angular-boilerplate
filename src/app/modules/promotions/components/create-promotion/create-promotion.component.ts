@@ -1,10 +1,12 @@
+import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
+import { FileInfo, ErrorType } from './../../../../shared/ui-common/dropify/dropify.component';
 import { Location } from '@angular/common';
 import { isNil } from 'ramda';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { IPromotion } from './../../interfaces/promotion';
 import { PromotionService } from './../../services/promotion.service';
 import { WizardStep } from './../../../../shared/ui-common/wizard/wizard-step/wizard-step.component';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MessageConstant } from '../../messages';
@@ -21,7 +23,6 @@ export class CreatePromotionComponent implements OnInit, AfterViewInit {
   // Properties
   cardTitle: string;
   cardSubTitle: string;
-  formGroup: FormGroup;
   currentStep: WizardStep;
   promotion: IPromotion;
   banerInvalid: boolean;
@@ -31,7 +32,9 @@ export class CreatePromotionComponent implements OnInit, AfterViewInit {
   // For editable mode
   isEditableMode: boolean;
 
-  get title() { return this.formGroup.get('title'); }
+  @ViewChild(WizardComponent)
+  private wizardComponent: WizardComponent;
+  private _isError: boolean;
 
   constructor(
     protected fb: FormBuilder,
@@ -45,11 +48,9 @@ export class CreatePromotionComponent implements OnInit, AfterViewInit {
     this.banerInvalid = false;
     this.contentInvalid = false;
     this.isEditableMode = false;
-    this.formGroup = this.fb.group({
-      'title': new FormControl(this.promotion.title, [Validators.required])
-    });
   }
   ngOnInit() {
+    this.wizardComponent.canNext = true;
     this._activeRoute.params.subscribe((params: Params) => {
       const promotionId = params['id'] ? params['id'] : '';
       this.isEditableMode = promotionId ? true : false;
@@ -107,6 +108,12 @@ export class CreatePromotionComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onWizardValidated() {
+    console.log('onValidated...');
+    this.wizardComponent.canNext = false;
+    console.log('onValidated...DONE' + this.wizardComponent.canNext);
+  }
+
   onStepChanged(step: WizardStep) {
     this.currentStep = step;
   }
@@ -116,12 +123,28 @@ export class CreatePromotionComponent implements OnInit, AfterViewInit {
     this.contentInvalid = isNil(htmlContent) || htmlContent === '';
   }
 
-  onFileChanged($event) {
-    console.log($event);
+  onFileChanged($event: FileInfo) {
+    if (!this._isError) {
+      this.banerInvalid = false;
+    }
+    this._isError = false;
+    this.promotion.banner = $event.content;
   }
 
-  onErrors($event) {
-    console.log($event);
+  onFileRemoved() {
+    this.banerInvalid = false;
+    this.promotion.banner = '';
+  }
+
+  onErrors($event: ErrorType) {
+    this._isError = true;
+    if ($event === ErrorType.FileSize) {
+      this.banerInvalid = true;
+    }
+  }
+
+  get titleError() {
+    return this.translateService.translate('promotion-create_promotion-error-require_title');
   }
 
   private showNotification(messageKey) {
@@ -131,7 +154,6 @@ export class CreatePromotionComponent implements OnInit, AfterViewInit {
 
   private onHandleCreateSuccess() {
     if (this.isCreateAnother) {
-      this.formGroup.reset();
       // Reset drotify control
 
       // Reset tinycme control
