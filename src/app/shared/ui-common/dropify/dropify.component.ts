@@ -101,26 +101,30 @@ export class DropifyComponent implements AfterViewInit {
 
         // Register droptify error occurs
         drEvent.on('dropify.error.fileSize', (event, element) => {
-            this.errors.emit(ErrorType.FileSize);
+            this.raiseError(ErrorType.FileSize);
         });
         drEvent.on('dropify.error.minWidth', (event, element) => {
-            this.errors.emit(ErrorType.MinWidth);
+            this.raiseError(ErrorType.MinWidth);
         });
         drEvent.on('dropify.error.maxWidth', (event, element) => {
-            this.errors.emit(ErrorType.MaxWidth);
+            this.raiseError(ErrorType.MaxWidth);
         });
         drEvent.on('dropify.error.minHeight', (event, element) => {
-            this.errors.emit(ErrorType.MinHeight);
+            this.raiseError(ErrorType.MinHeight);
         });
         drEvent.on('dropify.error.maxHeight', (event, element) => {
-            this.errors.emit(ErrorType.MaxHeight);
+            this.raiseError(ErrorType.MaxHeight);
         });
         drEvent.on('dropify.error.imageFormat', (event, element) => {
-            this.errors.emit(ErrorType.ImageFormat);
+            this.raiseError(ErrorType.ImageFormat);
         });
         drEvent.on('dropify.afterClear', (event, element) => {
             this.fileRemoved.emit();
         });
+    }
+
+    raiseError(errorType: ErrorType) {
+        this.errors.emit(errorType);
     }
 
     onChanged($event) {

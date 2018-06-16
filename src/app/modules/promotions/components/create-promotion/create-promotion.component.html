@@ -8,7 +8,7 @@
             <div class="form-group">
               <label for="title" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
-              <input id="title" class="form-control" [(ngModel)]="promotion.title" name='title' #title="ngModel" required 
+              <input id="title" class="form-control" (change)="onTitleChange($event)" [(ngModel)]="promotion.title" name='title' #title="ngModel" required 
               i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" [ngClass]="{'has-error': (title.invalid && (title.dirty || title.touched)) || titleInvalid}">
               <label id="title-error" class="error mt-2 text-danger" for="title" style="margin-left: 0;"
                 *ngIf="(title.invalid && (title.dirty || title.touched)) || titleInvalid">{{titleError}}</label>
@@ -27,9 +27,10 @@
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
               <label class="require">*</label>
-              <app-tinymce-editor editorHeight="350" elementId="promotionsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
+              <app-tinymce-editor editorHeight="350" elementId="promotionsEditor" [content]="promotion.content" (onBlur)="onTinyEditorBlur($event)" (onEditorContentChange)="onHtmlEditorChange($event)"
+              [hasError]="contentInvalid || isTinymceContentEmpty()"></app-tinymce-editor>
               <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-require_content"
-                *ngIf="contentInvalid">promotion-create_promotion-error-require_content</label>
+                *ngIf="contentInvalid || isTinymceContentEmpty()">promotion-create_promotion-error-require_content</label>
             </div>
           </div>
         </div>

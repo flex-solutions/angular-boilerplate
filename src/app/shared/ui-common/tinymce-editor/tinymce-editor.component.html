@@ -1,4 +1,4 @@
-<div>
+<div [ngClass]="{'tinymce-editor tinymce-has-error': hasError, 'tinymce-editor': !hasError}">
     <textarea id="{{elementId}}" [(ngModel)]="content">
     </textarea>
 </div>

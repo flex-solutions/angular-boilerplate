@@ -11,6 +11,7 @@ import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
+import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 
 @Component({
   selector: 'app-create-promotion',
@@ -29,9 +30,12 @@ export class CreatePromotionComponent implements OnInit {
   titleInvalid: boolean;
   isCreateAnother: boolean;
   banner: string;
+  isBlurEditor: boolean;
 
   // For editable mode
   isEditableMode: boolean;
+
+  private _isError: boolean;
 
   @ViewChild(WizardComponent)
   private wizardComponent: WizardComponent;
@@ -39,7 +43,8 @@ export class CreatePromotionComponent implements OnInit {
   @ViewChild(DropifyComponent)
   private dropifyComponent: DropifyComponent;
 
-  private _isError: boolean;
+  @ViewChild(TynimceEditorComponent)
+  private tynimceEditor: TynimceEditorComponent;
 
   constructor(
     protected fb: FormBuilder,
@@ -160,9 +165,21 @@ export class CreatePromotionComponent implements OnInit {
     return this.translateService.translate(MessageConstant.RequireTitle);
   }
 
+  onTitleChange($event) {
+    this.titleInvalid = false;
+  }
+
   private showNotification(messageKey) {
     const message = this.translateService.translate(messageKey);
     this._notificationService.showSuccess(message);
+  }
+
+  onTinyEditorBlur(event: any) {
+    this.isBlurEditor = event;
+  }
+
+  isTinymceContentEmpty() {
+    return (isNil(this.promotion.content) || this.promotion.content === '') && this.isBlurEditor;
   }
 
   private onHandleCreateSuccess() {
@@ -171,6 +188,7 @@ export class CreatePromotionComponent implements OnInit {
       // Reset drotify control
       this.dropifyComponent.reset();
       // Reset tinycme control
+      this.tynimceEditor.reset();
 
     } else {
       this._location.back();
