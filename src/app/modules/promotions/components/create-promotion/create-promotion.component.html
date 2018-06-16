@@ -9,14 +9,14 @@
               <label for="title" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
               <label class="require">*</label>
               <input id="title" class="form-control" [(ngModel)]="promotion.title" name='title' #title="ngModel" required 
-              i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" [ngClass]="{'has-error': title.invalid && (title.dirty || title.touched)}">
+              i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" [ngClass]="{'has-error': (title.invalid && (title.dirty || title.touched)) || titleInvalid}">
               <label id="title-error" class="error mt-2 text-danger" for="title" style="margin-left: 0;"
-                *ngIf="title.invalid && (title.dirty || title.touched)">{{titleError}}</label>
+                *ngIf="(title.invalid && (title.dirty || title.touched)) || titleInvalid">{{titleError}}</label>
             </div>
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
-              <app-dropify (fileChanged)="onFileChanged($event)" (errors)="onErrors($event)" height="450" (fileRemoved)="onFileRemoved()"
+              <app-dropify (fileChanged)="onFileChanged($event)" (errors)="onErrors($event)" height="400" (fileRemoved)="onFileRemoved()"
                 allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" "></app-dropify>
               <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-banner_exceed_size"
                 *ngIf="banerInvalid">The banner size doesn't exceed 500kb</label>
@@ -27,9 +27,9 @@
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
               <label class="require">*</label>
-              <app-tinymce-editor elementId="promotionsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
+              <app-tinymce-editor editorHeight="350" elementId="promotionsEditor" (onEditorContentChange)="onHtmlEditorChange($event)"></app-tinymce-editor>
               <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-require_content"
-                *ngIf="contentInvalid"></label>
+                *ngIf="contentInvalid">promotion-create_promotion-error-require_content</label>
             </div>
           </div>
         </div>
@@ -40,12 +40,12 @@
       <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Customer Target">
         <p>COMING SOON</p>
       </app-wizard-step>
-      <!--Extend wizard button-->
-      <button *ngIf="currentStep===2 && isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()"
+      <!--Extend wizard button. Current step = 2 mean that is last wizard step-->
+      <button *ngIf="currentStep===2 && !isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()"
         i18n="@@wizard-wizard-actions-finish_start_button">Finish & Start</button>
 
       <!--Create another checkbox-->
-      <div *ngIf="currentStep===2 && isEditableMode" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
+      <div *ngIf="currentStep===2 && !isEditableMode" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
         <label class="form-check-label">
           <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
           <i class="input-helper"></i>

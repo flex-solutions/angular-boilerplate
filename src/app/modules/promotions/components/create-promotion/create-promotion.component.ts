@@ -26,6 +26,7 @@ export class CreatePromotionComponent implements OnInit {
   promotion: Promotion;
   banerInvalid: boolean;
   contentInvalid: boolean;
+  titleInvalid: boolean;
   isCreateAnother: boolean;
   banner: string;
 
@@ -50,6 +51,7 @@ export class CreatePromotionComponent implements OnInit {
   ) {
     this.promotion = new Promotion();
     this.banerInvalid = false;
+    this.titleInvalid = false;
     this.contentInvalid = false;
     this.isEditableMode = false;
   }
@@ -87,7 +89,7 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onFinshAndStart() {
-    console.log('[CreatePromotionComponent] onFinshAndStart');
+    this.onWizardFinish();
   }
 
   onWizardCancel() {
@@ -110,9 +112,19 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onWizardValidated() {
-    console.log('onValidated...');
-    this.wizardComponent.canNext = true;
-    console.log('onValidated...DONE' + this.wizardComponent.canNext);
+    this.titleInvalid = false;
+    this.contentInvalid = false;
+    // Content is empty
+    if (!this.promotion.content || this.promotion.content === '') {
+      this.contentInvalid = true;
+    }
+
+    // Title is empty
+    if (!this.promotion.title || this.promotion.title === '') {
+      this.titleInvalid = true;
+    }
+
+    this.wizardComponent.canNext = !this.contentInvalid && !this.banerInvalid && !this.titleInvalid;
   }
 
   onStepChanged(step: WizardStep) {
