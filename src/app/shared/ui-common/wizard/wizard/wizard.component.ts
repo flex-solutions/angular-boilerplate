@@ -79,6 +79,10 @@ export class WizardComponent implements AfterContentInit {
         this.finishClicked.emit();
     }
 
+    reset() {
+        this.wizardNavigator.resetToDefaultStep();
+    }
+
     onSelectedStepChanged(selectedStep: WizardStepComponent) {
         this.selectedStep = selectedStep;
         const step = this.selectedStep.isFirstStep ? WizardStep.First :

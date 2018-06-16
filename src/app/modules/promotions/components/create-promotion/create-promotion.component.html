@@ -48,7 +48,7 @@
       <!--Create another checkbox-->
       <div *ngIf="currentStep===2 && !isEditableMode" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
         <label class="form-check-label">
-          <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
+          <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
           <i class="input-helper"></i>
           <label class="form-check-label" i18n="@@promotion-create_promotion-label-create_another_field"> Create another</label>
         </label>

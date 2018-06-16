@@ -11,7 +11,8 @@ const DefaultPermissionScheme = {
 const ModuleRoute = {
     USER: 'users',
     USER_GROUP: 'user-groups',
-    PERMISSION_SCHEMES: 'permission-schemes'
+    PERMISSION_SCHEMES: 'permission-schemes',
+    PROMOTION: 'promotions'
 };
 
 const PagingDefault = {

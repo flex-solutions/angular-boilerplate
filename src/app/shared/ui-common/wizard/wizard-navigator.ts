@@ -17,7 +17,7 @@ export class WizardNavigator {
     updateWizardSteps(steps: WizardStepComponent[], wizard: WizardComponent) {
         this.wizardSteps = steps;
         this._wizard = wizard;
-        this._updateSelectedStep(this.defaultSelectedStep);
+        this.resetToDefaultStep();
     }
 
     private _updateSelectedStep(id: number) {
@@ -30,6 +30,10 @@ export class WizardNavigator {
                 this._wizard.onSelectedStepChanged(step);
             }
         }
+    }
+
+    resetToDefaultStep() {
+        this._updateSelectedStep(this.defaultSelectedStep);
     }
 
     next() {

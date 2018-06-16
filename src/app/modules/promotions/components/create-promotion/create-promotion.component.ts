@@ -59,6 +59,7 @@ export class CreatePromotionComponent implements OnInit {
     this.titleInvalid = false;
     this.contentInvalid = false;
     this.isEditableMode = false;
+    this.isCreateAnother = false;
   }
   ngOnInit() {
     this.wizardComponent.canNext = true;
@@ -189,6 +190,8 @@ export class CreatePromotionComponent implements OnInit {
       this.dropifyComponent.reset();
       // Reset tinycme control
       this.tynimceEditor.reset();
+      // Reset wizard
+      this.wizardComponent.reset();
 
     } else {
       this._location.back();

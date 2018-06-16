@@ -38,6 +38,14 @@
         <source>Permission Schemes</source>
         <target>Kế Hoạch Phân Quyền</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
+        <source>Promotion Management</source>
+        <target>Quản lý khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
+        <source>Promotion</source>
+        <target>Khuyến mãi</target>
+      </trans-unit>
 
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">

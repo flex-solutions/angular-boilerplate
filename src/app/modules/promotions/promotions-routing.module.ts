@@ -2,20 +2,28 @@ import { CreatePromotionComponent } from './components/create-promotion/create-p
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [{
-  path: 'create',
-  component: CreatePromotionComponent,
-  data: {
-    breadcrumb: 'Create Promotion'
+const routes: Routes = [
+  {
+    path: '',
+    component: CreatePromotionComponent,
+    data: {
+      breadcrumb: 'Create Promotion'
+    }
+  },
+  {
+    path: 'create',
+    component: CreatePromotionComponent,
+    data: {
+      breadcrumb: 'Create Promotion'
+    }
+  },
+  {
+    path: 'edit/:id',
+    component: CreatePromotionComponent,
+    data: {
+      breadcrumb: 'Edit Promotion'
+    }
   }
-},
-{
-  path: 'edit/:id',
-  component: CreatePromotionComponent,
-  data: {
-    breadcrumb: 'Edit Promotion'
-  }
-}
 ];
 
 @NgModule({

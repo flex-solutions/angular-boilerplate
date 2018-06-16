@@ -1,3 +1,4 @@
+import { isNil } from 'ramda';
 import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { readBase64 } from '../../../utilities/convert-image-to-base64';
 
@@ -89,6 +90,9 @@ export class DropifyComponent implements AfterViewInit {
     }
 
     setDefaultContent(content) {
+        if (isNil(content) || content === '') {
+            return;
+        }
         const base64 = atob(content);
         this.dropify.showLoader();
         this.dropify.setPreview(true, base64);
