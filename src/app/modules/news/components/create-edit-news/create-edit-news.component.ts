@@ -1,19 +1,14 @@
-import { NewsRouteNames } from './../../news.constants';
+import { ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
-import { TransferGroupData } from './../../../../shared/models/transfer-group-data.model';
 import {NewsErrors} from "./../../errors/NewsErrors";
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { Component, OnInit, PipeTransform, ViewChild } from '@angular/core';
-import { GenericValidator } from '../../../../shared/validation/generic-validator';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { getBase64 } from '../../../../utilities/convert-image-to-base64';
-import { User } from '../../../../shared/models/user.model';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 import { isNullOrUndefined } from 'util';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 
@@ -25,11 +20,15 @@ const DESCRIPTION_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news_descri
   moduleId: module.id,
   selector: 'app-create-edit-news',
   templateUrl: './create-edit-news.component.html',
+  styleUrls: ['./create-edit-news.component.css']
 })
 export class CreateEditNewsComponent extends AbstractFormComponent {
   isEdit: boolean = false;
   isPublish: boolean = false;
   isCreateAnother: boolean = false;
+  isBannerError: boolean = false;
+  raiseChangeForError: boolean = false;
+  rawContent: String;
   isBlurEditor: boolean = false;
   news: News = new News();
   newsId: string;
@@ -38,6 +37,9 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
 
   @ViewChild(TynimceEditorComponent)
   private ContentEditor : TynimceEditorComponent;
+
+  @ViewChild(DropifyComponent)
+  private BannerEditor : DropifyComponent;
 
   constructor(
     private formbuilder: FormBuilder,
@@ -96,12 +98,12 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     return this.formGroup.get('createAnother');
   }
 
-  hasEmptyBanner() {
-    return this.news.banner == null;
+  hasErrorBanner() {
+    return this.isBannerError == true;
   }
 
   hasEmptyAndBlurContent() {
-    return (isNullOrUndefined(this.news.content) || this.news.content == "") && this.isBlurEditor ;
+    return (isNullOrUndefined(this.rawContent) || this.rawContent == "") && this.isBlurEditor ;
   }
 
   protected onCreateForm() {
@@ -130,7 +132,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   public submitAndPublishNews() {
-    // TODO: check boxNewsStatusType
     this.newsService.createAndPublish(this.news).subscribe(
       (value: News) => {
         // * Create news successful, display success notification
@@ -153,6 +154,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
       this.news = new News();
       this.resetForm();
       this.ContentEditor.reset();
+      this.BannerEditor.reset();
     } else {
       this.location.back();
     }
@@ -162,15 +164,32 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     this.news.content = text;
   }
 
+  onContentEmpty(event) {
+    this.rawContent = event;
+  }
+
   onTinyEditorBlur(event: any) {
     this.isBlurEditor = event;
   }
 
-  imageChanged(event: any) {
+  onFileChanged(event: any) {
     this.news.banner = event.content;
+    if(!this.raiseChangeForError) {
+      this.isBannerError = false;
+    }
+    this.raiseChangeForError = false;
   }
 
-  onErrors(event:any) {
+  onFileRemoved(){
+    this.news.banner = "";
+    this.isBannerError = false;
+  }
+
+  onBannerErrors(event: ErrorType) {
+    if (event == ErrorType.FileSize) {
+      this.isBannerError = true;
+      this.raiseChangeForError = true;
+    }
   }
 
   protected getMessage(key: string, ...params) {

@@ -974,6 +974,10 @@
         <source>Please provide the content</source>
         <target>Vui lòng nhập nội dung</target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-file_size_error" datatype="html">
+        <source>The banner size must be lower or equal 500kb</source>
+        <target>Kích thước của hình ảnh phải nhỏ hơn hoặc bằng 500kb</target>
+      </trans-unit>
       <!--END News Create Edit Page-->
     </body>
   </file>
