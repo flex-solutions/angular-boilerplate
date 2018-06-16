@@ -22,4 +22,12 @@ export class PromotionService extends AbstractRestService {
     update(promotion: Promotion) {
         return this.put(promotion._id, promotion);
     }
+
+    getPromotions(pageSize: number, pageNumber: number, searchKey?: string) {
+        return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+    }
+
+    count(searchKey?: string) {
+        return this.get(`count?searchKey=${searchKey}`);
+    }
 }

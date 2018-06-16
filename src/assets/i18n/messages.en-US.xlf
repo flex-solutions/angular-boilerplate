@@ -1168,6 +1168,68 @@
         <target>Please provide the content</target>
       </trans-unit>
       <!--END Create edit promotion-->
+      <!--List promotions-->
+      <trans-unit id="list-promotions-title-promtions" datatype="html">
+        <source>Promotions</source>
+        <target>Promotions</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Search by title, content</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-title" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-content" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-start-date" datatype="html">
+        <source>Start Date</source>
+        <target>Start Date</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-expỉre-date" datatype="html">
+        <source>Expire Date</source>
+        <target>Expire Date</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-delete" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Delete Promotion</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-start-promotion" datatype="html">
+        <source>Start</source>
+        <target>Start</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-stop-promotion" datatype="html">
+        <source>Stop</source>
+        <target>Stop</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-new-promotion" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-deactived-promotion" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-active-promotion" datatype="html">
+        <source>Active</source>
+        <target>Active</target>
+      </trans-unit>
+      <!--END List promotions-->
     </body>
   </file>
 </xliff>
