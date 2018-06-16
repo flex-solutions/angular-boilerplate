@@ -955,6 +955,26 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-label-create_another_news" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
+        <source>Create news with title "{{0}}" successfull</source>
+        <target>Create news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_require" datatype="html">
+        <source>Please provide the banner</source>
+        <target>Please provide the banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_require" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
       <!--END News Create Edit Page-->
     </body>
   </file>

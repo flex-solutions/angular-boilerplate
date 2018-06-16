@@ -226,7 +226,11 @@
   dependencies:
     moment "*"
 
-"@types/node@^6.0.46", "@types/node@~6.0.60":
+"@types/node@^6.0.113":
+  version "6.0.113"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.113.tgz#4b41f38ad03e4b41f9dc259b3b58aecb22c9aebc"
+
+"@types/node@^6.0.46":
   version "6.0.106"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.106.tgz#391bc3598ab5823563f7155847212152893edcd7"
 
@@ -1906,6 +1910,12 @@ domutils@1.5.1:
 double-ended-queue@^2.1.0-0:
   version "2.1.0-0"
   resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
+
+dropify@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/dropify/-/dropify-0.2.2.tgz#554ebd1da7b6dc2037855fad737dd83128f3f556"
+  dependencies:
+    jquery "*"
 
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.0"
@@ -3590,7 +3600,7 @@ jasminewd2@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/jasminewd2/-/jasminewd2-2.2.0.tgz#e37cf0b17f199cce23bea71b2039395246b4ec4e"
 
-jquery@>=1.12.0:
+jquery@*, jquery@>=1.12.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
@@ -5558,6 +5568,12 @@ run-queue@^1.0.0, run-queue@^1.0.3:
 rxjs@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.1.0.tgz#833447de4e4f6427b9cec3e5eb9f56415cd28315"
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.1.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.0.tgz#e024d0e180b72756a83c2aaea8f25423751ba978"
   dependencies:
     tslib "^1.9.0"
 
