@@ -8,7 +8,15 @@ const routes: Routes = [{
   data: {
     breadcrumb: 'Create Promotion'
   }
-}];
+},
+{
+  path: 'edit/:id',
+  component: CreatePromotionComponent,
+  data: {
+    breadcrumb: 'Edit Promotion'
+  }
+}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

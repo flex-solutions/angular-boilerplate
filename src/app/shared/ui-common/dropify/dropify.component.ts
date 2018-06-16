@@ -1,4 +1,5 @@
-import { Component, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { readBase64 } from '../../../utilities/convert-image-to-base64';
 
 declare var $: any;
 
@@ -77,12 +78,27 @@ export class DropifyComponent implements AfterViewInit {
     @Input()
     removeMessage: string;
 
+    // A dropify instance
+    private dropify: any;
+
     constructor() {
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
+        this.initializeDropify();
+    }
+
+    setDefaultContent(content) {
+        const base64 = atob(content);
+        this.dropify.showLoader();
+        this.dropify.setPreview(true, base64);
+    }
+
+    initializeDropify() {
         const options = this.buildOptions();
         const drEvent = $('.dropify').dropify(options);
+        this.dropify = drEvent.data('dropify');
+
         // Register droptify error occurs
         drEvent.on('dropify.error.fileSize', (event, element) => {
             this.errors.emit(ErrorType.FileSize);
@@ -113,7 +129,7 @@ export class DropifyComponent implements AfterViewInit {
 
         // Convert to base64
         if (files && files.length) {
-            this.getBase64(files[0]).then(data => {
+            readBase64(files[0]).then(data => {
                 if (data) {
                     const fileInfo = {
                         content: data as string,
@@ -125,6 +141,11 @@ export class DropifyComponent implements AfterViewInit {
                 }
             });
         }
+    }
+
+    reset() {
+        // Same as removed button clicked
+        $('.dropify-clear').click();
     }
 
     private buildOptions() {
@@ -139,18 +160,5 @@ export class DropifyComponent implements AfterViewInit {
                 'error': this.errorMessage ? this.errorMessage : 'Ooops, something wrong happended.'
             }
         };
-    }
-
-    private getBase64(path) {
-        return new Promise((resolve, reject) => {
-            // FileReader support
-            if (FileReader) {
-                const fr = new FileReader();
-                fr.onload = function () {
-                    resolve(fr.result);
-                };
-                fr.readAsDataURL(path);
-            }
-        });
     }
 }

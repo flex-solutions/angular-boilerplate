@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { IPromotion } from '../interfaces/promotion';
+import { Promotion } from '../interfaces/promotion';
 
 @Injectable()
 export class PromotionService extends AbstractRestService {
@@ -15,11 +15,11 @@ export class PromotionService extends AbstractRestService {
         return this.get(id);
     }
 
-    create(promotion: IPromotion) {
+    create(promotion: Promotion) {
         return this.post('', promotion);
     }
 
-    update(promotion: IPromotion) {
+    update(promotion: Promotion) {
         return this.put(promotion._id, promotion);
     }
 }
