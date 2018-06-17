@@ -995,6 +995,22 @@
         <source>Delete news successfully</source>
         <target>Delete news successfully</target>
       </trans-unit>
+      <trans-unit id="news_detail-created_by" datatype="html">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_on" datatype="html">
+        <source>Created on</source>
+        <target>Created on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_by" datatype="html">
+        <source>Last edited by</source>
+        <target>Last edited by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_on" datatype="html">
+        <source>Last edited on</source>
+        <target>Last edited on</target>
+      </trans-unit>
       <!-- END News Management -->
     </body>
   </file>

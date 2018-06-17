@@ -16,6 +16,7 @@ import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 })
 export class NewsDetailComponent implements OnInit {
   newsModel: News = new News();
+  id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +28,8 @@ export class NewsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    this.getNews(id);
+    this.id = this.route.snapshot.params['id'];
+    this.getNews(this.id);
   }
 
   getNews(id: string) {
@@ -66,6 +67,7 @@ export class NewsDetailComponent implements OnInit {
         this.newsModel.status.toString()
       );
       this.notificationService.showSuccess(msg);
+      this.getNews(this.id);
     });
   }
 
