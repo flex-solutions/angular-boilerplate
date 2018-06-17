@@ -1,3 +1,5 @@
+import { NewsDetailComponent } from './components/news-detail/news-detail.component';
+import { NewsHomeComponent } from './components/news-home/news-home.component';
 import { CreateEditNewsComponent } from './components/create-edit-news/create-edit-news.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,6 +12,13 @@ const newRoutes: Routes = [
     component: NewsComponent,
     data: {
       breadcrumb: 'News'
+    }
+  },
+    {
+    path: ':id',
+    component: NewsDetailComponent,
+    data: {
+      breadcrumb: 'News Details'
     }
   },
   {
@@ -31,7 +40,7 @@ const newRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(newRoutes)],
+  imports: [RouterModule.forChild(newsRoutes)],
   exports: [RouterModule]
 })
-export class NewsRoutingModule { }
+export class NewsRoutingModule {}

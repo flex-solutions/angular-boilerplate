@@ -35,7 +35,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     super();
   }
 
-  ngOnInit() {
+  OnInit() {
     this.activeRoute.params.subscribe((params: Params) => {
       this.newsId = params['id'] ? params['id'] : '';
       this.isEdit = params['id'] ? true : false;

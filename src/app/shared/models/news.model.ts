@@ -7,6 +7,8 @@ class News {
     content: string;
     status: NewsStatusType = NewsStatusType.New;
     viewCount = 0;
+    publishedOn: number;
+    publishedBy: string;
 }
 
 const NewsFields = {

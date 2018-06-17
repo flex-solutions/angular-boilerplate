@@ -11,10 +11,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cms-en",
+            "outputPath": "dist/cms-vi",
             "aot": true,
-            "i18nFile": "src/assets/i18n/messages.en-US.xlf",
-            "i18nLocale": "en",
+            "i18nFile": "src/assets/i18n/messages.vi-VN.xlf",
+            "i18nLocale": "vi",
             "i18nFormat": "xlf",
             "index": "src/index.html",
             "main": "src/main.ts",

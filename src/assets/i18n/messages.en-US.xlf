@@ -902,6 +902,7 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+
       <!--START News Create Edit Page -->
       <trans-unit id="news-news-h4-create_news" datatype="html">
         <source>Create news</source>
@@ -956,6 +957,45 @@
         <target>Cancel</target>
       </trans-unit>
       <!--END News Create Edit Page-->
+
+      <!-- START News Management -->
+      <trans-unit id="news_management-news_detail-news_information_tab" datatype="html">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_detail-news_statistic_tab" datatype="html">
+        <source>Statistic</source>
+        <target>Statistic</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_edit_button" datatype="html">
+        <source>Edit News</source>
+        <target>Edit News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivate_button" datatype="html">
+        <source>Deactivate</source>
+        <target>Deactivate</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_new_status" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivated_status" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_published_status" datatype="html">
+        <source>Published</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="news_detail-delete_news-ok" datatype="html">
+        <source>Delete news successfully</source>
+        <target>Delete news successfully</target>
+      </trans-unit>
+      <!-- END News Management -->
       <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">
         <source>News Management</source>

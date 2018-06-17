@@ -5,5 +5,5 @@ import { NewsComponent } from './news/news.component';
 export const NewsModuleComponents = [
     CreateEditNewsComponent,
     NewsComponent,
+    NewsDetailComponent
 ];
-
