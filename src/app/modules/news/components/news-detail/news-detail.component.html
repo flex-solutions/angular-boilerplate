@@ -1,8 +1,8 @@
 <app-card>
   <div class="command-region">
     <div class="template-demo">
-      <button type="button" class="btn btn-primary btn-md" (click)="navigateToEditPage()">
-        <i class="mdi mdi-pencil" i18n="@@news_management-news_details-news_edit_button"></i>Edit News</button>
+      <button type="button" class="btn btn-primary btn-md" (click)="navigateToEditPage()" i18n="@@news_management-news_details-news_edit_button">
+        <i class="mdi mdi-pencil"></i>Edit News</button>
       <button type="button" (click)="changeNewsStatus()" appNewsActionButton [status]="newsModel.status">Publish</button>
       <!-- <button type="button" class="btn btn-danger btn-md">
         <i class="mdi mdi-eye-off"></i>Deactivate</button> -->
@@ -22,18 +22,18 @@
       <div class="profile-body" style="padding-top: 0px">
         <ul class="nav tab-switch" role="tablist">
           <li class="nav-item">
-            <a aria-controls="user-profile-info" aria-selected="true" class="nav-link active show" data-toggle="pill" i18n="@@news_management-news_detail-news_information_tab"
-              href="#user-profile-info" id="user-profile-info-tab" role="tab">News</a>
+            <a aria-controls="news-details" aria-selected="true" class="nav-link active show" data-toggle="pill" i18n="@@news_management-news_detail-news_information_tab"
+              href="#news-details" id="news-details-tab" role="tab">News</a>
           </li>
           <li class="nav-item">
-            <a aria-controls="user-profile-activity" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@news_management-news_detail-news_statistic_tab"
-              href="#user-profile-activity" id="user-profile-activity-tab" role="tab">Statistic</a>
+            <a aria-controls="news-statistic" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@news_management-news_detail-news_statistic_tab"
+              href="#news-statistic" id="news-statistic-tab" role="tab">Statistic</a>
           </li>
         </ul>
         <div class="row">
           <div class="col-md-12">
             <div class="tab-content tab-body" id="profile-log-switch">
-              <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+              <div class="tab-pane fade show active pr-3" id="news-details" role="tabpanel" aria-labelledby="news-details-tab">
                 <div class="row">
                   <div class="col-7">
                     <div class="row">
@@ -102,7 +102,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+              <div class="tab-pane fade" id="news-statistic" role="tabpanel" aria-labelledby="news-statistic-tab">
                   <div class="row">
                       <div class="col-md-6">
                         <app-card>

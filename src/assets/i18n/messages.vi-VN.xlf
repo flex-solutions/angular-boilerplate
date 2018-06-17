@@ -963,7 +963,7 @@
       <!-- START News Management -->
       <trans-unit id="news_management-news_detail-news_information_tab" datatype="html">
         <source>News</source>
-        <target>Bản Ttn</target>
+        <target>Bản Tin</target>
       </trans-unit>
       <trans-unit id="news_management-news_detail-news_statistic_tab" datatype="html">
         <source>Statistic</source>
