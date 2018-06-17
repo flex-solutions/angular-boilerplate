@@ -15,6 +15,7 @@ import { DialogService } from '../../../../shared/ui-common/modal/services/dialo
 
 @Component({
     selector: 'app-assign-permission',
+    styleUrls: ['assign-permission.component.css'],
     templateUrl: 'assign-permission.component.html'
 })
 

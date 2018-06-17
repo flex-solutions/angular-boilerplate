@@ -9,4 +9,8 @@ export class News {
     viewCount = 0;
     publishedOn: number;
     publishedBy: string;
+    edit_on: Date;
+    edit_by: string;
+    create_on: Date;
+    create_by: string;
 }

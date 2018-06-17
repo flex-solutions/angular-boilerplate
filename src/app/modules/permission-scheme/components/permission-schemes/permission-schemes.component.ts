@@ -105,6 +105,7 @@ export class PermissionSchemesComponent implements OnInit {
         const successMessage = this.translateService.translateWithParams('permission_scheme-delete-success', scheme.name);
         this.permissionService.deleteScheme(scheme._id).subscribe(res => {
           this.notificationService.showSuccess(successMessage);
+          this.loadPermissionSchemes();
         });
       }
     });
