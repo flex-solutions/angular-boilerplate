@@ -1,7 +1,6 @@
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsService } from './services/news.service';
 
-import { CreateEditNewsComponent } from './components/create-edit-news/create-edit-news.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

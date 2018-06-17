@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
@@ -8,6 +8,7 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
 import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
+import { calculateRelativeTime } from '../../../../utilities/methods.common';
 
 @Component({
   selector: 'app-news-detail',
@@ -24,8 +25,17 @@ export class NewsDetailComponent implements OnInit {
     private newsService: NewsService,
     private notificationService: NotificationService,
     private exDlg: ExDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    @Inject(LOCALE_ID) protected localeId: string,
   ) {}
+
+  private getMessage(code: string, ...params) {
+    if (params.length) {
+      return this.translateService.translateWithParams(code, params);
+    } else {
+      return this.translateService.translate(code);
+    }
+  }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -71,14 +81,6 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
-  private getMessage(code: string, ...params) {
-    if (params.length) {
-      return this.translateService.translateWithParams(code, params);
-    } else {
-      return this.translateService.translate(code);
-    }
-  }
-
   deleteNews(_id: string) {
     this.newsService.remove(_id).subscribe(ret => {
       if (ret) {
@@ -86,5 +88,9 @@ export class NewsDetailComponent implements OnInit {
         this.notificationService.showSuccess(msg);
       }
     });
+  }
+
+  getRelativeTime(value) {
+    return calculateRelativeTime(value, this.localeId);
   }
 }

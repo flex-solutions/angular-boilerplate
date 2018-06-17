@@ -973,6 +973,10 @@
         <source>Edit News</source>
         <target>Sửa bản tin</target>
       </trans-unit>
+      <trans-unit id="news_management-news_details-news_delete_text" datatype="html">
+        <source>Delete News</source>
+        <target>Xoá bản tin</target>
+      </trans-unit>
       <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
@@ -1000,6 +1004,42 @@
       <trans-unit id="news_detail-change_status_news-ok" datatype="html">
         <source>Update status {{0}} of news title successfully</source>
         <target>Cập nhật trạng thái {{0}} cho tin tức thành công</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_by" datatype="html">
+        <source>Created by</source>
+        <target>Được tạo bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_on" datatype="html">
+        <source>Created on</source>
+        <target>Được tạo vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_by" datatype="html">
+        <source>Last edited by</source>
+        <target>Lần cuối chỉnh sửa bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_on" datatype="html">
+        <source>Last edited on</source>
+        <target>Lần cuối chỉnh sửa vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by" datatype="html">
+        <source>Published by</source>
+        <target>Đăng tải bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_on" datatype="html">
+        <source>Published on</source>
+        <target>Đăng tải vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by_no_one" datatype="html">
+        <source>Published by no one</source>
+        <target>Chưa ai đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-not_published_yet" datatype="html">
+        <source>Not Published</source>
+        <target>Chưa đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>Lượt xem</target>
       </trans-unit>
       <!-- END News Management -->
     </body>

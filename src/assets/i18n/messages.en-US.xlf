@@ -971,6 +971,10 @@
         <source>Edit News</source>
         <target>Edit News</target>
       </trans-unit>
+      <trans-unit id="news_management-news_details-news_delete_text" datatype="html">
+        <source>Delete News</source>
+        <target>Delete News</target>
+      </trans-unit>
       <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
         <source>Publish</source>
         <target>Publish</target>
@@ -1010,6 +1014,26 @@
       <trans-unit id="news_detail-last_edited_on" datatype="html">
         <source>Last edited on</source>
         <target>Last edited on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by" datatype="html">
+        <source>Published by</source>
+        <target>Đăng tải bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_on" datatype="html">
+        <source>Published on</source>
+        <target>Đăng tải vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by_no_one" datatype="html">
+        <source>Published by no one</source>
+        <target>Chưa ai đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-not_published_yet" datatype="html">
+        <source>Not Published</source>
+        <target>Chưa đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>View Count</target>
       </trans-unit>
       <!-- END News Management -->
     </body>

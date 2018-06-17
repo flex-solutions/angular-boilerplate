@@ -32,10 +32,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([ModuleRoute.PERMISSION_SCHEMES]);
   }
 
-  navigateToNewsPage() {
-    this.router.navigate([ModuleRoute.NEWS]);
-  }
-
   navigateToViewsPage() {
     this.router.navigate([ModuleRoute.VIEW]);
   }

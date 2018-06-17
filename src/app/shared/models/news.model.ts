@@ -7,7 +7,7 @@ export class News {
     content: string;
     status: NewsStatusType = NewsStatusType.New ;
     viewCount = 0;
-    publishedOn: number;
+    publishedOn: Date;
     publishedBy: string;
     edit_on: Date;
     edit_by: string;
