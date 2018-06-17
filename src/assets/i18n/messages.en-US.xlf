@@ -1021,6 +1021,15 @@
         <source>Delete news</source>
         <target>Delete news</target>
       </trans-unit>
+      </trans-unit>
+        <trans-unit id="list-news-confirm-delete" datatype="html">
+        <source>Are you sure you want to delete news "{{0}}"?</source>
+        <target>Are you sure you want to delete news "{{0}}"?</target>
+      </trans-unit>
+        <trans-unit id="list-news-notification-delete-successfully" datatype="html">
+        <source>Deleted news successfully</source>
+        <target>Deleted news successfully</target>
+      </trans-unit>
       <!-- END List News -->
     </body>
   </file>

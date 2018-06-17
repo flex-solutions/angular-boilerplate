@@ -41,4 +41,8 @@ export class NewsService extends AbstractRestService {
   processNew(newObject: News): Observable<NewViewModel> {
     return this.patch('', newObject);
   }
+
+  deleteNew(id: string) {
+    return this.delete(`${id}`);
+  }
 }

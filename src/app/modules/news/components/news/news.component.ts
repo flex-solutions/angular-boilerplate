@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { NewViewModel, NewsFields } from '../../../../shared/models/news.model';
+import { NewViewModel, NewsFields, News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
 import { NewNavigationRoute } from '../../constant/common-const';
@@ -9,6 +9,10 @@ import * as moment from 'moment';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 import { NewStatusDirective } from '../../directives/new-status.directive';
 import { filter, head, equals } from 'ramda';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { NewMessageConst } from '../../constant/message.const';
 
 @Component({
   selector: 'app-news',
@@ -20,7 +24,11 @@ export class NewsComponent implements OnInit {
   public items: NewViewModel[] = [];
   currentFilterArgs: IFilterChangedEvent;
 
-  constructor(private service: NewsService, private route: Router) { }
+  constructor(private service: NewsService,
+     private route: Router,
+     private dialogManager: ExDialog,
+     private translateService: TranslateService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
   }
@@ -61,6 +69,19 @@ export class NewsComponent implements OnInit {
     this.service.processNew(processedItem).subscribe((updateNew) => {
       processedItem.status = updateNew.status;
       processedItem.publish_date = this.convertTime(updateNew.published_on);
+    });
+  }
+
+  deletenew(newModel: NewViewModel) {
+    const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newModel.title);
+    this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translate(NewMessageConst.DeleteSuccessfullyNotification);
+        this.service.deleteNew(newModel._id).subscribe(res => {
+          this.loadNews();
+          this.notificationService.showSuccess(successMessage);
+        });
+      }
     });
   }
 
