@@ -11,7 +11,19 @@ declare let $: any;
   styleUrls: ['tinymce-editor.component.css']
 })
 export class TynimceEditorComponent implements OnInit, AfterViewInit {
-  @Input() content: string;
+  @Input('content')
+  set content(value: string) {
+    this._content = value;
+    if (this.editor) {
+      this.editor.setContent(this._content);
+      this.raiseRawContent();
+    }
+  }
+
+  get content(): string {
+    return this._content
+  }
+  private _content: string;
   @Input() elementId: string;
   @Input() editorHeight: number;
   @Input() hasError: boolean;
@@ -19,6 +31,7 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   @Output() onEditorContentChange = new EventEmitter();
   @Output() onBlur = new EventEmitter();
   @Output() onEmptyRawContent = new EventEmitter();
+  @Output() onFinishedInitialization = new EventEmitter();
 
   editor;
 
@@ -26,11 +39,9 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() { this.hasError = false; }
-  
+
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.initTinyEditor()
-    },100)
+    this.initTinyEditor();
   }
 
   private initTinyEditor() {
@@ -52,22 +63,28 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
         editor.on('change', () => {
           const content = editor.getContent();
           this.onEditorContentChange.emit(content);
-          let body = this.editor.getBody();
-          var textcontent = body.textContent;
-          textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
-          this.onEmptyRawContent.emit(textcontent);
+          this.raiseRawContent();
         });
+        this.onFinishedInitialization.emit();
       },
     })
+  }
+
+  private raiseRawContent() {
+    let body = this.editor.getBody();
+    var textcontent = body.textContent;
+    textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
+    this.onEmptyRawContent.emit(textcontent);
   }
 
   reset() {
     this.content = "";
     this.editor.setContent("");
+    this.raiseRawContent();
   }
 
   getClassStyle() {
-    return this.hasError? 'tinymce-has-error' : 'tinymce-editor' ;
+    return this.hasError ? 'tinymce-has-error' : 'tinymce-editor';
   }
 
   ngOnDestroy() {

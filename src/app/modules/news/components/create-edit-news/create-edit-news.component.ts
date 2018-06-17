@@ -31,6 +31,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   raiseChangeForError: boolean = false;
   rawContent: String;
   isBlurEditor: boolean = false;
+  isFinishedBannerComponent: boolean = false;
+  isFinishedContentComponent:boolean = false;
 
   news: News = new News();
   newsId: string;
@@ -59,14 +61,22 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     this.activeRoute.params.subscribe((params: Params) => {
       this.newsId = params['id'] ? params['id'] : '';
       this.isEdit = params['id'] ? true : false;
+      if (this.isEdit) {
+        this.cardTitle = this.translateService.translate(TITLE_EDIT_NEWS);
+        this.cardDescription = this.translateService.translate(DESCRIPTION_EDIT_NEWS);
+      } else {
+        this.cardTitle = this.translateService.translate(TITLE_CREATE_NEWS);
+        this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_NEWS);
+      }
     });
     this.onCreateForm();
   }
 
   LoadNews() {
+    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+      return;
+    }
     if (this.isEdit) {
-      this.cardTitle = this.translateService.translate(TITLE_EDIT_NEWS);
-      this.cardDescription = this.translateService.translate(DESCRIPTION_EDIT_NEWS);
       this.newsService.getById(this.newsId).subscribe(
         (value: News) => {
           if (value) {
@@ -77,10 +87,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
           }
         }
       );
-    } else {
-      this.cardTitle = this.translateService.translate(TITLE_CREATE_NEWS);
-      this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_NEWS);
-      this.news = new News();
     }
   }
 
@@ -205,6 +211,16 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
         this.notificationService.showSuccess(msg);
       }
     );
+  }
+
+  finishBannerComponent() {
+    this.isFinishedBannerComponent = true;
+    this.LoadNews();
+  }
+
+  finishContentComponent() {
+    this.isFinishedContentComponent = true;
+    this.LoadNews();
   }
 
   protected getMessage(key: string, ...params) {

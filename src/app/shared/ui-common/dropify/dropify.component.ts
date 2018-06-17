@@ -107,14 +107,15 @@ export class DropifyComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        setTimeout(() => this.initializeDropify(), 100);
-        this.onFinishedInitialization.emit();
+        this.initializeDropify();
     }
 
     initializeDropify() {
         const options = this.buildOptions();
         const drEvent = $('.dropify').dropify(options);
         this.dropify = drEvent.data('dropify');
+
+        this.onFinishedInitialization.emit();
 
         // Register droptify error occurs
         drEvent.on('dropify.error.fileSize', (event, element) => {
