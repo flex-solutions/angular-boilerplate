@@ -951,6 +951,10 @@
         <source>Submit & publish</source>
         <target>Submit & publish</target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-button-save" datatype="html">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
       <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Cancel</target>
@@ -962,6 +966,10 @@
       <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
         <source>Create news with title "{{0}}" successfull</source>
         <target>Create news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
+        <source>Update news with title "{{0}}" successfull</source>
+        <target>Update news with title "{{0}}" successfull </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
         <source>Please provide the title</source>
@@ -980,6 +988,72 @@
         <target>The banner size must be lower or equal 500kb</target>
       </trans-unit>
       <!--END News Create Edit Page-->
+      <!-- List news -->
+      <trans-unit id="list-news-menu-new-managements" datatype="html">
+        <source>News Management</source>
+        <target>News Management</target>
+      </trans-unit>
+      <trans-unit id="list-news-title-news" datatype="html">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
+       <trans-unit id="list-news-button-create-news" datatype="html">
+        <source>Create news</source>
+        <target>Create news</target>
+      </trans-unit>
+       <trans-unit id="list-news-th-title" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-content" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-created-on" datatype="html">
+        <source>Created on</source>
+        <target>Created on</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-published-on" datatype="html">
+        <source>Published on</source>
+        <target>Published on</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="list-news-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Search by title, content</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-new" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-deactivated" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+     <trans-unit id="list-news-status-publish" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-publish" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+       <trans-unit id="list-news-btn-delete" datatype="html">
+        <source>Delete news</source>
+        <target>Delete news</target>
+      </trans-unit>
+      <!-- END List News -->
     </body>
   </file>
 </xliff>

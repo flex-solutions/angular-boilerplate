@@ -19,7 +19,8 @@
             <div class="form-group">
               <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Banner </label>
               <app-dropify (fileChanged)="onFileChanged($event)" (errors)="onBannerErrors($event)" height="225" (fileRemoved)="onFileRemoved()"
-                allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" "></app-dropify>
+                allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" " [image]="news.banner" 
+                (onFinishedInitialization) = "LoadNews()"></app-dropify>
               <label id="banner-error" class="error text-danger show-errors" for="banner" i18n="@@news-create_edit_news-file_size_error" *ngIf="hasErrorBanner()">The banner size must be lower or equal 500kb</label>
               <br *ngIf="!hasErrorBanner()"/>
             </div>
@@ -28,7 +29,7 @@
             <div class="form-group">
               <label for="content" i18n="@@news-create_edit_news-label-content_field">Content </label>
               <label class="require">*</label> &nbsp;&nbsp;&nbsp;&nbsp;
-              <app-tinymce-editor elementId="contentEditor" (onEditorContentChange)="onHtmlEditorChange($event)" (onBlur)="onTinyEditorBlur($event)" editorHeight="200" [hasError]="hasEmptyAndBlurContent()" (onEmptyRawContent)="onContentEmpty($event)"></app-tinymce-editor>
+              <app-tinymce-editor elementId="contentEditor" [content]="news.content" (onEditorContentChange)="onHtmlEditorChange($event)" (onBlur)="onTinyEditorBlur($event)" editorHeight="200" [hasError]="hasEmptyAndBlurContent()" (onEmptyRawContent)="onContentEmpty($event)"></app-tinymce-editor>
               <label id="content-error" class="error text-danger show-errors" for="content" i18n="@@news-create_edit_news-label-content_require" *ngIf="hasEmptyAndBlurContent()">Please provide the content</label>
               <br *ngIf="!hasEmptyAndBlurContent()"/>
             </div>
@@ -36,11 +37,12 @@
         </div>
       </div>
       <div class="row">
-        <button class="btn btn-primary mr-2" i18n="@@news-create_edit_news-button-submit" (click)="submit()">Submit</button>
-        <button class="btn btn-success  mr-2" i18n="@@news-create_edit_news-button-submit_publish" (click)="submitAndPublishNews()">Submit & publish</button>
+        <button *ngIf="!isEdit" class="btn btn-primary mr-2" i18n="@@news-create_edit_news-button-submit" (click)="submit()">Submit</button>
+        <button *ngIf="!isEdit" class="btn btn-success  mr-2" i18n="@@news-create_edit_news-button-submit_publish" (click)="submitAndPublishNews()">Submit & publish</button>
+        <button *ngIf="isEdit" class="btn btn-success  mr-2" i18n="@@news-create_edit_news-button-save" (click)="saveNews()">Save</button>
         <button class="btn btn-light  mr-2" i18n="@@news-create_edit_news-button-cancel" (click)="cancel()">Cancel</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="form-group">
+        <div class="form-group" *ngIf="!isEdit">
           <div class="form-check form-check-flat">
             <label class="form-check-label">
               <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">

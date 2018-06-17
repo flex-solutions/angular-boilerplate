@@ -69,6 +69,7 @@ export class PermissionSchemesComponent implements OnInit {
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
+    console.log('dsa');
     this.currentFilterArgs = eventArg;
     this.loadPermissionSchemes();
   }

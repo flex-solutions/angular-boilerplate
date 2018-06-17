@@ -1,9 +1,10 @@
-import { News } from './../../../shared/models/news.model';
+import { News, NewViewModel } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
 import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 
 
 @Injectable()
@@ -23,7 +24,7 @@ export class NewsService extends AbstractRestService {
   }
 
   update(news: News) {
-    return this.put(news._id, news);
+    return this.put('', news);
   }
 
   remove(news: News) {
@@ -33,7 +34,7 @@ export class NewsService extends AbstractRestService {
     return this.get(_id);
   }
 
-  getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
+  getNews(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 
@@ -41,4 +42,7 @@ export class NewsService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
+  processNew(newObject: News): Observable<NewViewModel> {
+    return this.patch('', newObject);
+  }
 }

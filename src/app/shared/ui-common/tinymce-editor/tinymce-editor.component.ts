@@ -26,8 +26,14 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() { this.hasError = false; }
-
+  
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initTinyEditor()
+    },100)
+  }
+
+  private initTinyEditor() {
     tinymce.init({
       selector: '#' + this.elementId,
       height: this.editorHeight ? this.editorHeight : 500,
@@ -52,7 +58,7 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
           this.onEmptyRawContent.emit(textcontent);
         });
       },
-    });
+    })
   }
 
   reset() {
