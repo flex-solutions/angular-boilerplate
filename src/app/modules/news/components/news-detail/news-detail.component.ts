@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
-import * as moment from 'moment';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NewsRouteNames, Errors } from '../../constants/news.constant';
@@ -47,6 +46,7 @@ export class NewsDetailComponent implements OnInit {
       this.newsService.getById(id).subscribe(news => {
         if (news) {
           this.newsModel = news;
+          console.log(news);
         }
       });
     }

@@ -21,7 +21,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.css", "src/customStyles.css"],
+            "styles": ["src/styles.css", "src/customStyles.css","node_modules/dropify/dist/css/dropify.min.css"],
             "scripts": [
               "node_modules/toastr/build/toastr.min.js",
               "src/assets/vendors/js/vendor.bundle.base.js",
@@ -29,8 +29,7 @@
               "src/assets/js/off-canvas.js",
               "src/assets/js/hoverable-collapse.js",
               "src/assets/js/misc.js",
-              "src/assets/js/tooltips.js",
-              "src/assets/js/tinymce.min.js"
+              "src/assets/js/tooltips.js"
             ]
           },
           "configurations": {

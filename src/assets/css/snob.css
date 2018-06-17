@@ -38580,45 +38580,45 @@ div.tagsinput span.tag a {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.wizard > .content > .title {
+.wizard > .content > .title, .wizard > .content > app-wizard-step > .title {
   position: absolute;
   left: -999em;
 }
-.wizard > .content > .body {
+.wizard > .content > .body, .wizard > .content > app-wizard-step > .body {
   float: left;
   position: absolute;
   width: 95%;
   height: 95%;
   padding: 2.5%;
 }
-.wizard > .content > .body ul {
+.wizard > .content > .body ul, .wizard > .content > app-wizard-step > .body ul {
   list-style: disc !important;
 }
-.wizard > .content > .body ul > li {
+.wizard > .content > .body ul > li, .wizard > .content > app-wizard-step > .body ul > li {
   display: list-item;
 }
-.wizard > .content > .body > iframe {
+.wizard > .content > .body > iframe, .wizard > .content > app-wizard-step > .body > iframe {
   border: 0 none;
   width: 100%;
   height: 100%;
 }
-.wizard > .content > .body input {
+.wizard > .content > .body input, .wizard > .content > app-wizard-step > .body input {
   display: block;
   border: 1px solid #f3f3f3;
 }
-.wizard > .content > .body input[type='checkbox'] {
+.wizard > .content > .body input[type='checkbox'], .wizard > .content > app-wizard-step > .body input[type='checkbox'] {
   display: inline-block;
 }
-.wizard > .content > .body input.error {
+.wizard > .content > .body input.error, .wizard > .content > app-wizard-step > .body input.error {
   background: #fbe3e4;
   border: 1px solid #ffdada;
   color: #ff7474;
 }
-.wizard > .content > .body label {
+.wizard > .content > .body label, .wizard > .content > app-wizard-step > .body label {
   display: inline-block;
   margin-bottom: 0.5em;
 }
-.wizard > .content > .body label.error {
+.wizard > .content > .body label.error, .wizard > .content > app-wizard-step > .body label.error {
   color: #ff7474;
   display: inline-block;
   margin-left: 1.5em;

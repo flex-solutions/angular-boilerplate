@@ -19,6 +19,10 @@ export class NewsService extends AbstractRestService {
     return this.post('', news);
   }
 
+  createAndPublish(news: News) {
+    return this.post('createPublished', news);
+  }
+
   update(news: News) {
     return this.put(news._id, news);
   }
