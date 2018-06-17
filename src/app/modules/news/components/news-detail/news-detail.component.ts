@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { News } from '../../../../shared/models/news.model';
+import { News, NewViewModel } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import * as moment from 'moment';
 import { NotificationService } from '../../../../shared/services/notification.service';
@@ -8,6 +8,8 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
 import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
+import { NewMessageConst } from '../../constant/message.const';
+import { ModuleRoute } from '../../../../shared/constants/const';
 
 @Component({
   selector: 'app-news-detail',
@@ -77,11 +79,15 @@ export class NewsDetailComponent implements OnInit {
     }
   }
 
-  deleteNews(_id: string) {
-    this.newsService.remove(_id).subscribe(ret => {
-      if (ret) {
-        const msg = this.getMessage(Errors.Delete_News_Success);
-        this.notificationService.showSuccess(msg);
+  deleteNews(newViewModel: News) {
+    const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newViewModel.title);
+    this.exDlg.openConfirm(confirmMsg).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translate(NewMessageConst.DeleteSuccessfullyNotification);
+        this.newsService.deleteNew(newViewModel._id).subscribe(res => {
+          this.notificationService.showSuccess(successMessage);
+          this.router.navigate([ModuleRoute.NEWS]);
+        });
       }
     });
   }
