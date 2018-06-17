@@ -1,5 +1,4 @@
 import { NewsDetailComponent } from './components/news-detail/news-detail.component';
-import { NewsHomeComponent } from './components/news-home/news-home.component';
 import { CreateEditNewsComponent } from './components/create-edit-news/create-edit-news.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -40,7 +39,7 @@ const newRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(newsRoutes)],
+  imports: [RouterModule.forChild(newRoutes)],
   exports: [RouterModule]
 })
 export class NewsRoutingModule {}

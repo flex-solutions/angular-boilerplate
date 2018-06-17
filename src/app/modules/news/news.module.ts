@@ -16,8 +16,8 @@ import { NewsDirective } from './directives';
     UICommonModule,
   ],
   declarations: [
-    ...NewsModuleComponents,
-    ...NewsDirective
+    ...NewsDirective,
+    ...NewsModuleComponents
   ],
   providers: [NewsService],
 

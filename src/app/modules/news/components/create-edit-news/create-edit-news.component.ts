@@ -18,7 +18,7 @@ import { NewsStatusType} from '../../../../shared/enums/news-type.enum';
   templateUrl: './create-edit-news.component.html',
 })
 
-export class CreateEditNewsComponent extends AbstractFormComponent implements OnInit {
+export class CreateEditNewsComponent extends AbstractFormComponent {
   isEdit = false;
   isPublish = false;
   news: News = new News();

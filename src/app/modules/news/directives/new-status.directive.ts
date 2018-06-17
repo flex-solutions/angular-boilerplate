@@ -39,7 +39,7 @@ export class NewStatusDirective implements OnChanges, AfterViewInit {
             case NewsStatusType.Published:
                 $(this.host).html(`<label class="badge badge-success">${this.publicText}</label>`);
                 break;
-            case NewsStatusType.Deactived:
+            case NewsStatusType.Deactivated:
                 $(this.host).html(`<label class="badge badge-danger">${this.deactivedText}</label>`);
                 break;
         }
