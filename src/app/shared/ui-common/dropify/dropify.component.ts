@@ -1,3 +1,4 @@
+import { isNil } from 'ramda';
 import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { readBase64 } from '../../../utilities/ convert-image-to-base64';
 

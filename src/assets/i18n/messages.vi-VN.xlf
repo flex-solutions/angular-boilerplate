@@ -942,23 +942,23 @@
         <source>Banner</source>
         <target>Hình chủ đề </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-label-content_field" datatype="html">
+      <trans-unit id="view-create_edit_news-label-content_field" datatype="html">
         <source>Content</source>
         <target>Nội dung </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-input-content_place_holder" datatype="html">
+      <trans-unit id="view-create_edit_news-input-content_place_holder" datatype="html">
         <source>Enter content</source>
         <target>Nhập nội dung </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-button-submit" datatype="html">
+      <trans-unit id="view-create_edit_news-button-submit" datatype="html">
         <source>Submit</source>
         <target>Lưu </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-button-submit_publish" datatype="html">
+      <trans-unit id="view-create_edit_news-button-submit_publish" datatype="html">
         <source>Submit & publish</source>
         <target>Lưu và đăng tin </target>
       </trans-unit>
-      <trans-unit id="view-create_edit_view-button-cancel" datatype="html">
+      <trans-unit id="view-create_edit_news-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Huỷ </target>
       </trans-unit>
