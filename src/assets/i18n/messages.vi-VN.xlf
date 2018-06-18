@@ -962,6 +962,10 @@
         <source>Create news "{{0}}" successfull</source>
         <target>Tạo thành công tin tức "{{0}}" </target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
+        <source>Create and publish news with title "{{0}}" successfull</source>
+        <target>Tạo và đăng tải thành công tin tức "{{0}}"  </target>
+      </trans-unit>
       <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
         <source>Please provide the title</source>
         <target>Vui lòng nhập tiêu đề</target>

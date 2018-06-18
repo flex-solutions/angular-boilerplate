@@ -964,6 +964,10 @@
         <source>Create news with title "{{0}}" successfull</source>
         <target>Create news with title "{{0}}" successfull </target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
+        <source>Create and publish news with title "{{0}}" successfull</source>
+        <target>Create and publish news with title "{{0}}" successfull </target>
+      </trans-unit>
       <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
         <source>Please provide the title</source>
         <target>Please provide the title</target>

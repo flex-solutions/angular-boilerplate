@@ -136,7 +136,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
       (value: News) => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
-          NewsErrors.Create_News_Sucess,
+          NewsErrors.Create_Published_News_Sucess,
           this.news.title
         );
         this.notificationService.showSuccess(msg);

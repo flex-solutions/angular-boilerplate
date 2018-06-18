@@ -13,7 +13,6 @@ const ModuleRoute = {
     USER_GROUP: 'user-groups',
     PERMISSION_SCHEMES: 'permission-schemes',
     NEWS: 'news',
-    VIEW: 'news'
 };
 
 const PagingDefault = {
