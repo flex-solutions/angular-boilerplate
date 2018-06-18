@@ -5,6 +5,7 @@
       <span i18n="@@promotions-create_promotion-app-card-promotions_title_field">Create promotions</span>
     </button>
   </div>
+  <app-date-range-picker [dateRange]="dateRange" (dateRangeChanged)="onFilterDurationChanged($event)"></app-date-range-picker>
   <app-dg #dg searchLabel="Search by title, content" i18n-searchLabel="@@list-promotions-filter-placeholders"
     (pageChanged)="onPageChanged($event)" [countFunction]="count">
     <tr>

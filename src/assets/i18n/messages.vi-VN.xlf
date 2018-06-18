@@ -1233,7 +1233,44 @@
         <target>Hoạt động</target>
       </trans-unit>
       <!--END List promotions-->
-
+      <!--Date time picker-->
+      <trans-unit id="date-range-picker_button_cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_button_apply" datatype="html">
+        <source>Apply</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_button_custom_range" datatype="html">
+        <source>Custom Range</source>
+        <target>Tuỳ chọn</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title_today" datatype="html">
+        <source>Today</source>
+        <target>Hôm nay</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title_yesterday" datatype="html">
+        <source>Yesterday</source>
+        <target>Hôm qua</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-seven-days-ago" datatype="html">
+        <source>Last 7 Days</source>
+        <target>7 ngày trước</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-30-days-ago" datatype="html">
+        <source>Last 30 Days</source>
+        <target>30 ngày trước</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-current_month" datatype="html">
+        <source>This month</source>
+        <target>Tháng này</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-previous_month" datatype="html">
+        <source>Last month</source>
+        <target>Tháng trước</target>
+      </trans-unit>
+      <!--END Date time picker-->
     </body>
   </file>
 </xliff>
