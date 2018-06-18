@@ -107,11 +107,11 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   hasErrorBanner() {
-    return this.isBannerError == true;
+    return this.isBannerError === true;
   }
 
   hasEmptyAndBlurContent() {
-    return (isNullOrUndefined(this.rawContent) || this.rawContent == "") && this.isBlurEditor;
+    return (isNullOrUndefined(this.rawContent) || this.rawContent === '') && this.isBlurEditor ;
   }
 
   protected onCreateForm() {
@@ -144,7 +144,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
       (value: News) => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
-          NewsErrors.Create_News_Sucess,
+          NewsErrors.Create_Published_News_Sucess,
           this.news.title
         );
         this.notificationService.showSuccess(msg);
@@ -194,7 +194,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   onBannerErrors(event: ErrorType) {
-    if (event == ErrorType.FileSize) {
+    if (event === ErrorType.FileSize) {
       this.isBannerError = true;
       this.raiseChangeForError = true;
     }

@@ -86,6 +86,7 @@ export class CreateUserComponent extends UserModificationBase {
     const createOtherAsString = String(createOther);
     if (createOtherAsString === 'true') {
       this.resetForm();
+      this.selectDefaultBranch();
     } else {
       this.router.navigate([UserNavigationRoute.USERS_PAGE]);
     }

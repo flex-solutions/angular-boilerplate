@@ -12,10 +12,8 @@ import { appVariables } from '../../../../app.constant';
 
 export abstract class UserModificationBase extends AbstractFormComponent
   implements OnInit {
-  errorMessage: { [key: string]: string } = {};
   branches: Branch[];
   selectedBranch: Branch;
-  protected genericValidator: GenericValidator;
   protected user: User;
   protected eventEmmiter = new EventEmitter();
 
@@ -76,16 +74,21 @@ export abstract class UserModificationBase extends AbstractFormComponent
     // Call service to get list branch
     this.branchService.getAll().subscribe(result => {
       this.branches = result;
-      // selected default branch
-      this.selectedBranch = this.branches.find(b => b.name === appVariables.defaultHOBranch);
-      if (this.selectedBranch) {
-        this.formGroup.patchValue({ branchId: this.selectedBranch });
-      }
+      this.selectDefaultBranch();
 
       this.eventEmmiter.emit('onBranchLoaded');
     });
   }
+
   protected abstract onCreateUserForm();
+
+  protected selectDefaultBranch() {
+    // selected default branch
+    this.selectedBranch = this.branches.find(b => b.name === appVariables.defaultHOBranch);
+    if (this.selectedBranch) {
+      this.formGroup.patchValue({ branchId: this.selectedBranch });
+    }
+  }
 
   getEmailValue(): string {
     return this.formGroup.get('email').value;
@@ -106,7 +109,6 @@ export abstract class UserModificationBase extends AbstractFormComponent
   // Overload in base class to implement custom validation
   protected onValidate() {
     // Validate
-    this.errorMessage = this.genericValidator.validate(this.formGroup);
     this.validateBranch();
   }
 

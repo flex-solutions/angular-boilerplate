@@ -33,7 +33,7 @@ const routes: Routes = [
       path: 'account',
       loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
     }]
-  }
+  },
 ];
 
 @NgModule({

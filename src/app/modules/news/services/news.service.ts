@@ -6,7 +6,6 @@ import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.ser
 import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
 import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 
-
 @Injectable()
 export class NewsService extends AbstractRestService {
   protected controllerName: string;
@@ -27,7 +26,12 @@ export class NewsService extends AbstractRestService {
     return this.put('', news);
   }
 
-  remove(news: News) {
+  public remove(_id: string) {
+    return this.delete(_id, {});
+  }
+
+  updateStatus(_id: string, status: NewsStatusType) {
+    return this.put(`${_id}/${status}`, {});
   }
 
   public getById(_id: string): Observable<News> {

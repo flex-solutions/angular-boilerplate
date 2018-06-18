@@ -20,7 +20,7 @@
         <td><p class="a-clickable pull-left" >{{item.title}}</p></td>
         <td class="cut-text">{{item.content}}
         </td>
-        <td appNewStatus [status]="item.status"></td>
+        <td appNewsStatus [status]="item.status"></td>
         <td>{{item.create_date}}</td>
         <td>{{item.publish_date}}</td>
         <td>
@@ -28,7 +28,7 @@
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
             <span i18n="@@list-news-btn-edit">Edit</span>
           </button>
-          <button type="button" class="btn btn-light btn-custom-css"  appPublishButton [status]="item.status" (click) = "NewProcessing(item._id)">
+          <button type="button" class="btn btn-light btn-custom-css"  appNewsActionButton [status]="item.status" (click) = "NewProcessing(item._id)">
           </button>
           <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" 
           aria-haspopup="true" aria-expanded="false">

@@ -1,3 +1,4 @@
+import { isNullOrUndefined } from 'util';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
@@ -6,9 +7,8 @@ import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
 import { NewNavigationRoute } from '../../constant/common-const';
 import * as moment from 'moment';
-import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
-import { NewStatusDirective } from '../../directives/new-status.directive';
 import { filter, head, equals } from 'ramda';
+
 
 @Component({
   selector: 'app-news',
@@ -26,6 +26,10 @@ export class NewsComponent implements OnInit {
   }
 
   public count = (searchKey: string): Observable<number> => {
+    if (isNullOrUndefined(searchKey))
+    {
+      return;
+    }
     return this.service.count(searchKey);
   }
 

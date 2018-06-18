@@ -26,7 +26,8 @@ import { PermissionSchemeModule } from './modules/permission-scheme/permission-s
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { AuthGuard } from './shared/guards/auth-guard';
 import { NewsModule } from './modules/news/news.module';
-//import { EditorModule } from '@tinymce/tinymce-angular';
+import { NewsRoutingModule } from './modules/news/news-routing.module';
+// import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +48,7 @@ import { NewsModule } from './modules/news/news.module';
     UserGroupsModule,
     DialogModule,
     PermissionSchemeModule,
+    NewsRoutingModule,
     NewsModule
   ],
   providers: [

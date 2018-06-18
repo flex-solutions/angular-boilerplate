@@ -39,7 +39,7 @@ export class GenericValidator {
           // Only validate if there are validation messages for the control
           if (this.validationMessages[controlKey]) {
             messages[controlKey] = '';
-            if (c.invalid && c.errors) {
+            if ((c.dirty || c.touched) && c.errors) {
               for (const messageKey in c.errors) {
                 if (
                   c.errors.hasOwnProperty(messageKey) &&
