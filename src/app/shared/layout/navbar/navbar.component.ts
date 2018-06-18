@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { ExDialog } from '../../ui-common/modal/services/ex-dialog.service';
 import { TranslateService } from '../../services/translate.service';
 import { BasicUserInfo } from '../../models/user.model';
+import { ChangePasswordComponent } from '../../../modules/users/components/change-password/change-password.modal';
 declare let $: any;
 
 @Component({
@@ -41,6 +42,18 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         this.authenticationService.logOut();
       }
     });
+  }
+
+  changePassword() {
+      this.exDialog
+        .openPrime(ChangePasswordComponent, {
+
+        })
+        .subscribe(t => {
+          if (t) {
+
+          }
+        });
   }
 
   get confirmTitle() {
