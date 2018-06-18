@@ -7,7 +7,7 @@ enum PermissionRole {
 }
 
 interface IHasPermission {
-  controller: string;
+  module: string;
   role: PermissionRole;
 }
 

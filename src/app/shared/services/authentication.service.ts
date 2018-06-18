@@ -1,16 +1,15 @@
 import { Router } from '@angular/router';
-import { Injectable, Injector } from '@angular/core';
-import { ApplicationConfigurationService } from './application-configuration.service';
+import { Injectable } from '@angular/core';
 import { NavigateConstant } from '../constants/navigate.constant';
 import { AuthenticationResponse } from '../models/authentication.model';
-import { CustomErrorHandlerService } from './custom-error-handler.service';
-import { HelperService } from './helper.service';
 import { SignedUser, BasicUserInfo } from '../models/user.model';
-import { appVariables } from '../../app.constant';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 import { AbstractRestService } from '../abstract/abstract-rest-service';
-import { Observable } from 'rxjs';
-import { ForbiddenHandler } from './forbidden-handler.service';
+import { IHasPermission } from '../guards/common';
+import { IPermissionScheme } from '../models/permission-scheme.model';
+import { isNullOrEmptyOrUndefine } from '../../utilities/util';
+import { equals } from 'ramda';
+import ArrayExtension from '../../utilities/array.extension';
 
 @Injectable()
 export class AuthenticationService extends AbstractRestService {
@@ -106,5 +105,19 @@ export class AuthenticationService extends AbstractRestService {
 
   recoverPassword<T>(lang: string, email: string) {
     return this.post<T>('recover-password', { lang: lang, email: email });
+  }
+
+  hasPermission(permission: IHasPermission): boolean {
+    const currentPermission = <IPermissionScheme> JSON.parse(AuthenticationTokenHelper.userPermissions);
+    if (isNullOrEmptyOrUndefine(currentPermission) || isNullOrEmptyOrUndefine(currentPermission.permission_details)) {
+      return false;
+    }
+
+    const permissionDetail = ArrayExtension.getItem(currentPermission.permission_details,
+      pd => equals(pd.controller.name, permission.module));
+    if (isNullOrEmptyOrUndefine(permissionDetail)) {
+      return false;
+    }
+    return true;
   }
 }

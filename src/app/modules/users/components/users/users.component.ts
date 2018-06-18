@@ -18,7 +18,7 @@ import { Permission } from '../../../../shared/guards/decorator';
   templateUrl: './users.component.html'
 })
 
-// @Permission('users')
+@Permission('User Management')
 export class UsersComponent implements OnInit {
   public items: User[] = [];
   private transferData = new TransferGroupData();

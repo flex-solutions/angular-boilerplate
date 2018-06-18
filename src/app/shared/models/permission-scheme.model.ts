@@ -60,6 +60,7 @@ interface IPermissionScheme {
     _id: any;
     name: string;
     userGroups: UserGroup[];
+    permission_details: IPermissionSchemeDetail[];
 }
 
 export {
