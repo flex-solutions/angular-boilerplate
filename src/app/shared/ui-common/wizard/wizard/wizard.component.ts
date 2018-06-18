@@ -63,9 +63,7 @@ export class WizardComponent implements AfterContentInit {
     }
 
     onNext() {
-        console.log('onNext...');
         this.validated.emit();
-        console.log('onNext...DONE' + this.canNext);
         if (this.canNext) {
             this.wizardNavigator.next();
         }
