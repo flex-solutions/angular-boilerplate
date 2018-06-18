@@ -687,7 +687,7 @@
         <target>Thông Tin</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
-        <source>Edit Permission Scheme</source>
+        <source>Edit permission scheme</source>
         <target>Sửa kế hoạch phân quyền</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
@@ -804,8 +804,8 @@
         <target>Gán cho các nhóm users</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
-        <source>Edit Permission Scheme</source>
-        <target>Sửa phân quyền</target>
+        <source>Edit</source>
+        <target>Sửa</target>
       </trans-unit>
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>

@@ -1,10 +1,9 @@
-import { PermissionRole, IHasPermission, PermissionDecoratorKey } from './common';
+import { PermissionRole, IPermissionModule, PermissionDecoratorKey } from './common';
 import 'reflect-metadata';
 
-function Permission(module: string, role?: PermissionRole): ClassDecorator {
-  const info: IHasPermission = {module, role};
+function Permission(permissionModule: IPermissionModule): ClassDecorator {
   return (target: object) => {
-    Reflect.defineMetadata(PermissionDecoratorKey, info, target);
+    Reflect.defineMetadata(PermissionDecoratorKey, permissionModule, target);
   };
 }
 

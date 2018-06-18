@@ -11,6 +11,7 @@ import { GroupUserModalComponent } from '../group-user/group-user-modal';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
 import { Permission } from '../../../../shared/guards/decorator';
+import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
 
 @Component({
   moduleId: module.id,
@@ -18,8 +19,10 @@ import { Permission } from '../../../../shared/guards/decorator';
   templateUrl: './users.component.html'
 })
 
-@Permission('User Management')
-export class UsersComponent implements OnInit {
+@Permission({
+  module: 'User Management'
+})
+export class UsersComponent extends AbstractBaseComponent implements OnInit {
   public items: User[] = [];
   private transferData = new TransferGroupData();
   groupName: string;
@@ -32,6 +35,7 @@ export class UsersComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private translateService: TranslateService
   ) {
+    super();
     this.groupName = this.activatedRoute.snapshot.params['groupName'];
   }
 

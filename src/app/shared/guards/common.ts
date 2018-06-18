@@ -6,11 +6,17 @@ enum PermissionRole {
   FullControl
 }
 
-interface IHasPermission {
+interface IPermissionModule {
   module: string;
-  role: PermissionRole;
+  role?: PermissionRole;
+}
+
+interface IHasPermission {
+  canUpdate: boolean;
+  canInsert: boolean;
+  canDelete: boolean;
 }
 
 const PermissionDecoratorKey = '__permissionDecorator__';
 
-export { PermissionRole, IHasPermission, PermissionDecoratorKey };
+export { PermissionRole, IPermissionModule, IHasPermission, PermissionDecoratorKey };

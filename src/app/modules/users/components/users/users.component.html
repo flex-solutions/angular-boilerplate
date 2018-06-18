@@ -1,7 +1,7 @@
 <!-- partial -->
 <app-card title="Users" i18n-title="@@users-list" subTitle="{{subTitle}}">
   <div class="command-region">
-    <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+    <button *ngIf="canInsert" type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
       <i class="mdi mdi-plus"></i>
       <span i18n="@@users-create-user">Create User</span>
     </button>
@@ -51,7 +51,7 @@
           <label class="badge" [ngClass]="item.isActive ? 'badge-success' : 'badge-danger'">{{item.isActive ? 'Active' : 'Deactive'}}</label>
         </td>
         <td>
-          <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
+          <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
             <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
             <span i18n="@@users-edit">Edit</span>
           </button>
@@ -59,8 +59,8 @@
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" (click)="changeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
-            <a class="dropdown-item" (click)="deleteUser(item)" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</a>
+            <a *ngIf="canUpdate" class="dropdown-item" (click)="changeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+            <a *ngIf="canDelete" class="dropdown-item" (click)="deleteUser(item)" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</a>
           </div>
         </td>
       </tr>

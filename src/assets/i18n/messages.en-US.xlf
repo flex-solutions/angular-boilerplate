@@ -694,8 +694,8 @@
         <target>Create Permission Scheme</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
-        <source>Edit Permission Scheme</source>
-        <target>Edit Permission Scheme</target>
+        <source>Edit permission scheme</source>
+        <target>Edit permission scheme</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
         <source>Type a name and choose which the permissions to include in this scheme</source>
@@ -806,8 +806,8 @@
         <target>Assign to the user groups</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
-        <source>Edit Permission Scheme</source>
-        <target>Edit Permission Scheme</target>
+        <source>Edit</source>
+        <target>Edit</target>
       </trans-unit>
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>

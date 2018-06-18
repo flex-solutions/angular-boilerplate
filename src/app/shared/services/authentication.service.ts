@@ -5,8 +5,8 @@ import { AuthenticationResponse } from '../models/authentication.model';
 import { SignedUser, BasicUserInfo } from '../models/user.model';
 import { AuthenticationTokenHelper } from '../../utilities/authentication-token';
 import { AbstractRestService } from '../abstract/abstract-rest-service';
-import { IHasPermission } from '../guards/common';
-import { IPermissionScheme } from '../models/permission-scheme.model';
+import { IPermissionModule, IHasPermission } from '../guards/common';
+import { IPermissionScheme, IPermissionSchemeDetail } from '../models/permission-scheme.model';
 import { isNullOrEmptyOrUndefine } from '../../utilities/util';
 import { equals } from 'ramda';
 import ArrayExtension from '../../utilities/array.extension';
@@ -107,17 +107,22 @@ export class AuthenticationService extends AbstractRestService {
     return this.post<T>('recover-password', { lang: lang, email: email });
   }
 
-  hasPermission(permission: IHasPermission): boolean {
+  hasPermission(permission: IPermissionModule, permissionComponent: any): boolean {
     const currentPermission = <IPermissionScheme> JSON.parse(AuthenticationTokenHelper.userPermissions);
     if (isNullOrEmptyOrUndefine(currentPermission) || isNullOrEmptyOrUndefine(currentPermission.permission_details)) {
       return false;
     }
 
     const permissionDetail = ArrayExtension.getItem(currentPermission.permission_details,
-      pd => equals(pd.controller.name, permission.module));
+      pd => equals(pd.controller.name, permission.module)) as IPermissionSchemeDetail;
     if (isNullOrEmptyOrUndefine(permissionDetail)) {
       return false;
     }
+
+    permissionComponent.canInsert = permissionDetail.is_insert;
+    permissionComponent.canUpdate = permissionDetail.is_update;
+    permissionComponent.canDelete = permissionDetail.is_delete;
+
     return true;
   }
 }

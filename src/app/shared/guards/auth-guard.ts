@@ -4,7 +4,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateCh
 import { AuthenticationService } from '../services/authentication.service';
 import { Injectable } from '@angular/core';
 import 'reflect-metadata';
-import { PermissionDecoratorKey, IHasPermission } from './common';
+import { PermissionDecoratorKey, IPermissionModule, IHasPermission } from './common';
 
 @Injectable()
 export class AuthGuard implements CanActivateChild {
@@ -23,11 +23,9 @@ export class AuthGuard implements CanActivateChild {
       } else {
         const component = route.component;
         if (component) {
-          const permissionDecorator = Reflect.getMetadata(PermissionDecoratorKey, component) as IHasPermission;
+          const permissionDecorator = Reflect.getMetadata(PermissionDecoratorKey, component) as IPermissionModule;
           if (permissionDecorator) {
-            const result = this.authenticationService.hasPermission(permissionDecorator);
-            console.log(permissionDecorator.module, result);
-            return result;
+            return this.authenticationService.hasPermission(permissionDecorator, component);
           }
         }
       }
