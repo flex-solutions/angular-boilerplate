@@ -10,12 +10,15 @@ import ArrayExtension from '../../../../utilities/array.extension';
 import { GroupUserModalComponent } from '../group-user/group-user-modal';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { TransferGroupData } from '../../../../shared/models/transfer-group-data.model';
+import { Permission } from '../../../../shared/guards/decorator';
 
 @Component({
   moduleId: module.id,
   selector: 'app-users',
   templateUrl: './users.component.html'
 })
+
+// @Permission('users')
 export class UsersComponent implements OnInit {
   public items: User[] = [];
   private transferData = new TransferGroupData();
