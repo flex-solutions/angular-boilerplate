@@ -60,7 +60,7 @@ export class UserService extends AbstractRestService {
     return this.get(`${userId}/combinegroupname`);
   }
 
-  changePassword(newPassword: string) {
-    return this.put(`changepassword`, newPassword);
+  changePassword(model: ChangePasswordModel) {
+    return this.post(`changepassword`, model);
   }
 }

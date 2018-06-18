@@ -3,6 +3,9 @@ import { DialogComponent } from '../../../../shared/ui-common/modal/components/d
 import { UserService } from '../../services/user.service';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 import { ChangePasswordModel } from '../../../../shared/models/user.model';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { UserMessages } from '../../users.constant';
 
 @Component({
   selector: 'app-change-password',
@@ -10,18 +13,23 @@ import { ChangePasswordModel } from '../../../../shared/models/user.model';
 })
 export class ChangePasswordComponent extends DialogComponent implements OnInit {
 
-  constructor(protected service: UserService, protected dialogService: DialogService) {
+  constructor(protected service: UserService,
+    protected dialogService: DialogService,
+    protected notificationService: NotificationService,
+    protected translateService: TranslateService) {
     super(dialogService);
   }
 
-  currentPassword = '';
-  newPassword = '';
+  model: ChangePasswordModel;
+
   confirmPassword = '';
   isSubmit = true;
   currentError = '';
 
   ngOnInit() {
-
+    this.model = new ChangePasswordModel();
+    this.model.new_password = '';
+    this.model.old_password = '';
   }
 
   cancel() {
@@ -30,6 +38,16 @@ export class ChangePasswordComponent extends DialogComponent implements OnInit {
   }
 
   submit() {
-    this.service.changePassword(this.newPassword);
+    this.service.changePassword(this.model).subscribe((data) => {
+      if (data === true) {
+        this.currentError = '';
+        this.notificationService.showSuccess(this.translateService.translate(UserMessages.ChangePasswordSuccessFully));
+        this.result = true;
+        this.dialogResult();
+      } else {
+        this.currentError = this.translateService.translate(UserMessages.CurrentPasswordIsIncorrect);
+        return;
+      }
+    });
   }
 }

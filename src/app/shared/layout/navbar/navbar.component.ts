@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         })
         .subscribe(t => {
           if (t) {
-
+            console.log(t);
           }
         });
   }
