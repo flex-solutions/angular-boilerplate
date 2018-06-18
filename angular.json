@@ -11,17 +11,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cms-en",
+            "outputPath": "dist/cms-vi",
             "aot": true,
-            "i18nFile": "src/assets/i18n/messages.en-US.xlf",
-            "i18nLocale": "en",
+            "i18nFile": "src/assets/i18n/messages.vi-VN.xlf",
+            "i18nLocale": "vi",
             "i18nFormat": "xlf",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.css", "src/customStyles.css"],
+            "styles": ["src/styles.css", "src/customStyles.css","node_modules/dropify/dist/css/dropify.min.css"],
             "scripts": [
               "node_modules/toastr/build/toastr.min.js",
               "src/assets/vendors/js/vendor.bundle.base.js",
