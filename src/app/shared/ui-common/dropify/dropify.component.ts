@@ -1,6 +1,6 @@
-import { isNil } from 'ramda';
 import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { readBase64 } from '../../../utilities/convert-image-to-base64';
+import { readBase64 } from '../../../utilities/ convert-image-to-base64';
+
 
 declare var $: any;
 
@@ -105,30 +105,26 @@ export class DropifyComponent implements AfterViewInit {
 
         // Register droptify error occurs
         drEvent.on('dropify.error.fileSize', (event, element) => {
-            this.raiseError(ErrorType.FileSize);
+            this.errors.emit(ErrorType.FileSize);
         });
         drEvent.on('dropify.error.minWidth', (event, element) => {
-            this.raiseError(ErrorType.MinWidth);
+            this.errors.emit(ErrorType.MinWidth);
         });
         drEvent.on('dropify.error.maxWidth', (event, element) => {
-            this.raiseError(ErrorType.MaxWidth);
+            this.errors.emit(ErrorType.MaxWidth);
         });
         drEvent.on('dropify.error.minHeight', (event, element) => {
-            this.raiseError(ErrorType.MinHeight);
+            this.errors.emit(ErrorType.MinHeight);
         });
         drEvent.on('dropify.error.maxHeight', (event, element) => {
-            this.raiseError(ErrorType.MaxHeight);
+            this.errors.emit(ErrorType.MaxHeight);
         });
         drEvent.on('dropify.error.imageFormat', (event, element) => {
-            this.raiseError(ErrorType.ImageFormat);
+            this.errors.emit(ErrorType.ImageFormat);
         });
         drEvent.on('dropify.afterClear', (event, element) => {
             this.fileRemoved.emit();
         });
-    }
-
-    raiseError(errorType: ErrorType) {
-        this.errors.emit(errorType);
     }
 
     onChanged($event) {

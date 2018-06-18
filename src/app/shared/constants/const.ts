@@ -12,6 +12,7 @@ const ModuleRoute = {
     USER: 'users',
     USER_GROUP: 'user-groups',
     PERMISSION_SCHEMES: 'permission-schemes',
+    NEWS: 'news',
     PROMOTION: 'promotions'
 };
 

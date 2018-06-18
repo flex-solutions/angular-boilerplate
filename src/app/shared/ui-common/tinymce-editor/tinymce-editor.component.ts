@@ -1,31 +1,31 @@
 import { init, any, isEmpty } from 'ramda';
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter, forwardRef, NgZone, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter, forwardRef, NgZone, OnChanges, SimpleChange } from '@angular/core';
 import { isNullOrUndefined } from 'util';
 
 declare let tinymce: any;
+declare let $: any;
 
 @Component({
   selector: 'app-tinymce-editor',
-  templateUrl: 'tinymce-editor.component.html'
+  templateUrl: 'tinymce-editor.component.html',
+  styleUrls: ['tinymce-editor.component.css']
 })
 export class TynimceEditorComponent implements OnInit, AfterViewInit {
   @Input() content: string;
   @Input() elementId: string;
   @Input() editorHeight: number;
-
-  @Input()
-  hasError: boolean;
+  @Input() hasError: boolean;
 
   @Output() onEditorContentChange = new EventEmitter();
   @Output() onBlur = new EventEmitter();
+  @Output() onEmptyRawContent = new EventEmitter();
 
   editor;
 
   constructor() {
-    this.hasError = false;
   }
 
-  ngOnInit() { }
+  ngOnInit() { this.hasError = false; }
 
   ngAfterViewInit(): void {
     tinymce.init({
@@ -46,17 +46,22 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
         editor.on('change', () => {
           const content = editor.getContent();
           this.onEditorContentChange.emit(content);
-          // this.editor.save();
+          let body = this.editor.getBody();
+          var textcontent = body.textContent;
+          textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
+          this.onEmptyRawContent.emit(textcontent);
         });
       },
     });
   }
 
   reset() {
-    this.content = '';
-    this.editor.setContent('');
-    this.editor.dom.addStyle('border: 1px solid #ff7474 !important;');
-    // this.editor.load();
+    this.content = "";
+    this.editor.setContent("");
+  }
+
+  getClassStyle() {
+    return this.hasError? 'tinymce-has-error' : 'tinymce-editor' ;
   }
 
   ngOnDestroy() {

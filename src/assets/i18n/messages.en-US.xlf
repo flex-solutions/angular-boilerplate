@@ -37,6 +37,11 @@
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
+        <source>News Management</source>
+        <target>News Management</target>
+      </trans-unit>
+
       <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
         <source>Promotion Management</source>
         <target>Promotion Management</target>
@@ -45,7 +50,6 @@
         <source>Promotion</source>
         <target>Promotion</target>
       </trans-unit>
-
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -906,6 +910,168 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+
+      <!--START News Create Edit Page -->
+      <trans-unit id="news-news-h4-create_news" datatype="html">
+        <source>Create news</source>
+        <target>Create news </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-create_news_description" datatype="html">
+        <source>This page allows you creating a news and pulishing it if you want</source>
+        <target>This page allows you creating a news and pulishing it if you want</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-edit_news" datatype="html">
+        <source>Edit news</source>
+        <target>Edit news</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-edit_news_description" datatype="html">
+        <source>This page allows you edit a news</source>
+        <target>This page allows you edit a news</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-title_place_holder" datatype="html">
+        <source>Enter title</source>
+        <target>Enter title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-banner_place_holder" datatype="html">
+        <source>Enter banner</source>
+        <target>Enter banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-content_place_holder" datatype="html">
+        <source>Enter content</source>
+        <target>Enter content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
+        <source>Submit & publish</source>
+        <target>Submit & publish</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-create_another_news" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
+        <source>Create news with title "{{0}}" successfull</source>
+        <target>Create news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
+        <source>Create and publish news with title "{{0}}" successfull</source>
+        <target>Create and publish news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_require" datatype="html">
+        <source>Please provide the banner</source>
+        <target>Please provide the banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_require" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-file_size_error" datatype="html">
+        <source>The banner size must be lower or equal 500kb</source>
+        <target>The banner size must be lower or equal 500kb</target>
+      </trans-unit>
+      <!--END News Create Edit Page-->
+
+      <!-- START News Management -->
+      <trans-unit id="news_management-news_detail-news_information_tab" datatype="html">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_detail-news_statistic_tab" datatype="html">
+        <source>Statistic</source>
+        <target>Statistic</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_edit_button" datatype="html">
+        <source>Edit News</source>
+        <target>Edit News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_delete_text" datatype="html">
+        <source>Delete News</source>
+        <target>Delete News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivate_button" datatype="html">
+        <source>Deactivate</source>
+        <target>Deactivate</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_new_status" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivated_status" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_published_status" datatype="html">
+        <source>Published</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="news_detail-delete_news-ok" datatype="html">
+        <source>Delete news successfully</source>
+        <target>Delete news successfully</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_by" datatype="html">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_on" datatype="html">
+        <source>Created on</source>
+        <target>Created on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_by" datatype="html">
+        <source>Last edited by</source>
+        <target>Last edited by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_on" datatype="html">
+        <source>Last edited on</source>
+        <target>Last edited on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by" datatype="html">
+        <source>Published by</source>
+        <target>Đăng tải bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_on" datatype="html">
+        <source>Published on</source>
+        <target>Đăng tải vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by_no_one" datatype="html">
+        <source>Published by no one</source>
+        <target>Chưa ai đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-not_published_yet" datatype="html">
+        <source>Not Published</source>
+        <target>Chưa đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>View Count</target>
+      </trans-unit>
+      <!-- END News Management -->
       <!--Wizard control-->
       <trans-unit id="wizard-wizard-actions-previous_button" datatype="html">
         <source>Previous</source>
