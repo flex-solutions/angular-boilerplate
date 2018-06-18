@@ -9,15 +9,21 @@ const routes: Routes = [
     component: PromotionsComponent,
     data: {
       breadcrumb: 'Promotions'
-    },
-    children: [
-    {
-      path: 'edit/:id',
-      component: CreatePromotionComponent,
-      data: {
-        breadcrumb: 'Edit Promotion'
-      }
-    }]
+    }
+  },
+  {
+    path: 'create',
+    component: CreatePromotionComponent,
+    data: {
+      breadcrumb: 'Create Promotion'
+    }
+  },
+  {
+    path: 'edit/:id',
+    component: CreatePromotionComponent,
+    data: {
+      breadcrumb: 'Edit Promotion'
+    }
   }
 ];
 
