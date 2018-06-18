@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { TranslateService } from './../../../../shared/services/translate.service';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../../../shared/models/user.model';
@@ -15,32 +16,54 @@ import { TransferGroupData } from '../../../../shared/models/transfer-group-data
   selector: 'app-users',
   templateUrl: './users.component.html'
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   public items: User[] = [];
   private transferData = new TransferGroupData();
   groupName: string;
+  subTitle: string;
 
   constructor(
     private exDialog: ExDialog,
     private userService: UserService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private translateService: TranslateService
   ) {
     this.groupName = this.activatedRoute.snapshot.params['groupName'];
   }
 
   public count = (searchKey: string): Observable<number> => {
-    return this.userService.count(searchKey);
+    if (this.groupName) {
+      return this.userService.countUsersByGroupName(this.groupName, searchKey);
+    } else {
+      return this.userService.count(searchKey);
+    }
+  }
+
+  ngOnInit() {
+    if (this.groupName) {
+      this.subTitle = this.translateService.translateWithParams('users-list-by-group', this.groupName);
+    }
   }
 
   private loadData(eventArg: IFilterChangedEvent) {
-    this.userService
+    if (this.groupName) {
+      this.userService
+      .getUsersByGroupName(this.groupName,
+        eventArg.pagination.itemsPerPage,
+        eventArg.pagination.page,
+        eventArg.searchKey
+      )
+      .subscribe(users => (this.items = users));
+    } else {
+      this.userService
       .getUsers(
         eventArg.pagination.itemsPerPage,
         eventArg.pagination.page,
         eventArg.searchKey
       )
       .subscribe(users => (this.items = users));
+    }
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -86,5 +109,9 @@ export class UsersComponent {
       `${UserNavigationRoute.GROUPS_PAGE}/filter`,
       userGroup
     ]);
+  }
+
+  viewAllUser() {
+    this.router.navigate([UserNavigationRoute.USERS_PAGE]);
   }
 }

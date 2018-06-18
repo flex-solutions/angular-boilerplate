@@ -339,13 +339,21 @@
       <!-- End group user modal -->
 
       <!-- Users -->
-      <trans-unit id="users-name" datatype="html">
+      <trans-unit id="users-list" datatype="html">
         <source>Users</source>
         <target>Users</target>
+      </trans-unit>
+      <trans-unit id="users-list-by-group" datatype="html">
+        <source>Users in group {{0}}</source>
+        <target>Bellow is all users in group {{0}}</target>
       </trans-unit>
       <trans-unit id="users-create-user" datatype="html">
         <source>Create User</source>
         <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="users-view-all-users" datatype="html">
+        <source>View All</source>
+        <target>View All</target>
       </trans-unit>
       <trans-unit id="users-fullname" datatype="html">
         <source>Full Name</source>
@@ -576,7 +584,7 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
-      
+
       <!--Edit usergroup membership-->
       <trans-unit id="edit-members-title" datatype="html">
         <source>Bulk edit group members</source>
@@ -814,7 +822,7 @@
         <target>Deleted scheme "{{0}}" successfully</target>
       </trans-unit>
       <!-- End Permission Schemes -->
-      
+
       <!-- Copy Permission Schemes -->
       <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
         <source>Copy Permission Scheme</source>

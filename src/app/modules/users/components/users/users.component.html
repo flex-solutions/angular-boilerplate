@@ -1,14 +1,20 @@
 <!-- partial -->
-<app-card title="Users" i18n-title="@@users-name">
+<app-card title="Users" i18n-title="@@users-list" subTitle="{{subTitle}}">
   <div class="command-region">
     <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
       <i class="mdi mdi-plus"></i>
       <span i18n="@@users-create-user">Create User</span>
     </button>
+
+    <button *ngIf="groupName" type="button" class="btn btn-light btn-fw pull-right" (click)="viewAllUser()">
+        <i class="mdi mdi-format-list-bulleted"></i>
+        <span i18n="@@users-view-all-users">View All</span>
+      </button>
   </div>
 
   <app-dg #dg searchLabel="Search username, fullname or email" i18n-searchLabel="@@users-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
-    [countFunction]="count" [searchKey]="groupName">
+    [countFunction]="count">
+
     <tr role="row">
       <th i18n="@@users-fullname">Full Name</th>
       <th i18n="@@users-username">Username</th>

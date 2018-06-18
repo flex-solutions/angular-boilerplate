@@ -56,4 +56,12 @@ export class UserService extends AbstractRestService {
   getUserById(userId: string): Observable<User> {
     return this.get(userId);
   }
+
+  getUsersByGroupName(groupName: string, pageSize: number, pageNumber: number, searchKey?: string): Observable<User[]> {
+    return this.get(`getUsersByGroupName/${groupName}?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
+
+  countUsersByGroupName(groupName: string, searchKey?: string): Observable<number> {
+    return this.get(`getUsersByGroupName/${groupName}/count?searchKey=${searchKey}`);
+  }
 }

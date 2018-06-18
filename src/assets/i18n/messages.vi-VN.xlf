@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" 
-  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
+
     <body>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
@@ -342,16 +342,20 @@
 
       <!-- Users -->
       <trans-unit id="users-list" datatype="html">
-        <source>User List</source>
+        <source>Users</source>
         <target>Danh Sách User</target>
       </trans-unit>
-      <trans-unit id="users-name" datatype="html">
-        <source>Users</source>
-        <target>Người dùng</target>
+      <trans-unit id="users-list-by-group" datatype="html">
+        <source>Users in group {{0}}</source>
+        <target>Danh sách User trong nhóm {{0}}</target>
       </trans-unit>
       <trans-unit id="users-create-user" datatype="html">
         <source>Create User</source>
-        <target>Tạo mới</target>
+        <target>Tạo user</target>
+      </trans-unit>
+      <trans-unit id="users-view-all-users" datatype="html">
+        <source>View All</source>
+        <target>Xem tất cả</target>
       </trans-unit>
       <trans-unit id="users-fullname" datatype="html">
         <source>Full Name</source>
@@ -508,7 +512,7 @@
       <!--Usergroup list-->
       <trans-unit id="user_groups-list-tbl-title" datatype="html">
         <source>User Groups</source>
-        <target>Nhóm User	</target>
+        <target>Nhóm User </target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
         <source>Create User Group</source>
@@ -551,11 +555,12 @@
         <target>Xoá nhóm user</target>
       </trans-unit>
       <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
-        <source>
-        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users".
+        Are you sure you want to deleted?
         </source>
         <target>
-        Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có chắc muốn tiếp tục?
+          Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có
+          chắc muốn tiếp tục?
         </target>
       </trans-unit>
       <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
@@ -807,8 +812,10 @@
         <target>Xoá kế hoạch phân quyền</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-confirm" datatype="html">
-        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
-        <target>Kế hoạch phân quyền "{{0}}" sẽ bị xoá vĩnh viễn và tất cả các nhóm user của kế hoạch này sẽ được gán cho kế hoạch phân quyền "default-user-permission-scheme". Bạn có chắc muốn tiếp tục?</target>
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        Are you sure you want to delete?</source>
+        <target>Kế hoạch phân quyền "{{0}}" sẽ bị xoá vĩnh viễn và tất cả các nhóm user của kế hoạch này sẽ được gán cho kế hoạch
+          phân quyền "default-user-permission-scheme". Bạn có chắc muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-success" datatype="html">
         <source>Deleted scheme "{{0}}" successfully</source>
