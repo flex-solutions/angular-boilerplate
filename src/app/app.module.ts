@@ -27,6 +27,8 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { AuthGuard } from './shared/guards/auth-guard';
 import { NewsModule } from './modules/news/news.module';
 import { NewsRoutingModule } from './modules/news/news-routing.module';
+import { UsersModule } from './modules/users/users.module';
+import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permission-scheme-routing.module';
 // import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
@@ -47,7 +49,9 @@ import { NewsRoutingModule } from './modules/news/news-routing.module';
     UserGroupsRoutingModule,
     UserGroupsModule,
     DialogModule,
+    UsersModule,
     PermissionSchemeModule,
+    PermissionSchemeRoutingModule,
     NewsRoutingModule,
     NewsModule
   ],

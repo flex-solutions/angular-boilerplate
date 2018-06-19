@@ -31,11 +31,5 @@ import { UserService } from '../../modules/users/services/user.service';
     HomeLayoutComponent,
     LoginLayoutComponent
   ],
-  providers: [
-    UserService
-  ],
-  entryComponents: [
-    ChangePasswordComponent
-  ]
 })
 export class LayoutModule { }

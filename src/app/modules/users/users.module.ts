@@ -27,6 +27,7 @@ import { userDirectives } from './directives';
     ...UserModulePipes,
     ...userDirectives],
   providers: [UserService, BranchService],
-  entryComponents: [GroupUserModalComponent]
+  entryComponents: [GroupUserModalComponent, ChangePasswordComponent],
+  exports: [ChangePasswordComponent]
 })
 export class UsersModule { }
