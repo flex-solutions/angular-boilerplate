@@ -62,16 +62,10 @@ export class PromotionsComponent implements OnInit {
 
   onStartDateChanged($event) {
     this.startDate = $event;
-    if (!isNil(this.startDate.date) && !isNil(this.endDate.date) && this.startDate.date.getTime() > this.endDate.date.getTime()) {
-      this.endDate.date = this.startDate.date;
-    }
   }
 
   onEndDateChanged($event) {
     this.endDate = $event;
-    if (!isNil(this.startDate.date) && !isNil(this.endDate.date) && this.startDate.date.getTime() > this.endDate.date.getTime()) {
-      this.endDate.date = this.startDate.date;
-    }
   }
 
   navigateToCreate() {

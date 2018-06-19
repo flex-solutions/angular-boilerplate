@@ -7,6 +7,5 @@ export class SingleDateModel {
   date: Date;
 
   constructor() {
-    this.date = new Date(Date.now());
   }
 }
