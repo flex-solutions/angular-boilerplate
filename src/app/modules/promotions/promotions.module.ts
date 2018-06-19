@@ -1,13 +1,12 @@
-import { PromotionsComponent } from './components/promotions/promotions.component';
-import { StartButtonDirective } from './directives/start-button.directive';
+import { PromotionPipes } from './pipes/index';
+import { PromotionDirectives } from './directives/index';
 import { PromotionService } from './services/promotion.service';
-import { CreatePromotionComponent } from './components/create-promotion/create-promotion.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PromotionsRoutingModule } from './promotions-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
-import { PromotionStatusDirective } from './directives/promotion-status.directive';
+import { PromotionModuleComponents } from './components';
 
 @NgModule({
   imports: [
@@ -19,10 +18,9 @@ import { PromotionStatusDirective } from './directives/promotion-status.directiv
   ],
   providers: [PromotionService],
   declarations: [
-    CreatePromotionComponent,
-    PromotionStatusDirective,
-    StartButtonDirective,
-    PromotionsComponent
+    ...PromotionModuleComponents,
+    ...PromotionDirectives,
+    ...PromotionPipes
   ]
 })
 export class PromotionsModule { }
