@@ -81,11 +81,9 @@ export class NewsComponent implements OnInit {
 
   delete(id:string) {
     this.service.remove(id).subscribe((ret) => {
-      if (ret) {
         const msg = this.getMessage(Errors.Delete_News_Success);
         this.notificationService.showSuccess(msg);
         this.loadNews();
-      }
     });
   }
 
