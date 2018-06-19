@@ -10,7 +10,7 @@ import { PermissionDecoratorKey, IPermissionModule, IHasPermission } from './com
 export class AuthGuard implements CanActivateChild {
 
     constructor(private readonly authenticationService: AuthenticationService) {
-     }
+    }
 
     canActivateChild(
       route: ActivatedRouteSnapshot,
@@ -23,6 +23,7 @@ export class AuthGuard implements CanActivateChild {
       } else {
         const component = route.component;
         if (component) {
+          console.log(route);
           const permissionDecorator = Reflect.getMetadata(PermissionDecoratorKey, component) as IPermissionModule;
           if (permissionDecorator) {
             return this.authenticationService.hasPermission(permissionDecorator, component);

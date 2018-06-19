@@ -24,7 +24,6 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   authenticated(): boolean {
-    console.log('authenticated');
     if (AuthenticationTokenHelper.localToken) {
       const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
       const dateNow = Date.now() / 1000;
@@ -119,9 +118,13 @@ export class AuthenticationService extends AbstractRestService {
       return false;
     }
 
-    permissionComponent.canInsert = permissionDetail.is_insert;
-    permissionComponent.canUpdate = permissionDetail.is_update;
-    permissionComponent.canDelete = permissionDetail.is_delete;
+    console.log(permissionComponent.prototype);
+
+    permissionComponent.prototype.canInsert = permissionDetail.is_insert;
+    permissionComponent.prototype.canUpdate = permissionDetail.is_update;
+    permissionComponent.prototype.canDelete = permissionDetail.is_delete;
+
+    console.log(permissionComponent.prototype);
 
     return true;
   }

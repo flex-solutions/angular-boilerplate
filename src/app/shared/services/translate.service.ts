@@ -13,7 +13,6 @@ export class TranslateService {
     @Inject(TRANSLATIONS) source: string,
     @Inject(LOCALE_ID) localeId
   ) {
-    console.log(`Using locale id: ${localeId}`);
     const xliff = new Xliff();
     this._source = source;
     this._translations = xliff.load(this._source, '');
