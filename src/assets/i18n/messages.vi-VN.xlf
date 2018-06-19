@@ -914,7 +914,7 @@
       <!--END Permission Scheme Detail Dialog-->
 
       <!--START News Create Edit Page -->
-      <trans-unit id="news-news-h4-create_news" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
         <source>Create news</source>
         <target>Tạo tin tức </target>
       </trans-unit>
