@@ -1,13 +1,13 @@
 import { CheckedItem } from './checked-items.model';
 import { SelectableModel } from './../../models/selectable.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, AfterContentInit } from '@angular/core';
 
 @Component({
   selector: 'app-drop-down-check-boxes',
   templateUrl: './drop-down-check-boxes.component.html',
   styleUrls: ['./drop-down-check-boxes.component.css']
 })
-export class DropDownCheckBoxesComponent implements OnInit {
+export class DropDownCheckBoxesComponent implements AfterContentInit {
 
   // A title display on control
   @Input()
@@ -23,7 +23,8 @@ export class DropDownCheckBoxesComponent implements OnInit {
     this.itemsources = [];
   }
 
-  ngOnInit() {
+  ngAfterContentInit(): void {
+    this.onCheckedChanged();
   }
 
   onCheckedChanged() {

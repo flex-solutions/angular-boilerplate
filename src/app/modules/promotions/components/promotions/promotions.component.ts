@@ -1,3 +1,4 @@
+import { isNil } from 'ramda';
 import { SelectableModel } from './../../../../shared/models/selectable.model';
 import { DateRangeModel, SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { PromotionService } from './../../services/promotion.service';
@@ -17,13 +18,13 @@ export class PromotionsComponent implements OnInit {
 
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
-  dateRange: DateRangeModel;
   startDate: SingleDateModel;
-  endDate:  SingleDateModel;
+  endDate: SingleDateModel;
   statusItems: SelectableModel<CheckedItem>[];
 
   constructor(private service: PromotionService, private route: Router) {
-    this.dateRange = new DateRangeModel();
+    this.startDate = new SingleDateModel();
+    this.endDate = new SingleDateModel();
     this.buildStatusItemSource();
   }
 
@@ -54,10 +55,16 @@ export class PromotionsComponent implements OnInit {
 
   onStartDateChanged($event) {
     this.startDate = $event;
+    if (!isNil(this.startDate.date) && !isNil(this.endDate.date) && this.startDate.date.getTime() > this.endDate.date.getTime()) {
+      this.endDate.date = this.startDate.date;
+    }
   }
 
   onEndDateChanged($event) {
     this.endDate = $event;
+    if (!isNil(this.startDate.date) && !isNil(this.endDate.date) && this.startDate.date.getTime() > this.endDate.date.getTime()) {
+      this.endDate.date = this.startDate.date;
+    }
   }
 
   navigateToCreate() {
@@ -75,19 +82,19 @@ export class PromotionsComponent implements OnInit {
   buildStatusItemSource() {
     this.statusItems = [
       {
-        isSelected: false,
+        isSelected: true,
         model: {
           displayName: 'New'
         }
       },
       {
-        isSelected: false,
+        isSelected: true,
         model: {
           displayName: 'Active'
         }
       },
       {
-        isSelected: false,
+        isSelected: true,
         model: {
           displayName: 'Deactived'
         }

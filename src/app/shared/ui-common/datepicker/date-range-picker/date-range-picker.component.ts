@@ -2,6 +2,7 @@ import { AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { DateRangeModel } from '../model/date-range.model';
 import { TranslateService } from '../../../services/translate.service';
+import { Guid } from 'guid-typescript';
 declare const $: any;
 declare const moment: any;
 
@@ -12,10 +13,11 @@ declare const moment: any;
 export class DateRangePickerComponent implements AfterViewInit {
 
   private _dateRange: DateRangeModel;
+  elementId: string;
 
   // Call when date ranged have changed
   @Output()
-  dateRangeChanged = new EventEmitter<DateRangeModel>();
+  dateRangeChange = new EventEmitter<DateRangeModel>();
 
   @Input()
   get dateRange() {
@@ -25,11 +27,13 @@ export class DateRangePickerComponent implements AfterViewInit {
   set dateRange(value: DateRangeModel) {
     if (value !== this._dateRange) {
       this._dateRange = value;
-      this.dateRangeChanged.emit(this._dateRange);
+      this.dateRangeChange.emit(this._dateRange);
     }
   }
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService) {
+    this.elementId = Guid.create().toString();
+   }
 
   ngAfterViewInit() {
     this.initialize();
@@ -60,6 +64,13 @@ export class DateRangePickerComponent implements AfterViewInit {
         result.endDate = new Date(end.toISOString());
         this.dateRange = result;
       });
+
+      // set default value
+    if (this.dateRange && this.dateRange.startDate && this.dateRange.endDate) {
+      const startDate = moment(this.dateRange.startDate);
+      const endDate = moment(this.dateRange.endDate);
+      this.picker.val(startDate.format('MM/DD/YYYY') + ' - ' + endDate.format('MM/DD/YYYY'));
+    }
   }
 
   buildRanges() {
@@ -89,6 +100,6 @@ export class DateRangePickerComponent implements AfterViewInit {
   }
 
   get picker() {
-    return $('input[name="daterange"]');
+    return $(`input[id="${this.elementId}"]`);
   }
 }

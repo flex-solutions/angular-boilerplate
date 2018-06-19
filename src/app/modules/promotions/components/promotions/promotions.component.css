@@ -5,6 +5,6 @@
   overflow: hidden !important;
   text-overflow: ellipsis;
 }
-.table td {
+:host >>> .table td {
   line-height: normal !important;
 }

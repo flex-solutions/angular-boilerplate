@@ -2,6 +2,7 @@ import { SingleDateModel } from './../model/date-range.model';
 import { AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
+import { Guid } from 'guid-typescript';
 declare const $: any;
 declare const moment: any;
 
@@ -14,12 +15,14 @@ export class DatePickerComponent implements AfterViewInit {
 
   private _date: SingleDateModel;
 
+  elementId: string;
+
   @Input()
   title: string;
 
   // Call when date have changed
   @Output()
-  dateChanged = new EventEmitter<SingleDateModel>();
+  dateChange = new EventEmitter<SingleDateModel>();
 
   @Input()
   get date() {
@@ -29,11 +32,13 @@ export class DatePickerComponent implements AfterViewInit {
   set date(value: SingleDateModel) {
     if (value !== this._date) {
       this._date = value;
-      this.dateChanged.emit(this._date);
+      this.dateChange.emit(this._date);
     }
   }
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService) {
+    this.elementId = Guid.create().toString();
+  }
 
   ngAfterViewInit() {
     this.initialize();
@@ -46,6 +51,8 @@ export class DatePickerComponent implements AfterViewInit {
   initialize() {
     this.picker.daterangepicker({
       singleDatePicker: true,
+      startDate: moment(this.date.date),
+      endDate: moment(this.date.date),
       autoApply: true,
       autoUpdateInput: false,
       ranges: this.buildRanges(),
@@ -63,6 +70,12 @@ export class DatePickerComponent implements AfterViewInit {
         result.date = new Date(start.toISOString());
         this.date = result;
       });
+
+    // set default value
+    if (this.date && this.date.date) {
+      const date = moment(this.date.date);
+      this.picker.val(date.format('MM/DD/YYYY'));
+    }
   }
 
   buildRanges() {
@@ -92,6 +105,6 @@ export class DatePickerComponent implements AfterViewInit {
   }
 
   get picker() {
-    return $('input[name="singledate"]');
+    return $(`input[id="${this.elementId}"]`);
   }
 }
