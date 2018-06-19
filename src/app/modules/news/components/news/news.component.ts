@@ -1,11 +1,12 @@
-import { isNullOrUndefined } from 'util';
+import { TranslateService } from './../../../../shared/services/translate.service';
+import { NotificationService } from './../../../../shared/services/notification.service';
+import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { NewViewModel, NewsFields } from '../../../../shared/models/news.model';
+import { NewViewModel, NewsFields, News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
-import { NewNavigationRoute } from '../../constant/common-const';
 import * as moment from 'moment';
 import { filter, head, equals } from 'ramda';
 
@@ -20,16 +21,14 @@ export class NewsComponent implements OnInit {
   public items: NewViewModel[] = [];
   currentFilterArgs: IFilterChangedEvent;
 
-  constructor(private service: NewsService, private route: Router) { }
+  constructor(private service: NewsService,
+    private notificationService: NotificationService,
+    private translateService:TranslateService, private route: Router) { }
 
   ngOnInit() {
   }
 
   public count = (searchKey: string): Observable<number> => {
-    if (isNullOrUndefined(searchKey))
-    {
-      return;
-    }
     return this.service.count(searchKey);
   }
 
@@ -62,17 +61,39 @@ export class NewsComponent implements OnInit {
   NewProcessing(id: string) {
     const processedItem = head(filter(c => equals(c[NewsFields.ID], id), this.items));
 
-    this.service.processNew(processedItem).subscribe((updateNew) => {
+    this.service.updateStatus(id, processedItem.status).subscribe((updateNew) => {
       processedItem.status = updateNew.status;
-      processedItem.publish_date = this.convertTime(updateNew.published_on);
+      processedItem.publish_date = this.convertTime(updateNew.publishedOn);
     });
   }
 
   navigateToCreate() {
-    this.route.navigate([NewNavigationRoute.CREATE_PAGE]);
+    this.route.navigate([NewsRouteNames.CREATE]);
   }
 
   navigateToEdit(id: string) {
-    this.route.navigate([`${NewNavigationRoute.EDIT_PAGE}/${id}`]);
+    this.route.navigate([`${NewsRouteNames.EDIT}/${id}`]);
+  }
+
+  navigateToDetail(news:News) {
+    this.route.navigate([`${NewsRouteNames.VIEW}/${news._id}`]);
+  }
+
+  delete(id:string) {
+    this.service.remove(id).subscribe((ret) => {
+      if (ret) {
+        const msg = this.getMessage(Errors.Delete_News_Success);
+        this.notificationService.showSuccess(msg);
+        this.loadNews();
+      }
+    });
+  }
+
+  private getMessage(code: string, ...params) {
+    if (params.length) {
+      return this.translateService.translateWithParams(code, params);
+    } else {
+      return this.translateService.translate(code);
+    }
   }
 }

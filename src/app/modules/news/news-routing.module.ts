@@ -6,13 +6,6 @@ import { RouterModule } from '@angular/router';
 
 const newsRoutes = [
   {
-    path: ':id',
-    component: NewsDetailComponent,
-    data: {
-      breadcrumb: 'News Details'
-    }
-  },
-  {
     // TODO: update after finish create news
     path: '',
     component: NewsComponent,
@@ -29,13 +22,20 @@ const newsRoutes = [
      }
   },
   {
+    path: ':id',
+    component: NewsDetailComponent,
+    data: {
+      breadcrumb: 'News Details'
+    }
+  },
+  {
     // TODO: update after finish create news
     path: 'edit/:id',
     component: CreateEditNewsComponent,
     data: {
       breadcrumb: 'Edit news'
     }
- }
+ },
 ];
 
 @NgModule({

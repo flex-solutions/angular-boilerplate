@@ -1150,6 +1150,10 @@
         <source>View Count</source>
         <target>Lượt xem</target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Nội dung</target>
+      </trans-unit>
       <!-- END News Management -->
     </body>
   </file>

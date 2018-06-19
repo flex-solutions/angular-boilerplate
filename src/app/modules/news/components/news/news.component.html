@@ -17,7 +17,7 @@
     </tr>
     <tbody>
       <tr  *ngFor="let item of items">
-        <td><p class="a-clickable pull-left" >{{item.title}}</p></td>
+        <td><p class="a-clickable pull-left" (click)="navigateToDetail(item)" >{{item.title}}</p></td>
         <td class="cut-text">{{item.content}}
         </td>
         <td appNewsStatus [status]="item.status"></td>
@@ -35,7 +35,7 @@
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-delete">Delete news</a>
+            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-delete" (click)="delete(item._id)">Delete news</a>
           </div>
         </td>
       </tr>

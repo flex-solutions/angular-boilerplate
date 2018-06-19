@@ -1,7 +1,6 @@
 
 import { ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
-import { NewsErrors } from "./../../errors/NewsErrors";
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -12,8 +11,9 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { isNullOrUndefined } from 'util';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
+import { Errors } from '../../constants/news.constant';
 
-const TITLE_CREATE_NEWS: string = 'news-news-h4-create_news';
+const TITLE_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news';
 const DESCRIPTION_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news_description';
 const TITLE_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news';
 const DESCRIPTION_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news_description';
@@ -129,7 +129,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
         (value: News) => {
           // * Create news successful, display success notification
           const msg = this.getMessage(
-            NewsErrors.Create_News_Sucess,
+            Errors.Create_News_Sucess,
             this.news.title
           );
           this.notificationService.showSuccess(msg);
@@ -144,7 +144,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
       (value: News) => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
-          NewsErrors.Create_Published_News_Sucess,
+          Errors.Create_Published_News_Sucess,
           this.news.title
         );
         this.notificationService.showSuccess(msg);
@@ -205,7 +205,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
       (value: News) => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
-          NewsErrors.Edit_News_Success,
+          Errors.Edit_News_Success,
           this.news.title
         );
         this.notificationService.showSuccess(msg);
