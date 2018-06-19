@@ -1,5 +1,6 @@
-import { PromotionsFilterPipe } from './promotion.pipe';
+import { PromotionsFilterPipe, PromotionDatePipe } from './promotion.pipe';
 
 export const PromotionPipes = [
-    PromotionsFilterPipe
+    PromotionsFilterPipe,
+    PromotionDatePipe
 ];

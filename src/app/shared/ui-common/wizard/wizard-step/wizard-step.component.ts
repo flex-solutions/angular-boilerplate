@@ -22,8 +22,8 @@ export class WizardStepComponent {
     headerClasses: string;
 
     /**
-   * A boolean describing if the wizard step is currently selected
-   */
+    * A boolean describing if the wizard step is currently selected
+    */
     public selected = false;
 
     constructor() {
@@ -34,9 +34,8 @@ export class WizardStepComponent {
 
     updateClasses() {
         this.titleClasses = this.selected ? ' wz-title title current ' : ' title ';
-        this.bodyClasses = this.selected ? ' body current ' : ' body d-none';
+        this.bodyClasses = this.selected ? ' body current wz-section' : ' body d-none wz-section ';
         this.headerClasses = this.buildHeaderClasses();
-
     }
 
     buildHeaderClasses() {

@@ -1,7 +1,10 @@
 .cut-text { 
-    display: inline-block;
-    width: 325px;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-  }
+  display: inline-block;
+  width: 325px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+.table td {
+  line-height: normal !important;
+}
