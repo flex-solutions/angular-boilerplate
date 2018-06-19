@@ -14,6 +14,7 @@ import { CardComponent } from './card/card.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { FormsModule } from '@angular/forms';
 import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.component';
+import { DatePickerComponent } from './datepicker/date-picker/date-picker.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -24,7 +25,8 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
     DropifyComponent,
     WizardComponent,
     WizardStepComponent,
-    DateRangePickerComponent
+    DateRangePickerComponent,
+    DatePickerComponent
   ],
   declarations: [
     LoaderComponent,
@@ -34,7 +36,8 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
     DropifyComponent,
     WizardComponent,
     WizardStepComponent,
-    DateRangePickerComponent
+    DateRangePickerComponent,
+    DatePickerComponent
   ],
   providers: [
     LoaderService

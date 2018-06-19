@@ -1,4 +1,4 @@
-import { DateRangeModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
+import { DateRangeModel, SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { PromotionService } from './../../services/promotion.service';
 import { Promotion } from './../../interfaces/promotion';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +16,8 @@ export class PromotionsComponent implements OnInit {
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
   dateRange: DateRangeModel;
+  startDate: SingleDateModel;
+  endDate:  SingleDateModel;
 
   constructor(private service: PromotionService, private route: Router) {
     this.dateRange = new DateRangeModel();
@@ -46,8 +48,12 @@ export class PromotionsComponent implements OnInit {
       });
   }
 
-  onFilterDurationChanged($event) {
-    this.dateRange = $event;
+  onStartDateChanged($event) {
+    this.startDate = $event;
+  }
+
+  onEndDateChanged($event) {
+    this.endDate = $event;
   }
 
   navigateToCreate() {

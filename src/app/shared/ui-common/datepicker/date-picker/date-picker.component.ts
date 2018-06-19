@@ -6,14 +6,18 @@ declare const $: any;
 declare const moment: any;
 
 @Component({
-  selector: 'app-date-range-picker',
-  templateUrl: './date-range-picker.component.html'
+  selector: 'app-date-picker',
+  styleUrls: ['./date-picker.component.css'],
+  templateUrl: './date-picker.component.html'
 })
-export class DateRangePickerComponent implements AfterViewInit {
+export class DatePickerComponent implements AfterViewInit {
 
   private _date: SingleDateModel;
 
-  // Call when date ranged have changed
+  @Input()
+  title: string;
+
+  // Call when date have changed
   @Output()
   dateChanged = new EventEmitter<SingleDateModel>();
 
@@ -22,7 +26,7 @@ export class DateRangePickerComponent implements AfterViewInit {
     return this._date;
   }
 
-  set dateRange(value: SingleDateModel) {
+  set date(value: SingleDateModel) {
     if (value !== this._date) {
       this._date = value;
       this.dateChanged.emit(this._date);
@@ -35,28 +39,59 @@ export class DateRangePickerComponent implements AfterViewInit {
     this.initialize();
 
     this.picker.on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      $(this).val(picker.startDate.format('MM/DD/YYYY'));
     });
   }
 
   initialize() {
-    $('input[name="daterange"]').daterangepicker({
+    this.picker.daterangepicker({
       singleDatePicker: true,
+      autoApply: true,
+      autoUpdateInput: false,
+      ranges: this.buildRanges(),
       showDropdowns: true,
-      minYear: 1901,
-      maxYear: parseInt(moment().format('YYYY'), 10)
+      alwaysShowCalendars: true,
+      locale: {
+        cancelLabel: this.translateService.translate('date-range-picker_button_cancel'),
+        applyLabel: this.translateService.translate('date-range-picker_button_apply'),
+        customRangeLabel: this.translateService.translate('date-range-picker_button_custom_range'),
+        format: 'DD/MM/YYYY'
+      }
     },
       (start, end, label) => {
-        this._date = start;
+        const result = new SingleDateModel();
+        result.date = new Date(start.toISOString());
+        this.date = result;
       });
+  }
+
+  buildRanges() {
+    const ranges = {};
+    ranges[this.translateService.translate('date-range-picker_title_today')] = [moment(), moment()];
+    ranges[this.translateService.translate('date-range-picker_title_yesterday')] = [
+      moment().subtract(1, 'days'),
+      moment().subtract(1, 'days')
+    ];
+    ranges[this.translateService.translate('date-range-picker_title-seven-days-ago')] = [moment().subtract(6, 'days'), moment()];
+    ranges[this.translateService.translate('date-range-picker_title-30-days-ago')] = [moment().subtract(29, 'days'), moment()];
+    ranges[this.translateService.translate('date-range-picker_title-current_month')] = [moment().startOf('month'), moment().endOf('month')];
+    ranges[this.translateService.translate('date-range-picker_title-previous_month')] = [
+      moment()
+        .subtract(1, 'month')
+        .startOf('month'),
+      moment()
+        .subtract(1, 'month')
+        .endOf('month')
+    ];
+    return ranges;
   }
 
   reset() {
     this.picker.val('');
-    this.dateRange = new SingleDateModel();
+    this.date = new SingleDateModel();
   }
 
   get picker() {
-    return $('input[name="daterange"]');
+    return $('input[name="singledate"]');
   }
 }

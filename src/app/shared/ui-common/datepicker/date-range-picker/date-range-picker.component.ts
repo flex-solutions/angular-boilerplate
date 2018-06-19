@@ -40,12 +40,13 @@ export class DateRangePickerComponent implements AfterViewInit {
   }
 
   initialize() {
-    $('input[name="daterange"]').daterangepicker({
+    this.picker.daterangepicker({
       autoUpdateInput: false,
       startDate: moment(this.dateRange.startDate),
       endDate: moment(this.dateRange.endDate),
       ranges: this.buildRanges(),
       showDropdowns: true,
+      alwaysShowCalendars: true,
       locale: {
         cancelLabel: this.translateService.translate('date-range-picker_button_cancel'),
         applyLabel: this.translateService.translate('date-range-picker_button_apply'),
