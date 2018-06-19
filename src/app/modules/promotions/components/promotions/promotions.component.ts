@@ -1,13 +1,13 @@
 import { isNil } from 'ramda';
 import { SelectableModel } from './../../../../shared/models/selectable.model';
-import { DateRangeModel, SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
+import { SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { PromotionService } from './../../services/promotion.service';
-import { Promotion } from './../../interfaces/promotion';
+import { Promotion, StatusCheckedItem } from './../../interfaces/promotion';
 import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
 import { PromotionRouting } from '../../messages';
-import { CheckedItem } from '../../../../shared/ui-common/drop-down-check-boxes/checked-items.model';
+import { PromotionStatus } from '../../directives/promotion-status.directive';
 
 @Component({
   selector: 'app-promotions',
@@ -20,7 +20,7 @@ export class PromotionsComponent implements OnInit {
   currentFilterArgs: IFilterChangedEvent;
   startDate: SingleDateModel;
   endDate: SingleDateModel;
-  statusItems: SelectableModel<CheckedItem>[];
+  statusItems: SelectableModel<StatusCheckedItem>[];
 
   constructor(private service: PromotionService, private route: Router) {
     this.startDate = new SingleDateModel();
@@ -32,7 +32,10 @@ export class PromotionsComponent implements OnInit {
   }
 
   public count = (searchKey: string) => {
-    return this.service.count(searchKey);
+    const selectedStatus = this.getSelectedStatus();
+    return this.service.count(searchKey, selectedStatus,
+      this.startDate.date,
+      this.endDate.date);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -42,11 +45,15 @@ export class PromotionsComponent implements OnInit {
 
   loadPromotions() {
     const pagination = this.currentFilterArgs.pagination;
+    const selectedStatus = this.getSelectedStatus();
     this.service
       .getPromotions(
         pagination.itemsPerPage,
         pagination.page,
-        this.currentFilterArgs.searchKey
+        this.currentFilterArgs.searchKey,
+        selectedStatus,
+        this.startDate.date,
+        this.endDate.date
       )
       .subscribe((response: Promotion[]) => {
         this.items = response;
@@ -79,23 +86,31 @@ export class PromotionsComponent implements OnInit {
 
   }
 
+  getSelectedStatus() {
+    const selectedStatus = this.statusItems.filter(i => i.isSelected).map(m => m.model.status);
+    return selectedStatus;
+  }
+
   buildStatusItemSource() {
     this.statusItems = [
       {
         isSelected: true,
         model: {
+          status: PromotionStatus.New,
           displayName: 'New'
         }
       },
       {
         isSelected: true,
         model: {
+          status: PromotionStatus.Active,
           displayName: 'Active'
         }
       },
       {
         isSelected: true,
         model: {
+          status: PromotionStatus.Deactived,
           displayName: 'Deactived'
         }
       }
