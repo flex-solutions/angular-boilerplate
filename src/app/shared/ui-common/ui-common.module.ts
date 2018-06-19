@@ -15,6 +15,7 @@ import { PaginationModule } from './pagination/pagination.module';
 import { FormsModule } from '@angular/forms';
 import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.component';
 import { DatePickerComponent } from './datepicker/date-picker/date-picker.component';
+import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-check-boxes.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -26,7 +27,8 @@ import { DatePickerComponent } from './datepicker/date-picker/date-picker.compon
     WizardComponent,
     WizardStepComponent,
     DateRangePickerComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    DropDownCheckBoxesComponent
   ],
   declarations: [
     LoaderComponent,
@@ -37,7 +39,8 @@ import { DatePickerComponent } from './datepicker/date-picker/date-picker.compon
     WizardComponent,
     WizardStepComponent,
     DateRangePickerComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    DropDownCheckBoxesComponent
   ],
   providers: [
     LoaderService

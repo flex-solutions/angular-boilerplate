@@ -1,3 +1,4 @@
+import { SelectableModel } from './../../../../shared/models/selectable.model';
 import { DateRangeModel, SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { PromotionService } from './../../services/promotion.service';
 import { Promotion } from './../../interfaces/promotion';
@@ -5,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
 import { PromotionRouting } from '../../messages';
+import { CheckedItem } from '../../../../shared/ui-common/drop-down-check-boxes/checked-items.model';
 
 @Component({
   selector: 'app-promotions',
@@ -18,9 +20,11 @@ export class PromotionsComponent implements OnInit {
   dateRange: DateRangeModel;
   startDate: SingleDateModel;
   endDate:  SingleDateModel;
+  statusItems: SelectableModel<CheckedItem>[];
 
   constructor(private service: PromotionService, private route: Router) {
     this.dateRange = new DateRangeModel();
+    this.buildStatusItemSource();
   }
 
   ngOnInit() {
@@ -66,5 +70,28 @@ export class PromotionsComponent implements OnInit {
 
   startStopPromotion(id) {
 
+  }
+
+  buildStatusItemSource() {
+    this.statusItems = [
+      {
+        isSelected: false,
+        model: {
+          displayName: 'New'
+        }
+      },
+      {
+        isSelected: false,
+        model: {
+          displayName: 'Active'
+        }
+      },
+      {
+        isSelected: false,
+        model: {
+          displayName: 'Deactived'
+        }
+      }
+    ];
   }
 }

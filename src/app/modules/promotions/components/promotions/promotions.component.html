@@ -5,6 +5,7 @@
       <span i18n="@@promotions-create_promotion-app-card-promotions_title_field">Create promotions</span>
     </button>
   </div>
+  <app-drop-down-check-boxes title="Status" i18n-title="@@list-promotions-th-status" [itemsources]="statusItems"></app-drop-down-check-boxes>
   <app-date-picker title="Start Date" i18n-title="@@list-promotions-th-start-date" [date]="startDate" (dateChanged)="onStartDateChanged($event)"></app-date-picker>
   <app-date-picker title="Expire Date" i18n-title="@@list-promotions-th-expỉre-date" [date]="endDate" (dateChanged)="onEndDateChanged($event)"></app-date-picker>
   <app-dg #dg searchLabel="Search by title, content" i18n-searchLabel="@@list-promotions-filter-placeholders" (pageChanged)="onPageChanged($event)"
