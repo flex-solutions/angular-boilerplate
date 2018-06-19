@@ -1,3 +1,5 @@
+import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
+import { WizardComponent } from './wizard/wizard/wizard.component';
 import { DropifyComponent } from './dropify/dropify.component';
 import { SearchTextboxComponent } from './search-textbox/search-textbox.component';
 import { CommonModule } from '@angular/common';
@@ -18,14 +20,18 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
     LoaderComponent, CardComponent,
     SearchTextboxComponent, TynimceEditorComponent,
     DialogModule, DatagridModule, PaginationModule,
-    DropifyComponent
+    DropifyComponent,
+    WizardComponent,
+    WizardStepComponent
   ],
   declarations: [
     LoaderComponent,
     CardComponent,
-    SearchTextboxComponent, 
+    SearchTextboxComponent,
     TynimceEditorComponent,
-    DropifyComponent
+    DropifyComponent,
+    WizardComponent,
+    WizardStepComponent
   ],
   providers: [
     LoaderService
