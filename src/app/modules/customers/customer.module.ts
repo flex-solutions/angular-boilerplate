@@ -1,3 +1,4 @@
+import { customerModuleDirectives } from './directives/index';
 import { CustomerService } from './services/customer.service';
 import { CustomerRoutingModule } from './customer.module.routing';
 import { customerComponents } from './components/index';
@@ -13,7 +14,8 @@ import { NgModule } from '@angular/core';
       UICommonModule
     ],
     declarations: [
-        ...customerComponents
+        ...customerComponents,
+        ...customerModuleDirectives
     ],
     providers: [
       CustomerService

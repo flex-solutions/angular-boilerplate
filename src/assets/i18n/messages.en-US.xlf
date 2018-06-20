@@ -1505,6 +1505,18 @@
         <source>Customer type</source>
         <target>Customer type</target>
       </trans-unit>
+      <trans-unit id="customers-tbl-sex-male" datatype="html">
+        <source>Male</source>
+        <target>Male</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-female" datatype="html">
+        <source>Female</source>
+        <target>Female</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-other" datatype="html">
+        <source>Other</source>
+        <target>Other</target>
+      </trans-unit>
       <!--End Customer Module-->
     </body>
   </file>
