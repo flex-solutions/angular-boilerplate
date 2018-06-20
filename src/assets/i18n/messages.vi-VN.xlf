@@ -3,6 +3,11 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
 
     <body>
+      <!-- Common -->
+      <trans-unit id="common-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target>Thao tác</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -1448,6 +1453,44 @@
         <target>Tháng trước</target>
       </trans-unit>
       <!--END Date time picker-->
+      <!--Start Customer Module-->
+      <trans-unit id="customers-list-tbl-title" datatype="html">
+        <source>Customers</source>
+        <target>Danh sách khách hàng</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-btn-create" datatype="html">
+        <source>New customer</source>
+        <target>Khách hàng mới</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-name" datatype="html">
+        <source>Name</source>
+        <target>Tên KH</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-member-id" datatype="html">
+        <source>Member ID</source>
+        <target>Mã hội viên</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-phone-number" datatype="html">
+        <source>Phone number</source>
+        <target>Số điện thoại</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-birthday" datatype="html">
+        <source>Birthday</source>
+        <target>Sinh nhật</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex" datatype="html">
+        <source>Sex</source>
+        <target>Giới tính</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-address" datatype="html">
+        <source>Address</source>
+        <target>Địa chỉ</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-customer-type" datatype="html">
+        <source>Customer type</source>
+        <target>Loại thành viên</target>
+      </trans-unit>
+      <!--End Customer Module-->
     </body>
   </file>
 </xliff>
