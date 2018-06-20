@@ -61,7 +61,7 @@ export class UserService extends AbstractRestService {
   }
 
   changePassword(model: ChangePasswordModel) {
-    return this.post(`changepassword`, model);
+    return this.patch(`changepassword`, model);
   }
 
   isPasswordCorrect(model: ChangePasswordModel) {
