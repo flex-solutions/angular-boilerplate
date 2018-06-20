@@ -1,4 +1,4 @@
-import { News, NewViewModel } from './../../../shared/models/news.model';
+import { News, NewsViewModel } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
@@ -31,7 +31,7 @@ export class NewsService extends AbstractRestService {
   }
 
   public getById(_id: string): Observable<News> {
-    return this.get(`findone/${_id}`);
+    return this.get(`${_id}`);
   }
 
   getNews(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
@@ -42,8 +42,12 @@ export class NewsService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
-  processNew(newObject: News): Observable<NewViewModel> {
-    return this.patch('', newObject);
+  processNew(newObject: News): Observable<NewsViewModel> {
+    if (newObject.status === NewsStatusType.Deactivated) {
+      return this.patch(`${newObject._id}/publish`, {});
+    }
+
+    return this.patch(`${newObject._id}/deactivate`, {});
   }
 
   deleteNew(id: string) {
