@@ -1,6 +1,7 @@
 import { CheckedItem } from './../../../shared/ui-common/drop-down-check-boxes/checked-items.model';
 import { PromotionStatus } from './../directives/promotion-status.directive';
-export class Promotion {
+import { ModelBase } from '../../../shared/models/model-base';
+export class Promotion extends ModelBase {
     _id: any;
     title: string;
     content: string;
@@ -8,7 +9,7 @@ export class Promotion {
     status: PromotionStatus;
     start_date: Date;
     expire_date: Date;
-    view_count: number;
+    viewCount: number;
 }
 
 export class StatusCheckedItem implements CheckedItem {

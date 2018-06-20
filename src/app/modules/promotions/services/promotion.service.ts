@@ -38,6 +38,10 @@ export class PromotionService extends AbstractRestService {
         return this.get(query);
     }
 
+    deletePromotion(id: string) {
+        return this.delete(`${id}`);
+    }
+
     private buildSearchQuery(currentQuery: string, status?: PromotionStatus[], startDate?: Date,
         endDate?: Date): string {
         let query = currentQuery;

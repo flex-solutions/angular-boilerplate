@@ -11,13 +11,17 @@ enum MessageConstant {
     DeactivedStatus = 'list-promotions-status-deactived-promotion',
     ActiveStatus = 'list-promotions-status-active-promotion',
     StartButton = 'list-promotions-btn-start-promotion',
-    StopButton = 'list-promotions-btn-stop-promotion'
+    StopButton = 'list-promotions-btn-stop-promotion',
+     DeleteTitle = 'promotion-delete-title-dialog',
+    DeleteConfirmation = 'promotion-delete-confirm-message-dialog',
+    DeleteSuccessfullyNotification = 'promotion-delete-successfully-notification'
 }
 
 export const PromotionRouting = {
     CREATE_PAGE: 'promotions/create',
     EDIT_PAGE: 'promotions/edit/',
-    PROMOTION_PAGES: 'promotions'
+    PROMOTION_PAGES: 'promotions',
+    DETAIL_PAGE: 'promotions/detail/',
   };
 
 

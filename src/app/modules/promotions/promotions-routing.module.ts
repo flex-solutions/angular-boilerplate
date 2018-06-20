@@ -2,6 +2,7 @@ import { CreatePromotionComponent } from './components/create-promotion/create-p
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PromotionsComponent } from './components/promotions/promotions.component';
+import { DetailPromotionComponent } from './components/detail-promotion/detail-promotion/detail-promotion.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,13 @@ const routes: Routes = [
     component: CreatePromotionComponent,
     data: {
       breadcrumb: 'Edit Promotion'
+    }
+  },
+  {
+    path: 'detail/:id',
+    component: DetailPromotionComponent,
+    data: {
+      breadcrumb: 'View Promotion Detail'
     }
   }
 ];
