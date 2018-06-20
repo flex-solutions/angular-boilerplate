@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News, NewViewModel } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
-import * as moment from 'moment';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
+import { calculateRelativeTime } from '../../../../utilities/methods.common';
 import { NewMessageConst } from '../../constant/message.const';
 import { ModuleRoute } from '../../../../shared/constants/const';
 
@@ -18,6 +18,7 @@ import { ModuleRoute } from '../../../../shared/constants/const';
 })
 export class NewsDetailComponent implements OnInit {
   newsModel: News = new News();
+  id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,12 +26,21 @@ export class NewsDetailComponent implements OnInit {
     private newsService: NewsService,
     private notificationService: NotificationService,
     private exDlg: ExDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    @Inject(LOCALE_ID) protected localeId: string,
   ) {}
 
+  private getMessage(code: string, ...params) {
+    if (params.length) {
+      return this.translateService.translateWithParams(code, params);
+    } else {
+      return this.translateService.translate(code);
+    }
+  }
+
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    this.getNews(id);
+    this.id = this.route.snapshot.params['id'];
+    this.getNews(this.id);
   }
 
   getNews(id: string) {
@@ -38,6 +48,7 @@ export class NewsDetailComponent implements OnInit {
       this.newsService.getById(id).subscribe(news => {
         if (news) {
           this.newsModel = news;
+          console.log(news);
         }
       });
     }
@@ -68,6 +79,7 @@ export class NewsDetailComponent implements OnInit {
         this.newsModel.status.toString()
       );
       this.notificationService.showSuccess(msg);
+      this.getNews(this.id);
     });
   }
 
@@ -90,5 +102,9 @@ export class NewsDetailComponent implements OnInit {
         });
       }
     });
+  }
+
+  getRelativeTime(value) {
+    return calculateRelativeTime(value, this.localeId);
   }
 }

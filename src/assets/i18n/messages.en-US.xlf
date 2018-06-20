@@ -42,6 +42,14 @@
         <target>News Management</target>
       </trans-unit>
 
+      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
+        <source>Promotion Management</source>
+        <target>Promotion Management</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
+        <source>Promotion</source>
+        <target>Promotion</target>
+      </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -956,6 +964,34 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-label-create_another_news" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
+        <source>Create news with title "{{0}}" successfull</source>
+        <target>Create news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
+        <source>Create and publish news with title "{{0}}" successfull</source>
+        <target>Create and publish news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_require" datatype="html">
+        <source>Please provide the banner</source>
+        <target>Please provide the banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_require" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-file_size_error" datatype="html">
+        <source>The banner size must be lower or equal 500kb</source>
+        <target>The banner size must be lower or equal 500kb</target>
+      </trans-unit>
       <!--END News Create Edit Page-->
 
       <!-- START News Management -->
@@ -971,6 +1007,10 @@
         <source>Edit News</source>
         <target>Edit News</target>
       </trans-unit>
+      <trans-unit id="news_management-news_details-news_delete_text" datatype="html">
+        <source>Delete News</source>
+        <target>Delete News</target>
+      </trans-unit>
       <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
         <source>Publish</source>
         <target>Publish</target>
@@ -995,8 +1035,140 @@
         <source>Delete news successfully</source>
         <target>Delete news successfully</target>
       </trans-unit>
+      <trans-unit id="news_detail-created_by" datatype="html">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_on" datatype="html">
+        <source>Created on</source>
+        <target>Created on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_by" datatype="html">
+        <source>Last edited by</source>
+        <target>Last edited by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_on" datatype="html">
+        <source>Last edited on</source>
+        <target>Last edited on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by" datatype="html">
+        <source>Published by</source>
+        <target>Đăng tải bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_on" datatype="html">
+        <source>Published on</source>
+        <target>Đăng tải vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by_no_one" datatype="html">
+        <source>Published by no one</source>
+        <target>Chưa ai đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-not_published_yet" datatype="html">
+        <source>Not Published</source>
+        <target>Chưa đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>View Count</target>
+      </trans-unit>
       <!-- END News Management -->
-      <!-- List news -->
+      <!--Wizard control-->
+      <trans-unit id="wizard-wizard-actions-previous_button" datatype="html">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-next_button" datatype="html">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-finish_button" datatype="html">
+        <source>Finish</source>
+        <target>Finish</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-cancel_button" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <!--END Wizard control-->
+      <!--Create edit promotion-->
+      <trans-unit id="promotions-create_promotion-app-card-promotions_title_field" datatype="html">
+        <source>Create Promotion</source>
+        <target>Create Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
+        <source>This page allows you creating a promotion and starts it if you want</source>
+        <target>This page allows you creating a promotion and starts it if you want</target>
+      </trans-unit>
+      <trans-unit id="promotions-edit_promotion-app-card-promotions_title_field" datatype="html">
+        <source>Edit Promotion</source>
+        <target>Edit Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-edit_promotion-app-card-promotions_subtitle_field" datatype="html">
+        <source>This page allows you editting a promotion</source>
+        <target>This page allows you editting a promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-promotions_title_field" datatype="html">
+        <source>Promotion News</source>
+        <target>Promotion News</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-vouchers_title_field" datatype="html">
+        <source>Voucher</source>
+        <target>Voucher</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
+        <source>Customer Target</source>
+        <target>Customer Target</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
+        <source>Enter news title</source>
+        <target>Enter news title</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-finish_start_button" datatype="html">
+        <source>Finish & Start</source>
+        <target>Finish & Start</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-label-create_another_field" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-banner_exceed_size" datatype="html">
+        <source>The banner size doesn't exceed 500kb</source>
+        <target>The banner size doesn't exceed 500kb</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-message-create_success" datatype="html">
+        <source>A promotion is created successfully</source>
+        <target>A promotion is created successfully</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-message-create_start_success" datatype="html">
+        <source>A promotion is created and started successfully</source>
+        <target>A promotion is created and started successfully</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-message-update_success" datatype="html">
+        <source>Promotion is updated successfully</source>
+        <target>Promotion is updated successfully</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_title" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_content" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
+      <!--END Create edit promotion-->
+       <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">
         <source>News Management</source>
         <target>News Management</target>
