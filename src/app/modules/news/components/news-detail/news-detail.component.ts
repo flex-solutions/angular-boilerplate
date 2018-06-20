@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { News, NewViewModel } from '../../../../shared/models/news.model';
+import { News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
