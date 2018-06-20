@@ -24,7 +24,7 @@
     <tbody>
       <tr *ngFor="let item of items | promotionsFilter: dg.searchKey">
         <td>
-          <p class="a-clickable pull-left">{{item.title}}</p>
+          <p class="a-clickable pull-left" (click) = "navigateToDetail(item._id)">{{item.title}}</p>
         </td>
         <td [innerHTML]="item.content" class="cut-text">
         </td>
@@ -42,7 +42,7 @@
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="javascript:;" i18n="@@list-promotions-btn-delete">Delete promotion</a>
+            <a class="dropdown-item" href="javascript:;" i18n="@@list-promotions-btn-delete" (click)="deletePromotion(item)">Delete promotion</a>
           </div>
         </td>
       </tr>

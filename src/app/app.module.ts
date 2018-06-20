@@ -30,6 +30,8 @@ import { NewsRoutingModule } from './modules/news/news-routing.module';
 import { UsersModule } from './modules/users/users.module';
 import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permission-scheme-routing.module';
 import { UsersRoutingModule } from './modules/users/users-routing.module';
+import { PromotionsModule } from './modules/promotions/promotions.module';
+import { PromotionsRoutingModule } from './modules/promotions/promotions-routing.module';
 // import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
@@ -55,7 +57,9 @@ import { UsersRoutingModule } from './modules/users/users-routing.module';
     PermissionSchemeModule,
     PermissionSchemeRoutingModule,
     NewsRoutingModule,
-    NewsModule
+    NewsModule,
+    PromotionsModule,
+    PromotionsRoutingModule
   ],
   providers: [
     {

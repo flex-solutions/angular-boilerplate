@@ -1098,6 +1098,14 @@
         <source>Create Promotion</source>
         <target>Tạo khuyến mãi</target>
       </trans-unit>
+       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Xoá khuyến mãi</target>
+      </trans-unit>
+       <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+        <source>Promotion</source>
+        <target>Khuyến mãi</target>
+      </trans-unit>
       <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
         <source>This page allows you creating a promotion and starts it if you want</source>
         <target>Trang này cho phép bạn tạo một khuyến mãi mới và bắt đầu áp dụng nó nếu cần thiết</target>
@@ -1113,6 +1121,22 @@
       <trans-unit id="promotions-create_edit_promotion-wizard_step-promotions_title_field" datatype="html">
         <source>Promotion News</source>
         <target>Tin Khuyến Mãi</target>
+      </trans-unit>
+      <trans-unit id="promotion-detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>Số Lần Xem</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-title-dialog" datatype="html">
+        <source>Delete promotion news</source>
+        <target>Xóa tin tức khuyến mãi</target>
+      </trans-unit>
+       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+        <source>Are you sure you want to delete promotion news "{{0}}"?</source>
+        <target>Bạn có chắc muốn xóa tin tức khuyến mãi "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-successfully-notification" datatype="html">
+         <source>Delete promotion news successfully</source>
+        <target>Xoá tin tức khuyến mãi thành công</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
         <source>Title</source>

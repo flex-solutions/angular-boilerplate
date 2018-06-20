@@ -31,7 +31,7 @@ export class WizardComponent implements AfterContentInit {
     // Call before excute previous action
     canPrevious: boolean;
 
-
+    isEnableCancelButton = true;
     /**
     * A QueryList containing all [[WizardStep]]s inside this wizard
     */
