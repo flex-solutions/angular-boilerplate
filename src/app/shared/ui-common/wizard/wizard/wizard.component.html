@@ -15,7 +15,7 @@
     <button *ngIf="!selectedStep.isLastStep" class="btn btn-fw btn-primary" (click)="onNext()" i18n="@@wizard-wizard-actions-next_button">Next</button>
     <button *ngIf="selectedStep.isLastStep" class="btn btn-fw btn-primary" (click)="onFinish()" i18n="@@wizard-wizard-actions-finish_button">Finsh</button>
     <ng-content select=".afterFinishButton"></ng-content>
-    <button *ngIf="isEnableBackButton" class="btn btn-fw btn-light" (click)="onCancel()" i18n="@@wizard-wizard-actions-cancel_button">Cancel</button>
+    <button *ngIf="isEnableCancelButton" class="btn btn-fw btn-light" (click)="onCancel()" i18n="@@wizard-wizard-actions-cancel_button">Cancel</button>
     <ng-content select=".afterCancelButton"></ng-content>
   </div>
 </div>
