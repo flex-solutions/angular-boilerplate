@@ -90,7 +90,7 @@ export class CreatePromotionComponent implements OnInit {
   private loadPromotion(promotionId) {
     this._promotionService.getPromotion(promotionId).subscribe(p => {
       this.promotion = p as Promotion;
-      this.dropifyComponent.setDefaultContent(this.promotion.banner);
+
     });
   }
 
