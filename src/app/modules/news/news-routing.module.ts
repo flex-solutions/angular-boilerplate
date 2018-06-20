@@ -30,7 +30,7 @@ const newRoutes: Routes = [
   },
   {
     // TODO: update after finish create news
-    path: 'edit/:id',
+    path: 'update/:id',
     component: CreateEditNewsComponent,
     data: {
       breadcrumb: 'Edit news'

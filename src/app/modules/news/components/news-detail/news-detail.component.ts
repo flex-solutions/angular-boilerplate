@@ -8,7 +8,7 @@ import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 import { calculateRelativeTime } from '../../../../utilities/methods.common';
-import { NewMessageConst } from '../../constant/message.const';
+import { NewMessageConst } from '../../constants/message.const';
 import { ModuleRoute } from '../../../../shared/constants/const';
 
 @Component({

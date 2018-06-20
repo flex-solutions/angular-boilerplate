@@ -10,10 +10,10 @@ const NewsActionButtonText = {
 };
 
 const NewsRouteNames = {
-  CREATE: 'news',
+  CREATE: 'news/create',
   EDIT: 'news/update/',
   NEWS_HOME: 'news',
-  VIEW: 'news/'
+  VIEW: 'news/detail/'
 };
 
 const Errors = {

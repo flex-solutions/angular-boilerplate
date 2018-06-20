@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 import { TranslateService } from '../../../shared/services/translate.service';
-import { NewMessageConst } from '../constant/message.const';
+import { NewMessageConst } from '../constants/message.const';
 declare let $: any;
 
 @Directive({

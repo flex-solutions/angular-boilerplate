@@ -4,7 +4,6 @@ import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/compo
 import { NewViewModel, NewsFields, News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
-import { NewNavigationRoute } from '../../constant/common-const';
 import * as moment from 'moment';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 import { NewStatusDirective } from '../../directives/new-status.directive';
@@ -12,7 +11,8 @@ import { filter, head, equals } from 'ramda';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { NewMessageConst } from '../../constant/message.const';
+import { NewMessageConst } from '../../constants/message.const';
+import { NewsRouteNames } from '../../constants/news.constant';
 
 @Component({
   selector: 'app-news',
@@ -86,14 +86,14 @@ export class NewsComponent implements OnInit {
   }
 
   navigateToCreate() {
-    this.route.navigate([NewNavigationRoute.CREATE_PAGE]);
+    this.route.navigate([NewsRouteNames.CREATE]);
   }
 
   navigateToEdit(id: string) {
-    this.route.navigate([`${NewNavigationRoute.EDIT_PAGE}/${id}`]);
+    this.route.navigate([`${NewsRouteNames.EDIT}/${id}`]);
   }
 
   navigateToDetail(id: string) {
-    this.route.navigate([`${NewNavigationRoute.DETAIL}/${id}`]);
+    this.route.navigate([`${NewsRouteNames.VIEW}/${id}`]);
   }
 }
