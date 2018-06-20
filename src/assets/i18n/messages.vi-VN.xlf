@@ -1098,6 +1098,14 @@
         <source>Create Promotion</source>
         <target>Tạo khuyến mãi</target>
       </trans-unit>
+       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Xoá khuyến mãi</target>
+      </trans-unit>
+       <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+        <source>Promotion</source>
+        <target>Khuyến mãi</target>
+      </trans-unit>
       <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
         <source>This page allows you creating a promotion and starts it if you want</source>
         <target>Trang này cho phép bạn tạo một khuyến mãi mới và bắt đầu áp dụng nó nếu cần thiết</target>

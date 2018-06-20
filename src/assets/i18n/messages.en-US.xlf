@@ -1095,6 +1095,14 @@
         <source>Create Promotion</source>
         <target>Create Promotion</target>
       </trans-unit>
+       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Delete Promotion</target>
+      </trans-unit>
+            <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+        <source>Promotion</source>
+        <target>Promotion</target>
+      </trans-unit>
       <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
         <source>This page allows you creating a promotion and starts it if you want</source>
         <target>This page allows you creating a promotion and starts it if you want</target>

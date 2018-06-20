@@ -1,0 +1,133 @@
+<app-card>
+  <div class="command-region">
+    <div class="template-demo">
+      <button type="button" class="btn btn-primary btn-md"
+       i18n="@@promotions-edit_promotion-app-card-promotions_title_field"
+       (click)="navigateToEdit(promotion._id)">
+        <i class="mdi mdi-pencil"></i>Edit Promotion</button>
+      <button type="button">Publish</button>
+      <!-- <button type="button" class="btn btn-danger btn-md">
+        <i class="mdi mdi-eye-off"></i>Deactivate</button> -->
+      <div class="dropdown">
+        <button class="btn btn-light icon-btn dropdown-toggle" type="button" id="dropdownMenuIconButton3" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="mdi mdi-dots-horizontal"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+          <a class="dropdown-item" href="#" i18n="@@promotions-delete-app-card-promotions_title_field">Delete Promotion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row profile-page" style="max-height: 100%;">
+    <div class="col-md-12">
+      <div class="profile-body" style="padding-top: 0px">
+        <ul class="nav tab-switch" role="tablist">
+          <li class="nav-item">
+            <a aria-controls="promotion" aria-selected="true" class="nav-link active show" data-toggle="pill" 
+            i18n="@@promotions-app-card-promotions_title_field"
+              href="#promotion" id="promotion-tab" role="tab">Promotion</a>
+          </li>
+          <li class="nav-item">
+            <a aria-controls="promotion-statistic" aria-selected="false" class="nav-link" data-toggle="pill" i18n="@@news_management-news_detail-news_statistic_tab"
+              href="#promotion-statistic" id="promotion-statistic-tab" role="tab">Statistic</a>
+          </li>
+        </ul>
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="tab-content tab-body" id="profile-log-switch">
+              <div class="tab-pane fade show active pr-3" id="promotion" role="tabpanel"
+               aria-labelledby="promotion-tab">
+                <app-wizard (stepChanged)="onStepChanged($event)">
+                    <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" 
+                    title="Promotion News">
+                    <div class="row" >
+                        <div class="col-6">
+                          <div class="row">
+                            <div class="col-12">
+                              <img class="img-fluid"
+                              src="{{promotion.banner}}"
+                              alt="banner image">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="row">
+                            <div class="col-9">
+                              <h4>{{promotion.title}}</h4>
+                            </div>
+                            <div class="col-3">
+                              <div >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row text-gray d-md-flex d-none">
+                            <div class="col-6 d-flex">
+                              <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-created_on">Created on</p>
+                              <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.create_on}}</p>
+                            </div>
+                            <div class="col-6 d-flex">
+                              <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-last_edited_on">Last edited on</p>
+                              <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.edit_on}}</p>
+                            </div>
+                          </div>
+                          <div class="row text-gray d-md-flex d-none">
+                            <div class="col-6 d-flex">
+                              <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-created_by">Created by</p>
+                              <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.create_by}}</p>
+                            </div>
+                            <div class="col-6 d-flex">
+                              <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-last_edited_by">Last edited by</p>
+                              <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.edit_by}}</p>
+                            </div>
+                          </div>
+                          <div class="row mt-5 mb-5" style="max-height: 85%; overflow-y: scroll">
+                            <div class="col-12">
+                              <p class="lead" [innerHTML]="promotion.content">
+                      
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </app-wizard-step>
+                    <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers">
+                        <p>COMING SOON</p>
+                      </app-wizard-step>
+                      <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Customer Target">
+                        <p>COMING SOON</p>
+                      </app-wizard-step>
+                </app-wizard>        
+              </div>
+               
+            
+              <div class="tab-pane fade" id="promotion-statistic" role="tabpanel" aria-labelledby="promotion-statistic-tab">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <app-card>
+                            <h4 class="card-title mb-0" i18n="@@news_detail-view_count">View Count</h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-inline-block pt-3">
+                                <div class="d-flex">
+                                  <h2 class="mb-0">{{promotion.viewCount}}</h2>
+                                </div>
+                              </div>
+                              <div class="d-inline-block">
+                                <div class="bg-success px-4 py-2 rounded">
+                                  <i class="mdi mdi-chart-bubble text-white icon-lg"></i>
+                                </div>
+                              </div>
+                            </div>
+                        </app-card>
+                      </div>
+                      <div class="col-md-6 grid-margin">
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-card>

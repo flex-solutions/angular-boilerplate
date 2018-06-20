@@ -1,7 +1,8 @@
 import { NewsStatusType } from '../enums/news-type.enum';
 import {Buffer} from 'Buffer';
+import { ModelBase } from './model-base';
 
-export class News {
+export class News extends ModelBase {
     _id: string;
     title: string;
     banner: Buffer;
@@ -10,8 +11,4 @@ export class News {
     viewCount = 0;
     publishedOn: Date;
     publishedBy: string;
-    edit_on: Date;
-    edit_by: string;
-    create_on: Date;
-    create_by: string;
 }
