@@ -29,6 +29,7 @@ import { NewsModule } from './modules/news/news.module';
 import { NewsRoutingModule } from './modules/news/news-routing.module';
 import { UsersModule } from './modules/users/users.module';
 import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permission-scheme-routing.module';
+import { UsersRoutingModule } from './modules/users/users-routing.module';
 // import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permi
     UserGroupsModule,
     DialogModule,
     UsersModule,
+    UsersRoutingModule,
     PermissionSchemeModule,
     PermissionSchemeRoutingModule,
     NewsRoutingModule,
