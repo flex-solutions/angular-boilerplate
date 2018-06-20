@@ -182,21 +182,11 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
 
   onFileChanged(event: any) {
     this.news.banner = event.content;
-    if (!this.raiseChangeForError) {
-      this.isBannerError = false;
-    }
-    this.raiseChangeForError = false;
-  }
-
-  onFileRemoved() {
-    this.news.banner = "";
-    this.isBannerError = false;
   }
 
   onBannerErrors(event: ErrorType) {
     if (event === ErrorType.FileSize) {
       this.isBannerError = true;
-      this.raiseChangeForError = true;
     }
   }
 
