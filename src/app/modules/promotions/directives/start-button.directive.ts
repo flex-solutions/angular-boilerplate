@@ -31,14 +31,14 @@ export class StartButtonDirective implements OnChanges, AfterViewInit {
             case PromotionStatus.Active:
                 {
                     this.text = this.translateService.translate(MessageConstant.StopButton);
-                    $(this.host).html(`<i class="mdi mdi-eye-off btn-pink" aria-hidden="false"></i>
+                    $(this.host).html(`<i class="mdi mdi-stop text-warning" aria-hidden="false"></i>
                      <span i18n="@@list-news-btn-publish">${this.text}</span>`);
                 }
                 break;
             default:
                 {
                     this.text = this.translateService.translate(MessageConstant.StartButton);
-                    $(this.host).html(`<i class="mdi mdi-eye text-primary" aria-hidden="false"></i>
+                    $(this.host).html(`<i class="mdi mdi-play text-success" aria-hidden="false"></i>
                      <span i18n="@@list-news-btn-publish">${this.text}</span>`);
                 }
                 break;
