@@ -62,7 +62,7 @@ export class NewsDetailComponent implements OnInit {
 
   changeNewsStatus() {
     this.newsService
-    .updateStatus(this.newsModel._id, this.newsModel.status)
+    .processNew(this.newsModel)
     .subscribe(ret => {
       const newStatusItem = ret;
       if (newStatusItem.status !== this.newsModel.status) {
@@ -71,7 +71,7 @@ export class NewsDetailComponent implements OnInit {
           this.newsModel.status.toString()
         );
         this.notificationService.showSuccess(msg);
-        this.newsModel = newStatusItem;
+        this.newsModel.status = newStatusItem.status;
       }
     });
   }

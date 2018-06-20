@@ -30,22 +30,6 @@ export class NewsService extends AbstractRestService {
     return this.delete(_id, {});
   }
 
-  updateStatus(_id: string, currentStatus: NewsStatusType): Observable<News> {
-    let newsStatus = NewsStatusType.New;
-    switch (currentStatus) {
-      case NewsStatusType.New:
-      case NewsStatusType.Deactivated:
-      newsStatus= NewsStatusType.Published;
-        break;
-      case NewsStatusType.Published:
-      newsStatus = NewsStatusType.Deactivated;
-        break;
-      default:
-        break;
-    }
-    return this.put(`${_id}/${newsStatus}`, {});
-  }
-
   public getById(_id: string): Observable<News> {
     return this.get(`findone/${_id}`);
   }
