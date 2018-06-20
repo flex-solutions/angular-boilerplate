@@ -6,8 +6,9 @@ import { Promotion, StatusCheckedItem } from './../../interfaces/promotion';
 import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
-import { PromotionRouting } from '../../messages';
+import { PromotionRouting, MessageConstant } from '../../messages';
 import { PromotionStatus } from '../../directives/promotion-status.directive';
+import { TranslateService } from '../../../../shared/services/translate.service';
 
 @Component({
   selector: 'app-promotions',
@@ -21,10 +22,12 @@ export class PromotionsComponent implements OnInit {
   startDate: SingleDateModel;
   endDate: SingleDateModel;
   statusItems: SelectableModel<StatusCheckedItem>[];
+  selectedStatus: StatusCheckedItem[];
 
-  constructor(private service: PromotionService, private route: Router) {
+  constructor(private service: PromotionService, private route: Router,  private translateService: TranslateService) {
     this.startDate = new SingleDateModel();
     this.endDate = new SingleDateModel();
+    this.selectedStatus = [];
     this.buildStatusItemSource();
   }
 
@@ -32,8 +35,8 @@ export class PromotionsComponent implements OnInit {
   }
 
   public count = (searchKey: string) => {
-    const selectedStatus = this.getSelectedStatus();
-    return this.service.count(searchKey, selectedStatus,
+    const status = this.getSelectedStatus();
+    return this.service.count(searchKey, status,
       this.startDate.date,
       this.endDate.date);
   }
@@ -45,27 +48,19 @@ export class PromotionsComponent implements OnInit {
 
   loadPromotions() {
     const pagination = this.currentFilterArgs.pagination;
-    const selectedStatus = this.getSelectedStatus();
+    const status = this.getSelectedStatus();
     this.service
       .getPromotions(
         pagination.itemsPerPage,
         pagination.page,
         this.currentFilterArgs.searchKey,
-        selectedStatus,
+        status,
         this.startDate.date,
         this.endDate.date
       )
       .subscribe((response: Promotion[]) => {
         this.items = response;
       });
-  }
-
-  onStartDateChanged($event) {
-    this.startDate = $event;
-  }
-
-  onEndDateChanged($event) {
-    this.endDate = $event;
   }
 
   navigateToCreate() {
@@ -81,7 +76,7 @@ export class PromotionsComponent implements OnInit {
   }
 
   getSelectedStatus() {
-    const selectedStatus = this.statusItems.filter(i => i.isSelected).map(m => m.model.status);
+    const selectedStatus = this.selectedStatus.map(m => m.status);
     return selectedStatus;
   }
 
@@ -91,21 +86,21 @@ export class PromotionsComponent implements OnInit {
         isSelected: true,
         model: {
           status: PromotionStatus.New,
-          displayName: 'New'
+          displayName: this.translateService.translate(MessageConstant.NewStatus)
         }
       },
       {
         isSelected: true,
         model: {
           status: PromotionStatus.Active,
-          displayName: 'Active'
+          displayName: this.translateService.translate(MessageConstant.ActiveStatus)
         }
       },
       {
         isSelected: true,
         model: {
-          status: PromotionStatus.Deactived,
-          displayName: 'Deactived'
+          status: PromotionStatus.Deactivated,
+          displayName: this.translateService.translate(MessageConstant.DeactivedStatus)
         }
       }
     ];

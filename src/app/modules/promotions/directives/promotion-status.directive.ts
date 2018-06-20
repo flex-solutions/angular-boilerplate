@@ -8,7 +8,7 @@ export enum PromotionStatus {
 
     Active,
 
-    Deactived
+    Deactivated
 }
 
 @Directive({
@@ -46,7 +46,7 @@ export class PromotionStatusDirective implements OnChanges, AfterViewInit {
             case PromotionStatus.Active:
                 $(this.host).html(`<label class="badge badge-success">${this.activeText}</label>`);
                 break;
-            case PromotionStatus.Deactived:
+            case PromotionStatus.Deactivated:
                 $(this.host).html(`<label class="badge badge-danger">${this.deactivedText}</label>`);
                 break;
         }

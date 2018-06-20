@@ -91,14 +91,6 @@ export abstract class AbstractRestService {
     );
   }
 
-  patch<T>(relativeUrl, putData) {
-    this.showLoader();
-    const url = this.getFullUrl(relativeUrl);
-    return this.httpClient
-      .patch<T>(url, putData)
-      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
-  }
-
   delete<T>(relativeUrl, postBody?: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);

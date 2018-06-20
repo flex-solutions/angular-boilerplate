@@ -1,6 +1,6 @@
 import { CheckedItem } from './checked-items.model';
 import { SelectableModel } from './../../models/selectable.model';
-import { Component, Input, AfterContentInit } from '@angular/core';
+import { Component, Input, AfterContentInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-drop-down-check-boxes',
@@ -17,6 +17,24 @@ export class DropDownCheckBoxesComponent implements AfterContentInit {
   @Input()
   itemsources: SelectableModel<CheckedItem>[];
 
+  // Call when date have changed
+  @Output()
+  selectedItemsChange = new EventEmitter<CheckedItem[]>();
+
+  private _selectedItems: CheckedItem[];
+
+  @Input()
+  get selectedItems() {
+    return this._selectedItems;
+  }
+
+  set selectedItems(value: CheckedItem[]) {
+    if (value !== this._selectedItems) {
+      this._selectedItems = value;
+      this.selectedItemsChange.emit(this._selectedItems);
+    }
+  }
+
   values: string;
 
   constructor() {
@@ -24,11 +42,14 @@ export class DropDownCheckBoxesComponent implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.onCheckedChanged();
+    setTimeout(() => {
+      this.onCheckedChanged();
+    });
   }
 
   onCheckedChanged() {
-    this.values = this.itemsources.filter(i => i.isSelected).map(i => i.model.displayName).join(', ');
+    this.selectedItems = this.itemsources.filter(i => i.isSelected).map(i => i.model);
+    this.values = this.selectedItems.map(i => i.displayName).join(', ');
   }
 
 }
