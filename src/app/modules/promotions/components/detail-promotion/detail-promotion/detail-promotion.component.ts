@@ -8,6 +8,9 @@ import { NotificationService } from '../../../../../shared/services/notification
 import { Promotion } from '../../../interfaces/promotion';
 import * as moment from 'moment';
 import { promotionRoute } from '../../../common.const';
+import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { Location } from '@angular/common';
+import { MessageConstant } from '../../../messages';
 
 @Component({
   selector: 'app-detail-promotion',
@@ -28,6 +31,8 @@ export class DetailPromotionComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private promotionService: PromotionService,
+    private location: Location,
+    private dialogManager: ExDialog,
     private notificationService: NotificationService) { }
 
   ngOnInit() {
@@ -60,6 +65,20 @@ export class DetailPromotionComponent implements OnInit {
       this.promotion.edit_on = this.convertTime(this.promotion.edit_on);
       if (this.promotion.edit_on === 'Invalid date') {
         this.promotion.edit_on = '';
+      }
+    });
+  }
+
+  deletePromotion(model: Promotion) {
+    const confirmMsg = this.translateService.translateWithParams(MessageConstant.DeleteConfirmation, model.title);
+    const confirmTitle = this.translateService.translateWithParams(MessageConstant.DeleteTitle);
+    this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translate(MessageConstant.DeleteSuccessfullyNotification);
+        this.promotionService.deletePromotion(model._id).subscribe(res => {
+          this.notificationService.showSuccess(successMessage);
+          this.location.back();
+        });
       }
     });
   }

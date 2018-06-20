@@ -6,7 +6,10 @@ enum MessageConstant {
     CreatePromotionSuccess = 'promotion-create_promotion-message-create_success',
     CreateAndStartPromotionSuccess = 'promotion-create_promotion-message-create_start_success',
     UpdatePromotionSuccess = 'promotion-create_promotion-message-update_success',
-    RequireTitle = 'promotion-create_promotion-error-require_title'
+    RequireTitle = 'promotion-create_promotion-error-require_title',
+    DeleteTitle = 'promotion-delete-title-dialog',
+    DeleteConfirmation = 'promotion-delete-confirm-message-dialog',
+    DeleteSuccessfullyNotification = 'promotion-delete-successfully-notification'
 }
 
 

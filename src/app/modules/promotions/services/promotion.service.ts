@@ -22,4 +22,8 @@ export class PromotionService extends AbstractRestService {
     update(promotion: Promotion) {
         return this.put(promotion._id, promotion);
     }
+
+    deletePromotion(id: string) {
+        return this.delete(`${id}/delete`);
+    }
 }

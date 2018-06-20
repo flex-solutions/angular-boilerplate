@@ -1127,6 +1127,22 @@
         <source>Promotion News</source>
         <target>Promotion News</target>
       </trans-unit>
+       <trans-unit id="promotion-detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>Số Lần Xem</target>
+      </trans-unit>
+          <trans-unit id="promotion-delete-title-dialog" datatype="html">
+        <source>Delete promotion news</source>
+        <target>Delete promotion news</target>
+      </trans-unit>
+       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+        <source>Are you sure you want to delete promotion news "{{0}}"?</source>
+        <target>Are you sure you want to delete promotion news "{{0}}"?</target>
+      </trans-unit>
+          <trans-unit id="promotion-delete-successfully-notification" datatype="html">
+         <source>Delete promotion news successfully</source>
+        <target>Delete promotion news successfully</target>
+      </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
         <source>Title</source>
         <target>Title</target>

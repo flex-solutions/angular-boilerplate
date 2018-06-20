@@ -1122,6 +1122,22 @@
         <source>Promotion News</source>
         <target>Tin Khuyến Mãi</target>
       </trans-unit>
+      <trans-unit id="promotion-detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>Số Lần Xem</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-title-dialog" datatype="html">
+        <source>Delete promotion news</source>
+        <target>Xóa tin tức khuyến mãi</target>
+      </trans-unit>
+       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+        <source>Are you sure you want to delete promotion news "{{0}}"?</source>
+        <target>Bạn có chắc muốn xóa tin tức khuyến mãi "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-successfully-notification" datatype="html">
+         <source>Delete promotion news successfully</source>
+        <target>Xoá tin tức khuyến mãi thành công</target>
+      </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
         <source>Title</source>
         <target>Tiêu đề</target>
