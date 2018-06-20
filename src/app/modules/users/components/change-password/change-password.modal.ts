@@ -25,8 +25,6 @@ export class ChangePasswordComponent extends DialogComponent implements OnInit {
   model: ChangePasswordModel;
 
   confirmPassword = '';
-  isSubmit = true;
-  currentError = '';
 
   ngOnInit() {
     this.model = new ChangePasswordModel();
@@ -40,25 +38,10 @@ export class ChangePasswordComponent extends DialogComponent implements OnInit {
   }
 
   submit() {
-    this.service.isPasswordCorrect(this.model).subscribe((data) => {
-      const dataResult = data as ValidateResult;
-      if (isNullOrUndefined(dataResult)) {
-        return;
-      }
-
-      // validate the current password is correct or not.
-      // if not show the error message.
-      if (!dataResult.is_valid) {
-        this.currentError = dataResult.error_message;
-        return;
-      }
-
-      this.service.changePassword(this.model).subscribe(() => {
-        this.currentError = '';
-        this.notificationService.showSuccess(this.translateService.translate(UserMessages.ChangePasswordSuccessFully));
-        this.result = true;
-        this.dialogResult();
-      });
+    this.service.changePassword(this.model).subscribe(() => {
+      this.notificationService.showSuccess(this.translateService.translate(UserMessages.ChangePasswordSuccessFully));
+      this.result = true;
+      this.dialogResult();
     });
   }
 }

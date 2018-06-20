@@ -1241,7 +1241,6 @@
         <source>Delete news</source>
         <target>Delete news</target>
       </trans-unit>
-      </trans-unit>
         <trans-unit id="list-news-confirm-delete" datatype="html">
         <source>Are you sure you want to delete news "{{0}}"?</source>
         <target>Are you sure you want to delete news "{{0}}"?</target>
