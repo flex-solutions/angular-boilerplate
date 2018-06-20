@@ -5,9 +5,7 @@ import {
   Input,
   EventEmitter,
   Output,
-  AfterViewInit
 } from '@angular/core';
-import { PaginationConfig } from '../../pagination/pagination.config';
 import { PageChangedEvent } from '../../pagination/pagination.component';
 import { Observable } from 'rxjs';
 
@@ -116,8 +114,11 @@ export class DatagridComponent implements OnInit {
       return;
     }
     this.currentPageEndEntry = this.currentPage * this.itemsPerPage;
+    if (this.currentPageEndEntry > this.totalItems) {
+      this.currentPageEndEntry = this.totalItems;
+    }
     this.currentPageStartEntry =
-      this.currentPageEndEntry - this.itemsPerPage + 1;
+      (this.currentPage * this.itemsPerPage) - this.itemsPerPage + 1;
   }
 
   keyDownFunction(event) {

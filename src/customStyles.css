@@ -123,3 +123,7 @@
 .label-readonly {
   pointer-events: none;
 }
+
+.command-region button {
+  margin-left: 10px;
+}
