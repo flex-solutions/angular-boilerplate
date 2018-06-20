@@ -1,10 +1,10 @@
 <app-card title="Customers" i18n-title="@@customers-list-tbl-title">
-    <div class="command-region">
+    <!-- <div class="command-region">
       <button type="button" class="btn btn-sm btn-primary" (click)="createNewCustomer()">
         <i class="mdi mdi-plus"></i>
         <span i18n="@@customers-tbl-btn-create">Create customer</span>
       </button>
-    </div>
+    </div> -->
     <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
       <tr>
         <th i18n="@@customers-tbl-name">Name</th>
