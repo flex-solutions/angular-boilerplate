@@ -31,7 +31,7 @@ export class NewsService extends AbstractRestService {
   }
 
   public getById(_id: string): Observable<News> {
-    return this.get(`findone/${_id}`);
+    return this.get(`${_id}`);
   }
 
   getNews(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
