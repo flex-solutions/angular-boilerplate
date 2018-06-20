@@ -83,14 +83,6 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
-  private getMessage(code: string, ...params) {
-    if (params.length) {
-      return this.translateService.translateWithParams(code, params);
-    } else {
-      return this.translateService.translate(code);
-    }
-  }
-
   deleteNews(newViewModel: News) {
     const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newViewModel.title);
     this.exDlg.openConfirm(confirmMsg).subscribe(result => {

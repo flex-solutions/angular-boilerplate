@@ -14,7 +14,7 @@ const newRoutes: Routes = [
     }
   },
     {
-    path: ':id',
+    path: 'detail/:id',
     component: NewsDetailComponent,
     data: {
       breadcrumb: 'News Details'
