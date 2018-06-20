@@ -5,7 +5,7 @@
         <span i18n="@@customers-tbl-btn-create">Create customer</span>
       </button>
     </div>
-    <app-dg #dg>
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count">
       <tr>
         <th i18n="@@customers-tbl-name">Name</th>
         <th i18n="@@customers-tbl-member-id">Member ID</th>
@@ -17,16 +17,18 @@
         <th i18n="@@common-tbl-actions">Actions</th>
       </tr>
       <tbody>
-        <!-- <tr *ngFor="let usergroup of usergroups | userGroupListFilter: dg.searchKey">
-          <td>{{usergroup.name}}</td>
+        <tr *ngFor="let customer of customers">
           <td>
-            <a class="a-clickable" (click)="navigateToFilterUsers(usergroup)">{{usergroup.userCount}}</a>
+            <a class="a-clickable" (click)="navigateToFilterUsers(usergroup)">{{customer.name}}</a>
           </td>
+          <td>{{customer.memberId}}</td>
+          <td>{{customer.phoneNumber}}</td>
+          <td>{{customer.birthday}}</td>
+          <td>{{customer.sex}}</td>
+          <td>{{customer.address}}</td>
+          <td>{{customer.customerType}}</td>
           <td>
-            <a class="a-clickable" (click)="viewPermissionDetail(usergroup)">{{usergroup.permissionScheme.name}}</a>
-          </td>
-          <td>
-            <div class="row">
+            <!-- <div class="row">
               <button class="btn btn-light" (click)="editMembers(usergroup)">
                 <i class="mdi mdi-account-multiple text-primary"></i>
                 <span i18n="@@user_groups-list-tbl-actions-edit-members">Add members</span>
@@ -42,9 +44,9 @@
                   <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group" (click)="deleteUserGroup(usergroup)">Delete user group</a>
                 </div>
               </div>
-            </div>
+            </div> -->
           </td>
-        </tr> -->
+        </tr>
       </tbody>
     </app-dg>
   </app-card>
