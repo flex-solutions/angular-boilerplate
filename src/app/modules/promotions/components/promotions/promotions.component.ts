@@ -85,19 +85,13 @@ export class PromotionsComponent implements OnInit {
   }
 
   startStopPromotion(item: Promotion) {
-    switch (item.status) {
-      case PromotionStatus.Active:
-        this.startStopPromotionHandler.stopPromotion(item, () => { this.loadPromotions(); });
-        break;
-      case PromotionStatus.New:
-      case PromotionStatus.Deactivated:
-        this.startStopPromotionHandler.startPromotion(item, () => { this.loadPromotions(); });
-        break;
-    }
+    this.startStopPromotionHandler.startStopPromotion(item, () => {
+      this.loadPromotions();
+    });
   }
 
   getSelectedStatus() {
-    const selectedStatus = this.selectedStatus.map(m => m.status);
+    const selectedStatus = this.statusItems.filter(i => i.isSelected).map(m => m.model.status);
     return selectedStatus;
   }
 

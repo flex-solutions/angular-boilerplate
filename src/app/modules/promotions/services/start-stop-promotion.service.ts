@@ -6,6 +6,7 @@ import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.ser
 import { NotificationService } from '../../../shared/services/notification.service';
 import { StartPromotionComponent } from '../components/start-promotion/start-promotion.component';
 import { MessageConstant } from '../messages';
+import { PromotionStatus } from '../directives/promotion-status.directive';
 
 @Injectable()
 export class StartStopPromotionService {
@@ -38,4 +39,16 @@ export class StartStopPromotionService {
             }
         });
     }
+
+    startStopPromotion(item: Promotion, callback: () => void) {
+        switch (item.status) {
+          case PromotionStatus.Active:
+            this.stopPromotion(item,  callback);
+            break;
+          case PromotionStatus.New:
+          case PromotionStatus.Deactivated:
+            this.startPromotion(item, callback);
+            break;
+        }
+      }
 }
