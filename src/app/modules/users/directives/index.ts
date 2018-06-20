@@ -1,7 +1,7 @@
 import { EqualValidator } from './validate-equal.directive';
 import { NotEqualValidator } from './validate-not-equal.directive';
 
-export const userDirectives = [
+export const comparisonDirectives = [
     EqualValidator,
     NotEqualValidator
 ];

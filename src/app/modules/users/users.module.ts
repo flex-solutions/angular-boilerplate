@@ -13,7 +13,7 @@ import { UsersComponent } from './components/users/users.component';
 import { GroupUserModalComponent } from './components/group-user/group-user-modal';
 import { BranchService } from './services/branch.service';
 import { ChangePasswordComponent } from './components/change-password/change-password.modal';
-import { userDirectives } from './directives';
+import { comparisonDirectives } from './directives';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
@@ -25,7 +25,7 @@ import { userDirectives } from './directives';
     GroupUserModalComponent,
     ChangePasswordComponent,
     ...UserModulePipes,
-    ...userDirectives],
+    ...comparisonDirectives],
   providers: [UserService, BranchService],
   entryComponents: [GroupUserModalComponent, ChangePasswordComponent],
   exports: [ChangePasswordComponent]
