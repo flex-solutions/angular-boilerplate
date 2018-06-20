@@ -1269,6 +1269,64 @@
         <target>Xóa tin tức thành công </target>
       </trans-unit>
       <!-- END List News -->
+       <!-- Start Change password -->
+       <trans-unit id="change-password-Title" datatype="html">
+        <source>Change Password</source>
+        <target>Đổi Mật Khẩu</target>
+      </trans-unit>
+        <trans-unit id="change-password-field-old-password" datatype="html">
+        <source>Old password</source>
+        <target>Mật khẩu cũ</target>
+      </trans-unit>
+         <trans-unit id="change-password-field-new-password" datatype="html">
+        <source>New password</source>
+        <target>Mật khẩu mới</target>
+      </trans-unit>
+      <trans-unit id="change-password-field-confirm-password" datatype="html">
+        <source>Confirm new password</source>
+        <target>Xác nhận mật khẩu mới</target>
+      </trans-unit>
+       <trans-unit id="change-password-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Yêu Cầu Đổi</target>
+      </trans-unit>
+       <trans-unit id="change-password-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+         <trans-unit id="change-password-old-password-required" datatype="html">
+        <source>Old password is mandatory</source>
+        <target>Vui lòng nhập mật khẩu cũ</target>
+      </trans-unit>
+        <trans-unit id="change-password-new-password-required" datatype="html">
+        <source>New password is mandatory</source>
+        <target>Vui lòng nhập mật khẩu mới</target>
+      </trans-unit>
+         <trans-unit id="change-password-confirm-password-required" datatype="html">
+        <source>Confirm new password is mandatory</source>
+        <target>Vui lòng nhập xác nhận mật khẩu mới</target>
+      </trans-unit>
+     <trans-unit id="change-password-passowrd-incorect" datatype="html">
+        <source>Old password is incorrect</source>
+        <target>Mật khẩu cũ không chính xác</target>
+      </trans-unit>
+      <trans-unit id="change-password-passowrd-must-diff-old" datatype="html">
+        <source>New password must differ from old password</source>
+        <target>Mật khẩu mới phải khác mật khẩu cũ</target>
+      </trans-unit>
+        <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
+        <source>New password confirmation must not differ from new password</source>
+        <target>Xác nhận mật khẩu mới không giống mật khẩu mới</target>
+      </trans-unit>
+        <trans-unit id="change-password-notice" datatype="html">
+        <source>Notice</source>
+        <target>Thông Báo</target>
+      </trans-unit>
+      <trans-unit id="change-password-notification-changed-successfully" datatype="html">
+        <source>New password has been changed. Please use new password in the next login.</source>
+        <target>Mật khẩu mới đã được đổi thành công. Vui lòng dùng mật khẩu mới ở lần đăng nhập sau.</target>
+      </trans-unit>
+      <!-- END CHANGE PASSWORD -->
     </body>
   </file>
 </xliff>
