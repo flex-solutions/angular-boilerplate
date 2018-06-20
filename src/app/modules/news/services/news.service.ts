@@ -1,11 +1,10 @@
-import { News } from './../../../shared/models/news.model';
+import { News, NewsViewModel } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
 import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
 import { NewsStatusType } from '../../../shared/enums/news-type.enum';
-
 
 @Injectable()
 export class NewsService extends AbstractRestService {
@@ -24,22 +23,18 @@ export class NewsService extends AbstractRestService {
   }
 
   update(news: News) {
-    return this.put(news._id, news);
+    return this.put('', news);
   }
 
   public remove(_id: string) {
     return this.delete(_id, {});
   }
 
-  updateStatus(_id: string, status: NewsStatusType) {
-    return this.put(`${_id}/${status}`, {});
-  }
-
   public getById(_id: string): Observable<News> {
-    return this.get(_id);
+    return this.get(`${_id}`);
   }
 
-  getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
+  getNews(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 
@@ -47,4 +42,15 @@ export class NewsService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
+  processNew(newObject: News): Observable<NewsViewModel> {
+    if (newObject.status === NewsStatusType.Deactivated) {
+      return this.patch(`${newObject._id}/publish`, {});
+    }
+
+    return this.patch(`${newObject._id}/deactivate`, {});
+  }
+
+  deleteNew(id: string) {
+    return this.delete(`${id}`);
+  }
 }

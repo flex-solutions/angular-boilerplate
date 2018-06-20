@@ -914,7 +914,7 @@
       <!--END Permission Scheme Detail Dialog-->
 
       <!--START News Create Edit Page -->
-      <trans-unit id="news-news-h4-create_news" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
         <source>Create news</source>
         <target>Tạo tin tức </target>
       </trans-unit>
@@ -958,10 +958,6 @@
         <source>Submit & publish</source>
         <target>Lưu và đăng tin </target>
       </trans-unit>
-      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Huỷ </target>
-      </trans-unit>
       <trans-unit id="news-create_edit_news-label-create_another_news" datatype="html">
         <source>Create another</source>
         <target>Tạo tin tiếp theo </target>
@@ -969,6 +965,10 @@
       <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
         <source>Create news "{{0}}" successfull</source>
         <target>Tạo thành công tin tức "{{0}}" </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
+        <source>Update news with title "{{0}}" successfull</source>
+        <target>Cập nhật thành công tin tức "{{0}}" successfull </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>
@@ -1171,6 +1171,139 @@
         <target>Vui lòng cung cấp nội dung</target>
       </trans-unit>
       <!--END Create edit promotion-->
+      <!-- List news -->
+      <trans-unit id="list-news-menu-new-managements" datatype="html">
+        <source>News Management</source>
+        <target>Quản Lý Tin Tức</target>
+      </trans-unit>
+      <trans-unit id="list-news-title-news" datatype="html">
+        <source>News</source>
+        <target>Tin Tức</target>
+      </trans-unit>
+       <trans-unit id="list-news-button-create-news" datatype="html">
+        <source>Create news</source>
+        <target>Tạo tin tức</target>
+      </trans-unit>
+       <trans-unit id="list-news-th-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-content" datatype="html">
+        <source>Content</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-status" datatype="html">
+        <source>Status</source>
+        <target>Trạng Thái</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-created-on" datatype="html">
+        <source>Created on</source>
+        <target>Được tạo vào</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-published-on" datatype="html">
+        <source>Published on</source>
+        <target>Được đăng vào</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="list-news-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Tìm kiếm với tiêu đề, nội dung</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-new" datatype="html">
+        <source>New</source>
+        <target>Mới tạo</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-deactivated" datatype="html">
+        <source>Deactivated</source>
+        <target>Đã vô hiệu hóa</target>
+      </trans-unit>
+         <trans-unit id="list-news-status-publish" datatype="html">
+        <source>Publish</source>
+        <target>Đăng tải</target>
+      </trans-unit>
+     <trans-unit id="list-news-btn-publishs" datatype="html">
+        <source>Publish</source>
+        <target>Đăng tải</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+        <trans-unit id="list-news-btn-delete" datatype="html">
+        <source>Delete news</source>
+        <target>Xoá bản tin </target>
+      </trans-unit>
+        <trans-unit id="list-news-confirm-delete" datatype="html">
+        <source>Are you sure you want to delete news "{{0}}"?</source>
+        <target>Bạn có chắc muốn xóa tin tức có tiêu đề "{{0}}"?</target>
+      </trans-unit>
+        <trans-unit id="list-news-notification-delete-successfully" datatype="html">
+        <source>Deleted news successfully</source>
+        <target>Xóa tin tức thành công </target>
+      </trans-unit>
+      <!-- END List News -->
+       <!-- Start Change password -->
+       <trans-unit id="change-password-Title" datatype="html">
+        <source>Change Password</source>
+        <target>Đổi Mật Khẩu</target>
+      </trans-unit>
+        <trans-unit id="change-password-field-old-password" datatype="html">
+        <source>Old password</source>
+        <target>Mật khẩu cũ</target>
+      </trans-unit>
+         <trans-unit id="change-password-field-new-password" datatype="html">
+        <source>New password</source>
+        <target>Mật khẩu mới</target>
+      </trans-unit>
+      <trans-unit id="change-password-field-confirm-password" datatype="html">
+        <source>Confirm new password</source>
+        <target>Xác nhận mật khẩu mới</target>
+      </trans-unit>
+       <trans-unit id="change-password-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Yêu Cầu Đổi</target>
+      </trans-unit>
+       <trans-unit id="change-password-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Hủy</target>
+      </trans-unit>
+         <trans-unit id="change-password-old-password-required" datatype="html">
+        <source>Old password is mandatory</source>
+        <target>Vui lòng nhập mật khẩu cũ</target>
+      </trans-unit>
+        <trans-unit id="change-password-new-password-required" datatype="html">
+        <source>New password is mandatory</source>
+        <target>Vui lòng nhập mật khẩu mới</target>
+      </trans-unit>
+         <trans-unit id="change-password-confirm-password-required" datatype="html">
+        <source>Confirm new password is mandatory</source>
+        <target>Vui lòng nhập xác nhận mật khẩu mới</target>
+      </trans-unit>
+     <trans-unit id="change-password-passowrd-incorect" datatype="html">
+        <source>Old password is incorrect</source>
+        <target>Mật khẩu cũ không chính xác</target>
+      </trans-unit>
+      <trans-unit id="change-password-passowrd-must-diff-old" datatype="html">
+        <source>New password must differ from old password</source>
+        <target>Mật khẩu mới phải khác mật khẩu cũ</target>
+      </trans-unit>
+        <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
+        <source>New password confirmation must not differ from new password</source>
+        <target>Xác nhận mật khẩu mới không giống mật khẩu mới</target>
+      </trans-unit>
+        <trans-unit id="change-password-notice" datatype="html">
+        <source>Notice</source>
+        <target>Thông Báo</target>
+      </trans-unit>
+      <trans-unit id="change-password-notification-changed-successfully" datatype="html">
+        <source>New password has been changed. Please use new password in the next login.</source>
+        <target>Mật khẩu mới đã được đổi thành công. Vui lòng dùng mật khẩu mới ở lần đăng nhập sau.</target>
+      </trans-unit>
+      <!-- END CHANGE PASSWORD -->
+
       <!--List promotions-->
       <trans-unit id="list-promotions-title-promtions" datatype="html">
         <source>Promotions</source>

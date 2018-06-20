@@ -1,10 +1,9 @@
 import { NewsStatusType } from '../enums/news-type.enum';
-import {Buffer} from 'Buffer';
 
-export class News {
+class News {
     _id: string;
     title: string;
-    banner: Buffer;
+    banner: any;
     content: string;
     status: NewsStatusType = NewsStatusType.New ;
     viewCount = 0;
@@ -14,4 +13,29 @@ export class News {
     edit_by: string;
     create_on: Date;
     create_by: string;
+
+    getImageBase64() {
+        const base64 = atob(this.banner);
+        return base64;
+    }
 }
+
+const NewsFields = {
+    ID: '_id',
+    TITLE: 'title',
+    BANNER: 'banner',
+    CONTENT: 'content',
+    STATUS: 'status',
+    VIEWCOUNT: 'viewCount',
+    PUBLISHED_ON: 'published_on'
+  };
+
+class NewsViewModel extends News {
+    create_date: string;
+    publish_date: string;
+    create_on: Date;
+    published_on: Date;
+}
+
+export {News, NewsFields, NewsViewModel};
+

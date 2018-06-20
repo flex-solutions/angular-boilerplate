@@ -39,23 +39,19 @@ export abstract class AbstractRestService {
   get<T>(relativeUrl?: string) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
-    return this.httpClient
-      .get<T>(url)
-      .pipe(
-        catchError(err => this.handleError(err)),
-        finalize(() => this.hideLoader())
-      );
+    return this.httpClient.get<T>(url).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    );
   }
 
   getWithAbsoluteUrl<T>(absoluteUrl: string) {
     this.showLoader();
     const url = this.getApiWithoutController(absoluteUrl);
-    return this.httpClient
-      .get<T>(url)
-      .pipe(
-        catchError(err => this.handleError(err)),
-        finalize(() => this.hideLoader())
-      );
+    return this.httpClient.get<T>(url).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    );
   }
 
   getWithRetry<T>(relativeUrl: string, retryTimes: number) {
@@ -71,17 +67,28 @@ export abstract class AbstractRestService {
   post<T>(relativeUrl, postBody: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
-    return this.httpClient
-      .post<T>(url, postBody)
-      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
+    return this.httpClient.post<T>(url, postBody).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    );
   }
 
   put<T>(relativeUrl, putData) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
-    return this.httpClient
-      .put<T>(url, putData)
-      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
+    return this.httpClient.put<T>(url, putData).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    );
+  }
+
+  patch<T>(relativeUrl, putData) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient.patch<T>(url, putData).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    );
   }
 
   patch<T>(relativeUrl, putData) {
@@ -95,9 +102,10 @@ export abstract class AbstractRestService {
   delete<T>(relativeUrl, postBody?: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
-    return this.httpClient
-      .delete<T>(url)
-      .pipe(catchError(err => this.handleError(err)), finalize(() => this.hideLoader()));
+    return this.httpClient.delete<T>(url).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    );
   }
 
   showLoader() {
@@ -121,7 +129,9 @@ export abstract class AbstractRestService {
 
   // Build full path for api
   protected getApiWithController(api: string) {
-    return api ? `${this.baseUrl}/${this.controllerName}/${api}` : `${this.baseUrl}/${this.controllerName}`;
+    return api
+      ? `${this.baseUrl}/${this.controllerName}/${api}`
+      : `${this.baseUrl}/${this.controllerName}`;
   }
 
   protected getApiWithoutController(api: string) {
