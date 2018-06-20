@@ -43,7 +43,7 @@ export class AuthenticationTokenHelper {
         }
     }
 
-    static get userPermissions() {
+    static get userPermissions(): any {
         return localStorage.getItem(appVariables.userPermission);
     }
 }

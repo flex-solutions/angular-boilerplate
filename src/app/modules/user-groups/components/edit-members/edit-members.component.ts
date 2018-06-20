@@ -81,6 +81,7 @@ export class EditMembersComponent implements OnInit {
                     const model = new SelectAndAddedModel<IUserModel>();
                     if (selectedUser) {
                         model.isSelected = true;
+                        model.isAdded = true;
                     }
                     model.model = u;
 

@@ -332,16 +332,28 @@
         <source>Search by group name, permission sheme name</source>
         <target>Search by group name, permission sheme name</target>
       </trans-unit>
+      <trans-unit id="group-user-modal-change-user-success" datatype="html">
+        <source>User "{{0}}" is moved to group "{{1}}" successfully</source>
+        <target>User "{{0}}" is moved to group "{{1}}" successfully</target>
+      </trans-unit>
       <!-- End group user modal -->
 
       <!-- Users -->
-      <trans-unit id="users-name" datatype="html">
+      <trans-unit id="users-list" datatype="html">
         <source>Users</source>
         <target>Users</target>
+      </trans-unit>
+      <trans-unit id="users-list-by-group" datatype="html">
+        <source>Users in group {{0}}</source>
+        <target>Bellow is all users in group {{0}}</target>
       </trans-unit>
       <trans-unit id="users-create-user" datatype="html">
         <source>Create User</source>
         <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="users-view-all-users" datatype="html">
+        <source>View All</source>
+        <target>View All</target>
       </trans-unit>
       <trans-unit id="users-fullname" datatype="html">
         <source>Full Name</source>
@@ -572,7 +584,7 @@
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
-      
+
       <!--Edit usergroup membership-->
       <trans-unit id="edit-members-title" datatype="html">
         <source>Bulk edit group members</source>
@@ -682,8 +694,8 @@
         <target>Create Permission Scheme</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
-        <source>Edit Permission Scheme</source>
-        <target>Edit Permission Scheme</target>
+        <source>Edit permission scheme</source>
+        <target>Edit permission scheme</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-desciption" datatype="html">
         <source>Type a name and choose which the permissions to include in this scheme</source>
@@ -794,8 +806,8 @@
         <target>Assign to the user groups</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
-        <source>Edit Permission Scheme</source>
-        <target>Edit Permission Scheme</target>
+        <source>Edit</source>
+        <target>Edit</target>
       </trans-unit>
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
@@ -810,7 +822,7 @@
         <target>Deleted scheme "{{0}}" successfully</target>
       </trans-unit>
       <!-- End Permission Schemes -->
-      
+
       <!-- Copy Permission Schemes -->
       <trans-unit id="permission-scheme-copy-h5-copy_title" datatype="html">
         <source>Copy Permission Scheme</source>
