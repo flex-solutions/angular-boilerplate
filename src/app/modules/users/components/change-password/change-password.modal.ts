@@ -6,7 +6,6 @@ import { ChangePasswordModel } from '../../../../shared/models/user.model';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { UserMessages } from '../../users.constant';
-import { ValidateResult } from '../../../../shared/models/validate-model.base';
 import { isNullOrUndefined } from 'util';
 
 @Component({
