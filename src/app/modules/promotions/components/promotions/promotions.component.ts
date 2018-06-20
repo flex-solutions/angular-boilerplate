@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { PromotionRouting, MessageConstant } from '../../messages';
 import { PromotionStatus } from '../../directives/promotion-status.directive';
 import { TranslateService } from '../../../../shared/services/translate.service';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-promotions',
@@ -24,7 +26,11 @@ export class PromotionsComponent implements OnInit {
   statusItems: SelectableModel<StatusCheckedItem>[];
   selectedStatus: StatusCheckedItem[];
 
-  constructor(private service: PromotionService, private route: Router,  private translateService: TranslateService) {
+  constructor(private service: PromotionService,
+    private route: Router,
+    private translateService: TranslateService,
+    private dialogManager: ExDialog,
+    private notificationService: NotificationService) {
     this.startDate = new SingleDateModel();
     this.endDate = new SingleDateModel();
     this.selectedStatus = [];
@@ -71,6 +77,10 @@ export class PromotionsComponent implements OnInit {
     this.route.navigate([`${PromotionRouting.EDIT_PAGE}/${id}`]);
   }
 
+  navigateToDetail(id: string) {
+    this.route.navigate([`${PromotionRouting.DETAIL_PAGE}/${id}`]);
+  }
+
   startStopPromotion(id) {
 
   }
@@ -78,6 +88,20 @@ export class PromotionsComponent implements OnInit {
   getSelectedStatus() {
     const selectedStatus = this.selectedStatus.map(m => m.status);
     return selectedStatus;
+  }
+
+  deletePromotion(model: Promotion) {
+    const confirmMsg = this.translateService.translateWithParams(MessageConstant.DeleteConfirmation, model.title);
+    const confirmTitle = this.translateService.translateWithParams(MessageConstant.DeleteTitle);
+    this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translate(MessageConstant.DeleteSuccessfullyNotification);
+        this.service.deletePromotion(model._id).subscribe(res => {
+          this.notificationService.showSuccess(successMessage);
+          this.loadPromotions();
+        });
+      }
+    });
   }
 
   buildStatusItemSource() {

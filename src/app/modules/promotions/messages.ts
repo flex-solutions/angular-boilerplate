@@ -20,7 +20,8 @@ enum MessageConstant {
 export const PromotionRouting = {
     CREATE_PAGE: 'promotions/create',
     EDIT_PAGE: 'promotions/edit/',
-    PROMOTION_PAGES: 'promotions'
+    PROMOTION_PAGES: 'promotions',
+    DETAIL_PAGE: 'promotions/detail/',
   };
 
 
