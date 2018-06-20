@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { NewViewModel, NewsFields, News } from '../../../../shared/models/news.model';
+import { NewsViewModel, NewsFields, News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -21,7 +21,7 @@ import { NewsRouteNames } from '../../constants/news.constant';
 })
 export class NewsComponent implements OnInit {
 
-  public items: NewViewModel[] = [];
+  public items: NewsViewModel[] = [];
   currentFilterArgs: IFilterChangedEvent;
 
   constructor(private service: NewsService,
@@ -54,7 +54,7 @@ export class NewsComponent implements OnInit {
         pagination.page,
         this.currentFilterArgs.searchKey
       )
-      .subscribe((response: NewViewModel[]) => {
+      .subscribe((response: NewsViewModel[]) => {
         this.items = response;
         this.items.forEach(item => {
           item.create_date = this.convertTime(item.create_on);
@@ -72,7 +72,7 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  deletenew(newModel: NewViewModel) {
+  deletenew(newModel: NewsViewModel) {
     const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newModel.title);
     this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
       if (result) {
