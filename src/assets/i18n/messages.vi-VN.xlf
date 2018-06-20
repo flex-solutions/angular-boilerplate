@@ -1327,6 +1327,107 @@
         <target>Mật khẩu mới đã được đổi thành công. Vui lòng dùng mật khẩu mới ở lần đăng nhập sau.</target>
       </trans-unit>
       <!-- END CHANGE PASSWORD -->
+
+      <!--List promotions-->
+      <trans-unit id="list-promotions-title-promtions" datatype="html">
+        <source>Promotions</source>
+        <target>Danh Sách Khuyến Mãi</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Tìm kiếm với tiêu đề, nội dung của khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-content" datatype="html">
+        <source>Content</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-status" datatype="html">
+        <source>Status</source>
+        <target>Tình trạng</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-start-date" datatype="html">
+        <source>Start Date</source>
+        <target>Ngày bắt đầu</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-expỉre-date" datatype="html">
+        <source>Expire Date</source>
+        <target>Ngày hết hạn</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target>Thao tác</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-delete" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Xoá khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-start-promotion" datatype="html">
+        <source>Start</source>
+        <target>Chạy khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-stop-promotion" datatype="html">
+        <source>Stop</source>
+        <target>Dừng khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-new-promotion" datatype="html">
+        <source>New</source>
+        <target>Mới</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-deactived-promotion" datatype="html">
+        <source>Deactivated</source>
+        <target>Đã dừng</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-active-promotion" datatype="html">
+        <source>Active</source>
+        <target>Hoạt động</target>
+      </trans-unit>
+      <!--END List promotions-->
+      <!--Date time picker-->
+      <trans-unit id="date-range-picker_button_cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_button_apply" datatype="html">
+        <source>Apply</source>
+        <target>Xác nhận</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_button_custom_range" datatype="html">
+        <source>Custom Range</source>
+        <target>Tuỳ chọn</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title_today" datatype="html">
+        <source>Today</source>
+        <target>Hôm nay</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title_yesterday" datatype="html">
+        <source>Yesterday</source>
+        <target>Hôm qua</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-seven-days-ago" datatype="html">
+        <source>Last 7 Days</source>
+        <target>7 ngày trước</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-30-days-ago" datatype="html">
+        <source>Last 30 Days</source>
+        <target>30 ngày trước</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-current_month" datatype="html">
+        <source>This month</source>
+        <target>Tháng này</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-previous_month" datatype="html">
+        <source>Last month</source>
+        <target>Tháng trước</target>
+      </trans-unit>
+      <!--END Date time picker-->
     </body>
   </file>
 </xliff>

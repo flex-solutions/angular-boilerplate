@@ -1,14 +1,15 @@
 import { CreatePromotionComponent } from './components/create-promotion/create-promotion.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PromotionsComponent } from './components/promotions/promotions.component';
 import { DetailPromotionComponent } from './components/detail-promotion/detail-promotion/detail-promotion.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CreatePromotionComponent,
+    component: PromotionsComponent,
     data: {
-      breadcrumb: 'Create Promotion'
+      breadcrumb: 'Promotions'
     }
   },
   {
