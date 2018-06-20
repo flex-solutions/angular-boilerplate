@@ -28,7 +28,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   isPublish: boolean = false;
   isCreateAnother: boolean = false;
   isBannerError: boolean = false;
-  raiseChangeForError: boolean = false;
   rawContent: String;
   isBlurEditor: boolean = false;
   isFinishedBannerComponent: boolean = false;
@@ -107,7 +106,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   hasErrorBanner() {
-    return this.isBannerError === true;
+    return this.isBannerError;
   }
 
   hasEmptyAndBlurContent() {
@@ -181,6 +180,9 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   onFileChanged(event: any) {
+    if (this.isBannerError && event.content != "") {
+      this.isBannerError = false;
+    }
     this.news.banner = event.content;
   }
 

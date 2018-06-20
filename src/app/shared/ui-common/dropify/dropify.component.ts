@@ -67,21 +67,25 @@ export class DropifyComponent implements AfterViewInit {
     @Input()
     removeMessage: string;
 
-    get image() : any {
+    get image(): any {
         return this._image;
     }
     private _image: any;
     @Input('image')
-    set image(value : any) {
+    set image(value: any) {
         this._image = value;
         if (isNil(this._image) || this._image === '') {
             return;
         }
-        const base64 = atob(this._image);
-        if (this.dropify)
-        {
-            this.dropify.showLoader();
-            this.dropify.setPreview(true, base64);
+        try {
+            const base64 = atob(this._image);
+            if (this.dropify) {
+                this.dropify.showLoader();
+                this.dropify.setPreview(true, base64);
+            }
+        }
+        catch {
+            // not base 64 type, do nothing
         }
     }
 
@@ -113,7 +117,7 @@ export class DropifyComponent implements AfterViewInit {
         const length = this.dropify.settings.maxFileSize.length
         const lastCharacter = this.dropify.settings.maxFileSize[length - 1]
         this.maxSize = parseInt(this.dropify.settings.maxFileSize)
-        switch(lastCharacter.toUpperCase()) {
+        switch (lastCharacter.toUpperCase()) {
             case 'K': this.maxSize *= 1000; break;
             case 'M': this.maxSize *= 1000000; break;
         }
@@ -140,11 +144,11 @@ export class DropifyComponent implements AfterViewInit {
         });
         drEvent.on('dropify.afterClear', (event, element) => {
             const fileInfo = {
-                        content: "",
-                        fileName: "",
-                        type: "",
-                        size: ""
-                    };
+                content: "",
+                fileName: "",
+                type: "",
+                size: ""
+            };
             this.onImageChange.emit(fileInfo);
         });
     }
@@ -161,11 +165,11 @@ export class DropifyComponent implements AfterViewInit {
         if (files && files.length) {
             if (this.maxSize <= files[0].size) {
                 const fileInfo = {
-                            content: "",
-                            fileName: "",
-                            type: "",
-                            size: ""
-                        };
+                    content: "",
+                    fileName: "",
+                    type: "",
+                    size: ""
+                };
                 this.onImageChange.emit(fileInfo);
                 return;
             }

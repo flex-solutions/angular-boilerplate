@@ -31,9 +31,12 @@ export class CreatePromotionComponent implements OnInit {
   isCreateAnother: boolean;
   banner: string;
   isBlurEditor: boolean;
+  promotionId: string;
 
   // For editable mode
   isEditableMode: boolean;
+  isFinishedBannerComponent: boolean = false;
+  isFinishedContentComponent:boolean = false;
 
   private _isError: boolean;
 
@@ -64,14 +67,10 @@ export class CreatePromotionComponent implements OnInit {
   ngOnInit() {
     this.wizardComponent.canNext = true;
     this._activeRoute.params.subscribe((params: Params) => {
-      const promotionId = params['id'] ? params['id'] : null;
-      this.isEditableMode = promotionId ? true : false;
+      this.promotionId = params['id'] ? params['id'] : null;
+      this.isEditableMode = this.promotionId ? true : false;
 
       this.resolveTitle();
-
-      if (this.isEditableMode) {
-        this.loadPromotion(promotionId);
-      }
     });
   }
 
@@ -88,10 +87,14 @@ export class CreatePromotionComponent implements OnInit {
 
   // Load promotion info from server
   private loadPromotion(promotionId) {
-    this._promotionService.getPromotion(promotionId).subscribe(p => {
-      this.promotion = p as Promotion;
-
+    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+      return;
+    }
+    if (this.isEditableMode) {
+      this._promotionService.getPromotion(promotionId).subscribe(p => {
+        this.promotion = p as Promotion;
     });
+  }
   }
 
   onFinshAndStart() {
@@ -143,16 +146,10 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onFileChanged($event: FileInfo) {
-    if (!this._isError) {
+    if (this.banerInvalid && $event.content != "") {
       this.banerInvalid = false;
     }
-    this._isError = false;
     this.promotion.banner = $event.content;
-  }
-
-  onFileRemoved() {
-    this.banerInvalid = false;
-    this.promotion.banner = '';
   }
 
   onErrors($event: ErrorType) {
@@ -196,5 +193,15 @@ export class CreatePromotionComponent implements OnInit {
     } else {
       this._location.back();
     }
+  }
+
+  finishBannerComponent() {
+    this.isFinishedBannerComponent = true;
+    this.loadPromotion(this.promotionId);
+  }
+
+  finishContentComponent() {
+    this.isFinishedContentComponent = true;
+    this.loadPromotion(this.promotionId);
   }
 }
