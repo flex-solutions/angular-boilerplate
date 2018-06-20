@@ -6,3 +6,7 @@
 .unselected {
   opacity: 0.4;
 }
+
+.wizard > .content {
+  background: #fff;
+}

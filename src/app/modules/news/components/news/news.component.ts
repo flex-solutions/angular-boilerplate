@@ -1,15 +1,18 @@
-import { TranslateService } from './../../../../shared/services/translate.service';
-import { NotificationService } from './../../../../shared/services/notification.service';
-import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { NewViewModel, NewsFields, News } from '../../../../shared/models/news.model';
+import { NewsViewModel, NewsFields, News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
+import { NewStatusDirective } from '../../directives/new-status.directive';
 import { filter, head, equals } from 'ramda';
-
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { NewMessageConst } from '../../constants/message.const';
+import { NewsRouteNames } from '../../constants/news.constant';
 
 @Component({
   selector: 'app-news',
@@ -18,12 +21,14 @@ import { filter, head, equals } from 'ramda';
 })
 export class NewsComponent implements OnInit {
 
-  public items: NewViewModel[] = [];
+  public items: NewsViewModel[] = [];
   currentFilterArgs: IFilterChangedEvent;
 
   constructor(private service: NewsService,
-    private notificationService: NotificationService,
-    private translateService:TranslateService, private route: Router) { }
+     private route: Router,
+     private dialogManager: ExDialog,
+     private translateService: TranslateService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
   }
@@ -49,7 +54,7 @@ export class NewsComponent implements OnInit {
         pagination.page,
         this.currentFilterArgs.searchKey
       )
-      .subscribe((response: NewViewModel[]) => {
+      .subscribe((response: NewsViewModel[]) => {
         this.items = response;
         this.items.forEach(item => {
           item.create_date = this.convertTime(item.create_on);
@@ -61,9 +66,22 @@ export class NewsComponent implements OnInit {
   NewProcessing(id: string) {
     const processedItem = head(filter(c => equals(c[NewsFields.ID], id), this.items));
 
-    this.service.updateStatus(id, processedItem.status).subscribe((updateNew) => {
+    this.service.processNew(processedItem).subscribe((updateNew) => {
       processedItem.status = updateNew.status;
-      processedItem.publish_date = this.convertTime(updateNew.publishedOn);
+      processedItem.publish_date = this.convertTime(updateNew.published_on);
+    });
+  }
+
+  deletenew(newModel: NewsViewModel) {
+    const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newModel.title);
+    this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translate(NewMessageConst.DeleteSuccessfullyNotification);
+        this.service.deleteNew(newModel._id).subscribe(res => {
+          this.loadNews();
+          this.notificationService.showSuccess(successMessage);
+        });
+      }
     });
   }
 
@@ -75,23 +93,7 @@ export class NewsComponent implements OnInit {
     this.route.navigate([`${NewsRouteNames.EDIT}/${id}`]);
   }
 
-  navigateToDetail(news:News) {
-    this.route.navigate([`${NewsRouteNames.VIEW}/${news._id}`]);
-  }
-
-  delete(id:string) {
-    this.service.remove(id).subscribe((ret) => {
-        const msg = this.getMessage(Errors.Delete_News_Success);
-        this.notificationService.showSuccess(msg);
-        this.loadNews();
-    });
-  }
-
-  private getMessage(code: string, ...params) {
-    if (params.length) {
-      return this.translateService.translateWithParams(code, params);
-    } else {
-      return this.translateService.translate(code);
-    }
+  navigateToDetail(id: string) {
+    this.route.navigate([`${NewsRouteNames.VIEW}/${id}`]);
   }
 }

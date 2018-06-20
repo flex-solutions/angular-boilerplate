@@ -14,7 +14,7 @@
         <img class="img-xs rounded-circle" src="{{currentUser.avatar}}" alt="Profile image">
       </a>
       <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-        <a class="dropdown-item mt-2" i18n="@@layout-navbar-anchor-changepassword">
+        <a class="dropdown-item mt-2" i18n="@@layout-navbar-anchor-changepassword" (click) = "changePassword()">
           Change Password
         </a>
         <a class="dropdown-item" i18n="@@layout-navbar-anchor-logout" (click)="signOut()">

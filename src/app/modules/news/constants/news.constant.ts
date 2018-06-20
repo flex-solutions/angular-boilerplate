@@ -11,9 +11,9 @@ const NewsActionButtonText = {
 
 const NewsRouteNames = {
   CREATE: 'news/create',
-  EDIT: 'news/edit/',
+  EDIT: 'news/update/',
   NEWS_HOME: 'news',
-  VIEW: 'news/'
+  VIEW: 'news/detail/'
 };
 
 const Errors = {

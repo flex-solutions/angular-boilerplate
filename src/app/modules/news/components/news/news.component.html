@@ -17,10 +17,10 @@
     </tr>
     <tbody>
       <tr  *ngFor="let item of items">
-        <td><p class="a-clickable pull-left" (click)="navigateToDetail(item)" >{{item.title}}</p></td>
-        <td class="cut-text">{{item.content}}
+        <td><p class="a-clickable pull-left" (click)="navigateToDetail(item._id)">{{item.title}}</p></td>
+        <td ><div class="block-ellipsis" [innerHTML]="item.content"></div>
         </td>
-        <td appNewsStatus [status]="item.status"></td>
+        <td appNewStatus [status]="item.status"></td>
         <td>{{item.create_date}}</td>
         <td>{{item.publish_date}}</td>
         <td>
@@ -28,14 +28,14 @@
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
             <span i18n="@@list-news-btn-edit">Edit</span>
           </button>
-          <button type="button" class="btn btn-light btn-custom-css"  appNewsActionButton [status]="item.status" (click) = "NewProcessing(item._id)">
+          <button type="button" class="btn btn-light btn-custom-css"  appPublishButton [status]="item.status" (click) = "NewProcessing(item._id)">
           </button>
           <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" 
           aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-delete" (click)="delete(item._id)">Delete news</a>
+            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-delete" (click)="deletenew(item)">Delete news</a>
           </div>
         </td>
       </tr>

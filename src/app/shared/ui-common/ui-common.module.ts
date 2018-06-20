@@ -1,3 +1,4 @@
+import { DateRangePickerComponent } from './datepicker/date-range-picker/date-range-picker.component';
 import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
 import { WizardComponent } from './wizard/wizard/wizard.component';
 import { DropifyComponent } from './dropify/dropify.component';
@@ -13,6 +14,8 @@ import { CardComponent } from './card/card.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { FormsModule } from '@angular/forms';
 import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.component';
+import { DatePickerComponent } from './datepicker/date-picker/date-picker.component';
+import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-check-boxes.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -22,7 +25,10 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
     DialogModule, DatagridModule, PaginationModule,
     DropifyComponent,
     WizardComponent,
-    WizardStepComponent
+    WizardStepComponent,
+    DateRangePickerComponent,
+    DatePickerComponent,
+    DropDownCheckBoxesComponent
   ],
   declarations: [
     LoaderComponent,
@@ -31,7 +37,10 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
     TynimceEditorComponent,
     DropifyComponent,
     WizardComponent,
-    WizardStepComponent
+    WizardStepComponent,
+    DateRangePickerComponent,
+    DatePickerComponent,
+    DropDownCheckBoxesComponent
   ],
   providers: [
     LoaderService

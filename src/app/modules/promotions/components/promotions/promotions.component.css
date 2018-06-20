@@ -1,0 +1,10 @@
+.cut-text { 
+  display: inline-block;
+  width: 325px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+:host >>> .table td {
+  line-height: normal !important;
+}

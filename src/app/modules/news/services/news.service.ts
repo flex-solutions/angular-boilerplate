@@ -1,4 +1,4 @@
-import { News, NewViewModel } from './../../../shared/models/news.model';
+import { News, NewsViewModel } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
@@ -30,24 +30,8 @@ export class NewsService extends AbstractRestService {
     return this.delete(_id, {});
   }
 
-  updateStatus(_id: string, currentStatus: NewsStatusType): Observable<News> {
-    let newsStatus = NewsStatusType.New;
-    switch (currentStatus) {
-      case NewsStatusType.New:
-      case NewsStatusType.Deactivated:
-      newsStatus= NewsStatusType.Published;
-        break;
-      case NewsStatusType.Published:
-      newsStatus = NewsStatusType.Deactivated;
-        break;
-      default:
-        break;
-    }
-    return this.put(`${_id}/${newsStatus}`, {});
-  }
-
   public getById(_id: string): Observable<News> {
-    return this.get(_id);
+    return this.get(`${_id}`);
   }
 
   getNews(pageSize: number, pageNumber: number, searchKey?: string): Observable<News[]> {
@@ -56,5 +40,17 @@ export class NewsService extends AbstractRestService {
 
   public count(searchKey?: string): Observable<number> {
     return this.get(`count?searchKey=${searchKey}`);
+  }
+
+  processNew(newObject: News): Observable<NewsViewModel> {
+    if (newObject.status === NewsStatusType.Deactivated) {
+      return this.patch(`${newObject._id}/publish`, {});
+    }
+
+    return this.patch(`${newObject._id}/deactivate`, {});
+  }
+
+  deleteNew(id: string) {
+    return this.delete(`${id}`);
   }
 }

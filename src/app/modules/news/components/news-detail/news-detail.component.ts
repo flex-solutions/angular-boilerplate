@@ -8,6 +8,8 @@ import { NewsRouteNames, Errors } from '../../constants/news.constant';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 import { calculateRelativeTime } from '../../../../utilities/methods.common';
+import { NewMessageConst } from '../../constants/message.const';
+import { ModuleRoute } from '../../../../shared/constants/const';
 
 @Component({
   selector: 'app-news-detail',
@@ -60,24 +62,30 @@ export class NewsDetailComponent implements OnInit {
 
   changeNewsStatus() {
     this.newsService
-    .updateStatus(this.newsModel._id, this.newsModel.status)
+    .processNew(this.newsModel)
     .subscribe(ret => {
-      let newStatusItem = ret;
-      if (newStatusItem.status != this.newsModel.status) {
+      const newStatusItem = ret;
+      if (newStatusItem.status !== this.newsModel.status) {
         const msg = this.getMessage(
           Errors.Change_Status_News_Success,
           this.newsModel.status.toString()
         );
         this.notificationService.showSuccess(msg);
-        this.newsModel = newStatusItem;
+        this.newsModel.status = newStatusItem.status;
       }
     });
   }
 
-  deleteNews(_id: string) {
-    this.newsService.remove(_id).subscribe(ret => {
-        const msg = this.getMessage(Errors.Delete_News_Success);
-        this.notificationService.showSuccess(msg);
+  deleteNews(newViewModel: News) {
+    const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newViewModel.title);
+    this.exDlg.openConfirm(confirmMsg).subscribe(result => {
+      if (result) {
+        const successMessage = this.translateService.translate(NewMessageConst.DeleteSuccessfullyNotification);
+        this.newsService.deleteNew(newViewModel._id).subscribe(res => {
+          this.notificationService.showSuccess(successMessage);
+          this.router.navigate([ModuleRoute.NEWS]);
+        });
+      }
     });
   }
 

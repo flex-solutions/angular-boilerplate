@@ -11,25 +11,27 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cms-vi",
+            "outputPath": "dist/cms-en",
             "aot": true,
-            "i18nFile": "src/assets/i18n/messages.vi-VN.xlf",
-            "i18nLocale": "vi",
+            "i18nFile": "src/assets/i18n/messages.en-US.xlf",
+            "i18nLocale": "en",
             "i18nFormat": "xlf",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.css", "src/customStyles.css","node_modules/dropify/dist/css/dropify.min.css"],
+            "styles": ["src/styles.css", "src/customStyles.css", "node_modules/dropify/dist/css/dropify.min.css", "src/assets/js/daterangepicker/daterangepicker.css"],
             "scripts": [
+              "src/assets/js/jquery.min.js",
               "node_modules/toastr/build/toastr.min.js",
               "src/assets/vendors/js/vendor.bundle.base.js",
               "src/assets/vendors/js/vendor.bundle.addons.js",
               "src/assets/js/off-canvas.js",
               "src/assets/js/hoverable-collapse.js",
               "src/assets/js/misc.js",
-              "src/assets/js/tooltips.js"
+              "src/assets/js/tooltips.js",
+              "src/assets/js/daterangepicker/daterangepicker.min.js"
             ]
           },
           "configurations": {

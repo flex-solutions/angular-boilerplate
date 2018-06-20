@@ -1,4 +1,4 @@
-import { NewsStatusType } from "../enums/news-type.enum";
+import { NewsStatusType } from '../enums/news-type.enum';
 
 class News {
     _id: string;
@@ -15,7 +15,7 @@ class News {
     create_by: string;
 
     getImageBase64() {
-        let base64 = atob(this.banner);
+        const base64 = atob(this.banner);
         return base64;
     }
 }
@@ -30,12 +30,12 @@ const NewsFields = {
     PUBLISHED_ON: 'published_on'
   };
 
-class NewViewModel extends News {
+class NewsViewModel extends News {
     create_date: string;
     publish_date: string;
     create_on: Date;
     published_on: Date;
 }
 
-export {News, NewsFields, NewViewModel}
+export {News, NewsFields, NewsViewModel};
 

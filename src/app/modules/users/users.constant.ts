@@ -13,7 +13,9 @@ const UserMessages = {
     EditUserSuccessfull: 'user-edit_user-notification-edit_user_successfully',
     DeleteUserMessage: 'user-detail-delete-message',
     ChangeUserGroupMessage: 'user-change-group-message',
-    ChangeUserGroupPlaceHolder: 'group-user-modal-search-place-holder'
+    ChangeUserGroupPlaceHolder: 'group-user-modal-search-place-holder',
+    ChangePasswordSuccessFully: 'change-password-notification-changed-successfully',
+    CurrentPasswordIsIncorrect: 'change-password-passowrd-incorect'
 };
 
 export { UserNavigationRoute, UserMessages };
