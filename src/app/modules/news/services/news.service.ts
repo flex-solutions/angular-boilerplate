@@ -43,7 +43,11 @@ export class NewsService extends AbstractRestService {
   }
 
   processNew(newObject: News): Observable<NewViewModel> {
-    return this.patch('', newObject);
+    if (newObject.status === NewsStatusType.Deactivated) {
+      return this.patch(`${newObject._id}/publish`, {});
+    }
+
+    return this.patch(`${newObject._id}/deactivate`, {});
   }
 
   deleteNew(id: string) {
