@@ -1,5 +1,3 @@
-import { UsersRoutingModule } from './modules/users/users-routing.module';
-import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permission-scheme-routing.module';
 import { IPubSubConfig, PubSubConfigService } from './shared/pubsub.client/config';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -13,12 +11,15 @@ import { i18nFactory } from './i18n.factory';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
 import { PubSubClientModule } from './shared/pubsub.client/pubsub-client.module';
 import { NotificationChannelFactory } from './shared/pubsub.client/core/factory';
-import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
 import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
+import { NewsModule } from './modules/news/news.module';
 import { UsersModule } from './modules/users/users.module';
+import { PromotionsModule } from './modules/promotions/promotions.module';
+import { CustomerManagementModule } from './modules/customers/customer.module';
+// import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,13 +30,13 @@ import { UsersModule } from './modules/users/users.module';
     SharedModule,
     AppRoutingModule,
     PubSubClientModule,
-    UserGroupsRoutingModule,
     UserGroupsModule,
     DialogModule,
-    PermissionSchemeModule,
-    PermissionSchemeRoutingModule,
     UsersModule,
-    UsersRoutingModule
+    PermissionSchemeModule,
+    NewsModule,
+    PromotionsModule,
+    CustomerManagementModule
   ],
   providers: [
     {

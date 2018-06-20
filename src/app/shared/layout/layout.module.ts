@@ -9,6 +9,9 @@ import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification-item/notification-item.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { HomeLayoutComponent } from './home-layout/home-layout.component';
+import { ChangePasswordComponent } from '../../modules/users/components/change-password/change-password.modal';
+import { EqualValidator } from '../../modules/users/directives/validate-equal.directive';
+import { UserService } from '../../modules/users/services/user.service';
 
 @NgModule({
   imports: [CommonModule, RouterModule],

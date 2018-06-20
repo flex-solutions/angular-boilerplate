@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeLayoutComponent,
-    canActivateChild: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [{
       path: 'users',
       loadChildren: 'app/modules/users/users.module#UsersModule', // Lazy loading users module
@@ -20,6 +20,18 @@ const routes: Routes = [
     {
       path: 'permission-schemes',
       loadChildren: 'app/modules/permission-scheme/permission-scheme.module#PermissionSchemeModule',
+    },
+    {
+      path: 'news',
+      loadChildren: 'app/modules/news/news.module#NewsModule', // Lazy loading views module
+    },
+    {
+      path: 'promotions',
+      loadChildren: 'app/modules/promotions/promotions.module#PromotionsModule',
+    },
+    {
+      path: 'customers',
+      loadChildren: 'app/modules/customers/customer.module#CustomerManagementModule',
     }]
   },
   {
@@ -29,7 +41,7 @@ const routes: Routes = [
       path: 'account',
       loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
     }]
-  }
+  },
 ];
 
 @NgModule({

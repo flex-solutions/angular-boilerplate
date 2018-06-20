@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
       <div class="row">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-2">
           <div class="dataTables_length">
             <label>
               <span i18n="@@dg-show-label">Show</span>
@@ -11,16 +11,19 @@
                 <option value="20">20</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
-              </select> <span i18n="@@dg-entries-label">entries</span></label>
+              </select>
+              <span i18n="@@dg-entries-label">entries</span>
+            </label>
           </div>
         </div>
-        <div class="col-sm-12 col-md-6">
-          <div id="order-listing_filter" class="dataTables_filter">
-            <label>
+        <div class="col-sm-12 col-md-10">
+          <div id="order-listing_filter" class="dataTables_filter d-flex flex-row-reverse">
+            <label *ngIf="!hideSearchInput">
               <input type="text" [(ngModel)]="searchKey" class="form-control" placeholder="{{searchLabel}}" aria-controls="order-listing"
                 (keydown)="keyDownFunction($event)">
               <i class="mdi mdi-table-search" (click)="submitFilter()"></i>
             </label>
+            <ng-content select=".dataTables_customfilter "></ng-content>
           </div>
         </div>
       </div>

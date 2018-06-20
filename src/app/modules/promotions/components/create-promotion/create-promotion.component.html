@@ -1,0 +1,61 @@
+<app-card title="{{cardTitle}}" subTitle="{{cardSubTitle}}">
+  <form id="promotionForm" #f="ngForm">
+    <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)" (validated)="onWizardValidated()">
+      <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" title="Promotion News">
+        <div class="row">
+          <div class="col col-md-6" style="min-height: 600">
+            <!-- Title field -->
+            <div class="form-group">
+              <label for="title" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-title_field">Title </label>
+              <label class="require">*</label>
+              <input id="title" class="form-control" (change)="onTitleChange($event)" [(ngModel)]="promotion.title" name='title' #title="ngModel" required 
+              i18n-placeholder="@@promotions-create_edit_promotion-input-title_place_holder" [ngClass]="{'has-error': (title.invalid && (title.dirty || title.touched)) || titleInvalid}">
+              <label id="title-error" class="error mt-2 text-danger" for="title" style="margin-left: 0;"
+                *ngIf="(title.invalid && (title.dirty || title.touched)) || titleInvalid">{{titleError}}</label>
+            </div>
+            <div class="form-group">
+              <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
+              <label class="require">*</label>
+              <app-dropify (onImageChange)="onFileChanged($event)" (errors)="onErrors($event)" height="400"
+                allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" "
+                (onFinishedInitialization) = "finishBannerComponent()" [image]="promotion.banner" ></app-dropify>
+              <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-banner_exceed_size"
+                *ngIf="banerInvalid">The banner size doesn't exceed 500kb</label>
+            </div>
+          </div>
+
+          <div class="col col-md-6" style="min-height: 600">
+            <div class="form-group">
+              <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-content_field">Content </label>
+              <label class="require">*</label>
+              <app-tinymce-editor editorHeight="350" elementId="promotionsEditor" [content]="promotion.content" (onBlur)="onTinyEditorBlur($event)" (onEditorContentChange)="onHtmlEditorChange($event)"
+              [hasError]="contentInvalid || isTinymceContentEmpty()" 
+              (onFinishedInitialization) = "finishContentComponent()"></app-tinymce-editor>
+              <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-require_content"
+                *ngIf="contentInvalid || isTinymceContentEmpty()">promotion-create_promotion-error-require_content</label>
+            </div>
+          </div>
+        </div>
+      </app-wizard-step>
+      <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers">
+        <p>COMING SOON</p>
+      </app-wizard-step>
+      <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Customer Target">
+        <p>COMING SOON</p>
+      </app-wizard-step>
+      <!--Extend wizard button. Current step = 2 mean that is last wizard step-->
+      <button *ngIf="currentStep===2 && !isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()"
+        i18n="@@wizard-wizard-actions-finish_start_button">Finish & Start</button>
+
+      <!--Create another checkbox-->
+      <div *ngIf="currentStep===2 && !isEditableMode" class="form-check form-check-flat afterCancelButton float-left" style="margin: 5px 0.5em;">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
+          <i class="input-helper"></i>
+          <label class="form-check-label" i18n="@@promotion-create_promotion-label-create_another_field"> Create another</label>
+        </label>
+      </div>
+
+    </app-wizard>
+  </form>
+</app-card>

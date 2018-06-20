@@ -3,6 +3,11 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
 
     <body>
+      <!-- Common -->
+      <trans-unit id="common-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -19,7 +24,8 @@
 
       <!-- Side Bar -->
       <trans-unit id="layout-sidebar-anchor-demo" datatype="html">
-        <source>Demo</source><target>Demo</target>
+        <source>Demo</source>
+        <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
         <source>User Management</source>
@@ -37,7 +43,28 @@
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
+        <source>News Management</source>
+        <target>News Management</target>
+      </trans-unit>
 
+      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
+        <source>Promotion Management</source>
+        <target>Promotion Management</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
+        <source>Promotion</source>
+        <target>Promotion</target>
+      </trans-unit>
+
+      <trans-unit id="layout-sidebar-anchor-crm-marketing" datatype="html">
+        <source>CRM - Marketing</source>
+        <target>CRM - Marketing</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-crm-marketing-customer-management" datatype="html">
+        <source>Customer Management</source>
+        <target>Customer Management</target>
+      </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -411,7 +438,7 @@
         <source>Change user group</source>
         <target>Change user group</target>
       </trans-unit>
-        <trans-unit id="user-detail-change-group-message" datatype="html">
+      <trans-unit id="user-detail-change-group-message" datatype="html">
         <source>Select other group for user "{{userdetail.username}}"</source>
         <target>Select other group for user "{{userdetail.username}}"</target>
       </trans-unit>
@@ -524,9 +551,9 @@
         <source>Create User Group</source>
         <target>Create User Group</target>
       </trans-unit>
-       <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
-      <source>Search by group name</source>
-      <target>Search by group name</target>
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Search by group name</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
         <source>Group Name</source>
@@ -561,11 +588,12 @@
         <target>Delete user group</target>
       </trans-unit>
       <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
-        <source>
-        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users".
+        Are you sure you want to deleted?
         </source>
         <target>
-        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+          The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you
+          sure you want to deleted?
         </target>
       </trans-unit>
       <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
@@ -701,7 +729,7 @@
         <source>Type a name and choose which the permissions to include in this scheme</source>
         <target>Type a name and choose which the permissions to include in this scheme</target>
       </trans-unit>
-         <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
         <source>Business</source>
         <target>Business</target>
       </trans-unit>
@@ -717,7 +745,7 @@
         <source>Insert</source>
         <target>Insert</target>
       </trans-unit>
-       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
         <source>Update</source>
         <target>Update</target>
       </trans-unit>
@@ -749,7 +777,7 @@
         <source>Remove</source>
         <target>Remove</target>
       </trans-unit>
-       <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
         <source>Actions</source>
         <target>Actions</target>
       </trans-unit>
@@ -814,8 +842,10 @@
         <target>Delete permission scheme</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-confirm" datatype="html">
-        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
-        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</target>
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        Are you sure you want to delete?</source>
+        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+          Are you sure you want to delete?</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-success" datatype="html">
         <source>Deleted scheme "{{0}}" successfully</source>
@@ -842,7 +872,7 @@
       </trans-unit>
       <!-- END Permission Schemes -->
 
-       <!-- Assign the user group to permission schemes -->
+      <!-- Assign the user group to permission schemes -->
       <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
         <source>Assign to the user groups</source>
         <target>Assign to the user groups</target>
@@ -910,6 +940,584 @@
         <target>Full Control</target>
       </trans-unit>
       <!--END Permission Scheme Detail Dialog-->
+
+      <!--START News Create Edit Page -->
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
+        <source>Create news</source>
+        <target>Create news </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-create_news_description" datatype="html">
+        <source>This page allows you creating a news and pulishing it if you want</source>
+        <target>This page allows you creating a news and pulishing it if you want</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-edit_news" datatype="html">
+        <source>Edit news</source>
+        <target>Edit news</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-h4-edit_news_description" datatype="html">
+        <source>This page allows you edit a news</source>
+        <target>This page allows you edit a news</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-title_place_holder" datatype="html">
+        <source>Enter title</source>
+        <target>Enter title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-banner_place_holder" datatype="html">
+        <source>Enter banner</source>
+        <target>Enter banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-input-content_place_holder" datatype="html">
+        <source>Enter content</source>
+        <target>Enter content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
+        <source>Submit & publish</source>
+        <target>Submit & publish</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-save" datatype="html">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-create_another_news" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
+        <source>Create news with title "{{0}}" successfull</source>
+        <target>Create news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
+        <source>Update news with title "{{0}}" successfull</source>
+        <target>Update news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
+        <source>Create and publish news with title "{{0}}" successfull</source>
+        <target>Create and publish news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-banner_require" datatype="html">
+        <source>Please provide the banner</source>
+        <target>Please provide the banner</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-label-content_require" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-file_size_error" datatype="html">
+        <source>The banner size must be lower or equal 500kb</source>
+        <target>The banner size must be lower or equal 500kb</target>
+      </trans-unit>
+      <!--END News Create Edit Page-->
+
+      <!-- START News Management -->
+      <trans-unit id="news_management-news_detail-news_information_tab" datatype="html">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_detail-news_statistic_tab" datatype="html">
+        <source>Statistic</source>
+        <target>Statistic</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_edit_button" datatype="html">
+        <source>Edit News</source>
+        <target>Edit News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_delete_text" datatype="html">
+        <source>Delete News</source>
+        <target>Delete News</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_publish_button" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivate_button" datatype="html">
+        <source>Deactivate</source>
+        <target>Deactivate</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_new_status" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_deactivated_status" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="news_management-news_details-news_published_status" datatype="html">
+        <source>Published</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="news_detail-delete_news-ok" datatype="html">
+        <source>Delete news successfully</source>
+        <target>Delete news successfully</target>
+      </trans-unit>
+      <trans-unit id="news_detail-change_status_news-ok" datatype="html">
+        <source>Update status {{0}} of news title successfully</source>
+        <target>Update status {{0}} of news title successfully</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_by" datatype="html">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-created_on" datatype="html">
+        <source>Created on</source>
+        <target>Created on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_by" datatype="html">
+        <source>Last edited by</source>
+        <target>Last edited by</target>
+      </trans-unit>
+      <trans-unit id="news_detail-last_edited_on" datatype="html">
+        <source>Last edited on</source>
+        <target>Last edited on</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by" datatype="html">
+        <source>Published by</source>
+        <target>Đăng tải bởi</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_on" datatype="html">
+        <source>Published on</source>
+        <target>Đăng tải vào</target>
+      </trans-unit>
+      <trans-unit id="news_detail-published_by_no_one" datatype="html">
+        <source>Published by no one</source>
+        <target>Chưa ai đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-not_published_yet" datatype="html">
+        <source>Not Published</source>
+        <target>Chưa đăng tải</target>
+      </trans-unit>
+      <trans-unit id="news_detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>View Count</target>
+      </trans-unit>
+      <!-- END News Management -->
+      <!--Wizard control-->
+      <trans-unit id="wizard-wizard-actions-previous_button" datatype="html">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-next_button" datatype="html">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-finish_button" datatype="html">
+        <source>Finish</source>
+        <target>Finish</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-cancel_button" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <!--END Wizard control-->
+      <!--Create edit promotion-->
+      <trans-unit id="promotions-create_promotion-app-card-promotions_title_field" datatype="html">
+        <source>Create Promotion</source>
+        <target>Create Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Delete Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+        <source>Promotion</source>
+        <target>Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
+        <source>This page allows you creating a promotion and starts it if you want</source>
+        <target>This page allows you creating a promotion and starts it if you want</target>
+      </trans-unit>
+      <trans-unit id="promotions-edit_promotion-app-card-promotions_title_field" datatype="html">
+        <source>Edit Promotion</source>
+        <target>Edit Promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-edit_promotion-app-card-promotions_subtitle_field" datatype="html">
+        <source>This page allows you editting a promotion</source>
+        <target>This page allows you editting a promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-promotions_title_field" datatype="html">
+        <source>Promotion News</source>
+        <target>Promotion News</target>
+      </trans-unit>
+      <trans-unit id="promotion-detail-view_count" datatype="html">
+        <source>View Count</source>
+        <target>View Count</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-title-dialog" datatype="html">
+        <source>Delete promotion news</source>
+        <target>Delete promotion news</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+        <source>Are you sure you want to delete promotion news "{{0}}"?</source>
+        <target>Are you sure you want to delete promotion news "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="promotion-delete-successfully-notification" datatype="html">
+        <source>Delete promotion news successfully</source>
+        <target>Delete promotion news successfully</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-banner_field" datatype="html">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-label-content_field" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-vouchers_title_field" datatype="html">
+        <source>Voucher</source>
+        <target>Voucher</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
+        <source>Customer Target</source>
+        <target>Customer Target</target>
+      </trans-unit>
+      <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
+        <source>Enter news title</source>
+        <target>Enter news title</target>
+      </trans-unit>
+      <trans-unit id="wizard-wizard-actions-finish_start_button" datatype="html">
+        <source>Finish & Start</source>
+        <target>Finish & Start</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-label-create_another_field" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-banner_exceed_size" datatype="html">
+        <source>The banner size doesn't exceed 500kb</source>
+        <target>The banner size doesn't exceed 500kb</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-message-create_success" datatype="html">
+        <source>A promotion is created successfully</source>
+        <target>A promotion is created successfully</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-message-create_start_success" datatype="html">
+        <source>A promotion is created and started successfully</source>
+        <target>A promotion is created and started successfully</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-message-update_success" datatype="html">
+        <source>Promotion is updated successfully</source>
+        <target>Promotion is updated successfully</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_title" datatype="html">
+        <source>Please provide the title</source>
+        <target>Please provide the title</target>
+      </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_content" datatype="html">
+        <source>Please provide the content</source>
+        <target>Please provide the content</target>
+      </trans-unit>
+      <!--END Create edit promotion-->
+      <!-- List news -->
+      <trans-unit id="list-news-menu-new-managements" datatype="html">
+        <source>News Management</source>
+        <target>News Management</target>
+      </trans-unit>
+      <trans-unit id="list-news-title-news" datatype="html">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="list-news-button-create-news" datatype="html">
+        <source>Create news</source>
+        <target>Create news</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-title" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-content" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-created-on" datatype="html">
+        <source>Created on</source>
+        <target>Created on</target>
+      </trans-unit>
+      <trans-unit id="list-news-th-published-on" datatype="html">
+        <source>Published on</source>
+        <target>Published on</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="list-news-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Search by title, content</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-new" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-deactivated" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="list-news-status-publish" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-publish" datatype="html">
+        <source>Publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-delete" datatype="html">
+        <source>Delete news</source>
+        <target>Delete news</target>
+      </trans-unit>
+      <trans-unit id="list-news-confirm-delete" datatype="html">
+        <source>Are you sure you want to delete news "{{0}}"?</source>
+        <target>Are you sure you want to delete news "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="list-news-notification-delete-successfully" datatype="html">
+        <source>Deleted news successfully</source>
+        <target>Deleted news successfully</target>
+      </trans-unit>
+
+      <!-- END List News -->
+      <!-- Start Change password -->
+      <trans-unit id="change-password-Title" datatype="html">
+        <source>Change Password</source>
+        <target>Change Password</target>
+      </trans-unit>
+      <trans-unit id="change-password-field-old-password" datatype="html">
+        <source>Old password</source>
+        <target>Old password</target>
+      </trans-unit>
+      <trans-unit id="change-password-field-new-password" datatype="html">
+        <source>New password</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="change-password-field-confirm-password" datatype="html">
+        <source>Confirm new password</source>
+        <target>Confirm new password</target>
+      </trans-unit>
+      <trans-unit id="change-password-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="change-password-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="change-password-old-password-required" datatype="html">
+        <source>Old password is mandatory</source>
+        <target>Old password is mandatory</target>
+      </trans-unit>
+      <trans-unit id="change-password-new-password-required" datatype="html">
+        <source>New password is mandatory</source>
+        <target>New password is mandatory</target>
+      </trans-unit>
+      <trans-unit id="change-password-confirm-password-required" datatype="html">
+        <source>Confirm new password is mandatory</source>
+        <target>Confirm new password is mandatory</target>
+      </trans-unit>
+      <trans-unit id="change-password-passowrd-incorect" datatype="html">
+        <source>Old password is incorrect</source>
+        <target>Old password is incorrect</target>
+      </trans-unit>
+      <trans-unit id="change-password-passowrd-must-diff-old" datatype="html">
+        <source>New password must differ from old password</source>
+        <target>New password must differ from old password</target>
+      </trans-unit>
+      <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
+        <source>New password confirmation must not differ from new password</source>
+        <target>New password confirmation must not differ from new password</target>
+      </trans-unit>
+      <trans-unit id="change-password-notice" datatype="html">
+        <source>Notice</source>
+        <target>Notice</target>
+      </trans-unit>
+      <trans-unit id="change-password-notification-changed-successfully" datatype="html">
+        <source>New password has been changed. Please use new password in the next login.</source>
+        <target>New password has been changed. Please use new password in the next login.</target>
+      </trans-unit>
+      <!-- END CHANGE PASSWORD -->
+      <!--List promotions-->
+      <trans-unit id="list-promotions-title-promtions" datatype="html">
+        <source>Promotions</source>
+        <target>Promotions</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-filter-placeholders" datatype="html">
+        <source>Search by title, content</source>
+        <target>Search by title, content</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-title" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-content" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-start-date" datatype="html">
+        <source>Start Date</source>
+        <target>Start Date</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-th-expỉre-date" datatype="html">
+        <source>Expire Date</source>
+        <target>Expire Date</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-actions" datatype="html">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-delete" datatype="html">
+        <source>Delete Promotion</source>
+        <target>Delete Promotion</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-start-promotion" datatype="html">
+        <source>Start</source>
+        <target>Start</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-btn-stop-promotion" datatype="html">
+        <source>Stop</source>
+        <target>Stop</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-new-promotion" datatype="html">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-deactived-promotion" datatype="html">
+        <source>Deactivated</source>
+        <target>Deactivated</target>
+      </trans-unit>
+      <trans-unit id="list-promotions-status-active-promotion" datatype="html">
+        <source>Active</source>
+        <target>Active</target>
+      </trans-unit>
+      <!--END List promotions-->
+
+      <!--Date time picker-->
+      <trans-unit id="date-range-picker_button_cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_button_apply" datatype="html">
+        <source>Apply</source>
+        <target>Apply</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_button_custom_range" datatype="html">
+        <source>Custom Range</source>
+        <target>Custom Range</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title_today" datatype="html">
+        <source>Today</source>
+        <target>Today</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title_yesterday" datatype="html">
+        <source>Yesterday</source>
+        <target>Yesterday</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-seven-days-ago" datatype="html">
+        <source>Last 7 Days</source>
+        <target>Last 7 Days</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-30-days-ago" datatype="html">
+        <source>Last 30 Days</source>
+        <target>Last 30 Days</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-current_month" datatype="html">
+        <source>This month</source>
+        <target>This month</target>
+      </trans-unit>
+      <trans-unit id="date-range-picker_title-previous_month" datatype="html">
+        <source>Last month</source>
+        <target>Last month</target>
+      </trans-unit>
+      <!--END Date time picker-->
+      <!--Start Customer Module-->
+      <trans-unit id="customers-list-tbl-title" datatype="html">
+        <source>Customers</source>
+        <target>Customers</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-btn-create" datatype="html">
+        <source>New customer</source>
+        <target>New customer</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-member-id" datatype="html">
+        <source>Member ID</source>
+        <target>Member ID</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-phone-number" datatype="html">
+        <source>Phone number</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-birthday" datatype="html">
+        <source>Birthday</source>
+        <target>Birthday</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex" datatype="html">
+        <source>Sex</source>
+        <target>Sex</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-address" datatype="html">
+        <source>Address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-customer-type" datatype="html">
+        <source>Customer type</source>
+        <target>Customer type</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-male" datatype="html">
+        <source>Male</source>
+        <target>Male</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-female" datatype="html">
+        <source>Female</source>
+        <target>Female</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-other" datatype="html">
+        <source>Other</source>
+        <target>Other</target>
+      </trans-unit>
+      <!--End Customer Module-->
     </body>
   </file>
 </xliff>
