@@ -5,7 +5,7 @@
         <span i18n="@@customers-tbl-btn-create">Create customer</span>
       </button>
     </div>
-    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
       <tr>
         <th i18n="@@customers-tbl-name">Name</th>
         <th i18n="@@customers-tbl-member-id">Member ID</th>

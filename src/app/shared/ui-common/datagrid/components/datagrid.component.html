@@ -18,7 +18,7 @@
         </div>
         <div class="col-sm-12 col-md-10">
           <div id="order-listing_filter" class="dataTables_filter d-flex flex-row-reverse">
-            <label>
+            <label *ngIf="!hideSearchInput">
               <input type="text" [(ngModel)]="searchKey" class="form-control" placeholder="{{searchLabel}}" aria-controls="order-listing"
                 (keydown)="keyDownFunction($event)">
               <i class="mdi mdi-table-search" (click)="submitFilter()"></i>

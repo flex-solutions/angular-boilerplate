@@ -23,6 +23,7 @@ export class DatagridComponent implements OnInit {
   @Output() pageChanged = new EventEmitter<IFilterChangedEvent>();
   @Input() totalItems: number;
   @Input() searchLabel = 'Search by...';
+  @Input() hideSearchInput = false;
   private _countFunction: (searchKey: string) => Observable<number>;
 
   previousText: string;
