@@ -35,21 +35,6 @@ export enum ErrorType {
 
 export class DropifyComponent implements AfterViewInit {
 
-    // Call when select file changed
-    @Output()
-    fileChanged = new EventEmitter<FileInfo>();
-
-    // Call when have an error occurs
-    @Output()
-    errors = new EventEmitter<ErrorType>();
-
-    // Call when user click remove file button
-    @Output()
-    fileRemoved = new EventEmitter();
-
-    @Output()
-    onFinishedInitialization = new EventEmitter();
-
     // A max file size
     @Input()
     maxFileSize: string;
@@ -82,26 +67,41 @@ export class DropifyComponent implements AfterViewInit {
     @Input()
     removeMessage: string;
 
-    get image() : any {
+    get image(): any {
         return this._image;
     }
     private _image: any;
     @Input('image')
-    set image(value : any) {
+    set image(value: any) {
         this._image = value;
         if (isNil(this._image) || this._image === '') {
             return;
         }
-        const base64 = atob(this._image);
-        if (this.dropify)
-        {
-            this.dropify.showLoader();
-            this.dropify.setPreview(true, base64);
+        try {
+            const base64 = atob(this._image);
+            if (this.dropify) {
+                this.dropify.showLoader();
+                this.dropify.setPreview(true, base64);
+            }
+        }
+        catch {
+            // not base 64 type, do nothing
         }
     }
 
+    @Output()
+    onImageChange = new EventEmitter();
+
+    // Call when have an error occurs
+    @Output()
+    errors = new EventEmitter<ErrorType>();
+
+    @Output()
+    onFinishedInitialization = new EventEmitter();
+
     // A dropify instance
     private dropify: any;
+    private maxSize: number = 0;
 
     constructor() {
     }
@@ -114,7 +114,13 @@ export class DropifyComponent implements AfterViewInit {
         const options = this.buildOptions();
         const drEvent = $('.dropify').dropify(options);
         this.dropify = drEvent.data('dropify');
-
+        const length = this.dropify.settings.maxFileSize.length
+        const lastCharacter = this.dropify.settings.maxFileSize[length - 1]
+        this.maxSize = parseInt(this.dropify.settings.maxFileSize)
+        switch (lastCharacter.toUpperCase()) {
+            case 'K': this.maxSize *= 1000; break;
+            case 'M': this.maxSize *= 1000000; break;
+        }
         this.onFinishedInitialization.emit();
 
         // Register droptify error occurs
@@ -137,7 +143,13 @@ export class DropifyComponent implements AfterViewInit {
             this.raiseError(ErrorType.ImageFormat);
         });
         drEvent.on('dropify.afterClear', (event, element) => {
-            this.fileRemoved.emit();
+            const fileInfo = {
+                content: "",
+                fileName: "",
+                type: "",
+                size: ""
+            };
+            this.onImageChange.emit(fileInfo);
         });
     }
 
@@ -151,6 +163,16 @@ export class DropifyComponent implements AfterViewInit {
 
         // Convert to base64
         if (files && files.length) {
+            if (this.maxSize <= files[0].size) {
+                const fileInfo = {
+                    content: "",
+                    fileName: "",
+                    type: "",
+                    size: ""
+                };
+                this.onImageChange.emit(fileInfo);
+                return;
+            }
             readBase64(files[0]).then(data => {
                 if (data) {
                     const fileInfo = {
@@ -159,7 +181,7 @@ export class DropifyComponent implements AfterViewInit {
                         type: files[0].type,
                         size: files[0].size
                     };
-                    this.fileChanged.emit(fileInfo);
+                    this.onImageChange.emit(fileInfo);
                 }
             });
         }
