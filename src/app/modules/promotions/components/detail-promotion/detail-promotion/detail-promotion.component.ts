@@ -37,7 +37,7 @@ export class DetailPromotionComponent implements OnInit {
 
   ngOnInit() {
     this.promotion = new Promotion();
-    this.wizardComponent.isEnableBackButton = false;
+    this.wizardComponent.isEnableCancelButton = false;
     this.activeRoute.params.subscribe((params: Params) => {
       const promotionId = params['id'] ? params['id'] : null;
       this.loadPromotion(promotionId);
