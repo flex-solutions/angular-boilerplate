@@ -39,4 +39,8 @@ export class SidebarComponent implements OnInit {
   navigateToPromotionPage() {
     this.router.navigate([ModuleRoute.PROMOTION]);
   }
+
+  navigateToCustomerManagementPage() {
+    this.router.navigate([ModuleRoute.CUSTOMER]);
+  }
 }

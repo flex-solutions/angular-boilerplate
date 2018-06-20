@@ -19,7 +19,8 @@
 
       <!-- Side Bar -->
       <trans-unit id="layout-sidebar-anchor-demo" datatype="html">
-        <source>Demo</source><target>Demo</target>
+        <source>Demo</source>
+        <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
         <source>User Management</source>
@@ -49,6 +50,15 @@
       <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
         <source>Promotion</source>
         <target>Promotion</target>
+      </trans-unit>
+
+      <trans-unit id="layout-sidebar-anchor-crm-marketing" datatype="html">
+        <source>CRM - Marketing</source>
+        <target>CRM - Marketing</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-crm-marketing-customer-management" datatype="html">
+        <source>Customer Management</source>
+        <target>Customer Management</target>
       </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -423,7 +433,7 @@
         <source>Change user group</source>
         <target>Change user group</target>
       </trans-unit>
-        <trans-unit id="user-detail-change-group-message" datatype="html">
+      <trans-unit id="user-detail-change-group-message" datatype="html">
         <source>Select other group for user "{{userdetail.username}}"</source>
         <target>Select other group for user "{{userdetail.username}}"</target>
       </trans-unit>
@@ -536,9 +546,9 @@
         <source>Create User Group</source>
         <target>Create User Group</target>
       </trans-unit>
-       <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
-      <source>Search by group name</source>
-      <target>Search by group name</target>
+      <trans-unit id="user_groups-list-tbl-search-label" datatype="html">
+        <source>Search by group name</source>
+        <target>Search by group name</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-group-name" datatype="html">
         <source>Group Name</source>
@@ -573,11 +583,12 @@
         <target>Delete user group</target>
       </trans-unit>
       <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
-        <source>
-        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users".
+        Are you sure you want to deleted?
         </source>
         <target>
-        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+          The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you
+          sure you want to deleted?
         </target>
       </trans-unit>
       <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
@@ -713,7 +724,7 @@
         <source>Type a name and choose which the permissions to include in this scheme</source>
         <target>Type a name and choose which the permissions to include in this scheme</target>
       </trans-unit>
-         <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-bussiness" datatype="html">
         <source>Business</source>
         <target>Business</target>
       </trans-unit>
@@ -729,7 +740,7 @@
         <source>Insert</source>
         <target>Insert</target>
       </trans-unit>
-       <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-update" datatype="html">
         <source>Update</source>
         <target>Update</target>
       </trans-unit>
@@ -761,7 +772,7 @@
         <source>Remove</source>
         <target>Remove</target>
       </trans-unit>
-       <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
+      <trans-unit id="permissiom-scheme-create-p-actions" datatype="html">
         <source>Actions</source>
         <target>Actions</target>
       </trans-unit>
@@ -826,8 +837,10 @@
         <target>Delete permission scheme</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-confirm" datatype="html">
-        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
-        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</target>
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        Are you sure you want to delete?</source>
+        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+          Are you sure you want to delete?</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-success" datatype="html">
         <source>Deleted scheme "{{0}}" successfully</source>
@@ -854,7 +867,7 @@
       </trans-unit>
       <!-- END Permission Schemes -->
 
-       <!-- Assign the user group to permission schemes -->
+      <!-- Assign the user group to permission schemes -->
       <trans-unit id="permission-scheme-assign-permission-h5-title" datatype="html">
         <source>Assign to the user groups</source>
         <target>Assign to the user groups</target>
@@ -1055,7 +1068,7 @@
         <source>Delete news successfully</source>
         <target>Delete news successfully</target>
       </trans-unit>
-        <trans-unit id="news_detail-change_status_news-ok" datatype="html">
+      <trans-unit id="news_detail-change_status_news-ok" datatype="html">
         <source>Update status {{0}} of news title successfully</source>
         <target>Update status {{0}} of news title successfully</target>
       </trans-unit>
@@ -1119,11 +1132,11 @@
         <source>Create Promotion</source>
         <target>Create Promotion</target>
       </trans-unit>
-       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+      <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
         <source>Delete Promotion</source>
         <target>Delete Promotion</target>
       </trans-unit>
-            <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+      <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
         <source>Promotion</source>
         <target>Promotion</target>
       </trans-unit>
@@ -1143,20 +1156,20 @@
         <source>Promotion News</source>
         <target>Promotion News</target>
       </trans-unit>
-       <trans-unit id="promotion-detail-view_count" datatype="html">
+      <trans-unit id="promotion-detail-view_count" datatype="html">
         <source>View Count</source>
         <target>View Count</target>
       </trans-unit>
-          <trans-unit id="promotion-delete-title-dialog" datatype="html">
+      <trans-unit id="promotion-delete-title-dialog" datatype="html">
         <source>Delete promotion news</source>
         <target>Delete promotion news</target>
       </trans-unit>
-       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+      <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
         <source>Are you sure you want to delete promotion news "{{0}}"?</source>
         <target>Are you sure you want to delete promotion news "{{0}}"?</target>
       </trans-unit>
-          <trans-unit id="promotion-delete-successfully-notification" datatype="html">
-         <source>Delete promotion news successfully</source>
+      <trans-unit id="promotion-delete-successfully-notification" datatype="html">
+        <source>Delete promotion news successfully</source>
         <target>Delete promotion news successfully</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
@@ -1216,7 +1229,7 @@
         <target>Please provide the content</target>
       </trans-unit>
       <!--END Create edit promotion-->
-       <!-- List news -->
+      <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">
         <source>News Management</source>
         <target>News Management</target>
@@ -1225,11 +1238,11 @@
         <source>News</source>
         <target>News</target>
       </trans-unit>
-       <trans-unit id="list-news-button-create-news" datatype="html">
+      <trans-unit id="list-news-button-create-news" datatype="html">
         <source>Create news</source>
         <target>Create news</target>
       </trans-unit>
-       <trans-unit id="list-news-th-title" datatype="html">
+      <trans-unit id="list-news-th-title" datatype="html">
         <source>Title</source>
         <target>Title</target>
       </trans-unit>
@@ -1265,7 +1278,7 @@
         <source>Deactivated</source>
         <target>Deactivated</target>
       </trans-unit>
-     <trans-unit id="list-news-status-publish" datatype="html">
+      <trans-unit id="list-news-status-publish" datatype="html">
         <source>Publish</source>
         <target>Publish</target>
       </trans-unit>
@@ -1277,30 +1290,30 @@
         <source>Edit</source>
         <target>Edit</target>
       </trans-unit>
-       <trans-unit id="list-news-btn-delete" datatype="html">
+      <trans-unit id="list-news-btn-delete" datatype="html">
         <source>Delete news</source>
         <target>Delete news</target>
       </trans-unit>
-        <trans-unit id="list-news-confirm-delete" datatype="html">
+      <trans-unit id="list-news-confirm-delete" datatype="html">
         <source>Are you sure you want to delete news "{{0}}"?</source>
         <target>Are you sure you want to delete news "{{0}}"?</target>
       </trans-unit>
-        <trans-unit id="list-news-notification-delete-successfully" datatype="html">
+      <trans-unit id="list-news-notification-delete-successfully" datatype="html">
         <source>Deleted news successfully</source>
         <target>Deleted news successfully</target>
       </trans-unit>
-      
+
       <!-- END List News -->
-       <!-- Start Change password -->
-       <trans-unit id="change-password-Title" datatype="html">
+      <!-- Start Change password -->
+      <trans-unit id="change-password-Title" datatype="html">
         <source>Change Password</source>
         <target>Change Password</target>
       </trans-unit>
-        <trans-unit id="change-password-field-old-password" datatype="html">
+      <trans-unit id="change-password-field-old-password" datatype="html">
         <source>Old password</source>
         <target>Old password</target>
       </trans-unit>
-         <trans-unit id="change-password-field-new-password" datatype="html">
+      <trans-unit id="change-password-field-new-password" datatype="html">
         <source>New password</source>
         <target>New password</target>
       </trans-unit>
@@ -1308,27 +1321,27 @@
         <source>Confirm new password</source>
         <target>Confirm new password</target>
       </trans-unit>
-       <trans-unit id="change-password-button-submit" datatype="html">
+      <trans-unit id="change-password-button-submit" datatype="html">
         <source>Submit</source>
         <target>Submit</target>
       </trans-unit>
-       <trans-unit id="change-password-button-cancel" datatype="html">
+      <trans-unit id="change-password-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Cancel</target>
       </trans-unit>
-         <trans-unit id="change-password-old-password-required" datatype="html">
+      <trans-unit id="change-password-old-password-required" datatype="html">
         <source>Old password is mandatory</source>
         <target>Old password is mandatory</target>
       </trans-unit>
-        <trans-unit id="change-password-new-password-required" datatype="html">
+      <trans-unit id="change-password-new-password-required" datatype="html">
         <source>New password is mandatory</source>
         <target>New password is mandatory</target>
       </trans-unit>
-         <trans-unit id="change-password-confirm-password-required" datatype="html">
+      <trans-unit id="change-password-confirm-password-required" datatype="html">
         <source>Confirm new password is mandatory</source>
         <target>Confirm new password is mandatory</target>
       </trans-unit>
-     <trans-unit id="change-password-passowrd-incorect" datatype="html">
+      <trans-unit id="change-password-passowrd-incorect" datatype="html">
         <source>Old password is incorrect</source>
         <target>Old password is incorrect</target>
       </trans-unit>
@@ -1336,11 +1349,11 @@
         <source>New password must differ from old password</source>
         <target>New password must differ from old password</target>
       </trans-unit>
-        <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
+      <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
         <source>New password confirmation must not differ from new password</source>
         <target>New password confirmation must not differ from new password</target>
       </trans-unit>
-        <trans-unit id="change-password-notice" datatype="html">
+      <trans-unit id="change-password-notice" datatype="html">
         <source>Notice</source>
         <target>Notice</target>
       </trans-unit>

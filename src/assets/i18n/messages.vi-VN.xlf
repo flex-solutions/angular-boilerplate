@@ -51,6 +51,15 @@
         <source>Promotion</source>
         <target>Khuyến mãi</target>
       </trans-unit>
+
+      <trans-unit id="layout-sidebar-anchor-crm-marketing" datatype="html">
+        <source>CRM - Marketing</source>
+        <target>CRM - Marketing</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-crm-marketing-customer-management" datatype="html">
+        <source>Customer Management</source>
+        <target>Quản Lý Khách Hàng</target>
+      </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -983,7 +992,7 @@
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>
-        <target>Tạo và đăng tải thành công tin tức "{{0}}"  </target>
+        <target>Tạo và đăng tải thành công tin tức "{{0}}" </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
         <source>Please provide the title</source>
@@ -1109,11 +1118,11 @@
         <source>Create Promotion</source>
         <target>Tạo khuyến mãi</target>
       </trans-unit>
-       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+      <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
         <source>Delete Promotion</source>
         <target>Xoá khuyến mãi</target>
       </trans-unit>
-       <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+      <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
         <source>Promotion</source>
         <target>Khuyến mãi</target>
       </trans-unit>
@@ -1141,12 +1150,12 @@
         <source>Delete promotion news</source>
         <target>Xóa tin tức khuyến mãi</target>
       </trans-unit>
-       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+      <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
         <source>Are you sure you want to delete promotion news "{{0}}"?</source>
         <target>Bạn có chắc muốn xóa tin tức khuyến mãi "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="promotion-delete-successfully-notification" datatype="html">
-         <source>Delete promotion news successfully</source>
+        <source>Delete promotion news successfully</source>
         <target>Xoá tin tức khuyến mãi thành công</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
@@ -1215,11 +1224,11 @@
         <source>News</source>
         <target>Tin Tức</target>
       </trans-unit>
-       <trans-unit id="list-news-button-create-news" datatype="html">
+      <trans-unit id="list-news-button-create-news" datatype="html">
         <source>Create news</source>
         <target>Tạo tin tức</target>
       </trans-unit>
-       <trans-unit id="list-news-th-title" datatype="html">
+      <trans-unit id="list-news-th-title" datatype="html">
         <source>Title</source>
         <target>Tiêu đề</target>
       </trans-unit>
@@ -1255,11 +1264,11 @@
         <source>Deactivated</source>
         <target>Đã vô hiệu hóa</target>
       </trans-unit>
-         <trans-unit id="list-news-status-publish" datatype="html">
+      <trans-unit id="list-news-status-publish" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
-     <trans-unit id="list-news-btn-publishs" datatype="html">
+      <trans-unit id="list-news-btn-publishs" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
@@ -1267,29 +1276,29 @@
         <source>Edit</source>
         <target>Sửa</target>
       </trans-unit>
-        <trans-unit id="list-news-btn-delete" datatype="html">
+      <trans-unit id="list-news-btn-delete" datatype="html">
         <source>Delete news</source>
         <target>Xoá bản tin </target>
       </trans-unit>
-        <trans-unit id="list-news-confirm-delete" datatype="html">
+      <trans-unit id="list-news-confirm-delete" datatype="html">
         <source>Are you sure you want to delete news "{{0}}"?</source>
         <target>Bạn có chắc muốn xóa tin tức có tiêu đề "{{0}}"?</target>
       </trans-unit>
-        <trans-unit id="list-news-notification-delete-successfully" datatype="html">
+      <trans-unit id="list-news-notification-delete-successfully" datatype="html">
         <source>Deleted news successfully</source>
         <target>Xóa tin tức thành công </target>
       </trans-unit>
       <!-- END List News -->
-       <!-- Start Change password -->
-       <trans-unit id="change-password-Title" datatype="html">
+      <!-- Start Change password -->
+      <trans-unit id="change-password-Title" datatype="html">
         <source>Change Password</source>
         <target>Đổi Mật Khẩu</target>
       </trans-unit>
-        <trans-unit id="change-password-field-old-password" datatype="html">
+      <trans-unit id="change-password-field-old-password" datatype="html">
         <source>Old password</source>
         <target>Mật khẩu cũ</target>
       </trans-unit>
-         <trans-unit id="change-password-field-new-password" datatype="html">
+      <trans-unit id="change-password-field-new-password" datatype="html">
         <source>New password</source>
         <target>Mật khẩu mới</target>
       </trans-unit>
@@ -1297,27 +1306,27 @@
         <source>Confirm new password</source>
         <target>Xác nhận mật khẩu mới</target>
       </trans-unit>
-       <trans-unit id="change-password-button-submit" datatype="html">
+      <trans-unit id="change-password-button-submit" datatype="html">
         <source>Submit</source>
         <target>Yêu Cầu Đổi</target>
       </trans-unit>
-       <trans-unit id="change-password-button-cancel" datatype="html">
+      <trans-unit id="change-password-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Hủy</target>
       </trans-unit>
-         <trans-unit id="change-password-old-password-required" datatype="html">
+      <trans-unit id="change-password-old-password-required" datatype="html">
         <source>Old password is mandatory</source>
         <target>Vui lòng nhập mật khẩu cũ</target>
       </trans-unit>
-        <trans-unit id="change-password-new-password-required" datatype="html">
+      <trans-unit id="change-password-new-password-required" datatype="html">
         <source>New password is mandatory</source>
         <target>Vui lòng nhập mật khẩu mới</target>
       </trans-unit>
-         <trans-unit id="change-password-confirm-password-required" datatype="html">
+      <trans-unit id="change-password-confirm-password-required" datatype="html">
         <source>Confirm new password is mandatory</source>
         <target>Vui lòng nhập xác nhận mật khẩu mới</target>
       </trans-unit>
-     <trans-unit id="change-password-passowrd-incorect" datatype="html">
+      <trans-unit id="change-password-passowrd-incorect" datatype="html">
         <source>Old password is incorrect</source>
         <target>Mật khẩu cũ không chính xác</target>
       </trans-unit>
@@ -1325,11 +1334,11 @@
         <source>New password must differ from old password</source>
         <target>Mật khẩu mới phải khác mật khẩu cũ</target>
       </trans-unit>
-        <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
+      <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
         <source>New password confirmation must not differ from new password</source>
         <target>Xác nhận mật khẩu mới không giống mật khẩu mới</target>
       </trans-unit>
-        <trans-unit id="change-password-notice" datatype="html">
+      <trans-unit id="change-password-notice" datatype="html">
         <source>Notice</source>
         <target>Thông Báo</target>
       </trans-unit>
