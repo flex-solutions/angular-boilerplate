@@ -6,6 +6,8 @@ import { ChangePasswordModel } from '../../../../shared/models/user.model';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { UserMessages } from '../../users.constant';
+import { ValidateResult } from '../../../../shared/models/validate-model.base';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-change-password',
@@ -38,16 +40,25 @@ export class ChangePasswordComponent extends DialogComponent implements OnInit {
   }
 
   submit() {
-    this.service.changePassword(this.model).subscribe((data) => {
-      if (data === true) {
+    this.service.isPasswordCorrect(this.model).subscribe((data) => {
+      const dataResult = data as ValidateResult;
+      if (isNullOrUndefined(dataResult)) {
+        return;
+      }
+
+      // validate the current password is correct or not.
+      // if not show the error message.
+      if (!dataResult.is_valid) {
+        this.currentError = dataResult.error_message;
+        return;
+      }
+
+      this.service.changePassword(this.model).subscribe(() => {
         this.currentError = '';
         this.notificationService.showSuccess(this.translateService.translate(UserMessages.ChangePasswordSuccessFully));
         this.result = true;
         this.dialogResult();
-      } else {
-        this.currentError = this.translateService.translate(UserMessages.CurrentPasswordIsIncorrect);
-        return;
-      }
+      });
     });
   }
 }
