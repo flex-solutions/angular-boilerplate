@@ -1,8 +1,11 @@
-import { User } from './../../../shared/models/user.model';
+import { User, ChangePasswordModel } from './../../../shared/models/user.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { of, Observable } from 'rxjs';
 import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
+import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { GroupUserModalComponent } from '../components/group-user/group-user-modal';
+import { AuthenticationTokenHelper } from '../../../utilities/authentication-token';
 
 @Injectable()
 export class UserService extends AbstractRestService {
@@ -63,5 +66,9 @@ export class UserService extends AbstractRestService {
 
   countUsersByGroupName(groupName: string, searchKey?: string): Observable<number> {
     return this.get(`getUsersByGroupName/${groupName}/count?searchKey=${searchKey}`);
+  }
+
+  changePassword(model: ChangePasswordModel) {
+    return this.patch(`changepassword`, model);
   }
 }

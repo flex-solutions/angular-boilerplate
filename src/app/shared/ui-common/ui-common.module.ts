@@ -1,3 +1,7 @@
+import { DateRangePickerComponent } from './datepicker/date-range-picker/date-range-picker.component';
+import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
+import { WizardComponent } from './wizard/wizard/wizard.component';
+import { DropifyComponent } from './dropify/dropify.component';
 import { SearchTextboxComponent } from './search-textbox/search-textbox.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,18 +13,34 @@ import { DatagridModule } from './datagrid/datagrid.module';
 import { CardComponent } from './card/card.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { FormsModule } from '@angular/forms';
+import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.component';
+import { DatePickerComponent } from './datepicker/date-picker/date-picker.component';
+import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-check-boxes.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
   exports: [
     LoaderComponent, CardComponent,
-    SearchTextboxComponent,
-    DialogModule, DatagridModule, PaginationModule
+    SearchTextboxComponent, TynimceEditorComponent,
+    DialogModule, DatagridModule, PaginationModule,
+    DropifyComponent,
+    WizardComponent,
+    WizardStepComponent,
+    DateRangePickerComponent,
+    DatePickerComponent,
+    DropDownCheckBoxesComponent
   ],
   declarations: [
     LoaderComponent,
     CardComponent,
-    SearchTextboxComponent
+    SearchTextboxComponent,
+    TynimceEditorComponent,
+    DropifyComponent,
+    WizardComponent,
+    WizardStepComponent,
+    DateRangePickerComponent,
+    DatePickerComponent,
+    DropDownCheckBoxesComponent
   ],
   providers: [
     LoaderService

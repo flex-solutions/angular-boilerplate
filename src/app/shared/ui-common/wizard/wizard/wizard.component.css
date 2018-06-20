@@ -1,0 +1,12 @@
+.wizard > .actions > button {
+  margin: 0 0.5em;
+  float: left;
+}
+
+.unselected {
+  opacity: 0.4;
+}
+
+.wizard > .content {
+  background: #fff;
+}

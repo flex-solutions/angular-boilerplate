@@ -12,6 +12,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { UsersComponent } from './components/users/users.component';
 import { GroupUserModalComponent } from './components/group-user/group-user-modal';
 import { BranchService } from './services/branch.service';
+import { ChangePasswordComponent } from './components/change-password/change-password.modal';
+import { comparisonDirectives } from './directives';
 
 @NgModule({
   imports: [CommonModule, UsersRoutingModule, FormsModule, ReactiveFormsModule, UICommonModule],
@@ -21,8 +23,11 @@ import { BranchService } from './services/branch.service';
     EditUserComponent,
     UsersComponent,
     GroupUserModalComponent,
-    ...UserModulePipes],
+    ChangePasswordComponent,
+    ...UserModulePipes,
+    ...comparisonDirectives],
   providers: [UserService, BranchService],
-  entryComponents: [GroupUserModalComponent]
+  entryComponents: [GroupUserModalComponent, ChangePasswordComponent],
+  exports: [ChangePasswordComponent]
 })
 export class UsersModule { }
