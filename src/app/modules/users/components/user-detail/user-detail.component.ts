@@ -41,10 +41,10 @@ export class UserDetailComponent implements OnInit {
     if (userId !== null) {
       this.userService.getUserById(userId).subscribe(
         user => {
-          this.userdetail = user[0];
+          this.userdetail = user;
           this.groupName = this.userdetail.userGroup.name;
 
-          this.transferData.user = user[0];
+          this.transferData.user = this.userdetail;
         },
         () => {
           this.goBack();

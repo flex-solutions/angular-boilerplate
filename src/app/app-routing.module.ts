@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeLayoutComponent,
-    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [{
       path: 'users',
       loadChildren: 'app/modules/users/users.module#UsersModule', // Lazy loading users module

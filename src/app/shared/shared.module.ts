@@ -1,4 +1,4 @@
-import { PubSubClientModule } from './pubsub.client/pubsub-client.module';
+import { CanUpdateDirective } from './guards/directive';
 import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from './layout/layout.module';
@@ -25,7 +25,7 @@ import { ForbiddenHandler } from './services/forbidden-handler.service';
     BrowserNotificationService,
     ForbiddenHandler
   ],
-  declarations: []
+  declarations: [ CanUpdateDirective ]
 })
 export class SharedModule {
   static injector: Injector;
