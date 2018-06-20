@@ -1,5 +1,3 @@
-import { UsersRoutingModule } from './modules/users/users-routing.module';
-import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permission-scheme-routing.module';
 import { IPubSubConfig, PubSubConfigService } from './shared/pubsub.client/config';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -18,7 +16,6 @@ import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
-import { AuthGuard } from './shared/guards/auth-guard';
 import { NewsModule } from './modules/news/news.module';
 import { NewsRoutingModule } from './modules/news/news-routing.module';
 import { UsersModule } from './modules/users/users.module';
