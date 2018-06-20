@@ -1,7 +1,6 @@
 import { isNil } from 'ramda';
-import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { readBase64 } from '../../../utilities/ convert-image-to-base64';
-
+import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef, SimpleChange } from '@angular/core';
+import { readBase64 } from '../../../utilities/convert-image-to-base64';
 
 declare var $: any;
 
@@ -48,6 +47,9 @@ export class DropifyComponent implements AfterViewInit {
     @Output()
     fileRemoved = new EventEmitter();
 
+    @Output()
+    onFinishedInitialization = new EventEmitter();
+
     // A max file size
     @Input()
     maxFileSize: string;
@@ -80,6 +82,24 @@ export class DropifyComponent implements AfterViewInit {
     @Input()
     removeMessage: string;
 
+    get image() : any {
+        return this._image;
+    }
+    private _image: any;
+    @Input('image')
+    set image(value : any) {
+        this._image = value;
+        if (isNil(this._image) || this._image === '') {
+            return;
+        }
+        const base64 = atob(this._image);
+        if (this.dropify)
+        {
+            this.dropify.showLoader();
+            this.dropify.setPreview(true, base64);
+        }
+    }
+
     // A dropify instance
     private dropify: any;
 
@@ -90,42 +110,39 @@ export class DropifyComponent implements AfterViewInit {
         this.initializeDropify();
     }
 
-    setDefaultContent(content) {
-        if (isNil(content) || content === '') {
-            return;
-        }
-        const base64 = atob(content);
-        this.dropify.showLoader();
-        this.dropify.setPreview(true, base64);
-    }
-
     initializeDropify() {
         const options = this.buildOptions();
         const drEvent = $('.dropify').dropify(options);
         this.dropify = drEvent.data('dropify');
 
+        this.onFinishedInitialization.emit();
+
         // Register droptify error occurs
         drEvent.on('dropify.error.fileSize', (event, element) => {
-            this.errors.emit(ErrorType.FileSize);
+            this.raiseError(ErrorType.FileSize);
         });
         drEvent.on('dropify.error.minWidth', (event, element) => {
-            this.errors.emit(ErrorType.MinWidth);
+            this.raiseError(ErrorType.MinWidth);
         });
         drEvent.on('dropify.error.maxWidth', (event, element) => {
-            this.errors.emit(ErrorType.MaxWidth);
+            this.raiseError(ErrorType.MaxWidth);
         });
         drEvent.on('dropify.error.minHeight', (event, element) => {
-            this.errors.emit(ErrorType.MinHeight);
+            this.raiseError(ErrorType.MinHeight);
         });
         drEvent.on('dropify.error.maxHeight', (event, element) => {
-            this.errors.emit(ErrorType.MaxHeight);
+            this.raiseError(ErrorType.MaxHeight);
         });
         drEvent.on('dropify.error.imageFormat', (event, element) => {
-            this.errors.emit(ErrorType.ImageFormat);
+            this.raiseError(ErrorType.ImageFormat);
         });
         drEvent.on('dropify.afterClear', (event, element) => {
             this.fileRemoved.emit();
         });
+    }
+
+    raiseError(errorType: ErrorType) {
+        this.errors.emit(errorType);
     }
 
     onChanged($event) {

@@ -1,35 +1,39 @@
+
 import { ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { isNullOrUndefined } from 'util';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
-import { NewsErrors } from '../../errors/NewsErrors';
+import { Errors } from '../../constants/news.constant';
 
-const TITLE_CREATE_NEWS = 'news-news-h4-create_news';
-const DESCRIPTION_CREATE_NEWS = 'news-create_edit_news-h4-create_news_description';
-const TITLE_EDIT_NEWS = 'news-create_edit_news-h4-edit_news';
-const DESCRIPTION_EDIT_NEWS = 'news-create_edit_news-h4-edit_news_description';
+const TITLE_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news';
+const DESCRIPTION_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news_description';
+const TITLE_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news';
+const DESCRIPTION_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news_description';
 @Component({
   moduleId: module.id,
   selector: 'app-create-edit-news',
   templateUrl: './create-edit-news.component.html',
   styleUrls: ['./create-edit-news.component.css']
 })
-export class CreateEditNewsComponent extends AbstractFormComponent implements OnInit {
-  isEdit = false;
-  isPublish = false;
-  isCreateAnother = false;
-  isBannerError = false;
-  raiseChangeForError = false;
+export class CreateEditNewsComponent extends AbstractFormComponent {
+  isEdit: boolean = false;
+  isPublish: boolean = false;
+  isCreateAnother: boolean = false;
+  isBannerError: boolean = false;
+  raiseChangeForError: boolean = false;
   rawContent: String;
-  isBlurEditor = false;
+  isBlurEditor: boolean = false;
+  isFinishedBannerComponent: boolean = false;
+  isFinishedContentComponent:boolean = false;
+
   news: News = new News();
   newsId: string;
   cardTitle: string;
@@ -57,28 +61,32 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     this.activeRoute.params.subscribe((params: Params) => {
       this.newsId = params['id'] ? params['id'] : '';
       this.isEdit = params['id'] ? true : false;
-      this.initForm();
+      if (this.isEdit) {
+        this.cardTitle = this.translateService.translate(TITLE_EDIT_NEWS);
+        this.cardDescription = this.translateService.translate(DESCRIPTION_EDIT_NEWS);
+      } else {
+        this.cardTitle = this.translateService.translate(TITLE_CREATE_NEWS);
+        this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_NEWS);
+      }
     });
     this.onCreateForm();
   }
 
-  private initForm() {
+  LoadNews() {
+    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+      return;
+    }
     if (this.isEdit) {
-      this.cardTitle = this.translateService.translate(TITLE_EDIT_NEWS);
-      this.cardDescription = this.translateService.translate(DESCRIPTION_EDIT_NEWS);
       this.newsService.getById(this.newsId).subscribe(
         (value: News) => {
           if (value) {
-            this.news = value;
+            this.news = value as News;
           } else {
             // Navigate to previous if user group not found
             this.location.back();
           }
         }
       );
-    } else {
-      this.cardTitle = this.translateService.translate(TITLE_CREATE_NEWS);
-      this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_NEWS);
     }
   }
 
@@ -121,7 +129,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
         (value: News) => {
           // * Create news successful, display success notification
           const msg = this.getMessage(
-            NewsErrors.Create_News_Sucess,
+            Errors.Create_News_Sucess,
             this.news.title
           );
           this.notificationService.showSuccess(msg);
@@ -136,7 +144,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
       (value: News) => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
-          NewsErrors.Create_Published_News_Sucess,
+          Errors.Create_Published_News_Sucess,
           this.news.title
         );
         this.notificationService.showSuccess(msg);
@@ -181,7 +189,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   }
 
   onFileRemoved() {
-    this.news.banner = '';
+    this.news.banner = "";
     this.isBannerError = false;
   }
 
@@ -190,6 +198,29 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
       this.isBannerError = true;
       this.raiseChangeForError = true;
     }
+  }
+
+  saveNews() {
+    this.newsService.update(this.news).subscribe(
+      (value: News) => {
+        // * Create news successful, display success notification
+        const msg = this.getMessage(
+          Errors.Edit_News_Success,
+          this.news.title
+        );
+        this.notificationService.showSuccess(msg);
+      }
+    );
+  }
+
+  finishBannerComponent() {
+    this.isFinishedBannerComponent = true;
+    this.LoadNews();
+  }
+
+  finishContentComponent() {
+    this.isFinishedContentComponent = true;
+    this.LoadNews();
   }
 
   protected getMessage(key: string, ...params) {

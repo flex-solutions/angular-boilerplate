@@ -29,17 +29,24 @@ const newRoutes: Routes = [
      }
   },
   {
+    path: ':id',
+    component: NewsDetailComponent,
+    data: {
+      breadcrumb: 'News Details'
+    }
+  },
+  {
     // TODO: update after finish create news
     path: 'update/:id',
     component: CreateEditNewsComponent,
     data: {
       breadcrumb: 'Edit news'
     }
- }
+ },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(newRoutes)],
   exports: [RouterModule]
 })
-export class NewsRoutingModule {}
+export class NewsRoutingModule { }

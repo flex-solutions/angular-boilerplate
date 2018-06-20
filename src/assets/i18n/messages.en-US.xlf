@@ -912,7 +912,7 @@
       <!--END Permission Scheme Detail Dialog-->
 
       <!--START News Create Edit Page -->
-      <trans-unit id="news-news-h4-create_news" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
         <source>Create news</source>
         <target>Create news </target>
       </trans-unit>
@@ -960,6 +960,10 @@
         <source>Submit & publish</source>
         <target>Submit & publish</target>
       </trans-unit>
+      <trans-unit id="news-create_edit_news-button-save" datatype="html">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
       <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Cancel</target>
@@ -971,6 +975,10 @@
       <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
         <source>Create news with title "{{0}}" successfull</source>
         <target>Create news with title "{{0}}" successfull </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
+        <source>Update news with title "{{0}}" successfull</source>
+        <target>Update news with title "{{0}}" successfull </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>

@@ -18,6 +18,7 @@ import { ModuleRoute } from '../../../../shared/constants/const';
 })
 export class NewsDetailComponent implements OnInit {
   newsModel: News = new News();
+  base64Image: any;
   id: string;
 
   constructor(
@@ -48,6 +49,7 @@ export class NewsDetailComponent implements OnInit {
       this.newsService.getById(id).subscribe(news => {
         if (news) {
           this.newsModel = news;
+          this.base64Image = atob(this.newsModel.banner);
           console.log(news);
         }
       });
@@ -59,27 +61,18 @@ export class NewsDetailComponent implements OnInit {
   }
 
   changeNewsStatus() {
-    const updatedNews = Object.assign(new News(), this.newsModel);
-    switch (this.newsModel.status) {
-      case NewsStatusType.New:
-      case NewsStatusType.Deactivated:
-      updatedNews.status = NewsStatusType.Published;
-        break;
-      case NewsStatusType.Published:
-      updatedNews.status = NewsStatusType.Deactivated;
-        break;
-      default:
-        break;
-    }
     this.newsService
-    .updateStatus(updatedNews._id, updatedNews.status)
+    .updateStatus(this.newsModel._id, this.newsModel.status)
     .subscribe(ret => {
-      const msg = this.getMessage(
-        Errors.Change_Status_News_Success,
-        this.newsModel.status.toString()
-      );
-      this.notificationService.showSuccess(msg);
-      this.getNews(this.id);
+      const newStatusItem = ret;
+      if (newStatusItem.status !== this.newsModel.status) {
+        const msg = this.getMessage(
+          Errors.Change_Status_News_Success,
+          this.newsModel.status.toString()
+        );
+        this.notificationService.showSuccess(msg);
+        this.newsModel = newStatusItem;
+      }
     });
   }
 

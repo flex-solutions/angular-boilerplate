@@ -41,13 +41,13 @@ export class NewsActionButtonDirective implements OnChanges, AfterViewInit {
       msg = this.translateService.translate(NewsActionButtonText.Publish);
       this.elementClass = 'btn btn-success btn-md';
         $(this.ef.nativeElement)
-          .html(`<i class="mdi mdi-eye"></i><span>${msg || 'Publish'}</span>`);
+          .html(`<i class="mdi mdi-eye" aria-hidden="false"></i><span>${msg || 'Publish'}</span>`);
         break;
       case NewsStatusType.Published:
       msg = this.translateService.translate(NewsActionButtonText.Deactivate);
       this.elementClass = 'btn btn-danger btn-md';
         $(this.ef.nativeElement)
-          .html(`<i class="mdi mdi-eye-off"></i><span>${msg || 'Deactivate'}</span>`);
+          .html(`<i class="mdi mdi-eye-off" aria-hidden="false"></i><span>${msg || 'Deactivate'}</span>`);
         break;
       default:
         break;

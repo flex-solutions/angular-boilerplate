@@ -1,6 +1,5 @@
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsService } from './services/news.service';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +11,7 @@ import { NewsDirective } from './directives';
   imports: [
     CommonModule, NewsRoutingModule,
     FormsModule, ReactiveFormsModule,
-    UICommonModule,
+    UICommonModule
   ],
   declarations: [
     ...NewsDirective,
@@ -21,4 +20,5 @@ import { NewsDirective } from './directives';
   providers: [NewsService],
 
 })
+
 export class NewsModule { }

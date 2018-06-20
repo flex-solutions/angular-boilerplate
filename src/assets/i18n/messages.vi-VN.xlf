@@ -914,7 +914,7 @@
       <!--END Permission Scheme Detail Dialog-->
 
       <!--START News Create Edit Page -->
-      <trans-unit id="news-news-h4-create_news" datatype="html">
+      <trans-unit id="news-create_edit_news-h4-create_news" datatype="html">
         <source>Create news</source>
         <target>Tạo tin tức </target>
       </trans-unit>
@@ -958,10 +958,6 @@
         <source>Submit & publish</source>
         <target>Lưu và đăng tin </target>
       </trans-unit>
-      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Huỷ </target>
-      </trans-unit>
       <trans-unit id="news-create_edit_news-label-create_another_news" datatype="html">
         <source>Create another</source>
         <target>Tạo tin tiếp theo </target>
@@ -969,6 +965,10 @@
       <trans-unit id="news-create_edit_news-create_news_ok" datatype="html">
         <source>Create news "{{0}}" successfull</source>
         <target>Tạo thành công tin tức "{{0}}" </target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
+        <source>Update news with title "{{0}}" successfull</source>
+        <target>Cập nhật thành công tin tức "{{0}}" successfull </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>
