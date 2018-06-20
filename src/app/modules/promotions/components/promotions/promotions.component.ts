@@ -1,4 +1,4 @@
-import { isNil } from 'ramda';
+import { StartPromotionComponent } from './../start-promotion/start-promotion.component';
 import { SelectableModel } from './../../../../shared/models/selectable.model';
 import { SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { PromotionService } from './../../services/promotion.service';
@@ -6,11 +6,13 @@ import { Promotion, StatusCheckedItem } from './../../interfaces/promotion';
 import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
-import { PromotionRouting, MessageConstant } from '../../messages';
+import { MessageConstant } from '../../messages';
 import { PromotionStatus } from '../../directives/promotion-status.directive';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
+import { promotionRoute } from '../../common.const';
+import { StartStopPromotionService } from '../../services/start-stop-promotion.service';
 
 @Component({
   selector: 'app-promotions',
@@ -30,7 +32,8 @@ export class PromotionsComponent implements OnInit {
     private route: Router,
     private translateService: TranslateService,
     private dialogManager: ExDialog,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private startStopPromotionHandler: StartStopPromotionService) {
     this.startDate = new SingleDateModel();
     this.endDate = new SingleDateModel();
     this.selectedStatus = [];
@@ -70,19 +73,27 @@ export class PromotionsComponent implements OnInit {
   }
 
   navigateToCreate() {
-    this.route.navigate([PromotionRouting.CREATE_PAGE]);
+    this.route.navigate([promotionRoute.CREATE]);
   }
 
   navigateToEdit(id: string) {
-    this.route.navigate([`${PromotionRouting.EDIT_PAGE}/${id}`]);
+    this.route.navigate([`${promotionRoute.EDIT}/${id}`]);
   }
 
   navigateToDetail(id: string) {
-    this.route.navigate([`${PromotionRouting.DETAIL_PAGE}/${id}`]);
+    this.route.navigate([`${promotionRoute.DETAIL}/${id}`]);
   }
 
-  startStopPromotion(id) {
-
+  startStopPromotion(item: Promotion) {
+    switch (item.status) {
+      case PromotionStatus.Active:
+        this.startStopPromotionHandler.stopPromotion(item, () => { this.loadPromotions(); });
+        break;
+      case PromotionStatus.New:
+      case PromotionStatus.Deactivated:
+        this.startStopPromotionHandler.startPromotion(item, () => { this.loadPromotions(); });
+        break;
+    }
   }
 
   getSelectedStatus() {
