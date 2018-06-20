@@ -1043,6 +1043,10 @@
         <source>Delete news successfully</source>
         <target>Delete news successfully</target>
       </trans-unit>
+        <trans-unit id="news_detail-change_status_news-ok" datatype="html">
+        <source>Update status {{0}} of news title successfully</source>
+        <target>Update status {{0}} of news title successfully</target>
+      </trans-unit>
       <trans-unit id="news_detail-created_by" datatype="html">
         <source>Created by</source>
         <target>Created by</target>
@@ -1273,6 +1277,7 @@
         <source>Deleted news successfully</source>
         <target>Deleted news successfully</target>
       </trans-unit>
+      
       <!-- END List News -->
        <!-- Start Change password -->
        <trans-unit id="change-password-Title" datatype="html">
