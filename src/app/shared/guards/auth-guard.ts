@@ -7,12 +7,12 @@ import 'reflect-metadata';
 import { PermissionDecoratorKey, IPermissionModule, IHasPermission } from './common';
 
 @Injectable()
-export class AuthGuard implements CanActivateChild {
+export class AuthGuard implements CanActivate {
 
     constructor(private readonly authenticationService: AuthenticationService) {
     }
 
-    canActivateChild(
+    canActivate(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot
     ): Observable < boolean > | Promise < boolean > | boolean {
@@ -20,16 +20,28 @@ export class AuthGuard implements CanActivateChild {
       if (!hasAuthenticated) {
         this.authenticationService.logOut();
         return false;
-      } else {
-        const component = route.component;
-        if (component) {
-          console.log(route);
-          const permissionDecorator = Reflect.getMetadata(PermissionDecoratorKey, component) as IPermissionModule;
-          if (permissionDecorator) {
-            return this.authenticationService.hasPermission(permissionDecorator, component);
-          }
-        }
       }
       return true;
     }
+
+    // canActivateChild(
+    //   route: ActivatedRouteSnapshot,
+    //   state: RouterStateSnapshot
+    // ): Observable < boolean > | Promise < boolean > | boolean {
+    //   const hasAuthenticated = this.authenticationService.authenticated();
+    //   if (!hasAuthenticated) {
+    //     this.authenticationService.logOut();
+    //     return false;
+    //   } else {
+    //     const component = route.component;
+    //     if (component) {
+    //       console.log(route);
+    //       const permissionDecorator = Reflect.getMetadata(PermissionDecoratorKey, component) as IPermissionModule;
+    //       if (permissionDecorator) {
+    //         return this.authenticationService.hasPermission(permissionDecorator, component);
+    //       }
+    //     }
+    //   }
+    //   return true;
+    // }
 }

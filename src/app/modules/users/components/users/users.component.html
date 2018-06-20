@@ -1,12 +1,12 @@
 <!-- partial -->
 <app-card title="Users" i18n-title="@@users-list" subTitle="{{subTitle}}">
   <div class="command-region">
-    <button *ngIf="canInsert" type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+    <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
       <i class="mdi mdi-plus"></i>
       <span i18n="@@users-create-user">Create User</span>
     </button>
 
-    <button *ngIf="groupName" type="button" class="btn btn-light btn-fw pull-right" (click)="viewAllUser()">
+    <button type="button" class="btn btn-light btn-fw pull-right" (click)="viewAllUser()">
         <i class="mdi mdi-format-list-bulleted"></i>
         <span i18n="@@users-view-all-users">View All</span>
       </button>
@@ -59,8 +59,8 @@
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
           </button>
           <div class="dropdown-menu">
-            <a *ngIf="canUpdate" class="dropdown-item" (click)="changeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
-            <a *ngIf="canDelete" class="dropdown-item" (click)="deleteUser(item)" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</a>
+            <a class="dropdown-item" (click)="changeUserGroup(item)" href="javascript:;" i18n="@@user-detail-change-user-group">Change user group</a>
+            <a class="dropdown-item" (click)="deleteUser(item)" href="javascript:;" i18n="@@user-detail-delete-user">Delete user</a>
           </div>
         </td>
       </tr>
