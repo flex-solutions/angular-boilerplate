@@ -1,4 +1,3 @@
-import { NotificationService } from './shared/services/notification.service';
 import { IPubSubConfig, PubSubConfigService } from './shared/pubsub.client/config';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -7,31 +6,19 @@ import { NgModule, TRANSLATIONS, LOCALE_ID } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { i18nFactory } from './i18n.factory';
 import { ApplicationConfigurationService } from './shared/services/application-configuration.service';
-import { DemoModule } from './modules/demo/demo.module';
-import { DemoRoutingModule } from './modules/demo/demo-routing.module';
-import { ModalDemoModule } from './modules/modal-demo/modal-demo.module';
-import { ModalDemoRoutingModule } from './modules/modal-demo/modal-demo-routing.module';
-import { DatagridDemoRoutingModule } from './modules/datagrid-demo/datagrid-demo-routing.module';
-import { DatagridModule } from './shared/ui-common/datagrid/datagrid.module';
-import { DatagridDemoModule } from './modules/datagrid-demo/datagrid-demo.module';
 import { PubSubClientModule } from './shared/pubsub.client/pubsub-client.module';
 import { NotificationChannelFactory } from './shared/pubsub.client/core/factory';
-import { UserGroupsRoutingModule } from './modules/user-groups/usergroup-routing.module';
 import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
-import { AuthGuard } from './shared/guards/auth-guard';
 import { NewsModule } from './modules/news/news.module';
-import { NewsRoutingModule } from './modules/news/news-routing.module';
 import { UsersModule } from './modules/users/users.module';
-import { PermissionSchemeRoutingModule } from './modules/permission-scheme/permission-scheme-routing.module';
-import { UsersRoutingModule } from './modules/users/users-routing.module';
 import { PromotionsModule } from './modules/promotions/promotions.module';
-import { PromotionsRoutingModule } from './modules/promotions/promotions-routing.module';
+import { CustomerManagementModule } from './modules/customers/customer.module';
 // import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
@@ -42,24 +29,14 @@ import { PromotionsRoutingModule } from './modules/promotions/promotions-routing
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    DemoModule,
-    DemoRoutingModule,
-    ModalDemoModule,
-    ModalDemoRoutingModule,
-    DatagridDemoRoutingModule,
-    DatagridDemoModule,
     PubSubClientModule,
-    UserGroupsRoutingModule,
     UserGroupsModule,
     DialogModule,
     UsersModule,
-    UsersRoutingModule,
     PermissionSchemeModule,
-    PermissionSchemeRoutingModule,
-    NewsRoutingModule,
     NewsModule,
     PromotionsModule,
-    PromotionsRoutingModule
+    CustomerManagementModule
   ],
   providers: [
     {

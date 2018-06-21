@@ -28,6 +28,10 @@ const routes: Routes = [
     {
       path: 'promotions',
       loadChildren: 'app/modules/promotions/promotions.module#PromotionsModule',
+    },
+    {
+      path: 'customers',
+      loadChildren: 'app/modules/customers/customer.module#CustomerManagementModule',
     }]
   },
   {

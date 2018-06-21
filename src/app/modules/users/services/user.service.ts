@@ -43,10 +43,6 @@ export class UserService extends AbstractRestService {
     });
   }
 
-  findOne(userId: string) {
-    return this.get(userId);
-  }
-
   getUsers(pageSize: number, pageNumber: number, searchKey?: string): Observable<User[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
@@ -55,9 +51,21 @@ export class UserService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
+  changeUserGroup(userId: string, ugId: string) {
+    return this.put(`${userId}/changeUserGroup?ugId=${ugId}`, {});
+  }
+
   // Handle get user by id.
   getUserById(userId: string): Observable<User> {
-    return this.get(`${userId}/combinegroupname`);
+    return this.get(userId);
+  }
+
+  getUsersByGroupName(groupName: string, pageSize: number, pageNumber: number, searchKey?: string): Observable<User[]> {
+    return this.get(`getUsersByGroupName/${groupName}?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
+
+  countUsersByGroupName(groupName: string, searchKey?: string): Observable<number> {
+    return this.get(`getUsersByGroupName/${groupName}/count?searchKey=${searchKey}`);
   }
 
   changePassword(model: ChangePasswordModel) {

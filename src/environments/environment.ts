@@ -6,6 +6,5 @@
 export const environment = {
   production: false,
   host: 'http://localhost:3000',
-  INVISIBLE_RECAPTCHA_SITEKEY: '6LdiA10UAAAAALuxIB1bCFAYJmNtr1ezF-muzAQF',
-  INVISIBLE_RECAPTCHA_SECRETKEY: '6LdiA10UAAAAAFegNM4XKPpXMMBwR4ddcMBE-E6P'
+  INVISIBLE_RECAPTCHA_SITEKEY: '6LdiA10UAAAAALuxIB1bCFAYJmNtr1ezF-muzAQF'
 };

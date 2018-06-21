@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" 
-  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
+
     <body>
+      <!-- Common -->
+      <trans-unit id="common-tbl-actions" datatype="html">
+        <source>Actions</source>
+        <target>Thao tác</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -50,6 +55,15 @@
       <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
         <source>Promotion</source>
         <target>Khuyến mãi</target>
+      </trans-unit>
+
+      <trans-unit id="layout-sidebar-anchor-crm-marketing" datatype="html">
+        <source>CRM - Marketing</source>
+        <target>CRM - Marketing</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-crm-marketing-customer-management" datatype="html">
+        <source>Customer Management</source>
+        <target>Quản Lý Khách Hàng</target>
       </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -346,20 +360,28 @@
         <source>Search by group name, permission sheme name</source>
         <target>Tìm kiếm với nhóm user, kế hoạch phân quyền</target>
       </trans-unit>
+      <trans-unit id="group-user-modal-change-user-success" datatype="html">
+        <source>User "{{0}}" is moved to group "{{1}}" successfully</source>
+        <target>User "{{0}}" đã được chuyển qua nhóm "{{1}}" thành công</target>
+      </trans-unit>
       <!-- End group user modal -->
 
       <!-- Users -->
       <trans-unit id="users-list" datatype="html">
-        <source>User List</source>
+        <source>Users</source>
         <target>Danh Sách User</target>
       </trans-unit>
-      <trans-unit id="users-name" datatype="html">
-        <source>Users</source>
-        <target>Người dùng</target>
+      <trans-unit id="users-list-by-group" datatype="html">
+        <source>Users in group {{0}}</source>
+        <target>Danh sách User trong nhóm {{0}}</target>
       </trans-unit>
       <trans-unit id="users-create-user" datatype="html">
         <source>Create User</source>
-        <target>Tạo mới</target>
+        <target>Tạo user</target>
+      </trans-unit>
+      <trans-unit id="users-view-all-users" datatype="html">
+        <source>View All</source>
+        <target>Xem tất cả</target>
       </trans-unit>
       <trans-unit id="users-fullname" datatype="html">
         <source>Full Name</source>
@@ -516,7 +538,7 @@
       <!--Usergroup list-->
       <trans-unit id="user_groups-list-tbl-title" datatype="html">
         <source>User Groups</source>
-        <target>Nhóm User	</target>
+        <target>Nhóm User </target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-btn-create" datatype="html">
         <source>Create User Group</source>
@@ -559,11 +581,12 @@
         <target>Xoá nhóm user</target>
       </trans-unit>
       <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
-        <source>
-        The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you sure you want to deleted?
+        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users".
+        Are you sure you want to deleted?
         </source>
         <target>
-        Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có chắc muốn tiếp tục?
+          Nhóm user "{{0}}" sẽ bị xóa vĩnh viễn và tất cả user trong nhóm này sẽ được chuyển qua nhóm user "snob-cms-users". Bạn có
+          chắc muốn tiếp tục?
         </target>
       </trans-unit>
       <trans-unit id="user_groups-list-change-permission-scheme-title" datatype="html">
@@ -690,7 +713,7 @@
         <target>Thông Tin</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-edit-h4-title" datatype="html">
-        <source>Edit Permission Scheme</source>
+        <source>Edit permission scheme</source>
         <target>Sửa kế hoạch phân quyền</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-h4-title" datatype="html">
@@ -807,16 +830,18 @@
         <target>Gán cho các nhóm users</target>
       </trans-unit>
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
-        <source>Edit Permission Scheme</source>
-        <target>Sửa phân quyền</target>
+        <source>Edit</source>
+        <target>Sửa</target>
       </trans-unit>
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
         <target>Xoá kế hoạch phân quyền</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-confirm" datatype="html">
-        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme". Are you sure you want to delete?</source>
-        <target>Kế hoạch phân quyền "{{0}}" sẽ bị xoá vĩnh viễn và tất cả các nhóm user của kế hoạch này sẽ được gán cho kế hoạch phân quyền "default-user-permission-scheme". Bạn có chắc muốn tiếp tục?</target>
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        Are you sure you want to delete?</source>
+        <target>Kế hoạch phân quyền "{{0}}" sẽ bị xoá vĩnh viễn và tất cả các nhóm user của kế hoạch này sẽ được gán cho kế hoạch
+          phân quyền "default-user-permission-scheme". Bạn có chắc muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-success" datatype="html">
         <source>Deleted scheme "{{0}}" successfully</source>
@@ -972,7 +997,7 @@
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>
-        <target>Tạo và đăng tải thành công tin tức "{{0}}"  </target>
+        <target>Tạo và đăng tải thành công tin tức "{{0}}" </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-label-title_require" datatype="html">
         <source>Please provide the title</source>
@@ -1098,11 +1123,11 @@
         <source>Create Promotion</source>
         <target>Tạo khuyến mãi</target>
       </trans-unit>
-       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
+      <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
         <source>Delete Promotion</source>
         <target>Xoá khuyến mãi</target>
       </trans-unit>
-       <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
+      <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
         <source>Promotion</source>
         <target>Khuyến mãi</target>
       </trans-unit>
@@ -1130,12 +1155,12 @@
         <source>Delete promotion news</source>
         <target>Xóa tin tức khuyến mãi</target>
       </trans-unit>
-       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
+      <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
         <source>Are you sure you want to delete promotion news "{{0}}"?</source>
         <target>Bạn có chắc muốn xóa tin tức khuyến mãi "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="promotion-delete-successfully-notification" datatype="html">
-         <source>Delete promotion news successfully</source>
+        <source>Delete promotion news successfully</source>
         <target>Xoá tin tức khuyến mãi thành công</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
@@ -1204,11 +1229,11 @@
         <source>News</source>
         <target>Tin Tức</target>
       </trans-unit>
-       <trans-unit id="list-news-button-create-news" datatype="html">
+      <trans-unit id="list-news-button-create-news" datatype="html">
         <source>Create news</source>
         <target>Tạo tin tức</target>
       </trans-unit>
-       <trans-unit id="list-news-th-title" datatype="html">
+      <trans-unit id="list-news-th-title" datatype="html">
         <source>Title</source>
         <target>Tiêu đề</target>
       </trans-unit>
@@ -1244,11 +1269,11 @@
         <source>Deactivated</source>
         <target>Đã vô hiệu hóa</target>
       </trans-unit>
-         <trans-unit id="list-news-status-publish" datatype="html">
+      <trans-unit id="list-news-status-publish" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
-     <trans-unit id="list-news-btn-publishs" datatype="html">
+      <trans-unit id="list-news-btn-publishs" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
@@ -1256,29 +1281,29 @@
         <source>Edit</source>
         <target>Sửa</target>
       </trans-unit>
-        <trans-unit id="list-news-btn-delete" datatype="html">
+      <trans-unit id="list-news-btn-delete" datatype="html">
         <source>Delete news</source>
         <target>Xoá bản tin </target>
       </trans-unit>
-        <trans-unit id="list-news-confirm-delete" datatype="html">
+      <trans-unit id="list-news-confirm-delete" datatype="html">
         <source>Are you sure you want to delete news "{{0}}"?</source>
         <target>Bạn có chắc muốn xóa tin tức có tiêu đề "{{0}}"?</target>
       </trans-unit>
-        <trans-unit id="list-news-notification-delete-successfully" datatype="html">
+      <trans-unit id="list-news-notification-delete-successfully" datatype="html">
         <source>Deleted news successfully</source>
         <target>Xóa tin tức thành công </target>
       </trans-unit>
       <!-- END List News -->
-       <!-- Start Change password -->
-       <trans-unit id="change-password-Title" datatype="html">
+      <!-- Start Change password -->
+      <trans-unit id="change-password-Title" datatype="html">
         <source>Change Password</source>
         <target>Đổi Mật Khẩu</target>
       </trans-unit>
-        <trans-unit id="change-password-field-old-password" datatype="html">
+      <trans-unit id="change-password-field-old-password" datatype="html">
         <source>Old password</source>
         <target>Mật khẩu cũ</target>
       </trans-unit>
-         <trans-unit id="change-password-field-new-password" datatype="html">
+      <trans-unit id="change-password-field-new-password" datatype="html">
         <source>New password</source>
         <target>Mật khẩu mới</target>
       </trans-unit>
@@ -1286,27 +1311,27 @@
         <source>Confirm new password</source>
         <target>Xác nhận mật khẩu mới</target>
       </trans-unit>
-       <trans-unit id="change-password-button-submit" datatype="html">
+      <trans-unit id="change-password-button-submit" datatype="html">
         <source>Submit</source>
         <target>Yêu Cầu Đổi</target>
       </trans-unit>
-       <trans-unit id="change-password-button-cancel" datatype="html">
+      <trans-unit id="change-password-button-cancel" datatype="html">
         <source>Cancel</source>
         <target>Hủy</target>
       </trans-unit>
-         <trans-unit id="change-password-old-password-required" datatype="html">
+      <trans-unit id="change-password-old-password-required" datatype="html">
         <source>Old password is mandatory</source>
         <target>Vui lòng nhập mật khẩu cũ</target>
       </trans-unit>
-        <trans-unit id="change-password-new-password-required" datatype="html">
+      <trans-unit id="change-password-new-password-required" datatype="html">
         <source>New password is mandatory</source>
         <target>Vui lòng nhập mật khẩu mới</target>
       </trans-unit>
-         <trans-unit id="change-password-confirm-password-required" datatype="html">
+      <trans-unit id="change-password-confirm-password-required" datatype="html">
         <source>Confirm new password is mandatory</source>
         <target>Vui lòng nhập xác nhận mật khẩu mới</target>
       </trans-unit>
-     <trans-unit id="change-password-passowrd-incorect" datatype="html">
+      <trans-unit id="change-password-passowrd-incorect" datatype="html">
         <source>Old password is incorrect</source>
         <target>Mật khẩu cũ không chính xác</target>
       </trans-unit>
@@ -1314,11 +1339,11 @@
         <source>New password must differ from old password</source>
         <target>Mật khẩu mới phải khác mật khẩu cũ</target>
       </trans-unit>
-        <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
+      <trans-unit id="change-password-confirm-pw-must-not-diff-new" datatype="html">
         <source>New password confirmation must not differ from new password</source>
         <target>Xác nhận mật khẩu mới không giống mật khẩu mới</target>
       </trans-unit>
-        <trans-unit id="change-password-notice" datatype="html">
+      <trans-unit id="change-password-notice" datatype="html">
         <source>Notice</source>
         <target>Thông Báo</target>
       </trans-unit>
@@ -1428,6 +1453,56 @@
         <target>Tháng trước</target>
       </trans-unit>
       <!--END Date time picker-->
+      <!--Start Customer Module-->
+      <trans-unit id="customers-list-tbl-title" datatype="html">
+        <source>Customers</source>
+        <target>Danh sách khách hàng</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-btn-create" datatype="html">
+        <source>New customer</source>
+        <target>Khách hàng mới</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-name" datatype="html">
+        <source>Name</source>
+        <target>Tên KH</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-member-id" datatype="html">
+        <source>Member ID</source>
+        <target>Mã hội viên</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-phone-number" datatype="html">
+        <source>Phone number</source>
+        <target>Số điện thoại</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-birthday" datatype="html">
+        <source>Birthday</source>
+        <target>Sinh nhật</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex" datatype="html">
+        <source>Sex</source>
+        <target>Giới tính</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-address" datatype="html">
+        <source>Address</source>
+        <target>Địa chỉ</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-customer-type" datatype="html">
+        <source>Customer type</source>
+        <target>Loại thành viên</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-male" datatype="html">
+        <source>Male</source>
+        <target>Nam</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-female" datatype="html">
+        <source>Female</source>
+        <target>Nữ</target>
+      </trans-unit>
+      <trans-unit id="customers-tbl-sex-other" datatype="html">
+        <source>Other</source>
+        <target>Khác</target>
+      </trans-unit>
+      <!--End Customer Module-->
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>

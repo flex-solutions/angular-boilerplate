@@ -144,3 +144,7 @@
 .has-error {
   border-color: #ff7474 !important;
 }
+
+.command-region button {
+  margin-left: 10px;
+}

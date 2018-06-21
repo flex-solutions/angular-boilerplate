@@ -36,16 +36,16 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   }
   groupInfo = new TransferGroupData();
   groupUsers: UserGroup[] = [];
-  selectedGroupId: string;
+  selectedGroup = new UserGroup();
 
   ngOnInit() {
     this.groupInfo = this.callerData as TransferGroupData;
-    this.selectedGroupId = this.groupInfo.user.userGroup._id;
+    this.selectedGroup._id = this.groupInfo.user.userGroup._id;
     this.getGroups();
   }
 
-  onValueChanged(value) {
-    this.selectedGroupId = value;
+  onValueChanged(userGroup: UserGroup) {
+    this.selectedGroup = userGroup;
   }
 
   navigateToPermissionScheme(schemeId: string, schemeName: string) {
@@ -62,16 +62,12 @@ export class GroupUserModalComponent extends DialogComponent implements OnInit {
   }
 
   submit() {
-    if (this.selectedGroupId !== this.groupInfo.user.userGroup._id) {
-      let updateUser = new User();
-      updateUser = this.groupInfo.user;
-      updateUser.userGroup._id = this.selectedGroupId;
-      this.userService.update(updateUser).subscribe(respond => {
-        // * Save user successful, display success notification
-        const msg = this.translateService.translate(
-          UserMessages.EditUserSuccessfull
-        );
-
+    if (this.selectedGroup._id !== this.groupInfo.user.userGroup._id) {
+      // * Save user successful, display success notification
+      const msg = this.translateService.translateWithParams(
+        UserMessages.ChangeGroupSuccess, this.groupInfo.user.username, this.selectedGroup.name
+      );
+      this.userService.changeUserGroup(this.groupInfo.user._id, this.selectedGroup._id).subscribe(respond => {
         this.notificationService.showSuccess(msg);
         this.result = true;
         this.dialogResult();

@@ -26,8 +26,8 @@
             <td class="custom-header">
               <div class="form-radio non-margin-top form-radio-flat">
                 <label class="form-check-label">
-                  <input type="radio" name="permission-scheme" [checked]="selectedGroupId === group._id" value="{{group._id}}" class="form-check-input"
-                    (change)="onValueChanged($event.target.value)"> {{content}}
+                  <input type="radio" name="permission-scheme" [checked]="selectedGroup._id === group._id" class="form-check-input"
+                    (change)="onValueChanged(group)"> {{content}}
                   <i class="input-helper"></i>
                 </label>
               </div>

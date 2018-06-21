@@ -1,15 +1,13 @@
 import { News, NewsViewModel } from './../../../shared/models/news.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { of, Observable } from 'rxjs';
-import { ExDialog } from '../../../shared/ui-common/modal/services/ex-dialog.service';
-import { ModalSize } from '../../../shared/ui-common/modal/components/dialog.component';
+import { Observable } from 'rxjs';
 import { NewsStatusType } from '../../../shared/enums/news-type.enum';
 
 @Injectable()
 export class NewsService extends AbstractRestService {
   protected controllerName: string;
-  constructor(private exDialog: ExDialog) {
+  constructor() {
     super();
     this.controllerName = 'news';
   }
