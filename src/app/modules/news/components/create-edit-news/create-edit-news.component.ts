@@ -135,6 +135,18 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
           this.refreshPageIfCreateAnother();
         }
       );
+    } else {
+      this.newsService.update(this.news).subscribe(
+        (value: News) => {
+          // * Create news successful, display success notification
+          const msg = this.getMessage(
+            Errors.Edit_News_Success,
+            this.news.title
+          );
+          this.notificationService.showSuccess(msg);
+          this.refreshPageIfCreateAnother();
+        }
+      );
     }
   }
 

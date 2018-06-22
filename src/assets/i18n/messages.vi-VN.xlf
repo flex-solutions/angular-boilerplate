@@ -47,7 +47,6 @@
         <source>News Management</source>
         <target>Quản Lý Tin Tức</target>
       </trans-unit>
-
       <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
         <source>Promotion Management</source>
         <target>Quản lý khuyến mãi</target>
@@ -993,7 +992,7 @@
       </trans-unit>
       <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
         <source>Update news with title "{{0}}" successfull</source>
-        <target>Cập nhật thành công tin tức "{{0}}" successfull </target>
+        <target>Cập nhật thành công tin tức "{{0}}" </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>
@@ -1014,6 +1013,14 @@
       <trans-unit id="news-create_edit_news-file_size_error" datatype="html">
         <source>The banner size must be lower or equal 500kb</source>
         <target>Kích thước của hình ảnh phải nhỏ hơn hoặc bằng 500kb</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-save" datatype="html">
+        <source>Save</source>
+        <target>Lưu</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
       </trans-unit>
       <!--END News Create Edit Page-->
 

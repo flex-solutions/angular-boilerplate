@@ -1,3 +1,4 @@
+import { FileInfo } from './dropify.component';
 import { isNil } from 'ramda';
 import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef, SimpleChange } from '@angular/core';
 import { readBase64 } from '../../../utilities/convert-image-to-base64';
@@ -67,11 +68,13 @@ export class DropifyComponent implements AfterViewInit {
     @Input()
     removeMessage: string;
 
+    @Input('image')
     get image(): any {
         return this._image;
     }
+    
     private _image: any;
-    @Input('image')
+
     set image(value: any) {
         this._image = value;
         if (isNil(this._image) || this._image === '') {
@@ -143,13 +146,8 @@ export class DropifyComponent implements AfterViewInit {
             this.raiseError(ErrorType.ImageFormat);
         });
         drEvent.on('dropify.afterClear', (event, element) => {
-            const fileInfo = {
-                content: "",
-                fileName: "",
-                type: "",
-                size: ""
-            };
-            this.onImageChange.emit(fileInfo);
+            const fileInfo = this.emptyFileInfo();
+            this.setImage(fileInfo);
         });
     }
 
@@ -164,13 +162,8 @@ export class DropifyComponent implements AfterViewInit {
         // Convert to base64
         if (files && files.length) {
             if (this.maxSize <= files[0].size) {
-                const fileInfo = {
-                    content: "",
-                    fileName: "",
-                    type: "",
-                    size: ""
-                };
-                this.onImageChange.emit(fileInfo);
+                const fileInfo = this.emptyFileInfo();
+                this.setImage(fileInfo);
                 return;
             }
             readBase64(files[0]).then(data => {
@@ -181,7 +174,7 @@ export class DropifyComponent implements AfterViewInit {
                         type: files[0].type,
                         size: files[0].size
                     };
-                    this.onImageChange.emit(fileInfo);
+                    this.setImage(fileInfo);
                 }
             });
         }
@@ -204,5 +197,19 @@ export class DropifyComponent implements AfterViewInit {
                 'error': this.errorMessage ? this.errorMessage : 'Ooops, something wrong happended.'
             }
         };
+    }
+
+    private emptyFileInfo(): any {
+        return {
+            content: "",
+            fileName: "",
+            type: "",
+            size: ""
+        };
+    }
+
+    private setImage(fileInfo : any) {
+        this._image = fileInfo;
+        this.onImageChange.emit(this._image);
     }
 }
