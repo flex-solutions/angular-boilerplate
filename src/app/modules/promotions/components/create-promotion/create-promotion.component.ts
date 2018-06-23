@@ -191,9 +191,9 @@ export class CreatePromotionComponent implements OnInit {
   private onHandleCreateSuccess() {
     if (this.isCreateAnother) {
       this.promotion = new Promotion();
-      // Reset drotify control
+      // Reset dropify control
       this.dropifyComponent.reset();
-      // Reset tinycme control
+      // Reset tinymce control
       this.tynimceEditor.reset();
       // Reset wizard
       this.wizardComponent.reset();

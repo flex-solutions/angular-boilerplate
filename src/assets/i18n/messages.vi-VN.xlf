@@ -203,6 +203,14 @@
         <source>Please select branch</source>
         <target>Vui lòng chọn một chi nhánh cho user</target>
       </trans-unit>
+      <trans-unit id="user-create_user-label-validation_maxlength_username" datatype="html">
+        <source>Username must not exceed 20 characters</source>
+        <target>Tên đăng nhập không được quá 20 ký tự</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalid_username" datatype="html">
+        <source>Username can only contains letters (a-Z), numbers, "-", "_", "."</source>
+        <target>Tên đăng nhập chỉ được bao gồm chữ (a-Z), số, "-", "_", "."</target>
+      </trans-unit>
       <!--End create user-->
 
       <!--Edit user-->
