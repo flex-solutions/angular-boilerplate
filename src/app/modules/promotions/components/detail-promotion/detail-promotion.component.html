@@ -3,7 +3,7 @@
     <div class="template-demo">
       <button type="button" class="btn btn-primary btn-md" style="margin-top: 0px !important" i18n="@@promotions-edit_promotion-app-card-promotions_title_field" (click)="navigateToEdit(promotion._id)">
         <i class="mdi mdi-pencil" ></i>Edit Promotion</button>
-      <button type="button" class="btn btn-light btn-custom-css" style="margin-top: 0px !important" appStartButton [status]="promotion.status" (click)="startStopPromotion(item)">
+      <button type="button" class="btn btn-light btn-custom-css" style="margin: 0px !important; padding: 0 !important" appStartStopButton [buttonSize]="1"  [status]="promotion.status" (click)="startStopPromotion()">
       </button>
       <div class="dropdown">
         <button class="btn btn-light icon-btn dropdown-toggle" type="button" id="dropdownMenuIconButton3" data-toggle="dropdown"

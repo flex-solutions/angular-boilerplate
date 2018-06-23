@@ -36,7 +36,7 @@
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
             <span i18n="@@list-promotions-btn-edit">Edit</span>
           </button>
-          <button type="button" class="btn btn-light btn-custom-css" appStartButton [status]="item.status" (click)="startStopPromotion(item)">
+          <button type="button" class="btn btn-light btn-custom-css" appStartStopButton [status]="item.status" [buttonSize]="0" (click)="startStopPromotion(item)">
           </button>
           <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>

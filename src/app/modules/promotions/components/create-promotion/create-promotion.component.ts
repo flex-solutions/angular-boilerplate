@@ -76,7 +76,7 @@ export class CreatePromotionComponent implements OnInit {
     });
   }
 
-  // Resolve multilangual message for app card title and sub title
+  // Resolve multilingual message for app card title and sub title
   private resolveTitle() {
     if (!this.isEditableMode) {
       this.cardTitle = this.translateService.translate(MessageConstant.CreatePromotionTitle);
@@ -99,7 +99,7 @@ export class CreatePromotionComponent implements OnInit {
     }
   }
 
-  onFinshAndStart() {
+  onFinishAndStart() {
     // Create promotion
     this._promotionService.create(this.promotion).subscribe((createdPromotion: Promotion) => {
       this.showNotification(MessageConstant.CreatePromotionSuccess);

@@ -44,7 +44,7 @@
         <p>COMING SOON</p>
       </app-wizard-step>
       <!--Extend wizard button. Current step = 2 mean that is last wizard step-->
-      <button *ngIf="currentStep===2 && !isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinshAndStart()"
+      <button *ngIf="currentStep===2 && !isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinishAndStart()"
         i18n="@@wizard-wizard-actions-finish_start_button">Finish & Start</button>
 
       <!--Create another checkbox-->
