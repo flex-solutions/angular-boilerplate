@@ -1532,6 +1532,14 @@
         <source>Promotion is stopped successfully</source>
         <target>Tin tức khuyến mãi đã dừng thành công</target>
       </trans-unit>
+      <trans-unit id="promotions-detail-start_on" datatype="html">
+        <source>Start on: </source>
+        <target>Bắt đầu: </target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-expire_on" datatype="html">
+        <source>Expire on: </source>
+        <target>Hết hạn: </target>
+      </trans-unit>
       <!--END Start stop promotions-->
     </body>
   </file>

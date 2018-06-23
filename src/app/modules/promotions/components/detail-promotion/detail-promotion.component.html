@@ -1,9 +1,11 @@
 <app-card>
   <div class="command-region">
     <div class="template-demo">
-      <button type="button" class="btn btn-primary btn-md" style="margin-top: 0px !important" i18n="@@promotions-edit_promotion-app-card-promotions_title_field" (click)="navigateToEdit(promotion._id)">
-        <i class="mdi mdi-pencil" ></i>Edit Promotion</button>
-      <button type="button" class="btn btn-light btn-custom-css" style="margin: 0px !important; padding: 0 !important" appStartStopButton [buttonSize]="1"  [status]="promotion.status" (click)="startStopPromotion()">
+      <button type="button" class="btn btn-primary btn-md" style="margin-top: 0px !important" i18n="@@promotions-edit_promotion-app-card-promotions_title_field"
+        (click)="navigateToEdit(promotion._id)">
+        <i class="mdi mdi-pencil"></i>Edit Promotion</button>
+      <button type="button" class="btn btn-light btn-custom-css" style="margin: 0px !important; padding: 0 !important" appStartStopButton
+        [buttonSize]="1" [status]="promotion.status" (click)="startStopPromotion()">
       </button>
       <div class="dropdown">
         <button class="btn btn-light icon-btn dropdown-toggle" type="button" id="dropdownMenuIconButton3" data-toggle="dropdown"
@@ -45,12 +47,21 @@
                       </div>
                       <div class="col-6">
                         <div class="row">
-                          <div class="col-9">
-                            <h4>{{promotion.title}}</h4>
-                          </div>
-                          <div class="col-3">
-                            <div>
-                            </div>
+                          <h5>{{promotion.title}}</h5>
+                          <div class="promotion-status">
+                            <ul>
+                              <li appPromotionStatus [status]="promotion.status"></li>
+                              <li *ngIf="promotion.start_date">
+                                <label class="badge badge-outline-success">
+                                  <span i18n="@@promotions-detail-start_on">Start on:</span>
+                                  {{promotion.start_date | promotionDate:'dd/MM/y'}}</label>
+                              </li>
+                              <li *ngIf="promotion.expire_date">
+                                <label class="badge badge-outline-warning">
+                                  <span i18n="@@promotions-detail-expire_on">Expire on:</span>
+                                  {{promotion.expire_date | promotionDate:'dd/MM/y'}}</label>
+                              </li>
+                            </ul>
                           </div>
                         </div>
                         <div class="row text-gray d-md-flex d-none">

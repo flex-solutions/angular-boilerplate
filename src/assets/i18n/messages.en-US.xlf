@@ -1548,6 +1548,14 @@
         <source>Promotion is stopped successfully</source>
         <target>Promotion is stopped successfully</target>
       </trans-unit>
+      <trans-unit id="promotions-detail-start_on" datatype="html">
+        <source>Start on: </source>
+        <target>Start on: </target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-expire_on" datatype="html">
+        <source>Expire on: </source>
+        <target>Expire on: </target>
+      </trans-unit>
       <!--END Start stop promotions-->
     </body>
   </file>
