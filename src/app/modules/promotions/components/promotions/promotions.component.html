@@ -11,8 +11,8 @@
       [(date)]="endDate" style="margin: 0 5px;"></app-date-picker>
     <app-date-picker class="dataTables_customfilter startdatepicker" title="Start Date" i18n-title="@@list-promotions-th-start-date"
       [(date)]="startDate" style="margin: 0 5px;"></app-date-picker>
-    <app-drop-down-check-boxes class="dataTables_customfilter" title="Status" i18n-title="@@list-promotions-th-status" [itemsources]="statusItems" 
-    [(selectedItems)]="selectedStatus" style="margin: 0 5px;"></app-drop-down-check-boxes>
+    <app-drop-down-check-boxes class="dataTables_customfilter" title="Status" i18n-title="@@list-promotions-th-status" [itemsources]="statusItems"
+      [(selectedItems)]="selectedStatus" style="margin: 0 5px;"></app-drop-down-check-boxes>
     <tr>
       <th i18n="@@list-promotions-th-title" style="width: 15%">Title</th>
       <th i18n="@@list-promotions-th-content" style="width: 30%">Content</th>
@@ -24,10 +24,9 @@
     <tbody>
       <tr *ngFor="let item of items | promotionsFilter: dg.searchKey">
         <td>
-          <p class="a-clickable pull-left" (click) = "navigateToDetail(item._id)">{{item.title}}</p>
+          <p class="a-clickable pull-left" (click)="navigateToDetail(item._id)">{{item.title}}</p>
         </td>
-        <td [innerHTML]="item.content" class="cut-text">
-        </td>
+        <td class="cut-text">{{extractContent(item.content)}} </td>
         <td appPromotionStatus [status]="item.status"></td>
         <td>{{item.start_date | promotionDate:'dd/MM/y'}}</td>
         <td>{{item.expire_date | promotionDate:'dd/MM/y'}}</td>
