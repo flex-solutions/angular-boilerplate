@@ -6,6 +6,6 @@
     margin-left: .5em !important;
 }
 
-.promotion-status > ul > li .badge { 
+.promotion-status > ul > li .badge, :host ::ng-deep .status-badge { 
     font-size: 0.8rem;
 }
