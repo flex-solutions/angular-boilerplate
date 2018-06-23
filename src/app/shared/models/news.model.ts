@@ -7,10 +7,10 @@ class News {
     content: string;
     status: NewsStatusType = NewsStatusType.New ;
     viewCount = 0;
-    publishedOn: Date;
-    publishedBy: string;
-    edit_on: Date;
-    edit_by: string;
+    published_on: Date;
+    published_by: string;
+    updated_on: Date;
+    updated_by: string;
     create_on: Date;
     create_by: string;
 }

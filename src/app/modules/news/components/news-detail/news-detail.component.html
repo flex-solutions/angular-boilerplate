@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="row profile-page" style="max-height: 100%">
+  <div class="row profile-page">
     <div class="col-md-12">
       <div class="profile-body" style="padding-top: 0px">
         <ul class="nav tab-switch" role="tablist">
@@ -60,7 +60,7 @@
                       </div>
                       <div class="col-6 d-flex">
                         <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-last_edited_on">Last edited on</p>
-                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{getRelativeTime(newsModel.edit_on)}}</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{getRelativeTime(newsModel.updated_on)}}</p>
                       </div>
                     </div>
                     <div class="row text-gray d-md-flex d-none">
@@ -70,15 +70,14 @@
                       </div>
                       <div class="col-6 d-flex">
                         <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-last_edited_by">Last edited by</p>
-                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{newsModel.edit_by}}</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{newsModel.updated_by}}</p>
                       </div>
                     </div>
-                    <div class="row mt-5 mb-5" style="max-height: 85%; overflow-y: scroll">
+                    <div class="row mt-5 mb-5 content">
                       <div class="col-12">
-                        <p class="lead">
-                          {{newsModel.content}}
-                        </p>
-                      </div>
+                          <p class="lead" [innerHTML]="newsModel.content">
+                          </p>
+                        </div>
                     </div>
                     <!-- If status is NOT PUBLISHED -->
                     <div class="row text-gray d-md-flex d-none last-row" style="position:absolute; bottom: 0px;" *ngIf="newsModel.status!=1">
@@ -93,11 +92,11 @@
                     <div class="row text-gray d-md-flex d-none last-row" *ngIf="newsModel.status==1">
                       <div class="col-6 d-flex">
                         <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-published_on">Published on</p>
-                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{getRelativeTime(newsModel.publishedOn)}}</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{getRelativeTime(newsModel.published_on)}}</p>
                       </div>
                       <div class="col-6 d-flex">
                         <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-published_by">Published by</p>
-                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{newsModel.publishedBy}}</p>
+                        <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{newsModel.published_by}}</p>
                       </div>
                     </div>
                   </div>
