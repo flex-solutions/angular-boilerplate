@@ -2,6 +2,8 @@ import { FileInfo } from './dropify.component';
 import { isNil } from 'ramda';
 import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef, SimpleChange } from '@angular/core';
 import { readBase64 } from '../../../utilities/convert-image-to-base64';
+import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { convertStringToBase64 } from '../../../utilities/convertStringToBase64';
 
 declare var $: any;
 
@@ -69,26 +71,18 @@ export class DropifyComponent implements AfterViewInit {
     removeMessage: string;
 
     @Input('image')
-    get image(): any {
+    get image(): string {
         return this._image;
     }
     
-    private _image: any;
+    private _image: string;
 
-    set image(value: any) {
+    set image(value: string) {
         this._image = value;
-        if (isNil(this._image) || this._image === '') {
-            return;
-        }
-        try {
-            const base64 = atob(this._image);
-            if (this.dropify) {
-                this.dropify.showLoader();
-                this.dropify.setPreview(true, base64);
-            }
-        }
-        catch {
-            // not base 64 type, do nothing
+        const base64 = convertStringToBase64(value);
+        if (this.dropify) {
+            this.dropify.showLoader();
+            this.dropify.setPreview(true, base64);
         }
     }
 

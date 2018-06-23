@@ -31,7 +31,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   rawContent: String;
   isBlurEditor: boolean = false;
   isFinishedBannerComponent: boolean = false;
-  isFinishedContentComponent:boolean = false;
+  isFinishedContentComponent: boolean = false;
 
   news: News = new News();
   newsId: string;
@@ -72,7 +72,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   LoadNews() {
-    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+    if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
       return;
     }
     if (this.isEdit) {
@@ -110,7 +110,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   hasEmptyAndBlurContent() {
-    return (isNullOrUndefined(this.rawContent) || this.rawContent === '') && this.isBlurEditor ;
+    return (isNullOrUndefined(this.rawContent) || this.rawContent === '') && this.isBlurEditor;
   }
 
   protected onCreateForm() {
@@ -132,19 +132,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
             this.news.title
           );
           this.notificationService.showSuccess(msg);
-          this.refreshPageIfCreateAnother();
-        }
-      );
-    } else {
-      this.newsService.update(this.news).subscribe(
-        (value: News) => {
-          // * Create news successful, display success notification
-          const msg = this.getMessage(
-            Errors.Edit_News_Success,
-            this.news.title
-          );
-          this.notificationService.showSuccess(msg);
-          this.refreshPageIfCreateAnother();
+          this.refreshPageAfterSubmit();
         }
       );
     }
@@ -159,7 +147,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
           this.news.title
         );
         this.notificationService.showSuccess(msg);
-        this.refreshPageIfCreateAnother();
+        this.refreshPageAfterSubmit();
       }
     );
   }
@@ -168,7 +156,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     this.location.back();
   }
 
-  private refreshPageIfCreateAnother() {
+  private refreshPageAfterSubmit() {
     if (this.isCreateAnother) {
       this.news = new News();
       this.resetForm();
@@ -205,16 +193,19 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   saveNews() {
-    this.newsService.update(this.news).subscribe(
-      (value: News) => {
-        // * Create news successful, display success notification
-        const msg = this.getMessage(
-          Errors.Edit_News_Success,
-          this.news.title
-        );
-        this.notificationService.showSuccess(msg);
-      }
-    );
+    if (this.isEdit) {
+      this.newsService.update(this.news).subscribe(
+        (value: News) => {
+          // * Create news successful, display success notification
+          const msg = this.getMessage(
+            Errors.Edit_News_Success,
+            this.news.title
+          );
+          this.notificationService.showSuccess(msg);
+          this.refreshPageAfterSubmit()
+        }
+      );
+    }
   }
 
   finishBannerComponent() {

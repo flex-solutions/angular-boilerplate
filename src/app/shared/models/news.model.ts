@@ -13,11 +13,6 @@ class News {
     edit_by: string;
     create_on: Date;
     create_by: string;
-
-    getImageBase64() {
-        const base64 = atob(this.banner);
-        return base64;
-    }
 }
 
 const NewsFields = {
