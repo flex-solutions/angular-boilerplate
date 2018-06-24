@@ -1,5 +1,3 @@
-import { DatePipe } from '@angular/common';
-import { isNil } from 'ramda';
 import { Pipe, PipeTransform } from '@angular/core';
 import { News } from '../../../shared/models/news.model';
 
