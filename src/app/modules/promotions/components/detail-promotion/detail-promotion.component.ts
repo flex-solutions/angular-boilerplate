@@ -12,6 +12,7 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
 import { Location } from '@angular/common';
 import { MessageConstant } from '../../messages';
 import { StartStopPromotionService } from '../../services/start-stop-promotion.service';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 @Component({
   selector: 'app-detail-promotion',
@@ -66,7 +67,7 @@ export class DetailPromotionComponent implements OnInit {
   private loadPromotion(promotionId) {
     this.promotionService.getPromotion(promotionId).subscribe(p => {
       this.promotion = p as Promotion;
-      this.promotion.banner = atob(this.promotion.banner);
+      this.promotion.banner = convertStringToBase64(this.promotion.banner);
     });
   }
 
