@@ -1,6 +1,6 @@
 import { StartStopPromotionService } from './../../services/start-stop-promotion.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
-import { FileInfo, ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
+import { FileInfo, ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
 import { Location } from '@angular/common';
 import { isNil } from 'ramda';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -13,6 +13,8 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 @Component({
   selector: 'app-create-promotion',
@@ -26,13 +28,13 @@ export class CreatePromotionComponent implements OnInit {
   cardSubTitle: string;
   currentStep: WizardStep;
   promotion: Promotion;
-  banerInvalid: boolean;
   contentInvalid: boolean;
   titleInvalid: boolean;
   isCreateAnother: boolean;
   banner: string;
   isBlurEditor: boolean;
   promotionId: string;
+  bannerError: DropifyError;
 
   // For editable mode
   isEditableMode: boolean;
@@ -60,7 +62,6 @@ export class CreatePromotionComponent implements OnInit {
     private _startStopPromotionHandler: StartStopPromotionService
   ) {
     this.promotion = new Promotion();
-    this.banerInvalid = false;
     this.titleInvalid = false;
     this.contentInvalid = false;
     this.isEditableMode = false;
@@ -95,7 +96,8 @@ export class CreatePromotionComponent implements OnInit {
     if (this.isEditableMode) {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
-      });
+        this.promotion.banner = convertStringToBase64(this.promotion.banner);
+      })
     }
   }
 
@@ -141,7 +143,15 @@ export class CreatePromotionComponent implements OnInit {
       this.titleInvalid = true;
     }
 
-    this.wizardComponent.canNext = !this.contentInvalid && !this.banerInvalid && !this.titleInvalid;
+    this.wizardComponent.canNext = !this.contentInvalid && !this.hasErrorBanner() && !this.titleInvalid;
+  }
+
+  hasErrorBanner() {
+    if (this.bannerError) {
+      return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
+        && isNullOrEmptyOrUndefine(this.promotion.banner);
+    }
+    return false;
   }
 
   onStepChanged(step: WizardStep) {
@@ -151,20 +161,6 @@ export class CreatePromotionComponent implements OnInit {
   onHtmlEditorChange(htmlContent) {
     this.promotion.content = htmlContent;
     this.contentInvalid = isNil(htmlContent) || htmlContent === '';
-  }
-
-  onFileChanged($event: FileInfo) {
-    if (this.banerInvalid && $event.content !== '') {
-      this.banerInvalid = false;
-    }
-    this.promotion.banner = $event.content;
-  }
-
-  onErrors($event: ErrorType) {
-    if ($event === ErrorType.FileSize) {
-      this._isError = true;
-      this.banerInvalid = true;
-    }
   }
 
   get titleError() {
