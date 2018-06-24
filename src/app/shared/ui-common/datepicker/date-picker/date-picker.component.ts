@@ -107,4 +107,8 @@ export class DatePickerComponent implements AfterViewInit {
   get picker() {
     return $(`input[id="${this.elementId}"]`);
   }
+
+  onIconClicked() {
+    this.picker.focus();
+  }
 }
