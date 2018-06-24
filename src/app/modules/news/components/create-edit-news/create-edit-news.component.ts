@@ -1,5 +1,5 @@
 
-import { ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
+import { ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
@@ -12,6 +12,8 @@ import { Location } from '@angular/common';
 import { isNullOrUndefined } from 'util';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { Errors } from '../../constants/news.constant';
+import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 
 const TITLE_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news';
 const DESCRIPTION_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news_description';
@@ -27,7 +29,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   isEdit: boolean = false;
   isPublish: boolean = false;
   isCreateAnother: boolean = false;
-  isBannerError: boolean = false;
+  bannerError: DropifyError;
   rawContent: String;
   isBlurEditor: boolean = false;
   isFinishedBannerComponent: boolean = false;
@@ -37,7 +39,11 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   newsId: string;
   cardTitle: string;
   cardDescription: string;
-
+  protected validationMessages: {
+    [key: string]: { [key: string]: IValidationMessage };
+  } = {
+      title: {}
+    };
   @ViewChild(TynimceEditorComponent)
   private ContentEditor: TynimceEditorComponent;
 
@@ -54,6 +60,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     private location: Location
   ) {
     super();
+    this.genericValidator = new GenericValidator(this.validationMessages, this.translateService);
   }
 
   ngOnInit() {
@@ -106,7 +113,12 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   hasErrorBanner() {
-    return this.isBannerError;
+    if (this.bannerError)
+    {
+      return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
+        &&  isNullOrEmptyOrUndefine(this.news.banner);
+    }
+    return false;
   }
 
   hasEmptyAndBlurContent() {
@@ -121,6 +133,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
       createAnother: ['', []]
     });
   }
+
+  protected onValidate() { }
 
   protected onSubmit() {
     if (!this.isEdit) {
@@ -177,19 +191,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
 
   onTinyEditorBlur(event: any) {
     this.isBlurEditor = event;
-  }
-
-  onFileChanged(event: any) {
-    if (this.isBannerError && event.content != "") {
-      this.isBannerError = false;
-    }
-    this.news.banner = event.content;
-  }
-
-  onBannerErrors(event: ErrorType) {
-    if (event === ErrorType.FileSize) {
-      this.isBannerError = true;
-    }
   }
 
   saveNews() {

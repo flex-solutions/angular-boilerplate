@@ -1,8 +1,6 @@
 import { FileInfo } from './dropify.component';
-import { isNil } from 'ramda';
 import { Component, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef, SimpleChange } from '@angular/core';
 import { readBase64 } from '../../../utilities/convert-image-to-base64';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
 import { convertStringToBase64 } from '../../../utilities/convertStringToBase64';
 
 declare var $: any;
@@ -29,6 +27,16 @@ export enum ErrorType {
     MinHeight,
     MaxHeight,
     ImageFormat
+}
+
+export class DropifyError {
+    errorValue : boolean;
+    errorType: ErrorType;
+
+    constructor(inputValue: boolean = false, errorType: ErrorType = null) {
+        this.errorValue = inputValue;
+        this.errorType = errorType;
+    }
 }
 
 @Component({
@@ -70,15 +78,15 @@ export class DropifyComponent implements AfterViewInit {
     @Input()
     removeMessage: string;
 
+    private _image: string;
     @Input('image')
     get image(): string {
         return this._image;
     }
-    
-    private _image: string;
 
     set image(value: string) {
         this._image = value;
+        this.imageChange.emit(this._image)
         const base64 = convertStringToBase64(value);
         if (this.dropify) {
             this.dropify.showLoader();
@@ -87,11 +95,25 @@ export class DropifyComponent implements AfterViewInit {
     }
 
     @Output()
-    onImageChange = new EventEmitter();
+    imageChange = new EventEmitter<string>();
+
+    private _exportError: DropifyError = new DropifyError();
+    @Input('exportError')
+    get exportError(): DropifyError {
+        return this._exportError;
+    }
+
+    set exportError(value: DropifyError) {
+        this._exportError = value;
+        this.exportErrorChange.emit(this._exportError)
+    }
+
+    @Output()
+    exportErrorChange = new EventEmitter<DropifyError>();
 
     // Call when have an error occurs
     @Output()
-    errors = new EventEmitter<ErrorType>();
+    errors = new EventEmitter<any>();
 
     @Output()
     onFinishedInitialization = new EventEmitter();
@@ -140,13 +162,19 @@ export class DropifyComponent implements AfterViewInit {
             this.raiseError(ErrorType.ImageFormat);
         });
         drEvent.on('dropify.afterClear', (event, element) => {
-            const fileInfo = this.emptyFileInfo();
-            this.setImage(fileInfo);
+            this.image = "";
+            this.resetError();
         });
     }
 
     raiseError(errorType: ErrorType) {
-        this.errors.emit(errorType);
+        let error = new DropifyError(true, errorType);
+        this.exportError = error;
+    }
+
+    resetError() {
+        const error = new DropifyError(false, null);
+        this.exportError = error;
     }
 
     onChanged($event) {
@@ -156,19 +184,12 @@ export class DropifyComponent implements AfterViewInit {
         // Convert to base64
         if (files && files.length) {
             if (this.maxSize <= files[0].size) {
-                const fileInfo = this.emptyFileInfo();
-                this.setImage(fileInfo);
+                this.image = "";
                 return;
             }
             readBase64(files[0]).then(data => {
                 if (data) {
-                    const fileInfo = {
-                        content: data as string,
-                        fileName: files[0].name,
-                        type: files[0].type,
-                        size: files[0].size
-                    };
-                    this.setImage(fileInfo);
+                    this.image = data as string;
                 }
             });
         }
@@ -191,19 +212,5 @@ export class DropifyComponent implements AfterViewInit {
                 'error': this.errorMessage ? this.errorMessage : 'Ooops, something wrong happended.'
             }
         };
-    }
-
-    private emptyFileInfo(): any {
-        return {
-            content: "",
-            fileName: "",
-            type: "",
-            size: ""
-        };
-    }
-
-    private setImage(fileInfo : any) {
-        this._image = fileInfo;
-        this.onImageChange.emit(this._image);
     }
 }

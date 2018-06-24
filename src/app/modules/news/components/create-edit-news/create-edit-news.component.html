@@ -18,12 +18,13 @@
             </div>
             <div class="form-group">
               <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Banner </label>
-              <app-dropify (onImageChange)="onFileChanged($event)" (errors)="onBannerErrors($event)" height="225"
-                allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" " [image]="news.banner" 
+              <app-dropify height="225"
+                allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" "
+                [(image)]="news.banner" [(exportError)] = "bannerError"
                 (onFinishedInitialization) = "finishBannerComponent()"></app-dropify>
               <label id="banner-error" class="error text-danger show-errors" for="banner" i18n="@@news-create_edit_news-file_size_error"
-              *ngIf="isBannerError">The banner size must be lower or equal 500kb</label>
-              <br *ngIf="!isBannerError"/>
+              *ngIf="hasErrorBanner()">The banner size must be lower or equal 500kb</label>
+              <br *ngIf="!hasErrorBanner()"/>
             </div>
           </div>
           <div class="col-sm-6">
