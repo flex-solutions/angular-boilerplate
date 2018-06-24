@@ -4,11 +4,10 @@
   overflow: hidden;
   /* for set '...' in absolute position */
   position: relative; 
-
-  height: 90px;
   /* use this value to count block height */
   line-height: 1.2em;
-
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em; 
   /* fix problem when last visible word doesn't adjoin right side  */
   text-align: justify;  
   /* place for '...' */
