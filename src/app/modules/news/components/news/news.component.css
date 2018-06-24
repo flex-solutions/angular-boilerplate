@@ -4,6 +4,7 @@
   overflow: hidden;
   /* for set '...' in absolute position */
   position: relative; 
+
   /* use this value to count block height */
   line-height: 1.2em;
   /* max-height = line-height (1.2) * lines max number (3) */
