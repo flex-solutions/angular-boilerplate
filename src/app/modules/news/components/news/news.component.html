@@ -21,8 +21,8 @@
         <td ><div class="block-ellipsis" [innerHTML]="item.content"></div>
         </td>
         <td appNewStatus [status]="item.status"></td>
-        <td>{{item.create_date}}</td>
-        <td>{{item.publish_date}}</td>
+        <td>{{convertTime(item.create_on)}}</td>
+        <td>{{convertTime(item.published_on)}}</td>
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>

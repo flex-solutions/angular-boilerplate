@@ -67,11 +67,11 @@
                         <div class="row text-gray d-md-flex d-none">
                           <div class="col-6 d-flex">
                             <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-created_on">Created on</p>
-                            <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.create_on}}</p>
+                            <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{convertTime(promotion.create_on)}}</p>
                           </div>
                           <div class="col-6 d-flex">
                             <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-last_edited_on">Last edited on</p>
-                            <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.edit_on}}</p>
+                            <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{(promotion.updated_on)}}</p>
                           </div>
                         </div>
                         <div class="row text-gray d-md-flex d-none">
@@ -81,7 +81,7 @@
                           </div>
                           <div class="col-6 d-flex">
                             <p class="mb-0 mr-2 text-muted text-muted" i18n="@@news_detail-last_edited_by">Last edited by</p>
-                            <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.edit_by}}</p>
+                            <p class="Last-responded mr-2 mb-0 text-muted text-muted">{{promotion.updated_by}}</p>
                           </div>
                         </div>
                         <div class="row mt-5 mb-5" style="max-height: 85%; overflow-y: scroll">

@@ -565,7 +565,7 @@
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
         <source>Permission Scheme</source>
-        <target>Permission Schemen</target>
+        <target>Permission Scheme</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions" datatype="html">
         <source>Actions</source>
@@ -836,7 +836,7 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit</source>
         <target>Edit</target>
-      </trans-unit>
+      </trans-unit> 
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
         <target>Delete permission scheme</target>

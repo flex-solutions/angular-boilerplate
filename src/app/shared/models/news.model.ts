@@ -1,18 +1,14 @@
 import { NewsStatusType } from '../enums/news-type.enum';
+import { ModelBase } from './model-base';
 
-class News {
+class News extends ModelBase {
     _id: string;
     title: string;
     banner: any;
     content: string;
     status: NewsStatusType = NewsStatusType.New ;
     viewCount = 0;
-    publishedOn: Date;
-    publishedBy: string;
-    edit_on: Date;
-    edit_by: string;
-    create_on: Date;
-    create_by: string;
+    published_on: Date;
 }
 
 const NewsFields = {
@@ -25,12 +21,5 @@ const NewsFields = {
     PUBLISHED_ON: 'published_on'
   };
 
-class NewsViewModel extends News {
-    create_date: string;
-    publish_date: string;
-    create_on: Date;
-    published_on: Date;
-}
-
-export {News, NewsFields, NewsViewModel};
+export {News, NewsFields};
 
