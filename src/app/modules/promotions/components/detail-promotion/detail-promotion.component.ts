@@ -67,11 +67,6 @@ export class DetailPromotionComponent implements OnInit {
     this.promotionService.getPromotion(promotionId).subscribe(p => {
       this.promotion = p as Promotion;
       this.promotion.banner = atob(this.promotion.banner);
-      this.promotion.create_on = this.convertTime(this.promotion.create_on);
-      this.promotion.edit_on = this.convertTime(this.promotion.edit_on);
-      if (this.promotion.edit_on === 'Invalid date') {
-        this.promotion.edit_on = '';
-      }
     });
   }
 

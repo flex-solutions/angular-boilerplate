@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { NewsViewModel, NewsFields, News } from '../../../../shared/models/news.model';
+import {  NewsFields, News } from '../../../../shared/models/news.model';
 import { NewsService } from '../../services/news.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -21,7 +21,7 @@ import { NewsRouteNames } from '../../constants/news.constant';
 })
 export class NewsComponent implements OnInit {
 
-  public items: NewsViewModel[] = [];
+  public items: News[] = [];
   currentFilterArgs: IFilterChangedEvent;
 
   constructor(private service: NewsService,
@@ -54,12 +54,8 @@ export class NewsComponent implements OnInit {
         pagination.page,
         this.currentFilterArgs.searchKey
       )
-      .subscribe((response: NewsViewModel[]) => {
+      .subscribe((response: News[]) => {
         this.items = response;
-        this.items.forEach(item => {
-          item.create_date = this.convertTime(item.create_on);
-          item.publish_date = this.convertTime(item.published_on);
-        });
       });
   }
 
@@ -68,11 +64,11 @@ export class NewsComponent implements OnInit {
 
     this.service.processNew(processedItem).subscribe((updateNew) => {
       processedItem.status = updateNew.status;
-      processedItem.publish_date = this.convertTime(updateNew.published_on);
+      processedItem.published_on = updateNew.published_on;
     });
   }
 
-  deletenew(newModel: NewsViewModel) {
+  deletenew(newModel: News) {
     const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newModel.title);
     this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
       if (result) {
