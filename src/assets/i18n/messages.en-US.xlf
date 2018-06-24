@@ -573,7 +573,7 @@
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
         <source>Permission Scheme</source>
-        <target>Permission Schemen</target>
+        <target>Permission Scheme</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions" datatype="html">
         <source>Actions</source>
@@ -743,7 +743,7 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
         <source>Business Name</source>
-        <target>Tên Nghiệp Vụ</target>
+        <target>Business Name</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
         <source>Data Scope</source>
@@ -802,11 +802,11 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
         <source>Full</source>
-        <target>Tất cả</target>
+        <target>Full</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-branch" datatype="html">
         <source>Branch</source>
-        <target>Chi nhánh</target>
+        <target>Branch</target>
       </trans-unit>
       <!-- Permission Schemes -->
       <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
@@ -844,7 +844,7 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit</source>
         <target>Edit</target>
-      </trans-unit>
+      </trans-unit> 
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
         <target>Delete permission scheme</target>
