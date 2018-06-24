@@ -29,14 +29,14 @@
         <td [innerHTML]="item.content" class="cut-text">
         </td>
         <td appPromotionStatus [status]="item.status"></td>
-        <td>{{item.start_date | promotionDate}}</td>
-        <td>{{item.expire_date | promotionDate}}</td>
+        <td>{{item.start_date | promotionDate:'dd/MM/y'}}</td>
+        <td>{{item.expire_date | promotionDate:'dd/MM/y'}}</td>
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
             <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
             <span i18n="@@list-promotions-btn-edit">Edit</span>
           </button>
-          <button type="button" class="btn btn-light btn-custom-css" appStartButton [status]="item.status" (click)="startStopPromotion(item._id)">
+          <button type="button" class="btn btn-light btn-custom-css" appStartStopButton [status]="item.status" [buttonSize]="0" (click)="startStopPromotion(item)">
           </button>
           <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>

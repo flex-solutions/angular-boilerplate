@@ -42,6 +42,15 @@ export class PromotionService extends AbstractRestService {
         return this.delete(`${id}`);
     }
 
+    start(promotionId: string, promotion: Promotion) {
+        return this.patch(`${promotionId}/start`, promotion);
+    }
+
+    stop(promotionId: string) {
+        return this.patch(`${promotionId}/stop`, {});
+    }
+
+
     private buildSearchQuery(currentQuery: string, status?: PromotionStatus[], startDate?: Date,
         endDate?: Date): string {
         let query = currentQuery;

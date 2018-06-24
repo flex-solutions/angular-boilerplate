@@ -1,3 +1,4 @@
+import { StartStopPromotionService } from './../../services/start-stop-promotion.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { FileInfo, ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
 import { Location } from '@angular/common';
@@ -37,8 +38,8 @@ export class CreatePromotionComponent implements OnInit {
 
   // For editable mode
   isEditableMode: boolean;
-  isFinishedBannerComponent: boolean = false;
-  isFinishedContentComponent:boolean = false;
+  isFinishedBannerComponent = false;
+  isFinishedContentComponent = false;
 
   private _isError: boolean;
 
@@ -57,7 +58,8 @@ export class CreatePromotionComponent implements OnInit {
     private _activeRoute: ActivatedRoute,
     private _promotionService: PromotionService,
     private _notificationService: NotificationService,
-    private _location: Location
+    private _location: Location,
+    private _startStopPromotionHandler: StartStopPromotionService
   ) {
     this.promotion = new Promotion();
     this.titleInvalid = false;
@@ -75,7 +77,7 @@ export class CreatePromotionComponent implements OnInit {
     });
   }
 
-  // Resolve multilangual message for app card title and sub title
+  // Resolve multilingual message for app card title and sub title
   private resolveTitle() {
     if (!this.isEditableMode) {
       this.cardTitle = this.translateService.translate(MessageConstant.CreatePromotionTitle);
@@ -88,19 +90,25 @@ export class CreatePromotionComponent implements OnInit {
 
   // Load promotion info from server
   private loadPromotion(promotionId) {
-    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+    if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
       return;
     }
     if (this.isEditableMode) {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
         this.promotion.banner = convertStringToBase64(this.promotion.banner);
-    });
-  }
+      })
+    }
   }
 
-  onFinshAndStart() {
-    this.onWizardFinish();
+  onFinishAndStart() {
+    // Create promotion
+    this._promotionService.create(this.promotion).subscribe((createdPromotion: Promotion) => {
+      this.showNotification(MessageConstant.CreatePromotionSuccess);
+      this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
+        this.onHandleCreateSuccess();
+      });
+    });
   }
 
   onWizardCancel() {
@@ -139,10 +147,9 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   hasErrorBanner() {
-    if (this.bannerError)
-    {
+    if (this.bannerError) {
       return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
-        &&  isNullOrEmptyOrUndefine(this.promotion.banner);
+        && isNullOrEmptyOrUndefine(this.promotion.banner);
     }
     return false;
   }

@@ -1510,6 +1510,44 @@
         <target>Khác</target>
       </trans-unit>
       <!--End Customer Module-->
+      <!--Start stop promotions-->
+      <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
+        <source>Start a promotion</source>
+        <target>Bắt đầu một tin khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-h5-start_description" datatype="html">
+        <source>Start the promotion {{0}}</source>
+        <target>Đăng tải tin tức khuyến mãi {{0}} trong một khoảng thời gian nhất định</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-label-apply_range_time" datatype="html">
+        <source>Apply range time</source>
+        <target>Thời gian áp dụng</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-notification-success_message" datatype="html">
+        <source>Promotion is started successfully</source>
+        <target>Tin tức khuyến mãi đã bắt đầu thành công</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-h5-stop_promotion_title" datatype="html">
+        <source>Stop a promotion</source>
+        <target>Dừng quảng bá tin khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-h5-stop_promotion_description" datatype="html">
+        <source>Are you sure you want to stop promotion {{0}}?</source>
+        <target>Bạn có chắc muốn dừng quảng bá tin tức khuyến mãi {{0}}?</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-notification-success_message" datatype="html">
+        <source>Promotion is stopped successfully</source>
+        <target>Tin tức khuyến mãi đã dừng thành công</target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-start_on" datatype="html">
+        <source>Start on: </source>
+        <target>Bắt đầu: </target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-expire_on" datatype="html">
+        <source>Expire on: </source>
+        <target>Hết hạn: </target>
+      </trans-unit>
+      <!--END Start stop promotions-->
     </body>
   </file>
 </xliff>
