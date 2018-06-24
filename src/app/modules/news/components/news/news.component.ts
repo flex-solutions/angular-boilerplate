@@ -68,6 +68,10 @@ export class NewsComponent implements OnInit {
     });
   }
 
+  convertToNomalString(content: string) {
+    return  content ? String(content).replace(/<[^>]+>/gm, '') : '';
+  }
+
   deletenew(newModel: News) {
     const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newModel.title);
     this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
