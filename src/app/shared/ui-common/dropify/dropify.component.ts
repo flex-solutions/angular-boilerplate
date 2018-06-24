@@ -85,12 +85,17 @@ export class DropifyComponent implements AfterViewInit {
     }
 
     set image(value: string) {
+        // check value is base 64 or not
+        const base64 = convertStringToBase64(value);
+        if (base64 !== value) {
+            return;
+        }
+        // when value is base 64, set preview
         this._image = value;
         this.imageChange.emit(this._image)
-        const base64 = convertStringToBase64(value);
         if (this.dropify) {
             this.dropify.showLoader();
-            this.dropify.setPreview(true, base64);
+            this.dropify.setPreview(true, this._image);
         }
     }
 

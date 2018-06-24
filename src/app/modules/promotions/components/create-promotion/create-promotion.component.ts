@@ -13,6 +13,7 @@ import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 @Component({
   selector: 'app-create-promotion',
@@ -93,6 +94,7 @@ export class CreatePromotionComponent implements OnInit {
     if (this.isEditableMode) {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
+        this.promotion.banner = convertStringToBase64(this.promotion.banner);
     });
   }
   }

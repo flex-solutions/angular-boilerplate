@@ -14,6 +14,7 @@ import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-edi
 import { Errors } from '../../constants/news.constant';
 import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 const TITLE_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news';
 const DESCRIPTION_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news_description';
@@ -87,6 +88,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
         (value: News) => {
           if (value) {
             this.news = value as News;
+            this.news.banner = convertStringToBase64(this.news.banner);
           } else {
             // Navigate to previous if user group not found
             this.location.back();
@@ -122,7 +124,11 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   hasEmptyAndBlurContent() {
-    return (isNullOrUndefined(this.rawContent) || this.rawContent === '') && this.isBlurEditor;
+    if (isNullOrEmptyOrUndefine(this.rawContent))
+    {
+      return this.isBlurEditor;
+    }
+    return false;
   }
 
   protected onCreateForm() {
@@ -179,10 +185,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     } else {
       this.location.back();
     }
-  }
-
-  onHtmlEditorChange(text: string) {
-    this.news.content = text;
   }
 
   onContentEmpty(event) {
