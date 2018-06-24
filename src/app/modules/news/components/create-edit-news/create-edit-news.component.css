@@ -2,3 +2,20 @@
     margin-top: 5px !important;
     display:inline-block !important; 
 }
+
+.btn-small {
+    height: 30px;
+    min-height: 30px;
+    margin-top:10px;
+    display:block;
+}
+
+.lb-small{
+    display:inline-block;
+    vertical-align: top;
+   }
+
+.news-group {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
