@@ -34,7 +34,8 @@
               <app-tinymce-editor editorHeight="350" elementId="promotionsEditor" 
               [(content)]="promotion.content" (onBlur)="onTinyEditorBlur($event)"
               [hasError]="contentInvalid || isTinymceContentEmpty()" 
-              (onFinishedInitialization) = "finishContentComponent()"></app-tinymce-editor>
+              (onFinishedInitialization) = "finishContentComponent()"
+              [(rawContent)]=""></app-tinymce-editor>
               <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-require_content"
                 *ngIf="contentInvalid || isTinymceContentEmpty()">promotion-create_promotion-error-require_content</label>
             </div>

@@ -34,6 +34,7 @@ export class CreatePromotionComponent implements OnInit {
   banner: string;
   isBlurEditor: boolean;
   promotionId: string;
+  rawContent: string;
   bannerError: DropifyError;
 
   // For editable mode
