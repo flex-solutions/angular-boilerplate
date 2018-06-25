@@ -31,7 +31,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   isPublish: boolean = false;
   isCreateAnother: boolean = false;
   bannerError: DropifyError;
-  rawContent: String;
+  rawContent: string;
   isBlurEditor: boolean = false;
   isFinishedBannerComponent: boolean = false;
   isFinishedContentComponent: boolean = false;
@@ -144,6 +144,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
 
   protected onSubmit() {
     if (!this.isEdit) {
+      this.news.brief_content = this.rawContent.substring(0, 300);
       this.newsService.create(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification
@@ -187,16 +188,13 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     }
   }
 
-  onContentEmpty(event) {
-    this.rawContent = event;
-  }
-
   onTinyEditorBlur(event: any) {
     this.isBlurEditor = event;
   }
 
   saveNews() {
     if (this.isEdit) {
+      this.news.brief_content = this.rawContent.substring(0, 300);
       this.newsService.update(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification

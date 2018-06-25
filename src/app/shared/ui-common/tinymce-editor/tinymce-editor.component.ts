@@ -30,7 +30,7 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
         this.editor.setContent(this._content);
       }
     }
-    this.raiseRawContent();
+    this.rawContent = this.editor.getContent({format : 'raw'});
   }
 
   get content(): string {
@@ -39,13 +39,25 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
 
   private _content: string;
 
+  @Input('rawContent')
+  set rawContent(value: string) {
+    this._rawContent = value;
+    this.rawContentChange.emit(this._rawContent);
+  }
+
+  get rawContent(): string {
+    return this._rawContent
+  }
+
+  private _rawContent: string;
+
   @Input() elementId: string;
   @Input() editorHeight: number;
   @Input() hasError: boolean;
 
   @Output() contentChange = new EventEmitter();
+  @Output() rawContentChange = new EventEmitter();
   @Output() onBlur = new EventEmitter();
-  @Output() onEmptyRawContent = new EventEmitter();
   @Output() onFinishedInitialization = new EventEmitter();
 
   editor;
@@ -83,18 +95,18 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
     })
   }
 
-  private raiseRawContent() {
-    if (this.editor)
-    {
-      let body = this.editor.getBody();
-      if (body)
-      {
-        var textcontent = body.textContent;
-        textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
-        this.onEmptyRawContent.emit(textcontent);
-      }
-    }
-  }
+  // private raiseRawContent() {
+  //   if (this.editor)
+  //   {
+  //     let body = this.editor.getBody();
+  //     if (body)
+  //     {
+  //       var textcontent = body.textContent;
+  //       textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
+  //       this.onEmptyRawContent.emit(textcontent);
+  //     }
+  //   }
+  // }
 
   reset() {
     this.content = "";

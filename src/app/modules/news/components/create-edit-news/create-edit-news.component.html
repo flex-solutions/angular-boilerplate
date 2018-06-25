@@ -29,7 +29,7 @@
             <label for="content" i18n="@@news-create_edit_news-label-content_field">Content </label>
             <label class="require">*</label> &nbsp;&nbsp;&nbsp;&nbsp;
             <app-tinymce-editor elementId="contentEditor" [(content)]="news.content" (onBlur)="onTinyEditorBlur($event)" editorHeight="200"
-              [hasError]="hasEmptyAndBlurContent()" (onEmptyRawContent)="onContentEmpty($event)" (onFinishedInitialization)="finishContentComponent()"></app-tinymce-editor>
+              [hasError]="hasEmptyAndBlurContent()" [(rawContent)]="rawContent" (onFinishedInitialization)="finishContentComponent()"></app-tinymce-editor>
             <label id="content-error" class="error text-danger show-errors" for="content" i18n="@@news-create_edit_news-label-content_require"
               *ngIf="hasEmptyAndBlurContent()">Please provide the content</label>
             <br *ngIf="!hasEmptyAndBlurContent()" />

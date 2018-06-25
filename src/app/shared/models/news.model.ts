@@ -6,6 +6,7 @@ class News extends ModelBase {
     title: string;
     banner: any;
     content: string;
+    brief_content: string;
     status: NewsStatusType = NewsStatusType.New ;
     viewCount = 0;
     published_on: Date;
