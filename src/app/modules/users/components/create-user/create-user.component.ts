@@ -9,7 +9,7 @@ import { getBase64 } from '../../../../utilities/convert-image-to-base64';
 import { User } from '../../../../shared/models/user.model';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { UserMessages, UserNavigationRoute } from '../../users.constant';
+import { UserMessages, UserNavigationRoute, UserRegex } from '../../users.constant';
 import { BranchService } from '../../services/branch.service';
 
 @Component({
@@ -39,10 +39,10 @@ export class CreateUserComponent extends UserModificationBase {
     this.formGroup = this.fb.group({
       email: [
         '',
-        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
+        [Validators.required, Validators.pattern(UserRegex.EmailRegex)]
       ],
       fullname: ['', [Validators.required]],
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.pattern(UserRegex.UsernameRegex), Validators.maxLength(20)]],
       password: ['', []],
       createAnother: ['', []],
       branchId: ['', []]

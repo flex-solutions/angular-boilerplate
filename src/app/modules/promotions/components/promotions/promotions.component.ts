@@ -1,3 +1,4 @@
+import { StringExtension } from './../../../../utilities/string.extension';
 import { StartPromotionComponent } from './../start-promotion/start-promotion.component';
 import { SelectableModel } from './../../../../shared/models/selectable.model';
 import { SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
@@ -134,4 +135,12 @@ export class PromotionsComponent implements OnInit {
       }
     ];
   }
+
+  extractContent(s) {
+    const span = document.createElement('span');
+    span.innerHTML = s;
+    const content = span.textContent || span.innerText;
+    return StringExtension.truncate(content, 200);
+  }
+
 }
