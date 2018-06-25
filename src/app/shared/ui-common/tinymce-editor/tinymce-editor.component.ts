@@ -29,8 +29,8 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
       {
         this.editor.setContent(this._content);
       }
+      this.raiseRawContent();
     }
-    this.rawContent = this.editor.getContent({format : 'raw'});
   }
 
   get content(): string {
@@ -95,18 +95,18 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
     })
   }
 
-  // private raiseRawContent() {
-  //   if (this.editor)
-  //   {
-  //     let body = this.editor.getBody();
-  //     if (body)
-  //     {
-  //       var textcontent = body.textContent;
-  //       textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
-  //       this.onEmptyRawContent.emit(textcontent);
-  //     }
-  //   }
-  // }
+  private raiseRawContent() {
+    if (this.editor)
+    {
+      let body = this.editor.getBody();
+      if (body)
+      {
+        var textcontent = body.textContent;
+        textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
+        this.rawContent = textcontent;
+      }
+    }
+  }
 
   reset() {
     this.content = "";
