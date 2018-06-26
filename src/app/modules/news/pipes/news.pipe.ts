@@ -4,7 +4,7 @@ import { News } from '../../../shared/models/news.model';
 @Pipe({
     name: 'newsFilter'
 })
-export class NewsFilterPiple implements PipeTransform {
+export class NewsFilterPipe implements PipeTransform {
     transform(items: News[], searchText: string): any[] {
         if (!items) {
             return [];

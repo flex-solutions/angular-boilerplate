@@ -1,5 +1,5 @@
-import { NewsFilterPiple } from './news.pipe';
+import { NewsFilterPipe } from './news.pipe';
 
 export const NewsPipes = [
-    NewsFilterPiple,
+    NewsFilterPipe,
 ];
