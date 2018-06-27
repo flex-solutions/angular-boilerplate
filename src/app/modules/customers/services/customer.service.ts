@@ -17,4 +17,16 @@ export class CustomerService extends AbstractRestService {
     count(): Observable<number> {
         return this.get(`count?searchKey=`);
     }
+
+    public getById(_id: string): Observable<CustomerModel> {
+        return this.get(`${_id}`);
+    }
+
+    create(news: CustomerModel) {
+        return this.post('', news);
+    }
+
+    update(news: CustomerModel) {
+      return this.put('', news);
+    }
 }

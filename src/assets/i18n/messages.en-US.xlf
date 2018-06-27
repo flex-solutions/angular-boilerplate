@@ -1518,6 +1518,80 @@
         <target>Other</target>
       </trans-unit>
       <!--End Customer Module-->
+      <!--Start Create Edit Customer Module-->
+      <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-input-name_place_holder" datatype="html">
+        <source>Enter customer name</source>
+        <target>Enter customer name</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-name_require" datatype="html">
+        <source>Please provide customer name</source>
+        <target>Please provide customer name</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
+        <source>Phone number</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-input-phone_place_holder" datatype="html">
+        <source>Enter customer phone</source>
+        <target>Enter customer phone</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-phone_require" datatype="html">
+        <source>Please provide phone number</source>
+        <target>Please provide phone number</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-birthday_field" datatype="html">
+        <source>Birthday</source>
+        <target>Birthday</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
+        <source>Customer Type</source>
+        <target>Customer Type</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
+        <source>Sex</source>
+        <target>Sex</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-address_field" datatype="html">
+        <source>Address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-district_field" datatype="html">
+        <source>District</source>
+        <target>District</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-city_field" datatype="html">
+        <source>City/Province</source>
+        <target>City/Province</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-email_field" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="customer-create_customer-input-email_place_holder" datatype="html">
+        <source>Enter email</source>
+        <target>Enter email</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-button-save" datatype="html">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-label-create_another_customer" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <!--End Create Edit Customer Module-->
     </body>
   </file>
 </xliff>
