@@ -1,8 +1,8 @@
+import { CustomerService } from './../../services/customer.service';
+import { IFilterChangedEvent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Observable } from 'rxjs';
-import { IFilterChangedEvent } from './../../../shared/ui-common/datagrid/components/datagrid.component';
-import { CustomerService } from './../services/customer.service';
 import { Component, OnInit } from '@angular/core';
-import { CustomerModel } from '../../../shared/models/customer.model';
+import { CustomerModel } from '../../../../shared/models/customer.model';
 
 @Component({
     selector: 'app-customer-home',

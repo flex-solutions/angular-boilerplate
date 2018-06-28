@@ -1,12 +1,12 @@
 import { CreateEditCustomerComponent } from './components/create-edit-customer/create-edit-customer.component';
-import { CustomerHomeComponent } from './components/home.component';
+import { CustomerHomeComponent } from './components/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const customerModuleRoutes: Routes = [
     {
       // TODO: update after finish create news
-      path: '',
+      path: 'create',
       component: CustomerHomeComponent,
       data: {
         breadcrumb: 'Customers'
@@ -14,7 +14,7 @@ const customerModuleRoutes: Routes = [
     },
     {
        // TODO: update after finish create news
-       path: 'create',
+       path: '',
        component: CreateEditCustomerComponent,
        data: {
          breadcrumb: 'Create customers'

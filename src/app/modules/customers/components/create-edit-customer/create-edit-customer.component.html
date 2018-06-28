@@ -23,33 +23,48 @@
             </div>
             <div class="form-group">
               <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
-              <input id="birthday" required class="form-control" formControlName="birthday" type="date"
-                [(ngModel)]="customer.birthday">
-              <!-- input form -->
+              <app-date-picker class="dataTables_customfilter enddatepicker" title="birthday" i18n-title="@@customer-create_edit_customer-label-birthday_field"
+              [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
             </div>
             <div class="form-group">
               <label for="type" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
               <select id="typeId" class="form-control" formControlName="typeId">
                 <option *ngFor="let type of types" [ngValue]="type">{{type.name}}</option>
               </select>
-              <!-- input form -->
             </div>
             <div class="form-group">
               <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
               <select id="sexId" class="form-control" formControlName="sexId">
                 <option *ngFor="let sex of sexes" [ngValue]="sex">{{sex.name}}</option>
               </select>
-              <!-- input form -->
             </div>
             <div class = "row">
-              <div class="col-md-5"></div>
-              <label for="address" i18n="@@customer-create_edit_customer-label-address_field">Address </label>
+              <div class="col-md-5">
+                <div class="form-group">
+                    <label for="address" i18n="@@customer-create_edit_customer-label-address_field">Address </label>
+                    <select id="addressId" class="form-control" formControlName="address">
+                      <option *ngFor="let address of addresses" [ngValue]="address">{{address.name}}</option>
+                    </select>
+                </div>
+              </div>
               <!-- input form -->
-              <div class="col-md-2"></div>
-              <label for="district" i18n="@@customer-create_edit_customer-label-district_field">District </label>
+              <div class="col-md-2">
+                <div class="form-group">
+                    <label for="district" i18n="@@customer-create_edit_customer-label-district_field">District </label>
+                    <select id="districtId" class="form-control" formControlName="district">
+                      <option *ngFor="let district of districts" [ngValue]="district">{{district.name}}</option>
+                    </select>
+                </div>
+              </div>
               <!-- input form -->
-              <div class="col-md-3"></div>
-              <label for="city" i18n="@@customer-create_edit_customer-label-city_field">City/Province </label>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="city" i18n="@@customer-create_edit_customer-label-city_field">City/Province </label>
+                      <select id="cityId" class="form-control" formControlName="cityId">
+                        <option *ngFor="let city of cities" [ngValue]="city">{{cities.name}}</option>
+                      </select>
+                  </div>
+              </div>
               <!-- input form -->
             </div>
             <div class="form-group">

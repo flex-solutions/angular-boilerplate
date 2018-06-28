@@ -8,7 +8,7 @@ import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { isNullOrUndefined } from 'util';
-import { CustomerModel, Sex } from '../../../../shared/models/customer.model';
+import { CustomerModel, Sex, SexList, SexModel } from '../../../../shared/models/customer.model';
 
 const TITLE_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer';
 const DESCRIPTION_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer_description';
@@ -25,8 +25,11 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
   isCreateAnother: boolean = false;
 
   customer: CustomerModel = new CustomerModel();
-  sexes: Sex[] = [];
+  sexes: SexModel[] = SexList.getInstance(this.translateService);
   types: number[] = [];
+  addresses: any[] = [];
+  districts: any[]= [];
+  cities: any[] = [];
   sexId = -1;
   typeId = -1;
   customerId: string;
