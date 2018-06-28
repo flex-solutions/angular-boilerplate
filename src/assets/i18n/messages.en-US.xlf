@@ -1518,6 +1518,77 @@
         <target>Other</target>
       </trans-unit>
       <!--End Customer Module-->
+      <!--Start Customer Filter-->
+      <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
+        <source>Filter Tool</source>
+        <target>Filter Tool</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
+        <source>Phone number</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-placeholder-phone_number" datatype="html">
+        <source>Phone number contains</source>
+        <target>Phone number contains</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-sex" datatype="html">
+        <source>Sex</source>
+        <target>Sex</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-address" datatype="html">
+        <source>Address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-member_id" datatype="html">
+        <source>Member id</source>
+        <target>Member id</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-placeholder-member_id" datatype="html">
+        <source>Member id contains</source>
+        <target>Member id contains</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-month_of_birthday" datatype="html">
+        <source>Month of birthday</source>
+        <target>Month of birthday</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-day_are_not_returned" datatype="html">
+        <source>Days are not returned</source>
+        <target>Days are not returned</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-number_of_times_eaten" datatype="html">
+        <source>Number of times eaten</source>
+        <target>Number of times eaten</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-placeholder-name" datatype="html">
+        <source>Name contains</source>
+        <target>Name contains</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-member_type" datatype="html">
+        <source>Member type</source>
+        <target>Member type</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-have_score" datatype="html">
+        <source>Have score</source>
+        <target>Have score</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-spend_money_total" datatype="html">
+        <source>Spend money total</source>
+        <target>Spend money total</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-placeholder_from" datatype="html">
+        <source>From</source>
+        <target>From</target>
+      </trans-unit>
+      <trans-unit id="customers-filter-list-table-lbl-placeholder_to" datatype="html">
+        <source>To</source>
+        <target>To</target>
+      </trans-unit>
+      <!--End Customer Filter-->
+
     </body>
   </file>
 </xliff>

@@ -5,33 +5,36 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerModel } from '../../../shared/models/customer.model';
 
 @Component({
-    selector: 'app-customer-home',
-    templateUrl: './home.component.html'
+  selector: 'app-customer-home',
+  templateUrl: './home.component.html'
 })
 export class CustomerHomeComponent implements OnInit {
-    filter: IFilterChangedEvent;
-    public customers: CustomerModel[] = [];
+  filter: IFilterChangedEvent;
+  public customers: CustomerModel[] = [];
 
-    constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService) {}
 
-    public count = (searchKey: string): Observable<number> => {
-        return this.customerService.count();
-      }
+  public count = (searchKey: string): Observable<number> => {
+    return this.customerService.count();
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {}
 
-    createNewCustomer() {}
+  createNewCustomer() {}
 
-    onPageChanged(event: IFilterChangedEvent) {
-        this.filter = event;
-        this.getCustomers();
-    }
+  onPageChanged(event: IFilterChangedEvent) {
+    this.filter = event;
+    this.getCustomers();
+  }
 
-    private getCustomers() {
-        this.customerService.getCustomers(this.filter.pagination.page, this.filter.pagination.itemsPerPage).subscribe(res => {
-            this.customers = res;
-            console.log(this.customers);
-        });
-    }
+  private getCustomers() {
+    this.customerService
+      .getCustomers(
+        this.filter.pagination.page,
+        this.filter.pagination.itemsPerPage
+      )
+      .subscribe(res => {
+        this.customers = res;
+      });
+  }
 }

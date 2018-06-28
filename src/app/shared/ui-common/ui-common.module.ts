@@ -16,19 +16,25 @@ import { FormsModule } from '@angular/forms';
 import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.component';
 import { DatePickerComponent } from './datepicker/date-picker/date-picker.component';
 import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-check-boxes.component';
+import { InputRangeComponent } from './input-range/input-range.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
   exports: [
-    LoaderComponent, CardComponent,
-    SearchTextboxComponent, TynimceEditorComponent,
-    DialogModule, DatagridModule, PaginationModule,
+    LoaderComponent,
+    CardComponent,
+    SearchTextboxComponent,
+    TynimceEditorComponent,
+    DialogModule,
+    DatagridModule,
+    PaginationModule,
     DropifyComponent,
     WizardComponent,
     WizardStepComponent,
     DateRangePickerComponent,
     DatePickerComponent,
-    DropDownCheckBoxesComponent
+    DropDownCheckBoxesComponent,
+    InputRangeComponent
   ],
   declarations: [
     LoaderComponent,
@@ -40,10 +46,9 @@ import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-c
     WizardStepComponent,
     DateRangePickerComponent,
     DatePickerComponent,
-    DropDownCheckBoxesComponent
+    DropDownCheckBoxesComponent,
+    InputRangeComponent
   ],
-  providers: [
-    LoaderService
-  ]
+  providers: [LoaderService]
 })
 export class UICommonModule {}

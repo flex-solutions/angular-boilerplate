@@ -1,0 +1,43 @@
+<app-card title="Filter Tool" i18n-title="customers-filter-list-table-lbl-title">
+  <div class="row">
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-phone_number">Phone number</label>
+      <input class="form-control form-control-lg" i18n-placeholder="customers-filter-list-table-placeholder-phone_number" placeholder="Phone number contains" aria-label="Username" type="text">
+    </div>
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-sex">Sex</label>
+      <input class="form-control form-control-lg" type="text">
+    </div>
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-address">Address</label>
+      <input class="form-control form-control-lg" type="text">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-member_id">Member id</label>
+      <input class="form-control form-control-lg" i18n-placeholder="customers-filter-list-table-placeholder-member_id" placeholder="Member id contains"  type="text">
+    </div>
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-month_of_birthday">Month of birthday</label>
+      <input class="form-control form-control-lg" type="text">
+    </div>
+    <app-input-range i18n-title="customers-filter-list-table-lbl-day_are_not_returned" title="Days are not returned"></app-input-range>
+    <app-input-range i18n-title="customers-filter-list-table-lbl-number_of_times_eaten" title="Number of times eaten"></app-input-range>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-name">Name</label>
+      <input class="form-control form-control-lg" placeholder="Name contains" type="text">
+    </div>
+    <div class="form-group">
+      <label i18n="customers-filter-list-table-lbl-member_type">Member type</label>
+      <input class="form-control form-control-lg" type="text">
+    </div>
+    <app-input-range i18n-title="customers-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
+    <app-input-range i18n-title="customers-filter-list-table-lbl-spend_money_total" title="Spend money total"></app-input-range>
+  </div>
+
+</app-card>
