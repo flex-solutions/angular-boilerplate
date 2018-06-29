@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CustomerFilter } from '../../../../shared/models/customer.model';
+declare const $: any;
 
 @Component({
   selector: 'app-customer-filter',
   templateUrl: './customer-filter.component.html',
   styleUrls: ['./customer-filter.component.css']
 })
-export class CustomerFilterComponent implements OnInit {
+export class CustomerFilterComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  customerFilter: CustomerFilter;
 
-  ngOnInit() {
+
+  constructor() {
+    this.customerFilter = new CustomerFilter();
   }
 
+  ngOnInit() {}
+
+  ngAfterViewInit(): void {
+    $('.js-example-basic-single').select2();
+  }
+
+  runFilter() {}
 }

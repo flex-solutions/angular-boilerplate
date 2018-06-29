@@ -1546,7 +1546,7 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-name" datatype="html">
         <source>Name</source>
-        <target>Tên khách hàng</target>
+        <target>Tên KH</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-placeholder-name" datatype="html">
         <source>Name contains</source>
@@ -1554,7 +1554,7 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-member_type" datatype="html">
         <source>Member type</source>
-        <target>Loại memeber</target>
+        <target>Loại thành viên</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-have_score" datatype="html">
         <source>Have score</source>

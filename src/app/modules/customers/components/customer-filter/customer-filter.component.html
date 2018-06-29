@@ -1,43 +1,90 @@
-<app-card title="Filter Tool" i18n-title="customers-filter-list-table-lbl-title">
-  <div class="row">
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-phone_number">Phone number</label>
-      <input class="form-control form-control-lg" i18n-placeholder="customers-filter-list-table-placeholder-phone_number" placeholder="Phone number contains" aria-label="Username" type="text">
+<app-card title="Filter Tool" i18n-title="@@customers-filter-list-table-lbl-title">
+  <form>
+    <div class="row">
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-phone_number">Phone number</label>
+        <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-phone_number" placeholder="Phone number contains"
+          aria-label="Username" type="text">
+      </div>
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-sex">Sex</label>
+        <select [(ngModel)]="customerFilter.sex" class="js-example-basic-single" style="width:100%" name="sex">
+          <option [value]="1">Male</option>
+          <option [value]="0">Female</option>
+          <option [value]="2">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-address">Address</label>
+        <div class="form-row">
+          <div class="col-md-6">
+            <select class="js-example-basic-single" style="width:100%" name="city">
+              <option value="0">Male</option>
+              <option value="1">Female</option>
+              <option value="2">Other</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <select class="js-example-basic-single" style="width:100%" name="district">
+              <option value="0">Male</option>
+              <option value="1">Female</option>
+              <option value="2">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-sex">Sex</label>
-      <input class="form-control form-control-lg" type="text">
-    </div>
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-address">Address</label>
-      <input class="form-control form-control-lg" type="text">
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-member_id">Member id</label>
-      <input class="form-control form-control-lg" i18n-placeholder="customers-filter-list-table-placeholder-member_id" placeholder="Member id contains"  type="text">
+    <div class="row">
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-member_id">Member id</label>
+        <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-member_id" placeholder="Member id contains"
+          type="text">
+      </div>
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-month_of_birthday">Month of birthday</label>
+        <select [(ngModel)]="customerFilter.monthOfBirthday" class="js-example-basic-single" style="width:100%" name="month">
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+      <app-input-range i18n-title="@@customers-filter-list-table-lbl-day_are_not_returned" title="Days are not returned"></app-input-range>
+      <app-input-range i18n-title="@@customers-filter-list-table-lbl-number_of_times_eaten" title="Number of times eaten"></app-input-range>
     </div>
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-month_of_birthday">Month of birthday</label>
-      <input class="form-control form-control-lg" type="text">
-    </div>
-    <app-input-range i18n-title="customers-filter-list-table-lbl-day_are_not_returned" title="Days are not returned"></app-input-range>
-    <app-input-range i18n-title="customers-filter-list-table-lbl-number_of_times_eaten" title="Number of times eaten"></app-input-range>
-  </div>
 
-  <div class="row">
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-name">Name</label>
-      <input class="form-control form-control-lg" placeholder="Name contains" type="text">
+    <div class="row">
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-name">Name</label>
+        <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-name" placeholder="Name contains"
+          type="text">
+      </div>
+      <div class="form-group">
+        <label i18n="@@customers-filter-list-table-lbl-member_type">Member type</label>
+        <select class="js-example-basic-single" style="width:100%" name="member-type">
+          <option value="0">Male</option>
+          <option value="1">Female</option>
+          <option value="2">Other</option>
+        </select>
+      </div>
+      <app-input-range i18n-title="@@customers-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
+      <app-input-range i18n-title="@@customers-filter-list-table-lbl-spend_money_total" title="Spend money total"></app-input-range>
     </div>
-    <div class="form-group">
-      <label i18n="customers-filter-list-table-lbl-member_type">Member type</label>
-      <input class="form-control form-control-lg" type="text">
+    <div class="row">
+      <button type="submit" class="btn btn-primary mr-2" (click)="runFilter()">
+        <i class="mdi mdi-filter-outline"></i>
+        <span i18n="@@customers-filter-list-table-btn-run_filter">Run filter</span>
+      </button>
     </div>
-    <app-input-range i18n-title="customers-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
-    <app-input-range i18n-title="customers-filter-list-table-lbl-spend_money_total" title="Spend money total"></app-input-range>
-  </div>
-
+  </form>
 </app-card>
+<br/>
