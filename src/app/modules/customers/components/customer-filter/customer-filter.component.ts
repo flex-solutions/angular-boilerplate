@@ -2,6 +2,7 @@ import { CustomerService } from './../../services/customer.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
 import { CustomerCriteriaBuilder } from './customer-filter-builder';
+import { CustomerMockData } from '../../services/customer-filter.mock';
 declare const $: any;
 
 @Component({
@@ -38,6 +39,11 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
       this.districts = this.provinces[data.id].districts;
     });
   }
+  onProvinceChange($event) {
+    if ($event) {
+      this.districts = $event.districts;
+    }
+  }
 
   get sexes() {
     return [Sex.Male, Sex.Female, Sex.Other];
@@ -45,6 +51,10 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
 
   sexAsString(item) {
     return Sex[item];
+  }
+
+  get months() {
+    return CustomerMockData.months;
   }
 
   runFilter() {

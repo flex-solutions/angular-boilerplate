@@ -17,6 +17,7 @@ import { TynimceEditorComponent } from './tinymce-editor/tinymce-editor.componen
 import { DatePickerComponent } from './datepicker/date-picker/date-picker.component';
 import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-check-boxes.component';
 import { InputRangeComponent } from './input-range/input-range.component';
+import { Select2Component } from './select2/select2.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -34,7 +35,8 @@ import { InputRangeComponent } from './input-range/input-range.component';
     DateRangePickerComponent,
     DatePickerComponent,
     DropDownCheckBoxesComponent,
-    InputRangeComponent
+    InputRangeComponent,
+    Select2Component
   ],
   declarations: [
     LoaderComponent,
@@ -47,7 +49,8 @@ import { InputRangeComponent } from './input-range/input-range.component';
     DateRangePickerComponent,
     DatePickerComponent,
     DropDownCheckBoxesComponent,
-    InputRangeComponent
+    InputRangeComponent,
+    Select2Component
   ],
   providers: [LoaderService]
 })

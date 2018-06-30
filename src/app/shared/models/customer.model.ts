@@ -24,6 +24,8 @@ class CustomerFilter {
   sex: Sex;
   monthOfBirthday: number;
   memberType: number;
+  province: any;
+  district: any;
   address: string;
   dayAreNotReturned: Range;
   numberOfTimesEaten: Range;
