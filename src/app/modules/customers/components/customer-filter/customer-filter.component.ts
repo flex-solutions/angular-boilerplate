@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CustomerFilter } from '../../../../shared/models/customer.model';
+import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
 declare const $: any;
 
 @Component({
@@ -8,9 +8,7 @@ declare const $: any;
   styleUrls: ['./customer-filter.component.css']
 })
 export class CustomerFilterComponent implements OnInit, AfterViewInit {
-
   customerFilter: CustomerFilter;
-
 
   constructor() {
     this.customerFilter = new CustomerFilter();
@@ -20,6 +18,14 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     $('.js-example-basic-single').select2();
+  }
+
+  get sexes() {
+    return [Sex.Male, Sex.Female, Sex.Other];
+  }
+
+  sexAsString(item) {
+    return Sex[item];
   }
 
   runFilter() {}

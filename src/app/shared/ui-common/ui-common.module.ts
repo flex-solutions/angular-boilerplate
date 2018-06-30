@@ -34,7 +34,7 @@ import { InputRangeComponent } from './input-range/input-range.component';
     DateRangePickerComponent,
     DatePickerComponent,
     DropDownCheckBoxesComponent,
-    InputRangeComponent,
+    InputRangeComponent
   ],
   declarations: [
     LoaderComponent,
@@ -47,7 +47,7 @@ import { InputRangeComponent } from './input-range/input-range.component';
     DateRangePickerComponent,
     DatePickerComponent,
     DropDownCheckBoxesComponent,
-    InputRangeComponent,
+    InputRangeComponent
   ],
   providers: [LoaderService]
 })

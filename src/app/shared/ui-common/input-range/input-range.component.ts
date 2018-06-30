@@ -5,6 +5,7 @@ import {
   EventEmitter,
   AfterViewInit
 } from '@angular/core';
+import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
 declare const $: any;
 
 export class Range {
@@ -19,6 +20,7 @@ export class Range {
 })
 export class InputRangeComponent implements AfterViewInit {
   private _range: Range;
+  hasError: boolean;
 
   @Output() rangeChange = new EventEmitter();
 
@@ -35,6 +37,7 @@ export class InputRangeComponent implements AfterViewInit {
 
   constructor() {
     this._range = new Range();
+    this.hasError = false;
   }
 
   ngAfterViewInit() {
@@ -55,5 +58,30 @@ export class InputRangeComponent implements AfterViewInit {
         return true;
       }
     });
+  }
+
+  onFromChange($event) {
+    this._validate();
+  }
+
+  onToChange($event) {
+    this._validate();
+  }
+
+  private _validate() {
+    if (
+      isNullOrEmptyOrUndefine(this._range.from) ||
+      isNullOrEmptyOrUndefine(this._range.to)
+    ) {
+      this.hasError = false;
+      return;
+    }
+
+    if (this._range.from < this._range.to) {
+      this.hasError = false;
+      return;
+    }
+
+    this.hasError = true;
   }
 }

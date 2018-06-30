@@ -3,15 +3,13 @@
     <div class="row">
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-phone_number">Phone number</label>
-        <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-phone_number" placeholder="Phone number contains"
-          aria-label="Username" type="text">
+        <input class="form-control form-control-lg number-only" i18n-placeholder="@@customers-filter-list-table-placeholder-phone_number"
+          placeholder="Phone number contains" aria-label="Username" type="text">
       </div>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-sex">Sex</label>
-        <select [(ngModel)]="customerFilter.sex" class="js-example-basic-single" style="width:100%" name="sex">
-          <option [ngValue]="1">Male</option>
-          <option [ngValue]="0">Female</option>
-          <option [ngValue]="2">Other</option>
+        <select class="js-example-basic-single" style="width:100%" name="sex">
+          <option *ngFor="let item of sexes" [value]="item">{{sexAsString(item)}}</option>
         </select>
       </div>
       <div class="form-group">
@@ -43,7 +41,7 @@
       </div>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-month_of_birthday">Month of birthday</label>
-        <select [(ngModel)]="customerFilter.monthOfBirthday" class="js-example-basic-single" style="width:100%" name="month">
+        <select class="js-example-basic-single" style="width:100%" name="month">
           <option [ngValue]="1">January</option>
           <option [ngValue]="2">February</option>
           <option [ngValue]="3">March</option>

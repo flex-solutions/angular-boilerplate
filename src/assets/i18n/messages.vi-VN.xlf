@@ -1572,6 +1572,14 @@
         <source>To</source>
         <target>Đến</target>
       </trans-unit>
+      <trans-unit id="customers-filter-list-table-btn-run_filter" datatype="html">
+        <source>Run filter</source>
+        <target>Lọc</target>
+      </trans-unit>
+      <trans-unit id="input-change-control-lbl-fromLessThanTo" datatype="html">
+        <source>From is not greater than to</source>
+        <target>Giá trị từ phải nhỏ hơn giá trị đến</target>
+      </trans-unit>
       <!--End Customer Filter-->
     </body>
   </file>

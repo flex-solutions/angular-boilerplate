@@ -1587,6 +1587,14 @@
         <source>To</source>
         <target>To</target>
       </trans-unit>
+      <trans-unit id="customers-filter-list-table-btn-run_filter" datatype="html">
+        <source>Run filter</source>
+        <target>Run filter</target>
+      </trans-unit>
+      <trans-unit id="input-change-control-lbl-fromLessThanTo" datatype="html">
+        <source>From is not greater than to</source>
+        <target>From is not greater than to</target>
+      </trans-unit>
       <!--End Customer Filter-->
 
     </body>
