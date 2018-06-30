@@ -1,6 +1,7 @@
 import { CustomerService } from './../../services/customer.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
+import { CustomerCriteriaBuilder } from './customer-filter-builder';
 declare const $: any;
 
 @Component({
@@ -46,7 +47,12 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
     return Sex[item];
   }
 
-  runFilter() {}
+  runFilter() {
+    console.log(this.customerFilter);
+    const builder = CustomerCriteriaBuilder.build(this.customerFilter);
+
+    // Todo call api count and filter to run filter
+  }
 
   get selectHost() {
     return $('.js-example-basic-single');

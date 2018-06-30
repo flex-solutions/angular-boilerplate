@@ -41,16 +41,3 @@ export class CriteriaBuilder {
     return this._criteria;
   }
 }
-
-export class CustomerCriteriaBuilder {
-  static build() {
-    const customerCriteria = CriteriaBuilder.makeCriteria()
-      .withRegex('phone_number', 'a')
-      .withRegex('member_id', 'a')
-      .withRegex('name', 'b')
-      .withRegex('ad', '')
-      .withRegex('sex', '')
-      .build();
-    console.log(customerCriteria);
-  }
-}

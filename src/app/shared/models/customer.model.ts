@@ -1,4 +1,5 @@
 import { Range } from './../ui-common/input-range/input-range.component';
+
 enum Sex {
   Female = 0,
   Male,
@@ -32,6 +33,10 @@ class CustomerFilter {
   constructor() {
     this.sex = Sex.Female;
     this.monthOfBirthday = (new Date()).getMonth();
+    this.name = '';
+    this.address = '';
+    this.memberId = '';
+    this.phoneNumber = '';
   }
 }
 
