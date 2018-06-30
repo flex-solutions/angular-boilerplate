@@ -6,27 +6,25 @@
         <input class="form-control form-control-lg number-only" i18n-placeholder="@@customers-filter-list-table-placeholder-phone_number"
           placeholder="Phone number contains" aria-label="Username" type="text">
       </div>
+      <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-sex">Sex</label>
         <select class="js-example-basic-single" style="width:100%" name="sex">
           <option *ngFor="let item of sexes" [value]="item">{{sexAsString(item)}}</option>
         </select>
       </div>
+      <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-address">Address</label>
         <div class="form-row">
-          <div class="col-md-6">
-            <select class="js-example-basic-single" style="width:100%" name="city">
-              <option value="0">Male</option>
-              <option value="1">Female</option>
-              <option value="2">Other</option>
+          <div class="col-auto">
+            <select class="js-example-basic-single" style="width:100%" name="member-type">
+              <option *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
             </select>
           </div>
-          <div class="col-md-6">
-            <select class="js-example-basic-single" style="width:100%" name="district">
-              <option value="0">Male</option>
-              <option value="1">Female</option>
-              <option value="2">Other</option>
+          <div class="col-auto">
+            <select class="js-example-basic-single" style="width:100%" name="member-type">
+              <option *ngFor="let district of districts" [value]="district.id">{{district.name}}</option>
             </select>
           </div>
         </div>
@@ -39,6 +37,7 @@
         <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-member_id" placeholder="Member id contains"
           type="text">
       </div>
+      <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-month_of_birthday">Month of birthday</label>
         <select class="js-example-basic-single" style="width:100%" name="month">
@@ -56,7 +55,9 @@
           <option [ngValue]="12">December</option>
         </select>
       </div>
+      <br/>
       <app-input-range i18n-title="@@customers-filter-list-table-lbl-day_are_not_returned" title="Days are not returned"></app-input-range>
+      <br/>
       <app-input-range i18n-title="@@customers-filter-list-table-lbl-number_of_times_eaten" title="Number of times eaten"></app-input-range>
     </div>
 
@@ -66,15 +67,16 @@
         <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-name" placeholder="Name contains"
           type="text">
       </div>
+      <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-member_type">Member type</label>
         <select class="js-example-basic-single" style="width:100%" name="member-type">
-          <option value="0">Male</option>
-          <option value="1">Female</option>
-          <option value="2">Other</option>
+          <option *ngFor="let item of memberType" [value]="item.id">{{item.name}}</option>
         </select>
       </div>
+      <br/>
       <app-input-range i18n-title="@@customers-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
+      <br/>
       <app-input-range i18n-title="@@customers-filter-list-table-lbl-spend_money_total" title="Spend money total"></app-input-range>
     </div>
     <div class="row">

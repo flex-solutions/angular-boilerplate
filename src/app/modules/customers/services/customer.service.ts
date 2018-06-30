@@ -2,6 +2,8 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { CustomerModel } from '../../../shared/models/customer.model';
+import { sleep } from '../../../utilities/util';
+import { CustomerMockData } from './customer-filter.mock';
 @Injectable()
 export class CustomerService extends AbstractRestService {
   protected controllerName: string;
@@ -29,5 +31,21 @@ export class CustomerService extends AbstractRestService {
       return this.filter('count', query);
     }
     return this.get(`count`);
+  }
+
+  getProvinces() {
+    return new Promise((resolve, reject) => {
+      sleep(1000);
+      const data = CustomerMockData.provincesMock;
+      resolve(data);
+    });
+  }
+
+  getMemberType() {
+    return new Promise((resolve, reject) => {
+      sleep(1000);
+      const data = CustomerMockData.memberTypeMock;
+      resolve(data);
+    });
   }
 }
