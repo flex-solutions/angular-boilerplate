@@ -1512,6 +1512,22 @@
       </trans-unit>
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
+      <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
+        <source>Create Customer</source>
+        <target>Tạo khách hàng</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
+        <source>Manual creating a new customer account, customer can user phone number to login mobile app</source>
+        <target>Tạo thủ công tài khoản khách hàng, sau bước này, khách hàng có thể dùng số điện thoại để đăng nhập vào ứng dụng di động</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
+        <source>Edit Customer</source>
+        <target>Cập nhật thông tin khách hàng</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-h4-edit_customer_description" datatype="html">
+        <source>Manual editing a customer account</source>
+        <target>Cập nhật thông tin khách hàng</target>
+      </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
         <source>Name</source>
         <target>Tên khách hàng</target>
@@ -1583,6 +1599,22 @@
       <trans-unit id="customer-create_edit_customer-label-create_another_customer" datatype="html">
         <source>Create another</source>
         <target>Tạo thêm khách hàng</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
+        <source>Enter address</source>
+        <target>Nhập địa chỉ</target>
+      </trans-unit>
+      <trans-unit id="sex-woman" datatype="html">
+        <source>Woman</source>
+        <target>Nữ</target>
+      </trans-unit>
+      <trans-unit id="sex-man" datatype="html">
+        <source>Man</source>
+        <target>Nam</target>
+      </trans-unit>
+      <trans-unit id="sex-other" datatype="html">
+        <source>Other</source>
+        <target>Khác</target>
       </trans-unit>
       <!--End Create Edit Customer Module-->
     </body>

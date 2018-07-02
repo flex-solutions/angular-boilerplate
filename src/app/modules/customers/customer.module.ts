@@ -1,5 +1,5 @@
+import { customerModuleServices } from './services/index';
 import { customerModuleDirectives } from './directives/index';
-import { CustomerService } from './services/customer.service';
 import { CustomerRoutingModule } from './customer.module.routing';
 import { customerComponents } from './components/index';
 import { UICommonModule } from './../../shared/ui-common/ui-common.module';
@@ -18,7 +18,7 @@ import { NgModule } from '@angular/core';
         ...customerModuleDirectives
     ],
     providers: [
-      CustomerService
+      customerModuleServices
     ],
 
   })

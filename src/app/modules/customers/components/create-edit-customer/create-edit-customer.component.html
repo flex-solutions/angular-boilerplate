@@ -1,93 +1,91 @@
 <app-card [title]="cardTitle" [subTitle]="cardDescription">
   <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
     <fieldset>
-            <!-- name field -->
-            <div class="form-group" [ngClass]="{
+      <!-- name field -->
+      <div class="form-group" [ngClass]="{
               'has-danger': name.invalid && (name.dirty || name.touched),
               'has-success': name.valid && (name.dirty || name.touched)
          }">
-              <label for="name" i18n="@@customer-create_edit_customer-label-name_field">Name </label>
-              <label class="require">*</label> 
-              <input id="name" required class="form-control" formControlName="name" i18n-placeholder="@@customer-create_edit_customer-input-name_place_holder"
-                placeholder="Enter customer name" [(ngModel)]="customer.name">
-              <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@customer-create_edit_customer-label-name_require" *ngIf="name.invalid && (name.dirty || name.touched)"> Please provide customer name</label>
-              <br *ngIf="!(name.invalid && (name.dirty || name.touched))"/>
-            </div>
-            <div class="form-group">
-              <label for="phone" i18n="@@customer-create_edit_customer-label-phone_field">Phone number </label>
-              <label class="require">*</label>
-              <input id="phone" required class="form-control" formControlName="phone" i18n-placeholder="@@customer-create_edit_customer-input-phone_place_holder"
-                placeholder="Enter customer phone" [(ngModel)]="customer.phoneNumber">
-              <label id="phone-error" class="error mt-2 text-danger" for="phone" i18n="@@customer-create_edit_customer-label-phone_require" *ngIf="phone.invalid && (phone.dirty || phone.touched)">Please provide phone number</label>
-              <br *ngIf="!(phone.invalid && (phone.dirty || phone.touched))"/>
-            </div>
-            <div class="form-group">
-              <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
-              <app-date-picker class="dataTables_customfilter enddatepicker" title="birthday" i18n-title="@@customer-create_edit_customer-label-birthday_field"
-              [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
-            </div>
-            <div class="form-group">
-              <label for="type" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
-              <select id="typeId" class="form-control" formControlName="typeId">
-                <option *ngFor="let type of types" [ngValue]="type">{{type.name}}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
-              <select id="sexId" class="form-control" formControlName="sexId">
-                <option *ngFor="let sex of sexes" [ngValue]="sex">{{sex.name}}</option>
-              </select>
-            </div>
-            <div class = "row">
-              <div class="col-md-5">
-                <div class="form-group">
-                    <label for="address" i18n="@@customer-create_edit_customer-label-address_field">Address </label>
-                    <select id="addressId" class="form-control" formControlName="address">
-                      <option *ngFor="let address of addresses" [ngValue]="address">{{address.name}}</option>
-                    </select>
-                </div>
-              </div>
-              <!-- input form -->
-              <div class="col-md-2">
-                <div class="form-group">
-                    <label for="district" i18n="@@customer-create_edit_customer-label-district_field">District </label>
-                    <select id="districtId" class="form-control" formControlName="district">
-                      <option *ngFor="let district of districts" [ngValue]="district">{{district.name}}</option>
-                    </select>
-                </div>
-              </div>
-              <!-- input form -->
-              <div class="col-md-3">
-                  <div class="form-group">
-                      <label for="city" i18n="@@customer-create_edit_customer-label-city_field">City/Province </label>
-                      <select id="cityId" class="form-control" formControlName="cityId">
-                        <option *ngFor="let city of cities" [ngValue]="city">{{cities.name}}</option>
-                      </select>
-                  </div>
-              </div>
-              <!-- input form -->
-            </div>
-            <div class="form-group">
-              <label for="email" i18n="@@customer-create_edit_customer-label-email_field">Email </label>
-              <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@customer-create_customer-input-email_place_holder"
-                placeholder="Enter email">
-              <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
-            </div>
-            <div class = "row">
-              <button *ngIf="!isEdit" class="btn btn-success mr-2" i18n="@@customer-create_edit_customer-button-submit" (click)="submit()">Submit</button>
-              <button *ngIf="isEdit" class="btn btn-success  mr-2" i18n="@@customer-create_edit_customer-button-save" (click)="savecustomer()">Save</button>
-              <button class="btn btn-light  mr-2" i18n="@@customer-create_edit_customer-button-cancel" (click)="cancel()">Cancel</button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <div class="form-group" *ngIf="!isEdit">
-                <div class="form-check form-check-flat">
-                  <label class="form-check-label">
-                    <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
-                    <i class="input-helper"></i>
-                    <label class="form-check-label" i18n="@@customer-create_edit_customer-label-create_another_customer"> Create another</label>
-                  </label>
-                </div>
-              </div>
-            </div>
+        <label for="name" i18n="@@customer-create_edit_customer-label-name_field">Name </label>
+        <label class="require">*</label>
+        <input id="name" required class="form-control" formControlName="name" i18n-placeholder="@@customer-create_edit_customer-input-name_place_holder"
+          placeholder="Enter customer name" [(ngModel)]="customer.name">
+        <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@customer-create_edit_customer-label-name_require"
+          *ngIf="name.invalid && (name.dirty || name.touched)"> Please provide customer name</label>
+        <br *ngIf="!(name.invalid && (name.dirty || name.touched))" />
+      </div>
+      <div class="form-group">
+        <label for="phone" i18n="@@customer-create_edit_customer-label-phone_field">Phone number </label>
+        <label class="require">*</label>
+        <input id="phone" required class="form-control" formControlName="phone" i18n-placeholder="@@customer-create_edit_customer-input-phone_place_holder"
+          placeholder="Enter customer phone" [(ngModel)]="customer.phoneNumber">
+        <label id="phone-error" class="error mt-2 text-danger" for="phone" i18n="@@customer-create_edit_customer-label-phone_require"
+          *ngIf="phone.invalid && (phone.dirty || phone.touched)">Please provide phone number</label>
+        <br *ngIf="!(phone.invalid && (phone.dirty || phone.touched))" />
+      </div>
+      <div class="form-group">
+        <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
+        <app-date-picker class="dataTables_customfilter enddatepicker" title="birthday" i18n-title="@@customer-create_edit_customer-label-birthday_field"
+          [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
+      </div>
+      <div class="form-group">
+        <label for="customerType" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
+        <select id="customerType" class="form-control" formControlName="customerType">
+          <option *ngFor="let type of types" [ngValue]="customer.type">{{type.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
+        <select id="sex" class="form-control" formControlName="sex" [(ngModel)]="customer.sex">
+          <option *ngFor="let sex of sexes" [ngValue]="customer.sex">{{sex.name}}</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="address">Address </label>
+            <input id="address" class="form-control" formControlName="address" i18n-placeholder="@@customer-create_edit_customer-input-address_place_holder"
+              placeholder="Enter address" [(ngModel)]="customer.address.address">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="district" i18n="@@customer-create_edit_customer-label-district_field">District </label>
+            <select id="district" class="form-control" formControlName="district" [(ngModel)]="selectedDistrict">
+              <option *ngFor="let district of selectedCity.districts" [ngValue]="district">{{district.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="city" i18n="@@customer-create_edit_customer-label-city_field">City/Province </label>
+            <select id="city" class="form-control" formControlName="city" [(ngModel)]="selectedCity" (ngModelChange)="onCityChange($event)">
+              <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" i18n="@@customer-create_edit_customer-label-email_field">Email </label>
+        <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@customer-create_customer-input-email_place_holder"
+          placeholder="Enter email">
+        <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
+      </div>
+      <div class="row">
+        <button *ngIf="!isEdit" class="btn btn-success mr-2" i18n="@@customer-create_edit_customer-button-submit" (click)="submit()">Submit</button>
+        <button *ngIf="isEdit" class="btn btn-success  mr-2" i18n="@@customer-create_edit_customer-button-save" (click)="saveCustomer()">Save</button>
+        <button class="btn btn-light  mr-2" i18n="@@customer-create_edit_customer-button-cancel" (click)="cancel()">Cancel</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="form-group" *ngIf="!isEdit">
+          <div class="form-check form-check-flat">
+            <label class="form-check-label">
+              <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
+              <i class="input-helper"></i>
+              <label class="form-check-label" i18n="@@customer-create_edit_customer-label-create_another_customer"> Create another</label>
+            </label>
+          </div>
+        </div>
+      </div>
     </fieldset>
   </form>
 </app-card>

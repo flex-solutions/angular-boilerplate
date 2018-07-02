@@ -1,4 +1,5 @@
 import { TranslateService } from './../services/translate.service';
+import { DistrictModel, CityModel, CountryModel, AddressModel } from './district.model';
 
 enum Sex {
   Female = 0,
@@ -34,17 +35,20 @@ class SexList {
   }
 }
 
-
-
 class CustomerModel {
   _id: any;
   phoneNumber: string;
   memberId: string;
   name: string;
-  birthday: Date;
-  sex: Sex;
-  address: string;
-  customerType: number;
+  birthday: Date = new Date();
+  sex: number = 0;
+  address: AddressModel = new AddressModel();
+  customerType: CustomerTypeModel = new CustomerTypeModel();
 }
 
-export { CustomerModel, Sex, SexList, SexModel};
+class CustomerTypeModel {
+  id : number;
+  name: string;
+}
+
+export { CustomerModel, Sex, SexList, SexModel, CustomerTypeModel};

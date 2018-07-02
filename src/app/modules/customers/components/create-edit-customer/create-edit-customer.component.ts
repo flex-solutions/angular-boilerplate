@@ -1,14 +1,17 @@
+import { AddressService } from './../../services/address.service';
 import { CustomerErrors } from './../../constants/customer.constants';
 import { CustomerService } from './../../services/customer.service';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
-import { Router, Params, ActivatedRoute } from '@angular/router';
+import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { isNullOrUndefined } from 'util';
-import { CustomerModel, Sex, SexList, SexModel } from '../../../../shared/models/customer.model';
+import { CustomerModel, SexList, SexModel, CustomerTypeModel } from '../../../../shared/models/customer.model';
+import { CityModel, DistrictModel, CountryModel } from '../../../../shared/models/district.model';
+import { AbstractFormCreateMoreComponent } from '../../../../shared/abstract/abstract-form-create-more';
+import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
+import { generateRandomNumber } from '../../../../utilities/generate-unique-random';
 
 const TITLE_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer';
 const DESCRIPTION_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer_description';
@@ -20,32 +23,36 @@ const DESCRIPTION_EDIT_CUSTOMER: string = 'customer-create_edit_customer-h4-edit
   selector: 'app-create-edit-customer',
   templateUrl: './create-edit-customer.component.html'
 })
-export class CreateEditCustomerComponent extends AbstractFormComponent {
+export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent {
   isEdit: boolean = false;
-  isCreateAnother: boolean = false;
-
   customer: CustomerModel = new CustomerModel();
   sexes: SexModel[] = SexList.getInstance(this.translateService);
-  types: number[] = [];
-  addresses: any[] = [];
-  districts: any[]= [];
-  cities: any[] = [];
-  sexId = -1;
+  types: CustomerTypeModel[] = [];
+  selectedDistrict: DistrictModel = new DistrictModel();
+  selectedCity: CityModel = new CityModel();
+  cities: CityModel[] = [];
+  country: CountryModel = new CountryModel();
   typeId = -1;
   customerId: string;
   cardTitle: string;
   cardDescription: string;
 
+  // Define validation message
+  protected validationMessages: {
+    [key: string]: { [key: string]: IValidationMessage };
+  } = {
+    };
+
   constructor(
     private formbuilder: FormBuilder,
     private customerService: CustomerService,
-    private translateService: TranslateService,
+    private addressService: AddressService,
+    translateService: TranslateService,
     private notificationService: NotificationService,
     private activeRoute: ActivatedRoute,
-    private router: Router,
     private location: Location
   ) {
-    super();
+    super(translateService);
   }
 
   ngOnInit() {
@@ -60,10 +67,30 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
         this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_CUSTOMER);
       }
     });
+
+    // Create an instance of the generic validator
+    this.genericValidator = new GenericValidator(
+      this.validationMessages,
+      this.translateService
+    );
+
     this.onCreateForm();
+    this.LoadCity();
+    this.LoadCustomer();
   }
 
-  LoadNews() {
+  LoadCity() {
+    this.addressService.getCities().subscribe((result: CountryModel) => {
+      this.country = result;
+      this.cities = result.provinces;
+      if (!this.isEdit) {
+        this.selectedCity = this.cities[0];
+        this.selectedDistrict = this.selectedCity.districts[0];
+      }
+    });
+  }
+
+  LoadCustomer() {
     if (this.isEdit) {
       this.customerService.get(this.customerId).subscribe(
         (value: CustomerModel) => {
@@ -86,12 +113,12 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
     return this.formGroup.get('phone');
   }
 
-  get birthday() {
-    return this.formGroup.get('birthday');
-  }
-
   get sex() {
     return this.formGroup.get('sex');
+  }
+
+  get customerType() {
+    return this.formGroup.get('customerType');
   }
 
   get address() {
@@ -110,15 +137,12 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
     return this.formGroup.get('email');
   }
 
-  get createAnother() {
-    return this.formGroup.get('createAnother');
-  }
-
   protected onCreateForm() {
     this.formGroup = this.formbuilder.group({
       name: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       birthday: ['', []],
+      customerType: ['', []],
       sex: ['', []],
       address: ['', []],
       district: ['', []],
@@ -130,6 +154,11 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
 
   protected onSubmit() {
     if (!this.isEdit) {
+      this.customer.address.country = this.country;
+      this.customer.address.country.provinces = [];
+      this.customer.address.country.provinces.push(this.selectedCity);
+      this.customer.address.country.provinces[0].districts = [];
+      this.customer.address.country.provinces[0].districts.push(this.selectedDistrict);
       this.customerService.create(this.customer).subscribe(
         (value: CustomerModel) => {
           // * Create news successful, display success notification
@@ -143,11 +172,13 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
     }
   }
 
+  protected onValidate() { }
+
   protected onCancel() {
     this.location.back();
   }
 
-  saveNews() {
+  saveCustomer() {
     this.customerService.update(this.customer).subscribe(
       (value: CustomerModel) => {
         // * Create news successful, display success notification
@@ -160,10 +191,8 @@ export class CreateEditCustomerComponent extends AbstractFormComponent {
     );
   }
 
-  protected getMessage(key: string, ...params) {
-    if (params.length) {
-      return this.translateService.translateWithParams(key, params);
-    }
-    return this.translateService.translate(key);
-  }
+  onCityChange(event) {
+    this.selectedCity = event;
+    this.selectedDistrict = this.selectedCity.districts[0];
+   }
 }
