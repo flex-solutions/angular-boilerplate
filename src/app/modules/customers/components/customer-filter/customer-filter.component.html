@@ -55,9 +55,7 @@
       <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-member_type">Member type</label>
-        <select class="js-example-basic-single" style="width:100%" name="member-type">
-          <option *ngFor="let item of memberType" [value]="item.id">{{item.name}}</option>
-        </select>
+        <app-select2 [itemsSource]="memberType" [(selectedItem)]="customerFilter.memberType"></app-select2>
       </div>
       <br/>
       <app-input-range i18n-title="@@customers-filter-list-table-lbl-have_score" title="Have score"></app-input-range>

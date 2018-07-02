@@ -48,4 +48,12 @@ export class CustomerService extends AbstractRestService {
       resolve(data);
     });
   }
+
+  getMonthBirthday() {
+    return new Promise((resolve, reject) => {
+      sleep(1000);
+      const data = CustomerMockData.months;
+      resolve(data);
+    });
+  }
 }

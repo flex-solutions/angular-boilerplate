@@ -2,7 +2,6 @@ import { CustomerService } from './../../services/customer.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
 import { CustomerCriteriaBuilder } from './customer-filter-builder';
-import { CustomerMockData } from '../../services/customer-filter.mock';
 declare const $: any;
 
 @Component({
@@ -15,6 +14,7 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
   memberType: any[];
   provinces: any[];
   districts: any[];
+  months: any[];
 
   constructor(private customerService: CustomerService) {
     this.customerFilter = new CustomerFilter();
@@ -30,15 +30,13 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
         this.districts = this.provinces[0].districts;
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.selectHost.select2();
-    this.selectHost.on('select2:select', e => {
-      const data = e.params.data;
-      this.districts = this.provinces[data.id].districts;
+    this.customerService.getMonthBirthday().then((data: any[]) => {
+      this.months = data;
     });
   }
+
+  ngAfterViewInit(): void {}
+
   onProvinceChange($event) {
     if ($event) {
       this.districts = $event.districts;
@@ -53,13 +51,9 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
     return Sex[item];
   }
 
-  get months() {
-    return CustomerMockData.months;
-  }
-
   runFilter() {
     console.log(this.customerFilter);
-    const builder = CustomerCriteriaBuilder.build(this.customerFilter);
+    // const builder = CustomerCriteriaBuilder.build(this.customerFilter);
 
     // Todo call api count and filter to run filter
   }

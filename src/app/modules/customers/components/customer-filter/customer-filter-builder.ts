@@ -1,17 +1,11 @@
-import { CriteriaBuilder } from '../../../../utilities/criteria-builder';
-import { CustomerFilter } from '../../../../shared/models/customer.model';
+import { CriteriaBuilder, FilterType } from '../../../../utilities/search-filter';
 
 export class CustomerCriteriaBuilder {
-  static build(filter: CustomerFilter) {
-    const builder = CriteriaBuilder.makeCriteria();
-    builder.withRegex('phoneNumber', filter.phoneNumber)
-    .withRegex('name', filter.name)
-    .withRegex('memberType', `${filter.memberType}`)
-    .withRegex('sex', `${filter.sex}`)
-    .withRegex('address', filter.address)
-    .withRegex('memberId', filter.memberId)
-    .withRegex('monthOfBirthday', `${filter.monthOfBirthday}`);
-
-    console.log(builder.build());
+  static build() {
+    return CriteriaBuilder.makeCriteria()
+      .setFilter(FilterType.And)
+      .withFilter(FilterType.Regex, 'phone_number', '01289')
+      .withFilter(FilterType.Regex, 'name', '012sdad')
+      .build();
   }
 }

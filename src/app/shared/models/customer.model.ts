@@ -23,7 +23,7 @@ class CustomerFilter {
   name: string;
   sex: Sex;
   monthOfBirthday: number;
-  memberType: number;
+  memberType: any;
   province: any;
   district: any;
   address: string;

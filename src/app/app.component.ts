@@ -1,8 +1,9 @@
-import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { BrowserNotificationService } from './shared/services/browser-notification.service';
+import { CustomerCriteriaBuilder } from './modules/customers/components/customer-filter/customer-filter-builder';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const temp = CustomerCriteriaBuilder.build();
+    console.log(temp);
     if (this.authenticationService.authenticated()) {
       // Have authenticate to login CMS. Verify can get new token on server side
       this.authenticationService.autoLogin();
