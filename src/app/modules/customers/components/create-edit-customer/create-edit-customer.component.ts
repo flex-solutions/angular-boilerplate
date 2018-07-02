@@ -1,3 +1,4 @@
+import { customerModuleDirectives } from './../../directives/index';
 import { AddressService } from './../../services/address.service';
 import { CustomerErrors } from './../../constants/customer.constants';
 import { CustomerService } from './../../services/customer.service';
@@ -27,7 +28,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   isEdit: boolean = false;
   customer: CustomerModel = new CustomerModel();
   sexes: SexModel[] = SexList.getInstance(this.translateService);
-  types: CustomerTypeModel[] = [];
+  types: CustomerTypeModel[] = [new CustomerTypeModel()];
   selectedDistrict: DistrictModel = new DistrictModel();
   selectedCity: CityModel = new CityModel();
   cities: CityModel[] = [];
@@ -41,6 +42,11 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected validationMessages: {
     [key: string]: { [key: string]: IValidationMessage };
   } = {
+      email: {
+        pattern: {
+          message: CustomerErrors.EmailInvalid
+        }
+      }
     };
 
   constructor(
@@ -83,7 +89,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     this.addressService.getCities().subscribe((result: CountryModel) => {
       this.country = result;
       this.cities = result.provinces;
-      if (!this.isEdit) {
+      if (!this.isEdit && this.cities && this.cities.length > 0) {
         this.selectedCity = this.cities[0];
         this.selectedDistrict = this.selectedCity.districts[0];
       }
@@ -154,11 +160,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   protected onSubmit() {
     if (!this.isEdit) {
-      this.customer.address.country = this.country;
-      this.customer.address.country.provinces = [];
-      this.customer.address.country.provinces.push(this.selectedCity);
-      this.customer.address.country.provinces[0].districts = [];
-      this.customer.address.country.provinces[0].districts.push(this.selectedDistrict);
+      this.prepareCustomer();
       this.customerService.create(this.customer).subscribe(
         (value: CustomerModel) => {
           // * Create news successful, display success notification
@@ -167,6 +169,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
             this.customer.name
           );
           this.notificationService.showSuccess(msg);
+          this.refreshPageIfCreateAnother();
         }
       );
     }
@@ -179,6 +182,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   saveCustomer() {
+    this.prepareCustomer();
     this.customerService.update(this.customer).subscribe(
       (value: CustomerModel) => {
         // * Create news successful, display success notification
@@ -187,12 +191,34 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
           this.customer.name
         );
         this.notificationService.showSuccess(msg);
+        this.refreshPageIfCreateAnother();
       }
     );
+    
   }
 
   onCityChange(event) {
     this.selectedCity = event;
-    this.selectedDistrict = this.selectedCity.districts[0];
-   }
+    if (this.selectedCity.districts && this.selectedCity.districts.length > 0) {
+      this.selectedDistrict = this.selectedCity.districts[0];
+    }
+  }
+
+  private prepareCustomer() {
+    this.customer.address.country = this.country;
+    this.customer.address.country.provinces = [];
+    this.customer.address.country.provinces.push(this.selectedCity);
+    this.customer.address.country.provinces[0].districts = [];
+    this.customer.address.country.provinces[0].districts.push(this.selectedDistrict);
+  }
+
+  protected refreshPageIfCreateAnother() {
+    if (this.isCreateAnother) {
+      this.customer = new CustomerModel();
+      this.resetForm();
+    } else {
+      this.location.back();
+    }
+  }
+
 }

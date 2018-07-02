@@ -43,12 +43,12 @@ class CustomerModel {
   birthday: Date = new Date();
   sex: number = 0;
   address: AddressModel = new AddressModel();
-  customerType: CustomerTypeModel = new CustomerTypeModel();
+  customerType: string = "";
 }
 
 class CustomerTypeModel {
-  id : number;
-  name: string;
+  id : number = 0;
+  name: string = "";
 }
 
 export { CustomerModel, Sex, SexList, SexModel, CustomerTypeModel};

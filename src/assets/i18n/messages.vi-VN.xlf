@@ -1510,6 +1510,11 @@
         <source>Other</source>
         <target>Khác</target>
       </trans-unit>
+      <trans-unit id="customers-list-tbl-actions-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">

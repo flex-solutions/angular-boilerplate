@@ -5,23 +5,20 @@ import { NgModule } from '@angular/core';
 
 const customerModuleRoutes: Routes = [
     {
-      // TODO: update after finish create news
-      path: 'create',
+      path: '',
       component: CustomerHomeComponent,
       data: {
         breadcrumb: 'Customers'
       }
     },
     {
-       // TODO: update after finish create news
-       path: '',
+       path: 'create',
        component: CreateEditCustomerComponent,
        data: {
          breadcrumb: 'Create customers'
        }
     },
     {
-      // TODO: update after finish create news
       path: 'update/:id',
       component: CreateEditCustomerComponent,
       data: {
