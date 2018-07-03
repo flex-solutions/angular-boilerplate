@@ -4,30 +4,32 @@ import { CustomerErrors } from './../../constants/customer.constants';
 import { CustomerService } from './../../services/customer.service';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { Component } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { CustomerModel, SexList, SexModel, CustomerTypeModel } from '../../../../shared/models/customer.model';
+import { CustomerModel, CustomerTypeModel } from '../../../../shared/models/customer.model';
 import { CityModel, DistrictModel, CountryModel } from '../../../../shared/models/district.model';
 import { AbstractFormCreateMoreComponent } from '../../../../shared/abstract/abstract-form-create-more';
 import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
-import { generateRandomNumber } from '../../../../utilities/generate-unique-random';
+
 
 const TITLE_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer';
 const DESCRIPTION_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer_description';
 const TITLE_EDIT_CUSTOMER: string = 'customer-create_edit_customer-h4-edit_customer';
 const DESCRIPTION_EDIT_CUSTOMER: string = 'customer-create_edit_customer-h4-edit_customer_description';
+const sexWomanTranslate = 'sex-woman';
+const sexManTranslate = 'sex-man';
+const sexOtherTranslate = 'sex-other';
 
 @Component({
   moduleId: module.id,
   selector: 'app-create-edit-customer',
-  templateUrl: './create-edit-customer.component.html'
+  templateUrl: './create-edit-customer.component.html',
 })
 export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent {
   isEdit: boolean = false;
   customer: CustomerModel = new CustomerModel();
-  sexes: SexModel[] = SexList.getInstance(this.translateService);
   types: CustomerTypeModel[] = [new CustomerTypeModel()];
   selectedDistrict: DistrictModel = new DistrictModel();
   selectedCity: CityModel = new CityModel();
@@ -37,7 +39,9 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   customerId: string;
   cardTitle: string;
   cardDescription: string;
-  selectedSex: SexModel;
+  femaleResource: string;
+  maleResource: string;
+  otherSexResource: string;
 
   // Define validation message
   protected validationMessages: {
@@ -75,6 +79,10 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       }
     });
 
+    this.femaleResource = this.translateService.translate(sexWomanTranslate);
+    this.maleResource = this.translateService.translate(sexManTranslate);
+    this.otherSexResource = this.translateService.translate(sexOtherTranslate);
+
     // Create an instance of the generic validator
     this.genericValidator = new GenericValidator(
       this.validationMessages,
@@ -98,7 +106,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private resetInformation() {
-    this.selectedSex = this.sexes[0];
     if (!this.isEdit && this.cities && this.cities.length > 0) {
       this.selectedCity = this.cities[0];
       this.selectedDistrict = this.selectedCity.districts[0];
@@ -111,7 +118,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         (value: CustomerModel) => {
           if (value) {
             this.customer = value as CustomerModel;
-            this.selectedSex = this.sexes.find(sex => sex.id === this.customer.sex);
             // find selected id
             var selectedCityId = this.customer.address.country.provinces[0]._id;
             this.selectedCity = this.cities.find(citi => citi._id == selectedCityId);
@@ -221,7 +227,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private prepareCustomer() {
-    this.customer.sex = this.selectedSex.id;
     this.customer.address.country = new CountryModel();
     this.customer.address.country.clone(this.country);
     this.customer.address.country.provinces = [];

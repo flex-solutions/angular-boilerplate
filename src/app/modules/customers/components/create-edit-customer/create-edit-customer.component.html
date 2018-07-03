@@ -40,9 +40,11 @@
           </div>
           <div class="form-group">
             <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
-            <select id="sex" class="form-control" formControlName="sex" [(ngModel)]="selectedSex">
-              <option *ngFor="let sex of sexes" [ngValue]="sex">{{sex.name}}</option>
-            </select>
+            <select name="sex" id="sex" class="form-control" formControlName="sex" [(ngModel)]="customer.sex">
+              <option value="0">{{femaleResource}}</option>
+              <option value="1">{{maleResource}}</option>
+              <option value="2">{{otherSexResource}}</option>
+          </select>
           </div>
           <div class="row">
             <div class="col-md-5">

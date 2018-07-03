@@ -6,34 +6,6 @@ enum Sex {
   Male,
   Other
 }
-class SexModel {
-  id: Sex;
-  name: string;
-
-  constructor(inputId: Sex, inputName: string) {
-    this.id = inputId;
-    this.name = inputName;
-  }
-}
-
-const sexWomanTranslate = 'sex-woman';
-const sexManTranslate = 'sex-man';
-const sexOtherTranslate = 'sex-other';
-
-class SexList {
-  private static SexList: SexModel[] = [];
-
-  static getInstance(translateService: TranslateService): any {
-    if (this.SexList.length === 0) {
-      this.SexList = [
-        new SexModel(Sex.Female, translateService.translate(sexWomanTranslate)),
-        new SexModel(Sex.Male, translateService.translate(sexManTranslate)),
-        new SexModel(Sex.Other, translateService.translate(sexOtherTranslate)),
-      ]
-    }
-    return this.SexList;
-  }
-}
 
 class CustomerModel {
   _id: any;
@@ -52,4 +24,4 @@ class CustomerTypeModel {
   name: string = "";
 }
 
-export { CustomerModel, Sex, SexList, SexModel, CustomerTypeModel};
+export { CustomerModel, Sex, CustomerTypeModel};
