@@ -73,7 +73,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         this.cardTitle = this.translateService.translate(TITLE_CREATE_CUSTOMER);
         this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_CUSTOMER);
       }
-      this.selectedSex = this.sexes[0];
     });
 
     // Create an instance of the generic validator
@@ -83,21 +82,29 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     );
 
     this.onCreateForm();
-    this.LoadCity();
+    this.LoadInformation();
     this.LoadCustomer();
   }
 
-  LoadCity() {
-    this.addressService.getCities().subscribe((result: CountryModel) => {
-      this.country = result;
-      this.cities = result.provinces;
-      if (!this.isEdit && this.cities && this.cities.length > 0) {
-        this.selectedCity = this.cities[0];
-        this.selectedDistrict = this.selectedCity.districts[0];
-      }
-    });
+  LoadInformation() {
+    if (this.cities.length === 0) {
+      this.addressService.getCities().subscribe((result: CountryModel) => {
+        this.country = result;
+        this.cities = result.provinces;
+        this.resetInformation();
+      });
+    }
+
   }
 
+  private resetInformation() {
+    this.selectedSex = this.sexes[0];
+    if (!this.isEdit && this.cities && this.cities.length > 0) {
+      this.selectedCity = this.cities[0];
+      this.selectedDistrict = this.selectedCity.districts[0];
+    }
+  }
+  
   LoadCustomer() {
     if (this.isEdit) {
       this.customerService.get(this.customerId).subscribe(
@@ -215,9 +222,12 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   private prepareCustomer() {
     this.customer.sex = this.selectedSex.id;
-    this.customer.address.country = this.country;
+    this.customer.address.country = new CountryModel();
+    this.customer.address.country.clone(this.country);
     this.customer.address.country.provinces = [];
-    this.customer.address.country.provinces.push(this.selectedCity);
+    var city = new CityModel();
+    city.clone(this.selectedCity);
+    this.customer.address.country.provinces.push(city);
     this.customer.address.country.provinces[0].districts = [];
     this.customer.address.country.provinces[0].districts.push(this.selectedDistrict);
   }
@@ -226,6 +236,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     if (this.isCreateAnother) {
       this.customer = new CustomerModel();
       this.resetForm();
+      this.resetInformation();
     } else {
       this.location.back();
     }
