@@ -1,5 +1,6 @@
 
 class DistrictModel {
+    _id: any;
     code: string;
     name: string;
   }

@@ -37,6 +37,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   customerId: string;
   cardTitle: string;
   cardDescription: string;
+  selectedSex: SexModel;
 
   // Define validation message
   protected validationMessages: {
@@ -72,6 +73,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         this.cardTitle = this.translateService.translate(TITLE_CREATE_CUSTOMER);
         this.cardDescription = this.translateService.translate(DESCRIPTION_CREATE_CUSTOMER);
       }
+      this.selectedSex = this.sexes[0];
     });
 
     // Create an instance of the generic validator
@@ -102,8 +104,15 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         (value: CustomerModel) => {
           if (value) {
             this.customer = value as CustomerModel;
+            this.selectedSex = this.sexes.find(sex => sex.id === this.customer.sex);
+            // find selected id
+            var selectedCityId = this.customer.address.country.provinces[0]._id;
+            this.selectedCity = this.cities.find(citi => citi._id == selectedCityId);
+            var selectedDistrictId = this.customer.address.country.provinces[0].districts[0]._id;
+            this.selectedDistrict = this.selectedCity.districts.find(
+                                        district => district._id == selectedDistrictId);
           } else {
-            // Navigate to previous if user group not found
+            // Navigate to previous if user group not found.
             this.location.back();
           }
         }
@@ -153,7 +162,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       address: ['', []],
       district: ['', []],
       city: ['', []],
-      email: ['', []],
+      email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
       createAnother: ['', []]
     });
   }
@@ -205,6 +214,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private prepareCustomer() {
+    this.customer.sex = this.selectedSex.id;
     this.customer.address.country = this.country;
     this.customer.address.country.provinces = [];
     this.customer.address.country.provinces.push(this.selectedCity);

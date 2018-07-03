@@ -1,4 +1,4 @@
-import { SingleDateModel } from './../model/date-range.model';
+
 import { AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
@@ -13,7 +13,7 @@ declare const moment: any;
 })
 export class DatePickerComponent implements AfterViewInit {
 
-  private _date: SingleDateModel;
+  private _date: Date;
 
   elementId: string;
 
@@ -22,14 +22,14 @@ export class DatePickerComponent implements AfterViewInit {
 
   // Call when date have changed
   @Output()
-  dateChange = new EventEmitter<SingleDateModel>();
+  dateChange = new EventEmitter<Date>();
 
   @Input()
   get date() {
     return this._date;
   }
 
-  set date(value: SingleDateModel) {
+  set date(value: Date) {
     if (value !== this._date) {
       this._date = value;
       this.dateChange.emit(this._date);
@@ -51,8 +51,8 @@ export class DatePickerComponent implements AfterViewInit {
   initialize() {
     this.picker.daterangepicker({
       singleDatePicker: true,
-      startDate: moment(this.date.date),
-      endDate: moment(this.date.date),
+      startDate: moment(this.date),
+      endDate: moment(this.date),
       autoApply: true,
       autoUpdateInput: false,
       ranges: this.buildRanges(),
@@ -66,14 +66,13 @@ export class DatePickerComponent implements AfterViewInit {
       }
     },
       (start, end, label) => {
-        const result = new SingleDateModel();
-        result.date = new Date(start.toISOString());
+        const result = new Date(start.toISOString());
         this.date = result;
       });
 
     // set default value
-    if (this.date && this.date.date) {
-      const date = moment(this.date.date);
+    if (this.date && this.date) {
+      const date = moment(this.date);
       this.picker.val(date.format('MM/DD/YYYY'));
     }
   }
@@ -101,7 +100,7 @@ export class DatePickerComponent implements AfterViewInit {
 
   reset() {
     this.picker.val('');
-    this.date = new SingleDateModel();
+    this.date = new Date();
   }
 
   get picker() {

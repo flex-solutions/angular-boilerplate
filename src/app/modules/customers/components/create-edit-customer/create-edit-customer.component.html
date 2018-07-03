@@ -35,19 +35,19 @@
           <div class="form-group">
             <label for="customerType" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
             <select id="customerType" class="form-control" formControlName="customerType" [(ngModel)]="customer.customerType">
-              <option *ngFor="let type of types" [ngValue]="customer.type">{{type.name}}</option>
+              <option *ngFor="let type of types" [ngValue]="type">{{type.name}}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
-            <select id="sex" class="form-control" formControlName="sex" [(ngModel)]="customer.sex">
-              <option *ngFor="let sex of sexes" [ngValue]="customer.sex">{{sex.name}}</option>
+            <select id="sex" class="form-control" formControlName="sex" [(ngModel)]="selectedSex">
+              <option *ngFor="let sex of sexes" [ngValue]="sex">{{sex.name}}</option>
             </select>
           </div>
           <div class="row">
             <div class="col-md-5">
               <div class="form-group">
-                <label for="address">Address </label>
+                <label for="address" i18n="customer-create_edit_customer-label-address_field">Address </label>
                 <input id="address" class="form-control" formControlName="address" i18n-placeholder="@@customer-create_edit_customer-input-address_place_holder"
                   placeholder="Enter address" [(ngModel)]="customer.address.address">
               </div>
@@ -72,7 +72,7 @@
           <div class="form-group">
             <label for="email" i18n="@@customer-create_edit_customer-label-email_field">Email </label>
             <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@customer-create_customer-input-email_place_holder"
-              placeholder="Enter email">
+              placeholder="Enter email" [(ngModel)]="customer.email">
             <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
           </div>
           <div class="row btn-in-row">

@@ -44,6 +44,7 @@ class CustomerModel {
   sex: number = 0;
   address: AddressModel = new AddressModel();
   customerType: string = "";
+  email: string;
 }
 
 class CustomerTypeModel {

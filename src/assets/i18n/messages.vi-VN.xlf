@@ -1621,6 +1621,18 @@
         <source>Other</source>
         <target>Khác</target>
       </trans-unit>
+      <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
+        <source>A new customer account has been created</source>
+        <target>Một tài khoản khách hàng mới được tạo thành công</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-edit_customer_ok" datatype="html">
+        <source>A customer account has been updated</source>
+        <target>Một tài khoản khách hàng được cập nhật thành công</target>
+      </trans-unit>
+      <trans-unit id="customer-create_edit_customer-email_invalid" datatype="html">
+        <source>Email is invalid</source>
+        <target>Email không hợp lệ</target>
+      </trans-unit>
       <!--End Create Edit Customer Module-->
     </body>
   </file>
