@@ -1,5 +1,12 @@
 import { CustomerService } from './../../services/customer.service';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
 import { CustomerCriteriaBuilder } from './customer-filter-builder';
 declare const $: any;
@@ -10,11 +17,26 @@ declare const $: any;
   styleUrls: ['./customer-filter.component.css']
 })
 export class CustomerFilterComponent implements OnInit, AfterViewInit {
-  customerFilter: CustomerFilter;
+  private _customerFilter: CustomerFilter;
+
+  @Output() customerFilterChange = new EventEmitter();
+  @Output() runFilterClicked = new EventEmitter();
+
+  @Input()
+  set customerFilter(value) {
+    this._customerFilter = value;
+    this.customerFilterChange.emit(this._customerFilter);
+  }
+
+  get customerFilter() {
+    return this._customerFilter;
+  }
+
   memberType: any[];
   provinces: any[];
   districts: any[];
   months: any[];
+  sexes: any[];
 
   constructor(private customerService: CustomerService) {
     this.customerFilter = new CustomerFilter();
@@ -35,7 +57,11 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.sexes = this.getSexes();
+    });
+  }
 
   onProvinceChange($event) {
     if ($event) {
@@ -43,19 +69,25 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
     }
   }
 
-  get sexes() {
-    return [Sex.Male, Sex.Female, Sex.Other];
-  }
-
-  sexAsString(item) {
-    return Sex[item];
+  getSexes() {
+    return [
+      {
+        id: Sex.Male,
+        text: Sex[Sex.Male]
+      },
+      {
+        id: Sex.Female,
+        text: Sex[Sex.Female]
+      },
+      {
+        id: Sex.Other,
+        text: Sex[Sex.Other]
+      }
+    ];
   }
 
   runFilter() {
-    console.log(this.customerFilter);
-    // const builder = CustomerCriteriaBuilder.build(this.customerFilter);
-
-    // Todo call api count and filter to run filter
+    this.runFilterClicked.emit();
   }
 
   get selectHost() {

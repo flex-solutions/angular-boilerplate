@@ -77,7 +77,6 @@ export class Select2Component implements AfterViewInit {
       }
       return obj;
     });
-    console.log(data);
     return data;
   }
 }

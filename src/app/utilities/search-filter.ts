@@ -13,52 +13,6 @@ export enum FilterType {
   Or = '$or'
 }
 
-export interface IFilterSetBuilder {
-  build(): {};
-}
-
-export class FilterSetBuilder implements IFilterSetBuilder {
-  constructor(protected filterSet: FilterSet) {}
-  build() {
-    const filter = {};
-    filter[this.filterSet.type] = this.filterSet.value;
-    const filterEntity = {};
-    filterEntity[this.filterSet.name] = filter;
-    return filterEntity;
-  }
-}
-
-export class AndFilterSetBuilder extends FilterSetBuilder
-  implements IFilterSetBuilder {
-  build() {
-    const filter = {};
-    if (this.filterSet.value.length > 0) {
-      const filterValues = [];
-      (<FilterSet[]>this.filterSet.value).forEach(f => {
-        const tmp = FilterSetBuilderFactory.createBuilder(f);
-        filterValues.push(tmp.build());
-      });
-      filter[this.filterSet.type] = filterValues;
-    }
-    return filter;
-  }
-}
-
-export class FilterSetBuilderFactory {
-  static createBuilder(filterSet: FilterSet) {
-    let builder: IFilterSetBuilder;
-    switch (filterSet.type) {
-      case FilterType.And:
-        builder = new AndFilterSetBuilder(filterSet);
-        break;
-      default:
-        builder = new FilterSetBuilder(filterSet);
-        break;
-    }
-    return builder;
-  }
-}
-
 export class Criteria {
   filters: FilterSet[];
 
@@ -121,11 +75,6 @@ export class CriteriaBuilder {
   }
 
   build() {
-    const criteriaQuery = {};
-    this._criteria.filters.forEach(f => {
-      const criteria = FilterSetBuilderFactory.createBuilder(f).build();
-      Object.assign(criteriaQuery, criteria);
-    });
-    return criteriaQuery;
+    return this._criteria;
   }
 }

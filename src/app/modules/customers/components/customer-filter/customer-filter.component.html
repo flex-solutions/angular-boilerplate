@@ -4,14 +4,12 @@
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-phone_number">Phone number</label>
         <input class="form-control form-control-lg number-only" i18n-placeholder="@@customers-filter-list-table-placeholder-phone_number"
-          placeholder="Phone number contains" aria-label="Username" [(value)]="customerFilter.phoneNumber" type="text">
+          placeholder="Phone number contains" aria-label="Username" [(ngModel)]="customerFilter.phoneNumber" [ngModelOptions]="{standalone: true}" type="text">
       </div>
       <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-sex">Sex</label>
-        <select class="js-example-basic-single" [(value)]="customerFilter.sex" style="width:100%" name="sex">
-          <option *ngFor="let item of sexes" [value]="item">{{sexAsString(item)}}</option>
-        </select>
+        <app-select2 [itemsSource]="sexes" [(selectedItem)]="customerFilter.sex"></app-select2>
       </div>
       <br/>
       <div class="form-group">
@@ -32,7 +30,7 @@
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-member_id">Member id</label>
         <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-member_id" placeholder="Member id contains"
-          type="text" [(value)]="customerFilter.memberId">
+          type="text" [(ngModel)]="customerFilter.memberId" [ngModelOptions]="{standalone: true}">
       </div>
       <br/>
       <div class="form-group">
@@ -50,7 +48,7 @@
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-name">Name</label>
         <input class="form-control form-control-lg" i18n-placeholder="@@customers-filter-list-table-placeholder-name" placeholder="Name contains"
-          type="text" [(value)]="customerFilter.name">
+          type="text" [(ngModel)]="customerFilter.name" [ngModelOptions]="{standalone: true}">
       </div>
       <br/>
       <div class="form-group">

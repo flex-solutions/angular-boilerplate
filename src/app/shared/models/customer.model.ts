@@ -21,19 +21,14 @@ class CustomerFilter {
   phoneNumber: string;
   memberId: string;
   name: string;
-  sex: Sex;
+  sex: any;
   monthOfBirthday: number;
   memberType: any;
   province: any;
   district: any;
   address: string;
-  dayAreNotReturned: Range;
-  numberOfTimesEaten: Range;
-  haveScore: Range;
-  spentModelTotal: Range;
 
   constructor() {
-    this.sex = Sex.Female;
     this.monthOfBirthday = (new Date()).getMonth();
     this.name = '';
     this.address = '';
