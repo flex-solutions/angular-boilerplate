@@ -1,5 +1,3 @@
-import { Range } from './../ui-common/input-range/input-range.component';
-
 enum Sex {
   Female = 0,
   Male,
@@ -23,18 +21,28 @@ class CustomerFilter {
   name: string;
   sex: any;
   monthOfBirthday: number;
-  memberType: any;
+  customerType: any;
   province: any;
   district: any;
   address: string;
 
   constructor() {
-    this.monthOfBirthday = (new Date()).getMonth();
     this.name = '';
     this.address = '';
     this.memberId = '';
     this.phoneNumber = '';
+    this.sex = { id: '' };
   }
 }
 
-export { CustomerModel, Sex, CustomerFilter };
+const customerFilterFields = {
+  PHONE_NUMBER: 'phoneNumber',
+  MEMBER_ID: 'memberId',
+  NAME: 'name',
+  MONTH_OF_BIRTHDAY: 'monthOfBirthday',
+  SEX: 'sex',
+  ADDRESS: 'address',
+  CUSTOMER_TYPE: 'customerType'
+};
+
+export { CustomerModel, Sex, CustomerFilter, customerFilterFields };

@@ -17,25 +17,22 @@ export class CustomerService extends AbstractRestService {
     pageSize: number,
     query?: any
   ): Observable<CustomerModel[]> {
-    if (query) {
-      return this.filter(
-        `?pageSize=${pageSize}&pageNumber=${pageNumber}`,
-        query
-      );
+    if (!query) {
+      query = {};
     }
-    return this.get(`?pageSize=${pageSize}&pageNumber=${pageNumber}`);
+    return this.post(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
   count(query?: any): Observable<number> {
-    if (query) {
-      return this.filter('count', query);
+    if (!query) {
+      query = {};
     }
-    return this.get(`count`);
+    return this.post(`count`, query);
   }
 
   getProvinces() {
     return new Promise((resolve, reject) => {
-      sleep(1000);
+      sleep(500);
       const data = CustomerMockData.provincesMock;
       resolve(data);
     });
@@ -43,7 +40,7 @@ export class CustomerService extends AbstractRestService {
 
   getMemberType() {
     return new Promise((resolve, reject) => {
-      sleep(1000);
+      sleep(500);
       const data = CustomerMockData.memberTypeMock;
       resolve(data);
     });
@@ -51,7 +48,7 @@ export class CustomerService extends AbstractRestService {
 
   getMonthBirthday() {
     return new Promise((resolve, reject) => {
-      sleep(1000);
+      sleep(500);
       const data = CustomerMockData.months;
       resolve(data);
     });

@@ -15,7 +15,7 @@ import { CustomerCriteriaBuilder } from './customer-filter/customer-filter-build
 export class CustomerHomeComponent implements OnInit {
   filter: IFilterChangedEvent;
   public customers: CustomerModel[] = [];
-  customerFilter: CustomerFilter;
+  customerFilter: CustomerFilter = new CustomerFilter();
 
   constructor(private customerService: CustomerService) {}
 
@@ -39,7 +39,9 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   private getQuery() {
-    return CustomerCriteriaBuilder.build(this.customerFilter);
+    const query = CustomerCriteriaBuilder.build(this.customerFilter);
+    console.log(query);
+    return query;
   }
 
   private getCustomers() {

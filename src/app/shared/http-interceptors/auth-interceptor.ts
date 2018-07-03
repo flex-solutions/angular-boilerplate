@@ -19,7 +19,10 @@ import { AuthenticationService } from '../services/authentication.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private _locale: string;
-  constructor(private auth: AuthenticationService, @Inject(LOCALE_ID) localeId) {
+  constructor(
+    private auth: AuthenticationService,
+    @Inject(LOCALE_ID) localeId
+  ) {
     this._locale = localeId;
   }
 
@@ -44,7 +47,11 @@ export class AuthInterceptor implements HttpInterceptor {
   createRequestOptions() {
     // Get auth token
     const token: string = this.auth.getAuthorizationToken();
-    const header = { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '', LangCode:  this._locale};
+    const header = {
+      'Content-Type': 'application/json',
+      Authorization: token ? `Bearer ${token}` : '',
+      LangCode: this._locale
+    };
 
     return header;
   }

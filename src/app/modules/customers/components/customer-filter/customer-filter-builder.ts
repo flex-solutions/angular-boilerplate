@@ -2,34 +2,48 @@ import {
   CriteriaBuilder,
   FilterType
 } from '../../../../utilities/search-filter';
-import { CustomerFilter } from '../../../../shared/models/customer.model';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import {
+  CustomerFilter,
+  customerFilterFields
+} from '../../../../shared/models/customer.model';
 
 export class CustomerCriteriaBuilder {
   static build(customerFilter: CustomerFilter) {
     // Start criteria with and operator
     const builder = CriteriaBuilder.makeCriteria().setFilter(FilterType.And);
 
-    Object.keys(customerFilter).forEach(property => {
-      const propertyValue = customerFilter[property];
-      if (isNullOrEmptyOrUndefine(propertyValue)) {
-        return;
-      }
-      if (propertyValue.hasOwnProperty('id')) {
-        // In case value is select table type
-        builder.withFilter(
-          FilterType.Regex,
-          property,
-          customerFilter[property].id
-        );
-      } else {
-        builder.withFilter(
-          FilterType.Regex,
-          property,
-          customerFilter[property]
-        );
-      }
-    });
+    // In case value is select table type
+    builder
+      .withFilter(
+        FilterType.Regex,
+        customerFilterFields.PHONE_NUMBER,
+        customerFilter[customerFilterFields.PHONE_NUMBER]
+      )
+      .withFilter(
+        FilterType.Regex,
+        customerFilterFields.MEMBER_ID,
+        customerFilter[customerFilterFields.MEMBER_ID]
+      )
+      .withFilter(
+        FilterType.Regex,
+        customerFilterFields.NAME,
+        customerFilter[customerFilterFields.NAME]
+      )
+      .withFilter(
+        FilterType.Equal,
+        customerFilterFields.SEX,
+        customerFilter[customerFilterFields.SEX].id
+      )
+      .withFilter(
+        FilterType.Regex,
+        customerFilterFields.MONTH_OF_BIRTHDAY,
+        customerFilter[customerFilterFields.MONTH_OF_BIRTHDAY]
+      )
+      .withFilter(
+        FilterType.Regex,
+        `${customerFilterFields.ADDRESS}.${customerFilterFields.ADDRESS}`,
+        customerFilter[customerFilterFields.ADDRESS]
+      );
 
     return builder.build();
   }
