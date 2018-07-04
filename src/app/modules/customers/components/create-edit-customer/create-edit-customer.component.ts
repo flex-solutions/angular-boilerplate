@@ -27,7 +27,7 @@ const DESCRIPTION_EDIT_CUSTOMER: string = 'customer-create_edit_customer-h4-edit
 export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent {
   isEdit: boolean = false;
   customer: CustomerModel = new CustomerModel();
-  types: CustomerTypeModel[] = [new CustomerTypeModel()];
+  memberTypes: CustomerTypeModel[] = [];
   selectedDistrict: DistrictModel = new DistrictModel();
   selectedCity: CityModel = new CityModel();
   cities: CityModel[] = [];
