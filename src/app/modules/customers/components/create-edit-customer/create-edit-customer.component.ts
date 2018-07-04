@@ -18,9 +18,6 @@ const TITLE_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_c
 const DESCRIPTION_CREATE_CUSTOMER: string = 'customer-create_edit_customer-h4-create_customer_description';
 const TITLE_EDIT_CUSTOMER: string = 'customer-create_edit_customer-h4-edit_customer';
 const DESCRIPTION_EDIT_CUSTOMER: string = 'customer-create_edit_customer-h4-edit_customer_description';
-const sexWomanTranslate = 'sex-woman';
-const sexManTranslate = 'sex-man';
-const sexOtherTranslate = 'sex-other';
 
 @Component({
   moduleId: module.id,
@@ -34,7 +31,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   selectedDistrict: DistrictModel = new DistrictModel();
   selectedCity: CityModel = new CityModel();
   cities: CityModel[] = [];
-  country: CountryModel = new CountryModel();
   typeId = -1;
   customerId: string;
   cardTitle: string;
@@ -79,10 +75,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       }
     });
 
-    this.femaleResource = this.translateService.translate(sexWomanTranslate);
-    this.maleResource = this.translateService.translate(sexManTranslate);
-    this.otherSexResource = this.translateService.translate(sexOtherTranslate);
-
     // Create an instance of the generic validator
     this.genericValidator = new GenericValidator(
       this.validationMessages,
@@ -90,16 +82,16 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     );
 
     this.onCreateForm();
-    this.LoadInformation();
-    this.LoadCustomer();
+    this.loadInformation();
+    this.loadCustomer();
   }
 
-  LoadInformation() {
+  loadInformation() {
     if (this.cities.length === 0) {
       this.addressService.getCities().subscribe((result: CountryModel) => {
-        this.country = result;
         this.cities = result.provinces;
         this.resetInformation();
+        this.loadCustomer();
       });
     }
 
@@ -112,7 +104,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     }
   }
   
-  LoadCustomer() {
+  loadCustomer() {
     if (this.isEdit) {
       this.customerService.get(this.customerId).subscribe(
         (value: CustomerModel) => {
@@ -171,10 +163,10 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       phone: ['', [Validators.required]],
       birthday: ['', []],
       customerType: ['', []],
-      sex: ['', []],
+      sex: [this.customer.sex, []],
       address: ['', []],
-      district: ['', []],
-      city: ['', []],
+      district: [this.selectedCity, []],
+      city: [this.selectedCity, []],
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
       createAnother: ['', []]
     });
@@ -221,14 +213,13 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   onCityChange(event) {
     this.selectedCity = event;
-    if (this.selectedCity.districts && this.selectedCity.districts.length > 0) {
+    if (this.selectedCity && this.selectedCity.districts && this.selectedCity.districts.length > 0) {
       this.selectedDistrict = this.selectedCity.districts[0];
     }
   }
 
   private prepareCustomer() {
     this.customer.address.country = new CountryModel();
-    this.customer.address.country.clone(this.country);
     this.customer.address.country.provinces = [];
     var city = new CityModel();
     city.clone(this.selectedCity);
@@ -240,11 +231,18 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected refreshPageIfCreateAnother() {
     if (this.isCreateAnother) {
       this.customer = new CustomerModel();
-      this.resetForm();
+      this.resetSome();
       this.resetInformation();
     } else {
       this.location.back();
     }
   }
 
+  private resetSome() {
+    this.formGroup.get('name').reset();
+    this.formGroup.get('phone').reset();
+    this.formGroup.get('createAnother').reset();
+    this.formGroup.get('address').reset();
+    this.formGroup.get('email').reset();
+  }
 }

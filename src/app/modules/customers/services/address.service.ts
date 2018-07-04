@@ -14,12 +14,4 @@ export class AddressService extends AbstractRestService {
         return this.get();
     }
 
-    count(): Observable<number> {
-        return this.get(`count?searchKey=`);
-    }
-
-    public getById(_id: string): Observable<CityModel> {
-        return this.get(`${_id}`);
-    }
-
 }
