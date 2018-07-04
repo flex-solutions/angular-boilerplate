@@ -88,11 +88,9 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   loadInformation() {
     if (this.cities.length === 0) {
-      this.addressService.getCities().subscribe((result: CountryModel) => {
-        this.cities = result.provinces;
-        this.resetInformation();
-        this.loadCustomer();
-      });
+      this.cities = this.addressService.getCities().provinces;
+      this.resetInformation();
+      this.loadCustomer();
     }
 
   }

@@ -1,3 +1,4 @@
+import { appVariables } from './../../../app.constant';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
@@ -10,8 +11,17 @@ export class AddressService extends AbstractRestService {
         this.controllerName = 'address';
     }
 
-    getCities(): Observable<CountryModel> {
-        return this.get();
+    
+    getCities(): CountryModel {
+        var cities = localStorage.getItem(appVariables.citiesStorage);
+        if (cities) {
+            const result = JSON.parse(cities);
+            return result as CountryModel;
+        }
+        this.get().subscribe((result) => {
+            localStorage.setItem(appVariables.citiesStorage, JSON.stringify(result));
+            return result as CountryModel;
+        });
     }
 
 }
