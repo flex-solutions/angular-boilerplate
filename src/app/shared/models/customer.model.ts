@@ -20,7 +20,7 @@ class CustomerFilter {
   memberId: string;
   name: string;
   sex: any;
-  monthOfBirthday: number;
+  monthOfBirthday: any;
   customerType: any;
   province: any;
   district: any;
@@ -31,7 +31,9 @@ class CustomerFilter {
     this.address = '';
     this.memberId = '';
     this.phoneNumber = '';
-    this.sex = { id: '' };
+    this.sex = { id: Sex.Female };
+    this.monthOfBirthday = { id: 0 };
+    this.customerType = { id: 0 };
   }
 }
 

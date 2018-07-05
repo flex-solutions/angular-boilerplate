@@ -20,14 +20,14 @@ export class CustomerService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.post(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
+    return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
   count(query?: any): Observable<number> {
     if (!query) {
       query = {};
     }
-    return this.post(`count`, query);
+    return this.filter(`count`, query);
   }
 
   getProvinces() {

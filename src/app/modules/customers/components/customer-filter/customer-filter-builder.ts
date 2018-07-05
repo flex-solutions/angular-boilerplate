@@ -33,17 +33,12 @@ export class CustomerCriteriaBuilder {
         FilterType.Equal,
         customerFilterFields.SEX,
         customerFilter[customerFilterFields.SEX].id
-      )
-      .withFilter(
-        FilterType.Regex,
-        customerFilterFields.MONTH_OF_BIRTHDAY,
-        customerFilter[customerFilterFields.MONTH_OF_BIRTHDAY]
-      )
-      .withFilter(
-        FilterType.Regex,
-        `${customerFilterFields.ADDRESS}.${customerFilterFields.ADDRESS}`,
-        customerFilter[customerFilterFields.ADDRESS]
       );
+      // .withFilter(
+      //   FilterType.Regex,
+      //   customerFilterFields.MONTH_OF_BIRTHDAY,
+      //   customerFilter[customerFilterFields.MONTH_OF_BIRTHDAY]
+      // );
 
     return builder.build();
   }

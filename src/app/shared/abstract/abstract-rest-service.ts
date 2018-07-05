@@ -68,6 +68,20 @@ export abstract class AbstractRestService {
     );
   }
 
+  filter<T>(relativeUrl: string, filter: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    const headers = new HttpHeaders().set('X-Filter', JSON.stringify(filter));
+    return this.httpClient
+      .get<T>(url, {
+        headers: headers
+      })
+      .pipe(
+        catchError(err => this.handleError(err)),
+        finalize(() => this.hideLoader())
+      );
+  }
+
   post<T>(relativeUrl, postBody: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);

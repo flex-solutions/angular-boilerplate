@@ -72,12 +72,12 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
   getSexes() {
     return [
       {
-        id: Sex.Male,
-        text: Sex[Sex.Male]
-      },
-      {
         id: Sex.Female,
         text: Sex[Sex.Female]
+      },
+      {
+        id: Sex.Male,
+        text: Sex[Sex.Male]
       },
       {
         id: Sex.Other,
