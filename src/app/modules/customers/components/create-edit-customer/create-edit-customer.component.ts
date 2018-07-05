@@ -158,7 +158,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected onCreateForm() {
     this.formGroup = this.formbuilder.group({
       name: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      phone: ['+84 ', [Validators.required, Validators.pattern('\\+84 [0-9]{8,10}')]],
       birthday: ['', []],
       customerType: ['', []],
       sex: [this.customer.sex, []],
@@ -228,8 +228,8 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   protected refreshPageIfCreateAnother() {
     if (this.isCreateAnother) {
-      this.customer = new CustomerModel();
       this.resetSome();
+      this.customer = new CustomerModel();
       this.resetInformation();
     } else {
       this.location.back();

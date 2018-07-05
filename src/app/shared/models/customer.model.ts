@@ -9,7 +9,7 @@ enum Sex {
 
 class CustomerModel {
   _id: any;
-  phoneNumber: string;
+  phoneNumber: string = "+84 ";
   memberId: string;
   name: string;
   birthday: Date = new Date();
