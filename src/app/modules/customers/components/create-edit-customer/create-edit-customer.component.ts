@@ -158,7 +158,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected onCreateForm() {
     this.formGroup = this.formbuilder.group({
       name: ['', [Validators.required]],
-      phone: ['+84 ', [Validators.required, Validators.pattern('\\+84 [0-9]{8,10}')]],
+      phone: ['+84 ', [Validators.required, Validators.pattern('\\+84 [0-9]{9,10}')]],
       birthday: ['', []],
       customerType: ['', []],
       sex: [this.customer.sex, []],
