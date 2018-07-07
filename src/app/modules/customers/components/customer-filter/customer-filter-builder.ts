@@ -1,6 +1,7 @@
 import {
   CriteriaBuilder,
-  FilterType
+  FilterType,
+  ValueType
 } from '../../../../utilities/search-filter';
 import {
   CustomerFilter,
@@ -10,7 +11,7 @@ import {
 export class CustomerCriteriaBuilder {
   static build(customerFilter: CustomerFilter) {
     // Start criteria with and operator
-    const builder = CriteriaBuilder.makeCriteria().setFilter(FilterType.And);
+    const builder = CriteriaBuilder.makeCriteria().setWrapperFilter(FilterType.And);
 
     // In case value is select table type
     builder
@@ -32,13 +33,15 @@ export class CustomerCriteriaBuilder {
       .withFilter(
         FilterType.Equal,
         customerFilterFields.SEX,
-        customerFilter[customerFilterFields.SEX].id
+        customerFilter[customerFilterFields.SEX].id,
+        ValueType.Number
+      )
+      .withFilter(
+        FilterType.Equal,
+        customerFilterFields.MONTH_OF_BIRTHDAY,
+        customerFilter[customerFilterFields.MONTH_OF_BIRTHDAY].id,
+        ValueType.Number
       );
-      // .withFilter(
-      //   FilterType.Regex,
-      //   customerFilterFields.MONTH_OF_BIRTHDAY,
-      //   customerFilter[customerFilterFields.MONTH_OF_BIRTHDAY]
-      // );
 
     return builder.build();
   }

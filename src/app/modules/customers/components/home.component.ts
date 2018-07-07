@@ -13,14 +13,20 @@ import { CustomerCriteriaBuilder } from './customer-filter/customer-filter-build
   templateUrl: './home.component.html'
 })
 export class CustomerHomeComponent implements OnInit {
+  private _hasUseFilter: boolean;
   filter: IFilterChangedEvent;
-  public customers: CustomerModel[] = [];
+  customers: CustomerModel[] = [];
   customerFilter: CustomerFilter = new CustomerFilter();
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService) {
+    this._hasUseFilter = false;
+  }
 
   public count = (searchKey: string): Observable<number> => {
-    return this.customerService.count(this.getQuery());
+    if (!this._hasUseFilter) {
+      return this.customerService.count();
+    }
+    return this.customerService.countWithFilterQuery(this.getQuery());
   }
 
   ngOnInit(): void {}
@@ -33,6 +39,7 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   onRunFilterClicked() {
+    this._hasUseFilter = true;
     this.count('').subscribe(() => {
       this.getCustomers();
     });
@@ -40,19 +47,29 @@ export class CustomerHomeComponent implements OnInit {
 
   private getQuery() {
     const query = CustomerCriteriaBuilder.build(this.customerFilter);
-    console.log(query);
     return query;
   }
 
   private getCustomers() {
-    this.customerService
-      .getCustomers(
-        this.filter.pagination.page,
-        this.filter.pagination.itemsPerPage,
-        this.getQuery()
-      )
-      .subscribe(res => {
-        this.customers = res;
-      });
+    if (this._hasUseFilter) {
+      this.customerService
+        .getCustomersWithFilterQuery(
+          this.filter.pagination.page,
+          this.filter.pagination.itemsPerPage,
+          this.getQuery()
+        )
+        .subscribe(res => {
+          this.customers = res;
+        });
+    } else {
+      this.customerService
+        .getCustomers(
+          this.filter.pagination.page,
+          this.filter.pagination.itemsPerPage
+        )
+        .subscribe(res => {
+          this.customers = res;
+        });
+    }
   }
 }

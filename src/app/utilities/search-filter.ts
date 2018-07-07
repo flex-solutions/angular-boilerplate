@@ -2,15 +2,26 @@ export class FilterSet {
   name?: string;
   type: FilterType;
   value?: string | FilterSet[];
+  valueType?: ValueType;
+
+  constructor() {
+    this.valueType = ValueType.Number;
+  }
 }
 
 export enum FilterType {
+  default = '',
   Regex = '$regex',
   GreatThan = '$gt',
   LessThan = '$lt',
   Equal = '$eq',
   And = '$and',
   Or = '$or'
+}
+
+export enum ValueType {
+  String = 'string',
+  Number = 'number'
 }
 
 export class Criteria {
@@ -21,9 +32,28 @@ export class Criteria {
   }
 }
 
-export class CriteriaBuilder {
+interface ICriteriaBuilder {
+  build();
+
+  setFilter(filter: FilterSet);
+}
+
+interface IWrapperCriteriaBuilder extends ICriteriaBuilder {
+  setWrapperFilter(
+    logicalFilterType: FilterType.And | FilterType.Or
+  ): IWrapperCriteriaBuilder;
+
+  withFilter(
+    type: FilterType,
+    name?: string,
+    value?: any,
+    valueType?: ValueType
+  );
+}
+
+export class CriteriaBuilder implements IWrapperCriteriaBuilder {
   private _criteria: Criteria;
-  private _setFilter: FilterSet;
+  private _wrapperFilter: FilterSet;
 
   constructor() {
     this._criteria = new Criteria();
@@ -33,42 +63,40 @@ export class CriteriaBuilder {
     return new CriteriaBuilder();
   }
 
-  setFilter(type: FilterType, name?: string, value?: string | FilterSet[]) {
-    this._setFilter = {
-      name: name,
-      type: type,
-      value: value
-    };
-    this._criteria.filters.push(this._setFilter);
+  setFilter(filter: FilterSet) {
+    this._criteria.filters.push(filter);
     return this;
   }
 
-  withFilter(type: FilterType, name?: string, value?: string | FilterSet[]) {
-    if (!this._setFilter) {
-      throw new Error('setFilter must call the first');
+  setWrapperFilter(
+    logicalFilterType: FilterType.And | FilterType.Or
+  ): IWrapperCriteriaBuilder {
+    this._wrapperFilter = { type: logicalFilterType, value: [] };
+    this._criteria.filters.push(this._wrapperFilter);
+    return this;
+  }
+
+  withFilter(
+    type: FilterType,
+    name?: string,
+    value?: any,
+    valueType: ValueType = ValueType.String
+  ): IWrapperCriteriaBuilder {
+    if (!this._wrapperFilter) {
+      throw new Error('setWrapperFilter must call the first');
     }
-    if (
-      (type === FilterType.And || type === FilterType.Or) &&
-      (typeof value === 'string' || value instanceof String)
-    ) {
-      throw new Error(
-        'value must be instanceof FilterSet[]. Because filter type is And/Or'
-      );
-    }
-    if (!this._setFilter.value) {
+    const filter = {
+      type: type,
+      name: name,
+      value: value,
+      valueType: valueType
+    };
+    if (!this._wrapperFilter.value) {
       const filterArr = [];
-      filterArr.push({
-        name: name,
-        type: type,
-        value: value
-      });
-      this._setFilter.value = filterArr;
+      filterArr.push(filter);
+      this._wrapperFilter.value = filterArr;
     } else {
-      (<FilterSet[]>this._setFilter.value).push({
-        name: name,
-        type: type,
-        value: value
-      });
+      (<FilterSet[]>this._wrapperFilter.value).push(filter);
     }
 
     return this;
