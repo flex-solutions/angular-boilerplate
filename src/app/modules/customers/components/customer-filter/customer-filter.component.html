@@ -53,7 +53,7 @@
       <br/>
       <div class="form-group">
         <label i18n="@@customers-filter-list-table-lbl-member_type">Member type</label>
-        <app-select2 [itemsSource]="memberType" [(selectedItem)]="customerFilter.customerType"></app-select2>
+        <app-select2 [itemsSource]="memberTypes" [(selectedItem)]="customerFilter.customerType"></app-select2>
       </div>
       <br/>
       <app-input-range i18n-title="@@customers-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
@@ -66,6 +66,10 @@
       <button type="submit" class="btn btn-primary mr-2" (click)="runFilter()">
         <i class="mdi mdi-filter-outline"></i>
         <span i18n="@@customers-filter-list-table-btn-run_filter">Run filter</span>
+      </button>
+      <button type="submit" class="btn btn-light mr-2" (click)="resetFilter()">
+        <i class="mdi mdi-filter-remove-outline"></i>
+        <span i18n="@@customers-filter-list-table-btn-reset_filter">Reset filter</span>
       </button>
     </div>
   </form>

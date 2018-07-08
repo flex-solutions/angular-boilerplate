@@ -6,7 +6,7 @@ import {
   CustomerModel,
   CustomerFilter
 } from '../../../shared/models/customer.model';
-import { CustomerCriteriaBuilder } from './customer-filter/customer-filter-builder';
+import { CustomerCriteriaBuilder } from './customer-filter/customer-filter.builder';
 
 @Component({
   selector: 'app-customer-home',
@@ -71,5 +71,12 @@ export class CustomerHomeComponent implements OnInit {
           this.customers = res;
         });
     }
+  }
+
+  resetFilter = () => {
+    this._hasUseFilter = false;
+    this.count('').subscribe(() => {
+      this.getCustomers();
+    });
   }
 }

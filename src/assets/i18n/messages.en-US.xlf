@@ -1595,6 +1595,10 @@
         <source>From is not greater than to</source>
         <target>From is not greater than to</target>
       </trans-unit>
+      <trans-unit id="customers-filter-list-table-btn-reset_filter" datatype="html">
+        <source>Reset filter</source>
+        <target>Reset filter</target>
+      </trans-unit>
       <!--End Customer Filter-->
 
     </body>

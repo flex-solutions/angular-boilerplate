@@ -6,7 +6,6 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
-import { map } from 'rxjs/operators';
 declare const $: any;
 
 @Component({
@@ -25,6 +24,7 @@ export class Select2Component implements AfterViewInit {
   @Input()
   set itemsSource(value) {
     this._itemsSource = value;
+    this.host.select2('val', '');
     this.itemsSourceChange.emit(this._itemsSource);
     if (this._itemsSource && this._itemsSource.length > 0) {
       this.host
@@ -78,5 +78,9 @@ export class Select2Component implements AfterViewInit {
       return obj;
     });
     return data;
+  }
+
+  reset() {
+    this.host.select2('val', '');
   }
 }

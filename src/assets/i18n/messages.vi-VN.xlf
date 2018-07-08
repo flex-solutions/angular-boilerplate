@@ -1580,6 +1580,10 @@
         <source>From is not greater than to</source>
         <target>Giá trị từ phải nhỏ hơn giá trị đến</target>
       </trans-unit>
+      <trans-unit id="customers-filter-list-table-btn-reset_filter" datatype="html">
+        <source>Reset filter</source>
+        <target>Reset filter</target>
+      </trans-unit>
       <!--End Customer Filter-->
     </body>
   </file>

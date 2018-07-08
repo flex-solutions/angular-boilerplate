@@ -5,10 +5,11 @@ import {
   AfterViewInit,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ChangeDetectorRef
 } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
-import { CustomerCriteriaBuilder } from './customer-filter-builder';
+import { CustomerCriteriaBuilder } from './customer-filter.builder';
 declare const $: any;
 
 @Component({
@@ -16,8 +17,9 @@ declare const $: any;
   templateUrl: './customer-filter.component.html',
   styleUrls: ['./customer-filter.component.css']
 })
-export class CustomerFilterComponent implements OnInit, AfterViewInit {
+export class CustomerFilterComponent implements AfterViewInit {
   private _customerFilter: CustomerFilter;
+  private _resetFunction: () => void;
 
   @Output() customerFilterChange = new EventEmitter();
   @Output() runFilterClicked = new EventEmitter();
@@ -32,34 +34,31 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
     return this._customerFilter;
   }
 
-  memberType: any[];
+  @Input()
+  get resetFunction() {
+    return this._resetFunction;
+  }
+
+  set resetFunction(v: any) {
+    this._resetFunction = v;
+  }
+
+  memberTypes: any[];
   provinces: any[];
   districts: any[];
   months: any[];
   sexes: any[];
 
-  constructor(private customerService: CustomerService) {
+  constructor(
+    private customerService: CustomerService,
+    private ref: ChangeDetectorRef
+  ) {
     this.customerFilter = new CustomerFilter();
-  }
-
-  ngOnInit() {
-    this.customerService.getMemberType().then((data: any[]) => {
-      this.memberType = data;
-    });
-    this.customerService.getProvinces().then((data: any[]) => {
-      this.provinces = data;
-      if (this.provinces && this.provinces.length > 0) {
-        this.districts = this.provinces[0].districts;
-      }
-    });
-    this.customerService.getMonthBirthday().then((data: any[]) => {
-      this.months = data;
-    });
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.sexes = this.getSexes();
+      this.loadData();
     });
   }
 
@@ -86,11 +85,30 @@ export class CustomerFilterComponent implements OnInit, AfterViewInit {
     ];
   }
 
+  loadData() {
+    const self = this;
+    this.customerService.getMemberType().then((data: any[]) => {
+      this.memberTypes = data;
+    });
+    this.customerService.getProvinces().then((data: any[]) => {
+      self.provinces = data;
+      if (this.provinces && this.provinces.length > 0) {
+        self.districts = this.provinces[0].districts;
+      }
+    });
+    this.customerService.getMonthBirthday().then((data: any[]) => {
+      self.months = data;
+    });
+    this.sexes = this.getSexes();
+  }
+
   runFilter() {
     this.runFilterClicked.emit();
   }
 
-  get selectHost() {
-    return $('.js-example-basic-single');
+  resetFilter() {
+    this.customerFilter = new CustomerFilter();
+    this.memberTypes = [];
+    this.resetFunction();
   }
 }
