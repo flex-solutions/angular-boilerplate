@@ -6,22 +6,31 @@ import { CityModel, CountryModel } from '../../../shared/models/district.model';
 @Injectable()
 export class AddressService extends AbstractRestService {
     protected controllerName: string;
+    private cities: CountryModel = null;
+
     constructor() {
         super();
         this.controllerName = 'address';
     }
 
-    
+
     getCities(): CountryModel {
-        var cities = localStorage.getItem(appVariables.citiesStorage);
-        if (cities) {
-            const result = JSON.parse(cities);
-            return result as CountryModel;
+        if (this.cities) {
+            return this.cities;
         }
+
+        var result = localStorage.getItem(appVariables.citiesStorage);
+        if (result) {
+            this.cities = JSON.parse(result) as CountryModel;
+            return this.cities;
+        }
+
         this.get().subscribe((result) => {
             localStorage.setItem(appVariables.citiesStorage, JSON.stringify(result));
-            return result as CountryModel;
+            this.cities = result as CountryModel
+            return this.cities;
         });
+
     }
 
 }
