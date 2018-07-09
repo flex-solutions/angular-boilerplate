@@ -1,3 +1,5 @@
+import { isNullOrEmptyOrUndefine } from './util';
+
 export class FilterSet {
   name?: string;
   type: FilterType;
@@ -78,12 +80,15 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
 
   withFilter(
     type: FilterType,
-    name?: string,
-    value?: any,
+    name: string,
+    value: any,
     valueType: ValueType = ValueType.String
   ): IWrapperCriteriaBuilder {
     if (!this._wrapperFilter) {
       throw new Error('setWrapperFilter must call the first');
+    }
+    if (isNullOrEmptyOrUndefine(value)) {
+      return this;
     }
     const filter = {
       type: type,

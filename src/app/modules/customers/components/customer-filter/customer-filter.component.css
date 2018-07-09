@@ -2,3 +2,7 @@
 :host ::ng-deep .form-group {
   margin: 7px;
 }
+
+:host ::ng-deep .select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color:  #fff;
+}

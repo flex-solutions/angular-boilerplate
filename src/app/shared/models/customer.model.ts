@@ -31,9 +31,9 @@ class CustomerFilter {
     this.address = '';
     this.memberId = '';
     this.phoneNumber = '';
-    this.sex = { id: Sex.Female };
-    this.monthOfBirthday = { id: 1 };
-    this.customerType = { id: 0 };
+    this.sex = {};
+    this.monthOfBirthday = {};
+    this.customerType = {};
   }
 }
 

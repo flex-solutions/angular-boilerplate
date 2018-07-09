@@ -1,16 +1,16 @@
 import { CustomerService } from './../../services/customer.service';
 import {
   Component,
-  OnInit,
   AfterViewInit,
   Input,
   Output,
   EventEmitter,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  QueryList,
+  ViewChildren
 } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
-import { CustomerCriteriaBuilder } from './customer-filter.builder';
-declare const $: any;
+import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
 
 @Component({
   selector: 'app-customer-filter',
@@ -21,9 +21,17 @@ export class CustomerFilterComponent implements AfterViewInit {
   private _customerFilter: CustomerFilter;
   private _resetFunction: () => void;
 
+  // Get list select2 component
+  @ViewChildren(Select2Component)
+  select2Components: QueryList<Select2Component>;
+
+  // Call when custom filter change
   @Output() customerFilterChange = new EventEmitter();
+
+  // Call when button run filter have clicked
   @Output() runFilterClicked = new EventEmitter();
 
+  // Get and set customer filter property
   @Input()
   set customerFilter(value) {
     this._customerFilter = value;
@@ -34,6 +42,7 @@ export class CustomerFilterComponent implements AfterViewInit {
     return this._customerFilter;
   }
 
+  // Get and set reset callback function
   @Input()
   get resetFunction() {
     return this._resetFunction;
@@ -108,7 +117,7 @@ export class CustomerFilterComponent implements AfterViewInit {
 
   resetFilter() {
     this.customerFilter = new CustomerFilter();
-    this.memberTypes = [];
+    this.select2Components.forEach(i => i.reset());
     this.resetFunction();
   }
 }

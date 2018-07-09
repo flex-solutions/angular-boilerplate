@@ -15,6 +15,7 @@ declare const $: any;
 export class Select2Component implements AfterViewInit {
   private _selectedItem: any;
   private _itemsSource: any[];
+  private _placeholder: string;
 
   elementId: string;
 
@@ -24,15 +25,16 @@ export class Select2Component implements AfterViewInit {
   @Input()
   set itemsSource(value) {
     this._itemsSource = value;
-    this.host.select2('val', '');
     this.itemsSourceChange.emit(this._itemsSource);
     if (this._itemsSource && this._itemsSource.length > 0) {
       this.host
         .select2('destroy')
         .empty()
         .select2({
+          placeholder: this._placeholder,
           data: this.formatDataSource(this._itemsSource)
         });
+      this.reset();
     }
   }
 
@@ -49,13 +51,26 @@ export class Select2Component implements AfterViewInit {
     return this._selectedItem;
   }
 
+  @Input()
+  set placeHolder(val) {
+    this._placeholder = val;
+  }
+
+  get placeHolder() {
+    return this._placeholder;
+  }
+
   constructor() {
     this.elementId = Guid.create().toString();
     this.itemsSource = [];
   }
 
   ngAfterViewInit() {
-    this.host.select2();
+    this._placeholder = 'Select a value';
+    this.host.select2({
+      placeholder: this._placeholder,
+      allowClear: true
+    });
     this.host.on('select2:select', e => {
       const data = e.params.data;
       this.selectedItem = data;
@@ -81,6 +96,6 @@ export class Select2Component implements AfterViewInit {
   }
 
   reset() {
-    this.host.select2('val', '');
+    this.host.val(null).trigger('change');
   }
 }
