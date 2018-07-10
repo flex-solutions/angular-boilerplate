@@ -20,7 +20,6 @@ export class CustomerHomeComponent implements OnInit {
   filter: IFilterChangedEvent;
   customers: CustomerModel[] = [];
   customerFilter: CustomerFilter = new CustomerFilter();
-  totalItems: number;
   @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
   constructor(private customerService: CustomerService) {
@@ -79,7 +78,6 @@ export class CustomerHomeComponent implements OnInit {
   loadData() {
     this.count('').subscribe(total => {
       this.dataGrid.totalItems = +total;
-      console.log('total items: ' + this.totalItems);
       this.dataGrid.countPageEntry();
       this.getCustomers();
     });
