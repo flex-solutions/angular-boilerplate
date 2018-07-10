@@ -24,9 +24,9 @@
           </td>
           <td>{{customer.memberId}}</td>
           <td>{{customer.phoneNumber}}</td>
-          <td>{{customer.birthday}}</td>
+          <td>{{customer.birthday | date: 'dd/MM/y'}}</td>
           <td appSex [sex]="customer.sex"></td>
-          <td>{{customer.address}}</td>
+          <td>{{customer.address.address}}</td>
           <td>{{customer.customerType}}</td>
           <td>
             <div class="row">
