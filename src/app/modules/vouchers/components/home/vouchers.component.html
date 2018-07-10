@@ -1,0 +1,56 @@
+<!-- partial -->
+<app-card title="Vouchers" i18n-title="@@v-list" subTitle="">
+    <div class="command-region">
+        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+            <i class="mdi mdi-plus"></i>
+            <span i18n="@@vouchers-create-voucher">Create voucher</span>
+        </button>
+
+        <button type="button" class="btn btn-light btn-fw pull-right">
+            <i class="mdi mdi-format-list-bulleted"></i>
+            <span i18n="@@vouchers-view-all-vouchers">View All</span>
+        </button>
+    </div>
+
+    <app-dg #dg searchLabel="Search vouchername, fullname or email" i18n-searchLabel="@@vouchers-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
+        [countFunction]="count">
+
+        <tr role="row">
+            <th i18n="@@vouchers-code">Code</th>
+            <th i18n="@@vouchers-createdDate">Created Date</th>
+            <th i18n="@@vouchers-discount">Discount</th>
+            <th i18n="@@vouchers-name">Name</th>
+            <th i18n="@@vouchers-publishCount">Published Count</th>
+            <th i18n="@@vouchers-usedCount">Used Count</th>
+            <th i18n="@@vouchers-status">Status</th>
+            <th i18n="@@vouchers-sales">Sales</th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>
+                    <p class="a-clickable pull-left" (click)="navigateTovoucherDetailPage(item._id)">{{item.code}}</p>
+                </td>
+                <td>{{item.crate}}</td>
+                <td>{{item.discount}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.publishedCount}}</td>
+                <td>{{item.usedCount}}</td>
+                <td appVoucherStatus [status]="item.status"></td>
+                <td>{{item.sale}}</td>
+                <td>
+                    <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
+                        <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
+                        <span i18n="@@vouchers-edit">Edit</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="navigateToEditPage(item)" href="javascript:;" i18n="@@voucher-detail-change-voucher">Change voucher</a>
+                        <a class="dropdown-item" (click)="deletevoucher(item)" href="javascript:;" i18n="@@voucher-detail-delete-voucher">Delete voucher</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </app-dg>
+</app-card>
