@@ -1,5 +1,9 @@
 import { ApplicationConfigurationService } from '../services/application-configuration.service';
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpClient,
+  HttpHeaders
+} from '@angular/common/http';
 import { catchError, retry, finalize } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { SharedModule } from '../shared.module';
@@ -62,6 +66,20 @@ export abstract class AbstractRestService {
       catchError(err => this.handleError(err)),
       finalize(() => this.hideLoader())
     );
+  }
+
+  filter<T>(relativeUrl: string, filter: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    const headers = new HttpHeaders().set('X-Filter', JSON.stringify(filter));
+    return this.httpClient
+      .get<T>(url, {
+        headers: headers
+      })
+      .pipe(
+        catchError(err => this.handleError(err)),
+        finalize(() => this.hideLoader())
+      );
   }
 
   post<T>(relativeUrl, postBody: any) {

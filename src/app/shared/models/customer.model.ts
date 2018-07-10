@@ -24,4 +24,36 @@ class CustomerTypeModel {
   name: string = "";
 }
 
-export { CustomerModel, Sex, CustomerTypeModel};
+class CustomerFilter {
+  phoneNumber: string;
+  memberId: string;
+  name: string;
+  sex: any;
+  monthOfBirthday: any;
+  customerType: any;
+  province: any;
+  district: any;
+  address: string;
+
+  constructor() {
+    this.name = '';
+    this.address = '';
+    this.memberId = '';
+    this.phoneNumber = '';
+    this.sex = {};
+    this.monthOfBirthday = {};
+    this.customerType = {};
+  }
+}
+
+const customerFilterFields = {
+  PHONE_NUMBER: 'phoneNumber',
+  MEMBER_ID: 'memberId',
+  NAME: 'name',
+  MONTH_OF_BIRTHDAY: 'monthOfBirthday',
+  SEX: 'sex',
+  ADDRESS: 'address',
+  CUSTOMER_TYPE: 'customerType'
+};
+
+export { CustomerModel, Sex, CustomerFilter, customerFilterFields };

@@ -1,3 +1,4 @@
+<app-customer-filter [(customerFilter)]="customerFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-customer-filter>
 <app-card title="Customers" i18n-title="@@customers-list-tbl-title">
     <div class="command-region">
       <button type="button" class="btn btn-sm btn-primary" (click)="createNewCustomer()">
