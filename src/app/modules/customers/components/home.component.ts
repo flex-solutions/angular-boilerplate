@@ -1,7 +1,10 @@
 import { Observable } from 'rxjs';
-import { IFilterChangedEvent } from './../../../shared/ui-common/datagrid/components/datagrid.component';
+import {
+  IFilterChangedEvent,
+  DatagridComponent
+} from './../../../shared/ui-common/datagrid/components/datagrid.component';
 import { CustomerService } from './../services/customer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   CustomerModel,
   CustomerFilter
@@ -17,6 +20,8 @@ export class CustomerHomeComponent implements OnInit {
   filter: IFilterChangedEvent;
   customers: CustomerModel[] = [];
   customerFilter: CustomerFilter = new CustomerFilter();
+  totalItems: number;
+  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
   constructor(private customerService: CustomerService) {
     this._hasUseFilter = false;
@@ -40,9 +45,7 @@ export class CustomerHomeComponent implements OnInit {
 
   onRunFilterClicked() {
     this._hasUseFilter = true;
-    this.count('').subscribe(() => {
-      this.getCustomers();
-    });
+    this.loadData();
   }
 
   private getQuery() {
@@ -73,10 +76,17 @@ export class CustomerHomeComponent implements OnInit {
     }
   }
 
-  resetFilter = () => {
-    this._hasUseFilter = false;
-    this.count('').subscribe(() => {
+  loadData() {
+    this.count('').subscribe(total => {
+      this.dataGrid.totalItems = +total;
+      console.log('total items: ' + this.totalItems);
+      this.dataGrid.countPageEntry();
       this.getCustomers();
     });
+  }
+
+  resetFilter = () => {
+    this._hasUseFilter = false;
+    this.loadData();
   }
 }
