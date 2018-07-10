@@ -43,19 +43,6 @@ export class CustomerService extends AbstractRestService {
       query = {};
     }
 
-<<<<<<< HEAD
-    public getById(_id: string): Observable<CustomerModel> {
-        return this.get(`${_id}`);
-    }
-
-    create(news: CustomerModel) {
-        return this.post('', news);
-    }
-
-    update(news: CustomerModel) {
-      return this.put('', news);
-    }
-=======
     const promise = new Promise((_resolve, reject) => {
       this.filter(`filter`, query).subscribe((data: any[]) => {
         if (data && data.hasOwnProperty('length')) {
@@ -92,5 +79,16 @@ export class CustomerService extends AbstractRestService {
       resolve(data);
     });
   }
->>>>>>> feature/develop_spr003
+
+  public getById(_id: string): Observable<CustomerModel> {
+    return this.get(`${_id}`);
+  }
+
+  create(news: CustomerModel) {
+    return this.post('', news);
+  }
+
+  update(news: CustomerModel) {
+    return this.put('', news);
+  }
 }

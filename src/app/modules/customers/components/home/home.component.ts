@@ -1,24 +1,11 @@
 import { CustomerRouteNames } from './../../constants/customer.constants';
 import { CustomerService } from './../../services/customer.service';
-import { IFilterChangedEvent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD:src/app/modules/customers/components/home/home.component.ts
-import { Component, OnInit } from '@angular/core';
-import { CustomerModel } from '../../../../shared/models/customer.model';
-import { Router } from '@angular/router';
-=======
-import {
-  IFilterChangedEvent,
-  DatagridComponent
-} from './../../../shared/ui-common/datagrid/components/datagrid.component';
-import { CustomerService } from './../services/customer.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  CustomerModel,
-  CustomerFilter
-} from '../../../shared/models/customer.model';
-import { CustomerCriteriaBuilder } from './customer-filter/customer-filter.builder';
->>>>>>> feature/develop_spr003:src/app/modules/customers/components/home.component.ts
+import { Router } from '@angular/router';
+import { CustomerModel, CustomerFilter } from '../../../../shared/models/customer.model';
+import { IFilterChangedEvent, DatagridComponent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { CustomerCriteriaBuilder } from '../customer-filter/customer-filter.builder';
 
 @Component({
   selector: 'app-customer-home',
@@ -31,31 +18,17 @@ export class CustomerHomeComponent implements OnInit {
   customerFilter: CustomerFilter = new CustomerFilter();
   @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
-<<<<<<< HEAD:src/app/modules/customers/components/home/home.component.ts
-    constructor(private customerService: CustomerService,
-        private route: Router) {
-
-    }
-
-    public count = (searchKey: string): Observable<number> => {
-        return this.customerService.count();
-    }
-
-    ngOnInit(): void {
-=======
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService, private route: Router) {
     this._hasUseFilter = false;
   }
 
   public count = (searchKey: string): Observable<number> => {
     if (!this._hasUseFilter) {
       return this.customerService.count();
->>>>>>> feature/develop_spr003:src/app/modules/customers/components/home.component.ts
     }
     return this.customerService.countWithFilterQuery(this.getQuery());
   }
 
-<<<<<<< HEAD:src/app/modules/customers/components/home/home.component.ts
     createNewCustomer() {
         this.route.navigate([CustomerRouteNames.CREATE]);
     }
@@ -63,11 +36,7 @@ export class CustomerHomeComponent implements OnInit {
     editCustomer(id: string) {
         this.route.navigate([`${CustomerRouteNames.EDIT}/${id}`]);
     }
-=======
   ngOnInit(): void {}
->>>>>>> feature/develop_spr003:src/app/modules/customers/components/home.component.ts
-
-  createNewCustomer() {}
 
   onPageChanged(event: IFilterChangedEvent) {
     this.filter = event;

@@ -1522,7 +1522,6 @@
         <target>Edit</target>
       </trans-unit>
       <!--End Customer Module-->
-<<<<<<< HEAD
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
         <source>Create Customer</source>
@@ -1642,7 +1641,6 @@
       </trans-unit>
 
       <!--End Create Edit Customer Module-->
-=======
       <!--Start Customer Filter-->
       <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
         <source>Filter Tool</source>
@@ -1725,8 +1723,6 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
-
->>>>>>> feature/develop_spr003
     </body>
   </file>
 </xliff>

@@ -56,4 +56,4 @@ const customerFilterFields = {
   CUSTOMER_TYPE: 'customerType'
 };
 
-export { CustomerModel, Sex, CustomerFilter, customerFilterFields };
+export { CustomerModel, Sex, CustomerFilter, customerFilterFields, CustomerTypeModel };
