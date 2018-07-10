@@ -83,7 +83,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
     this.onCreateForm();
     this.loadInformation();
-    this.loadCustomer();
   }
 
   loadInformation() {
