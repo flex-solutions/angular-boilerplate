@@ -1,5 +1,4 @@
-import { TranslateService } from './../services/translate.service';
-import { DistrictModel, CityModel, CountryModel, AddressModel } from './district.model';
+import { Address } from './address.model';
 
 enum Sex {
   Female = 0,
@@ -14,7 +13,7 @@ class CustomerModel {
   name: string;
   birthday: Date = new Date();
   sex: number = 0;
-  address: AddressModel = new AddressModel();
+  address: Address = new Address();
   customerType: string = "";
   email: string;
 }

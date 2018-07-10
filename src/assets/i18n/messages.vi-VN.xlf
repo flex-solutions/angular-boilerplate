@@ -1666,7 +1666,7 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-month_of_birthday" datatype="html">
         <source>Month of birthday</source>
-        <target>Month of birthday</target>
+        <target>Tháng sinh nhật</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-day_are_not_returned" datatype="html">
         <source>Days are not returned</source>
