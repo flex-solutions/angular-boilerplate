@@ -1,52 +1,51 @@
 <app-customer-filter [(customerFilter)]="customerFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-customer-filter>
 <app-card title="Customers" i18n-title="@@customers-list-tbl-title">
-    <div class="command-region">
-      <button type="button" class="btn btn-sm btn-primary" (click)="createNewCustomer()">
-        <i class="mdi mdi-plus"></i>
-        <span i18n="@@customers-tbl-btn-create">Create customer</span>
-      </button>
-    </div>
-    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
-      <tr>
-        <th i18n="@@customers-tbl-name">Name</th>
-        <th i18n="@@customers-tbl-member-id">Member ID</th>
-        <th i18n="@@customers-tbl-phone-number">Phone number</th>
-        <th i18n="@@customers-tbl-birthday">Birthday</th>
-        <th i18n="@@customers-tbl-sex">Sex</th>
-        <th i18n="@@customers-tbl-address">Address</th>
-        <th i18n="@@customers-tbl-customer-type">Customer Type</th>
-        <th i18n="@@common-tbl-actions">Actions</th>
-      </tr>
-      <tbody>
-        <tr *ngFor="let customer of customers">
-          <td>
-            <a class="a-clickable" (click)="navigateToFilterCustomer(customer)">{{customer.name}}</a>
-          </td>
-          <td>{{customer.memberId}}</td>
-          <td>{{customer.phoneNumber}}</td>
-          <td>{{customer.birthday | date: 'dd/MM/y'}}</td>
-          <td appSex [sex]="customer.sex"></td>
-          <td>{{customer.address.address}}</td>
-          <td>{{customer.customerType}}</td>
-          <td>
-            <div class="row">
-              <button class="btn btn-light" (click)="editCustomer(customer._id)">
-                <i class="mdi mdi-account-multiple text-primary"></i>
-                <span i18n="@@customers-list-tbl-actions-edit">Edit</span>
+  <div class="command-region">
+    <button type="button" class="btn btn-sm btn-primary" (click)="createNewCustomer()">
+      <i class="mdi mdi-plus"></i>
+      <span i18n="@@customers-tbl-btn-create">Create customer</span>
+    </button>
+  </div>
+  <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
+    <tr>
+      <th i18n="@@customers-tbl-name">Name</th>
+      <th i18n="@@customers-tbl-member-id">Member ID</th>
+      <th i18n="@@customers-tbl-phone-number">Phone number</th>
+      <th i18n="@@customers-tbl-birthday">Birthday</th>
+      <th i18n="@@customers-tbl-sex">Sex</th>
+      <th i18n="@@customers-tbl-address">Address</th>
+      <th i18n="@@customers-tbl-customer-type">Customer Type</th>
+      <th i18n="@@common-tbl-actions">Actions</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>
+          <a class="a-clickable" (click)="navigateToFilterCustomer(customer)">{{customer.name}}</a>
+        </td>
+        <td>{{customer.memberId}}</td>
+        <td>{{customer.phoneNumber}}</td>
+        <td>{{customer.birthday | date: 'dd/MM/y'}}</td>
+        <td appSex [sex]="customer.sex"></td>
+        <td>{{customer.address | address}}</td>
+        <td>{{customer.customerType}}</td>
+        <td>
+          <div class="row">
+            <button class="btn btn-light" (click)="editCustomer(customer._id)">
+              <i class="mdi mdi-account-multiple text-primary"></i>
+              <span i18n="@@customers-list-tbl-actions-edit">Edit</span>
+            </button>
+            <div class="dropdown">
+              <button type="button" class="btn btn-light icon-btn dropdown-toggle dropdown-toggle-split more-actions-dropdown-btn" id="dropdownMenuIconButton3"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="mdi mdi-dots-horizontal"></i>
               </button>
-              <div class="dropdown">
-                <button type="button" class="btn btn-light icon-btn dropdown-toggle dropdown-toggle-split more-actions-dropdown-btn" id="dropdownMenuIconButton3" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <i class="mdi mdi-dots-horizontal"></i>
-                </button>
-                <div class="dropdown-menu more-actions-dropdown" aria-labelledby="dropdownMenuIconButton3" x-placement="bottom-start">
-                  <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group" (click)="deleteCustomer(usergroup)">Delete</a>
-                </div>
+              <div class="dropdown-menu more-actions-dropdown" aria-labelledby="dropdownMenuIconButton3" x-placement="bottom-start">
+                <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group" (click)="deleteCustomer(usergroup)">Delete</a>
               </div>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </app-dg>
-  </app-card>
-  
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </app-dg>
+</app-card>
