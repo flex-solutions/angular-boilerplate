@@ -43,4 +43,8 @@ export class SidebarComponent implements OnInit {
   navigateToCustomerManagementPage() {
     this.router.navigate([ModuleRoute.CUSTOMER]);
   }
+
+  navigateToVouchersPage() {
+    this.router.navigate([ModuleRoute.VOUCHER]);
+  }
 }

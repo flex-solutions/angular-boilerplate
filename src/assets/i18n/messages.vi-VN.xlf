@@ -1717,6 +1717,64 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
+      <!--Start Voucher Home -->
+      <trans-unit id="vouchers-create-voucher" datatype="html">
+        <source>Create voucher</source>
+        <target>Tạo voucher</target>
+      </trans-unit>
+      <trans-unit id="vouchers-code" datatype="html">
+        <source>Code</source>
+        <target>Mã</target>
+      </trans-unit>
+      <trans-unit id="vouchers-createdDate" datatype="html">
+        <source>Created Date</source>
+        <target>Ngày tạo</target>
+      </trans-unit>
+      <trans-unit id="vouchers-discount" datatype="html">
+        <source>Discount</source>
+        <target>Giảm giá</target>
+      </trans-unit>
+      <trans-unit id="vouchers-name" datatype="html">
+        <source>Name</source>
+        <target>Tên</target>
+      </trans-unit>
+      <trans-unit id="vouchers-publishCount" datatype="html">
+        <source>Published Count</source>
+        <target>Đã phát hành</target>
+      </trans-unit>
+      <trans-unit id="vouchers-usedCount" datatype="html">
+        <source>Used Count</source>
+        <target>Đã sử dụng</target>
+      </trans-unit>
+      <trans-unit id="vouchers-status" datatype="html">
+        <source>Status</source>
+        <target>Tình trạng</target>
+      </trans-unit>
+      <trans-unit id="vouchers-sales" datatype="html">
+        <source>Sales</source>
+        <target>Doanh số</target>
+      </trans-unit>
+      <trans-unit id="vouchers-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-voucher" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
+        <source>Search voucher code, name</source>
+        <target>Tìm kiếm mã voucher, tên voucher</target>
+      </trans-unit>
+      <trans-unit id="vouchers-title" datatype="html">
+        <source>Vouchers</source>
+        <target>Danh sách voucher</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
+        <source>Vouchers Management</source>
+        <target>Quản lý voucher</target>
+      </trans-unit>
+      <!--End Voucher Home -->
     </body>
   </file>
 </xliff>

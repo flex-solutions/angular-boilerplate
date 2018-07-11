@@ -7,7 +7,7 @@ const VoucherRoutes: Routes = [
     path: '',
     component: VouchersComponent,
     data: {
-      breadcrumb: 'vouchers'
+      breadcrumb: 'Vouchers'
     }
   },
 ];

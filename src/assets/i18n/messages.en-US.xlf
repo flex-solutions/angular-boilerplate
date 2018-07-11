@@ -1723,6 +1723,72 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
+      <!--Start Voucher Home -->
+      <trans-unit id="vouchers-create-voucher" datatype="html">
+        <source>Create voucher</source>
+        <target>Create voucher</target>
+      </trans-unit>
+      <trans-unit id="vouchers-code" datatype="html">
+        <source>Code</source>
+        <target>Code</target>
+      </trans-unit>
+      <trans-unit id="vouchers-createdDate" datatype="html">
+        <source>Created Date</source>
+        <target>Created Date</target>
+      </trans-unit>
+      <trans-unit id="vouchers-discount" datatype="html">
+        <source>Discount</source>
+        <target>Discount</target>
+      </trans-unit>
+      <trans-unit id="vouchers-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="vouchers-publishCount" datatype="html">
+        <source>Published Count</source>
+        <target>Published Count</target>
+      </trans-unit>
+      <trans-unit id="vouchers-usedCount" datatype="html">
+        <source>Used Count</source>
+        <target>Used Count</target>
+      </trans-unit>
+      <trans-unit id="vouchers-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="vouchers-sales" datatype="html">
+        <source>Sales</source>
+        <target>Sales</target>
+      </trans-unit>
+      <trans-unit id="vouchers-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-voucher" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
+        <source>Search voucher code, name</source>
+        <target>Search voucher code, name</target>
+      </trans-unit>
+      <trans-unit id="vouchers-title" datatype="html">
+        <source>Vouchers</source>
+        <target>Vouchers</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
+        <source>Vouchers Management</source>
+        <target>Vouchers Management</target>
+      </trans-unit>
+      <trans-unit id="list-voucher-status-running" datatype="html">
+        <source>Running</source>
+        <target>Đang áp dụng</target>
+      </trans-unit>
+      <trans-unit id="list-voucher-status-expired" datatype="html">
+        <source>Expired</source>
+        <target>Hết hiệu lực</target>
+      </trans-unit>
+      <!--End Voucher Home -->
     </body>
   </file>
 </xliff>

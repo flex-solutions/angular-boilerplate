@@ -1,20 +1,14 @@
 <!-- partial -->
-<app-card title="Vouchers" i18n-title="@@v-list" subTitle="">
+<app-card title="Vouchers" i18n-title="@@vouchers-title">
     <div class="command-region">
         <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
             <i class="mdi mdi-plus"></i>
             <span i18n="@@vouchers-create-voucher">Create voucher</span>
         </button>
-
-        <button type="button" class="btn btn-light btn-fw pull-right">
-            <i class="mdi mdi-format-list-bulleted"></i>
-            <span i18n="@@vouchers-view-all-vouchers">View All</span>
-        </button>
     </div>
 
-    <app-dg #dg searchLabel="Search vouchername, fullname or email" i18n-searchLabel="@@vouchers-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
+    <app-dg #dg searchLabel="Search voucher code, name" i18n-searchLabel="@@vouchers-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
         [countFunction]="count">
-
         <tr role="row">
             <th i18n="@@vouchers-code">Code</th>
             <th i18n="@@vouchers-createdDate">Created Date</th>
@@ -46,8 +40,7 @@
                         <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" (click)="navigateToEditPage(item)" href="javascript:;" i18n="@@voucher-detail-change-voucher">Change voucher</a>
-                        <a class="dropdown-item" (click)="deletevoucher(item)" href="javascript:;" i18n="@@voucher-detail-delete-voucher">Delete voucher</a>
+                        <a class="dropdown-item" (click)="deletevoucher(item)" href="javascript:;" i18n="@@voucher-detail-delete-voucher">Delete</a>
                     </div>
                 </td>
             </tr>

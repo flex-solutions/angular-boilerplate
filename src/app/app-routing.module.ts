@@ -32,6 +32,10 @@ const routes: Routes = [
     {
       path: 'customers',
       loadChildren: 'app/modules/customers/customer.module#CustomerManagementModule',
+    },
+    {
+      path: 'vouchers',
+      loadChildren: 'app/modules/vouchers/vouchers.module#VouchersModule',
     }]
   },
   {
