@@ -76,6 +76,7 @@ export class CustomerFilterComponent implements AfterViewInit {
   onProvinceChange($event) {
     if ($event) {
       this.districts = $event.districts;
+      this.customerFilter.district = {};
     }
   }
 
