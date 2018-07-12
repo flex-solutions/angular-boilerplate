@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable,from } from 'rxjs';
 import { Voucher } from './../../../shared/models/voucher.model';
 import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 
@@ -23,5 +23,37 @@ export class VoucherService extends AbstractRestService {
 
   public remove(_id: string) {
     return this.delete(_id, {});
+  }
+
+  countWithFilterQuery(query?: any): Observable<number> {
+    if (!query) {
+      query = {};
+    }
+
+    const promise = new Promise((_resolve, reject) => {
+      this.filter(`filter`, query).subscribe((data: any[]) => {
+        if (data && data.hasOwnProperty('length')) {
+          console.log(`resolve data: [${data.length}]`);
+          _resolve(data.length);
+        }
+        _resolve(0);
+      });
+    });
+
+    return from(promise) as Observable<number>;
+  }
+
+  getVouchersWithFilterQuery(
+    pageNumber: number,
+    pageSize: number,
+    query?: any
+  ): Observable<Voucher[]> {
+    if (!query) {
+      query = {};
+    }
+    return this.filter(
+      `filter?pageSize=${pageSize}&pageNumber=${pageNumber}`,
+      query
+    );
   }
 }

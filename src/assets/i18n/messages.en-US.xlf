@@ -1782,11 +1782,39 @@
       </trans-unit>
       <trans-unit id="list-voucher-status-running" datatype="html">
         <source>Running</source>
-        <target>Đang áp dụng</target>
+        <target>Running</target>
       </trans-unit>
       <trans-unit id="list-voucher-status-expired" datatype="html">
         <source>Expired</source>
-        <target>Hết hiệu lực</target>
+        <target>Expired</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-placeholder-text" datatype="html">
+        <source>Name/Code contains</source>
+        <target>Name/Code contains</target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-th-create-date" datatype="html">
+        <source>Created Date</source>
+        <target>Created Date</target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-th-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-btn-run_filter" datatype="html">
+        <source>Run filter</source>
+        <target>Run filter</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-btn-reset_filter" datatype="html">
+        <source>Reset filter</source>
+        <target>Reset filter</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-lbl-title" datatype="html">
+        <source>Voucher Filter</source>
+        <target>Voucher Filter</target>
+      </trans-unit>
+      <trans-unit id="voucher-detail-delete-voucher" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
       </trans-unit>
       <!--End Voucher Home -->
     </body>

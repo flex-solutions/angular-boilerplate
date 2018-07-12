@@ -1,4 +1,5 @@
 <!-- partial -->
+<app-voucher-filter [(voucherFilter)]="voucherFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-voucher-filter>
 <app-card title="Vouchers" i18n-title="@@vouchers-title">
     <div class="command-region">
         <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
@@ -6,7 +7,6 @@
             <span i18n="@@vouchers-create-voucher">Create voucher</span>
         </button>
     </div>
-
     <app-dg #dg searchLabel="Search voucher code, name" i18n-searchLabel="@@vouchers-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
         [countFunction]="count">
         <tr role="row">

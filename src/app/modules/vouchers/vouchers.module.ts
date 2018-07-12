@@ -1,3 +1,4 @@
+import { voucherComponents } from './components/index';
 import { VoucherService } from './services/vouchers.service';
 import { VouchersRoutingModule } from './voucher-routing.module';
 
@@ -15,8 +16,7 @@ import { VoucherStatusDirective } from './directives/voucherStatus.directive';
     UICommonModule
   ],
   declarations: [
-      VoucherStatusDirective,
-      VouchersComponent
+      VoucherStatusDirective, ...voucherComponents
   ],
   providers: [VoucherService],
 

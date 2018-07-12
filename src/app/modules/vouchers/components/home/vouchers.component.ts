@@ -1,7 +1,10 @@
-import { Voucher } from './../../../../shared/models/voucher.model';
+import { filter } from 'ramda';
+import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { VoucherCriteriaBuilder } from './../../voucher-filter/voucher-filter.builder';
+import { Voucher, VoucherFilter } from './../../../../shared/models/voucher.model';
 import { VoucherService } from './../../services/vouchers.service';
 import { TranslateService } from './../../../../shared/services/translate.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
@@ -23,7 +26,10 @@ import { VouchersRoutingModule } from '../../voucher-routing.module';
 })
 export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   public items: Voucher[] = [];
-  private transferData = new TransferGroupData();
+  private _hasUseFilter: boolean;
+  voucherFilter: VoucherFilter = new VoucherFilter();
+  filter: IFilterChangedEvent;
+  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
   constructor(
     private exDialog: ExDialog,
@@ -33,21 +39,32 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     private translateService: TranslateService
   ) {
     super();
+    this._hasUseFilter = false;
   }
 
   public count = (searchKey: string): Observable<number> => {
-    return this.voucherService.count(searchKey);
+    if (!this._hasUseFilter) {
+      return this.voucherService.count();
+    }
+    return this.voucherService.countWithFilterQuery(this.getQuery());
   }
 
   ngOnInit() {
   }
 
-  private loadData(eventArg: IFilterChangedEvent) {
+  onRunFilterClicked() {
+    this._hasUseFilter = true;
+    this.loadData();
+  }
+
+  private getQuery() {
+    const query = VoucherCriteriaBuilder.build(this.voucherFilter);
+    return query;
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
-    this.transferData.filterEvent = eventArg;
-    this.loadData(eventArg);
+    this.filter = eventArg;
+    this.getVouchers();
   }
 
   async deletevoucher(voucher: Voucher) {
@@ -69,4 +86,40 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     // this.router.navigate([VouchersRoutingModule.DETAIL_PAGE, voucher._id]);
   }
 
+  private getVouchers() {
+    if (this._hasUseFilter) {
+      this.voucherService
+        .getVouchersWithFilterQuery(
+          this.filter.pagination.page,
+          this.filter.pagination.itemsPerPage,
+          this.getQuery()
+        )
+        .subscribe(res => {
+          this.items = res;
+        });
+    } else {
+      this.voucherService
+        .getvouchers(
+          this.filter.pagination.page,
+          this.filter.pagination.itemsPerPage
+        )
+        .subscribe(res => {
+          this.items = res;
+        });
+    }
+  }
+
+  loadData() {
+    this.count('').subscribe(total => {
+      this.dataGrid.totalItems = +total;
+      this.dataGrid.countPageEntry();
+      this.getVouchers();
+    });
+  }
+
+  resetFilter = () => {
+    this._hasUseFilter = false;
+    this.loadData();
+  }
+  
 }
