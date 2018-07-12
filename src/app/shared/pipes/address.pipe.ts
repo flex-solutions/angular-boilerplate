@@ -1,6 +1,7 @@
 import { isNil } from 'ramda';
 import { Pipe, PipeTransform } from '@angular/core';
 import { Address } from '../models/address.model';
+import { isNullOrEmptyOrUndefine } from '../../utilities/util';
 
 @Pipe({ name: 'address' })
 export class AddressPipe implements PipeTransform {
@@ -12,17 +13,21 @@ export class AddressPipe implements PipeTransform {
       addresses.push(value.address);
 
       if (
-        !value.country ||
-        !value.country.provinces ||
-        value.country.provinces.length <= 0 ||
-        (!value.country.provinces[0].districts ||
-          value.country.provinces[0].districts.length <= 0)
+        isNullOrEmptyOrUndefine(value.country) ||
+        isNullOrEmptyOrUndefine(value.country.provinces)
       ) {
         return addresses.join(',');
       }
 
-      addresses.push(value.country.provinces[0].districts[0].name);
-      addresses.push(value.country.provinces[0].name);
+      const provinces = value.country.provinces as any;
+      if (Array.isArray(provinces)) {
+        addresses.push(value.country.provinces[0].districts[0].name);
+        addresses.push(value.country.provinces[0].name);
+      } else {
+        addresses.push(provinces.districts.name);
+        addresses.push(provinces.name);
+      }
+
       return addresses.join(', ');
     }
   }

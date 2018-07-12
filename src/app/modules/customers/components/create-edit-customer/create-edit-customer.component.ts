@@ -1,9 +1,9 @@
-import { customerModuleDirectives } from './../../directives/index';
-import { AddressService } from './../../services/address.service';
-import { CustomerErrors } from './../../constants/customer.constants';
-import { CustomerService } from './../../services/customer.service';
-import { TranslateService } from './../../../../shared/services/translate.service';
-import { NotificationService } from './../../../../shared/services/notification.service';
+import { customerModuleDirectives } from '../../directives';
+import { AddressService } from '../../services/address.service';
+import { CustomerErrors } from '../../constants/customer.constants';
+import { CustomerService } from '../../services/customer.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
 import { Component, Directive } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
@@ -180,7 +180,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       name: ['', [Validators.required]],
       phone: [
         '+84 ',
-        [Validators.required, Validators.pattern('\\+84 [0-9]{9,10}')]
+        [Validators.required]
       ],
       birthday: ['', []],
       customerType: ['', []],

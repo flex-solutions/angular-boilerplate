@@ -41,6 +41,16 @@ export class CustomerCriteriaBuilder {
         customerFilterFields.MONTH_OF_BIRTHDAY,
         customerFilter[customerFilterFields.MONTH_OF_BIRTHDAY].id,
         ValueType.Number
+      )
+      .withFilter(
+        FilterType.Regex,
+        customerFilterFields.PROVINCE,
+        customerFilter[customerFilterFields.PROVINCE].name
+      )
+      .withFilter(
+        FilterType.Regex,
+        customerFilterFields.DISTRICT,
+        customerFilter[customerFilterFields.DISTRICT].name
       );
 
     return builder.build();

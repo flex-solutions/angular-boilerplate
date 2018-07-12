@@ -14,6 +14,7 @@ import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
 import { BrowserNotificationService } from '../services/browser-notification.service';
 import { ForbiddenHandler } from '../services/forbidden-handler.service';
+import { UTF8Encoding } from '../../utilities/ utf8-regex';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -71,7 +72,9 @@ export abstract class AbstractRestService {
   filter<T>(relativeUrl: string, filter: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
-    const headers = new HttpHeaders().set('X-Filter', JSON.stringify(filter));
+    const filterString = JSON.stringify(filter);
+    console.log(filterString);
+    const headers = new HttpHeaders().set('X-Filter', UTF8Encoding.utf8Encode(filterString));
     return this.httpClient
       .get<T>(url, {
         headers: headers
