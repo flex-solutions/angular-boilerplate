@@ -7,8 +7,7 @@
             <span i18n="@@vouchers-create-voucher">Create voucher</span>
         </button>
     </div>
-    <app-dg #dg searchLabel="Search voucher code, name" i18n-searchLabel="@@vouchers-list-tbl-search-label" (pageChanged)="onPageChanged($event)"
-        [countFunction]="count">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
         <tr role="row">
             <th i18n="@@vouchers-code">Code</th>
             <th i18n="@@vouchers-createdDate">Created Date</th>
@@ -22,13 +21,13 @@
         <tbody>
             <tr *ngFor="let item of items">
                 <td>
-                    <p class="a-clickable pull-left" (click)="navigateTovoucherDetailPage(item._id)">{{item.code}}</p>
+                    <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item._id)">{{item.voucher_code}}</p>
                 </td>
-                <td>{{item.crate}}</td>
+                <td>{{item.create_on | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.discount}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.publishedCount}}</td>
-                <td>{{item.usedCount}}</td>
+                <td>{{item.published_count}}</td>
+                <td>{{item.used_count}}</td>
                 <td appVoucherStatus [status]="item.status"></td>
                 <td>{{item.sale}}</td>
                 <td>

@@ -2,7 +2,7 @@ import { CheckedItem } from "../ui-common/drop-down-check-boxes/checked-items.mo
 
 export class Voucher {
     _id: string;
-    voucherCode: string;
+    voucher_code: string;
     discount: number;
     name: string;
     published_count:number;
@@ -19,13 +19,14 @@ export enum VoucherStatus {
 
 export const VoucherFields = {
     ID: '_id',
-    VOUCHERCODE: 'voucher_code',
+    VOUCHER_CODE: 'voucher_code',
     DISCOUNT: 'discount',
     NAME: 'name',
-    PUBLISHCOUNT: 'publish_count',
-    USEDCOUNT: 'used_count',
+    PUBLISHED_COUNT: 'published_count',
+    USED_COUNT: 'used_count',
     STATUS: 'status',
-    SALES: 'sales'
+    SALES: 'sales',
+    CREATE_ON: 'create_on'
   };
 
 export class VoucherFilter {

@@ -22,6 +22,7 @@ import { VoucherMessageConst } from '../vouchers.constants';
 })
 export class VoucherFilterComponent implements AfterViewInit {
   private _voucherFilter: VoucherFilter;
+  selectedStatus : VoucherStatusCheckedItem[] = [];
   private _resetFunction: () => void;
 
   // Get list select2 component
@@ -70,6 +71,12 @@ export class VoucherFilterComponent implements AfterViewInit {
   }
 
   runFilter() {
+    this._voucherFilter.status = [];
+    if (this.selectedStatus && this.selectedStatus.length > 0) {
+      this.selectedStatus.forEach((value) => {
+        this._voucherFilter.status.push(value.status);
+      });
+    }
     this.runFilterClicked.emit();
   }
 

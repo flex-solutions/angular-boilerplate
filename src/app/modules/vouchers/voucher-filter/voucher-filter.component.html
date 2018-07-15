@@ -7,7 +7,7 @@
     <app-date-picker class="dataTables_customfilter startdatepicker" title="Created Date" i18n-title="@@list-vouchers-th-create-date"
       [(date)]="voucherFilter.create_on" style="margin: 0 5px;"></app-date-picker>
     <app-drop-down-check-boxes class="dataTables_customfilter" title="Status" i18n-title="@@list-vouchers-th-status" [itemsources]="statuses"
-      [(selectedItems)]="voucherFilter.status" style="margin: 0 5px;"></app-drop-down-check-boxes>
+      [(selectedItems)]="selectedStatus" style="margin: 0 5px;"></app-drop-down-check-boxes>
     <div class="row">
       <button type="submit" class="btn btn-primary mr-2" (click)="runFilter()">
         <i class="mdi mdi-filter-outline"></i>
