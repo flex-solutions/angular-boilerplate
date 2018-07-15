@@ -33,7 +33,7 @@ export class DateRangePickerComponent implements AfterViewInit {
 
   constructor(private translateService: TranslateService) {
     this.elementId = Guid.create().toString();
-   }
+  }
 
   ngAfterViewInit() {
     this.initialize();
@@ -65,7 +65,7 @@ export class DateRangePickerComponent implements AfterViewInit {
         this.dateRange = result;
       });
 
-      // set default value
+    // set default value
     if (this.dateRange && this.dateRange.startDate && this.dateRange.endDate) {
       const startDate = moment(this.dateRange.startDate);
       const endDate = moment(this.dateRange.endDate);
@@ -101,5 +101,9 @@ export class DateRangePickerComponent implements AfterViewInit {
 
   get picker() {
     return $(`input[id="${this.elementId}"]`);
+  }
+
+  onIconClicked() {
+    this.picker.focus();
   }
 }

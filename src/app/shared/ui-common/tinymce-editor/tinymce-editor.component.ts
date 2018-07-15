@@ -5,6 +5,15 @@ import { isNullOrUndefined } from 'util';
 declare let tinymce: any;
 declare let $: any;
 
+export class tinymceContent {
+  content: string;
+  rawContent: string;
+
+  constructor(inputContent: string = "", inputRawContent: string = "") {
+    this.content = inputContent;
+    this.rawContent = inputRawContent;
+  }
+}
 @Component({
   selector: 'app-tinymce-editor',
   templateUrl: 'tinymce-editor.component.html',
@@ -14,8 +23,12 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   @Input('content')
   set content(value: string) {
     this._content = value;
+    this.contentChange.emit(this._content);
     if (this.editor) {
-      this.editor.setContent(this._content);
+      if (this.editor.getContent() !== this._content)
+      {
+        this.editor.setContent(this._content);
+      }
       this.raiseRawContent();
     }
   }
@@ -23,14 +36,28 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   get content(): string {
     return this._content
   }
+
   private _content: string;
+
+  @Input('rawContent')
+  set rawContent(value: string) {
+    this._rawContent = value;
+    this.rawContentChange.emit(this._rawContent);
+  }
+
+  get rawContent(): string {
+    return this._rawContent
+  }
+
+  private _rawContent: string;
+
   @Input() elementId: string;
   @Input() editorHeight: number;
   @Input() hasError: boolean;
 
-  @Output() onEditorContentChange = new EventEmitter();
+  @Output() contentChange = new EventEmitter();
+  @Output() rawContentChange = new EventEmitter();
   @Output() onBlur = new EventEmitter();
-  @Output() onEmptyRawContent = new EventEmitter();
   @Output() onFinishedInitialization = new EventEmitter();
 
   editor;
@@ -60,10 +87,8 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
         editor.on('Focus', () => {
           this.onBlur.emit(false);
         });
-        editor.on('change', () => {
-          const content = editor.getContent();
-          this.onEditorContentChange.emit(content);
-          this.raiseRawContent();
+        editor.on('keyup change', () => {
+          this.content = editor.getContent();
         });
         this.onFinishedInitialization.emit();
       },
@@ -71,16 +96,20 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   }
 
   private raiseRawContent() {
-    let body = this.editor.getBody();
-    var textcontent = body.textContent;
-    textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
-    this.onEmptyRawContent.emit(textcontent);
+    if (this.editor)
+    {
+      let body = this.editor.getBody();
+      if (body)
+      {
+        var textcontent = body.textContent;
+        textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
+        this.rawContent = textcontent;
+      }
+    }
   }
 
   reset() {
     this.content = "";
-    this.editor.setContent("");
-    this.raiseRawContent();
   }
 
   getClassStyle() {

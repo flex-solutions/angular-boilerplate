@@ -1,5 +1,5 @@
 
-import { ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
+import { ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
@@ -12,11 +12,15 @@ import { Location } from '@angular/common';
 import { isNullOrUndefined } from 'util';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { Errors } from '../../constants/news.constant';
+import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 const TITLE_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news';
 const DESCRIPTION_CREATE_NEWS: string = 'news-create_edit_news-h4-create_news_description';
 const TITLE_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news';
 const DESCRIPTION_EDIT_NEWS: string = 'news-create_edit_news-h4-edit_news_description';
+const BRIEF_LENGTH: number = 300;
 @Component({
   moduleId: module.id,
   selector: 'app-create-edit-news',
@@ -27,17 +31,21 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   isEdit: boolean = false;
   isPublish: boolean = false;
   isCreateAnother: boolean = false;
-  isBannerError: boolean = false;
-  rawContent: String;
+  bannerError: DropifyError;
+  rawContent: string;
   isBlurEditor: boolean = false;
   isFinishedBannerComponent: boolean = false;
-  isFinishedContentComponent:boolean = false;
+  isFinishedContentComponent: boolean = false;
 
   news: News = new News();
   newsId: string;
   cardTitle: string;
   cardDescription: string;
-
+  protected validationMessages: {
+    [key: string]: { [key: string]: IValidationMessage };
+  } = {
+      title: {}
+    };
   @ViewChild(TynimceEditorComponent)
   private ContentEditor: TynimceEditorComponent;
 
@@ -54,6 +62,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     private location: Location
   ) {
     super();
+    this.genericValidator = new GenericValidator(this.validationMessages, this.translateService);
   }
 
   ngOnInit() {
@@ -72,7 +81,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   LoadNews() {
-    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+    if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
       return;
     }
     if (this.isEdit) {
@@ -80,6 +89,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
         (value: News) => {
           if (value) {
             this.news = value as News;
+            this.news.banner = convertStringToBase64(this.news.banner);
           } else {
             // Navigate to previous if user group not found
             this.location.back();
@@ -106,11 +116,18 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   }
 
   hasErrorBanner() {
-    return this.isBannerError;
+    if (this.bannerError) {
+      return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
+        && isNullOrEmptyOrUndefine(this.news.banner);
+    }
+    return false;
   }
 
   hasEmptyAndBlurContent() {
-    return (isNullOrUndefined(this.rawContent) || this.rawContent === '') && this.isBlurEditor ;
+    if (isNullOrEmptyOrUndefine(this.rawContent)) {
+      return this.isBlurEditor;
+    }
+    return false;
   }
 
   protected onCreateForm() {
@@ -122,8 +139,11 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     });
   }
 
+  protected onValidate() { }
+
   protected onSubmit() {
     if (!this.isEdit) {
+      this.news.brief_content = this.ValidateRawContent();
       this.newsService.create(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification
@@ -132,13 +152,14 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
             this.news.title
           );
           this.notificationService.showSuccess(msg);
-          this.refreshPageIfCreateAnother();
+          this.refreshPageAfterSubmit();
         }
       );
     }
   }
 
   public submitAndPublishNews() {
+    this.news.brief_content = this.ValidateRawContent();
     this.newsService.createAndPublish(this.news).subscribe(
       (value: News) => {
         // * Create news successful, display success notification
@@ -147,7 +168,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
           this.news.title
         );
         this.notificationService.showSuccess(msg);
-        this.refreshPageIfCreateAnother();
+        this.refreshPageAfterSubmit();
       }
     );
   }
@@ -156,7 +177,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     this.location.back();
   }
 
-  private refreshPageIfCreateAnother() {
+  private refreshPageAfterSubmit() {
     if (this.isCreateAnother) {
       this.news = new News();
       this.resetForm();
@@ -167,42 +188,25 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
     }
   }
 
-  onHtmlEditorChange(text: string) {
-    this.news.content = text;
-  }
-
-  onContentEmpty(event) {
-    this.rawContent = event;
-  }
-
   onTinyEditorBlur(event: any) {
     this.isBlurEditor = event;
   }
 
-  onFileChanged(event: any) {
-    if (this.isBannerError && event.content != "") {
-      this.isBannerError = false;
-    }
-    this.news.banner = event.content;
-  }
-
-  onBannerErrors(event: ErrorType) {
-    if (event === ErrorType.FileSize) {
-      this.isBannerError = true;
-    }
-  }
-
   saveNews() {
-    this.newsService.update(this.news).subscribe(
-      (value: News) => {
-        // * Create news successful, display success notification
-        const msg = this.getMessage(
-          Errors.Edit_News_Success,
-          this.news.title
-        );
-        this.notificationService.showSuccess(msg);
-      }
-    );
+    if (this.isEdit) {
+      this.news.brief_content = this.ValidateRawContent();
+      this.newsService.update(this.news).subscribe(
+        (value: News) => {
+          // * Create news successful, display success notification
+          const msg = this.getMessage(
+            Errors.Edit_News_Success,
+            this.news.title
+          );
+          this.notificationService.showSuccess(msg);
+          this.refreshPageAfterSubmit()
+        }
+      );
+    }
   }
 
   finishBannerComponent() {
@@ -213,6 +217,13 @@ export class CreateEditNewsComponent extends AbstractFormComponent {
   finishContentComponent() {
     this.isFinishedContentComponent = true;
     this.LoadNews();
+  }
+
+  private ValidateRawContent(): string {
+    if (this.rawContent.length > BRIEF_LENGTH) {
+      return this.rawContent.substring(0, BRIEF_LENGTH) + "...";
+    } 
+    return this.rawContent;
   }
 
   protected getMessage(key: string, ...params) {
