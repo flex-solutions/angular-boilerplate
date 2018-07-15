@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { Promotion } from '../interfaces/promotion';
 import { PromotionStatus } from '../directives/promotion-status.directive';
+import { convertStringToBase64 } from '../../../utilities/convertStringToBase64';
 
 @Injectable()
 export class PromotionService extends AbstractRestService {
@@ -17,10 +18,12 @@ export class PromotionService extends AbstractRestService {
     }
 
     create(promotion: Promotion) {
+        this.updateBanner(promotion);
         return this.post('', promotion);
     }
 
     update(promotion: Promotion) {
+        this.updateBanner(promotion);
         return this.put(promotion._id, promotion);
     }
 
@@ -40,6 +43,19 @@ export class PromotionService extends AbstractRestService {
 
     deletePromotion(id: string) {
         return this.delete(`${id}`);
+    }
+
+    start(promotionId: string, promotion: Promotion) {
+        return this.patch(`${promotionId}/start`, promotion);
+    }
+
+    stop(promotionId: string) {
+        return this.patch(`${promotionId}/stop`, {});
+    }
+
+    private updateBanner(promotion: Promotion) {
+        // Convert banner to base64 if not
+        promotion.banner = convertStringToBase64(promotion.banner);
     }
 
     private buildSearchQuery(currentQuery: string, status?: PromotionStatus[], startDate?: Date,

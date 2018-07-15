@@ -6,7 +6,7 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { User } from '../../../../shared/models/user.model';
 import { Location } from '@angular/common';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { UserMessages } from '../../users.constant';
+import { UserMessages, UserRegex } from '../../users.constant';
 import { ActivatedRoute } from '@angular/router';
 import { BranchService } from '../../services/branch.service';
 
@@ -40,10 +40,10 @@ export class EditUserComponent extends UserModificationBase {
     this.formGroup = this.fb.group({
       email: [
         '',
-        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
+        [Validators.required, Validators.pattern(UserRegex.EmailRegex)]
       ],
       fullname: ['', [Validators.required]],
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.pattern(UserRegex.UsernameRegex), Validators.maxLength(20)]],
       isActive: ['', []],
       branchId: ['', []],
     });

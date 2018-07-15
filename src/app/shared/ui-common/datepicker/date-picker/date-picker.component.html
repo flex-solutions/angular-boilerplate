@@ -2,6 +2,11 @@
     <div class="input-group-prepend">
         <span class="input-group-text">{{title}}:
         </span>
+        <input [id]="elementId" type="text" name="singledate" class="form-control" style="border-radius: 0 0 3px 0"/>
+        <span (click)="onIconClicked()" class="input-group-addon input-group-append border-left">
+            <span class="mdi mdi-calendar input-group-text" style="border-right: 1px solid #ced4da;
+            border-radius: 0 3px 3px 0;
+            border-left: none;"></span>
+        </span>
     </div>
-    <input [id]="elementId" type="text" name="singledate" class="form-control"/>
 </div>

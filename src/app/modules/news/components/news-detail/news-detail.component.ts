@@ -10,6 +10,7 @@ import { NewsStatusType } from '../../../../shared/enums/news-type.enum';
 import { calculateRelativeTime } from '../../../../utilities/methods.common';
 import { NewMessageConst } from '../../constants/message.const';
 import { ModuleRoute } from '../../../../shared/constants/const';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 @Component({
   selector: 'app-news-detail',
@@ -49,7 +50,7 @@ export class NewsDetailComponent implements OnInit {
       this.newsService.getById(id).subscribe(news => {
         if (news) {
           this.newsModel = news;
-          this.base64Image = atob(this.newsModel.banner);
+          this.base64Image = convertStringToBase64(this.newsModel.banner);
           console.log(news);
         }
       });

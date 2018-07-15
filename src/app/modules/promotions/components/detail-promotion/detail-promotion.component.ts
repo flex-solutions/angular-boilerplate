@@ -1,16 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { WizardStep } from '../../../../../shared/ui-common/wizard/wizard-step/wizard-step.component';
-import { WizardComponent } from '../../../../../shared/ui-common/wizard/wizard/wizard.component';
-import { TranslateService } from '../../../../../shared/services/translate.service';
+import { WizardStep } from '../../../../shared/ui-common/wizard/wizard-step/wizard-step.component';
+import { WizardComponent } from '../../../../shared/ui-common/wizard/wizard/wizard.component';
+import { TranslateService } from '../../../../shared/services/translate.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { PromotionService } from '../../../services/promotion.service';
-import { NotificationService } from '../../../../../shared/services/notification.service';
-import { Promotion } from '../../../interfaces/promotion';
+import { PromotionService } from '../../services/promotion.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
+import { Promotion } from '../../interfaces/promotion';
 import * as moment from 'moment';
-import { promotionRoute } from '../../../common.const';
-import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { promotionRoute } from '../../common.const';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { Location } from '@angular/common';
-import { MessageConstant } from '../../../messages';
+import { MessageConstant } from '../../messages';
+import { StartStopPromotionService } from '../../services/start-stop-promotion.service';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 @Component({
   selector: 'app-detail-promotion',
@@ -33,7 +35,8 @@ export class DetailPromotionComponent implements OnInit {
     private promotionService: PromotionService,
     private location: Location,
     private dialogManager: ExDialog,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,
+    private startStopPromotionHandler: StartStopPromotionService) { }
 
   ngOnInit() {
     this.promotion = new Promotion();
@@ -56,16 +59,15 @@ export class DetailPromotionComponent implements OnInit {
     this.router.navigate([`${promotionRoute.EDIT}/${id}`]);
   }
 
+  startStopPromotion() {
+    this.startStopPromotionHandler.startStopPromotion(this.promotion, () => { this.loadPromotion(this.promotion._id); });
+  }
+
   // Load promotion info from server
   private loadPromotion(promotionId) {
     this.promotionService.getPromotion(promotionId).subscribe(p => {
       this.promotion = p as Promotion;
-      this.promotion.banner = atob(this.promotion.banner);
-      this.promotion.create_on = this.convertTime(this.promotion.create_on);
-      this.promotion.edit_on = this.convertTime(this.promotion.edit_on);
-      if (this.promotion.edit_on === 'Invalid date') {
-        this.promotion.edit_on = '';
-      }
+      this.promotion.banner = convertStringToBase64(this.promotion.banner);
     });
   }
 
