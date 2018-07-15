@@ -1,4 +1,4 @@
-import { Observable,from } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { Voucher } from './../../../shared/models/voucher.model';
 import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 
@@ -13,7 +13,7 @@ export class VoucherService extends AbstractRestService {
     this.controllerName = 'vouchers';
   }
 
-  getvouchers(pageSize: number, pageNumber: number, searchKey?: string): Observable<Voucher[]> {
+  getvouchers(pageNumber: number, pageSize: number, searchKey?: string): Observable<Voucher[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 
