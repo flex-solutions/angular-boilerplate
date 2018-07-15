@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { CustomerModel } from '../../../shared/models/customer.model';
 import { sleep } from '../../../utilities/util';
-import { CustomerMockData } from './customer-filter.mock';
+import { CustomerMockData } from './customer-filter.data';
 
 @Injectable()
 export class CustomerService extends AbstractRestService {
@@ -54,14 +54,6 @@ export class CustomerService extends AbstractRestService {
     });
 
     return from(promise) as Observable<number>;
-  }
-
-  getProvinces() {
-    return new Promise((resolve, reject) => {
-      sleep(500);
-      const data = CustomerMockData.provincesMock;
-      resolve(data);
-    });
   }
 
   getMemberType() {

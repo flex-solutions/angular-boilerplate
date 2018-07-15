@@ -1,5 +1,4 @@
-import { TranslateService } from './../services/translate.service';
-import { DistrictModel, CityModel, CountryModel, AddressModel } from './district.model';
+import { Address } from './address.model';
 
 enum Sex {
   Female = 0,
@@ -9,19 +8,24 @@ enum Sex {
 
 class CustomerModel {
   _id: any;
-  phoneNumber: string = "+84 ";
+  phoneNumber = '+84 ';
   memberId: string;
   name: string;
   birthday: Date = new Date();
-  sex: number = 0;
-  address: AddressModel = new AddressModel();
-  customerType: string = "";
+  sex = 0;
+  address: Address = new Address();
+  customerType = '';
   email: string;
 }
 
 class CustomerTypeModel {
-  id : number = 0;
-  name: string = "";
+  id: number;
+  name: string;
+
+  constructor() {
+    this.id = 0;
+    this.name = '';
+  }
 }
 
 class CustomerFilter {
@@ -43,6 +47,8 @@ class CustomerFilter {
     this.sex = {};
     this.monthOfBirthday = {};
     this.customerType = {};
+    this.province = {};
+    this.district = {};
   }
 }
 
@@ -53,7 +59,15 @@ const customerFilterFields = {
   MONTH_OF_BIRTHDAY: 'monthOfBirthday',
   SEX: 'sex',
   ADDRESS: 'address',
-  CUSTOMER_TYPE: 'customerType'
+  CUSTOMER_TYPE: 'customerType',
+  PROVINCE: 'province',
+  DISTRICT: 'district'
 };
 
-export { CustomerModel, Sex, CustomerFilter, customerFilterFields, CustomerTypeModel };
+export {
+  CustomerModel,
+  Sex,
+  CustomerFilter,
+  customerFilterFields,
+  CustomerTypeModel
+};
