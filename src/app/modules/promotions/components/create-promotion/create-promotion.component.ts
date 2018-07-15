@@ -1,5 +1,6 @@
+import { StartStopPromotionService } from './../../services/start-stop-promotion.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
-import { FileInfo, ErrorType, DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
+import { FileInfo, ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
 import { Location } from '@angular/common';
 import { isNil } from 'ramda';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -12,6 +13,8 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 @Component({
   selector: 'app-create-promotion',
@@ -25,18 +28,19 @@ export class CreatePromotionComponent implements OnInit {
   cardSubTitle: string;
   currentStep: WizardStep;
   promotion: Promotion;
-  banerInvalid: boolean;
   contentInvalid: boolean;
   titleInvalid: boolean;
   isCreateAnother: boolean;
   banner: string;
   isBlurEditor: boolean;
   promotionId: string;
+  rawContent: string;
+  bannerError: DropifyError;
 
   // For editable mode
   isEditableMode: boolean;
-  isFinishedBannerComponent: boolean = false;
-  isFinishedContentComponent:boolean = false;
+  isFinishedBannerComponent = false;
+  isFinishedContentComponent = false;
 
   private _isError: boolean;
 
@@ -55,10 +59,10 @@ export class CreatePromotionComponent implements OnInit {
     private _activeRoute: ActivatedRoute,
     private _promotionService: PromotionService,
     private _notificationService: NotificationService,
-    private _location: Location
+    private _location: Location,
+    private _startStopPromotionHandler: StartStopPromotionService
   ) {
     this.promotion = new Promotion();
-    this.banerInvalid = false;
     this.titleInvalid = false;
     this.contentInvalid = false;
     this.isEditableMode = false;
@@ -74,7 +78,7 @@ export class CreatePromotionComponent implements OnInit {
     });
   }
 
-  // Resolve multilangual message for app card title and sub title
+  // Resolve multilingual message for app card title and sub title
   private resolveTitle() {
     if (!this.isEditableMode) {
       this.cardTitle = this.translateService.translate(MessageConstant.CreatePromotionTitle);
@@ -87,18 +91,25 @@ export class CreatePromotionComponent implements OnInit {
 
   // Load promotion info from server
   private loadPromotion(promotionId) {
-    if(!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+    if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
       return;
     }
     if (this.isEditableMode) {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
-    });
-  }
+        this.promotion.banner = convertStringToBase64(this.promotion.banner);
+      })
+    }
   }
 
-  onFinshAndStart() {
-    this.onWizardFinish();
+  onFinishAndStart() {
+    // Create promotion
+    this._promotionService.create(this.promotion).subscribe((createdPromotion: Promotion) => {
+      this.showNotification(MessageConstant.CreatePromotionSuccess);
+      this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
+        this.onHandleCreateSuccess();
+      });
+    });
   }
 
   onWizardCancel() {
@@ -133,7 +144,15 @@ export class CreatePromotionComponent implements OnInit {
       this.titleInvalid = true;
     }
 
-    this.wizardComponent.canNext = !this.contentInvalid && !this.banerInvalid && !this.titleInvalid;
+    this.wizardComponent.canNext = !this.contentInvalid && !this.hasErrorBanner() && !this.titleInvalid;
+  }
+
+  hasErrorBanner() {
+    if (this.bannerError) {
+      return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
+        && isNullOrEmptyOrUndefine(this.promotion.banner);
+    }
+    return false;
   }
 
   onStepChanged(step: WizardStep) {
@@ -143,20 +162,6 @@ export class CreatePromotionComponent implements OnInit {
   onHtmlEditorChange(htmlContent) {
     this.promotion.content = htmlContent;
     this.contentInvalid = isNil(htmlContent) || htmlContent === '';
-  }
-
-  onFileChanged($event: FileInfo) {
-    if (this.banerInvalid && $event.content != "") {
-      this.banerInvalid = false;
-    }
-    this.promotion.banner = $event.content;
-  }
-
-  onErrors($event: ErrorType) {
-    if ($event === ErrorType.FileSize) {
-      this._isError = true;
-      this.banerInvalid = true;
-    }
   }
 
   get titleError() {
@@ -183,9 +188,9 @@ export class CreatePromotionComponent implements OnInit {
   private onHandleCreateSuccess() {
     if (this.isCreateAnother) {
       this.promotion = new Promotion();
-      // Reset drotify control
+      // Reset dropify control
       this.dropifyComponent.reset();
-      // Reset tinycme control
+      // Reset tinymce control
       this.tynimceEditor.reset();
       // Reset wizard
       this.wizardComponent.reset();
