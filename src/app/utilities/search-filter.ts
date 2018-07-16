@@ -50,7 +50,7 @@ interface IWrapperCriteriaBuilder extends ICriteriaBuilder {
     name?: string,
     value?: any,
     valueType?: ValueType
-  );
+  ): IWrapperCriteriaBuilder;
 }
 
 export class CriteriaBuilder implements IWrapperCriteriaBuilder {

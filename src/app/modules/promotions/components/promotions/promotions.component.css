@@ -1,9 +1,9 @@
 .cut-text { 
   display: inline-block;
-  width: 325px;
-  white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
+  word-wrap: break-word;
+  text-align: justify;
 }
 :host >>> .table td {
   line-height: normal !important;

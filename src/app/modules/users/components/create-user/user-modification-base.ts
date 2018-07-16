@@ -45,6 +45,12 @@ export abstract class UserModificationBase extends AbstractFormComponent
           paramsCallback: () => {
             return [this.getUserNameValue()];
           }
+        },
+        maxlength: {
+          message: 'user-create_user-label-validation_maxlength_username'
+        },
+        pattern: {
+          message: 'user-create_user-label-validation_invalid_username'
         }
       },
       branchId: {}

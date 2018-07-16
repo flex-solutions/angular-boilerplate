@@ -1,4 +1,4 @@
-import { TranslateService } from './../../../services/translate.service';
+import { TranslateService } from '../../../services/translate.service';
 import {
   Component,
   OnInit,
@@ -131,6 +131,7 @@ export class DatagridComponent implements OnInit {
   countAndRasePageChangedForTheFirstPage() {
     if (this.countFunction) {
       this.countFunction(this.searchKey).subscribe(result => {
+        console.log(result);
         this.totalItems = result;
         this.raisePageChangedEvent();
       });

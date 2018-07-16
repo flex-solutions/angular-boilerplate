@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsModuleComponents } from './components';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { NewsDirective } from './directives';
+import { NewsPipes } from './pipes';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NewsDirective } from './directives';
   ],
   declarations: [
     ...NewsDirective,
-    ...NewsModuleComponents
+    ...NewsModuleComponents,
+    ...NewsPipes
   ],
   providers: [NewsService],
 

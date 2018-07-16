@@ -10,6 +10,7 @@ export class Promotion extends ModelBase {
     start_date: Date;
     expire_date: Date;
     viewCount: number;
+    brief_content: string;
 }
 
 export class StatusCheckedItem implements CheckedItem {

@@ -47,7 +47,6 @@
         <source>News Management</source>
         <target>Quản Lý Tin Tức</target>
       </trans-unit>
-
       <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
         <source>Promotion Management</source>
         <target>Quản lý khuyến mãi</target>
@@ -203,6 +202,14 @@
       <trans-unit id="user-create_user-label-validation_requireBranch" datatype="html">
         <source>Please select branch</source>
         <target>Vui lòng chọn một chi nhánh cho user</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_maxlength_username" datatype="html">
+        <source>Username must not exceed 20 characters</source>
+        <target>Tên đăng nhập không được quá 20 ký tự</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalid_username" datatype="html">
+        <source>Username can only contains letters (a-Z), numbers, "-", "_", "."</source>
+        <target>Tên đăng nhập chỉ được bao gồm chữ (a-Z), số, "-", "_", "."</target>
       </trans-unit>
       <!--End create user-->
 
@@ -1001,7 +1008,7 @@
       </trans-unit>
       <trans-unit id="news-create_edit_news-edit_news_ok" datatype="html">
         <source>Update news with title "{{0}}" successfull</source>
-        <target>Cập nhật thành công tin tức "{{0}}" successfull </target>
+        <target>Cập nhật thành công tin tức "{{0}}" </target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-create_publish_news_ok" datatype="html">
         <source>Create and publish news with title "{{0}}" successfull</source>
@@ -1022,6 +1029,14 @@
       <trans-unit id="news-create_edit_news-file_size_error" datatype="html">
         <source>The banner size must be lower or equal 500kb</source>
         <target>Kích thước của hình ảnh phải nhỏ hơn hoặc bằng 500kb</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-save" datatype="html">
+        <source>Save</source>
+        <target>Lưu</target>
+      </trans-unit>
+      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
       </trans-unit>
       <!--END News Create Edit Page-->
 
@@ -1634,7 +1649,7 @@
         <target>Email không hợp lệ</target>
       </trans-unit>
       <!--End Create Edit Customer Module-->
-=======
+      
       <!--Start Customer Filter-->
       <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
         <source>Filter Tool</source>
@@ -1666,7 +1681,7 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-month_of_birthday" datatype="html">
         <source>Month of birthday</source>
-        <target>Month of birthday</target>
+        <target>Tháng sinh nhật</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-day_are_not_returned" datatype="html">
         <source>Days are not returned</source>
@@ -1717,6 +1732,44 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
+      <!--Start stop promotions-->
+      <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
+        <source>Start a promotion</source>
+        <target>Bắt đầu một tin khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-h5-start_description" datatype="html">
+        <source>Start the promotion {{0}}</source>
+        <target>Đăng tải tin tức khuyến mãi {{0}} trong một khoảng thời gian nhất định</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-label-apply_range_time" datatype="html">
+        <source>Apply range time</source>
+        <target>Thời gian áp dụng</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-notification-success_message" datatype="html">
+        <source>Promotion is started successfully</source>
+        <target>Tin tức khuyến mãi đã bắt đầu thành công</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-h5-stop_promotion_title" datatype="html">
+        <source>Stop a promotion</source>
+        <target>Dừng quảng bá tin khuyến mãi</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-h5-stop_promotion_description" datatype="html">
+        <source>Are you sure you want to stop promotion {{0}}?</source>
+        <target>Bạn có chắc muốn dừng quảng bá tin tức khuyến mãi {{0}}?</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-notification-success_message" datatype="html">
+        <source>Promotion is stopped successfully</source>
+        <target>Tin tức khuyến mãi đã dừng thành công</target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-start_on" datatype="html">
+        <source>Start on: </source>
+        <target>Bắt đầu: </target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-expire_on" datatype="html">
+        <source>Expire on: </source>
+        <target>Hết hạn: </target>
+      </trans-unit>
+      <!--END Start stop promotions-->
     </body>
   </file>
 </xliff>

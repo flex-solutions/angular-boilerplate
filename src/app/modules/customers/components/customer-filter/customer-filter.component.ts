@@ -1,3 +1,4 @@
+import { AddressService } from './../../services/address.service';
 import { CustomerService } from './../../services/customer.service';
 import {
   Component,
@@ -59,7 +60,8 @@ export class CustomerFilterComponent implements AfterViewInit {
   sexes: any[];
 
   constructor(
-    private customerService: CustomerService,
+    private readonly customerService: CustomerService,
+    private readonly addressService: AddressService,
     private ref: ChangeDetectorRef
   ) {
     this.customerFilter = new CustomerFilter();
@@ -74,6 +76,7 @@ export class CustomerFilterComponent implements AfterViewInit {
   onProvinceChange($event) {
     if ($event) {
       this.districts = $event.districts;
+      this.customerFilter.district = {};
     }
   }
 
@@ -99,15 +102,15 @@ export class CustomerFilterComponent implements AfterViewInit {
     this.customerService.getMemberType().then((data: any[]) => {
       this.memberTypes = data;
     });
-    this.customerService.getProvinces().then((data: any[]) => {
-      self.provinces = data;
-      if (this.provinces && this.provinces.length > 0) {
-        self.districts = this.provinces[0].districts;
-      }
-    });
+
     this.customerService.getMonthBirthday().then((data: any[]) => {
       self.months = data;
     });
+    const country = this.addressService.getCountry();
+    self.provinces = country.provinces;
+    if (this.provinces && this.provinces.length > 0) {
+      self.districts = this.provinces[0].districts;
+    }
     this.sexes = this.getSexes();
   }
 
