@@ -41,6 +41,7 @@
           <div class="form-group">
             <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
             <select name="sex" id="sex" class="form-control" formControlName="sex" [(ngModel)]="customer.sex">
+              <option value=""></option>
               <option value="0" i18n="@@sex-woman">Woman</option>
               <option value="1" i18n="@@sex-man">Man</option>
               <option value="2" i18n="@@sex-other">Other</option>
