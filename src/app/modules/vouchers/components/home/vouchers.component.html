@@ -2,10 +2,10 @@
 <app-voucher-filter [(voucherFilter)]="voucherFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-voucher-filter>
 <app-card title="Vouchers" i18n-title="@@vouchers-title">
     <div class="command-region">
-        <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
+        <!-- <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreatePage()">
             <i class="mdi mdi-plus"></i>
             <span i18n="@@vouchers-create-voucher">Create voucher</span>
-        </button>
+        </button> -->
     </div>
     <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
         <tr role="row">

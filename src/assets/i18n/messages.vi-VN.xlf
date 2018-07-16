@@ -1732,7 +1732,6 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
-<<<<<<< HEAD
       <!--Start Voucher Home -->
       <trans-unit id="vouchers-create-voucher" datatype="html">
         <source>Create voucher</source>
@@ -1866,7 +1865,6 @@
         <target>Hết hạn: </target>
       </trans-unit>
       <!--END Start stop promotions-->
->>>>>>> feature/develop_spr003
     </body>
   </file>
 </xliff>

@@ -1731,7 +1731,6 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
-<<<<<<< HEAD
       <!--Start Voucher Home -->
       <trans-unit id="vouchers-create-voucher" datatype="html">
         <source>Create voucher</source>
@@ -1826,7 +1825,6 @@
         <target>Delete</target>
       </trans-unit>
       <!--End Voucher Home -->
-=======
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>
@@ -1865,7 +1863,6 @@
         <target>Expire on: </target>
       </trans-unit>
       <!--END Start stop promotions-->
->>>>>>> feature/develop_spr003
     </body>
   </file>
 </xliff>
