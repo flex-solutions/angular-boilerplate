@@ -8,6 +8,14 @@
         <source>Actions</source>
         <target>Thao tác</target>
       </trans-unit>
+      <trans-unit id="common-action-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="common-action-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -1778,6 +1786,10 @@
       <trans-unit id="member-type-menu" datatype="html">
         <source>Member Types</source>
         <target>Quản Lý Loại Hội Viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-btn-new" datatype="html">
+        <source>New member type</source>
+        <target>Loại hội viên mới</target>
       </trans-unit>
       <!--STOP member types-->
     </body>

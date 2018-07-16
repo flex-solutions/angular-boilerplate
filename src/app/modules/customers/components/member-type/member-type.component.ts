@@ -4,7 +4,8 @@ import { OnInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-member-type-home',
-  templateUrl: './member-type.component.html'
+  templateUrl: './member-type.component.html',
+  styleUrls: ['member-type.component.css']
 })
 export class MemberTypeHomeComponent implements OnInit {
 
@@ -15,6 +16,18 @@ export class MemberTypeHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getMemberTypes();
+  }
+
+  createNewMemberType() {
+
+  }
+
+  editMemberType(id: string) {
+
+  }
+
+  deleteMemberType(id: string) {
+
   }
 
   private getMemberTypes() {

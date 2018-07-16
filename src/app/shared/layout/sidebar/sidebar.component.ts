@@ -45,6 +45,6 @@ export class SidebarComponent implements OnInit {
   }
 
   navigateToMemberTypeListPage() {
-    this.router.navigate([ModuleRoute.MEMBER_TYPE]);
+    this.router.navigate([`${ModuleRoute.CUSTOMER}/${ModuleRoute.MEMBER_TYPE}`]);
   }
 }
