@@ -844,7 +844,7 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit</source>
         <target>Edit</target>
-      </trans-unit> 
+      </trans-unit>
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
         <target>Delete permission scheme</target>
@@ -1769,6 +1769,16 @@
         <target>Expire on: </target>
       </trans-unit>
       <!--END Start stop promotions-->
+      <!--START member types-->
+      <trans-unit id="member-type-config-menu" datatype="html">
+        <source>Membership Configuration</source>
+        <target>Membership Configuration</target>
+      </trans-unit>
+      <trans-unit id="member-type-menu" datatype="html">
+        <source>Member Types</source>
+        <target>Member Types</target>
+      </trans-unit>
+      <!--STOP member types-->
     </body>
   </file>
 </xliff>

@@ -1529,7 +1529,7 @@
         <source>Edit</source>
         <target>Sửa</target>
       </trans-unit>
-      
+
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
@@ -1649,7 +1649,7 @@
         <target>Email không hợp lệ</target>
       </trans-unit>
       <!--End Create Edit Customer Module-->
-      
+
       <!--Start Customer Filter-->
       <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
         <source>Filter Tool</source>
@@ -1770,6 +1770,16 @@
         <target>Hết hạn: </target>
       </trans-unit>
       <!--END Start stop promotions-->
+      <!--START member types-->
+      <trans-unit id="member-type-config-menu" datatype="html">
+        <source>Membership Configuration</source>
+        <target>Quản Lý Chương Trình Hội Viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-menu" datatype="html">
+        <source>Member Types</source>
+        <target>Quản Lý Loại Hội Viên</target>
+      </trans-unit>
+      <!--STOP member types-->
     </body>
   </file>
 </xliff>

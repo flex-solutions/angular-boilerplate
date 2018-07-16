@@ -1,3 +1,4 @@
+import { MemberTypeHomeComponent } from './components/member-type/member-type.component';
 import { CreateEditCustomerComponent } from './components/create-edit-customer/create-edit-customer.component';
 import { CustomerHomeComponent } from './components/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,13 @@ const customerModuleRoutes: Routes = [
       component: CustomerHomeComponent,
       data: {
         breadcrumb: 'Customers'
+      }
+    },
+    {
+      path: 'member-type',
+      component: MemberTypeHomeComponent,
+      data: {
+        breadcrumb: 'Member Types'
       }
     },
     {
