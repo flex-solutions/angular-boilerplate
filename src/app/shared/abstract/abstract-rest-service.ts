@@ -5,10 +5,9 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { catchError, retry, finalize } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { SharedModule } from '../shared.module';
 import { LoaderService } from '../ui-common/loading-bar/loader.service';
-import { appVariables } from '../../app.constant';
 import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';

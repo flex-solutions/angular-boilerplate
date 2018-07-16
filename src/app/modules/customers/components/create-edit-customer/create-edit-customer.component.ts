@@ -1,10 +1,10 @@
-import { customerModuleDirectives } from '../../directives';
+import { OnInit } from '@angular/core/src/core';
 import { AddressService } from '../../services/address.service';
 import { CustomerErrors } from '../../constants/customer.constants';
 import { CustomerService } from '../../services/customer.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { Component, Directive } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -23,13 +23,13 @@ import {
   IValidationMessage
 } from '../../../../shared/validation/generic-validator';
 
-const TITLE_CREATE_CUSTOMER: string =
+const TITLE_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer';
-const DESCRIPTION_CREATE_CUSTOMER: string =
+const DESCRIPTION_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer_description';
-const TITLE_EDIT_CUSTOMER: string =
+const TITLE_EDIT_CUSTOMER =
   'customer-create_edit_customer-h4-edit_customer';
-const DESCRIPTION_EDIT_CUSTOMER: string =
+const DESCRIPTION_EDIT_CUSTOMER =
   'customer-create_edit_customer-h4-edit_customer_description';
 
 @Component({
@@ -37,8 +37,8 @@ const DESCRIPTION_EDIT_CUSTOMER: string =
   selector: 'app-create-edit-customer',
   templateUrl: './create-edit-customer.component.html'
 })
-export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent {
-  isEdit: boolean = false;
+export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent implements OnInit {
+  isEdit = false;
   customer: CustomerModel = new CustomerModel();
   memberTypes: CustomerTypeModel[] = [];
   selectedDistrict: District = new District();
@@ -128,12 +128,12 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
             const selectedCityId = this.customer.address.country.provinces[0]
               ._id;
             this.selectedCity = this.cities.find(
-              citi => citi._id == selectedCityId
+              citi => citi._id === selectedCityId
             );
             const selectedDistrictId = this.customer.address.country
               .provinces[0].districts[0]._id;
             this.selectedDistrict = this.selectedCity.districts.find(
-              district => district._id == selectedDistrictId
+              district => district._id === selectedDistrictId
             );
           } else {
             // Navigate to previous if user group not found.
