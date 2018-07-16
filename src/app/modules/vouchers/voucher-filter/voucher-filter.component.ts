@@ -22,7 +22,7 @@ import { VoucherMessageConst } from '../vouchers.constants';
 })
 export class VoucherFilterComponent implements AfterViewInit {
   private _voucherFilter: VoucherFilter;
-  selectedStatus : VoucherStatusCheckedItem[] = [];
+  selectedStatus: VoucherStatusCheckedItem[] = [];
   private _resetFunction: () => void;
 
   // Get list select2 component
@@ -67,7 +67,7 @@ export class VoucherFilterComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.buildStatusItemSource()
+    this.buildStatusItemSource();
   }
 
   runFilter() {
@@ -88,7 +88,7 @@ export class VoucherFilterComponent implements AfterViewInit {
 
 
   buildStatusItemSource() {
-    this.statuses = [
+    this.statuses.push(
       {
         isSelected: false,
         model: {
@@ -102,7 +102,8 @@ export class VoucherFilterComponent implements AfterViewInit {
           status: VoucherStatus.expired,
           displayName: this.translateService.translate(VoucherMessageConst.ExpiredStatus)
         }
-      }
-    ];
+      });
+
+    this.selectedStatus = [];
   }
 }

@@ -1,11 +1,11 @@
-import { CheckedItem } from "../ui-common/drop-down-check-boxes/checked-items.model";
+import { CheckedItem } from '../ui-common/drop-down-check-boxes/checked-items.model';
 
 export class Voucher {
     _id: string;
     voucher_code: string;
     discount: number;
     name: string;
-    published_count:number;
+    published_count: number;
     used_count: number;
     status: number;
     sales: number;
@@ -32,7 +32,7 @@ export const VoucherFields = {
 export class VoucherFilter {
     name: string;
     create_on: Date;
-    status:number[];
+    status: number[];
 
     constructor() {
       this.name = '';
