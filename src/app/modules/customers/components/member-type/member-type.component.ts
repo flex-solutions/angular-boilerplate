@@ -1,6 +1,8 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { MemberTypeService } from './../../services/member-type.service';
 import { MemberType } from './../../../../shared/models/member-type.model';
 import { OnInit, Component } from '@angular/core';
+import { MemberTypeRoute } from '../../constants/customer.constants';
 
 @Component({
   selector: 'app-member-type-home',
@@ -11,7 +13,9 @@ export class MemberTypeHomeComponent implements OnInit {
 
   public memberTypes: MemberType[] = [];
 
-  constructor(private readonly memberTypeService: MemberTypeService) {
+  constructor(private readonly memberTypeService: MemberTypeService,
+  private readonly router: Router,
+  private readonly activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -19,7 +23,7 @@ export class MemberTypeHomeComponent implements OnInit {
   }
 
   createNewMemberType() {
-
+    this.router.navigate([MemberTypeRoute.CREATE], { relativeTo: this.activatedRoute });
   }
 
   editMemberType(id: string) {

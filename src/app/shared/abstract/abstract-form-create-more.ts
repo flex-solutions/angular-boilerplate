@@ -1,10 +1,9 @@
 import { TranslateService } from './../services/translate.service';
-import { AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
 import { AbstractFormComponent } from './abstract-form-component';
 
 // Define common behavior for Form component
 export abstract class AbstractFormCreateMoreComponent extends AbstractFormComponent {
-    isCreateAnother: boolean = false;
+    isCreateAnother = false;
     protected translateService: any;
     constructor(translateService: TranslateService) {
         super();
