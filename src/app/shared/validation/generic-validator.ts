@@ -51,10 +51,10 @@ export class GenericValidator {
                   if (this.translateService) {
                     // Need to resolve multilingual value
                     const message = this.resolveMultilingual(validationMsg);
-                    messages[controlKey] += message;
+                    messages[controlKey] = message;
                   } else {
                     // Multilingual resolver haven't yet
-                    messages[controlKey] += validationMsg.message;
+                    messages[controlKey] = validationMsg.message;
                   }
                 }
               }

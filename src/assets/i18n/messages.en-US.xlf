@@ -204,6 +204,14 @@
         <source>Please select branch</source>
         <target>Please select branch</target>
       </trans-unit>
+      <trans-unit id="user-create_user-label-validation_maxlength_username" datatype="html">
+        <source>Username must not exceed 20 characters </source>
+        <target>Username must not exceed 20 characters</target>
+      </trans-unit>
+      <trans-unit id="user-create_user-label-validation_invalid_username" datatype="html">
+        <source>Username can only contains letters (a-Z), numbers, "-", "_", "."</source>
+        <target>Username can only contains letters (a-Z), numbers, "-", "_", "."</target>
+      </trans-unit>
       <!--End create user-->
 
       <!--Edit user-->
@@ -565,7 +573,7 @@
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-scheme" datatype="html">
         <source>Permission Scheme</source>
-        <target>Permission Schemen</target>
+        <target>Permission Scheme</target>
       </trans-unit>
       <trans-unit id="user_groups-list-tbl-actions" datatype="html">
         <source>Actions</source>
@@ -735,7 +743,7 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-bussinessname" datatype="html">
         <source>Business Name</source>
-        <target>Tên Nghiệp Vụ</target>
+        <target>Business Name</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-create-p-datascope" datatype="html">
         <source>Data Scope</source>
@@ -794,11 +802,11 @@
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-full" datatype="html">
         <source>Full</source>
-        <target>Tất cả</target>
+        <target>Full</target>
       </trans-unit>
       <trans-unit id="permissiom-scheme-datascope-branch" datatype="html">
         <source>Branch</source>
-        <target>Chi nhánh</target>
+        <target>Branch</target>
       </trans-unit>
       <!-- Permission Schemes -->
       <trans-unit id="permission_scheme-permission_schemes-h4-title" datatype="html">
@@ -836,7 +844,7 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit</source>
         <target>Edit</target>
-      </trans-unit>
+      </trans-unit> 
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
         <target>Delete permission scheme</target>
@@ -1723,6 +1731,7 @@
         <target>Reset filter</target>
       </trans-unit>
       <!--End Customer Filter-->
+<<<<<<< HEAD
       <!--Start Voucher Home -->
       <trans-unit id="vouchers-create-voucher" datatype="html">
         <source>Create voucher</source>
@@ -1817,6 +1826,46 @@
         <target>Delete</target>
       </trans-unit>
       <!--End Voucher Home -->
+=======
+      <!--Start stop promotions-->
+      <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
+        <source>Start a promotion</source>
+        <target>Start a promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-h5-start_description" datatype="html">
+        <source>Start the promotion {{0}}</source>
+        <target>Start the promotion {{0}}</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-label-apply_range_time" datatype="html">
+        <source>Apply range time</source>
+        <target>Apply range time</target>
+      </trans-unit>
+      <trans-unit id="promotions-start-promotion-notification-success_message" datatype="html">
+        <source>Promotion is started successfully</source>
+        <target>Promotion is started successfully</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-h5-stop_promotion_title" datatype="html">
+        <source>Stop a promotion</source>
+        <target>Stop a promotion</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-h5-stop_promotion_description" datatype="html">
+        <source>Are you sure you want to stop promotion {{0}}?</source>
+        <target>Are you sure you want to stop promotion {{0}}?</target>
+      </trans-unit>
+      <trans-unit id="promotions-stop-promotion-notification-success_message" datatype="html">
+        <source>Promotion is stopped successfully</source>
+        <target>Promotion is stopped successfully</target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-start_on" datatype="html">
+        <source>Start on: </source>
+        <target>Start on: </target>
+      </trans-unit>
+      <trans-unit id="promotions-detail-expire_on" datatype="html">
+        <source>Expire on: </source>
+        <target>Expire on: </target>
+      </trans-unit>
+      <!--END Start stop promotions-->
+>>>>>>> feature/develop_spr003
     </body>
   </file>
 </xliff>

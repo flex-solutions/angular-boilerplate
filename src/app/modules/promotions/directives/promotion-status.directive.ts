@@ -41,13 +41,13 @@ export class PromotionStatusDirective implements OnChanges, AfterViewInit {
     private createStatusCtrl() {
         switch (this.status) {
             case PromotionStatus.New:
-                $(this.host).html(`<label class="badge badge-info">${this.newText}</label>`);
+                $(this.host).html(`<label class="status-badge badge badge-info">${this.newText}</label>`);
                 break;
             case PromotionStatus.Active:
-                $(this.host).html(`<label class="badge badge-success">${this.activeText}</label>`);
+                $(this.host).html(`<label class="status-badge badge badge-success">${this.activeText}</label>`);
                 break;
             case PromotionStatus.Deactivated:
-                $(this.host).html(`<label class="badge badge-danger">${this.deactivedText}</label>`);
+                $(this.host).html(`<label class="status-badge badge badge-danger">${this.deactivedText}</label>`);
                 break;
         }
     }
