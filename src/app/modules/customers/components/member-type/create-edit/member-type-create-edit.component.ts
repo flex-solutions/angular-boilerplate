@@ -17,13 +17,17 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
       memberTypeCode: [
         {
           type: 'required',
-          message: 'user_groups-create_user_group-error_group_name_required'
+          message: 'Vui lòng nhập mã loại hội viên'
+        },
+        {
+          type: 'pattern',
+          message: 'Mã loại hội viên không được chứa khoảng trắng'
         }
       ],
       memberTypeName: [
         {
           type: 'required',
-          message: 'user_groups-create_user_group-error_group_name_required'
+          message: 'Vui lòng nhập tên loại hội viên'
         }
       ]
     };
@@ -59,7 +63,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
 
     protected onCreateForm() {
       this.formGroup = this.formbuilder.group({
-        memberTypeCode: ['', [Validators.required]],
+        memberTypeCode: ['', [Validators.required, Validators.pattern(/^\S*$/)]],
         memberTypeName: ['', [Validators.required]],
         memberTypePoint: ['']
       });
