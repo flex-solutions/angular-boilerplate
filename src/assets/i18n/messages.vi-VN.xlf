@@ -1826,7 +1826,6 @@
         <target>Xoá</target>
       </trans-unit>
       <!--End Voucher Home -->
-=======
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>
