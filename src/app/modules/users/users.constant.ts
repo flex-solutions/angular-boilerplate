@@ -19,4 +19,9 @@ const UserMessages = {
     ChangeGroupSuccess: 'group-user-modal-change-user-success'
 };
 
-export { UserNavigationRoute, UserMessages };
+enum UserRegex {
+    EmailRegex = '[a-z0-9._%+-]+@[a-z0-9.-]+',
+    UsernameRegex = '^[a-zA-Z0-9._-]+$'
+}
+
+export { UserNavigationRoute, UserMessages, UserRegex };

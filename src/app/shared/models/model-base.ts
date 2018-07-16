@@ -1,7 +1,7 @@
 export class ModelBase {
     _id: any;
-    edit_on: string;
-    edit_by: string;
-    create_on: string;
+    updated_by: string;
+    updated_on: Date;
+    create_on: Date;
     create_by: string;
 }

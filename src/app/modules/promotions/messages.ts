@@ -14,15 +14,11 @@ enum MessageConstant {
     StopButton = 'list-promotions-btn-stop-promotion',
      DeleteTitle = 'promotion-delete-title-dialog',
     DeleteConfirmation = 'promotion-delete-confirm-message-dialog',
-    DeleteSuccessfullyNotification = 'promotion-delete-successfully-notification'
+    DeleteSuccessfullyNotification = 'promotion-delete-successfully-notification',
+    StartSuccessMessage = 'promotions-start-promotion-notification-success_message',
+    StopSuccessMessage = 'promotions-stop-promotion-notification-success_message',
+    StopPromotionTitle = 'promotions-stop-promotion-h5-stop_promotion_title',
+    StopPromotionDescription = 'promotions-stop-promotion-h5-stop_promotion_description'
 }
-
-export const PromotionRouting = {
-    CREATE_PAGE: 'promotions/create',
-    EDIT_PAGE: 'promotions/edit/',
-    PROMOTION_PAGES: 'promotions',
-    DETAIL_PAGE: 'promotions/detail/',
-  };
-
 
 export { MessageConstant };
