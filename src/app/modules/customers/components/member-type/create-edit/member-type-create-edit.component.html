@@ -15,7 +15,7 @@
               [ngClass]="{'has-danger': memberTypeCode.invalid && (memberTypeCode.dirty || memberTypeCode.touched) }"
               placeholder="Enter membership type id" i18n-placeholder="@@member-type-create-form-code-placeholder">
             <div class="form-control-feedback" *ngFor="let error of errors.memberTypeCode">
-              <p *ngIf="memberTypeCode.hasError(error.type) && (memberTypeCode.dirty || memberTypeCode.touched)" class="error mt-2 text-danger">{{getMessage(error.message, memberTypeCode.value)}}</p>
+              <p *ngIf="memberTypeCode.hasError(error.type) && (memberTypeCode.dirty || memberTypeCode.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, memberTypeCode.value)}}</p>
             </div>
           </div>
           <!-- Membership type name field -->
@@ -26,7 +26,7 @@
               [ngClass]="{'has-danger': memberTypeName.invalid && (memberTypeName.dirty || memberTypeName.touched) }"
               placeholder="Enter membership type name" i18n-placeholder="@@member-type-create-form-name-placeholder">
             <div class="form-control-feedback" *ngFor="let error of errors.memberTypeName">
-              <p *ngIf="memberTypeName.hasError(error.type) && (memberTypeName.dirty || memberTypeName.touched)" class="error mt-2 text-danger">{{getMessage(error.message, memberTypeCode.value)}}</p>
+              <p *ngIf="memberTypeName.hasError(error.type) && (memberTypeName.dirty || memberTypeName.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, memberTypeCode.value)}}</p>
             </div>
           </div>
           <!-- Membership type point field -->

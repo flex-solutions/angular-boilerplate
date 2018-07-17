@@ -36,7 +36,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
     };
 
     constructor(private readonly memberTypeService: MemberTypeService,
-      private readonly translateService: TranslateService,
+      public readonly translateService: TranslateService,
       private formbuilder: FormBuilder,
       private location: Location,
       private notification: NotificationService) {
@@ -78,7 +78,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
 
     protected getMessage(key: string, ...params) {
       if (params.length) {
-        return this.translateService.translateWithParams(key, params);
+        return this.translateService.translate(key, params);
       }
       return this.translateService.translate(key);
     }

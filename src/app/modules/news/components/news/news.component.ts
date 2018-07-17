@@ -73,7 +73,7 @@ export class NewsComponent implements OnInit {
   }
 
   deletenew(newModel: News) {
-    const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newModel.title);
+    const confirmMsg = this.translateService.translate(NewMessageConst.ConfirmDeletNew, newModel.title);
     this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
       if (result) {
         const successMessage = this.translateService.translate(NewMessageConst.DeleteSuccessfullyNotification);

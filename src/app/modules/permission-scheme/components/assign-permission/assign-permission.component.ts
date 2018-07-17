@@ -45,14 +45,14 @@ export class AssignPermissionComponent extends DialogComponent implements OnInit
         this.permissionScheme = (selectScheme as IPermissionScheme);
         this.updateCanAddUserGroups();
         this.updateSelectedUserGroupsCount();
-        this.schemeDescription = this.translateService.translateWithParams(
+        this.schemeDescription = this.translateService.translate(
             'permission-scheme-assign-permission-label-assign_description', this.permissionScheme.name);
 
         this.getUserGroups();
     }
 
     get successMessage() {
-        return this.translateService.translateWithParams(
+        return this.translateService.translate(
             'permission-scheme-assign-permission-notification-assign_successful', this.permissionScheme.name);
     }
 
@@ -98,7 +98,7 @@ export class AssignPermissionComponent extends DialogComponent implements OnInit
 
     updateSelectedUserGroupsCount() {
         const count = this.selectedUserGroups ? this.selectedUserGroups.length : 0;
-        this.selectedUserGroupCountMsg = this.translateService.translateWithParams(
+        this.selectedUserGroupCountMsg = this.translateService.translate(
             'permission-scheme-assign-permission-label-count_selected_group', count);
     }
 

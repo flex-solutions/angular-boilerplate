@@ -16,7 +16,7 @@ export abstract class AbstractFormCreateMoreComponent extends AbstractFormCompon
 
     protected getMessage(key: string, ...params) {
         if (params.length) {
-            return this.translateService.translateWithParams(key, params);
+            return this.translateService.translate(key, params);
         }
         return this.translateService.translate(key);
     }

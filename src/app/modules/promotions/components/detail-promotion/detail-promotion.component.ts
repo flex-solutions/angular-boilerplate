@@ -72,8 +72,8 @@ export class DetailPromotionComponent implements OnInit {
   }
 
   deletePromotion(model: Promotion) {
-    const confirmMsg = this.translateService.translateWithParams(MessageConstant.DeleteConfirmation, model.title);
-    const confirmTitle = this.translateService.translateWithParams(MessageConstant.DeleteTitle);
+    const confirmMsg = this.translateService.translate(MessageConstant.DeleteConfirmation, model.title);
+    const confirmTitle = this.translateService.translate(MessageConstant.DeleteTitle);
     this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
       if (result) {
         const successMessage = this.translateService.translate(MessageConstant.DeleteSuccessfullyNotification);
