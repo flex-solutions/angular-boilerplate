@@ -27,7 +27,7 @@ export class TranslateService {
       // If have resouce value
       const msg = textNode.value;
       if (msg && params) {
-        StringExtension.format(msg, params);
+        return StringExtension.format(msg, params);
       } else {
         return msg;
       }

@@ -1815,6 +1815,14 @@
         <source>Enter membership type id</source>
         <target>Nhập mã loại hội viên</target>
       </trans-unit>
+      <trans-unit id="member-type-create-form-code-required" datatype="html">
+        <source>Please provide membership type id</source>
+        <target>Vui lòng nhập mã loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-pattern" datatype="html">
+        <source>The membership type id doesn't allow space charracter</source>
+        <target>Mã loại hội viên không được chứa khoảng trắng</target>
+      </trans-unit>
       <trans-unit id="member-type-create-form-name-label" datatype="html">
         <source>Name</source>
         <target>Tên loại hội viên</target>
@@ -1822,6 +1830,10 @@
       <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
         <source>Enter membership type name</source>
         <target>Nhập tên loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-required" datatype="html">
+        <source>Please provide membership type name</source>
+        <target>Vui lòng nhập tên loại hội viên</target>
       </trans-unit>
       <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
         <source>Enter the target point</source>
@@ -1834,6 +1846,10 @@
       <trans-unit id="member-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-success" datatype="html">
+        <source>A new membership type has been created</source>
+        <target>Một loại hội viên mới được thêm thành công</target>
       </trans-unit>
       <!--STOP member types-->
     </body>

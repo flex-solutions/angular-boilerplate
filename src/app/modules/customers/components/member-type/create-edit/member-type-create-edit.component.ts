@@ -20,20 +20,22 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
       memberTypeCode: [
         {
           type: 'required',
-          message: 'Vui lòng nhập mã loại hội viên'
+          message: 'member-type-create-form-code-required'
         },
         {
           type: 'pattern',
-          message: 'Mã loại hội viên không được chứa khoảng trắng'
+          message: 'member-type-create-form-code-pattern'
         }
       ],
       memberTypeName: [
         {
           type: 'required',
-          message: 'Vui lòng nhập tên loại hội viên'
+          message: 'member-type-create-form-name-required'
         }
       ]
     };
+
+    createSuccessMsg: string;
 
     constructor(private readonly memberTypeService: MemberTypeService,
       public readonly translateService: TranslateService,
@@ -45,6 +47,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
 
     ngOnInit() {
       this.onCreateForm();
+      this.createSuccessMsg = this.translateService.translate('member-type-create-form-success');
     }
 
     get memberTypeCode() {
@@ -61,7 +64,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
 
     protected onSubmit() {
       this.memberTypeService.create(this.memberType).subscribe(() => {
-        this.notification.showSuccess('A new membership type has been created');
+        this.notification.showSuccess(this.createSuccessMsg);
       });
     }
     protected onCancel() {
