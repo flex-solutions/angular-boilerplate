@@ -12,11 +12,13 @@ export abstract class AbstractFormComponent extends AbstractBaseComponent implem
   @ViewChildren(FormControlName, { read: ElementRef }) formControls: ElementRef[];
   protected genericValidator: GenericValidator;
 
+  public isCreateAnother: boolean;
+
   // a flag to be used in template to indicate whether the user tried to submit the form
   submitted = false;
 
   // Reset form
-  resetForm() {
+  protected resetForm() {
     this.formGroup.reset();
   }
 
@@ -50,6 +52,14 @@ export abstract class AbstractFormComponent extends AbstractBaseComponent implem
 
   // Call when submit event. User can overload method to implement business logic validation
   protected onValidate() { }
+
+  protected finish() {
+    if (this.isCreateAnother === true) {
+      this.resetForm();
+    } else {
+      this.onCancel();
+    }
+  }
 
   // Register validate form in case status form change
   ngAfterViewInit() {

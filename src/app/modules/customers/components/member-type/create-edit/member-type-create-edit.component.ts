@@ -14,7 +14,6 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
   export class MemberTypeCreateEditComponent extends AbstractFormComponent implements OnInit {
 
     public memberType: MemberType = new MemberType();
-    public isCreateAnother: boolean;
 
     public errors = {
       memberTypeCode: [
@@ -65,6 +64,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
     protected onSubmit() {
       this.memberTypeService.create(this.memberType).subscribe(() => {
         this.notification.showSuccess(this.createSuccessMsg);
+        this.finish();
       });
     }
     protected onCancel() {
@@ -79,10 +79,8 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
       });
     }
 
-    protected getMessage(key: string, ...params) {
-      if (params.length) {
-        return this.translateService.translate(key, params);
-      }
-      return this.translateService.translate(key);
+    protected resetForm() {
+      super.resetForm();
+      this.memberType = new MemberType();
     }
   }
