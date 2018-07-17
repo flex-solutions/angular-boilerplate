@@ -2,43 +2,47 @@
   <div class="col-md-2 grid-margin stretch-card">
   </div>
   <div class="col-md-8 grid-margin stretch-card">
-    <app-card title="Add new membership type" subTitle="Allow add one or many new membership type, new membership type should be added on IPOS system too">
+    <app-card i18n-title="@@member-type-create-title" title="Add new membership type" 
+    subTitle="Allow add one or many new membership type, new membership type should be added on IPOS system too"
+    i18n-subTitle="@@member-type-create-sub-title">
       <form class="cmxform" id="createEditMemberTypeForm" [formGroup]="formGroup">
         <fieldset>
           <!-- Membership type id field -->
           <div class="form-group" [ngClass]="{'has-danger': memberTypeCode.invalid && (memberTypeCode.dirty || memberTypeCode.touched)}">
-            <label for="memberTypeCode">Id</label>
+            <label for="memberTypeCode" i18n="@@member-type-create-form-code-label">Id</label>
             <label class="require">*</label>
             <input [(ngModel)]="memberType.code" required id="memberTypeCode" class="form-control" formControlName="memberTypeCode" type="text"
-              [ngClass]="{'has-danger': memberTypeCode.invalid && (memberTypeCode.dirty || memberTypeCode.touched) }" placeholder="Enter membership type id">
+              [ngClass]="{'has-danger': memberTypeCode.invalid && (memberTypeCode.dirty || memberTypeCode.touched) }"
+              placeholder="Enter membership type id" i18n-placeholder="@@member-type-create-form-code-placeholder">
             <div class="form-control-feedback" *ngFor="let error of errors.memberTypeCode">
               <p *ngIf="memberTypeCode.hasError(error.type) && (memberTypeCode.dirty || memberTypeCode.touched)" class="error mt-2 text-danger">{{getMessage(error.message, memberTypeCode.value)}}</p>
             </div>
           </div>
           <!-- Membership type name field -->
           <div class="form-group" [ngClass]="{'has-danger': memberTypeName.invalid && (memberTypeName.dirty || memberTypeName.touched)}">
-            <label for="memberTypeName">Name</label>
+            <label for="memberTypeName" i18n="@@member-type-create-form-name-label">Name</label>
             <label class="require">*</label>
             <input [(ngModel)]="memberType.name" required id="memberTypeName" class="form-control" formControlName="memberTypeName" type="text"
-              [ngClass]="{'has-danger': memberTypeName.invalid && (memberTypeName.dirty || memberTypeName.touched) }" placeholder="Enter membership type name">
+              [ngClass]="{'has-danger': memberTypeName.invalid && (memberTypeName.dirty || memberTypeName.touched) }"
+              placeholder="Enter membership type name" i18n-placeholder="@@member-type-create-form-name-placeholder">
             <div class="form-control-feedback" *ngFor="let error of errors.memberTypeName">
               <p *ngIf="memberTypeName.hasError(error.type) && (memberTypeName.dirty || memberTypeName.touched)" class="error mt-2 text-danger">{{getMessage(error.message, memberTypeCode.value)}}</p>
             </div>
           </div>
           <!-- Membership type point field -->
           <div class="form-group">
-            <label for="memberTypePoint">Target point</label>
+            <label for="memberTypePoint" i18n="@@member-type-create-form-name-target-point">Target point</label>
             <input [(ngModel)]="memberType.point" id="memberTypePoint" class="form-control" formControlName="memberTypePoint" type="number"
-              placeholder="Enter the target point">
+              placeholder="Enter the target point" i18n-placeholder="@@member-type-create-form-target-point-placeholder">
           </div>
           <!-- Membership type isActive field -->
           <div class="form-group">
-            <div class="form-check form-check-flat">
-              <label class="form-check-label" style="margin-top:0px;padding-left:0px">
+            <div class="form-check form-check-flat chk">
+              <label class="form-check-label">
                 <input type="checkbox" [(ngModel)]="memberType.isActive" [checked]="memberType.isActive" class="form-check-input"
                 [ngModelOptions]="{standalone: true}">
                 <i class="input-helper"></i>
-                <label class="form-check-label">Active</label>
+                <label class="chk-label" style="margin-top: 5px" i18n="@@member-type-create-form-name-active">Active</label>
               </label>
             </div>
           </div>
@@ -51,7 +55,7 @@
                 <input type="checkbox" class="form-check-input form-control"
                 [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
                 <i class="input-helper"></i>
-                <label class="form-check-label" i18n="@@news-create_edit_news-label-create_another_news">Create another</label>
+                <label class="chk-label" i18n="@@common-action-create-another">Create another</label>
               </label>
             </div>
           </div>

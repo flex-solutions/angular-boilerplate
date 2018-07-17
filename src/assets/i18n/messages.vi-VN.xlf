@@ -16,6 +16,11 @@
         <source>Delete</source>
         <target>Xoá</target>
       </trans-unit>
+      <trans-unit id="common-action-create-another" datatype="html">
+        <source>Create another</source>
+        <target>Thêm nhiều</target>
+      </trans-unit>
+
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -1546,7 +1551,9 @@
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
         <source>Manual creating a new customer account, customer can user phone number to login mobile app</source>
-        <target>Tạo thủ công tài khoản khách hàng, sau bước này, khách hàng có thể dùng số điện thoại để đăng nhập vào ứng dụng di động</target>
+        <target>Tạo thủ công tài khoản khách hàng, sau bước này, khách hàng có thể dùng số điện thoại để đăng nhập vào ứng dụng di
+          động
+        </target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
         <source>Edit Customer</source>
@@ -1790,6 +1797,43 @@
       <trans-unit id="member-type-btn-new" datatype="html">
         <source>New member type</source>
         <target>Loại hội viên mới</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-title" datatype="html">
+        <source>Add new membership type</source>
+        <target>Thêm loại hội viên mới</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-sub-title" datatype="html">
+        <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <target>Thêm một hoặc nhiều loại hội viên mới, loại hội viên mới cũng nên được thêm vào hệ thống của IPOS để đảm bảo quy
+          trình hoạt động tốt</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-label" datatype="html">
+        <source>Id</source>
+        <target>Mã loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+        <source>Enter membership type id</source>
+        <target>Nhập mã loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-label" datatype="html">
+        <source>Name</source>
+        <target>Tên loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+        <source>Enter membership type name</source>
+        <target>Nhập tên loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+        <source>Enter the target point</source>
+        <target>Nhập điểm cần tích để đạt tới loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+        <source>Target point</source>
+        <target>Điểm cần tích</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-active" datatype="html">
+        <source>Active</source>
+        <target>Áp dụng</target>
       </trans-unit>
       <!--STOP member types-->
     </body>

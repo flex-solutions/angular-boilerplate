@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from './../../../../../shared/services/translate.service';
@@ -33,10 +34,12 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
         }
       ]
     };
+
     constructor(private readonly memberTypeService: MemberTypeService,
       private readonly translateService: TranslateService,
       private formbuilder: FormBuilder,
-      private location: Location) {
+      private location: Location,
+      private notification: NotificationService) {
       super();
     }
 
@@ -57,7 +60,9 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
     }
 
     protected onSubmit() {
-      throw new Error('Method not implemented.');
+      this.memberTypeService.create(this.memberType).subscribe(() => {
+        this.notification.showSuccess('A new membership type has been created');
+      });
     }
     protected onCancel() {
       this.location.back();

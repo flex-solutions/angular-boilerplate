@@ -16,6 +16,10 @@
         <source>Delete</source>
         <target>Delete</target>
       </trans-unit>
+      <trans-unit id="common-action-create-another" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -1789,6 +1793,42 @@
       <trans-unit id="member-type-btn-new" datatype="html">
         <source>New member type</source>
         <target>New member type</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-title" datatype="html">
+        <source>Add new membership type</source>
+        <target>Add new membership type</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-sub-title" datatype="html">
+        <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-label" datatype="html">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+        <source>Enter membership type id</source>
+        <target>Enter membership type id</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-label" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+        <source>Enter membership type name</source>
+        <target>Enter membership type name</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+        <source>Enter the target point</source>
+        <target>Enter the target point</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+        <source>Target point</source>
+        <target>Target point</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-active" datatype="html">
+        <source>Active</source>
+        <target>Active</target>
       </trans-unit>
       <!--STOP member types-->
     </body>
