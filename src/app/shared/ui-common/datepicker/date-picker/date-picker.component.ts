@@ -1,4 +1,10 @@
-import { AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnInit
+} from '@angular/core';
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
@@ -10,10 +16,11 @@ declare const moment: any;
   styleUrls: ['./date-picker.component.css'],
   templateUrl: './date-picker.component.html'
 })
-export class DatePickerComponent implements AfterViewInit {
+export class DatePickerComponent implements OnInit, AfterViewInit {
   private _date: Date;
 
   elementId: string;
+  inputClasses: string;
 
   @Input() title: string;
 
@@ -34,6 +41,13 @@ export class DatePickerComponent implements AfterViewInit {
 
   constructor(private translateService: TranslateService) {
     this.elementId = Guid.create().toString();
+    this.inputClasses = `form-control`;
+  }
+
+  ngOnInit(): void {
+    if (this.title) {
+      this.inputClasses += ` none-border-left`;
+    }
   }
 
   ngAfterViewInit() {
