@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core/src/core';
 import { customerModuleDirectives } from '../../directives';
 import { AddressService } from '../../services/address.service';
 import { CustomerErrors } from '../../constants/customer.constants';
@@ -22,14 +23,15 @@ import {
   GenericValidator,
   IValidationMessage
 } from '../../../../shared/validation/generic-validator';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 
-const TITLE_CREATE_CUSTOMER: string =
+const TITLE_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer';
-const DESCRIPTION_CREATE_CUSTOMER: string =
+const DESCRIPTION_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer_description';
-const TITLE_EDIT_CUSTOMER: string =
+const TITLE_EDIT_CUSTOMER =
   'customer-create_edit_customer-h4-edit_customer';
-const DESCRIPTION_EDIT_CUSTOMER: string =
+const DESCRIPTION_EDIT_CUSTOMER =
   'customer-create_edit_customer-h4-edit_customer_description';
 
 @Component({
@@ -37,12 +39,12 @@ const DESCRIPTION_EDIT_CUSTOMER: string =
   selector: 'app-create-edit-customer',
   templateUrl: './create-edit-customer.component.html'
 })
-export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent {
-  isEdit: boolean = false;
+export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent implements OnInit {
+  isEdit = false;
   customer: CustomerModel = new CustomerModel();
   memberTypes: CustomerTypeModel[] = [];
-  selectedDistrict: District = new District();
-  selectedCity: Province = new Province();
+  selectedDistrict: District;
+  selectedCity: Province;
   cities: Province[] = [];
   typeId = -1;
   customerId: string;
@@ -56,12 +58,12 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected validationMessages: {
     [key: string]: { [key: string]: IValidationMessage };
   } = {
-    email: {
-      pattern: {
-        message: CustomerErrors.EmailInvalid
+      email: {
+        pattern: {
+          message: CustomerErrors.EmailInvalid
+        }
       }
-    }
-  };
+    };
 
   constructor(
     private formbuilder: FormBuilder,
@@ -111,7 +113,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private resetInformation() {
-    if (!this.isEdit && this.cities && this.cities.length > 0) {
+    if (this.cities && this.cities.length > 0) {
       this.selectedCity = this.cities[0];
       this.selectedDistrict = this.selectedCity.districts[0];
     }
@@ -124,17 +126,23 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         .subscribe((value: CustomerModel) => {
           if (value) {
             this.customer = value as CustomerModel;
-            // find selected id
-            const selectedCityId = this.customer.address.country.provinces[0]
-              ._id;
-            this.selectedCity = this.cities.find(
-              citi => citi._id == selectedCityId
-            );
-            const selectedDistrictId = this.customer.address.country
-              .provinces[0].districts[0]._id;
-            this.selectedDistrict = this.selectedCity.districts.find(
-              district => district._id == selectedDistrictId
-            );
+            if (this.customer.address.country && this.customer.address.country.provinces.length > 0) {
+              if (!isNullOrEmptyOrUndefine(this.customer.address.country.provinces[0].name)) {
+                // find selected id
+                const selectedCityId = this.customer.address.country.provinces[0]
+                  ._id;
+                this.selectedCity = this.cities.find(
+                  citi => citi._id === selectedCityId
+                );
+                if (this.selectedCity && this.selectedCity.districts && this.selectedCity.districts.length > 0) {
+                  const selectedDistrictId = this.customer.address.country
+                    .provinces[0].districts[0]._id;
+                  this.selectedDistrict = this.selectedCity.districts.find(
+                    district => district._id === selectedDistrictId
+                  );
+                }
+              }
+            }
           } else {
             // Navigate to previous if user group not found.
             this.location.back();
@@ -207,7 +215,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     }
   }
 
-  protected onValidate() {}
+  protected onValidate() { }
 
   protected onCancel() {
     this.location.back();
@@ -240,15 +248,15 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private prepareCustomer() {
-    this.customer.address.country = new Country();
-    this.customer.address.country.provinces = [];
-    const city = new Province();
-    city.copyFrom(this.selectedCity);
-    this.customer.address.country.provinces.push(city);
-    this.customer.address.country.provinces[0].districts = [];
-    this.customer.address.country.provinces[0].districts.push(
-      this.selectedDistrict
-    );
+    if (this.selectedCity != null && !isNullOrEmptyOrUndefine(this.selectedCity.name)) {
+      this.customer.address.country = new Country();
+      this.customer.address.country.provinces = [];
+      const city = new Province();
+      city.copyFrom(this.selectedCity);
+      this.customer.address.country.provinces.push(city);
+      this.customer.address.country.provinces[0].districts = [];
+      this.customer.address.country.provinces[0].districts.push(this.selectedDistrict);
+    }
   }
 
   protected refreshPageIfCreateAnother() {

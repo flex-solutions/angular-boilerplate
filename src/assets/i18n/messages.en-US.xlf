@@ -1624,12 +1624,12 @@
         <target>Enter address</target>
       </trans-unit>
       <trans-unit id="sex-woman" datatype="html">
-        <source>Woman</source>
-        <target>Woman</target>
+        <source>Female</source>
+        <target>Female</target>
       </trans-unit>
       <trans-unit id="sex-man" datatype="html">
-        <source>Man</source>
-        <target>Man</target>
+        <source>Male</source>
+        <target>Male</target>
       </trans-unit>
       <trans-unit id="sex-other" datatype="html">
         <source>Other</source>

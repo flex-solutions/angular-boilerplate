@@ -35,7 +35,7 @@ class Country {
 class Address {
   _id: any;
   address: string;
-  country: Country = new Country();
+  country: Country = null;
 }
 
 export { District, Province, Country, Address };

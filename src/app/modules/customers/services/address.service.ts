@@ -1,7 +1,8 @@
+import { add } from 'ramda';
 import { appVariables } from './../../../app.constant';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { Country } from '../../../shared/models/address.model';
+import { Country, District, Province } from '../../../shared/models/address.model';
 
 @Injectable()
 export class AddressService extends AbstractRestService {
