@@ -34,8 +34,6 @@ export class PromotionsComponent implements OnInit {
     private dialogManager: ExDialog,
     private notificationService: NotificationService,
     private startStopPromotionHandler: StartStopPromotionService) {
-    this.startDate = new Date();
-    this.endDate = new Date();
     this.selectedStatus = [];
     this.buildStatusItemSource();
   }

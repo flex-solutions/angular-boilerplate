@@ -42,8 +42,8 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   isEdit = false;
   customer: CustomerModel = new CustomerModel();
   memberTypes: CustomerTypeModel[] = [];
-  selectedDistrict: District;
-  selectedCity: Province;
+  selectedDistrict: District = new District();
+  selectedCity: Province = new Province();
   cities: Province[] = [];
   typeId = -1;
   customerId: string;
@@ -105,9 +105,11 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   loadInformation() {
     if (this.cities.length === 0) {
-      this.cities = this.addressService.getCountry().provinces;
-      this.resetInformation();
-      this.loadCustomer();
+      this.addressService.getCountry().then(currentCountry => {
+        this.cities = currentCountry.provinces;
+        this.resetInformation();
+        this.loadCustomer();
+      });
     }
   }
 
