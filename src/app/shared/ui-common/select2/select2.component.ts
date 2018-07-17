@@ -97,5 +97,8 @@ export class Select2Component implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
+    setTimeout(() => {
+      this.selectedItem = null;
+    });
   }
 }

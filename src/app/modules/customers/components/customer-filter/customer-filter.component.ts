@@ -106,11 +106,13 @@ export class CustomerFilterComponent implements AfterViewInit {
     this.customerService.getMonthBirthday().then((data: any[]) => {
       self.months = data;
     });
-    const country = this.addressService.getCountry();
-    self.provinces = country.provinces;
-    if (this.provinces && this.provinces.length > 0) {
-      self.districts = this.provinces[0].districts;
-    }
+
+    this.addressService.getCountry().then(country => {
+      self.provinces = country.provinces;
+      if (this.provinces && this.provinces.length > 0) {
+        self.districts = this.provinces[0].districts;
+      }
+    });
     this.sexes = this.getSexes();
   }
 
