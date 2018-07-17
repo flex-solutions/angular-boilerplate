@@ -14,7 +14,8 @@ const CustomerErrors = {
 };
 
 const MemberTypeRoute = {
-  CREATE: './create'
+  CREATE: './create',
+  UPDATE: './update/'
 };
 
 export {

@@ -1846,6 +1846,10 @@
         <source>A new membership type has been created</source>
         <target>A new membership type has been created</target>
       </trans-unit>
+            <trans-unit id="member-type-edit-form-success" datatype="html">
+        <source>A membership type has been updated</source>
+        <target>A membership type has been updated</target>
+      </trans-unit>
       <!--STOP member types-->
     </body>
   </file>

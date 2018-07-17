@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core/src/core';
 import { AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
 import { FormGroup, FormControlName } from '@angular/forms';
 import { AbstractBaseComponent } from './abstract-base-component';
@@ -6,13 +7,14 @@ import { Observable, merge, fromEvent  } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 // Define common behavior for Form component
-export abstract class AbstractFormComponent extends AbstractBaseComponent implements AfterViewInit {
+export abstract class AbstractFormComponent extends AbstractBaseComponent implements AfterViewInit, OnInit {
   formGroup: FormGroup;
   errorMessage: { [key: string]: string } = {};
   @ViewChildren(FormControlName, { read: ElementRef }) formControls: ElementRef[];
   protected genericValidator: GenericValidator;
 
   public isCreateAnother: boolean;
+  isEdit = false;
 
   // a flag to be used in template to indicate whether the user tried to submit the form
   submitted = false;
@@ -45,6 +47,8 @@ export abstract class AbstractFormComponent extends AbstractBaseComponent implem
   // On cancel form
   protected abstract onCancel();
 
+  protected onCreateForm() {}
+
   validate() {
     this.errorMessage = this.genericValidator.validate(this.formGroup);
     this.onValidate();
@@ -59,6 +63,10 @@ export abstract class AbstractFormComponent extends AbstractBaseComponent implem
     } else {
       this.onCancel();
     }
+  }
+
+  ngOnInit() {
+    this.onCreateForm();
   }
 
   // Register validate form in case status form change

@@ -1,5 +1,4 @@
 import { OnInit } from '@angular/core/src/core';
-import { customerModuleDirectives } from '../../directives';
 import { AddressService } from '../../services/address.service';
 import { CustomerErrors } from '../../constants/customer.constants';
 import { CustomerService } from '../../services/customer.service';

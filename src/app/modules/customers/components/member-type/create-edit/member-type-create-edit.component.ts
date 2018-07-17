@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -14,6 +15,7 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
   export class MemberTypeCreateEditComponent extends AbstractFormComponent implements OnInit {
 
     public memberType: MemberType = new MemberType();
+    memberTypeId: string;
 
     public errors = {
       memberTypeCode: [
@@ -40,13 +42,31 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
       public readonly translateService: TranslateService,
       private formbuilder: FormBuilder,
       private location: Location,
-      private notification: NotificationService) {
+      private notification: NotificationService,
+      activatedRoute: ActivatedRoute) {
       super();
+      activatedRoute.params.subscribe((params: Params) => {
+        this.memberTypeId = params['id'] ? params['id'] : '';
+        this.isEdit = params['id'] ? true : false;
+        // if (this.isEdit) {
+        //   this.cardTitle = this.translateService.translate(TITLE_EDIT_CUSTOMER);
+        //   this.cardDescription = this.translateService.translate(
+        //     DESCRIPTION_EDIT_CUSTOMER
+        //   );
+        // } else {
+        //   this.cardTitle = this.translateService.translate(TITLE_CREATE_CUSTOMER);
+        //   this.cardDescription = this.translateService.translate(
+        //     DESCRIPTION_CREATE_CUSTOMER
+        //   );
+        // }
+      });
     }
 
     ngOnInit() {
-      this.onCreateForm();
-      this.createSuccessMsg = this.translateService.translate('member-type-create-form-success');
+      super.ngOnInit();
+      this.createSuccessMsg = this.isEdit === false ? this.translateService.translate('member-type-create-form-success')
+      : this.translateService.translate('member-type-edit-form-success');
+      this.getMemberTypeInfoForEdit();
     }
 
     get memberTypeCode() {
@@ -62,16 +82,24 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
     }
 
     protected onSubmit() {
-      this.memberTypeService.create(this.memberType).subscribe(() => {
-        this.notification.showSuccess(this.createSuccessMsg);
-        this.finish();
-      });
+      if (this.isEdit === true) {
+        this.memberTypeService.update(this.memberType).subscribe(() => {
+          this.notification.showSuccess(this.createSuccessMsg);
+          this.onCancel();
+        });
+      } else {
+        this.memberTypeService.create(this.memberType).subscribe(() => {
+          this.notification.showSuccess(this.createSuccessMsg);
+          this.finish();
+        });
+      }
     }
     protected onCancel() {
       this.location.back();
     }
 
     protected onCreateForm() {
+      super.onCreateForm();
       this.formGroup = this.formbuilder.group({
         memberTypeCode: ['', [Validators.required, Validators.pattern(/^\S*$/)]],
         memberTypeName: ['', [Validators.required]],
@@ -82,5 +110,13 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
     protected resetForm() {
       super.resetForm();
       this.memberType = new MemberType();
+    }
+
+    private getMemberTypeInfoForEdit() {
+      if (this.isEdit === true) {
+        this.memberTypeService.getMemberType(this.memberTypeId).subscribe(memberType => {
+          this.memberType = memberType;
+        });
+      }
     }
   }

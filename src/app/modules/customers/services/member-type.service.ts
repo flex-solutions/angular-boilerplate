@@ -16,6 +16,10 @@ export class MemberTypeService extends AbstractRestService {
     return this.get<MemberType[]>();
   }
 
+  getMemberType(id: string): Observable<MemberType> {
+    return this.get<MemberType>(`${id}`);
+  }
+
   create(dto: MemberType): Observable<Response> {
     return this.post('', dto);
   }

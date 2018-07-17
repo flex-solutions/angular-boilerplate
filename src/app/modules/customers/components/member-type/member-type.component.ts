@@ -27,7 +27,7 @@ export class MemberTypeHomeComponent implements OnInit {
   }
 
   editMemberType(id: string) {
-
+    this.router.navigate([MemberTypeRoute.UPDATE, id], { relativeTo: this.activatedRoute });
   }
 
   deleteMemberType(id: string) {
