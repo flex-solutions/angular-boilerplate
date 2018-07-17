@@ -2,7 +2,11 @@ import { add } from 'ramda';
 import { appVariables } from './../../../app.constant';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { Country, District, Province } from '../../../shared/models/address.model';
+import {
+  Country,
+  District,
+  Province
+} from '../../../shared/models/address.model';
 
 @Injectable()
 export class AddressService extends AbstractRestService {
@@ -14,7 +18,7 @@ export class AddressService extends AbstractRestService {
     this.controllerName = 'address';
   }
 
-  async getCountry() {
+  async getCountry(): Promise<Country> {
     // Get from local storage
     if (!this.country) {
       const result = localStorage.getItem(appVariables.citiesStorage);
@@ -28,12 +32,19 @@ export class AddressService extends AbstractRestService {
       return this.country;
     } else {
       // Fetch country from server side
-      const currentCountry = await this.get().toPromise();
+      const currentCountry = (await this.get().toPromise()) as Country;
+
+      const emptyProvince = new Province();
+      const emptyCity = new District();
+      currentCountry.provinces.splice(0, 0, emptyProvince);
+      currentCountry.provinces[0].districts.push(emptyCity);
+
+      // Save in local storage
       localStorage.setItem(
         appVariables.citiesStorage,
         JSON.stringify(currentCountry)
       );
-      this.country = currentCountry as Country;
+      this.country = currentCountry;
       return currentCountry;
     }
   }

@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
 import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-customer-filter',
@@ -75,8 +76,11 @@ export class CustomerFilterComponent implements AfterViewInit {
 
   onProvinceChange($event) {
     if ($event) {
-      this.districts = $event.districts;
-      this.customerFilter.district = {};
+      if ($event.districts) {
+        this.districts = $event.districts.filter(
+          d => !isNullOrEmptyOrUndefine(d.name)
+        );
+      }
     }
   }
 
@@ -108,9 +112,13 @@ export class CustomerFilterComponent implements AfterViewInit {
     });
 
     this.addressService.getCountry().then(country => {
-      self.provinces = country.provinces;
+      self.provinces = country.provinces.filter(
+        p => !isNullOrEmptyOrUndefine(p.name)
+      );
       if (this.provinces && this.provinces.length > 0) {
-        self.districts = this.provinces[0].districts;
+        self.districts = this.provinces[0].districts.filter(
+          d => !isNullOrEmptyOrUndefine(d.name)
+        );
       }
     });
     this.sexes = this.getSexes();

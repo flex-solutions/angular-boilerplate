@@ -11,7 +11,7 @@ class CustomerModel {
   phoneNumber = '+84 ';
   memberId: string;
   name: string;
-  birthday: Date = null;
+  birthday: Date;
   sex = null;
   address: Address = new Address();
   customerType = '';

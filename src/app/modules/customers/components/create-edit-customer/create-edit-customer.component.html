@@ -29,8 +29,7 @@
           </div>
           <div class="form-group">
             <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
-            <app-date-picker class="dataTables_customfilter" title="birthday" i18n-title="@@customer-create_edit_customer-label-birthday_field"
-              [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
+            <app-date-picker class="dataTables_customfilter" [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
           </div>
           <div class="form-group">
             <label for="customerType" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
@@ -45,7 +44,7 @@
               <option value="0" i18n="@@sex-woman">Woman</option>
               <option value="1" i18n="@@sex-man">Man</option>
               <option value="2" i18n="@@sex-other">Other</option>
-          </select>
+            </select>
           </div>
           <div class="row">
             <div class="col-md-5">
