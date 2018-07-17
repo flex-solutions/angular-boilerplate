@@ -26,19 +26,39 @@
             </div>
           </div>
           <!-- Membership type point field -->
-          <div class="form-group" [ngClass]="{'has-danger': memberTypePoint.invalid && (memberTypePoint.dirty || memberTypePoint.touched)}">
+          <div class="form-group">
             <label for="memberTypePoint">Target point</label>
-            <input [(ngModel)]="memberType.point" required id="memberTypePoint" class="form-control" formControlName="memberTypePoint" type="number"
-              [ngClass]="{'has-danger': memberTypePoint.invalid && (memberTypePoint.dirty || memberTypePoint.touched) }" placeholder="Enter the target point">
-            <!-- <div class="form-control-feedback" *ngFor="let error of errors.memberTypePoint">
-              <p *ngIf="memberTypePoint.hasError(error.type) && (memberTypePoint.dirty || memberTypePoint.touched)" class="error mt-2 text-danger">{{getMessage(error.message, memberTypeCode.value)}}</p>
-            </div> -->
+            <input [(ngModel)]="memberType.point" id="memberTypePoint" class="form-control" formControlName="memberTypePoint" type="number"
+              placeholder="Enter the target point">
+          </div>
+          <!-- Membership type isActive field -->
+          <div class="form-group">
+            <div class="form-check form-check-flat">
+              <label class="form-check-label" style="margin-top:0px;padding-left:0px">
+                <input type="checkbox" [(ngModel)]="memberType.isActive" [checked]="memberType.isActive" class="form-check-input"
+                [ngModelOptions]="{standalone: true}">
+                <i class="input-helper"></i>
+                <label class="form-check-label">Active</label>
+              </label>
+            </div>
           </div>
           <!-- Form buttons -->
-          <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
-          <button class="btn btn-light" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+          <div class="form-cmds">
+            <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
+            <button class="btn btn-light mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+            <div class="form-check form-check-flat chk">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input form-control"
+                [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
+                <i class="input-helper"></i>
+                <label class="form-check-label" i18n="@@news-create_edit_news-label-create_another_news">Create another</label>
+              </label>
+            </div>
+          </div>
         </fieldset>
       </form>
     </app-card>
+  </div>
+  <div class="col-md-2 grid-margin stretch-card">
   </div>
 </div>

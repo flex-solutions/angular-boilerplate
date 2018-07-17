@@ -13,6 +13,8 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
   export class MemberTypeCreateEditComponent extends AbstractFormComponent implements OnInit {
 
     public memberType: MemberType = new MemberType();
+    public isCreateAnother: boolean;
+
     public errors = {
       memberTypeCode: [
         {

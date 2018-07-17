@@ -148,3 +148,12 @@
 .command-region button {
   margin-left: 10px;
 }
+
+.form-cmds {
+  display: flex;
+}
+
+.form-cmds .chk {
+  margin-top: 7px!important;
+  margin-bottom: 0px!important;
+}
