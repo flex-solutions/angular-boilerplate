@@ -1858,6 +1858,16 @@
         <source>A membership type has been updated</source>
         <target>A membership type has been updated</target>
       </trans-unit>
+      <trans-unit id="member-type-delete-confirm" datatype="html">
+        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
+        type {{0}}?</source>
+        <target>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
+          type {{0}}</target>
+      </trans-unit>
+      <trans-unit id="member-type-delete-success" datatype="html">
+        <source>A membership type has been deleted</source>
+        <target>A membership type has been deleted</target>
+      </trans-unit>
       <!--STOP member types-->
     </body>
   </file>

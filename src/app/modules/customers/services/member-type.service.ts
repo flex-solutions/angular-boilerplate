@@ -27,4 +27,8 @@ export class MemberTypeService extends AbstractRestService {
   update(dto: MemberType): Observable<Response> {
     return this.put('', dto);
   }
+
+  deleteMemberType(id: string): Observable<Response> {
+    return this.delete(id);
+  }
 }

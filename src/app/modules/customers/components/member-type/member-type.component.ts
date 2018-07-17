@@ -1,3 +1,6 @@
+import { TranslateService } from './../../../../shared/services/translate.service';
+import { ExDialog } from './../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { NotificationService } from './../../../../shared/services/notification.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MemberTypeService } from './../../services/member-type.service';
 import { MemberType } from './../../../../shared/models/member-type.model';
@@ -12,10 +15,15 @@ import { MemberTypeRoute } from '../../constants/customer.constants';
 export class MemberTypeHomeComponent implements OnInit {
 
   public memberTypes: MemberType[] = [];
+  private confirmDeleteMsg: string;
+  private deleteSuccessMsg: string;
 
   constructor(private readonly memberTypeService: MemberTypeService,
   private readonly router: Router,
-  private readonly activatedRoute: ActivatedRoute) {
+  private readonly activatedRoute: ActivatedRoute,
+  private readonly notification: NotificationService,
+  private readonly exDlg: ExDialog,
+  private readonly translateService: TranslateService) {
   }
 
   ngOnInit() {
@@ -30,7 +38,18 @@ export class MemberTypeHomeComponent implements OnInit {
     this.router.navigate([MemberTypeRoute.UPDATE, id], { relativeTo: this.activatedRoute });
   }
 
-  deleteMemberType(id: string) {
+  deleteMemberType(memberType: MemberType) {
+
+    this.confirmDeleteMsg = this.translateService.translate('member-type-delete-confirm', [memberType.name]);
+    this.deleteSuccessMsg = this.translateService.translate('member-type-delete-success');
+    this.exDlg.openConfirm(this.confirmDeleteMsg).subscribe(result => {
+      if (result) {
+        this.memberTypeService.deleteMemberType(memberType._id).subscribe(() => {
+          this.notification.showSuccess(this.deleteSuccessMsg);
+          this.getMemberTypes();
+        });
+      }
+    });
 
   }
 
