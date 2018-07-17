@@ -1802,10 +1802,13 @@
         <source>Add new membership type</source>
         <target>Thêm loại hội viên mới</target>
       </trans-unit>
-      <trans-unit id="member-type-create-sub-title" datatype="html">
-        <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
-        <target>Thêm một hoặc nhiều loại hội viên mới, loại hội viên mới cũng nên được thêm vào hệ thống của IPOS để đảm bảo quy
-          trình hoạt động tốt</target>
+      <trans-unit id="member-type-update-title" datatype="html">
+        <source>Edit membership type</source>
+        <target>Sửa thông tin loại hội viên</target>
+      </trans-unit>
+      <trans-unit id="member-type-update-sub-title" datatype="html">
+        <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
+        <target>Sửa thông tin một loại hội viên, thông tin này cũng nên được sửa trên hệ thống IPOS để đảm bảo hệ thống hoạt động ổn định</target>
       </trans-unit>
       <trans-unit id="member-type-create-form-code-label" datatype="html">
         <source>Id</source>

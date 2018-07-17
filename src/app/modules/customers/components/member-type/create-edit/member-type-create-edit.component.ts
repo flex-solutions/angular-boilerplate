@@ -37,6 +37,8 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
     };
 
     createSuccessMsg: string;
+    public cardTitle: string;
+    public cardDescription: string;
 
     constructor(private readonly memberTypeService: MemberTypeService,
       public readonly translateService: TranslateService,
@@ -48,17 +50,13 @@ import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-f
       activatedRoute.params.subscribe((params: Params) => {
         this.memberTypeId = params['id'] ? params['id'] : '';
         this.isEdit = params['id'] ? true : false;
-        // if (this.isEdit) {
-        //   this.cardTitle = this.translateService.translate(TITLE_EDIT_CUSTOMER);
-        //   this.cardDescription = this.translateService.translate(
-        //     DESCRIPTION_EDIT_CUSTOMER
-        //   );
-        // } else {
-        //   this.cardTitle = this.translateService.translate(TITLE_CREATE_CUSTOMER);
-        //   this.cardDescription = this.translateService.translate(
-        //     DESCRIPTION_CREATE_CUSTOMER
-        //   );
-        // }
+        if (this.isEdit) {
+          this.cardTitle = this.translateService.translate('member-type-update-title');
+          this.cardDescription = this.translateService.translate('member-type-update-sub-title');
+        } else {
+          this.cardTitle = this.translateService.translate('member-type-create-title');
+          this.cardDescription = this.translateService.translate('member-type-create-sub-title');
+        }
       });
     }
 

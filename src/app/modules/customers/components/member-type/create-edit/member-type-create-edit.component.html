@@ -2,9 +2,7 @@
   <div class="col-md-2 grid-margin stretch-card">
   </div>
   <div class="col-md-8 grid-margin stretch-card">
-    <app-card i18n-title="@@member-type-create-title" title="Add new membership type" 
-    subTitle="Allow add one or many new membership type, new membership type should be added on IPOS system too"
-    i18n-subTitle="@@member-type-create-sub-title">
+    <app-card [title]="cardTitle" [subTitle]="cardDescription">
       <form class="cmxform" id="createEditMemberTypeForm" [formGroup]="formGroup">
         <fieldset>
           <!-- Membership type id field -->
