@@ -13,18 +13,14 @@ export class CustomerService extends AbstractRestService {
     this.controllerName = 'customers';
   }
 
+  count(query?: any): Observable<number> {
+    if (!query) {
+      query = {};
+    }
+    return this.filter('count', query);
+  }
+
   getCustomers(
-    pageNumber: number,
-    pageSize: number,
-  ): Observable<CustomerModel[]> {
-    return this.get(`?pageSize=${pageSize}&pageNumber=${pageNumber}`);
-  }
-
-  count(): Observable<number> {
-    return this.get('count');
-  }
-
-  getCustomersWithFilterQuery(
     pageNumber: number,
     pageSize: number,
     query?: any
@@ -32,28 +28,7 @@ export class CustomerService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter(
-      `filter?pageSize=${pageSize}&pageNumber=${pageNumber}`,
-      query
-    );
-  }
-
-  countWithFilterQuery(query?: any): Observable<number> {
-    if (!query) {
-      query = {};
-    }
-
-    const promise = new Promise((_resolve, reject) => {
-      this.filter(`filter`, query).subscribe((data: any[]) => {
-        if (data && data.hasOwnProperty('length')) {
-          console.log(`resolve data: [${data.length}]`);
-          _resolve(data.length);
-        }
-        _resolve(0);
-      });
-    });
-
-    return from(promise) as Observable<number>;
+    return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
   getMemberType() {

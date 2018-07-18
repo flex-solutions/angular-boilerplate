@@ -3,8 +3,14 @@ import { CustomerService } from './../../services/customer.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CustomerModel, CustomerFilter } from '../../../../shared/models/customer.model';
-import { IFilterChangedEvent, DatagridComponent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
+import {
+  CustomerModel,
+  CustomerFilter
+} from '../../../../shared/models/customer.model';
+import {
+  IFilterChangedEvent,
+  DatagridComponent
+} from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { CustomerCriteriaBuilder } from '../customer-filter/customer-filter.builder';
 
 @Component({
@@ -12,30 +18,27 @@ import { CustomerCriteriaBuilder } from '../customer-filter/customer-filter.buil
   templateUrl: './home.component.html'
 })
 export class CustomerHomeComponent implements OnInit {
-  private _hasUseFilter: boolean;
   filter: IFilterChangedEvent;
   customers: CustomerModel[] = [];
   customerFilter: CustomerFilter = new CustomerFilter();
   @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
-  constructor(private customerService: CustomerService, private route: Router) {
-    this._hasUseFilter = false;
-  }
+  constructor(
+    private customerService: CustomerService,
+    private route: Router
+  ) {}
 
   public count = (searchKey: string): Observable<number> => {
-    if (!this._hasUseFilter) {
-      return this.customerService.count();
-    }
-    return this.customerService.countWithFilterQuery(this.getQuery());
+    return this.customerService.count(this.getQuery());
   }
 
-    createNewCustomer() {
-        this.route.navigate([CustomerRouteNames.CREATE]);
-    }
+  createNewCustomer() {
+    this.route.navigate([CustomerRouteNames.CREATE]);
+  }
 
-    editCustomer(id: string) {
-        this.route.navigate([`${CustomerRouteNames.EDIT}/${id}`]);
-    }
+  editCustomer(id: string) {
+    this.route.navigate([`${CustomerRouteNames.EDIT}/${id}`]);
+  }
   ngOnInit(): void {}
 
   onPageChanged(event: IFilterChangedEvent) {
@@ -44,7 +47,6 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   onRunFilterClicked() {
-    this._hasUseFilter = true;
     this.loadData();
   }
 
@@ -54,27 +56,15 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   private getCustomers() {
-    if (this._hasUseFilter) {
-      this.customerService
-        .getCustomersWithFilterQuery(
-          this.filter.pagination.page,
-          this.filter.pagination.itemsPerPage,
-          this.getQuery()
-        )
-        .subscribe(res => {
-          this.customers = res;
-        });
-    } else {
-      this.customerService
-        .getCustomers(
-          this.filter.pagination.page,
-          this.filter.pagination.itemsPerPage
-        )
-        .subscribe(res => {
-          this.customers = res;
-          console.log(this.customers);
-        });
-    }
+    this.customerService
+      .getCustomers(
+        this.filter.pagination.page,
+        this.filter.pagination.itemsPerPage,
+        this.getQuery()
+      )
+      .subscribe(res => {
+        this.customers = res;
+      });
   }
 
   loadData() {
@@ -86,7 +76,6 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   resetFilter = () => {
-    this._hasUseFilter = false;
     this.loadData();
   }
 }
