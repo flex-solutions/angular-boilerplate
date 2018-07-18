@@ -18,16 +18,6 @@ class CustomerModel {
   email: string;
 }
 
-class CustomerTypeModel {
-  id: number;
-  name: string;
-
-  constructor() {
-    this.id = 0;
-    this.name = '';
-  }
-}
-
 class CustomerFilter {
   phoneNumber: string;
   memberId: string;
@@ -68,6 +58,5 @@ export {
   CustomerModel,
   Sex,
   CustomerFilter,
-  customerFilterFields,
-  CustomerTypeModel
+  customerFilterFields
 };

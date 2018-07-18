@@ -1544,40 +1544,40 @@
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
-        <source>Create Customer</source>
-        <target>Create Customer</target>
+        <source>Create member</source>
+        <target>Create member</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new customer account, customer can user phone number to login mobile app</source>
-        <target>Manual creating a new customer account, customer can user phone number to login mobile app</target>
+        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will be also created on IPOS system</source>
+        <target>Manual creating a new member account, member can user phone number to login mobile app and this account will be also created on IPOS system</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
-        <source>Edit Customer</source>
-        <target>Create Customer</target>
+        <source>Edit member</source>
+        <target>Edit member</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer_description" datatype="html">
-        <source>Manual editing a customer account</source>
-        <target>Manual editing a new customer account</target>
+        <source>Manual editing a member account, all change information will be also updated to IPOS</source>
+        <target>Manual editing a member account, all change information will be also updated to IPOS</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-name_place_holder" datatype="html">
-        <source>Enter customer name</source>
-        <target>Enter customer name</target>
+        <source>Enter member name</source>
+        <target>Enter member name</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_require" datatype="html">
-        <source>Please provide customer name</source>
-        <target>Please provide customer name</target>
+        <source>Please provide member name</source>
+        <target>Please provide member name</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-phone_place_holder" datatype="html">
-        <source>Enter customer phone</source>
-        <target>Enter customer phone</target>
+        <source>Enter member phone</source>
+        <target>Enter member phone</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_require" datatype="html">
         <source>Please provide phone number</source>
@@ -1588,8 +1588,8 @@
         <target>Birthday</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
-        <source>Customer Type</source>
-        <target>Customer Type</target>
+        <source>Membership Type</source>
+        <target>Membership Type</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
         <source>Sex</source>
@@ -1648,12 +1648,12 @@
         <target>Other</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
-        <source>A new customer account has been created</source>
-        <target>A new customer account has been created</target>
+        <source>A new member account has been created</source>
+        <target>A new member account has been created</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-edit_customer_ok" datatype="html">
-        <source>A customer account has been updated</source>
-        <target>A customer account has been updated</target>
+        <source>A member account has been updated</source>
+        <target>A member account has been updated</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-email_invalid" datatype="html">
         <source>Email is invalid</source>

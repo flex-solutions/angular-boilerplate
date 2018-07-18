@@ -1,3 +1,6 @@
+import { isEmpty } from 'ramda';
+import { MemberTypeService } from './../../services/member-type.service';
+import { MemberType } from './../../../../shared/models/member-type.model';
 import { OnInit } from '@angular/core/src/core';
 import { AddressService } from '../../services/address.service';
 import { CustomerErrors } from '../../constants/customer.constants';
@@ -9,8 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {
-  CustomerModel,
-  CustomerTypeModel
+  CustomerModel
 } from '../../../../shared/models/customer.model';
 import {
   Province,
@@ -41,7 +43,7 @@ const DESCRIPTION_EDIT_CUSTOMER =
 export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent implements OnInit {
   isEdit = false;
   customer: CustomerModel = new CustomerModel();
-  memberTypes: CustomerTypeModel[] = [];
+  memberTypes: MemberType[] = [];
   selectedDistrict: District = new District();
   selectedCity: Province = new Province();
   cities: Province[] = [];
@@ -68,10 +70,11 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     private formbuilder: FormBuilder,
     private customerService: CustomerService,
     private addressService: AddressService,
+    private memberTypeService: MemberTypeService,
     translateService: TranslateService,
     private notificationService: NotificationService,
     private activeRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
   ) {
     super(translateService);
   }
@@ -103,20 +106,25 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     this.loadInformation();
   }
 
-  loadInformation() {
-    if (this.cities.length === 0) {
-      this.addressService.getCountry().then(currentCountry => {
-        this.cities = currentCountry.provinces;
-        this.resetInformation();
-        this.loadCustomer();
-      });
-    }
+  async loadInformation() {
+    await this.loadAddress();
+    await this.loadMemberTypes();
+    this.loadCustomer();
   }
 
-  private resetInformation() {
+  private async loadAddress() {
+    const country = await this.addressService.getCountry();
+    this.cities = country.provinces;
     if (this.cities && this.cities.length > 0) {
       this.selectedCity = this.cities[0];
       this.selectedDistrict = this.selectedCity.districts[0];
+    }
+  }
+
+  private async loadMemberTypes() {
+    this.memberTypes = await this.memberTypeService.getMemberTypes().toPromise();
+    if (!this.isEdit && !isEmpty(this.memberTypes)) {
+      this.customer.customerType = this.memberTypes[0]._id;
     }
   }
 
@@ -264,7 +272,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     if (this.isCreateAnother) {
       this.resetSome();
       this.customer = new CustomerModel();
-      this.resetInformation();
     } else {
       this.location.back();
     }

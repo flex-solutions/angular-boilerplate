@@ -34,7 +34,7 @@
           <div class="form-group">
             <label for="customerType" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
             <select id="customerType" class="form-control" formControlName="customerType" [(ngModel)]="customer.customerType">
-              <option *ngFor="let type of memberTypes" [ngValue]="type">{{type.name}}</option>
+              <option *ngFor="let type of memberTypes" [ngValue]="type._id">{{type.code}} - {{type.name}}</option>
             </select>
           </div>
           <div class="form-group">

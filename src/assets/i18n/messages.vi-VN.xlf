@@ -1546,42 +1546,42 @@
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
-        <source>Create Customer</source>
-        <target>Tạo khách hàng</target>
+        <source>Create member</source>
+        <target>Tạo hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new customer account, customer can user phone number to login mobile app</source>
-        <target>Tạo thủ công tài khoản khách hàng, sau bước này, khách hàng có thể dùng số điện thoại để đăng nhập vào ứng dụng di
-          động
+        <source>Manual creating a new customer account, customer can user phone number to login mobile app and this account will be also created on IPOS system</source>
+        <target>Tạo thủ công tài khoản hội viên, sau bước này, hội viên có thể dùng số điện thoại để đăng nhập vào ứng dụng di
+          động, và tài khoản này cũng được tạo trên hệ thống IPOS
         </target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
-        <source>Edit Customer</source>
-        <target>Cập nhật thông tin khách hàng</target>
+        <source>Edit member</source>
+        <target>Cập nhật thông tin hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer_description" datatype="html">
-        <source>Manual editing a customer account</source>
-        <target>Cập nhật thông tin khách hàng</target>
+        <source>Manual editing a member account</source>
+        <target>Cập nhật thông tin hội viên trên CMS và hệ thống IPOS</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
         <source>Name</source>
-        <target>Tên khách hàng</target>
+        <target>Tên hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-name_place_holder" datatype="html">
-        <source>Enter customer name</source>
-        <target>Nhập tên khách hàng</target>
+        <source>Enter member name</source>
+        <target>Nhập tên hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_require" datatype="html">
-        <source>Please provide customer name</source>
-        <target>Vui lòng cung cấp tên khách hàng</target>
+        <source>Please provide member name</source>
+        <target>Vui lòng cung cấp tên hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-phone_place_holder" datatype="html">
-        <source>Enter customer phone</source>
-        <target>Nhập số điện thoại khách hàng</target>
+        <source>Enter member phone</source>
+        <target>Nhập số điện thoại hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_require" datatype="html">
         <source>Please provide phone number</source>
@@ -1592,8 +1592,8 @@
         <target>Ngày sinh</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
-        <source>Customer Type</source>
-        <target>Loại khách hàng</target>
+        <source>Membership Type</source>
+        <target>Loại hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
         <source>Sex</source>
@@ -1609,7 +1609,7 @@
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-city_field" datatype="html">
         <source>City/Province</source>
-        <target>Thành phố / Tỉnh</target>
+        <target>Thành phố/Tỉnh</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-email_field" datatype="html">
         <source>Email</source>
@@ -1640,11 +1640,11 @@
         <target>Nhập địa chỉ</target>
       </trans-unit>
       <trans-unit id="sex-woman" datatype="html">
-        <source>Woman</source>
+        <source>Female</source>
         <target>Nữ</target>
       </trans-unit>
       <trans-unit id="sex-man" datatype="html">
-        <source>Man</source>
+        <source>Male</source>
         <target>Nam</target>
       </trans-unit>
       <trans-unit id="sex-other" datatype="html">
@@ -1652,12 +1652,12 @@
         <target>Khác</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
-        <source>A new customer account has been created</source>
-        <target>Một tài khoản khách hàng mới được tạo thành công</target>
+        <source>A new member account has been created</source>
+        <target>Một tài khoản hội viên mới được tạo thành công</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-edit_customer_ok" datatype="html">
-        <source>A customer account has been updated</source>
-        <target>Một tài khoản khách hàng được cập nhật thành công</target>
+        <source>A member account has been updated</source>
+        <target>Một tài khoản hội viên được cập nhật thành công</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-email_invalid" datatype="html">
         <source>Email is invalid</source>
@@ -1688,11 +1688,11 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-member_id" datatype="html">
         <source>Member id</source>
-        <target>Mã thành viên</target>
+        <target>Mã hội viên</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-placeholder-member_id" datatype="html">
         <source>Member id contains</source>
-        <target>Mã thành viên có chứa</target>
+        <target>Mã hội viên có chứa</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-month_of_birthday" datatype="html">
         <source>Month of birthday</source>
@@ -1712,11 +1712,11 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-placeholder-name" datatype="html">
         <source>Name contains</source>
-        <target>Tên khách hàng có chứa</target>
+        <target>Tên hội viên có chứa</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-member_type" datatype="html">
         <source>Member type</source>
-        <target>Loại thành viên</target>
+        <target>Loại hội viên</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-have_score" datatype="html">
         <source>Have score</source>
