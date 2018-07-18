@@ -12,6 +12,7 @@ import {
   DatagridComponent
 } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { CustomerCriteriaBuilder } from '../customer-filter/customer-filter.builder';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-customer-home',

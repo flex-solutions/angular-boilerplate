@@ -11,7 +11,9 @@ import {
 export class CustomerCriteriaBuilder {
   static build(customerFilter: CustomerFilter) {
     // Start criteria with and operator
-    const builder = CriteriaBuilder.makeCriteria().setWrapperFilter(FilterType.And);
+    const builder = CriteriaBuilder.makeCriteria().startWrapperFilter(
+      FilterType.And
+    );
 
     // In case value is select table type
     builder
@@ -51,7 +53,8 @@ export class CustomerCriteriaBuilder {
         FilterType.Regex,
         customerFilterFields.DISTRICT,
         customerFilter[customerFilterFields.DISTRICT].name
-      );
+      )
+      .endWrapperFilter();
 
     return builder.build();
   }
