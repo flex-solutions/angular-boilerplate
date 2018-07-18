@@ -20,7 +20,18 @@
         <source>Create another</source>
         <target>Thêm nhiều</target>
       </trans-unit>
-
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Huỷ</target>
+      </trans-unit>
+      <trans-unit id="common_button-save" datatype="html">
+        <source>Save</source>
+        <target>Lưu</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -486,18 +497,6 @@
         <target>Xóa user {{0}} thành công</target>
       </trans-unit>
       <!--End Delete user-->
-
-      <!-- Global -->
-      <trans-unit id="common_button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
-
-      <trans-unit id="common_button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Huỷ</target>
-      </trans-unit>
-
       <!-- User Group -->
       <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
         <source>Create User Group</source>
@@ -1592,7 +1591,7 @@
         <target>Ngày sinh</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
-        <source>Membership Type</source>
+        <source>Membership type</source>
         <target>Loại hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
@@ -1618,22 +1617,6 @@
       <trans-unit id="customer-create_customer-input-email_place_holder" datatype="html">
         <source>Enter email</source>
         <target>Nhập email</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Tạo</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-save" datatype="html">
-        <source>Save</source>
-        <target>Lưu</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Huỷ</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-create_another_customer" datatype="html">
-        <source>Create another</source>
-        <target>Tạo thêm khách hàng</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
         <source>Enter address</source>

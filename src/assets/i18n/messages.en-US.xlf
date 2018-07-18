@@ -20,6 +20,18 @@
         <source>Create another</source>
         <target>Create another</target>
       </trans-unit>
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="common_button-save" datatype="html">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -485,18 +497,6 @@
         <target>Delete user {{0}} successfully</target>
       </trans-unit>
       <!--End Delete user-->
-
-      <!-- Global -->
-      <trans-unit id="common_button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
-
-      <trans-unit id="common_button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Cancel</target>
-      </trans-unit>
-
       <!-- User Group -->
       <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
         <source>Create User Group</source>
@@ -1588,8 +1588,8 @@
         <target>Birthday</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
-        <source>Membership Type</source>
-        <target>Membership Type</target>
+        <source>Membership type</source>
+        <target>Membership type</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
         <source>Sex</source>
@@ -1614,22 +1614,6 @@
       <trans-unit id="customer-create_customer-input-email_place_holder" datatype="html">
         <source>Enter email</source>
         <target>Enter email</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-save" datatype="html">
-        <source>Save</source>
-        <target>Save</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Cancel</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-create_another_customer" datatype="html">
-        <source>Create another</source>
-        <target>Create another</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
         <source>Enter address</source>

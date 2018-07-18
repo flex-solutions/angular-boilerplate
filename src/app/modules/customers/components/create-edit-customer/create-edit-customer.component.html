@@ -16,7 +16,6 @@
               placeholder="Enter customer name" [(ngModel)]="customer.name">
             <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@customer-create_edit_customer-label-name_require"
               *ngIf="name.invalid && (name.dirty || name.touched)"> Please provide customer name</label>
-            <br *ngIf="!(name.invalid && (name.dirty || name.touched))" />
           </div>
           <div class="form-group">
             <label for="phone" i18n="@@customer-create_edit_customer-label-phone_field">Phone number </label>
@@ -25,11 +24,10 @@
               placeholder="Enter customer phone" [(ngModel)]="customer.phoneNumber">
             <label id="phone-error" class="error mt-2 text-danger" for="phone" i18n="@@customer-create_edit_customer-label-phone_require"
               *ngIf="phone.invalid && (phone.dirty || phone.touched)">Please provide phone number</label>
-            <br *ngIf="!(phone.invalid && (phone.dirty || phone.touched))" />
           </div>
           <div class="form-group">
             <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
-            <app-date-picker class="dataTables_customfilter" [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
+            <app-date-picker [(date)]="customer.birthday"></app-date-picker>
           </div>
           <div class="form-group">
             <label for="customerType" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
@@ -77,19 +75,16 @@
               placeholder="Enter email" [(ngModel)]="customer.email">
             <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
           </div>
-          <div class="row btn-in-row">
-            <button *ngIf="!isEdit" class="btn btn-success btn-small mr-2" i18n="@@customer-create_edit_customer-button-submit" (click)="submit()">Submit</button>
-            <button *ngIf="isEdit" class="btn btn-success btn-small mr-2" i18n="@@customer-create_edit_customer-button-save" (click)="saveCustomer()">Save</button>
-            <button class="btn btn-light btn-small mr-2" i18n="@@customer-create_edit_customer-button-cancel" (click)="cancel()">Cancel</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="form-group" *ngIf="!isEdit">
-              <div class="form-check form-check-flat">
-                <label class="form-check-label">
-                  <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
-                  <i class="input-helper"></i>
-                  <label class="form-check-label" i18n="@@customer-create_edit_customer-label-create_another_customer"> Create another</label>
-                </label>
-              </div>
+          <div class="form-cmds">
+            <button *ngIf="!isEdit" class="btn btn-success btn-small mr-2" i18n="@@common_button-submit" (click)="submit()">Submit</button>
+            <button *ngIf="isEdit" class="btn btn-success btn-small mr-2" i18n="@@common_button-save" (click)="saveCustomer()">Save</button>
+            <button class="btn btn-light btn-small mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+            <div class="form-check form-check-flat" *ngIf="!isEdit">
+              <label class="form-check-label" style="padding-left: 4px">
+                <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
+                <i class="input-helper"></i>
+                <label class="chk-label" i18n="@@common-action-create-another"> Create another</label>
+              </label>
             </div>
           </div>
         </fieldset>
