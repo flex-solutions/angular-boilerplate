@@ -1490,12 +1490,12 @@
       <!--END Date time picker-->
       <!--Start Customer Module-->
       <trans-unit id="customers-list-tbl-title" datatype="html">
-        <source>Customers</source>
-        <target>Customers</target>
+        <source>Members</source>
+        <target>Members</target>
       </trans-unit>
       <trans-unit id="customers-tbl-btn-create" datatype="html">
-        <source>New customer</source>
-        <target>New customer</target>
+        <source>New member</source>
+        <target>New member</target>
       </trans-unit>
       <trans-unit id="customers-tbl-name" datatype="html">
         <source>Name</source>
@@ -1521,9 +1521,9 @@
         <source>Address</source>
         <target>Address</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-customer-type" datatype="html">
-        <source>Customer type</source>
-        <target>Customer type</target>
+      <trans-unit id="customers-tbl-customer-point" datatype="html">
+        <source>Point</source>
+        <target>Point</target>
       </trans-unit>
       <trans-unit id="customers-tbl-sex-male" datatype="html">
         <source>Male</source>
@@ -1536,10 +1536,6 @@
       <trans-unit id="customers-tbl-sex-other" datatype="html">
         <source>Other</source>
         <target>Other</target>
-      </trans-unit>
-      <trans-unit id="customers-list-tbl-actions-edit" datatype="html">
-        <source>Edit</source>
-        <target>Edit</target>
       </trans-unit>
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->

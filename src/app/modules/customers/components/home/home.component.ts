@@ -72,6 +72,7 @@ export class CustomerHomeComponent implements OnInit {
         )
         .subscribe(res => {
           this.customers = res;
+          console.log(this.customers);
         });
     }
   }

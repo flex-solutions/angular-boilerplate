@@ -16,6 +16,7 @@ class CustomerModel {
   address: Address = new Address();
   customerType = '';
   email: string;
+  point: number;
 }
 
 class CustomerFilter {

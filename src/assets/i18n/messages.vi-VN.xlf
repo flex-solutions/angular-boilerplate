@@ -1490,16 +1490,16 @@
       <!--END Date time picker-->
       <!--Start Customer Module-->
       <trans-unit id="customers-list-tbl-title" datatype="html">
-        <source>Customers</source>
-        <target>Danh sách khách hàng</target>
+        <source>Members</source>
+        <target>Danh sách hội viên</target>
       </trans-unit>
       <trans-unit id="customers-tbl-btn-create" datatype="html">
-        <source>New customer</source>
-        <target>Khách hàng mới</target>
+        <source>New member</source>
+        <target>Hội viên mới</target>
       </trans-unit>
       <trans-unit id="customers-tbl-name" datatype="html">
         <source>Name</source>
-        <target>Tên KH</target>
+        <target>Tên hội viên</target>
       </trans-unit>
       <trans-unit id="customers-tbl-member-id" datatype="html">
         <source>Member ID</source>
@@ -1521,9 +1521,9 @@
         <source>Address</source>
         <target>Địa chỉ</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-customer-type" datatype="html">
-        <source>Customer type</source>
-        <target>Loại thành viên</target>
+      <trans-unit id="customers-tbl-customer-point" datatype="html">
+        <source>Point</source>
+        <target>Điểm</target>
       </trans-unit>
       <trans-unit id="customers-tbl-sex-male" datatype="html">
         <source>Male</source>
@@ -1536,10 +1536,6 @@
       <trans-unit id="customers-tbl-sex-other" datatype="html">
         <source>Other</source>
         <target>Khác</target>
-      </trans-unit>
-      <trans-unit id="customers-list-tbl-actions-edit" datatype="html">
-        <source>Edit</source>
-        <target>Sửa</target>
       </trans-unit>
 
       <!--End Customer Module-->

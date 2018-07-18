@@ -14,7 +14,7 @@
       <th i18n="@@customers-tbl-birthday">Birthday</th>
       <th i18n="@@customers-tbl-sex">Sex</th>
       <th i18n="@@customers-tbl-address">Address</th>
-      <th i18n="@@customers-tbl-customer-type">Customer Type</th>
+      <th i18n="@@customers-tbl-customer-point">Point</th>
       <th i18n="@@common-tbl-actions">Actions</th>
     </tr>
     <tbody>
@@ -27,22 +27,13 @@
         <td>{{customer.birthday | date: 'dd/MM/y'}}</td>
         <td appSex [sex]="customer.sex"></td>
         <td>{{customer.address | address}}</td>
-        <td>{{customer.customerType}}</td>
+        <td>{{customer.point}} <i class="mdi mdi-star text-snob"></i></td>
         <td>
           <div class="row">
             <button class="btn btn-light" (click)="editCustomer(customer._id)">
-              <i class="mdi mdi-account-multiple text-primary"></i>
-              <span i18n="@@customers-list-tbl-actions-edit">Edit</span>
+              <i class="mdi mdi-pencil text-primary"></i>
+              <span i18n="@@common-action-edit">Edit</span>
             </button>
-            <div class="dropdown">
-              <button type="button" class="btn btn-light icon-btn dropdown-toggle dropdown-toggle-split more-actions-dropdown-btn" id="dropdownMenuIconButton3"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="mdi mdi-dots-horizontal"></i>
-              </button>
-              <div class="dropdown-menu more-actions-dropdown" aria-labelledby="dropdownMenuIconButton3" x-placement="bottom-start">
-                <a class="dropdown-item" i18n="@@user_groups-list-tbl-actions-del-user-group" (click)="deleteCustomer(usergroup)">Delete</a>
-              </div>
-            </div>
           </div>
         </td>
       </tr>
