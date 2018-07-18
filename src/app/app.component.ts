@@ -1,4 +1,4 @@
-import { Router, NavigationStart, RoutesRecognized } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';

@@ -3,9 +3,3 @@ export class DateRangeModel {
   endDate?: Date;
 }
 
-export class SingleDateModel {
-  date: Date;
-
-  constructor() {
-  }
-}

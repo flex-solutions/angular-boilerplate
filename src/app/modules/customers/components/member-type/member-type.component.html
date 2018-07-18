@@ -1,0 +1,40 @@
+<div class="row">
+  <button type="button" class="btn btn-sm btn-primary ml-auto add-btn" (click)="createNewMemberType()">
+    <i class="mdi mdi-plus"></i>
+    <span i18n="@@member-type-btn-new">New member type</span>
+  </button>
+</div>
+<div class="row">
+  <div class="col-md-4 grid-margin" *ngFor="let memberType of memberTypes">
+    <div class="card">
+      <div class="card-body member-type-container">
+        <div class="d-flex flex-row align-items-top">
+          <i class="mdi mdi-trophy icon-md" style="font-size: 3.275rem"></i>
+          <div class="ml-3">
+            <h5 class="">{{memberType.code}} - {{memberType.name}}</h5>
+            <div class="star-container">
+              <p>{{memberType.point}}</p>
+              <i class="mdi mdi-star text-snob"></i>
+            </div>
+          </div>
+        </div>
+        <!-- <ul class="rank-promotion-ul">
+          <li>
+            <i class="mdi mdi-approval"></i>
+            <p class="mb-0">1 ly nước + 1 phần bánh free nhân dịp sinh nhật</p>
+          </li>
+        </ul> -->
+        <div class="row cmd-container">
+          <button class="btn btn-light ml-auto" (click)="editMemberType(memberType._id)">
+            <i class="mdi mdi-pencil text-primary"></i>
+            <span i18n="@@common-action-edit">Edit</span>
+          </button>
+          <button class="btn btn-light last-btn" (click)="deleteMemberType(memberType)">
+            <i class="mdi mdi-delete text-danger"></i>
+            <span i18n="@@common-action-delete">Delete</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

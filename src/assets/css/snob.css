@@ -12379,6 +12379,18 @@ fieldset:disabled .wizard > .actions a,
   box-shadow: 0 0 0 0.2rem rgba(255, 116, 116, 0.5);
 }
 
+.btn-small {
+  height: 30px;
+  min-height: 30px;
+  margin-top:10px;
+  display:block;
+}
+.btn-in-row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+
 .btn-light {
   color: #212529;
   background-color: #f3f5f6;

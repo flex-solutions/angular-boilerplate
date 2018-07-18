@@ -11,10 +11,11 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { UICommonModule } from './ui-common/ui-common.module';
 import { BrowserNotificationService } from './services/browser-notification.service';
 import { ForbiddenHandler } from './services/forbidden-handler.service';
+import { GlobalPipes } from './pipes';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [LayoutModule, UICommonModule],
+  exports: [LayoutModule, UICommonModule, ...GlobalPipes],
   providers: [
     NotificationService,
     MessageService,
@@ -25,7 +26,7 @@ import { ForbiddenHandler } from './services/forbidden-handler.service';
     BrowserNotificationService,
     ForbiddenHandler
   ],
-  declarations: [ CanUpdateDirective ]
+  declarations: [ CanUpdateDirective, ...GlobalPipes ]
 })
 export class SharedModule {
   static injector: Injector;

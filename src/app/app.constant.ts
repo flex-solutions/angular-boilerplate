@@ -34,6 +34,7 @@ export const appVariables = {
   accessRefreshToken: 'refreshToken',
   userPermission: 'permissions',
   resourceNameIdentifier: 'Entity',
+  citiesStorage:'cities',
   docViewerurl: 'http://docs.google.com/gview?url=',
   msOfficeDocViewerPath: 'https://view.officeapps.live.com/op/embed.aspx?src=',
   goodleDocViewerPath: url => {

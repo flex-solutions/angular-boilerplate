@@ -1,13 +1,16 @@
 .date-picker .input-group-text {
-    border-radius: 3px 0 0 3px; 
-    border-color: #e6e6e6; 
-    border-right: none;
-    font-size: 13px;
-    padding: 0 1em;
+  border-radius: 3px 0 0 3px;
+  border-color: #e6e6e6;
+  border-right: none;
+  font-size: 13px;
+  padding: 0 1em;
 }
 .date-picker .form-control {
-    border: 1px solid #e6e6e6; 
-    border-left: none; 
-    border-radius: 0 3px 3px 0;
-    font-size: 13px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px 0px 0px 3px;
+  font-size: 13px;
+}
+
+.date-picker .none-border-left {
+  border-left: none !important;
 }

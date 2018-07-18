@@ -19,7 +19,10 @@ import { AuthenticationService } from '../services/authentication.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private _locale: string;
-  constructor(private auth: AuthenticationService, @Inject(LOCALE_ID) localeId) {
+  constructor(
+    private auth: AuthenticationService,
+    @Inject(LOCALE_ID) localeId
+  ) {
     this._locale = localeId;
   }
 
@@ -33,7 +36,7 @@ export class AuthInterceptor implements HttpInterceptor {
     });
     */
     // Clone the request and set the new header in one step.
-    const options = this.createRequestOptions();
+    const options = this.createRequestOptions(req);
     const authReq = req.clone({ setHeaders: options });
 
     // send cloned request with header to the next handler.
@@ -41,10 +44,20 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq);
   }
 
-  createRequestOptions() {
+  createRequestOptions(req: HttpRequest<any>) {
     // Get auth token
     const token: string = this.auth.getAuthorizationToken();
-    const header = { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '', LangCode:  this._locale};
+    const header = {
+      'Content-Type': 'application/json',
+      Authorization: token ? `Bearer ${token}` : '',
+      LangCode: this._locale
+    };
+
+    // Keep current filter in header
+    const filter = req.headers.get('X-Filter');
+    if (filter) {
+      Object.assign(header, { 'X-Filter': filter });
+    }
 
     return header;
   }

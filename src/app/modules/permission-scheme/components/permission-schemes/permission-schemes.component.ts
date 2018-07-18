@@ -100,10 +100,10 @@ export class PermissionSchemesComponent implements OnInit {
   }
 
   deletePermissionScheme(scheme) {
-    const confirmMsg = this.translateService.translateWithParams('permission_scheme-delete-confirm', scheme.name);
+    const confirmMsg = this.translateService.translate('permission_scheme-delete-confirm', scheme.name);
     this.dialogManager.openConfirm(confirmMsg).subscribe(result => {
       if (result) {
-        const successMessage = this.translateService.translateWithParams('permission_scheme-delete-success', scheme.name);
+        const successMessage = this.translateService.translate('permission_scheme-delete-success', scheme.name);
         this.permissionService.deleteScheme(scheme._id).subscribe(res => {
           this.notificationService.showSuccess(successMessage);
           this.loadPermissionSchemes();

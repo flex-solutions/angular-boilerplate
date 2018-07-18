@@ -19,21 +19,21 @@ export class TranslateService {
     this._locale = localeId;
   }
 
-  translate(resourceKey: string) {
+  translate(resourceKey: string, ...params) {
     try {
       const translation = this._translations.i18nNodesByMsgId[resourceKey];
       const textNode = translation[0];
 
       // If have resouce value
-      return textNode.value;
+      const msg = textNode.value;
+      if (msg && params) {
+        return StringExtension.format(msg, params);
+      } else {
+        return msg;
+      }
     } catch {
       return resourceKey;
     }
-  }
-
-  translateWithParams(resourceKey: string, ...params) {
-    const value = this.translate(resourceKey);
-    return StringExtension.format(value, params);
   }
 
   get currentLocale() {
