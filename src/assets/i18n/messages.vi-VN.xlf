@@ -1639,7 +1639,7 @@
       <!--Start Customer Filter-->
       <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
         <source>Filter Tool</source>
-        <target>Filter Tool</target>
+        <target>Tìm kiếm</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
@@ -1715,7 +1715,7 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-btn-reset_filter" datatype="html">
         <source>Reset filter</source>
-        <target>Reset filter</target>
+        <target>Thiết lập lại</target>
       </trans-unit>
       <!--End Customer Filter-->
       <!--Start stop promotions-->
