@@ -1042,14 +1042,6 @@
         <source>The banner size must be lower or equal 500kb</source>
         <target>Kích thước của hình ảnh phải nhỏ hơn hoặc bằng 500kb</target>
       </trans-unit>
-      <trans-unit id="news-create_edit_news-button-save" datatype="html">
-        <source>Save</source>
-        <target>Lưu</target>
-      </trans-unit>
-      <trans-unit id="news-create_edit_news-button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Huỷ</target>
-      </trans-unit>
       <!--END News Create Edit Page-->
 
       <!-- START News Management -->
@@ -1647,7 +1639,7 @@
       <!--Start Customer Filter-->
       <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
         <source>Filter Tool</source>
-        <target>Filter Tool</target>
+        <target>Tìm kiếm</target>
       </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
@@ -1723,7 +1715,7 @@
       </trans-unit>
       <trans-unit id="customers-filter-list-table-btn-reset_filter" datatype="html">
         <source>Reset filter</source>
-        <target>Reset filter</target>
+        <target>Thiết lập lại</target>
       </trans-unit>
       <!--End Customer Filter-->
       <!--Start stop promotions-->

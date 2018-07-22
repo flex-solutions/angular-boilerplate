@@ -35,15 +35,17 @@ export class Criteria {
 }
 
 interface ICriteriaBuilder {
-  build();
+  build(): Criteria;
 
   setFilter(filter: FilterSet);
 }
 
 interface IWrapperCriteriaBuilder extends ICriteriaBuilder {
-  setWrapperFilter(
+  startWrapperFilter(
     logicalFilterType: FilterType.And | FilterType.Or
   ): IWrapperCriteriaBuilder;
+
+  endWrapperFilter(): IWrapperCriteriaBuilder;
 
   withFilter(
     type: FilterType,
@@ -70,11 +72,17 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
     return this;
   }
 
-  setWrapperFilter(
+  startWrapperFilter(
     logicalFilterType: FilterType.And | FilterType.Or
   ): IWrapperCriteriaBuilder {
     this._wrapperFilter = { type: logicalFilterType, value: [] };
-    this._criteria.filters.push(this._wrapperFilter);
+    return this;
+  }
+
+  endWrapperFilter(): IWrapperCriteriaBuilder {
+    if (!isNullOrEmptyOrUndefine(this._wrapperFilter.value)) {
+      this._criteria.filters.push(this._wrapperFilter);
+    }
     return this;
   }
 
@@ -108,6 +116,10 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
   }
 
   build() {
-    return this._criteria;
+    if (!isNullOrEmptyOrUndefine(this._criteria.filters)) {
+      return this._criteria;
+    }
+
+    return null;
   }
 }
