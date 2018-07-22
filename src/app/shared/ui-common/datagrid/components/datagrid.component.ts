@@ -1,4 +1,4 @@
-import { TranslateService } from './../../../services/translate.service';
+import { TranslateService } from '../../../services/translate.service';
 import {
   Component,
   OnInit,
@@ -57,12 +57,16 @@ export class DatagridComponent implements OnInit {
     this._countFunction = v;
   }
 
+  @Input()
+  enableCustomFilter: boolean;
+
   constructor(private translateService: TranslateService) {
     this.searchLabel = translateService.translate('dg-default-search-placeholder');
     this.previousText = translateService.translate('pagination-previous-label');
     this.nextText = translateService.translate('pagination-next-label');
     this.firstText = translateService.translate('pagination-first-label');
     this.lastText = translateService.translate('pagination-last-label');
+    this.enableCustomFilter = false;
   }
 
   ngOnInit() {
@@ -70,7 +74,7 @@ export class DatagridComponent implements OnInit {
   }
 
   submitFilter() {
-    if (this.searchKey === this._thePreviouseSearchKey) {
+    if (this.searchKey === this._thePreviouseSearchKey && !this.enableCustomFilter) {
       return;
     }
 
@@ -131,6 +135,7 @@ export class DatagridComponent implements OnInit {
   countAndRasePageChangedForTheFirstPage() {
     if (this.countFunction) {
       this.countFunction(this.searchKey).subscribe(result => {
+        console.log(result);
         this.totalItems = result;
         this.raisePageChangedEvent();
       });

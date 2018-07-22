@@ -38,7 +38,7 @@ export class EditPermissionSchemeComponent extends PermissionSchemeComponentBase
     this.schemeService.updatePermissionScheme(JSON.stringify(this.permissionModel, (key, value) => {
       return this.replacer(key, value);
     })).subscribe(() => {
-      const message = this.translateService.translateWithParams(NotificationConst.EditSuccessfully, this.permissionModel.name);
+      const message = this.translateService.translate(NotificationConst.EditSuccessfully, this.permissionModel.name);
       this.notificationService.showSuccess(message);
       this.onHandleEditUserSuccessful();
     });

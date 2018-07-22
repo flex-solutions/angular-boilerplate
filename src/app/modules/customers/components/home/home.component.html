@@ -1,0 +1,42 @@
+<app-customer-filter [(customerFilter)]="customerFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-customer-filter>
+<app-card title="Customers" i18n-title="@@customers-list-tbl-title">
+  <div class="command-region">
+    <button type="button" class="btn btn-sm btn-primary" (click)="createNewCustomer()">
+      <i class="mdi mdi-plus"></i>
+      <span i18n="@@customers-tbl-btn-create">Create customer</span>
+    </button>
+  </div>
+  <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
+    <tr>
+      <th i18n="@@customers-tbl-name">Name</th>
+      <th i18n="@@customers-tbl-member-id">Member ID</th>
+      <th i18n="@@customers-tbl-phone-number">Phone number</th>
+      <th i18n="@@customers-tbl-birthday">Birthday</th>
+      <th i18n="@@customers-tbl-sex">Sex</th>
+      <th i18n="@@customers-tbl-address">Address</th>
+      <th i18n="@@customers-tbl-customer-point">Point</th>
+      <th i18n="@@common-tbl-actions">Actions</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>
+          <a class="a-clickable" (click)="navigateToFilterCustomer(customer)">{{customer.name}}</a>
+        </td>
+        <td>{{customer.memberId}}</td>
+        <td>{{customer.phoneNumber}}</td>
+        <td>{{customer.birthday | date: 'dd/MM/y'}}</td>
+        <td appSex [sex]="customer.sex"></td>
+        <td>{{customer.address | address}}</td>
+        <td>{{customer.point}} <i class="mdi mdi-star text-snob"></i></td>
+        <td>
+          <div class="row">
+            <button class="btn btn-light" (click)="editCustomer(customer._id)">
+              <i class="mdi mdi-pencil text-primary"></i>
+              <span i18n="@@common-action-edit">Edit</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </app-dg>
+</app-card>

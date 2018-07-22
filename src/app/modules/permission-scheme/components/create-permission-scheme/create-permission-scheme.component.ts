@@ -31,7 +31,7 @@ export class CreatePermissionSchemeComponent extends PermissionSchemeComponentBa
     this.schemeService.addPermissionScheme(JSON.stringify(this.permissionModel, (key, value) => {
       return this.replacer(key, value);
     })).subscribe(() => {
-      const message = this.translateService.translateWithParams(NotificationConst.CreateSuccessfully, this.permissionModel.name);
+      const message = this.translateService.translate(NotificationConst.CreateSuccessfully, this.permissionModel.name);
       this.notificationService.showSuccess(message);
       this.onHandleCreateUserSuccessful();
     });

@@ -1,7 +1,6 @@
 import { StringExtension } from './../../../../utilities/string.extension';
 import { StartPromotionComponent } from './../start-promotion/start-promotion.component';
 import { SelectableModel } from './../../../../shared/models/selectable.model';
-import { SingleDateModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { PromotionService } from './../../services/promotion.service';
 import { Promotion, StatusCheckedItem } from './../../interfaces/promotion';
 import { Component, OnInit } from '@angular/core';
@@ -24,8 +23,8 @@ export class PromotionsComponent implements OnInit {
 
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
-  startDate: SingleDateModel;
-  endDate: SingleDateModel;
+  startDate: Date;
+  endDate: Date;
   statusItems: SelectableModel<StatusCheckedItem>[];
   selectedStatus: StatusCheckedItem[];
 
@@ -35,8 +34,6 @@ export class PromotionsComponent implements OnInit {
     private dialogManager: ExDialog,
     private notificationService: NotificationService,
     private startStopPromotionHandler: StartStopPromotionService) {
-    this.startDate = new SingleDateModel();
-    this.endDate = new SingleDateModel();
     this.selectedStatus = [];
     this.buildStatusItemSource();
   }
@@ -47,8 +44,8 @@ export class PromotionsComponent implements OnInit {
   public count = (searchKey: string) => {
     const status = this.getSelectedStatus();
     return this.service.count(searchKey, status,
-      this.startDate.date,
-      this.endDate.date);
+      this.startDate,
+      this.endDate);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -65,8 +62,8 @@ export class PromotionsComponent implements OnInit {
         pagination.page,
         this.currentFilterArgs.searchKey,
         status,
-        this.startDate.date,
-        this.endDate.date
+        this.startDate,
+        this.endDate
       )
       .subscribe((response: Promotion[]) => {
         this.items = response;
@@ -97,8 +94,8 @@ export class PromotionsComponent implements OnInit {
   }
 
   deletePromotion(model: Promotion) {
-    const confirmMsg = this.translateService.translateWithParams(MessageConstant.DeleteConfirmation, model.title);
-    const confirmTitle = this.translateService.translateWithParams(MessageConstant.DeleteTitle);
+    const confirmMsg = this.translateService.translate(MessageConstant.DeleteConfirmation, model.title);
+    const confirmTitle = this.translateService.translate(MessageConstant.DeleteTitle);
     this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
       if (result) {
         const successMessage = this.translateService.translate(MessageConstant.DeleteSuccessfullyNotification);

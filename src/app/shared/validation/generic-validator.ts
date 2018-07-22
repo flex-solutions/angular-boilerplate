@@ -70,14 +70,14 @@ export class GenericValidator {
   resolveMultilingual(validationMsg: IValidationMessage): string {
     // Have specific params
     if (validationMsg.params) {
-      return this.translateService.translateWithParams(
+      return this.translateService.translate(
         validationMsg.message,
         validationMsg.params
       );
     } else if (validationMsg.paramsCallback) {
       // Using callback to get params at run-time
       const params = validationMsg.paramsCallback();
-      return this.translateService.translateWithParams(
+      return this.translateService.translate(
         validationMsg.message,
         params
       );

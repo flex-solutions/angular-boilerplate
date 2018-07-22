@@ -39,10 +39,10 @@
     </div>
   </li>
   <li class="nav-item">
-      <a class="nav-link" style="cursor: pointer;" (click)="navigateToNewsPage()" aria-controls="icons">
-        <img class="menu-icon" src="../../../../assets/images/menu_icons/08.png" alt="menu icon">
-        <span class="menu-title" i18n="@@layout-sidebar-anchor-news-management">News Management</span>
-      </a>
+    <a class="nav-link" style="cursor: pointer;" (click)="navigateToNewsPage()" aria-controls="icons">
+      <img class="menu-icon" src="../../../../assets/images/menu_icons/08.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-news-management">News Management</span>
+    </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#page-promotion-layouts" aria-controls="page-promotion-layouts">
@@ -71,6 +71,22 @@
         <li class="nav-item">
           <a class="nav-link" style="cursor: pointer;" (click)="navigateToCustomerManagementPage()" aria-controls="icons">
             <span i18n="@@layout-sidebar-anchor-crm-marketing-customer-management">Customer Management</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#member-type-sub-menu" aria-controls="member-type-sub-menu">
+      <img class="menu-icon" src="../../../../assets/images/menu_icons/10.png" alt="menu icon">
+      <span class="menu-title" i18n="@@member-type-config-menu">Membership Configuration</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="member-type-sub-menu">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToMemberTypeListPage()" aria-controls="icons">
+            <span class="menu-title" i18n="@@member-type-menu">Member Type</span>
           </a>
         </li>
       </ul>

@@ -43,7 +43,7 @@ export class CopySchemeComponent extends DialogComponent implements OnInit {
     });
 
     // Build scheme description
-    const schemeDescription = this.translateService.translateWithParams('permission-scheme-copy-label-scheme_description',
+    const schemeDescription = this.translateService.translate('permission-scheme-copy-label-scheme_description',
       this.copiedPermissionScheme.name);
     this.schemeDescription = schemeDescription;
 

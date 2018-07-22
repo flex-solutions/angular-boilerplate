@@ -1,4 +1,13 @@
-import { CustomerHomeComponent } from './home.component';
+import { MemberTypeCreateEditComponent } from './member-type/create-edit/member-type-create-edit.component';
+import { CreateEditCustomerComponent } from './create-edit-customer/create-edit-customer.component';
+import { CustomerHomeComponent } from './home/home.component';
+import { CustomerFilterComponent } from './customer-filter/customer-filter.component';
+import { MemberTypeHomeComponent } from './member-type/member-type.component';
+
 export const customerComponents = [
-    CustomerHomeComponent
+    CustomerHomeComponent,
+    CustomerFilterComponent,
+    CreateEditCustomerComponent,
+    MemberTypeHomeComponent,
+    MemberTypeCreateEditComponent
 ];

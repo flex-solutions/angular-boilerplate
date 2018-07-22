@@ -53,7 +53,7 @@ export class EditMembersComponent implements OnInit {
     }
 
     getSuccessMessage() {
-        this.successMessage = this.translateService.translateWithParams('edit-members-success', this.usergroup.name);
+        this.successMessage = this.translateService.translate('edit-members-success', this.usergroup.name);
     }
 
     getUserGroupInfo() {

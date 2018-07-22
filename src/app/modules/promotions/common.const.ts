@@ -13,4 +13,7 @@ const promotionRoute = {
     DETAIL: 'promotions/detail/',
 };
 
-export { promotionFields, promotionRoute };
+const promotionLimits = {
+    BRIEF_LENGTH: 300
+};
+export { promotionFields, promotionRoute, promotionLimits };

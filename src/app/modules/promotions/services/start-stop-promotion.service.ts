@@ -27,8 +27,8 @@ export class StartStopPromotionService {
     }
 
     stopPromotion(promotion: Promotion, callback: () => void) {
-        const confirmMsg = this.translateService.translateWithParams(MessageConstant.StopPromotionDescription, promotion.title);
-        const confirmTitle = this.translateService.translateWithParams(MessageConstant.StopPromotionTitle);
+        const confirmMsg = this.translateService.translate(MessageConstant.StopPromotionDescription, promotion.title);
+        const confirmTitle = this.translateService.translate(MessageConstant.StopPromotionTitle);
         this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
             if (result) {
                 const successMessage = this.translateService.translate(MessageConstant.StopSuccessMessage);

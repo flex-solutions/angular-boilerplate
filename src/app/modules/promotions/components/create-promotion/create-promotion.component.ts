@@ -15,6 +15,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
+import { promotionLimits } from '../../common.const';
 
 @Component({
   selector: 'app-create-promotion',
@@ -98,12 +99,13 @@ export class CreatePromotionComponent implements OnInit {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
         this.promotion.banner = convertStringToBase64(this.promotion.banner);
-      })
+      });
     }
   }
 
   onFinishAndStart() {
     // Create promotion
+    this.promotion.brief_content = this.ValidateRawContent();
     this._promotionService.create(this.promotion).subscribe((createdPromotion: Promotion) => {
       this.showNotification(MessageConstant.CreatePromotionSuccess);
       this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
@@ -117,6 +119,7 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onWizardFinish() {
+    this.promotion.brief_content = this.ValidateRawContent();
     if (this.isEditableMode) {
       // Update promotion
       this._promotionService.update(this.promotion).subscribe(() => {
@@ -208,5 +211,13 @@ export class CreatePromotionComponent implements OnInit {
   finishContentComponent() {
     this.isFinishedContentComponent = true;
     this.loadPromotion(this.promotionId);
+  }
+
+  private ValidateRawContent(): string {
+    if (this.rawContent.length > promotionLimits.BRIEF_LENGTH) {
+      return `${this.rawContent.substring(0, promotionLimits.BRIEF_LENGTH)}...`;
+    }
+
+    return this.rawContent;
   }
 }

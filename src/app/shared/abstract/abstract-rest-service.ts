@@ -1,15 +1,19 @@
 import { ApplicationConfigurationService } from '../services/application-configuration.service';
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpClient,
+  HttpHeaders
+} from '@angular/common/http';
 import { catchError, retry, finalize } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { SharedModule } from '../shared.module';
 import { LoaderService } from '../ui-common/loading-bar/loader.service';
-import { appVariables } from '../../app.constant';
 import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
 import { BrowserNotificationService } from '../services/browser-notification.service';
 import { ForbiddenHandler } from '../services/forbidden-handler.service';
+import { UTF8Encoding } from '../../utilities/ utf8-regex';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -62,6 +66,22 @@ export abstract class AbstractRestService {
       catchError(err => this.handleError(err)),
       finalize(() => this.hideLoader())
     );
+  }
+
+  filter<T>(relativeUrl: string, filter: any) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    const filterString = JSON.stringify(filter);
+    console.log(filterString);
+    const headers = new HttpHeaders().set('X-Filter', UTF8Encoding.utf8Encode(filterString));
+    return this.httpClient
+      .get<T>(url, {
+        headers: headers
+      })
+      .pipe(
+        catchError(err => this.handleError(err)),
+        finalize(() => this.hideLoader())
+      );
   }
 
   post<T>(relativeUrl, postBody: any) {
