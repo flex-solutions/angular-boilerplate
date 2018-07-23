@@ -1639,7 +1639,6 @@
         <source>Email is invalid</source>
         <target>Email is invalid</target>
       </trans-unit>
-
       <!--End Create Edit Customer Module-->
       <!--Start Customer Filter-->
       <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
