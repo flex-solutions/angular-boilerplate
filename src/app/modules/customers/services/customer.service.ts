@@ -31,17 +31,9 @@ export class CustomerService extends AbstractRestService {
     return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
-  getMemberType() {
-    return new Promise((resolve, reject) => {
-      sleep(500);
-      const data = CustomerMockData.memberTypeMock;
-      resolve(data);
-    });
-  }
-
   getMonthBirthday() {
     return new Promise((resolve, reject) => {
-      sleep(500);
+      sleep(200);
       const data = CustomerMockData.months;
       resolve(data);
     });

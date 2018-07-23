@@ -6,13 +6,15 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectorRef,
   QueryList,
   ViewChildren
 } from '@angular/core';
 import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
 import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { MemberTypeService } from '../../services/member-type.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { MemberType } from '../../../../shared/models/member-type.model';
 
 @Component({
   selector: 'app-customer-filter',
@@ -63,7 +65,8 @@ export class CustomerFilterComponent implements AfterViewInit {
   constructor(
     private readonly customerService: CustomerService,
     private readonly addressService: AddressService,
-    private ref: ChangeDetectorRef
+    private readonly memberTypeService: MemberTypeService,
+    private readonly translateService: TranslateService
   ) {
     this.customerFilter = new CustomerFilter();
   }
@@ -88,23 +91,27 @@ export class CustomerFilterComponent implements AfterViewInit {
     return [
       {
         id: Sex.Female,
-        text: Sex[Sex.Female]
+        text: this.translateService.translate('sex-woman')
       },
       {
         id: Sex.Male,
-        text: Sex[Sex.Male]
+        text: this.translateService.translate('sex-man')
       },
       {
         id: Sex.Other,
-        text: Sex[Sex.Other]
+        text: this.translateService.translate('sex-other')
       }
     ];
   }
 
   loadData() {
     const self = this;
-    this.customerService.getMemberType().then((data: any[]) => {
-      this.memberTypes = data;
+    this.memberTypeService.getMemberTypes().subscribe((data: MemberType[]) => {
+      this.memberTypes = data.map(m => {
+        m['id'] = m.code;
+        m['text'] = m.name;
+        return m;
+      });
     });
 
     this.customerService.getMonthBirthday().then((data: any[]) => {
