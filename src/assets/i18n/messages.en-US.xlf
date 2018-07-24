@@ -32,6 +32,18 @@
         <source>Save</source>
         <target>Save</target>
       </trans-unit>
+      <trans-unit id="common_label-sex-man" datatype="html">
+        <source>Man</source>
+        <target>Man</target>
+      </trans-unit>
+      <trans-unit id="common_label-sex-woman" datatype="html">
+        <source>Woman</source>
+        <target>Woman</target>
+      </trans-unit>
+      <trans-unit id="common_label-sex-other" datatype="html">
+        <source>Other</source>
+        <target>Other</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -1614,18 +1626,6 @@
       <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
         <source>Enter address</source>
         <target>Enter address</target>
-      </trans-unit>
-      <trans-unit id="sex-woman" datatype="html">
-        <source>Female</source>
-        <target>Female</target>
-      </trans-unit>
-      <trans-unit id="sex-man" datatype="html">
-        <source>Male</source>
-        <target>Male</target>
-      </trans-unit>
-      <trans-unit id="sex-other" datatype="html">
-        <source>Other</source>
-        <target>Other</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
         <source>A new member account has been created</source>

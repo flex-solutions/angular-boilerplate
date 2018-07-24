@@ -56,9 +56,9 @@ const customerFilterFields = {
 };
 
 const sexResourceKey = {
-  Male: 'sex-man',
-  Female: 'sex-woman',
-  Other: 'sex-other'
+  Male: 'common_label-sex-man',
+  Female: 'common_label-sex-woman',
+  Other: 'common_label-sex-other'
 };
 
 export {
