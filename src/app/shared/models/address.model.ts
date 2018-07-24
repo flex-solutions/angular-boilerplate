@@ -1,3 +1,5 @@
+import { isNullOrUndefined } from 'util';
+import { isNullOrEmptyOrUndefine } from '../../utilities/util';
 class District {
   _id: any;
   code: string;
@@ -36,6 +38,16 @@ class Address {
   _id: any;
   address: string;
   country: Country = null;
+
+  copyFrom(address: Address) {
+    this._id = address._id;
+    this.address = '';
+    if (!isNullOrEmptyOrUndefine(address.address)) {
+      this.address = address.address;
+    }
+    this.country = new Country();
+    this.country.copyFrom(address.country);
+  }
 }
 
 export { District, Province, Country, Address };

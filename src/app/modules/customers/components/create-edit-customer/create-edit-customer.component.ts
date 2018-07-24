@@ -134,20 +134,21 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         .get(this.customerId)
         .subscribe((value: CustomerModel) => {
           if (value) {
-            this.customer = value as CustomerModel;
-            if (this.customer.address.country && this.customer.address.country.provinces.length > 0) {
+            this.customer.clone(value as CustomerModel);
+            if (this.customer && this.customer.address &&
+              this.customer.address.country && this.customer.address.country.provinces.length > 0) {
               if (!isNullOrEmptyOrUndefine(this.customer.address.country.provinces[0].name)) {
                 // find selected id
-                const selectedCityId = this.customer.address.country.provinces[0]
-                  ._id;
+                const selectedCityCode = this.customer.address.country.provinces[0]
+                  .code;
                 this.selectedCity = this.cities.find(
-                  citi => citi._id === selectedCityId
+                  citi => citi.code === selectedCityCode
                 );
                 if (this.selectedCity && this.selectedCity.districts && this.selectedCity.districts.length > 0) {
-                  const selectedDistrictId = this.customer.address.country
-                    .provinces[0].districts[0]._id;
+                  const selectedDistrictCode = this.customer.address.country
+                    .provinces[0].districts[0].code;
                   this.selectedDistrict = this.selectedCity.districts.find(
-                    district => district._id === selectedDistrictId
+                    district => district.code === selectedDistrictCode
                   );
                 }
               }
@@ -252,6 +253,13 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       this.selectedCity.districts &&
       this.selectedCity.districts.length > 0
     ) {
+      // check selected district is not belog to new city
+      if (this.selectedDistrict) {
+        const mappingDistrict = this.selectedCity.districts.find((x) => x.code === this.selectedDistrict.code);
+        if (mappingDistrict) {
+          return;
+        }
+      }
       this.selectedDistrict = this.selectedCity.districts[0];
     }
   }

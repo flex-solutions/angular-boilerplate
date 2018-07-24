@@ -17,6 +17,21 @@ class CustomerModel {
   customerType = '';
   email: string;
   point: number;
+
+  clone(cus: CustomerModel ) {
+    this._id = cus._id;
+    this.memberId = cus.memberId;
+    this.name = cus.name;
+    this.birthday = cus.birthday;
+    this.sex = cus.sex;
+    this.phoneNumber = cus.phoneNumber;
+    this.customerType = cus.customerType;
+    this.email = cus.email;
+    this.point = cus.point;
+    if (cus.address) {
+      this.address.copyFrom(cus.address);
+    }
+  }
 }
 
 class CustomerFilter {
