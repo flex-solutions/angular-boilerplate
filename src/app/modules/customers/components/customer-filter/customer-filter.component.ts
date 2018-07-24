@@ -9,7 +9,11 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
+import {
+  CustomerFilter,
+  Sex,
+  sexResourceKey
+} from '../../../../shared/models/customer.model';
 import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 import { MemberTypeService } from '../../services/member-type.service';
@@ -91,15 +95,15 @@ export class CustomerFilterComponent implements AfterViewInit {
     return [
       {
         id: Sex.Female,
-        text: this.translateService.translate('sex-woman')
+        text: this.translateService.translate(sexResourceKey.Female)
       },
       {
         id: Sex.Male,
-        text: this.translateService.translate('sex-man')
+        text: this.translateService.translate(sexResourceKey.Male)
       },
       {
         id: Sex.Other,
-        text: this.translateService.translate('sex-other')
+        text: this.translateService.translate(sexResourceKey.Other)
       }
     ];
   }

@@ -55,9 +55,16 @@ const customerFilterFields = {
   DISTRICT: 'district'
 };
 
+const sexResourceKey = {
+  Male: 'sex-man',
+  Female: 'sex-woman',
+  Other: 'sex-other'
+}
+
 export {
   CustomerModel,
   Sex,
   CustomerFilter,
-  customerFilterFields
+  customerFilterFields,
+  sexResourceKey
 };
