@@ -59,7 +59,7 @@ const sexResourceKey = {
   Male: 'sex-man',
   Female: 'sex-woman',
   Other: 'sex-other'
-}
+};
 
 export {
   CustomerModel,
