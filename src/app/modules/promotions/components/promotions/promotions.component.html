@@ -26,7 +26,7 @@
         <td>
           <p class="a-clickable pull-left" (click)="navigateToDetail(item._id)">{{item.title}}</p>
         </td>
-        <td class="cut-text">{{extractContent(item.content)}} </td>
+        <td class="cut-text">{{item.brief_content}} </td>
         <td appPromotionStatus [status]="item.status"></td>
         <td>{{item.start_date | promotionDate:'dd/MM/y'}}</td>
         <td>{{item.expire_date | promotionDate:'dd/MM/y'}}</td>
