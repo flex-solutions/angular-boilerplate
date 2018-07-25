@@ -13,7 +13,8 @@ import { promotionRoute, promotionFields } from '../../common.const';
 import { StartStopPromotionService } from '../../services/start-stop-promotion.service';
 import {
   CriteriaBuilder,
-  FilterType
+  FilterType,
+  ValueType
 } from '../../../../utilities/search-filter';
 
 @Component({
@@ -59,7 +60,7 @@ export class PromotionsComponent implements OnInit {
     const query = this.buildPromotionFilter();
     console.log(JSON.stringify(query, null, 4));
     this.service
-      .getPromotions(pagination.itemsPerPage, pagination.page, query)
+      .getPromotions(pagination.page, pagination.itemsPerPage, query)
       .subscribe((response: Promotion[]) => {
         this.items = response;
       });
@@ -156,14 +157,21 @@ export class PromotionsComponent implements OnInit {
       .withFilter(
         FilterType.GreatThanEqual,
         promotionFields.START_DATE,
-        this.startDate
+        this.startDate,
+        ValueType.Date
       )
       .withFilter(
         FilterType.LessThanEqual,
         promotionFields.EXPIRE_DATE,
-        this.endDate
+        this.endDate,
+        ValueType.Date
       )
-      .withFilter(FilterType.In, promotionFields.STATUS, status)
+      .withFilter(
+        FilterType.In,
+        promotionFields.STATUS,
+        status,
+        ValueType.Array
+      )
       .withCriteria(() => {
         return CriteriaBuilder.makeCriteria()
           .startWrapperFilter(FilterType.Or)

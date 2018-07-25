@@ -26,7 +26,9 @@ export enum FilterType {
 
 export enum ValueType {
   String = 'string',
-  Number = 'number'
+  Number = 'number',
+  Array = 'array',
+  Date = 'date'
 }
 
 export class Criteria {
