@@ -58,7 +58,6 @@ export class PromotionsComponent implements OnInit {
   loadPromotions() {
     const pagination = this.currentFilterArgs.pagination;
     const query = this.buildPromotionFilter();
-    console.log(JSON.stringify(query, null, 4));
     this.service
       .getPromotions(pagination.page, pagination.itemsPerPage, query)
       .subscribe((response: Promotion[]) => {

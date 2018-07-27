@@ -8,6 +8,7 @@ import {
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 declare const $: any;
 declare const moment: any;
 
@@ -38,7 +39,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
       // set value
       if (this._date && this._date) {
         const date = moment(this._date);
-        this.picker.val(date.format('MM/DD/YYYY'));
+        this.picker.val(date.format('DD/MM/YYYY'));
       }
       this.dateChange.emit(this._date);
     }
@@ -59,7 +60,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     this.initialize();
 
     this.picker.on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY'));
+      $(this).val(picker.startDate.format('DD/MM/YYYY'));
     });
   }
 
@@ -138,5 +139,18 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
 
   onIconClicked() {
     this.picker.focus();
+  }
+
+  onInputChanged($event) {
+    if (!isNullOrEmptyOrUndefine($event) && $event.target) {
+      try {
+        const timeSpan = Date.parse($event.target.value);
+        if (isNaN(timeSpan)) {
+          this.date = null;
+        }
+      } catch {
+        this.date = null;
+      }
+    }
   }
 }
