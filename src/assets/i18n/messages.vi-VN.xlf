@@ -1529,18 +1529,6 @@
         <source>Point</source>
         <target>Điểm</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-sex-male" datatype="html">
-        <source>Male</source>
-        <target>Nam</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-female" datatype="html">
-        <source>Female</source>
-        <target>Nữ</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-other" datatype="html">
-        <source>Other</source>
-        <target>Khác</target>
-      </trans-unit>
 
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
