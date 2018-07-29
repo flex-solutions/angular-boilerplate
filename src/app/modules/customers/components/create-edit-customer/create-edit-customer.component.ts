@@ -116,8 +116,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   async loadInformation() {
     await this.loadMemberTypes();
     this.loadCustomer();
-    // Reset select default data
-    this.addressControl.reset();
   }
 
   private async loadMemberTypes() {

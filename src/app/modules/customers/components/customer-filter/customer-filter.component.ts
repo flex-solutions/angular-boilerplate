@@ -64,9 +64,6 @@ export class CustomerFilterComponent extends AbstractFilterComponent<
         m['text'] = m.name;
         return m;
       });
-      setTimeout(() => {
-        this.onResetFilter();
-      });
     });
 
     this.months = CustomerData.months;
