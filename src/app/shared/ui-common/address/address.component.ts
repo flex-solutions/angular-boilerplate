@@ -67,6 +67,7 @@ export class AddressComponent implements OnInit {
   }
 
   reset() {
+    this.districts = [];
     this.select2Components.forEach(i => i.reset());
   }
 }

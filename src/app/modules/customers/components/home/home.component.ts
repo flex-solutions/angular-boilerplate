@@ -12,7 +12,6 @@ import {
   DatagridComponent
 } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { CustomerCriteriaBuilder } from '../customer-filter/customer-filter.builder';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-customer-home',
@@ -31,7 +30,7 @@ export class CustomerHomeComponent implements OnInit {
 
   public count = (searchKey: string): Observable<number> => {
     return this.customerService.count(this.getQuery());
-  };
+  }
 
   createNewCustomer() {
     this.route.navigate([CustomerRouteNames.CREATE]);
@@ -81,5 +80,5 @@ export class CustomerHomeComponent implements OnInit {
 
   resetFilter = () => {
     this.loadData();
-  };
+  }
 }

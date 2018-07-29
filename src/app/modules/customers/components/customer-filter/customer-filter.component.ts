@@ -34,7 +34,7 @@ export class CustomerFilterComponent implements AfterViewInit {
   @ViewChildren(Select2Component)
   select2Components: QueryList<Select2Component>;
 
-  @ViewChild(AddressComponent) addressControl: AddressComponent;
+  @ViewChild('filterAddress') addressControl: AddressComponent;
 
   // Call when custom filter change
   @Output() customerFilterChange = new EventEmitter();

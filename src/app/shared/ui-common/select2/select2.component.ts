@@ -27,16 +27,14 @@ export class Select2Component implements AfterViewInit {
   set itemsSource(value) {
     this._itemsSource = value;
     this.itemsSourceChange.emit(this._itemsSource);
-    if (this._itemsSource && this._itemsSource.length > 0) {
-      this.host
-        .select2('destroy')
-        .empty()
-        .select2({
-          placeholder: this._placeholder,
-          data: this.formatDataSource(this._itemsSource)
-        });
-      this.reset();
-    }
+    this.host
+      .select2('destroy')
+      .empty()
+      .select2({
+        placeholder: this._placeholder,
+        data: this.formatDataSource(this._itemsSource)
+      });
+    this.reset();
   }
 
   get itemsSource() {
@@ -84,6 +82,9 @@ export class Select2Component implements AfterViewInit {
 
   // Because select2 using format {id: string; text: string}
   formatDataSource(arrayData: any[]) {
+    if (isNullOrEmptyOrUndefine(arrayData)) {
+      return [];
+    }
     const data = arrayData.map(obj => {
       if (!obj.hasOwnProperty('id')) {
         obj.id = obj._id || obj.key;

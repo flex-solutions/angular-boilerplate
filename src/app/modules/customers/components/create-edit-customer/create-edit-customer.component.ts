@@ -1,13 +1,11 @@
 import { isEmpty } from 'ramda';
 import { MemberTypeService } from '../../services/member-type.service';
 import { MemberType } from '../../../../shared/models/member-type.model';
-import { OnInit } from '@angular/core/src/core';
-import { AddressService } from '../../../../shared/ui-common/address/address.service';
 import { CustomerErrors } from '../../constants/customer.constants';
 import { CustomerService } from '../../services/customer.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -23,6 +21,7 @@ import {
   IValidationMessage
 } from '../../../../shared/validation/generic-validator';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
 
 const TITLE_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer';
@@ -38,13 +37,12 @@ const DESCRIPTION_EDIT_CUSTOMER =
   templateUrl: './create-edit-customer.component.html'
 })
 export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
-  implements OnInit {
+  implements OnInit, AfterViewInit {
   isEdit = false;
   customer: CustomerModel = new CustomerModel();
   memberTypes: MemberType[] = [];
-  selectedDistrict: District = new District();
-  selectedCity: Province = new Province();
-  cities: Province[] = [];
+  selectedDistrict: District;
+  selectedCity: Province;
   typeId = -1;
   customerId: string;
   cardTitle: string;
@@ -52,6 +50,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   femaleResource: string;
   maleResource: string;
   otherSexResource: string;
+  @ViewChild('customerAddress') addressControl: AddressComponent;
 
   // Define validation message
   protected validationMessages: {
@@ -65,9 +64,8 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   };
 
   constructor(
-    private formbuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    //private addressService: AddressService,
     private memberTypeService: MemberTypeService,
     translateService: TranslateService,
     private notificationService: NotificationService,
@@ -104,19 +102,14 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     this.loadInformation();
   }
 
-  async loadInformation() {
-    await this.loadAddress();
-    await this.loadMemberTypes();
-    this.loadCustomer();
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+    this.addressControl.reset();
   }
 
-  private async loadAddress() {
-    // const country = await this.addressService.getCountry();
-    // this.cities = country.provinces;
-    // if (this.cities && this.cities.length > 0) {
-    //   this.selectedCity = this.cities[0];
-    //   this.selectedDistrict = this.selectedCity.districts[0];
-    // }
+  async loadInformation() {
+    await this.loadMemberTypes();
+    this.loadCustomer();
   }
 
   private async loadMemberTypes() {
@@ -147,21 +140,13 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
                 )
               ) {
                 // find selected id
-                const selectedCityCode = this.customer.address.country
-                  .provinces[0].code;
-                this.selectedCity = this.cities.find(
-                  citi => citi.code === selectedCityCode
-                );
+                this.selectedCity = this.customer.address.country.provinces[0];
                 if (
                   this.selectedCity &&
                   this.selectedCity.districts &&
                   this.selectedCity.districts.length > 0
                 ) {
-                  const selectedDistrictCode = this.customer.address.country
-                    .provinces[0].districts[0].code;
-                  this.selectedDistrict = this.selectedCity.districts.find(
-                    district => district.code === selectedDistrictCode
-                  );
+                  this.selectedDistrict = this.customer.address.country.provinces[0].districts[0];
                 }
               }
             }
@@ -193,20 +178,12 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     return this.formGroup.get('address');
   }
 
-  get district() {
-    return this.formGroup.get('district');
-  }
-
-  get city() {
-    return this.formGroup.get('city');
-  }
-
   get email() {
     return this.formGroup.get('email');
   }
 
   protected onCreateForm() {
-    this.formGroup = this.formbuilder.group({
+    this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
       phone: [
         '+84',
@@ -257,26 +234,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     });
   }
 
-  onCityChange(event) {
-    this.selectedCity = event;
-    if (
-      this.selectedCity &&
-      this.selectedCity.districts &&
-      this.selectedCity.districts.length > 0
-    ) {
-      // check selected district is not belog to new city
-      if (this.selectedDistrict) {
-        const mappingDistrict = this.selectedCity.districts.find(
-          x => x.code === this.selectedDistrict.code
-        );
-        if (mappingDistrict) {
-          return;
-        }
-      }
-      this.selectedDistrict = this.selectedCity.districts[0];
-    }
-  }
-
   private prepareCustomer() {
     if (
       this.selectedCity != null &&
@@ -304,10 +261,12 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private resetSome() {
+    this.formGroup.reset();
     this.formGroup.get('name').reset();
     this.formGroup.get('phone').reset();
     this.formGroup.get('createAnother').reset();
     this.formGroup.get('address').reset();
     this.formGroup.get('email').reset();
+    this.addressControl.reset();
   }
 }

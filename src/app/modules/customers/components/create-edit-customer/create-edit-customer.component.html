@@ -52,20 +52,10 @@
                   placeholder="Enter address" [(ngModel)]="customer.address.address">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-7">
               <div class="form-group">
-                <label for="district" i18n="@@customer-create_edit_customer-label-district_field">District </label>
-                <select id="district" class="form-control" formControlName="district" [(ngModel)]="selectedDistrict">
-                  <option *ngFor="let district of selectedCity.districts" [ngValue]="district">{{district.name}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="city" i18n="@@customer-create_edit_customer-label-city_field">City/Province </label>
-                <select id="city" class="form-control" formControlName="city" [(ngModel)]="selectedCity" (ngModelChange)="onCityChange($event)">
-                  <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
-                </select>
+                <label for="city"> </label>
+                <app-address id="city" #customerAddress [(cityProvince)]="selectedCity" [(district)]="selectedDistrict"></app-address>
               </div>
             </div>
           </div>

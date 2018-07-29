@@ -26,7 +26,7 @@
             <br/>
             <div class="form-group">
               <label i18n="@@customers-filter-list-table-lbl-address">Address</label>
-              <app-address [(cityProvince)]="customerFilter.province" [(district)]="customerFilter.district"></app-address>
+              <app-address #filterAddress [(cityProvince)]="customerFilter.province" [(district)]="customerFilter.district"></app-address>
             </div>
           </div>
           <br/>
