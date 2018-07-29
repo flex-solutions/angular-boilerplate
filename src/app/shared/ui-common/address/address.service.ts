@@ -26,6 +26,9 @@ export class AddressService extends AbstractRestService {
 
   // Get the list of district with specific city province code
   async getDistricts(cityProvinceCode: string) {
+    if (isNullOrEmptyOrUndefine(cityProvinceCode)) {
+      return [];
+    }
     const selectedCountry = await this.ensureGetCountry();
     const selectedCityProvince = selectedCountry.provinces.find(
       p => p.code === cityProvinceCode

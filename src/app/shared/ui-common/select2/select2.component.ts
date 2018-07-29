@@ -45,6 +45,11 @@ export class Select2Component implements AfterViewInit {
   set selectedItem(val) {
     this._selectedItem = val;
     this.selectedItemChange.emit(this._selectedItem);
+
+    const temp = this.buildSelect2Data(this._selectedItem);
+    if (temp && temp.id && temp.text) {
+      this.host.val(temp.id).trigger('change');
+    }
   }
   get selectedItem() {
     return this._selectedItem;
@@ -86,15 +91,22 @@ export class Select2Component implements AfterViewInit {
       return [];
     }
     const data = arrayData.map(obj => {
-      if (!obj.hasOwnProperty('id')) {
-        obj.id = obj._id || obj.key;
-      }
-      if (!obj.hasOwnProperty('text')) {
-        obj.text = obj.name || obj.displayName;
-      }
-      return obj;
+      return this.buildSelect2Data(obj);
     });
     return data;
+  }
+
+  buildSelect2Data(obj) {
+    if (!obj) {
+      return obj;
+    }
+    if (!obj.hasOwnProperty('id')) {
+      obj.id = obj._id || obj.key;
+    }
+    if (!obj.hasOwnProperty('text')) {
+      obj.text = obj.name || obj.displayName;
+    }
+    return obj;
   }
 
   reset() {

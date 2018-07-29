@@ -10,6 +10,8 @@ import {
 import { Province, District } from '../../models/address.model';
 import { AddressService } from './address.service';
 import { Select2Component } from '../select2/select2.component';
+import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { R } from 'ramda';
 
 @Component({
   selector: 'app-address',
@@ -17,8 +19,8 @@ import { Select2Component } from '../select2/select2.component';
   styleUrls: ['./address.component.css']
 })
 export class AddressComponent implements OnInit {
-  private _district;
-  private _cityProvince;
+  private _district: District;
+  private _cityProvince: Province;
 
   // Get list select2 component
   @ViewChildren(Select2Component)
@@ -31,6 +33,9 @@ export class AddressComponent implements OnInit {
   set cityProvince(val) {
     this._cityProvince = val;
     this.cityProvinceChange.emit(this._cityProvince);
+    if (this._cityProvince && this._cityProvince.districts) {
+      this.onProvinceChange(this._cityProvince);
+    }
   }
 
   get cityProvince() {
@@ -60,10 +65,26 @@ export class AddressComponent implements OnInit {
 
   onProvinceChange($event) {
     if ($event) {
-      if ($event.districts) {
+      if (!this.isNullOrEmptyDistricts($event.districts)) {
         this.districts = $event.districts;
+      } else {
+        this.addressService.getDistricts($event.code).then(val => {
+          this.districts = val;
+        });
       }
     }
+  }
+
+  isNullOrEmptyDistricts(districts: District[]) {
+    if (isNullOrEmptyOrUndefine(districts)) {
+      return true;
+    }
+
+    if (!districts[0].code || !districts[0].name) {
+      return true;
+    }
+
+    return false;
   }
 
   reset() {

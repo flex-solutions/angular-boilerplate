@@ -24,10 +24,12 @@ class Province {
   }
 
   copyFrom(inCity: Province) {
-    this._id = inCity._id;
-    this.code = inCity.code;
-    this.name = inCity.name;
-    this.districts = inCity.districts;
+    if (inCity) {
+      this._id = inCity._id;
+      this.code = inCity.code;
+      this.name = inCity.name;
+      this.districts = inCity.districts;
+    }
   }
 }
 
@@ -38,10 +40,12 @@ class Country {
   provinces: Province[] = [];
 
   copyFrom(inCountry: Country) {
-    this._id = inCountry._id;
-    this.code = inCountry.code;
-    this.name = inCountry.name;
-    this.provinces = inCountry.provinces;
+    if (inCountry) {
+      this._id = inCountry._id;
+      this.code = inCountry.code;
+      this.name = inCountry.name;
+      this.provinces = inCountry.provinces;
+    }
   }
 }
 

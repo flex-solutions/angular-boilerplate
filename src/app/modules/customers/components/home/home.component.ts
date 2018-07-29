@@ -50,11 +50,8 @@ export class CustomerHomeComponent implements OnInit {
     this.loadData();
   }
 
-  private getQuery(isLogged: boolean = false) {
+  private getQuery() {
     const query = CustomerCriteriaBuilder.build(this.customerFilter);
-    if (isLogged) {
-      console.log(query, 4);
-    }
     return query;
   }
 
@@ -63,7 +60,7 @@ export class CustomerHomeComponent implements OnInit {
       .getCustomers(
         this.filter.pagination.page,
         this.filter.pagination.itemsPerPage,
-        this.getQuery(true)
+        this.getQuery()
       )
       .subscribe(res => {
         this.customers = res;

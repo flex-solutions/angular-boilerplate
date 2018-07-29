@@ -34,15 +34,13 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   set date(value: Date) {
-    if (value !== this._date) {
-      this._date = value;
-      // set value
-      if (this._date && this._date) {
-        const date = moment(this._date);
-        this.picker.val(date.format('DD/MM/YYYY'));
-      }
-      this.dateChange.emit(this._date);
+    this._date = value;
+    // set value
+    if (this._date && this._date) {
+      const date = moment(this._date);
+      this.picker.val(date.format('DD/MM/YYYY'));
     }
+    this.dateChange.emit(this._date);
   }
 
   constructor(private translateService: TranslateService) {

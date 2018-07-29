@@ -145,7 +145,6 @@ export class PromotionsComponent implements OnInit {
       });
 
     const result = builder.endWrapperFilter().build();
-    console.log(result, 2);
     return result;
   }
 
