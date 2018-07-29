@@ -11,7 +11,11 @@
         <div class="d-flex flex-row align-items-top">
           <i class="mdi mdi-trophy icon-md" style="font-size: 3.275rem"></i>
           <div class="ml-3">
-            <h5 class="">{{memberType.code}} - {{memberType.name}}</h5>
+            <div style="display: flex">
+              <h5 class="">{{memberType.code}} - {{memberType.name}}</h5>
+              <div *ngIf="memberType.isActive" class="badge badge-outline-success badge-pill status-badge" i18n="@@member-type-create-form-name-active">Active</div>
+              <div *ngIf="!memberType.isActive" class="badge badge-outline-danger badge-pill status-badge" i18n="@@member-type-inactive">Inactive</div>
+            </div>
             <div class="star-container">
               <p>{{memberType.point}}</p>
               <i class="mdi mdi-star text-snob"></i>

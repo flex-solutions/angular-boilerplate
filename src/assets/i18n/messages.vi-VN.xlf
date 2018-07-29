@@ -1496,7 +1496,7 @@
         <target>Tháng trước</target>
       </trans-unit>
       <!--END Date time picker-->
-      <!--Start Customer Module-->
+      <!--Start Members Module-->
       <trans-unit id="customers-list-tbl-title" datatype="html">
         <source>Members</source>
         <target>Danh sách hội viên</target>
@@ -1809,6 +1809,10 @@
       <trans-unit id="member-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
+      </trans-unit>
+      <trans-unit id="member-type-inactive" datatype="html">
+        <source>Inactive</source>
+        <target>Ngưng áp dụng</target>
       </trans-unit>
       <trans-unit id="member-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>

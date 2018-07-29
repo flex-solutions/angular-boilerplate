@@ -1,3 +1,4 @@
+import { BooleanStatusCtrlDirective } from './directives/ boolean-status-ctrl.directive';
 import { DateRangePickerComponent } from './datepicker/date-range-picker/date-range-picker.component';
 import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
 import { WizardComponent } from './wizard/wizard/wizard.component';
@@ -36,7 +37,8 @@ import { Select2Component } from './select2/select2.component';
     DatePickerComponent,
     DropDownCheckBoxesComponent,
     InputRangeComponent,
-    Select2Component
+    Select2Component,
+    BooleanStatusCtrlDirective
   ],
   declarations: [
     LoaderComponent,
@@ -50,7 +52,8 @@ import { Select2Component } from './select2/select2.component';
     DatePickerComponent,
     DropDownCheckBoxesComponent,
     InputRangeComponent,
-    Select2Component
+    Select2Component,
+    BooleanStatusCtrlDirective
   ],
   providers: [LoaderService]
 })

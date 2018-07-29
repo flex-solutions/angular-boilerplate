@@ -1819,6 +1819,10 @@
         <source>Active</source>
         <target>Active</target>
       </trans-unit>
+      <trans-unit id="member-type-inactive" datatype="html">
+        <source>Inactive</source>
+        <target>Inactive</target>
+      </trans-unit>
       <trans-unit id="member-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>
         <target>A new membership type has been created</target>
