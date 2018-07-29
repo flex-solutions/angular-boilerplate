@@ -1,4 +1,3 @@
-import { isNullOrUndefined } from 'util';
 import { isNullOrEmptyOrUndefine } from '../../utilities/util';
 class District {
   _id: any;
@@ -8,6 +7,15 @@ class District {
   constructor() {
     this.code = '';
     this.name = '';
+  }
+
+  copyFrom(inDistrict: District) {
+    if (isNullOrEmptyOrUndefine(inDistrict)) {
+      return;
+    }
+    this._id = inDistrict._id;
+    this.code = inDistrict.code;
+    this.name = inDistrict.name;
   }
 }
 

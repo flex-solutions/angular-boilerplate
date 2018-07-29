@@ -255,8 +255,12 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       city.copyFrom(this.selectedCity);
       this.customer.address.country.provinces.push(city);
       this.customer.address.country.provinces[0].districts = [];
+
+
+    const district = new District();
+    district.copyFrom(this.selectedDistrict);
       this.customer.address.country.provinces[0].districts.push(
-        this.selectedDistrict
+        district
       );
     }
   }
