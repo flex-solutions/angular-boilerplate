@@ -1,11 +1,12 @@
 import { PromotionFilter } from './promotion-filter.model';
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { AbstractFilterComponent } from './abstract-filter.component';
 import { SelectableModel } from '../../../../shared/models/selectable.model';
 import { StatusCheckedItem } from '../../interfaces/promotion';
 import { PromotionStatus } from '../../directives/promotion-status.directive';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MessageConstant } from '../../messages';
+import { DatePickerComponent } from '../../../../shared/ui-common/datepicker/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-promotion-filter',
@@ -17,15 +18,17 @@ export class PromotionFilterComponent extends AbstractFilterComponent<
 > {
   statusItems: SelectableModel<StatusCheckedItem>[];
   selectedStatus: StatusCheckedItem[];
+  @ViewChildren(DatePickerComponent) datePickerControls: QueryList<DatePickerComponent>;
 
   constructor(private readonly translateService: TranslateService) {
     super();
-    this.selectedStatus = [];
     this.buildStatusItemSource();
   }
 
   onResetFilter() {
     this.filter = new PromotionFilter();
+    this.datePickerControls.forEach(c => c.reset());
+    this.buildStatusItemSource();
   }
 
   onRunFilter() {
@@ -33,6 +36,7 @@ export class PromotionFilterComponent extends AbstractFilterComponent<
   }
 
   buildStatusItemSource() {
+    this.selectedStatus = [];
     this.statusItems = [
       {
         isSelected: true,

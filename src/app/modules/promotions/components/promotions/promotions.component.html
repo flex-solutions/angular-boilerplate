@@ -18,7 +18,7 @@
       <th i18n="@@list-promotions-btn-actions">Actions</th>
     </tr>
     <tbody>
-      <tr *ngFor="let item of items | promotionsFilter: dg.searchKey:getSelectedStatus():startDate:endDate">
+      <tr *ngFor="let item of items">
         <td>
           <p class="a-clickable pull-left" (click)="navigateToDetail(item._id)">{{item.title}}</p>
         </td>

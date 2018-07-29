@@ -5,3 +5,8 @@
   .select2-selection__placeholder {
   color: #fff;
 }
+
+.form-group,
+:host ::ng-deep .form-group {
+  margin: 7px;
+}

@@ -1,7 +1,10 @@
 import { PromotionService } from '../../services/promotion.service';
 import { Promotion } from '../../interfaces/promotion';
-import { Component, OnInit } from '@angular/core';
-import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  IFilterChangedEvent,
+  DatagridComponent
+} from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
 import { MessageConstant } from '../../messages';
 import { TranslateService } from '../../../../shared/services/translate.service';
@@ -25,7 +28,7 @@ export class PromotionsComponent implements OnInit {
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
   promotionFilter: PromotionFilter = new PromotionFilter();
-
+  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
   constructor(
     private service: PromotionService,
     private route: Router,
@@ -141,14 +144,24 @@ export class PromotionsComponent implements OnInit {
           .build();
       });
 
-    return builder.endWrapperFilter().build();
+    const result = builder.endWrapperFilter().build();
+    console.log(result, 2);
+    return result;
   }
 
   onRunFilterClicked() {
-    this.loadPromotions();
+    this.loadDataWithFilter();
   }
 
   resetFilter = () => {
-    this.loadPromotions();
+    this.loadDataWithFilter();
+  }
+
+  private loadDataWithFilter() {
+    this.count('').subscribe(total => {
+      this.dataGrid.totalItems = +total;
+      this.dataGrid.countPageEntry();
+      this.loadPromotions();
+    });
   }
 }

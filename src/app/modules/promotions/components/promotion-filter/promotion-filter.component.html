@@ -21,10 +21,7 @@
               <label i18n="@@list-promotions-th-content">Content</label>
               <input class="form-control form-control-lg" type="text" [(ngModel)]="filter.content" [ngModelOptions]="{standalone: true}">
             </div>
-          </div>
-          <br/>
-
-          <div class="row">
+            <br/>
             <div class="form-group">
               <label i18n="@@list-promotions-th-start-date">Start date</label>
               <app-date-picker class="startdatepicker" [(date)]="filter.startDate" style="margin: 0 5px;"></app-date-picker>
@@ -36,7 +33,7 @@
 
             <div class="form-group">
               <label i18n="@@list-promotions-th-status">Status</label>
-              <app-drop-down-check-boxes [itemsources]="statusItems" [(selectedItems)]="selectedStatus" style="margin: 0 5px;"></app-drop-down-check-boxes>
+              <app-drop-down-check-boxes [itemSources]="statusItems" [(selectedItems)]="selectedStatus" style="margin: 0 5px;"></app-drop-down-check-boxes>
             </div>
           </div>
           <br/>
