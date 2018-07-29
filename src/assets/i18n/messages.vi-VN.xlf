@@ -95,14 +95,13 @@
         <source>Promotion</source>
         <target>Khuyến mãi</target>
       </trans-unit>
-
-      <trans-unit id="layout-sidebar-anchor-crm-marketing" datatype="html">
-        <source>CRM - Marketing</source>
-        <target>CRM - Marketing</target>
+      <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
+        <source>Member Management</source>
+        <target>Quản Lý Hội Viên</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-crm-marketing-customer-management" datatype="html">
-        <source>Customer Management</source>
-        <target>Quản Lý Khách Hàng</target>
+      <trans-unit id="layout-sidebar-anchor-member-management-members" datatype="html">
+        <source>Members</source>
+        <target>Danh Sách Hội Viên</target>
       </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -1496,7 +1495,7 @@
         <target>Tháng trước</target>
       </trans-unit>
       <!--END Date time picker-->
-      <!--Start Customer Module-->
+      <!--Start Members Module-->
       <trans-unit id="customers-list-tbl-title" datatype="html">
         <source>Members</source>
         <target>Danh sách hội viên</target>
@@ -1745,16 +1744,12 @@
       </trans-unit>
       <!--END Start stop promotions-->
       <!--START member types-->
-      <trans-unit id="member-type-config-menu" datatype="html">
-        <source>Membership Configuration</source>
-        <target>Quản Lý Chương Trình Hội Viên</target>
-      </trans-unit>
       <trans-unit id="member-type-menu" datatype="html">
-        <source>Member Types</source>
+        <source>Membership Types</source>
         <target>Quản Lý Loại Hội Viên</target>
       </trans-unit>
       <trans-unit id="member-type-btn-new" datatype="html">
-        <source>New member type</source>
+        <source>New membership type</source>
         <target>Loại hội viên mới</target>
       </trans-unit>
       <trans-unit id="member-type-create-title" datatype="html">
@@ -1809,6 +1804,10 @@
       <trans-unit id="member-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
+      </trans-unit>
+      <trans-unit id="member-type-inactive" datatype="html">
+        <source>Inactive</source>
+        <target>Ngưng áp dụng</target>
       </trans-unit>
       <trans-unit id="member-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>
