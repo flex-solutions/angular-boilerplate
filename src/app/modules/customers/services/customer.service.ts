@@ -43,11 +43,11 @@ export class CustomerService extends AbstractRestService {
     return this.get(`${_id}`);
   }
 
-  create(member: CustomerModel) {
+  create(member: CustomerModel): Observable<Response> {
     return this.post('', member);
   }
 
-  update(member: CustomerModel) {
+  update(member: CustomerModel): Observable<Response> {
     return this.put('', member);
   }
 }
