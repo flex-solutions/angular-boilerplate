@@ -18,44 +18,49 @@ export enum FilterType {
   LessThan = '$lt',
   Equal = '$eq',
   And = '$and',
-  Or = '$or'
+  Or = '$or',
+  In = '$in',
+  GreatThanEqual = '$gte',
+  LessThanEqual = '$lte'
 }
 
 export enum ValueType {
   String = 'string',
-  Number = 'number'
+  Number = 'number',
+  Array = 'array',
+  Date = 'date'
 }
 
 export class Criteria {
-  filters: FilterSet[];
+  filter: FilterSet;
 
-  constructor() {
-    this.filters = [];
-  }
+  constructor() {}
 }
 
 interface ICriteriaBuilder {
   build(): Criteria;
-
-  setFilter(filter: FilterSet);
 }
 
-interface IWrapperCriteriaBuilder extends ICriteriaBuilder {
+interface IStartWrapperFilter {
   startWrapperFilter(
     logicalFilterType: FilterType.And | FilterType.Or
-  ): IWrapperCriteriaBuilder;
+  ): IWithFilterCriteria;
+}
 
-  endWrapperFilter(): IWrapperCriteriaBuilder;
+interface IWithFilterCriteria {
+  endWrapperFilter(): ICriteriaBuilder;
 
   withFilter(
     type: FilterType,
     name?: string,
     value?: any,
     valueType?: ValueType
-  ): IWrapperCriteriaBuilder;
-}
+  ): IWithFilterCriteria;
 
-export class CriteriaBuilder implements IWrapperCriteriaBuilder {
+  withCriteria(action: () => Criteria): IWithFilterCriteria;
+}
+export class CriteriaBuilder
+  implements ICriteriaBuilder, IStartWrapperFilter, IWithFilterCriteria {
   private _criteria: Criteria;
   private _wrapperFilter: FilterSet;
 
@@ -67,21 +72,16 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
     return new CriteriaBuilder();
   }
 
-  setFilter(filter: FilterSet) {
-    this._criteria.filters.push(filter);
-    return this;
-  }
-
   startWrapperFilter(
     logicalFilterType: FilterType.And | FilterType.Or
-  ): IWrapperCriteriaBuilder {
+  ): IWithFilterCriteria {
     this._wrapperFilter = { type: logicalFilterType, value: [] };
     return this;
   }
 
-  endWrapperFilter(): IWrapperCriteriaBuilder {
+  endWrapperFilter(): ICriteriaBuilder {
     if (!isNullOrEmptyOrUndefine(this._wrapperFilter.value)) {
-      this._criteria.filters.push(this._wrapperFilter);
+      this._criteria.filter = this._wrapperFilter;
     }
     return this;
   }
@@ -91,7 +91,7 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
     name: string,
     value: any,
     valueType: ValueType = ValueType.String
-  ): IWrapperCriteriaBuilder {
+  ): IWithFilterCriteria {
     if (!this._wrapperFilter) {
       throw new Error('setWrapperFilter must call the first');
     }
@@ -104,6 +104,19 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
       value: value,
       valueType: valueType
     };
+    this.constructFilter(filter);
+    return this;
+  }
+
+  withCriteria(action: () => Criteria) {
+    const criteria = action();
+    if (!isNullOrEmptyOrUndefine(criteria)) {
+      this.constructFilter(criteria.filter);
+    }
+    return this;
+  }
+
+  private constructFilter(filter) {
     if (!this._wrapperFilter.value) {
       const filterArr = [];
       filterArr.push(filter);
@@ -111,12 +124,10 @@ export class CriteriaBuilder implements IWrapperCriteriaBuilder {
     } else {
       (<FilterSet[]>this._wrapperFilter.value).push(filter);
     }
-
-    return this;
   }
 
   build() {
-    if (!isNullOrEmptyOrUndefine(this._criteria.filters)) {
+    if (!isNullOrEmptyOrUndefine(this._criteria.filter)) {
       return this._criteria;
     }
 

@@ -1537,18 +1537,6 @@
         <source>Point</source>
         <target>Point</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-sex-male" datatype="html">
-        <source>Male</source>
-        <target>Male</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-female" datatype="html">
-        <source>Female</source>
-        <target>Female</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-other" datatype="html">
-        <source>Other</source>
-        <target>Other</target>
-      </trans-unit>
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">

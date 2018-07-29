@@ -96,7 +96,7 @@
                           <tr *ngFor="let permission of (permissionModel.permission_details | permissionFilter: keyword) ;let index = index">
                             <td>{{permission.controller_name}}</td>
                             <td>
-                              <select class="js-example-basic-single select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true" name="datascope[{{index}}]"
+                              <select class="js-example-basic-single" style="width:100%" tabindex="-1" aria-hidden="true" name="datascope[{{index}}]"
                                 [(ngModel)]="permissionModel.permission_details[index].data_scope">
                                 <option value="0" selected="selected" i18n="@@permissiom-scheme-datascope-branch">Branch</option>
                                 <option value="1" i18n="@@permissiom-scheme-datascope-full">Full</option>
