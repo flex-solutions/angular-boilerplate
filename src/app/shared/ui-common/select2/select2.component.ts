@@ -34,7 +34,12 @@ export class Select2Component implements AfterViewInit {
         placeholder: this._placeholder,
         data: this.formatDataSource(this._itemsSource)
       });
-    this.reset();
+
+    if (this._selectedItem && this._selectedItem.text) {
+      this.onSelectedItemChange();
+    } else {
+      this.reset();
+    }
   }
 
   get itemsSource() {
@@ -46,10 +51,7 @@ export class Select2Component implements AfterViewInit {
     this._selectedItem = val;
     this.selectedItemChange.emit(this._selectedItem);
 
-    const temp = this.buildSelect2Data(this._selectedItem);
-    if (temp && temp.id && temp.text) {
-      this.host.val(temp.id).trigger('change');
-    }
+    this.onSelectedItemChange();
   }
   get selectedItem() {
     return this._selectedItem;
@@ -114,5 +116,12 @@ export class Select2Component implements AfterViewInit {
     setTimeout(() => {
       this.selectedItem = {};
     });
+  }
+
+  onSelectedItemChange() {
+    const temp = this.buildSelect2Data(this._selectedItem);
+    if (temp && temp.id && temp.text) {
+      this.host.val(temp.id).trigger('change');
+    }
   }
 }

@@ -1,9 +1,4 @@
-import {
-  Component,
-  QueryList,
-  ViewChildren,
-  ViewChild
-} from '@angular/core';
+import { Component, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import {
   CustomerFilter,
   Sex,
@@ -22,7 +17,9 @@ import { AbstractFilterComponent } from '../../../../shared/abstract/abstract-fi
   templateUrl: './customer-filter.component.html',
   styleUrls: ['./customer-filter.component.css']
 })
-export class CustomerFilterComponent extends AbstractFilterComponent<CustomerFilter> {
+export class CustomerFilterComponent extends AbstractFilterComponent<
+  CustomerFilter
+> {
   // Get list select2 component
   @ViewChildren(Select2Component)
   select2Components: QueryList<Select2Component>;
@@ -66,6 +63,9 @@ export class CustomerFilterComponent extends AbstractFilterComponent<CustomerFil
         m['id'] = m.code;
         m['text'] = m.name;
         return m;
+      });
+      setTimeout(() => {
+        this.onResetFilter();
       });
     });
 

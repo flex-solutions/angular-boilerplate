@@ -5,7 +5,8 @@ import {
   Output,
   EventEmitter,
   ViewChildren,
-  QueryList
+  QueryList,
+  ViewChild
 } from '@angular/core';
 import { Province, District } from '../../models/address.model';
 import { AddressService } from './address.service';
@@ -23,8 +24,8 @@ export class AddressComponent implements OnInit {
   private _cityProvince: Province;
 
   // Get list select2 component
-  @ViewChildren(Select2Component)
-  select2Components: QueryList<Select2Component>;
+  @ViewChild('districtSelect') districtSelectControl: Select2Component;
+  @ViewChild('provinceSelect') provinceSelectControl: Select2Component;
 
   @Output() districtChange = new EventEmitter();
   @Output() cityProvinceChange = new EventEmitter();
@@ -53,7 +54,16 @@ export class AddressComponent implements OnInit {
   }
 
   provinces: Province[] = [];
-  districts: District[] = [];
+
+  private _districts: District[] = [];
+  get districts() {
+    return this._districts;
+  }
+
+  set districts(val) {
+    this._districts = val;
+    this.districtSelectControl.reset();
+  }
 
   constructor(private readonly addressService: AddressService) {}
 
@@ -65,30 +75,15 @@ export class AddressComponent implements OnInit {
 
   onProvinceChange($event) {
     if ($event) {
-      if (!this.isNullOrEmptyDistricts($event.districts)) {
-        this.districts = $event.districts;
-      } else {
-        this.addressService.getDistricts($event.code).then(val => {
-          this.districts = val;
-        });
-      }
+      this.addressService.getDistricts($event.code).then(val => {
+        this.districts = val;
+      });
     }
-  }
-
-  isNullOrEmptyDistricts(districts: District[]) {
-    if (isNullOrEmptyOrUndefine(districts)) {
-      return true;
-    }
-
-    if (!districts[0].code || !districts[0].name) {
-      return true;
-    }
-
-    return false;
   }
 
   reset() {
     this.districts = [];
-    this.select2Components.forEach(i => i.reset());
+    this.districtSelectControl.reset();
+    this.provinceSelectControl.reset();
   }
 }
