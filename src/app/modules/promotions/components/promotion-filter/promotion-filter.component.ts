@@ -1,12 +1,12 @@
 import { PromotionFilter } from './promotion-filter.model';
 import { Component, ViewChildren, QueryList } from '@angular/core';
-import { AbstractFilterComponent } from './abstract-filter.component';
 import { SelectableModel } from '../../../../shared/models/selectable.model';
 import { StatusCheckedItem } from '../../interfaces/promotion';
 import { PromotionStatus } from '../../directives/promotion-status.directive';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MessageConstant } from '../../messages';
 import { DatePickerComponent } from '../../../../shared/ui-common/datepicker/date-picker/date-picker.component';
+import { AbstractFilterComponent } from '../../../../shared/abstract/abstract-filter.component';
 
 @Component({
   selector: 'app-promotion-filter',
