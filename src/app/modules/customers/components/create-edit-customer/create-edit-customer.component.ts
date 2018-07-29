@@ -209,15 +209,17 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected onSubmit() {
     if (!this.isEdit) {
       this.prepareCustomer();
-      this.customerService.create(this.customer).subscribe(() => {
-        // * Create news successful, display success notification
-        const msg = this.getMessage(
-          CustomerErrors.Create_Customer_Sucess,
-          this.customer.name
-        );
-        this.notificationService.showSuccess(msg);
-        this.refreshPageIfCreateAnother();
-      });
+      this.customerService
+        .create(this.customer)
+        .subscribe(() => {
+          // * Create news successful, display success notification
+          const msg = this.getMessage(
+            CustomerErrors.Create_Customer_Sucess,
+            this.customer.name
+          );
+          this.notificationService.showSuccess(msg);
+          this.refreshPageIfCreateAnother();
+        });
     }
   }
 
@@ -229,15 +231,17 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   saveCustomer() {
     this.prepareCustomer();
-    this.customerService.update(this.customer).subscribe(() => {
-      // * Create news successful, display success notification
-      const msg = this.getMessage(
-        CustomerErrors.Edit_Customer_Sucess,
-        this.customer.name
-      );
-      this.notificationService.showSuccess(msg);
-      this.refreshPageIfCreateAnother();
-    });
+    this.customerService
+      .update(this.customer)
+      .subscribe(() => {
+        // * Create news successful, display success notification
+        const msg = this.getMessage(
+          CustomerErrors.Edit_Customer_Sucess,
+          this.customer.name
+        );
+        this.notificationService.showSuccess(msg);
+        this.refreshPageIfCreateAnother();
+      });
   }
 
   private prepareCustomer() {
