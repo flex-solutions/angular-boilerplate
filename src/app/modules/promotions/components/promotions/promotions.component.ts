@@ -1,11 +1,9 @@
-import { SelectableModel } from './../../../../shared/models/selectable.model';
-import { PromotionService } from './../../services/promotion.service';
-import { Promotion, StatusCheckedItem } from './../../interfaces/promotion';
+import { PromotionService } from '../../services/promotion.service';
+import { Promotion } from '../../interfaces/promotion';
 import { Component, OnInit } from '@angular/core';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
 import { MessageConstant } from '../../messages';
-import { PromotionStatus } from '../../directives/promotion-status.directive';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
@@ -16,6 +14,7 @@ import {
   FilterType,
   ValueType
 } from '../../../../utilities/search-filter';
+import { PromotionFilter } from '../promotion-filter/promotion-filter.model';
 
 @Component({
   selector: 'app-promotions',
@@ -25,10 +24,7 @@ import {
 export class PromotionsComponent implements OnInit {
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
-  startDate: Date;
-  endDate: Date;
-  statusItems: SelectableModel<StatusCheckedItem>[];
-  selectedStatus: StatusCheckedItem[];
+  promotionFilter: PromotionFilter = new PromotionFilter();
 
   constructor(
     private service: PromotionService,
@@ -38,8 +34,6 @@ export class PromotionsComponent implements OnInit {
     private notificationService: NotificationService,
     private startStopPromotionHandler: StartStopPromotionService
   ) {
-    this.selectedStatus = [];
-    this.buildStatusItemSource();
     this.currentFilterArgs = { pagination: null, searchKey: null };
   }
 
@@ -83,13 +77,6 @@ export class PromotionsComponent implements OnInit {
     });
   }
 
-  getSelectedStatus() {
-    const selectedStatus = this.statusItems
-      .filter(i => i.isSelected)
-      .map(m => m.model.status);
-    return selectedStatus;
-  }
-
   deletePromotion(model: Promotion) {
     const confirmMsg = this.translateService.translate(
       MessageConstant.DeleteConfirmation,
@@ -113,41 +100,7 @@ export class PromotionsComponent implements OnInit {
       });
   }
 
-  buildStatusItemSource() {
-    this.statusItems = [
-      {
-        isSelected: true,
-        model: {
-          status: PromotionStatus.New,
-          displayName: this.translateService.translate(
-            MessageConstant.NewStatus
-          )
-        }
-      },
-      {
-        isSelected: true,
-        model: {
-          status: PromotionStatus.Active,
-          displayName: this.translateService.translate(
-            MessageConstant.ActiveStatus
-          )
-        }
-      },
-      {
-        isSelected: true,
-        model: {
-          status: PromotionStatus.Deactivated,
-          displayName: this.translateService.translate(
-            MessageConstant.DeactivedStatus
-          )
-        }
-      }
-    ];
-  }
-
   private buildPromotionFilter() {
-    const status = this.getSelectedStatus();
-
     const builder = CriteriaBuilder.makeCriteria().startWrapperFilter(
       FilterType.And
     );
@@ -156,19 +109,19 @@ export class PromotionsComponent implements OnInit {
       .withFilter(
         FilterType.GreatThanEqual,
         promotionFields.START_DATE,
-        this.startDate,
+        this.promotionFilter.startDate,
         ValueType.Date
       )
       .withFilter(
         FilterType.LessThanEqual,
         promotionFields.EXPIRE_DATE,
-        this.endDate,
+        this.promotionFilter.endDate,
         ValueType.Date
       )
       .withFilter(
         FilterType.In,
         promotionFields.STATUS,
-        status,
+        this.promotionFilter.status,
         ValueType.Array
       )
       .withCriteria(() => {
@@ -177,17 +130,25 @@ export class PromotionsComponent implements OnInit {
           .withFilter(
             FilterType.Regex,
             promotionFields.TITLE,
-            this.currentFilterArgs.searchKey
+            this.promotionFilter.title
           )
           .withFilter(
             FilterType.Regex,
             promotionFields.CONTENT,
-            this.currentFilterArgs.searchKey
+            this.promotionFilter.content
           )
           .endWrapperFilter()
           .build();
       });
 
     return builder.endWrapperFilter().build();
+  }
+
+  onRunFilterClicked() {
+    this.loadPromotions();
+  }
+
+  resetFilter = () => {
+    this.loadPromotions();
   }
 }

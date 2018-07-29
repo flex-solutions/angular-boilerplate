@@ -1,3 +1,5 @@
+<app-promotion-filter [(filter)]="promotionFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-promotion-filter>
+
 <app-card title="Promotions" i18n-title="@@list-promotions-title-promtions">
   <div class="command-region">
     <button type="button" class="btn btn-primary btn-fw pull-right" (click)="navigateToCreate()">
@@ -6,13 +8,7 @@
     </button>
   </div>
   <app-dg #dg searchLabel="Search by title, content" i18n-searchLabel="@@list-promotions-filter-placeholders" (pageChanged)="onPageChanged($event)"
-    [countFunction]="count" enableCustomFilter="true">
-    <app-date-picker class="dataTables_customfilter enddatepicker" title="Expire Date" i18n-title="@@list-promotions-th-expỉre-date"
-      [(date)]="endDate" style="margin: 0 5px;"></app-date-picker>
-    <app-date-picker class="dataTables_customfilter startdatepicker" title="Start Date" i18n-title="@@list-promotions-th-start-date"
-      [(date)]="startDate" style="margin: 0 5px;"></app-date-picker>
-    <app-drop-down-check-boxes class="dataTables_customfilter" title="Status" i18n-title="@@list-promotions-th-status" [itemsources]="statusItems"
-      [(selectedItems)]="selectedStatus" style="margin: 0 5px;"></app-drop-down-check-boxes>
+    [countFunction]="count" hideSearchInput="true">
     <tr>
       <th i18n="@@list-promotions-th-title" style="width: 15%">Title</th>
       <th i18n="@@list-promotions-th-content" style="width: 30%">Content</th>

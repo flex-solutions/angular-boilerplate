@@ -34,10 +34,21 @@ const DESCRIPTION_EDIT_CUSTOMER =
 @Component({
   moduleId: module.id,
   selector: 'app-create-edit-customer',
-  templateUrl: './create-edit-customer.component.html'
+  templateUrl: './create-edit-customer.component.html',
+  styles: [
+    `
+      :host
+        ::ng-deep
+        .select2-container--default
+        .select2-selection--single
+        .select2-selection__placeholder {
+        color: #fff;
+      }
+    `
+  ]
 })
 export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
-  implements OnInit, AfterViewInit {
+  implements OnInit {
   isEdit = false;
   customer: CustomerModel = new CustomerModel();
   memberTypes: MemberType[] = [];
@@ -100,11 +111,6 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
     this.onCreateForm();
     this.loadInformation();
-  }
-
-  ngAfterViewInit() {
-    super.ngAfterViewInit();
-    this.addressControl.reset();
   }
 
   async loadInformation() {

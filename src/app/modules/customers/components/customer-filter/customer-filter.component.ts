@@ -1,4 +1,3 @@
-import { CustomerService } from './../../services/customer.service';
 import {
   Component,
   AfterViewInit,
@@ -70,7 +69,6 @@ export class CustomerFilterComponent implements AfterViewInit {
   sexes: any[];
 
   constructor(
-    private readonly customerService: CustomerService,
     private readonly memberTypeService: MemberTypeService,
     private readonly translateService: TranslateService
   ) {
