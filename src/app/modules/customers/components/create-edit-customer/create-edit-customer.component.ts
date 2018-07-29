@@ -213,7 +213,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
       this.prepareCustomer();
       this.customerService
         .create(this.customer)
-        .subscribe((value: CustomerModel) => {
+        .subscribe(() => {
           // * Create news successful, display success notification
           const msg = this.getMessage(
             CustomerErrors.Create_Customer_Sucess,
@@ -235,7 +235,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     this.prepareCustomer();
     this.customerService
       .update(this.customer)
-      .subscribe((value: CustomerModel) => {
+      .subscribe(() => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
           CustomerErrors.Edit_Customer_Sucess,
