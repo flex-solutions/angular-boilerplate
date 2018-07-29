@@ -32,6 +32,10 @@
         <source>Save</source>
         <target>Lưu</target>
       </trans-unit>
+      <trans-unit id="common_title-filter-tool" datatype="html">
+        <source>Filter Tool</source>
+        <target>Công cụ lọc</target>
+      </trans-unit>
       <trans-unit id="common_label-sex-man" datatype="html">
         <source>Man</source>
         <target>Nam</target>
@@ -1537,9 +1541,10 @@
         <target>Tạo hội viên</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new customer account, customer can user phone number to login mobile app and this account will be also created on IPOS system</source>
-        <target>Tạo thủ công tài khoản hội viên, sau bước này, hội viên có thể dùng số điện thoại để đăng nhập vào ứng dụng di
-          động, và tài khoản này cũng được tạo trên hệ thống IPOS
+        <source>Manual creating a new customer account, customer can user phone number to login mobile app and this account will
+        be also created on IPOS system</source>
+        <target>Tạo thủ công tài khoản hội viên, sau bước này, hội viên có thể dùng số điện thoại để đăng nhập vào ứng dụng di động,
+          và tài khoản này cũng được tạo trên hệ thống IPOS
         </target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
@@ -1624,10 +1629,6 @@
       </trans-unit>
       <!--End Create Edit Customer Module-->
       <!--Start Customer Filter-->
-      <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
-        <source>Filter Tool</source>
-        <target>Tìm kiếm</target>
-      </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
@@ -1766,7 +1767,8 @@
       </trans-unit>
       <trans-unit id="member-type-update-sub-title" datatype="html">
         <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
-        <target>Sửa thông tin một loại hội viên, thông tin này cũng nên được sửa trên hệ thống IPOS để đảm bảo hệ thống hoạt động ổn định</target>
+        <target>Sửa thông tin một loại hội viên, thông tin này cũng nên được sửa trên hệ thống IPOS để đảm bảo hệ thống hoạt động
+          ổn định</target>
       </trans-unit>
       <trans-unit id="member-type-create-form-code-label" datatype="html">
         <source>Id</source>
@@ -1817,8 +1819,10 @@
         <target>Loại hội viên được cập nhật thành công</target>
       </trans-unit>
       <trans-unit id="member-type-delete-confirm" datatype="html">
-        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete type {{0}}?</source>
-        <target>Bạn có chắc muốn xoá loại hội viên {{0}}? Tất cả hội viên đang ở loại này sẽ được di chuyển qua loại có điểm thấp hơn liền kề.</target>
+        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
+        type {{0}}?</source>
+        <target>Bạn có chắc muốn xoá loại hội viên {{0}}? Tất cả hội viên đang ở loại này sẽ được di chuyển qua loại có điểm thấp
+          hơn liền kề.</target>
       </trans-unit>
       <trans-unit id="member-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>

@@ -32,6 +32,10 @@
         <source>Save</source>
         <target>Save</target>
       </trans-unit>
+      <trans-unit id="common_title-filter-tool" datatype="html">
+        <source>Filter tool</source>
+        <target>Filter tool</target>
+      </trans-unit>
       <trans-unit id="common_label-sex-man" datatype="html">
         <source>Man</source>
         <target>Man</target>
@@ -1544,8 +1548,10 @@
         <target>Create member</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will be also created on IPOS system</source>
-        <target>Manual creating a new member account, member can user phone number to login mobile app and this account will be also created on IPOS system</target>
+        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+        created on IPOS system</source>
+        <target>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+          created on IPOS system</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
         <source>Edit member</source>
@@ -1629,10 +1635,6 @@
       </trans-unit>
       <!--End Create Edit Customer Module-->
       <!--Start Customer Filter-->
-      <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
-        <source>Filter Tool</source>
-        <target>Filter Tool</target>
-      </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
