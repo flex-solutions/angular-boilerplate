@@ -6,6 +6,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
+import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
 declare const $: any;
 
 @Component({

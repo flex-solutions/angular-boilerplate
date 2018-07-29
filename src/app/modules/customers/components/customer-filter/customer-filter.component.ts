@@ -1,4 +1,3 @@
-import { AddressService } from './../../services/address.service';
 import { CustomerService } from './../../services/customer.service';
 import {
   Component,
@@ -7,7 +6,8 @@ import {
   Output,
   EventEmitter,
   QueryList,
-  ViewChildren
+  ViewChildren,
+  ViewChild
 } from '@angular/core';
 import {
   CustomerFilter,
@@ -15,10 +15,11 @@ import {
   sexResourceKey
 } from '../../../../shared/models/customer.model';
 import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 import { MemberTypeService } from '../../services/member-type.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MemberType } from '../../../../shared/models/member-type.model';
+import { CustomerData } from '../../services/customer-filter.data';
+import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
 
 @Component({
   selector: 'app-customer-filter',
@@ -32,6 +33,8 @@ export class CustomerFilterComponent implements AfterViewInit {
   // Get list select2 component
   @ViewChildren(Select2Component)
   select2Components: QueryList<Select2Component>;
+
+  @ViewChild(AddressComponent) addressControl: AddressComponent;
 
   // Call when custom filter change
   @Output() customerFilterChange = new EventEmitter();
@@ -68,7 +71,6 @@ export class CustomerFilterComponent implements AfterViewInit {
 
   constructor(
     private readonly customerService: CustomerService,
-    private readonly addressService: AddressService,
     private readonly memberTypeService: MemberTypeService,
     private readonly translateService: TranslateService
   ) {
@@ -79,16 +81,6 @@ export class CustomerFilterComponent implements AfterViewInit {
     setTimeout(() => {
       this.loadData();
     });
-  }
-
-  onProvinceChange($event) {
-    if ($event) {
-      if ($event.districts) {
-        this.districts = $event.districts.filter(
-          d => !isNullOrEmptyOrUndefine(d.name)
-        );
-      }
-    }
   }
 
   getSexes() {
@@ -109,7 +101,6 @@ export class CustomerFilterComponent implements AfterViewInit {
   }
 
   loadData() {
-    const self = this;
     this.memberTypeService.getMemberTypes().subscribe((data: MemberType[]) => {
       this.memberTypes = data.map(m => {
         m['id'] = m.code;
@@ -118,20 +109,8 @@ export class CustomerFilterComponent implements AfterViewInit {
       });
     });
 
-    this.customerService.getMonthBirthday().then((data: any[]) => {
-      self.months = data;
-    });
+    this.months = CustomerData.months;
 
-    this.addressService.getCountry().then(country => {
-      self.provinces = country.provinces.filter(
-        p => !isNullOrEmptyOrUndefine(p.name)
-      );
-      if (this.provinces && this.provinces.length > 0) {
-        self.districts = this.provinces[0].districts.filter(
-          d => !isNullOrEmptyOrUndefine(d.name)
-        );
-      }
-    });
     this.sexes = this.getSexes();
   }
 
@@ -142,6 +121,7 @@ export class CustomerFilterComponent implements AfterViewInit {
   resetFilter() {
     this.customerFilter = new CustomerFilter();
     this.select2Components.forEach(i => i.reset());
+    this.addressControl.reset();
     this.resetFunction();
   }
 }

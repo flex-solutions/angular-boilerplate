@@ -4,6 +4,11 @@ class District {
   _id: any;
   code: string;
   name: string;
+
+  constructor() {
+    this.code = '';
+    this.name = '';
+  }
 }
 
 class Province {
@@ -11,6 +16,12 @@ class Province {
   code: string;
   name: string;
   districts: District[] = [];
+
+  constructor() {
+    this.code = '';
+    this.name = '';
+    this.districts = [];
+  }
 
   copyFrom(inCity: Province) {
     this._id = inCity._id;

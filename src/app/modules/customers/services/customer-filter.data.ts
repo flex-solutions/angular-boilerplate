@@ -1,4 +1,4 @@
-export class CustomerMockData {
+export class CustomerData {
   static months = [
     {
       id: 1,

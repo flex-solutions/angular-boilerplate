@@ -1,5 +1,5 @@
-import { CustomerRouteNames } from './../../constants/customer.constants';
-import { CustomerService } from './../../services/customer.service';
+import { CustomerRouteNames } from '../../constants/customer.constants';
+import { CustomerService } from '../../services/customer.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class CustomerHomeComponent implements OnInit {
 
   public count = (searchKey: string): Observable<number> => {
     return this.customerService.count(this.getQuery());
-  }
+  };
 
   createNewCustomer() {
     this.route.navigate([CustomerRouteNames.CREATE]);
@@ -51,8 +51,11 @@ export class CustomerHomeComponent implements OnInit {
     this.loadData();
   }
 
-  private getQuery() {
+  private getQuery(isLogged: boolean = false) {
     const query = CustomerCriteriaBuilder.build(this.customerFilter);
+    if (isLogged) {
+      console.log(query, 4);
+    }
     return query;
   }
 
@@ -61,7 +64,7 @@ export class CustomerHomeComponent implements OnInit {
       .getCustomers(
         this.filter.pagination.page,
         this.filter.pagination.itemsPerPage,
-        this.getQuery()
+        this.getQuery(true)
       )
       .subscribe(res => {
         this.customers = res;
@@ -78,5 +81,5 @@ export class CustomerHomeComponent implements OnInit {
 
   resetFilter = () => {
     this.loadData();
-  }
+  };
 }

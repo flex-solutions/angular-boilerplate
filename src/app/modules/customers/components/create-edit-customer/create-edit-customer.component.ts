@@ -1,8 +1,8 @@
 import { isEmpty } from 'ramda';
-import { MemberTypeService } from './../../services/member-type.service';
-import { MemberType } from './../../../../shared/models/member-type.model';
+import { MemberTypeService } from '../../services/member-type.service';
+import { MemberType } from '../../../../shared/models/member-type.model';
 import { OnInit } from '@angular/core/src/core';
-import { AddressService } from '../../services/address.service';
+import { AddressService } from '../../../../shared/ui-common/address/address.service';
 import { CustomerErrors } from '../../constants/customer.constants';
 import { CustomerService } from '../../services/customer.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
@@ -11,9 +11,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {
-  CustomerModel
-} from '../../../../shared/models/customer.model';
+import { CustomerModel } from '../../../../shared/models/customer.model';
 import {
   Province,
   District,
@@ -30,8 +28,7 @@ const TITLE_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer';
 const DESCRIPTION_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer_description';
-const TITLE_EDIT_CUSTOMER =
-  'customer-create_edit_customer-h4-edit_customer';
+const TITLE_EDIT_CUSTOMER = 'customer-create_edit_customer-h4-edit_customer';
 const DESCRIPTION_EDIT_CUSTOMER =
   'customer-create_edit_customer-h4-edit_customer_description';
 
@@ -40,7 +37,8 @@ const DESCRIPTION_EDIT_CUSTOMER =
   selector: 'app-create-edit-customer',
   templateUrl: './create-edit-customer.component.html'
 })
-export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent implements OnInit {
+export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
+  implements OnInit {
   isEdit = false;
   customer: CustomerModel = new CustomerModel();
   memberTypes: MemberType[] = [];
@@ -59,22 +57,22 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected validationMessages: {
     [key: string]: { [key: string]: IValidationMessage };
   } = {
-      email: {
-        pattern: {
-          message: CustomerErrors.EmailInvalid
-        }
+    email: {
+      pattern: {
+        message: CustomerErrors.EmailInvalid
       }
-    };
+    }
+  };
 
   constructor(
     private formbuilder: FormBuilder,
     private customerService: CustomerService,
-    private addressService: AddressService,
+    //private addressService: AddressService,
     private memberTypeService: MemberTypeService,
     translateService: TranslateService,
     private notificationService: NotificationService,
     private activeRoute: ActivatedRoute,
-    private location: Location,
+    private location: Location
   ) {
     super(translateService);
   }
@@ -113,16 +111,18 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private async loadAddress() {
-    const country = await this.addressService.getCountry();
-    this.cities = country.provinces;
-    if (this.cities && this.cities.length > 0) {
-      this.selectedCity = this.cities[0];
-      this.selectedDistrict = this.selectedCity.districts[0];
-    }
+    // const country = await this.addressService.getCountry();
+    // this.cities = country.provinces;
+    // if (this.cities && this.cities.length > 0) {
+    //   this.selectedCity = this.cities[0];
+    //   this.selectedDistrict = this.selectedCity.districts[0];
+    // }
   }
 
   private async loadMemberTypes() {
-    this.memberTypes = await this.memberTypeService.getMemberTypes().toPromise();
+    this.memberTypes = await this.memberTypeService
+      .getMemberTypes()
+      .toPromise();
     if (!this.isEdit && !isEmpty(this.memberTypes)) {
       this.customer.customerType = this.memberTypes[0]._id;
     }
@@ -135,16 +135,28 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
         .subscribe((value: CustomerModel) => {
           if (value) {
             this.customer.clone(value as CustomerModel);
-            if (this.customer && this.customer.address &&
-              this.customer.address.country && this.customer.address.country.provinces.length > 0) {
-              if (!isNullOrEmptyOrUndefine(this.customer.address.country.provinces[0].name)) {
+            if (
+              this.customer &&
+              this.customer.address &&
+              this.customer.address.country &&
+              this.customer.address.country.provinces.length > 0
+            ) {
+              if (
+                !isNullOrEmptyOrUndefine(
+                  this.customer.address.country.provinces[0].name
+                )
+              ) {
                 // find selected id
-                const selectedCityCode = this.customer.address.country.provinces[0]
-                  .code;
+                const selectedCityCode = this.customer.address.country
+                  .provinces[0].code;
                 this.selectedCity = this.cities.find(
                   citi => citi.code === selectedCityCode
                 );
-                if (this.selectedCity && this.selectedCity.districts && this.selectedCity.districts.length > 0) {
+                if (
+                  this.selectedCity &&
+                  this.selectedCity.districts &&
+                  this.selectedCity.districts.length > 0
+                ) {
                   const selectedDistrictCode = this.customer.address.country
                     .provinces[0].districts[0].code;
                   this.selectedDistrict = this.selectedCity.districts.find(
@@ -196,7 +208,10 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected onCreateForm() {
     this.formGroup = this.formbuilder.group({
       name: ['', [Validators.required]],
-      phone: ['+84', [Validators.required, Validators.pattern('\\+84[0-9]{9,10}')]],
+      phone: [
+        '+84',
+        [Validators.required, Validators.pattern('\\+84[0-9]{9,10}')]
+      ],
       birthday: ['', []],
       customerType: ['', []],
       sex: [this.customer.sex, []],
@@ -211,21 +226,19 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   protected onSubmit() {
     if (!this.isEdit) {
       this.prepareCustomer();
-      this.customerService
-        .create(this.customer)
-        .subscribe((value: CustomerModel) => {
-          // * Create news successful, display success notification
-          const msg = this.getMessage(
-            CustomerErrors.Create_Customer_Sucess,
-            this.customer.name
-          );
-          this.notificationService.showSuccess(msg);
-          this.refreshPageIfCreateAnother();
-        });
+      this.customerService.create(this.customer).subscribe(() => {
+        // * Create news successful, display success notification
+        const msg = this.getMessage(
+          CustomerErrors.Create_Customer_Sucess,
+          this.customer.name
+        );
+        this.notificationService.showSuccess(msg);
+        this.refreshPageIfCreateAnother();
+      });
     }
   }
 
-  protected onValidate() { }
+  protected onValidate() {}
 
   protected onCancel() {
     this.location.back();
@@ -233,17 +246,15 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   saveCustomer() {
     this.prepareCustomer();
-    this.customerService
-      .update(this.customer)
-      .subscribe((value: CustomerModel) => {
-        // * Create news successful, display success notification
-        const msg = this.getMessage(
-          CustomerErrors.Edit_Customer_Sucess,
-          this.customer.name
-        );
-        this.notificationService.showSuccess(msg);
-        this.refreshPageIfCreateAnother();
-      });
+    this.customerService.update(this.customer).subscribe(() => {
+      // * Create news successful, display success notification
+      const msg = this.getMessage(
+        CustomerErrors.Edit_Customer_Sucess,
+        this.customer.name
+      );
+      this.notificationService.showSuccess(msg);
+      this.refreshPageIfCreateAnother();
+    });
   }
 
   onCityChange(event) {
@@ -255,7 +266,9 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
     ) {
       // check selected district is not belog to new city
       if (this.selectedDistrict) {
-        const mappingDistrict = this.selectedCity.districts.find((x) => x.code === this.selectedDistrict.code);
+        const mappingDistrict = this.selectedCity.districts.find(
+          x => x.code === this.selectedDistrict.code
+        );
         if (mappingDistrict) {
           return;
         }
@@ -265,14 +278,19 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
   }
 
   private prepareCustomer() {
-    if (this.selectedCity != null && !isNullOrEmptyOrUndefine(this.selectedCity.name)) {
+    if (
+      this.selectedCity != null &&
+      !isNullOrEmptyOrUndefine(this.selectedCity.name)
+    ) {
       this.customer.address.country = new Country();
       this.customer.address.country.provinces = [];
       const city = new Province();
       city.copyFrom(this.selectedCity);
       this.customer.address.country.provinces.push(city);
       this.customer.address.country.provinces[0].districts = [];
-      this.customer.address.country.provinces[0].districts.push(this.selectedDistrict);
+      this.customer.address.country.provinces[0].districts.push(
+        this.selectedDistrict
+      );
     }
   }
 
