@@ -1,5 +1,5 @@
-import { CustomerRouteNames } from './../../constants/customer.constants';
-import { CustomerService } from './../../services/customer.service';
+import { CustomerRouteNames } from '../../constants/customer.constants';
+import { CustomerService } from '../../services/customer.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,7 +12,6 @@ import {
   DatagridComponent
 } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { CustomerCriteriaBuilder } from '../customer-filter/customer-filter.builder';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-customer-home',

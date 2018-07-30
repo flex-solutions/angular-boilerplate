@@ -53,9 +53,8 @@ export class CustomerCriteriaBuilder {
         FilterType.Regex,
         customerFilterFields.DISTRICT,
         customerFilter[customerFilterFields.DISTRICT].name
-      )
-      .endWrapperFilter();
+      );
 
-    return builder.build();
+    return builder.endWrapperFilter().build();
   }
 }

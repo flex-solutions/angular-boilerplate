@@ -49,3 +49,9 @@
     margin-top: 35px;
     margin-right: -3px;
 }
+
+.status-badge {
+    margin-bottom: 9px;
+    margin-left: 10px;
+    margin-top: 2px;
+}

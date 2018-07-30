@@ -51,7 +51,6 @@ export class NewsDetailComponent implements OnInit {
         if (news) {
           this.newsModel = news;
           this.base64Image = convertStringToBase64(this.newsModel.banner);
-          console.log(news);
         }
       });
     }

@@ -135,7 +135,6 @@ export class DatagridComponent implements OnInit {
   countAndRasePageChangedForTheFirstPage() {
     if (this.countFunction) {
       this.countFunction(this.searchKey).subscribe(result => {
-        console.log(result);
         this.totalItems = result;
         this.raisePageChangedEvent();
       });

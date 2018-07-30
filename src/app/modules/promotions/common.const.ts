@@ -5,6 +5,8 @@ const promotionFields = {
     CONTENT: 'content',
     STATUS: 'status',
     VIEWCOUNT: 'viewCount',
+    START_DATE: 'start_date',
+    EXPIRE_DATE: 'expire_date',
 };
 
 const promotionRoute = {
@@ -16,4 +18,5 @@ const promotionRoute = {
 const promotionLimits = {
     BRIEF_LENGTH: 300
 };
+
 export { promotionFields, promotionRoute, promotionLimits };

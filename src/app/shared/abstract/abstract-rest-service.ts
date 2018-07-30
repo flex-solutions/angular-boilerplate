@@ -72,7 +72,6 @@ export abstract class AbstractRestService {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
     const filterString = JSON.stringify(filter);
-    console.log(filterString);
     const headers = new HttpHeaders().set('X-Filter', UTF8Encoding.utf8Encode(filterString));
     return this.httpClient
       .get<T>(url, {

@@ -14,6 +14,7 @@
             "outputPath": "dist/cms-en",
             "aot": true,
             "i18nFile": "src/assets/i18n/messages.en-US.xlf",
+            "i18nMissingTranslation": "error",
             "i18nLocale": "en",
             "i18nFormat": "xlf",
             "index": "src/index.html",
@@ -21,7 +22,12 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.css", "src/customStyles.css", "node_modules/dropify/dist/css/dropify.min.css", "src/assets/js/daterangepicker/daterangepicker.css"],
+            "styles": [
+              "src/styles.css",
+              "src/customStyles.css",
+              "node_modules/dropify/dist/css/dropify.min.css",
+              "src/assets/js/daterangepicker/daterangepicker.css"
+            ],
             "scripts": [
               "src/assets/js/jquery.min.js",
               "node_modules/toastr/build/toastr.min.js",
@@ -93,6 +99,20 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "vi": {
+              "aot": true,
+              "outputPath": "dist/snobs-vi/",
+              "i18nFile": "src/assets/i18n/messages.vi-VN.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "vi"
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/snobs-en/",
+              "i18nFile": "src/assets/i18n/messages.en-US.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en"
             }
           }
         },
@@ -104,6 +124,12 @@
           "configurations": {
             "production": {
               "browserTarget": "snobrs-cms:build:production"
+            },
+            "vi": {
+              "browserTarget": "snobrs-cms:build:vi"
+            },
+            "en": {
+              "browserTarget": "snobrs-cms:build:en"
             }
           }
         },
