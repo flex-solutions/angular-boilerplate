@@ -2,8 +2,6 @@ import { Observable, from } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { CustomerModel } from '../../../shared/models/customer.model';
-import { sleep } from '../../../utilities/util';
-import { CustomerMockData } from './customer-filter.data';
 
 @Injectable()
 export class CustomerService extends AbstractRestService {
@@ -31,31 +29,15 @@ export class CustomerService extends AbstractRestService {
     return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
-  getMemberType() {
-    return new Promise((resolve, reject) => {
-      sleep(500);
-      const data = CustomerMockData.memberTypeMock;
-      resolve(data);
-    });
-  }
-
-  getMonthBirthday() {
-    return new Promise((resolve, reject) => {
-      sleep(500);
-      const data = CustomerMockData.months;
-      resolve(data);
-    });
-  }
-
   public getById(_id: string): Observable<CustomerModel> {
     return this.get(`${_id}`);
   }
 
-  create(news: CustomerModel) {
-    return this.post('', news);
+  create(member: CustomerModel): Observable<Response> {
+    return this.post('', member);
   }
 
-  update(news: CustomerModel) {
-    return this.put('', news);
+  update(member: CustomerModel): Observable<Response> {
+    return this.put('', member);
   }
 }
