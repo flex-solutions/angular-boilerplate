@@ -15,6 +15,7 @@ const ModuleRoute = {
     NEWS: 'news',
     PROMOTION: 'promotions',
     CUSTOMER: 'customers',
+    MEMBER_TYPE: 'member-type',
     VOUCHER : 'vouchers'
 };
 

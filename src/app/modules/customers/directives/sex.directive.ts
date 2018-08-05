@@ -1,6 +1,6 @@
 import { TranslateService } from './../../../shared/services/translate.service';
 import { Input, Directive, OnChanges, AfterViewInit, ElementRef } from '@angular/core';
-import { Sex } from '../../../shared/models/customer.model';
+import { Sex, sexResourceKey } from '../../../shared/models/customer.model';
 
 declare let $: any;
 
@@ -17,9 +17,9 @@ export class SexDirective implements OnChanges, AfterViewInit {
         private translateService: TranslateService) {
 
         this.host = el.nativeElement;
-        this.maleResource = translateService.translate('customers-tbl-sex-male');
-        this.femaleResource = translateService.translate('customers-tbl-sex-female');
-        this.otherSexResource = translateService.translate('customers-tbl-sex-other');
+        this.maleResource = translateService.translate(sexResourceKey.Male);
+        this.femaleResource = translateService.translate(sexResourceKey.Female);
+        this.otherSexResource = translateService.translate(sexResourceKey.Other);
     }
 
     ngOnChanges() {

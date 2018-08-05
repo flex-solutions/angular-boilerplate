@@ -33,7 +33,7 @@ export class StartPromotionComponent extends DialogComponent implements OnInit {
     Object.assign(selectPromotion, this.callerData);
     this.promotion = (selectPromotion as Promotion);
     // Build description
-    this.description = this.translateService.translateWithParams('promotions-start-promotion-h5-start_description',
+    this.description = this.translateService.translate('promotions-start-promotion-h5-start_description',
       this.promotion.title);
   }
 

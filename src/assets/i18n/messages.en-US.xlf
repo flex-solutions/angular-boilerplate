@@ -8,6 +8,46 @@
         <source>Actions</source>
         <target>Actions</target>
       </trans-unit>
+      <trans-unit id="common-action-edit" datatype="html">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="common-action-delete" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="common-action-create-another" datatype="html">
+        <source>Create another</source>
+        <target>Create another</target>
+      </trans-unit>
+      <trans-unit id="common_button-submit" datatype="html">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="common_button-cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="common_button-save" datatype="html">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="common_title-filter-tool" datatype="html">
+        <source>Filter tool</source>
+        <target>Filter tool</target>
+      </trans-unit>
+      <trans-unit id="common_label-sex-man" datatype="html">
+        <source>Man</source>
+        <target>Man</target>
+      </trans-unit>
+      <trans-unit id="common_label-sex-woman" datatype="html">
+        <source>Woman</source>
+        <target>Woman</target>
+      </trans-unit>
+      <trans-unit id="common_label-sex-other" datatype="html">
+        <source>Other</source>
+        <target>Other</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -57,13 +97,13 @@
         <target>Promotion</target>
       </trans-unit>
 
-      <trans-unit id="layout-sidebar-anchor-crm-marketing" datatype="html">
-        <source>CRM - Marketing</source>
-        <target>CRM - Marketing</target>
+      <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
+        <source>Member Management</source>
+        <target>Member Management</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-crm-marketing-customer-management" datatype="html">
-        <source>Customer Management</source>
-        <target>Customer Management</target>
+      <trans-unit id="layout-sidebar-anchor-member-management-members" datatype="html">
+        <source>Members</source>
+        <target>Members</target>
       </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -473,18 +513,6 @@
         <target>Delete user {{0}} successfully</target>
       </trans-unit>
       <!--End Delete user-->
-
-      <!-- Global -->
-      <trans-unit id="common_button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
-
-      <trans-unit id="common_button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Cancel</target>
-      </trans-unit>
-
       <!-- User Group -->
       <trans-unit id="user_groups-create_user_group-create_new_user_group_title" datatype="html">
         <source>Create User Group</source>
@@ -844,7 +872,7 @@
       <trans-unit id="permission_scheme-permission_schemes-button-edit_permission" datatype="html">
         <source>Edit</source>
         <target>Edit</target>
-      </trans-unit> 
+      </trans-unit>
       <trans-unit id="permission_scheme-list-delete" datatype="html">
         <source>Delete permission scheme</source>
         <target>Delete permission scheme</target>
@@ -1478,12 +1506,12 @@
       <!--END Date time picker-->
       <!--Start Customer Module-->
       <trans-unit id="customers-list-tbl-title" datatype="html">
-        <source>Customers</source>
-        <target>Customers</target>
+        <source>Members</source>
+        <target>Members</target>
       </trans-unit>
       <trans-unit id="customers-tbl-btn-create" datatype="html">
-        <source>New customer</source>
-        <target>New customer</target>
+        <source>New member</source>
+        <target>New member</target>
       </trans-unit>
       <trans-unit id="customers-tbl-name" datatype="html">
         <source>Name</source>
@@ -1509,63 +1537,49 @@
         <source>Address</source>
         <target>Address</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-customer-type" datatype="html">
-        <source>Customer type</source>
-        <target>Customer type</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-male" datatype="html">
-        <source>Male</source>
-        <target>Male</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-female" datatype="html">
-        <source>Female</source>
-        <target>Female</target>
-      </trans-unit>
-      <trans-unit id="customers-tbl-sex-other" datatype="html">
-        <source>Other</source>
-        <target>Other</target>
-      </trans-unit>
-      <trans-unit id="customers-list-tbl-actions-edit" datatype="html">
-        <source>Edit</source>
-        <target>Edit</target>
+      <trans-unit id="customers-tbl-customer-point" datatype="html">
+        <source>Point</source>
+        <target>Point</target>
       </trans-unit>
       <!--End Customer Module-->
       <!--Start Create Edit Customer Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
-        <source>Create Customer</source>
-        <target>Create Customer</target>
+        <source>Create member</source>
+        <target>Create member</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new customer account, customer can user phone number to login mobile app</source>
-        <target>Manual creating a new customer account, customer can user phone number to login mobile app</target>
+        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+        created on IPOS system</source>
+        <target>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+          created on IPOS system</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
-        <source>Edit Customer</source>
-        <target>Create Customer</target>
+        <source>Edit member</source>
+        <target>Edit member</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-h4-edit_customer_description" datatype="html">
-        <source>Manual editing a customer account</source>
-        <target>Manual editing a new customer account</target>
+        <source>Manual editing a member account, all change information will be also updated to IPOS</source>
+        <target>Manual editing a member account, all change information will be also updated to IPOS</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-name_place_holder" datatype="html">
-        <source>Enter customer name</source>
-        <target>Enter customer name</target>
+        <source>Enter member name</source>
+        <target>Enter member name</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-name_require" datatype="html">
-        <source>Please provide customer name</source>
-        <target>Please provide customer name</target>
+        <source>Please provide member name</source>
+        <target>Please provide member name</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-phone_place_holder" datatype="html">
-        <source>Enter customer phone</source>
-        <target>Enter customer phone</target>
+        <source>Enter member phone</source>
+        <target>Enter member phone</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_require" datatype="html">
         <source>Please provide phone number</source>
@@ -1576,8 +1590,8 @@
         <target>Birthday</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
-        <source>Customer Type</source>
-        <target>Customer Type</target>
+        <source>Membership type</source>
+        <target>Membership type</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
         <source>Sex</source>
@@ -1603,57 +1617,24 @@
         <source>Enter email</source>
         <target>Enter email</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-save" datatype="html">
-        <source>Save</source>
-        <target>Save</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-button-cancel" datatype="html">
-        <source>Cancel</source>
-        <target>Cancel</target>
-      </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-create_another_customer" datatype="html">
-        <source>Create another</source>
-        <target>Create another</target>
-      </trans-unit>
       <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
         <source>Enter address</source>
         <target>Enter address</target>
       </trans-unit>
-      <trans-unit id="sex-woman" datatype="html">
-        <source>Woman</source>
-        <target>Woman</target>
-      </trans-unit>
-      <trans-unit id="sex-man" datatype="html">
-        <source>Man</source>
-        <target>Man</target>
-      </trans-unit>
-      <trans-unit id="sex-other" datatype="html">
-        <source>Other</source>
-        <target>Other</target>
-      </trans-unit>
       <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
-        <source>A new customer account has been created</source>
-        <target>A new customer account has been created</target>
+        <source>A new member account has been created</source>
+        <target>A new member account has been created</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-edit_customer_ok" datatype="html">
-        <source>A customer account has been updated</source>
-        <target>A customer account has been updated</target>
+        <source>A member account has been updated</source>
+        <target>A member account has been updated</target>
       </trans-unit>
       <trans-unit id="customer-create_edit_customer-email_invalid" datatype="html">
         <source>Email is invalid</source>
         <target>Email is invalid</target>
       </trans-unit>
-
       <!--End Create Edit Customer Module-->
       <!--Start Customer Filter-->
-      <trans-unit id="customers-filter-list-table-lbl-title" datatype="html">
-        <source>Filter Tool</source>
-        <target>Filter Tool</target>
-      </trans-unit>
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
@@ -1863,6 +1844,94 @@
         <target>Expire on: </target>
       </trans-unit>
       <!--END Start stop promotions-->
+      <!--START member types-->
+      <trans-unit id="member-type-menu" datatype="html">
+        <source>Membership Types</source>
+        <target>Membership Types</target>
+      </trans-unit>
+      <trans-unit id="member-type-btn-new" datatype="html">
+        <source>New membership type</source>
+        <target>New membership type</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-title" datatype="html">
+        <source>Add new membership type</source>
+        <target>Add new membership type</target>
+      </trans-unit>
+      <trans-unit id="member-type-update-title" datatype="html">
+        <source>Edit membership type</source>
+        <target>Edit membership type</target>
+      </trans-unit>
+      <trans-unit id="member-type-update-sub-title" datatype="html">
+        <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
+        <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-sub-title" datatype="html">
+        <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-label" datatype="html">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+        <source>Enter membership type id</source>
+        <target>Enter membership type id</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-required" datatype="html">
+        <source>Please provide membership type id</source>
+        <target>Please provide membership type id</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-code-pattern" datatype="html">
+        <source>The membership type id doesn't allow space charracter</source>
+        <target>The membership type id doesn't allow space charracter</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-label" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+        <source>Enter membership type name</source>
+        <target>Enter membership type name</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-required" datatype="html">
+        <source>Please provide membership type name</source>
+        <target>Please provide membership type name</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+        <source>Enter the target point</source>
+        <target>Enter the target point</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+        <source>Target point</source>
+        <target>Target point</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-name-active" datatype="html">
+        <source>Active</source>
+        <target>Active</target>
+      </trans-unit>
+      <trans-unit id="member-type-inactive" datatype="html">
+        <source>Inactive</source>
+        <target>Inactive</target>
+      </trans-unit>
+      <trans-unit id="member-type-create-form-success" datatype="html">
+        <source>A new membership type has been created</source>
+        <target>A new membership type has been created</target>
+      </trans-unit>
+      <trans-unit id="member-type-edit-form-success" datatype="html">
+        <source>A membership type has been updated</source>
+        <target>A membership type has been updated</target>
+      </trans-unit>
+      <trans-unit id="member-type-delete-confirm" datatype="html">
+        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
+        type {{0}}?</source>
+        <target>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
+          type {{0}}</target>
+      </trans-unit>
+      <trans-unit id="member-type-delete-success" datatype="html">
+        <source>A membership type has been deleted</source>
+        <target>A membership type has been deleted</target>
+      </trans-unit>
+      <!--STOP member types-->
     </body>
   </file>
 </xliff>

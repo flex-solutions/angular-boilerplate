@@ -1,71 +1,52 @@
-export class CustomerMockData {
-  static memberTypeMock = [
-    {
-      id: 1,
-      name: 'Regular'
-    },
-    {
-      id: 2,
-      name: 'Premium'
-    },
-    {
-      id: 3,
-      name: 'Gold'
-    },
-    {
-      id: 4,
-      name: 'Silver'
-    }
-  ];
-
+export class CustomerData {
   static months = [
     {
       id: 1,
-      name: 'January'
+      name: '1'
     },
     {
       id: 2,
-      name: 'February'
+      name: '2'
     },
     {
       id: 3,
-      name: 'March'
+      name: '3'
     },
     {
       id: 4,
-      name: 'April'
+      name: '4'
     },
     {
       id: 5,
-      name: 'May'
+      name: '5'
     },
     {
       id: 6,
-      name: 'June'
+      name: '6'
     },
     {
       id: 7,
-      name: 'July'
+      name: '7'
     },
     {
       id: 8,
-      name: 'August'
+      name: '8'
     },
     {
       id: 9,
-      name: 'September'
+      name: '9'
     },
     {
       id: 10,
-      name: 'October'
+      name: '10'
     },
     {
       id: 11,
-      name: 'November'
+      name: '11'
     },
     {
       id: 12,
-      name: 'December'
+      name: '12'
     }
   ];
 }

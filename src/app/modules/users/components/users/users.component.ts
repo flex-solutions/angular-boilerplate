@@ -49,7 +49,7 @@ export class UsersComponent extends AbstractBaseComponent implements OnInit {
 
   ngOnInit() {
     if (this.groupName) {
-      this.subTitle = this.translateService.translateWithParams('users-list-by-group', this.groupName);
+      this.subTitle = this.translateService.translate('users-list-by-group', this.groupName);
     }
   }
 

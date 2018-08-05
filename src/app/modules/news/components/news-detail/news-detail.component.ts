@@ -34,7 +34,7 @@ export class NewsDetailComponent implements OnInit {
 
   private getMessage(code: string, ...params) {
     if (params.length) {
-      return this.translateService.translateWithParams(code, params);
+      return this.translateService.translate(code, params);
     } else {
       return this.translateService.translate(code);
     }
@@ -51,7 +51,6 @@ export class NewsDetailComponent implements OnInit {
         if (news) {
           this.newsModel = news;
           this.base64Image = convertStringToBase64(this.newsModel.banner);
-          console.log(news);
         }
       });
     }
@@ -78,7 +77,7 @@ export class NewsDetailComponent implements OnInit {
   }
 
   deleteNews(newViewModel: News) {
-    const confirmMsg = this.translateService.translateWithParams(NewMessageConst.ConfirmDeletNew, newViewModel.title);
+    const confirmMsg = this.translateService.translate(NewMessageConst.ConfirmDeletNew, newViewModel.title);
     this.exDlg.openConfirm(confirmMsg).subscribe(result => {
       if (result) {
         const successMessage = this.translateService.translate(NewMessageConst.DeleteSuccessfullyNotification);

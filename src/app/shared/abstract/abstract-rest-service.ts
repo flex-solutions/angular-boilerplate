@@ -5,10 +5,9 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { catchError, retry, finalize } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { SharedModule } from '../shared.module';
 import { LoaderService } from '../ui-common/loading-bar/loader.service';
-import { appVariables } from '../../app.constant';
 import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
@@ -73,7 +72,6 @@ export abstract class AbstractRestService {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
     const filterString = JSON.stringify(filter);
-    console.log(filterString);
     const headers = new HttpHeaders().set('X-Filter', UTF8Encoding.utf8Encode(filterString));
     return this.httpClient
       .get<T>(url, {

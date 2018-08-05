@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-2 grid-margin stretch-card">
   </div>
-  <div class="col-md-8 grid-margin stretch-card">
+  <div class="col-md-8 grid-margin">
     <app-card [title]="cardTitle" [subTitle]="cardDescription">
       <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
         <fieldset>
@@ -16,7 +16,6 @@
               placeholder="Enter customer name" [(ngModel)]="customer.name">
             <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@customer-create_edit_customer-label-name_require"
               *ngIf="name.invalid && (name.dirty || name.touched)"> Please provide customer name</label>
-            <br *ngIf="!(name.invalid && (name.dirty || name.touched))" />
           </div>
           <div class="form-group">
             <label for="phone" i18n="@@customer-create_edit_customer-label-phone_field">Phone number </label>
@@ -25,49 +24,38 @@
               placeholder="Enter customer phone" [(ngModel)]="customer.phoneNumber">
             <label id="phone-error" class="error mt-2 text-danger" for="phone" i18n="@@customer-create_edit_customer-label-phone_require"
               *ngIf="phone.invalid && (phone.dirty || phone.touched)">Please provide phone number</label>
-            <br *ngIf="!(phone.invalid && (phone.dirty || phone.touched))" />
           </div>
           <div class="form-group">
             <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
-            <app-date-picker class="dataTables_customfilter" title="birthday" i18n-title="@@customer-create_edit_customer-label-birthday_field"
-              [(date)]="customer.birthday" style="margin: 0 5px;"></app-date-picker>
+            <app-date-picker [(date)]="customer.birthday"></app-date-picker>
           </div>
           <div class="form-group">
             <label for="customerType" i18n="@@customer-create_edit_customer-label-type_field">Customer Type </label>
             <select id="customerType" class="form-control" formControlName="customerType" [(ngModel)]="customer.customerType">
-              <option *ngFor="let type of memberTypes" [ngValue]="type">{{type.name}}</option>
+              <option *ngFor="let type of memberTypes" [ngValue]="type._id">{{type.code}} - {{type.name}}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
             <select name="sex" id="sex" class="form-control" formControlName="sex" [(ngModel)]="customer.sex">
-              <option value="0" i18n="@@sex-woman">Woman</option>
-              <option value="1" i18n="@@sex-man">Man</option>
-              <option value="2" i18n="@@sex-other">Other</option>
-          </select>
+              <option value=""></option>
+              <option value="0" i18n="@@common_label-sex-woman">Woman</option>
+              <option value="1" i18n="@@common_label-sex-man">Man</option>
+              <option value="2" i18n="@@common_label-sex-other">Other</option>
+            </select>
           </div>
           <div class="row">
             <div class="col-md-5">
               <div class="form-group">
-                <label for="address" i18n="customer-create_edit_customer-label-address_field">Address </label>
+                <label for="address" i18n="@@customer-create_edit_customer-label-address_field">Address </label>
                 <input id="address" class="form-control" formControlName="address" i18n-placeholder="@@customer-create_edit_customer-input-address_place_holder"
                   placeholder="Enter address" [(ngModel)]="customer.address.address">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-7">
               <div class="form-group">
-                <label for="district" i18n="@@customer-create_edit_customer-label-district_field">District </label>
-                <select id="district" class="form-control" formControlName="district" [(ngModel)]="selectedDistrict">
-                  <option *ngFor="let district of selectedCity.districts" [ngValue]="district">{{district.name}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="city" i18n="@@customer-create_edit_customer-label-city_field">City/Province </label>
-                <select id="city" class="form-control" formControlName="city" [(ngModel)]="selectedCity" (ngModelChange)="onCityChange($event)">
-                  <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
-                </select>
+                <label for="city"> </label>
+                <app-address id="city" #customerAddress [(cityProvince)]="selectedCity" [(district)]="selectedDistrict"></app-address>
               </div>
             </div>
           </div>
@@ -77,19 +65,16 @@
               placeholder="Enter email" [(ngModel)]="customer.email">
             <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
           </div>
-          <div class="row btn-in-row">
-            <button *ngIf="!isEdit" class="btn btn-success btn-small mr-2" i18n="@@customer-create_edit_customer-button-submit" (click)="submit()">Submit</button>
-            <button *ngIf="isEdit" class="btn btn-success btn-small mr-2" i18n="@@customer-create_edit_customer-button-save" (click)="saveCustomer()">Save</button>
-            <button class="btn btn-light btn-small mr-2" i18n="@@customer-create_edit_customer-button-cancel" (click)="cancel()">Cancel</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="form-group" *ngIf="!isEdit">
-              <div class="form-check form-check-flat">
-                <label class="form-check-label">
-                  <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
-                  <i class="input-helper"></i>
-                  <label class="form-check-label" i18n="@@customer-create_edit_customer-label-create_another_customer"> Create another</label>
-                </label>
-              </div>
+          <div class="form-cmds">
+            <button *ngIf="!isEdit" class="btn btn-success btn-small mr-2" i18n="@@common_button-submit" (click)="submit()">Submit</button>
+            <button *ngIf="isEdit" class="btn btn-success btn-small mr-2" i18n="@@common_button-save" (click)="saveCustomer()">Save</button>
+            <button class="btn btn-light btn-small mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+            <div class="form-check form-check-flat" *ngIf="!isEdit">
+              <label class="form-check-label" style="padding-left: 4px">
+                <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
+                <i class="input-helper"></i>
+                <label class="chk-label" i18n="@@common-action-create-another"> Create another</label>
+              </label>
             </div>
           </div>
         </fieldset>

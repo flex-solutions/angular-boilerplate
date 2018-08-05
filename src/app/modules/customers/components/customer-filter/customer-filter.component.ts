@@ -1,57 +1,30 @@
-import { AddressService } from './../../services/address.service';
-import { CustomerService } from './../../services/customer.service';
+import { Component, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import {
-  Component,
-  AfterViewInit,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-  QueryList,
-  ViewChildren
-} from '@angular/core';
-import { CustomerFilter, Sex } from '../../../../shared/models/customer.model';
+  CustomerFilter,
+  Sex,
+  sexResourceKey
+} from '../../../../shared/models/customer.model';
 import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
+import { MemberTypeService } from '../../services/member-type.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { MemberType } from '../../../../shared/models/member-type.model';
+import { CustomerData } from '../../services/customer-filter.data';
+import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
+import { AbstractFilterComponent } from '../../../../shared/abstract/abstract-filter.component';
 
 @Component({
   selector: 'app-customer-filter',
   templateUrl: './customer-filter.component.html',
   styleUrls: ['./customer-filter.component.css']
 })
-export class CustomerFilterComponent implements AfterViewInit {
-  private _customerFilter: CustomerFilter;
-  private _resetFunction: () => void;
-
+export class CustomerFilterComponent extends AbstractFilterComponent<
+  CustomerFilter
+> {
   // Get list select2 component
   @ViewChildren(Select2Component)
   select2Components: QueryList<Select2Component>;
 
-  // Call when custom filter change
-  @Output() customerFilterChange = new EventEmitter();
-
-  // Call when button run filter have clicked
-  @Output() runFilterClicked = new EventEmitter();
-
-  // Get and set customer filter property
-  @Input()
-  set customerFilter(value) {
-    this._customerFilter = value;
-    this.customerFilterChange.emit(this._customerFilter);
-  }
-
-  get customerFilter() {
-    return this._customerFilter;
-  }
-
-  // Get and set reset callback function
-  @Input()
-  get resetFunction() {
-    return this._resetFunction;
-  }
-
-  set resetFunction(v: any) {
-    this._resetFunction = v;
-  }
+  @ViewChild('filterAddress') addressControl: AddressComponent;
 
   memberTypes: any[];
   provinces: any[];
@@ -60,67 +33,47 @@ export class CustomerFilterComponent implements AfterViewInit {
   sexes: any[];
 
   constructor(
-    private readonly customerService: CustomerService,
-    private readonly addressService: AddressService,
-    private ref: ChangeDetectorRef
+    private readonly memberTypeService: MemberTypeService,
+    private readonly translateService: TranslateService
   ) {
-    this.customerFilter = new CustomerFilter();
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.loadData();
-    });
-  }
-
-  onProvinceChange($event) {
-    if ($event) {
-      this.districts = $event.districts;
-      this.customerFilter.district = {};
-    }
+    super();
+    this.filter = new CustomerFilter();
   }
 
   getSexes() {
     return [
       {
         id: Sex.Female,
-        text: Sex[Sex.Female]
+        text: this.translateService.translate(sexResourceKey.Female)
       },
       {
         id: Sex.Male,
-        text: Sex[Sex.Male]
+        text: this.translateService.translate(sexResourceKey.Male)
       },
       {
         id: Sex.Other,
-        text: Sex[Sex.Other]
+        text: this.translateService.translate(sexResourceKey.Other)
       }
     ];
   }
 
   loadData() {
-    const self = this;
-    this.customerService.getMemberType().then((data: any[]) => {
-      this.memberTypes = data;
+    this.memberTypeService.getMemberTypes().subscribe((data: MemberType[]) => {
+      this.memberTypes = data.map(m => {
+        m['id'] = m.code;
+        m['text'] = m.name;
+        return m;
+      });
     });
 
-    this.customerService.getMonthBirthday().then((data: any[]) => {
-      self.months = data;
-    });
-    const country = this.addressService.getCountry();
-    self.provinces = country.provinces;
-    if (this.provinces && this.provinces.length > 0) {
-      self.districts = this.provinces[0].districts;
-    }
+    this.months = CustomerData.months;
+
     this.sexes = this.getSexes();
   }
 
-  runFilter() {
-    this.runFilterClicked.emit();
-  }
-
-  resetFilter() {
-    this.customerFilter = new CustomerFilter();
+  onResetFilter() {
+    this.filter = new CustomerFilter();
     this.select2Components.forEach(i => i.reset());
-    this.resetFunction();
+    this.addressControl.reset();
   }
 }

@@ -44,6 +44,10 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([ModuleRoute.CUSTOMER]);
   }
 
+  navigateToMemberTypeListPage() {
+    this.router.navigate([`${ModuleRoute.CUSTOMER}/${ModuleRoute.MEMBER_TYPE}`]);
+  }
+
   navigateToVouchersPage() {
     this.router.navigate([ModuleRoute.VOUCHER]);
   }

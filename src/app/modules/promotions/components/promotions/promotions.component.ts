@@ -1,18 +1,23 @@
-import { StringExtension } from './../../../../utilities/string.extension';
-import { StartPromotionComponent } from './../start-promotion/start-promotion.component';
-import { SelectableModel } from './../../../../shared/models/selectable.model';
-import { PromotionService } from './../../services/promotion.service';
-import { Promotion, StatusCheckedItem } from './../../interfaces/promotion';
-import { Component, OnInit } from '@angular/core';
-import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { PromotionService } from '../../services/promotion.service';
+import { Promotion } from '../../interfaces/promotion';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  IFilterChangedEvent,
+  DatagridComponent
+} from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
 import { MessageConstant } from '../../messages';
-import { PromotionStatus } from '../../directives/promotion-status.directive';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { promotionRoute } from '../../common.const';
+import { promotionRoute, promotionFields } from '../../common.const';
 import { StartStopPromotionService } from '../../services/start-stop-promotion.service';
+import {
+  CriteriaBuilder,
+  FilterType,
+  ValueType
+} from '../../../../utilities/search-filter';
+import { PromotionFilter } from '../promotion-filter/promotion-filter.model';
 
 @Component({
   selector: 'app-promotions',
@@ -20,34 +25,26 @@ import { StartStopPromotionService } from '../../services/start-stop-promotion.s
   styleUrls: ['./promotions.component.css']
 })
 export class PromotionsComponent implements OnInit {
-
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
-  startDate: Date;
-  endDate: Date;
-  statusItems: SelectableModel<StatusCheckedItem>[];
-  selectedStatus: StatusCheckedItem[];
-
-  constructor(private service: PromotionService,
+  promotionFilter: PromotionFilter = new PromotionFilter();
+  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
+  constructor(
+    private service: PromotionService,
     private route: Router,
     private translateService: TranslateService,
     private dialogManager: ExDialog,
     private notificationService: NotificationService,
-    private startStopPromotionHandler: StartStopPromotionService) {
-    this.startDate = new Date();
-    this.endDate = new Date();
-    this.selectedStatus = [];
-    this.buildStatusItemSource();
+    private startStopPromotionHandler: StartStopPromotionService
+  ) {
+    this.currentFilterArgs = { pagination: null, searchKey: null };
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public count = (searchKey: string) => {
-    const status = this.getSelectedStatus();
-    return this.service.count(searchKey, status,
-      this.startDate,
-      this.endDate);
+    const query = this.buildPromotionFilter();
+    return this.service.count(query);
   }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
@@ -57,16 +54,9 @@ export class PromotionsComponent implements OnInit {
 
   loadPromotions() {
     const pagination = this.currentFilterArgs.pagination;
-    const status = this.getSelectedStatus();
+    const query = this.buildPromotionFilter();
     this.service
-      .getPromotions(
-        pagination.itemsPerPage,
-        pagination.page,
-        this.currentFilterArgs.searchKey,
-        status,
-        this.startDate,
-        this.endDate
-      )
+      .getPromotions(pagination.page, pagination.itemsPerPage, query)
       .subscribe((response: Promotion[]) => {
         this.items = response;
       });
@@ -90,56 +80,87 @@ export class PromotionsComponent implements OnInit {
     });
   }
 
-  getSelectedStatus() {
-    const selectedStatus = this.statusItems.filter(i => i.isSelected).map(m => m.model.status);
-    return selectedStatus;
+  deletePromotion(model: Promotion) {
+    const confirmMsg = this.translateService.translate(
+      MessageConstant.DeleteConfirmation,
+      model.title
+    );
+    const confirmTitle = this.translateService.translate(
+      MessageConstant.DeleteTitle
+    );
+    this.dialogManager
+      .openConfirm(confirmMsg, confirmTitle)
+      .subscribe(result => {
+        if (result) {
+          const successMessage = this.translateService.translate(
+            MessageConstant.DeleteSuccessfullyNotification
+          );
+          this.service.deletePromotion(model._id).subscribe(res => {
+            this.notificationService.showSuccess(successMessage);
+            this.loadPromotions();
+          });
+        }
+      });
   }
 
-  deletePromotion(model: Promotion) {
-    const confirmMsg = this.translateService.translateWithParams(MessageConstant.DeleteConfirmation, model.title);
-    const confirmTitle = this.translateService.translateWithParams(MessageConstant.DeleteTitle);
-    this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
-      if (result) {
-        const successMessage = this.translateService.translate(MessageConstant.DeleteSuccessfullyNotification);
-        this.service.deletePromotion(model._id).subscribe(res => {
-          this.notificationService.showSuccess(successMessage);
-          this.loadPromotions();
-        });
-      }
+  private buildPromotionFilter() {
+    const builder = CriteriaBuilder.makeCriteria().startWrapperFilter(
+      FilterType.And
+    );
+
+    builder
+      .withFilter(
+        FilterType.GreatThanEqual,
+        promotionFields.START_DATE,
+        this.promotionFilter.startDate,
+        ValueType.Date
+      )
+      .withFilter(
+        FilterType.LessThanEqual,
+        promotionFields.EXPIRE_DATE,
+        this.promotionFilter.endDate,
+        ValueType.Date
+      )
+      .withFilter(
+        FilterType.In,
+        promotionFields.STATUS,
+        this.promotionFilter.status,
+        ValueType.Array
+      )
+      .withCriteria(() => {
+        return CriteriaBuilder.makeCriteria()
+          .startWrapperFilter(FilterType.Or)
+          .withFilter(
+            FilterType.Regex,
+            promotionFields.TITLE,
+            this.promotionFilter.title
+          )
+          .withFilter(
+            FilterType.Regex,
+            promotionFields.CONTENT,
+            this.promotionFilter.content
+          )
+          .endWrapperFilter()
+          .build();
+      });
+
+    const result = builder.endWrapperFilter().build();
+    return result;
+  }
+
+  onRunFilterClicked() {
+    this.loadDataWithFilter();
+  }
+
+  resetFilter = () => {
+    this.loadDataWithFilter();
+  }
+
+  private loadDataWithFilter() {
+    this.count('').subscribe(total => {
+      this.dataGrid.totalItems = +total;
+      this.dataGrid.countPageEntry();
+      this.loadPromotions();
     });
   }
-
-  buildStatusItemSource() {
-    this.statusItems = [
-      {
-        isSelected: true,
-        model: {
-          status: PromotionStatus.New,
-          displayName: this.translateService.translate(MessageConstant.NewStatus)
-        }
-      },
-      {
-        isSelected: true,
-        model: {
-          status: PromotionStatus.Active,
-          displayName: this.translateService.translate(MessageConstant.ActiveStatus)
-        }
-      },
-      {
-        isSelected: true,
-        model: {
-          status: PromotionStatus.Deactivated,
-          displayName: this.translateService.translate(MessageConstant.DeactivedStatus)
-        }
-      }
-    ];
-  }
-
-  extractContent(s) {
-    const span = document.createElement('span');
-    span.innerHTML = s;
-    const content = span.textContent || span.innerText;
-    return StringExtension.truncate(content, 200);
-  }
-
 }

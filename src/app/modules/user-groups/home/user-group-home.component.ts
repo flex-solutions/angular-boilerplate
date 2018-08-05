@@ -89,7 +89,7 @@ export class UserGroupHomeComponent implements OnInit {
 
   private getMessage(code: string, ...params) {
     if (params.length) {
-      return this.translateService.translateWithParams(code, params);
+      return this.translateService.translate(code, params);
     } else {
       return this.translateService.translate(code);
     }

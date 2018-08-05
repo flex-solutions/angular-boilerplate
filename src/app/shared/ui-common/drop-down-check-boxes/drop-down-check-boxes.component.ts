@@ -1,6 +1,12 @@
 import { CheckedItem } from './checked-items.model';
-import { SelectableModel } from './../../models/selectable.model';
-import { Component, Input, AfterContentInit, EventEmitter, Output } from '@angular/core';
+import { SelectableModel } from '../../models/selectable.model';
+import {
+  Component,
+  Input,
+  AfterContentInit,
+  EventEmitter,
+  Output
+} from '@angular/core';
 
 @Component({
   selector: 'app-drop-down-check-boxes',
@@ -8,26 +14,34 @@ import { Component, Input, AfterContentInit, EventEmitter, Output } from '@angul
   styleUrls: ['./drop-down-check-boxes.component.css']
 })
 export class DropDownCheckBoxesComponent implements AfterContentInit {
+  private _itemSources: SelectableModel<CheckedItem>[];
 
   // A title display on control
-  @Input()
-  title: string;
+  @Input() title: string;
 
   // The list items source bind to list check boxes
+  @Output() itemSourcesChange = new EventEmitter();
+
   @Input()
-  itemsources: SelectableModel<CheckedItem>[];
+  set itemSources(val) {
+    this._itemSources = val;
+    this.itemSourcesChange.emit(this._itemSources);
+    this.onCheckedChanged();
+  }
+
+  get itemSources() {
+    return this._itemSources;
+  }
 
   // Call when date have changed
-  @Output()
-  selectedItemsChange = new EventEmitter<CheckedItem[]>();
+  @Output() selectedItemsChange = new EventEmitter<CheckedItem[]>();
 
   private _selectedItems: CheckedItem[];
 
-  @Input()
   get selectedItems() {
     return this._selectedItems;
   }
-
+  @Input()
   set selectedItems(value: CheckedItem[]) {
     if (value !== this._selectedItems) {
       this._selectedItems = value;
@@ -38,7 +52,7 @@ export class DropDownCheckBoxesComponent implements AfterContentInit {
   values: string;
 
   constructor() {
-    this.itemsources = [];
+    this.itemSources = [];
   }
 
   ngAfterContentInit(): void {
@@ -48,8 +62,9 @@ export class DropDownCheckBoxesComponent implements AfterContentInit {
   }
 
   onCheckedChanged() {
-    this.selectedItems = this.itemsources.filter(i => i.isSelected).map(i => i.model);
+    this.selectedItems = this.itemSources
+      .filter(i => i.isSelected)
+      .map(i => i.model);
     this.values = this.selectedItems.map(i => i.displayName).join(', ');
   }
-
 }

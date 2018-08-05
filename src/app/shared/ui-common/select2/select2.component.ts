@@ -6,6 +6,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
+import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
 declare const $: any;
 
 @Component({
@@ -26,14 +27,17 @@ export class Select2Component implements AfterViewInit {
   set itemsSource(value) {
     this._itemsSource = value;
     this.itemsSourceChange.emit(this._itemsSource);
-    if (this._itemsSource && this._itemsSource.length > 0) {
-      this.host
-        .select2('destroy')
-        .empty()
-        .select2({
-          placeholder: this._placeholder,
-          data: this.formatDataSource(this._itemsSource)
-        });
+    this.host
+      .select2('destroy')
+      .empty()
+      .select2({
+        placeholder: this._placeholder,
+        data: this.formatDataSource(this._itemsSource)
+      });
+
+    if (this._selectedItem && this._selectedItem.text) {
+      this.onSelectedItemChange();
+    } else {
       this.reset();
     }
   }
@@ -46,6 +50,8 @@ export class Select2Component implements AfterViewInit {
   set selectedItem(val) {
     this._selectedItem = val;
     this.selectedItemChange.emit(this._selectedItem);
+
+    this.onSelectedItemChange();
   }
   get selectedItem() {
     return this._selectedItem;
@@ -83,19 +89,39 @@ export class Select2Component implements AfterViewInit {
 
   // Because select2 using format {id: string; text: string}
   formatDataSource(arrayData: any[]) {
+    if (isNullOrEmptyOrUndefine(arrayData)) {
+      return [];
+    }
     const data = arrayData.map(obj => {
-      if (!obj.hasOwnProperty('id')) {
-        obj.id = obj._id || obj.key;
-      }
-      if (!obj.hasOwnProperty('text')) {
-        obj.text = obj.name || obj.displayName;
-      }
-      return obj;
+      return this.buildSelect2Data(obj);
     });
     return data;
   }
 
+  buildSelect2Data(obj) {
+    if (!obj) {
+      return obj;
+    }
+    if (!obj.hasOwnProperty('id')) {
+      obj.id = obj._id || obj.key;
+    }
+    if (!obj.hasOwnProperty('text')) {
+      obj.text = obj.name || obj.displayName;
+    }
+    return obj;
+  }
+
   reset() {
     this.host.val(null).trigger('change');
+    setTimeout(() => {
+      this.selectedItem = {};
+    });
+  }
+
+  onSelectedItemChange() {
+    const temp = this.buildSelect2Data(this._selectedItem);
+    if (temp && temp.id && temp.text) {
+      this.host.val(temp.id).trigger('change');
+    }
   }
 }

@@ -1,17 +1,19 @@
-<div class="btn-group dropdown-checkboxes">
-  <button type="button" class="btn btn-light" style="padding: 0.56rem 0.375rem;">
-    <span>{{title}}</span>: {{values}}</button>
-  <button type="button" class="btn btn-secondary dropdown-toggle p-1" id="dropdownMenuSplitButton4" data-toggle="dropdown"
-    aria-haspopup="true" aria-expanded="true">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu" style="position: absolute; transform: translate3d(114px, -177px, 0px); top: 0px; left: 0px; will-change: transform;">
-      <div *ngFor="let item of itemsources" class="dropdown-item form-check form-check-flat float-left" style="margin: 5px 0.5em;">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input form-control" [(ngModel)]="item.isSelected" [checked]="item.isSelected" (change)="onCheckedChanged()">
-            <i class="input-helper"></i>
-            <label class="form-check-label"> {{item.model.displayName}}</label>
-          </label>
-        </div>
+<div class="input-group">
+  <div class="btn-group dropdown-checkboxes">
+    <button type="button" class="btn btn-light" style="padding: 0.56rem 0.375rem;">
+      <span *ngIf="title">{{title}}:</span> {{values}}</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle p-1" id="dropdownMenuSplitButton4" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="true">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu" style="position: absolute; transform: translate3d(114px, -177px, 0px); top: 0px; left: 0px; will-change: transform;">
+      <div *ngFor="let item of itemSources" class="dropdown-item form-check form-check-flat float-left" style="margin: 5px 0.5em;">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input form-control" [(ngModel)]="item.isSelected" [checked]="item.isSelected" (change)="onCheckedChanged()">
+          <i class="input-helper"></i>
+          <label class="form-check-label"> {{item.model.displayName}}</label>
+        </label>
+      </div>
+    </div>
   </div>
 </div>

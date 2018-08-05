@@ -8,23 +8,29 @@ enum Sex {
 
 class CustomerModel {
   _id: any;
-  phoneNumber = '+84 ';
+  phoneNumber = '+84';
   memberId: string;
   name: string;
-  birthday: Date = new Date();
-  sex = 0;
+  birthday: Date;
+  sex = null;
   address: Address = new Address();
   customerType = '';
   email: string;
-}
+  point: number;
 
-class CustomerTypeModel {
-  id: number;
-  name: string;
-
-  constructor() {
-    this.id = 0;
-    this.name = '';
+  clone(cus: CustomerModel ) {
+    this._id = cus._id;
+    this.memberId = cus.memberId;
+    this.name = cus.name;
+    this.birthday = cus.birthday;
+    this.sex = cus.sex;
+    this.phoneNumber = cus.phoneNumber;
+    this.customerType = cus.customerType;
+    this.email = cus.email;
+    this.point = cus.point;
+    if (cus.address) {
+      this.address.copyFrom(cus.address);
+    }
   }
 }
 
@@ -64,10 +70,16 @@ const customerFilterFields = {
   DISTRICT: 'district'
 };
 
+const sexResourceKey = {
+  Male: 'common_label-sex-man',
+  Female: 'common_label-sex-woman',
+  Other: 'common_label-sex-other'
+};
+
 export {
   CustomerModel,
   Sex,
   CustomerFilter,
   customerFilterFields,
-  CustomerTypeModel
+  sexResourceKey
 };
