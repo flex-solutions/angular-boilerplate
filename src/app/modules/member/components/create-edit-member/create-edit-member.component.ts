@@ -24,12 +24,12 @@ import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
 
 const TITLE_CREATE_MEMBER =
-  'customer-create_edit_customer-h4-create_customer';
+  'member-create_edit_member-h4-create_member';
 const DESCRIPTION_CREATE_MEMBER =
-  'customer-create_edit_customer-h4-create_customer_description';
-const TITLE_EDIT_MEMBER = 'customer-create_edit_customer-h4-edit_customer';
+  'member-create_edit_member-h4-create_member_description';
+const TITLE_EDIT_MEMBER = 'member-create_edit_member-h4-edit_member';
 const DESCRIPTION_EDIT_MEMBER =
-  'customer-create_edit_customer-h4-edit_customer_description';
+  'member-create_edit_member-h4-edit_member_description';
 
 @Component({
   moduleId: module.id,

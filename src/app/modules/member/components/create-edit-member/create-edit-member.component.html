@@ -10,33 +10,33 @@
                       'has-danger': name.invalid && (name.dirty || name.touched),
                       'has-success': name.valid && (name.dirty || name.touched)
                  }">
-            <label for="name" i18n="@@customer-create_edit_customer-label-name_field">Name </label>
+            <label for="name" i18n="@@member-create_edit_member-label-name_field">Name </label>
             <label class="require">*</label>
-            <input id="name" required class="form-control" formControlName="name" i18n-placeholder="@@customer-create_edit_customer-input-name_place_holder"
+            <input id="name" required class="form-control" formControlName="name" i18n-placeholder="@@member-create_edit_member-input-name_place_holder"
               placeholder="Enter member name" [(ngModel)]="member.name">
-            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@customer-create_edit_customer-label-name_require"
+            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_require"
               *ngIf="name.invalid && (name.dirty || name.touched)"> Please provide member name</label>
           </div>
           <div class="form-group">
-            <label for="phone" i18n="@@customer-create_edit_customer-label-phone_field">Phone number </label>
+            <label for="phone" i18n="@@member-create_edit_member-label-phone_field">Phone number </label>
             <label class="require">*</label>
-            <input id="phone" required class="form-control" formControlName="phone" i18n-placeholder="@@customer-create_edit_customer-input-phone_place_holder"
+            <input id="phone" required class="form-control" formControlName="phone" i18n-placeholder="@@member-create_edit_member-input-phone_place_holder"
               placeholder="Enter member phone" [(ngModel)]="member.phoneNumber">
-            <label id="phone-error" class="error mt-2 text-danger" for="phone" i18n="@@customer-create_edit_customer-label-phone_require"
+            <label id="phone-error" class="error mt-2 text-danger" for="phone" i18n="@@member-create_edit_member-label-phone_require"
               *ngIf="phone.invalid && (phone.dirty || phone.touched)">Please provide phone number</label>
           </div>
           <div class="form-group">
-            <label for="birthday" i18n="@@customer-create_edit_customer-label-birthday_field">Birthday </label>
+            <label for="birthday" i18n="@@member-create_edit_member-label-birthday_field">Birthday </label>
             <app-date-picker [(date)]="member.birthday"></app-date-picker>
           </div>
           <div class="form-group">
-            <label for="membershipType" i18n="@@customer-create_edit_customer-label-type_field">Membership Type </label>
+            <label for="membershipType" i18n="@@member-create_edit_member-label-type_field">Membership Type </label>
             <select id="membershipType" class="form-control" formControlName="membershipType" [(ngModel)]="member.membershipType">
               <option *ngFor="let type of membershipTypes" [ngValue]="type._id">{{type.code}} - {{type.name}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="sex" i18n="@@customer-create_edit_customer-label-sex_field">Sex </label>
+            <label for="sex" i18n="@@member-create_edit_member-label-sex_field">Sex </label>
             <select name="sex" id="sex" class="form-control" formControlName="sex" [(ngModel)]="member.sex">
               <option value=""></option>
               <option value="0" i18n="@@common_label-sex-woman">Woman</option>
@@ -47,8 +47,8 @@
           <div class="row">
             <div class="col-md-5">
               <div class="form-group">
-                <label for="address" i18n="@@customer-create_edit_customer-label-address_field">Address </label>
-                <input id="address" class="form-control" formControlName="address" i18n-placeholder="@@customer-create_edit_customer-input-address_place_holder"
+                <label for="address" i18n="@@member-create_edit_member-label-address_field">Address </label>
+                <input id="address" class="form-control" formControlName="address" i18n-placeholder="@@member-create_edit_member-input-address_place_holder"
                   placeholder="Enter address" [(ngModel)]="member.address.address">
               </div>
             </div>
@@ -60,8 +60,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="email" i18n="@@customer-create_edit_customer-label-email_field">Email </label>
-            <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@customer-create_customer-input-email_place_holder"
+            <label for="email" i18n="@@member-create_edit_member-label-email_field">Email </label>
+            <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@member-create_member-input-email_place_holder"
               placeholder="Enter email" [(ngModel)]="member.email">
             <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
           </div>

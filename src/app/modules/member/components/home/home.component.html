@@ -1,20 +1,20 @@
 <app-member-filter [(filter)]="memberFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-member-filter>
-<app-card title="Members" i18n-title="@@customers-list-tbl-title">
+<app-card title="Members" i18n-title="@@members-list-tbl-title">
   <div class="command-region">
     <button type="button" class="btn btn-sm btn-primary" (click)="createNewMember()">
       <i class="mdi mdi-plus"></i>
-      <span i18n="@@customers-tbl-btn-create">Create member</span>
+      <span i18n="@@members-tbl-btn-create">Create member</span>
     </button>
   </div>
   <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
     <tr>
-      <th i18n="@@customers-tbl-name">Name</th>
-      <th i18n="@@customers-tbl-member-id">Member ID</th>
-      <th i18n="@@customers-tbl-phone-number">Phone number</th>
-      <th i18n="@@customers-tbl-birthday">Birthday</th>
-      <th i18n="@@customers-tbl-sex">Sex</th>
-      <th i18n="@@customers-tbl-address">Address</th>
-      <th i18n="@@customers-tbl-customer-point">Point</th>
+      <th i18n="@@members-tbl-name">Name</th>
+      <th i18n="@@members-tbl-member-id">Member ID</th>
+      <th i18n="@@members-tbl-phone-number">Phone number</th>
+      <th i18n="@@members-tbl-birthday">Birthday</th>
+      <th i18n="@@members-tbl-sex">Sex</th>
+      <th i18n="@@members-tbl-address">Address</th>
+      <th i18n="@@members-tbl-member-point">Point</th>
       <th i18n="@@common-tbl-actions">Actions</th>
     </tr>
     <tbody>

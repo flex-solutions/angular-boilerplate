@@ -2,10 +2,10 @@
   <label>{{title}}</label>
   <div class="form-row">
     <div class="col-auto">
-      <input class="form-control form-control-lg number-only" i18n-placeholder="@@customers-filter-list-table-lbl-placeholder_from" placeholder="From" [(ngModel)]="range.from" (input)="onFromChange($event)" type="number">
+      <input class="form-control form-control-lg number-only" i18n-placeholder="@@members-filter-list-table-lbl-placeholder_from" placeholder="From" [(ngModel)]="range.from" (input)="onFromChange($event)" type="number">
     </div>
     <div class="col-auto">
-      <input class="form-control form-control-lg number-only" i18n-placeholder="@@customers-filter-list-table-lbl-placeholder_to" placeholder="To" [(ngModel)]="range.to" (input)="onToChange($event)" type="number">
+      <input class="form-control form-control-lg number-only" i18n-placeholder="@@members-filter-list-table-lbl-placeholder_to" placeholder="To" [(ngModel)]="range.to" (input)="onToChange($event)" type="number">
     </div>
   </div>
   <label id="input-range-error" class="error mt-2 text-danger" for="input-range" *ngIf="hasError" i18n="@@input-change-control-lbl-fromLessThanTo">From is not greater than to</label>

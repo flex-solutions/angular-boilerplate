@@ -8,9 +8,9 @@ const MemberRouteNames = {
 };
 
 const MemberErrors = {
-  Create_Member_Sucess: 'customer-create_edit_customer-create_customer_ok',
-  Edit_Member_Sucess: 'customer-create_edit_customer-edit_customer_ok',
-  EmailInvalid: 'customer-create_edit_customer-email_invalid',
+  Create_Member_Sucess: 'member-create_edit_member-create_member_ok',
+  Edit_Member_Sucess: 'member-create_edit_member-edit_member_ok',
+  EmailInvalid: 'member-create_edit_member-email_invalid',
 };
 
 const MembershipTypeRoute = {
