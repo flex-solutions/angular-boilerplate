@@ -1222,8 +1222,8 @@
         <target>Mã Giảm Giá</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
-        <source>Customer Target</source>
-        <target>Đối Tượng Khách Hàng</target>
+        <source>Member Target</source>
+        <target>Đối Tượng Hội Viên</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
         <source>Enter news title</source>
@@ -1533,8 +1533,8 @@
         <target>Điểm</target>
       </trans-unit>
 
-      <!--End Customer Module-->
-      <!--Start Create Edit Customer Module-->
+      <!--End Member Module-->
+      <!--Start Create Edit Member Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
         <source>Create member</source>
         <target>Tạo hội viên</target>
@@ -1626,8 +1626,8 @@
         <source>Email is invalid</source>
         <target>Email không hợp lệ</target>
       </trans-unit>
-      <!--End Create Edit Customer Module-->
-      <!--Start Customer Filter-->
+      <!--End Create Edit Member Module-->
+      <!--Start Member Filter-->
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
@@ -1704,7 +1704,7 @@
         <source>Reset filter</source>
         <target>Thiết lập lại</target>
       </trans-unit>
-      <!--End Customer Filter-->
+      <!--End Member Filter-->
       <!--Start Voucher Home -->
       <trans-unit id="vouchers-create-voucher" datatype="html">
         <source>Create voucher</source>
@@ -1838,86 +1838,86 @@
       </trans-unit>
       <!--END Start stop promotions-->
       <!--START member types-->
-      <trans-unit id="member-type-menu" datatype="html">
+      <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>
         <target>Quản Lý Loại Hội Viên</target>
       </trans-unit>
-      <trans-unit id="member-type-btn-new" datatype="html">
+      <trans-unit id="membership-type-btn-new" datatype="html">
         <source>New membership type</source>
         <target>Loại hội viên mới</target>
       </trans-unit>
-      <trans-unit id="member-type-create-title" datatype="html">
+      <trans-unit id="membership-type-create-title" datatype="html">
         <source>Add new membership type</source>
         <target>Thêm loại hội viên mới</target>
       </trans-unit>
-      <trans-unit id="member-type-update-title" datatype="html">
+      <trans-unit id="membership-type-update-title" datatype="html">
         <source>Edit membership type</source>
         <target>Sửa thông tin loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-update-sub-title" datatype="html">
+      <trans-unit id="membership-type-update-sub-title" datatype="html">
         <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
         <target>Sửa thông tin một loại hội viên, thông tin này cũng nên được sửa trên hệ thống IPOS để đảm bảo hệ thống hoạt động
           ổn định</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-label" datatype="html">
+      <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Mã loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-code-placeholder" datatype="html">
         <source>Enter membership type id</source>
         <target>Nhập mã loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-required" datatype="html">
+      <trans-unit id="membership-type-create-form-code-required" datatype="html">
         <source>Please provide membership type id</source>
         <target>Vui lòng nhập mã loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-pattern" datatype="html">
+      <trans-unit id="membership-type-create-form-code-pattern" datatype="html">
         <source>The membership type id doesn't allow space charracter</source>
         <target>Mã loại hội viên không được chứa khoảng trắng</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-label" datatype="html">
+      <trans-unit id="membership-type-create-form-name-label" datatype="html">
         <source>Name</source>
         <target>Tên loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-name-placeholder" datatype="html">
         <source>Enter membership type name</source>
         <target>Nhập tên loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-required" datatype="html">
+      <trans-unit id="membership-type-create-form-name-required" datatype="html">
         <source>Please provide membership type name</source>
         <target>Vui lòng nhập tên loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-target-point-placeholder" datatype="html">
         <source>Enter the target point</source>
         <target>Nhập điểm cần tích để đạt tới loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+      <trans-unit id="membership-type-create-form-name-target-point" datatype="html">
         <source>Target point</source>
         <target>Điểm cần tích</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-active" datatype="html">
+      <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
       </trans-unit>
-      <trans-unit id="member-type-inactive" datatype="html">
+      <trans-unit id="membership-type-inactive" datatype="html">
         <source>Inactive</source>
         <target>Ngưng áp dụng</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-success" datatype="html">
+      <trans-unit id="membership-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>
         <target>Một loại hội viên mới được thêm thành công</target>
       </trans-unit>
-      <trans-unit id="member-type-edit-form-success" datatype="html">
+      <trans-unit id="membership-type-edit-form-success" datatype="html">
         <source>A membership type has been updated</source>
         <target>Loại hội viên được cập nhật thành công</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-confirm" datatype="html">
+      <trans-unit id="membership-type-delete-confirm" datatype="html">
         <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
         type {{0}}?</source>
         <target>Bạn có chắc muốn xoá loại hội viên {{0}}? Tất cả hội viên đang ở loại này sẽ được di chuyển qua loại có điểm thấp
           hơn liền kề.</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-success" datatype="html">
+      <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>
         <target>Loại hội viên đã được xoá</target>
       </trans-unit>

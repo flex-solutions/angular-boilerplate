@@ -5,7 +5,9 @@ import { VoucherFilter, voucherFilterFields } from './../../../shared/models/vou
 export class VoucherCriteriaBuilder {
   static build(voucherFilter: VoucherFilter) {
     // Start criteria with and operator
-    const builder = CriteriaBuilder.makeCriteria().setWrapperFilter(FilterType.And);
+    const builder = CriteriaBuilder.makeCriteria().startWrapperFilter(
+      FilterType.And
+    );
 
     // In case value is select table type
     builder
@@ -25,6 +27,6 @@ export class VoucherCriteriaBuilder {
         voucherFilter[voucherFilterFields.STATUS]
       );
 
-    return builder.build();
+      return builder.endWrapperFilter().build();
   }
 }

@@ -1230,8 +1230,8 @@
         <target>Voucher</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
-        <source>Customer Target</source>
-        <target>Customer Target</target>
+        <source>Member Target</source>
+        <target>Member Target</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
         <source>Enter news title</source>
@@ -1504,7 +1504,7 @@
         <target>Last month</target>
       </trans-unit>
       <!--END Date time picker-->
-      <!--Start Customer Module-->
+      <!--Start Member Module-->
       <trans-unit id="customers-list-tbl-title" datatype="html">
         <source>Members</source>
         <target>Members</target>
@@ -1541,8 +1541,8 @@
         <source>Point</source>
         <target>Point</target>
       </trans-unit>
-      <!--End Customer Module-->
-      <!--Start Create Edit Customer Module-->
+      <!--End Member Module-->
+      <!--Start Create Edit Member Module-->
       <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
         <source>Create member</source>
         <target>Create member</target>
@@ -1633,8 +1633,8 @@
         <source>Email is invalid</source>
         <target>Email is invalid</target>
       </trans-unit>
-      <!--End Create Edit Customer Module-->
-      <!--Start Customer Filter-->
+      <!--End Create Edit Member Module-->
+      <!--Start Member Filter-->
       <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
@@ -1711,7 +1711,7 @@
         <source>Reset filter</source>
         <target>Reset filter</target>
       </trans-unit>
-      <!--End Customer Filter-->
+      <!--End Member Filter-->
       <!--Start Voucher Home -->
       <trans-unit id="vouchers-create-voucher" datatype="html">
         <source>Create voucher</source>
@@ -1845,89 +1845,89 @@
       </trans-unit>
       <!--END Start stop promotions-->
       <!--START member types-->
-      <trans-unit id="member-type-menu" datatype="html">
+      <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>
         <target>Membership Types</target>
       </trans-unit>
-      <trans-unit id="member-type-btn-new" datatype="html">
+      <trans-unit id="membership-type-btn-new" datatype="html">
         <source>New membership type</source>
         <target>New membership type</target>
       </trans-unit>
-      <trans-unit id="member-type-create-title" datatype="html">
+      <trans-unit id="membership-type-create-title" datatype="html">
         <source>Add new membership type</source>
         <target>Add new membership type</target>
       </trans-unit>
-      <trans-unit id="member-type-update-title" datatype="html">
+      <trans-unit id="membership-type-update-title" datatype="html">
         <source>Edit membership type</source>
         <target>Edit membership type</target>
       </trans-unit>
-      <trans-unit id="member-type-update-sub-title" datatype="html">
+      <trans-unit id="membership-type-update-sub-title" datatype="html">
         <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
         <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
       </trans-unit>
-      <trans-unit id="member-type-create-sub-title" datatype="html">
+      <trans-unit id="membership-type-create-sub-title" datatype="html">
         <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
         <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-label" datatype="html">
+      <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Id</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-code-placeholder" datatype="html">
         <source>Enter membership type id</source>
         <target>Enter membership type id</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-required" datatype="html">
+      <trans-unit id="membership-type-create-form-code-required" datatype="html">
         <source>Please provide membership type id</source>
         <target>Please provide membership type id</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-pattern" datatype="html">
+      <trans-unit id="membership-type-create-form-code-pattern" datatype="html">
         <source>The membership type id doesn't allow space charracter</source>
         <target>The membership type id doesn't allow space charracter</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-label" datatype="html">
+      <trans-unit id="membership-type-create-form-name-label" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-name-placeholder" datatype="html">
         <source>Enter membership type name</source>
         <target>Enter membership type name</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-required" datatype="html">
+      <trans-unit id="membership-type-create-form-name-required" datatype="html">
         <source>Please provide membership type name</source>
         <target>Please provide membership type name</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-target-point-placeholder" datatype="html">
         <source>Enter the target point</source>
         <target>Enter the target point</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+      <trans-unit id="membership-type-create-form-name-target-point" datatype="html">
         <source>Target point</source>
         <target>Target point</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-active" datatype="html">
+      <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Active</target>
       </trans-unit>
-      <trans-unit id="member-type-inactive" datatype="html">
+      <trans-unit id="membership-type-inactive" datatype="html">
         <source>Inactive</source>
         <target>Inactive</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-success" datatype="html">
+      <trans-unit id="membership-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>
         <target>A new membership type has been created</target>
       </trans-unit>
-      <trans-unit id="member-type-edit-form-success" datatype="html">
+      <trans-unit id="membership-type-edit-form-success" datatype="html">
         <source>A membership type has been updated</source>
         <target>A membership type has been updated</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-confirm" datatype="html">
+      <trans-unit id="membership-type-delete-confirm" datatype="html">
         <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
         type {{0}}?</source>
         <target>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
           type {{0}}</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-success" datatype="html">
+      <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>
         <target>A membership type has been deleted</target>
       </trans-unit>

@@ -18,7 +18,7 @@ import { DialogModule } from './shared/ui-common/modal/dialog.module';
 import { NewsModule } from './modules/news/news.module';
 import { UsersModule } from './modules/users/users.module';
 import { PromotionsModule } from './modules/promotions/promotions.module';
-import { CustomerManagementModule } from './modules/customers/customer.module';
+import { MemberModule } from './modules/member/member.module';
 import { VouchersModule } from './modules/vouchers/vouchers.module';
 // import { EditorModule } from '@tinymce/tinymce-angular';
 
@@ -37,7 +37,7 @@ import { VouchersModule } from './modules/vouchers/vouchers.module';
     PermissionSchemeModule,
     NewsModule,
     PromotionsModule,
-    CustomerManagementModule,
+    MemberModule,
     VouchersModule
   ],
   providers: [

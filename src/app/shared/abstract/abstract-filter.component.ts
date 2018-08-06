@@ -17,7 +17,7 @@ export abstract class AbstractFilterComponent<T>
   // Call when button run filter have clicked
   @Output() runFilterClicked = new EventEmitter();
 
-  // Get and set customer filter property
+  // Get and set member filter property
   @Input()
   set filter(value) {
     this._filter = value;
