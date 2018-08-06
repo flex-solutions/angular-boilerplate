@@ -1837,7 +1837,7 @@
         <target>Hết hạn: </target>
       </trans-unit>
       <!--END Start stop promotions-->
-      <!--START member types-->
+      <!--START membership types-->
       <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>
         <target>Quản Lý Loại Hội Viên</target>
@@ -1921,7 +1921,7 @@
         <source>A membership type has been deleted</source>
         <target>Loại hội viên đã được xoá</target>
       </trans-unit>
-      <!--STOP member types-->
+      <!--STOP membership types-->
     </body>
   </file>
 </xliff>

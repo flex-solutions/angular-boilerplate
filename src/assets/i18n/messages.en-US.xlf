@@ -1844,7 +1844,7 @@
         <target>Expire on: </target>
       </trans-unit>
       <!--END Start stop promotions-->
-      <!--START member types-->
+      <!--START membership types-->
       <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>
         <target>Membership Types</target>
@@ -1931,7 +1931,7 @@
         <source>A membership type has been deleted</source>
         <target>A membership type has been deleted</target>
       </trans-unit>
-      <!--STOP member types-->
+      <!--STOP membership types-->
     </body>
   </file>
 </xliff>

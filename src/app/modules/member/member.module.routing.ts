@@ -43,21 +43,21 @@ const memberModuleRoutes: Routes = [{
     path: 'membership-type',
     component: MembershipTypeHomeComponent,
     data: {
-      breadcrumb: 'Member types'
+      breadcrumb: 'Membership types'
     }
   },
   {
     path: 'membership-type/create',
     component: MembershipTypeCreateEditComponent,
     data: {
-      breadcrumb: 'New member type'
+      breadcrumb: 'New membership type'
     }
   },
   {
     path: 'membership-type/update/:id',
     component: MembershipTypeCreateEditComponent,
     data: {
-      breadcrumb: 'Edit member type'
+      breadcrumb: 'Edit membership type'
     }
   }
 ];
