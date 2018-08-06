@@ -52,6 +52,7 @@ export class CustomerHomeComponent implements OnInit {
 
   private getQuery() {
     const query = CustomerCriteriaBuilder.build(this.customerFilter);
+    console.log(query, 2);
     return query;
   }
 

@@ -64,10 +64,10 @@ const customerFilterFields = {
   NAME: 'name',
   MONTH_OF_BIRTHDAY: 'monthOfBirthday',
   SEX: 'sex',
-  ADDRESS: 'address',
+  ADDRESS: 'address.country.provinces',
   CUSTOMER_TYPE: 'customerType',
-  PROVINCE: 'province',
-  DISTRICT: 'district'
+  PROVINCE: 'address.country.provinces',
+  DISTRICT: 'address.country.provinces[0].districts[0].name'
 };
 
 const sexResourceKey = {

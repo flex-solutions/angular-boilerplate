@@ -60,7 +60,7 @@ export class CustomerFilterComponent extends AbstractFilterComponent<
   loadData() {
     this.memberTypeService.getMemberTypes().subscribe((data: MemberType[]) => {
       this.memberTypes = data.map(m => {
-        m['id'] = m.code;
+        m['id'] = m._id;
         m['text'] = m.name;
         return m;
       });

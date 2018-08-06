@@ -20,17 +20,20 @@ export class CustomerCriteriaBuilder {
       .withFilter(
         FilterType.Regex,
         customerFilterFields.PHONE_NUMBER,
-        customerFilter[customerFilterFields.PHONE_NUMBER]
+        customerFilter[customerFilterFields.PHONE_NUMBER],
+        ValueType.RegexContains
       )
       .withFilter(
         FilterType.Regex,
         customerFilterFields.MEMBER_ID,
-        customerFilter[customerFilterFields.MEMBER_ID]
+        customerFilter[customerFilterFields.MEMBER_ID],
+        ValueType.RegexContains
       )
       .withFilter(
         FilterType.Regex,
         customerFilterFields.NAME,
-        customerFilter[customerFilterFields.NAME]
+        customerFilter[customerFilterFields.NAME],
+        ValueType.RegexContains
       )
       .withFilter(
         FilterType.Equal,
@@ -45,14 +48,10 @@ export class CustomerCriteriaBuilder {
         ValueType.Number
       )
       .withFilter(
-        FilterType.Regex,
-        customerFilterFields.PROVINCE,
-        customerFilter[customerFilterFields.PROVINCE].name
-      )
-      .withFilter(
-        FilterType.Regex,
-        customerFilterFields.DISTRICT,
-        customerFilter[customerFilterFields.DISTRICT].name
+        FilterType.default,
+        customerFilterFields.CUSTOMER_TYPE,
+        customerFilter.customerType.id,
+        ValueType.ObjectId
       );
 
     return builder.endWrapperFilter().build();
