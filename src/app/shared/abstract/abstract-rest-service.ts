@@ -68,7 +68,7 @@ export abstract class AbstractRestService {
     );
   }
 
-  filter<T>(relativeUrl: string, filter: any) {
+  getWithFilter<T>(relativeUrl: string, filter: any) {
     this.showLoader();
     const url = this.getFullUrl(relativeUrl);
     const filterString = JSON.stringify(filter);

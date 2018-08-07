@@ -12,7 +12,7 @@ export class FilterSet {
 }
 
 export enum FilterType {
-  default = '',
+  Default = '',
   Regex = '$regex',
   GreatThan = '$gt',
   LessThan = '$lt',

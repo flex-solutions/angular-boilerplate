@@ -66,8 +66,8 @@ const customerFilterFields = {
   SEX: 'sex',
   ADDRESS: 'address.country.provinces',
   CUSTOMER_TYPE: 'customerType',
-  PROVINCE: 'address.country.provinces',
-  DISTRICT: 'address.country.provinces[0].districts[0].name'
+  PROVINCE: 'province',
+  DISTRICT: 'district'
 };
 
 const sexResourceKey = {

@@ -48,12 +48,21 @@ export class CustomerCriteriaBuilder {
         ValueType.Number
       )
       .withFilter(
-        FilterType.default,
+        FilterType.Default,
         customerFilterFields.CUSTOMER_TYPE,
         customerFilter.customerType.id,
         ValueType.ObjectId
+      )
+      .withFilter(
+        FilterType.Equal,
+        customerFilterFields.PROVINCE,
+        customerFilter[customerFilterFields.PROVINCE].name
+      )
+      .withFilter(
+        FilterType.Equal,
+        customerFilterFields.DISTRICT,
+        customerFilter[customerFilterFields.DISTRICT].name
       );
-
     return builder.endWrapperFilter().build();
   }
 }

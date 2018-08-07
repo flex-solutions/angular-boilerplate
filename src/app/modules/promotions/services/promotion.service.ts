@@ -32,7 +32,7 @@ export class PromotionService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter('count', query);
+    return this.getWithFilter('count', query);
   }
 
   getPromotions(
@@ -43,7 +43,7 @@ export class PromotionService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
+    return this.getWithFilter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
   deletePromotion(id: string) {
