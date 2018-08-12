@@ -59,8 +59,9 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.initialize();
 
-    this.picker.on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
+    this.picker.on('apply.daterangepicker', (ev, picker) => {
+      this.picker.val(picker.startDate.format('DD/MM/YYYY'));
+      this.date = new Date(picker.startDate.toISOString());
     });
 
     this.picker.on('cancel.daterangepicker', (ev, picker) => {
