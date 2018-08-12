@@ -23,10 +23,12 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   elementId: string;
   inputClasses: string;
 
-  @Input() title: string;
+  @Input()
+  title: string;
 
   // Call when date have changed
-  @Output() dateChange = new EventEmitter<Date>();
+  @Output()
+  dateChange = new EventEmitter<Date>();
 
   @Input()
   get date() {
@@ -60,6 +62,10 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     this.picker.on('apply.daterangepicker', function(ev, picker) {
       $(this).val(picker.startDate.format('DD/MM/YYYY'));
     });
+
+    this.picker.on('cancel.daterangepicker', (ev, picker) => {
+      this.reset();
+    });
   }
 
   initialize() {
@@ -68,7 +74,6 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
         singleDatePicker: true,
         startDate: moment(this.date),
         endDate: moment(this.date),
-        autoApply: true,
         autoUpdateInput: false,
         ranges: this.buildRanges(),
         showDropdowns: true,
