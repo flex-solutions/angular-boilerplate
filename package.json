@@ -9,9 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-i18n": "for lang in vi-VN en-US; do ng build --output-path=dist/$lang --aot -prod --bh /$lang/ --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done",
-    "vi": "ng serve --configuration=vi",
-    "en": "ng serve --configuration=en"
+    "build-i18n": "for lang in vi en; do ng build --output-path=dist/$lang --aot --base-href /$lang/ --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-format=xlf --i18n-locale=$lang; done",
+    "vi": "ng serve --aot --i18n-file=src/assets/i18n/messages.vi-VN.xlf --locale=vi --i18n-format=xlf",
+    "en": "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf"
   },
   "private": true,
   "dependencies": {
