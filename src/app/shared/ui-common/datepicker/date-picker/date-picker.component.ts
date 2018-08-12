@@ -78,6 +78,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
         ranges: this.buildRanges(),
         showDropdowns: true,
         alwaysShowCalendars: true,
+        showCustomRangeLabel: false,
         locale: {
           cancelLabel: this.translateService.translate(
             'date-range-picker_button_cancel'
@@ -130,10 +131,8 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   reset() {
+    this.date = null;
     this.picker.val('');
-    setTimeout(() => {
-      this.date = null;
-    });
   }
 
   get picker() {
