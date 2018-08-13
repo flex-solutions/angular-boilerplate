@@ -15,7 +15,7 @@ export class CustomerService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter('count', query);
+    return this.getWithFilter('count', query);
   }
 
   getCustomers(
@@ -26,7 +26,7 @@ export class CustomerService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
+    return this.getWithFilter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
   public getById(_id: string): Observable<CustomerModel> {

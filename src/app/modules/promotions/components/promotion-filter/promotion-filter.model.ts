@@ -1,7 +1,7 @@
 export class PromotionFilter {
   title: string;
   content: string;
-  startDate: any;
-  endDate: any;
+  startDate: Date;
+  endDate: Date;
   status: any;
 }

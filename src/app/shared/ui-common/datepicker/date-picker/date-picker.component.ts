@@ -23,10 +23,12 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   elementId: string;
   inputClasses: string;
 
-  @Input() title: string;
+  @Input()
+  title: string;
 
   // Call when date have changed
-  @Output() dateChange = new EventEmitter<Date>();
+  @Output()
+  dateChange = new EventEmitter<Date>();
 
   @Input()
   get date() {
@@ -57,8 +59,13 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.initialize();
 
-    this.picker.on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
+    this.picker.on('apply.daterangepicker', (ev, picker) => {
+      this.picker.val(picker.startDate.format('DD/MM/YYYY'));
+      this.date = new Date(picker.startDate.toISOString());
+    });
+
+    this.picker.on('cancel.daterangepicker', (ev, picker) => {
+      this.reset();
     });
   }
 
@@ -68,11 +75,11 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
         singleDatePicker: true,
         startDate: moment(this.date),
         endDate: moment(this.date),
-        autoApply: true,
         autoUpdateInput: false,
         ranges: this.buildRanges(),
         showDropdowns: true,
         alwaysShowCalendars: true,
+        showCustomRangeLabel: false,
         locale: {
           cancelLabel: this.translateService.translate(
             'date-range-picker_button_cancel'
@@ -125,10 +132,8 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   reset() {
+    this.date = null;
     this.picker.val('');
-    setTimeout(() => {
-      this.date = null;
-    });
   }
 
   get picker() {

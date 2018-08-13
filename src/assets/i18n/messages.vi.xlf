@@ -1566,10 +1566,6 @@
         <source>Please provide member name</source>
         <target>Vui lòng cung cấp tên hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-name_pattern" datatype="html">
-        <source>Member name contains invalid characters.</source>
-        <target>Tên hội viên chứa ký tự không hợp lệ.</target>
-      </trans-unit>
       <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
