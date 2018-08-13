@@ -22,6 +22,7 @@ import {
 } from '../../../../shared/validation/generic-validator';
 import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
 import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
+import { appVariables } from '../../../../app.constant';
 
 const TITLE_CREATE_CUSTOMER =
   'customer-create_edit_customer-h4-create_customer';
@@ -190,7 +191,7 @@ export class CreateEditCustomerComponent extends AbstractFormCreateMoreComponent
 
   protected onCreateForm() {
     this.formGroup = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.pattern(appVariables.noSpecialCharactersRegex)]],
       phone: [
         '+84',
         [Validators.required, Validators.pattern('\\+84[0-9]{9,10}')]

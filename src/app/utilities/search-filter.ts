@@ -12,7 +12,7 @@ export class FilterSet {
 }
 
 export enum FilterType {
-  default = '',
+  Default = '',
   Regex = '$regex',
   GreatThan = '$gt',
   LessThan = '$lt',
@@ -21,14 +21,17 @@ export enum FilterType {
   Or = '$or',
   In = '$in',
   GreatThanEqual = '$gte',
-  LessThanEqual = '$lte'
+  LessThanEqual = '$lte',
+  ElementMatch = '$elemMatch'
 }
 
 export enum ValueType {
   String = 'string',
   Number = 'number',
   Array = 'array',
-  Date = 'date'
+  Date = 'date',
+  ObjectId = 'objectId',
+  RegexContains = 'regex-contains',
 }
 
 export class Criteria {
