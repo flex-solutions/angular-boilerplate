@@ -64,7 +64,7 @@ const memberFilterFields = {
   NAME: 'name',
   MONTH_OF_BIRTHDAY: 'monthOfBirthday',
   SEX: 'sex',
-  ADDRESS: 'address',
+  ADDRESS: 'address.country.provinces',
   MEMBERSHIP_TYPE: 'membershipType',
   PROVINCE: 'province',
   DISTRICT: 'district'

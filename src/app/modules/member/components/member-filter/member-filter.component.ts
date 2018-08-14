@@ -58,7 +58,7 @@ export class MemberFilterComponent extends AbstractFilterComponent<MemberFilter>
   loadData() {
     this.membershipTypeService.getMembershipTypes().subscribe((data: MembershipType[]) => {
       this.membershipTypes = data.map(m => {
-        m['id'] = m.code;
+        m['id'] = m._id;
         m['text'] = m.name;
         return m;
       });

@@ -1,11 +1,18 @@
 <div class="input-group date-picker">
     <div class="input-group-prepend">
         <span class="input-group-text pr-0" *ngIf="title">{{title}}:</span>
-        <input [id]="elementId" type="text" name="singledate" class="form-control" [ngClass]="inputClasses" (change)="onInputChanged($event)"/>
+    </div>
+    <input [id]="elementId" type="text" name="singledate" class="form-control" [ngClass]="inputClasses" (change)="onInputChanged($event)"
+    />
+    <div class="input-group-append">
+        <span style="cursor:pointer" class="input-group-addon input-group-append border-left" (click)="reset()">
+            <span class="mdi mdi-close input-group-text" style="border-right: 1px solid #ced4da;
+                border-left: none;"></span>
+        </span>
         <span (click)="onIconClicked()" class="input-group-addon input-group-append border-left">
             <span class="mdi mdi-calendar input-group-text" style="border-right: 1px solid #ced4da;
-            border-radius: 0 3px 3px 0;
-            border-left: none;"></span>
+                        border-radius: 0 3px 3px 0;
+                        border-left: none;"></span>
         </span>
     </div>
 </div>

@@ -20,17 +20,20 @@ export class MemberCriteriaBuilder {
       .withFilter(
         FilterType.Regex,
         memberFilterFields.PHONE_NUMBER,
-        memberFilter[memberFilterFields.PHONE_NUMBER]
+        memberFilter[memberFilterFields.PHONE_NUMBER],
+        ValueType.RegexContains
       )
       .withFilter(
         FilterType.Regex,
         memberFilterFields.MEMBER_ID,
-        memberFilter[memberFilterFields.MEMBER_ID]
+        memberFilter[memberFilterFields.MEMBER_ID],
+        ValueType.RegexContains
       )
       .withFilter(
         FilterType.Regex,
         memberFilterFields.NAME,
-        memberFilter[memberFilterFields.NAME]
+        memberFilter[memberFilterFields.NAME],
+        ValueType.RegexContains
       )
       .withFilter(
         FilterType.Equal,
@@ -45,16 +48,21 @@ export class MemberCriteriaBuilder {
         ValueType.Number
       )
       .withFilter(
-        FilterType.Regex,
+        FilterType.Default,
+        memberFilterFields.MEMBERSHIP_TYPE,
+        memberFilter.membershipType.id,
+        ValueType.ObjectId
+      )
+      .withFilter(
+        FilterType.Equal,
         memberFilterFields.PROVINCE,
         memberFilter[memberFilterFields.PROVINCE].name
       )
       .withFilter(
-        FilterType.Regex,
+        FilterType.Equal,
         memberFilterFields.DISTRICT,
         memberFilter[memberFilterFields.DISTRICT].name
       );
-
     return builder.endWrapperFilter().build();
   }
 }

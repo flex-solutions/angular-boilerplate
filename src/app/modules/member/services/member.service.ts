@@ -15,7 +15,7 @@ export class MemberService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter('count', query);
+    return this.getWithFilter('count', query);
   }
 
   getMembers(
@@ -26,7 +26,7 @@ export class MemberService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
+    return this.getWithFilter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
   }
 
   public getById(_id: string): Observable<MemberModel> {

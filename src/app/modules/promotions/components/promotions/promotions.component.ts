@@ -18,6 +18,8 @@ import {
   ValueType
 } from '../../../../utilities/search-filter';
 import { PromotionFilter } from '../promotion-filter/promotion-filter.model';
+import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-promotions',
@@ -28,7 +30,8 @@ export class PromotionsComponent implements OnInit {
   public items: Promotion[] = [];
   currentFilterArgs: IFilterChangedEvent;
   promotionFilter: PromotionFilter = new PromotionFilter();
-  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
+  @ViewChild(DatagridComponent)
+  dataGrid: DatagridComponent;
   constructor(
     private service: PromotionService,
     private route: Router,
@@ -45,7 +48,7 @@ export class PromotionsComponent implements OnInit {
   public count = (searchKey: string) => {
     const query = this.buildPromotionFilter();
     return this.service.count(query);
-  }
+  };
 
   onPageChanged(eventArg: IFilterChangedEvent) {
     this.currentFilterArgs = eventArg;
@@ -108,19 +111,42 @@ export class PromotionsComponent implements OnInit {
       FilterType.And
     );
 
-    builder
-      .withFilter(
-        FilterType.GreatThanEqual,
+    const startDate = this.promotionFilter.startDate;
+    const endDate = this.promotionFilter.endDate;
+    if (
+      !isNullOrEmptyOrUndefine(startDate) &&
+      !isNullOrEmptyOrUndefine(endDate)
+    ) {
+      builder
+        .withFilter(
+          FilterType.GreatThanEqual,
+          promotionFields.START_DATE,
+          startDate,
+          ValueType.Date
+        )
+        .withFilter(
+          FilterType.LessThanEqual,
+          promotionFields.EXPIRE_DATE,
+          endDate,
+          ValueType.Date
+        );
+    } else if (!isNullOrEmptyOrUndefine(startDate)) {
+      builder.withFilter(
+        FilterType.Equal,
         promotionFields.START_DATE,
-        this.promotionFilter.startDate,
+        startDate,
         ValueType.Date
-      )
-      .withFilter(
-        FilterType.LessThanEqual,
+      );
+    } else if (!isNullOrEmptyOrUndefine(endDate)) {
+      builder.withFilter(
+        FilterType.Equal,
         promotionFields.EXPIRE_DATE,
-        this.promotionFilter.endDate,
+        endDate,
         ValueType.Date
-      )
+      );
+    }
+
+    builder
       .withFilter(
         FilterType.In,
         promotionFields.STATUS,
@@ -154,7 +180,7 @@ export class PromotionsComponent implements OnInit {
 
   resetFilter = () => {
     this.loadDataWithFilter();
-  }
+  };
 
   private loadDataWithFilter() {
     this.count('').subscribe(total => {

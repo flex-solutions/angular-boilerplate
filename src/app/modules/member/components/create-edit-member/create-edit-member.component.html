@@ -15,7 +15,9 @@
             <input id="name" required class="form-control" formControlName="name" i18n-placeholder="@@member-create_edit_member-input-name_place_holder"
               placeholder="Enter member name" [(ngModel)]="member.name">
             <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_require"
-              *ngIf="name.invalid && (name.dirty || name.touched)"> Please provide member name</label>
+              *ngIf="name.invalid && name.errors.required && (name.dirty || name.touched)"> Please provide member name</label>
+            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_pattern"
+              *ngIf="name.invalid && name.errors.pattern && (name.dirty || name.touched)">Member name can only contains letters (a-Z), numbers, "-", "_", "."</label>
           </div>
           <div class="form-group">
             <label for="phone" i18n="@@member-create_edit_member-label-phone_field">Phone number </label>

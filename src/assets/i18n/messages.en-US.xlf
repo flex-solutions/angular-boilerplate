@@ -1573,6 +1573,10 @@
         <source>Please provide member name</source>
         <target>Please provide member name</target>
       </trans-unit>
+      <trans-unit id="member-create_edit_member-label-name_pattern" datatype="html">
+        <source>Member name contains invalid characters.</source>
+        <target>Member name contains invalid characters.</target>
+      </trans-unit>
       <trans-unit id="member-create_edit_member-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>

@@ -20,7 +20,7 @@ export class VoucherService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter(
+    return this.getWithFilter(
       `count?`, query
     );
   }
@@ -33,7 +33,7 @@ export class VoucherService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.filter(
+    return this.getWithFilter(
       `filter?pageSize=${pageSize}&pageNumber=${pageNumber}`,
       query
     );
