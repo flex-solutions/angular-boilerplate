@@ -13,7 +13,7 @@
           "options": {
             "outputPath": "dist/cms-en",
             "aot": true,
-            "i18nFile": "src/assets/i18n/messages.en-US.xlf",
+            "i18nFile": "src/assets/i18n/messages.en.xlf",
             "i18nLocale": "en",
             "i18nFormat": "xlf",
             "index": "src/index.html",

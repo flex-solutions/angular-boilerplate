@@ -1222,8 +1222,8 @@
         <target>Mã Giảm Giá</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
-        <source>Customer Target</source>
-        <target>Đối Tượng Khách Hàng</target>
+        <source>Member Target</source>
+        <target>Đối Tượng Hội Viên</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
         <source>Enter news title</source>
@@ -1496,203 +1496,207 @@
       </trans-unit>
       <!--END Date time picker-->
       <!--Start Members Module-->
-      <trans-unit id="customers-list-tbl-title" datatype="html">
+      <trans-unit id="members-list-tbl-title" datatype="html">
         <source>Members</source>
         <target>Danh sách hội viên</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-btn-create" datatype="html">
+      <trans-unit id="members-tbl-btn-create" datatype="html">
         <source>New member</source>
         <target>Hội viên mới</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-name" datatype="html">
+      <trans-unit id="members-tbl-name" datatype="html">
         <source>Name</source>
         <target>Tên hội viên</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-member-id" datatype="html">
+      <trans-unit id="members-tbl-member-id" datatype="html">
         <source>Member ID</source>
         <target>Mã hội viên</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-phone-number" datatype="html">
+      <trans-unit id="members-tbl-phone-number" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-birthday" datatype="html">
+      <trans-unit id="members-tbl-birthday" datatype="html">
         <source>Birthday</source>
         <target>Sinh nhật</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-sex" datatype="html">
+      <trans-unit id="members-tbl-sex" datatype="html">
         <source>Sex</source>
         <target>Giới tính</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-address" datatype="html">
+      <trans-unit id="members-tbl-address" datatype="html">
         <source>Address</source>
         <target>Địa chỉ</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-customer-point" datatype="html">
+      <trans-unit id="members-tbl-member-point" datatype="html">
         <source>Point</source>
         <target>Điểm</target>
       </trans-unit>
 
-      <!--End Customer Module-->
-      <!--Start Create Edit Customer Module-->
-      <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
+      <!--End Member Module-->
+      <!--Start Create Edit Member Module-->
+      <trans-unit id="member-create_edit_member-h4-create_member" datatype="html">
         <source>Create member</source>
         <target>Tạo hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new customer account, customer can user phone number to login mobile app and this account will
+      <trans-unit id="member-create_edit_member-h4-create_member_description" datatype="html">
+        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will
         be also created on IPOS system</source>
         <target>Tạo thủ công tài khoản hội viên, sau bước này, hội viên có thể dùng số điện thoại để đăng nhập vào ứng dụng di động,
           và tài khoản này cũng được tạo trên hệ thống IPOS
         </target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
+      <trans-unit id="member-create_edit_member-h4-edit_member" datatype="html">
         <source>Edit member</source>
         <target>Cập nhật thông tin hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-h4-edit_customer_description" datatype="html">
+      <trans-unit id="member-create_edit_member-h4-edit_member_description" datatype="html">
         <source>Manual editing a member account</source>
         <target>Cập nhật thông tin hội viên trên CMS và hệ thống IPOS</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-name_field" datatype="html">
         <source>Name</source>
         <target>Tên hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-input-name_place_holder" datatype="html">
+      <trans-unit id="member-create_edit_member-input-name_place_holder" datatype="html">
         <source>Enter member name</source>
         <target>Nhập tên hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-name_require" datatype="html">
+      <trans-unit id="member-create_edit_member-label-name_require" datatype="html">
         <source>Please provide member name</source>
         <target>Vui lòng cung cấp tên hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-name_pattern" datatype="html">
+        <source>Member name contains invalid characters.</source>
+        <target>Tên hội viên chứa ký tự không hợp lệ.</target>
+      </trans-unit>
+      <trans-unit id="member-create_edit_member-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-input-phone_place_holder" datatype="html">
+      <trans-unit id="member-create_edit_member-input-phone_place_holder" datatype="html">
         <source>Enter member phone</source>
         <target>Nhập số điện thoại hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-phone_require" datatype="html">
+      <trans-unit id="member-create_edit_member-label-phone_require" datatype="html">
         <source>Please provide phone number</source>
         <target>Vui lòng cung cấp số điện thoại</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-birthday_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-birthday_field" datatype="html">
         <source>Birthday</source>
         <target>Ngày sinh</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-type_field" datatype="html">
         <source>Membership type</source>
         <target>Loại hội viên</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-sex_field" datatype="html">
         <source>Sex</source>
         <target>Giới tính</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-address_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-address_field" datatype="html">
         <source>Address</source>
         <target>Địa chỉ</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-district_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-district_field" datatype="html">
         <source>District</source>
         <target>Quận</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-city_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-city_field" datatype="html">
         <source>City/Province</source>
         <target>Thành phố/Tỉnh</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-email_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-email_field" datatype="html">
         <source>Email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="customer-create_customer-input-email_place_holder" datatype="html">
+      <trans-unit id="member-create_member-input-email_place_holder" datatype="html">
         <source>Enter email</source>
         <target>Nhập email</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
+      <trans-unit id="member-create_edit_member-input-address_place_holder" datatype="html">
         <source>Enter address</source>
         <target>Nhập địa chỉ</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
+      <trans-unit id="member-create_edit_member-create_member_ok" datatype="html">
         <source>A new member account has been created</source>
         <target>Một tài khoản hội viên mới được tạo thành công</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-edit_customer_ok" datatype="html">
+      <trans-unit id="member-create_edit_member-edit_member_ok" datatype="html">
         <source>A member account has been updated</source>
         <target>Một tài khoản hội viên được cập nhật thành công</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-email_invalid" datatype="html">
+      <trans-unit id="member-create_edit_member-email_invalid" datatype="html">
         <source>Email is invalid</source>
         <target>Email không hợp lệ</target>
       </trans-unit>
-      <!--End Create Edit Customer Module-->
-      <!--Start Customer Filter-->
-      <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
+      <!--End Create Edit Member Module-->
+      <!--Start Member Filter-->
+      <trans-unit id="members-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-placeholder-phone_number" datatype="html">
+      <trans-unit id="members-filter-list-table-placeholder-phone_number" datatype="html">
         <source>Phone number contains</source>
         <target>Số điện thoại có chứa</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-sex" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-sex" datatype="html">
         <source>Sex</source>
         <target>Giới tính</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-address" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-address" datatype="html">
         <source>Address</source>
         <target>Địa chỉ</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-member_id" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-member_id" datatype="html">
         <source>Member id</source>
         <target>Mã hội viên</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-placeholder-member_id" datatype="html">
+      <trans-unit id="members-filter-list-table-placeholder-member_id" datatype="html">
         <source>Member id contains</source>
         <target>Mã hội viên có chứa</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-month_of_birthday" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-month_of_birthday" datatype="html">
         <source>Month of birthday</source>
         <target>Tháng sinh nhật</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-day_are_not_returned" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-day_are_not_returned" datatype="html">
         <source>Days are not returned</source>
         <target>Số ngày chưa trở lại</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-number_of_times_eaten" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-number_of_times_eaten" datatype="html">
         <source>Number of times eaten</source>
         <target>Số lần ăn</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-name" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-name" datatype="html">
         <source>Name</source>
         <target>Tên KH</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-placeholder-name" datatype="html">
+      <trans-unit id="members-filter-list-table-placeholder-name" datatype="html">
         <source>Name contains</source>
         <target>Tên hội viên có chứa</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-member_type" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-member_type" datatype="html">
         <source>Member type</source>
         <target>Loại hội viên</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-have_score" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-have_score" datatype="html">
         <source>Have score</source>
         <target>Có sổ điểm</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-spend_money_total" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-spend_money_total" datatype="html">
         <source>Spend money total</source>
         <target>Đã chi tiêu</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-placeholder_from" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-placeholder_from" datatype="html">
         <source>From</source>
         <target>Từ</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-placeholder_to" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-placeholder_to" datatype="html">
         <source>To</source>
         <target>Đến</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-btn-run_filter" datatype="html">
+      <trans-unit id="members-filter-list-table-btn-run_filter" datatype="html">
         <source>Run filter</source>
         <target>Lọc</target>
       </trans-unit>
@@ -1700,11 +1704,105 @@
         <source>From is not greater than to</source>
         <target>Giá trị từ phải nhỏ hơn giá trị đến</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-btn-reset_filter" datatype="html">
+      <trans-unit id="members-filter-list-table-btn-reset_filter" datatype="html">
         <source>Reset filter</source>
         <target>Thiết lập lại</target>
       </trans-unit>
-      <!--End Customer Filter-->
+      <!--End Member Filter-->
+      <!--Start Voucher Home -->
+      <trans-unit id="vouchers-create-voucher" datatype="html">
+        <source>Create voucher</source>
+        <target>Tạo voucher</target>
+      </trans-unit>
+      <trans-unit id="vouchers-code" datatype="html">
+        <source>Code</source>
+        <target>Mã</target>
+      </trans-unit>
+      <trans-unit id="vouchers-createdDate" datatype="html">
+        <source>Created Date</source>
+        <target>Ngày tạo</target>
+      </trans-unit>
+      <trans-unit id="vouchers-discount" datatype="html">
+        <source>Discount</source>
+        <target>Giảm giá</target>
+      </trans-unit>
+      <trans-unit id="vouchers-name" datatype="html">
+        <source>Name</source>
+        <target>Tên</target>
+      </trans-unit>
+      <trans-unit id="vouchers-publishCount" datatype="html">
+        <source>Published Count</source>
+        <target>Đã phát hành</target>
+      </trans-unit>
+      <trans-unit id="vouchers-usedCount" datatype="html">
+        <source>Used Count</source>
+        <target>Đã sử dụng</target>
+      </trans-unit>
+      <trans-unit id="vouchers-status" datatype="html">
+        <source>Status</source>
+        <target>Tình trạng</target>
+      </trans-unit>
+      <trans-unit id="vouchers-sales" datatype="html">
+        <source>Sales</source>
+        <target>Doanh số</target>
+      </trans-unit>
+      <trans-unit id="vouchers-edit" datatype="html">
+        <source>Edit</source>
+        <target>Sửa</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-voucher" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
+        <source>Search voucher code, name</source>
+        <target>Tìm kiếm mã voucher, tên voucher</target>
+      </trans-unit>
+      <trans-unit id="vouchers-title" datatype="html">
+        <source>Vouchers</source>
+        <target>Danh sách voucher</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
+        <source>Vouchers Management</source>
+        <target>Quản lý voucher</target>
+      </trans-unit>
+      <trans-unit id="list-voucher-status-running" datatype="html">
+        <source>Running</source>
+        <target>Đang áp dụng</target>
+      </trans-unit>
+      <trans-unit id="list-voucher-status-expired" datatype="html">
+        <source>Expired</source>
+        <target>Hết hiệu lực</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-placeholder-text" datatype="html">
+        <source>Name/Code contains</source>
+        <target>Tên/Mã chứa </target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-th-create-date" datatype="html">
+        <source>Created Date</source>
+        <target>Ngày tạo</target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-th-status" datatype="html">
+        <source>Status</source>
+        <target>Tình trạng</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-btn-run_filter" datatype="html">
+        <source>Run filter</source>
+        <target>Áp dụng bộ lọc</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-btn-reset_filter" datatype="html">
+        <source>Reset filter</source>
+        <target>Làm mới bộ lọc</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-lbl-title" datatype="html">
+        <source>Voucher Filter</source>
+        <target>Lọc voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-detail-delete-voucher" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <!--End Voucher Home -->
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>
@@ -1743,91 +1841,91 @@
         <target>Hết hạn: </target>
       </trans-unit>
       <!--END Start stop promotions-->
-      <!--START member types-->
-      <trans-unit id="member-type-menu" datatype="html">
+      <!--START membership types-->
+      <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>
         <target>Quản Lý Loại Hội Viên</target>
       </trans-unit>
-      <trans-unit id="member-type-btn-new" datatype="html">
+      <trans-unit id="membership-type-btn-new" datatype="html">
         <source>New membership type</source>
         <target>Loại hội viên mới</target>
       </trans-unit>
-      <trans-unit id="member-type-create-title" datatype="html">
+      <trans-unit id="membership-type-create-title" datatype="html">
         <source>Add new membership type</source>
         <target>Thêm loại hội viên mới</target>
       </trans-unit>
-      <trans-unit id="member-type-update-title" datatype="html">
+      <trans-unit id="membership-type-update-title" datatype="html">
         <source>Edit membership type</source>
         <target>Sửa thông tin loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-update-sub-title" datatype="html">
+      <trans-unit id="membership-type-update-sub-title" datatype="html">
         <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
         <target>Sửa thông tin một loại hội viên, thông tin này cũng nên được sửa trên hệ thống IPOS để đảm bảo hệ thống hoạt động
           ổn định</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-label" datatype="html">
+      <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Mã loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-code-placeholder" datatype="html">
         <source>Enter membership type id</source>
         <target>Nhập mã loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-required" datatype="html">
+      <trans-unit id="membership-type-create-form-code-required" datatype="html">
         <source>Please provide membership type id</source>
         <target>Vui lòng nhập mã loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-pattern" datatype="html">
+      <trans-unit id="membership-type-create-form-code-pattern" datatype="html">
         <source>The membership type id doesn't allow space charracter</source>
         <target>Mã loại hội viên không được chứa khoảng trắng</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-label" datatype="html">
+      <trans-unit id="membership-type-create-form-name-label" datatype="html">
         <source>Name</source>
         <target>Tên loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-name-placeholder" datatype="html">
         <source>Enter membership type name</source>
         <target>Nhập tên loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-required" datatype="html">
+      <trans-unit id="membership-type-create-form-name-required" datatype="html">
         <source>Please provide membership type name</source>
         <target>Vui lòng nhập tên loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-target-point-placeholder" datatype="html">
         <source>Enter the target point</source>
         <target>Nhập điểm cần tích để đạt tới loại hội viên</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+      <trans-unit id="membership-type-create-form-name-target-point" datatype="html">
         <source>Target point</source>
         <target>Điểm cần tích</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-active" datatype="html">
+      <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
       </trans-unit>
-      <trans-unit id="member-type-inactive" datatype="html">
+      <trans-unit id="membership-type-inactive" datatype="html">
         <source>Inactive</source>
         <target>Ngưng áp dụng</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-success" datatype="html">
+      <trans-unit id="membership-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>
         <target>Một loại hội viên mới được thêm thành công</target>
       </trans-unit>
-      <trans-unit id="member-type-edit-form-success" datatype="html">
+      <trans-unit id="membership-type-edit-form-success" datatype="html">
         <source>A membership type has been updated</source>
         <target>Loại hội viên được cập nhật thành công</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-confirm" datatype="html">
+      <trans-unit id="membership-type-delete-confirm" datatype="html">
         <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
         type {{0}}?</source>
         <target>Bạn có chắc muốn xoá loại hội viên {{0}}? Tất cả hội viên đang ở loại này sẽ được di chuyển qua loại có điểm thấp
           hơn liền kề.</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-success" datatype="html">
+      <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>
         <target>Loại hội viên đã được xoá</target>
       </trans-unit>
-      <!--STOP member types-->
+      <!--STOP membership types-->
     </body>
   </file>
 </xliff>
