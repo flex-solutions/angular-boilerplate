@@ -6,7 +6,7 @@ import { MembershipTypeService } from './../../services/membership-type.service'
 import { MembershipType } from './../../../../shared/models/membership-type.model';
 import { OnInit, Component } from '@angular/core';
 import { MembershipTypeRoute } from '../../constants/member.constants';
-
+import { filter, sortBy } from 'lodash';
 @Component({
   selector: 'app-membership-type-home',
   templateUrl: './membership-type.component.html',
@@ -14,7 +14,8 @@ import { MembershipTypeRoute } from '../../constants/member.constants';
 })
 export class MembershipTypeHomeComponent implements OnInit {
 
-  public membershipTypes: MembershipType[] = [];
+  public accumulateTypes: MembershipType[] = [];
+  public internalTypes: MembershipType[] = [];
   private confirmDeleteMsg: string;
   private deleteSuccessMsg: string;
 
@@ -55,7 +56,12 @@ export class MembershipTypeHomeComponent implements OnInit {
 
   private getMembershipTypes() {
     this.membershipTypeService.getMembershipTypes().subscribe(membershipTypes => {
-      this.membershipTypes = membershipTypes;
+
+      this.accumulateTypes = sortBy(filter(membershipTypes, (mt: MembershipType) => mt.isAccumulated === true),
+      MembershipType.Fields.POINT);
+
+      this.internalTypes = sortBy(filter(membershipTypes, (mt: MembershipType) => !mt.isAccumulated),
+      MembershipType.Fields.POINT);
     });
   }
 }

@@ -1873,6 +1873,14 @@
         <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
         <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
       </trans-unit>
+      <trans-unit id="membership-type-list-category-internal" datatype="html">
+        <source>Internal membership types</source>
+        <target>Internal membership types</target>
+      </trans-unit>
+      <trans-unit id="membership-type-list-category-accumulate" datatype="html">
+        <source>Accumulate membership types</source>
+        <target>Accumulate membership types</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Id</target>
