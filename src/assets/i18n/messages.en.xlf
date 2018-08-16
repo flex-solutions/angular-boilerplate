@@ -1909,6 +1909,10 @@
         <source>Target point</source>
         <target>Target point</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-accumulate" datatype="html">
+        <source>Accumulate type</source>
+        <target>Accumulate type</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Active</target>

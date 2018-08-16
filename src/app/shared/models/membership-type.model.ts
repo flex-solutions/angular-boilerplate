@@ -5,4 +5,5 @@ export class MembershipType extends ModelBase {
   name: string;
   point: number;
   isActive = true;
+  isAccumulated = true;
 }

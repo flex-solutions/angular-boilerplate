@@ -1899,6 +1899,10 @@
         <source>Target point</source>
         <target>Điểm cần tích</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-accumulate" datatype="html">
+        <source>Accumulate type</source>
+        <target>Loại xếp hạng hội viên</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
