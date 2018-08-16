@@ -1,3 +1,4 @@
+import { MembershipTypeDeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { ExDialog } from './../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -43,15 +44,30 @@ export class MembershipTypeHomeComponent implements OnInit {
 
     this.confirmDeleteMsg = this.translateService.translate('membership-type-delete-confirm', [membershipType.name]);
     this.deleteSuccessMsg = this.translateService.translate('membership-type-delete-success');
-    this.exDlg.openConfirm(this.confirmDeleteMsg).subscribe(result => {
-      if (result) {
-        this.membershipTypeService.deleteMembershipType(membershipType._id).subscribe(() => {
-          this.notification.showSuccess(this.deleteSuccessMsg);
-          this.getMembershipTypes();
+    this.membershipTypeService.countMember(membershipType._id).subscribe(count => {
+      if (count === 0) {
+        this.exDlg.openConfirm(this.confirmDeleteMsg).subscribe(result => {
+          if (result) {
+            this.doDelete(membershipType._id);
+          }
+        });
+      } else {
+        this.exDlg
+        .openPrime(MembershipTypeDeleteConfirmationComponent, { callerData: membershipType })
+        .subscribe(result => {
+          if (result) {
+            this.doDelete(membershipType._id, result.movingId);
+          }
         });
       }
     });
+  }
 
+  private doDelete(id: string, movingId: string = '') {
+    this.membershipTypeService.deleteMembershipType(id, movingId).subscribe(() => {
+      this.notification.showSuccess(this.deleteSuccessMsg);
+      this.getMembershipTypes();
+    });
   }
 
   private getMembershipTypes() {

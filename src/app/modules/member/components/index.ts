@@ -1,3 +1,4 @@
+import { MembershipTypeDeleteConfirmationComponent } from './membership-type/delete-confirmation/delete-confirmation.component';
 import { MembershipTypeCreateEditComponent } from './membership-type/create-edit/membership-type-create-edit.component';
 import { CreateEditMemberComponent } from './create-edit-member/create-edit-member.component';
 import { MemberHomeComponent } from './home/home.component';
@@ -9,5 +10,10 @@ export const memberComponents = [
     MemberFilterComponent,
     CreateEditMemberComponent,
     MembershipTypeHomeComponent,
-    MembershipTypeCreateEditComponent
+    MembershipTypeCreateEditComponent,
+    MembershipTypeDeleteConfirmationComponent
+];
+
+export const memberEntryComponents = [
+    MembershipTypeDeleteConfirmationComponent
 ];

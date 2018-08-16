@@ -1928,10 +1928,8 @@
         <target>Loại hội viên được cập nhật thành công</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm" datatype="html">
-        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
-        type {{0}}?</source>
-        <target>Bạn có chắc muốn xoá loại hội viên {{0}}? Tất cả hội viên đang ở loại này sẽ được di chuyển qua loại có điểm thấp
-          hơn liền kề.</target>
+        <source>Are you sure you want to delete membership type {{0}}?</source>
+        <target>Bạn có chắc muốn xoá loại hội viên {{0}}?</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>
