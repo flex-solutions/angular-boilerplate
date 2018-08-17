@@ -1,7 +1,7 @@
 import { memberModuleServices } from './services';
 import { memberModuleDirectives } from './directives';
 import { MemberRoutingModule } from './member.module.routing';
-import { memberComponents } from './components';
+import { memberComponents, memberEntryComponents } from './components';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,9 @@ import { SharedModule } from '../../shared/shared.module';
     providers: [
       memberModuleServices
     ],
-
+    entryComponents: [
+      ...memberEntryComponents
+    ]
   })
 
   export class MemberModule { }

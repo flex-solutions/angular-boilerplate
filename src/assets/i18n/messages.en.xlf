@@ -1873,6 +1873,14 @@
         <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
         <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
       </trans-unit>
+      <trans-unit id="membership-type-list-category-internal" datatype="html">
+        <source>Internal membership types</source>
+        <target>Internal membership types</target>
+      </trans-unit>
+      <trans-unit id="membership-type-list-category-accumulate" datatype="html">
+        <source>Accumulate membership types</source>
+        <target>Accumulate membership types</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Id</target>
@@ -1909,6 +1917,10 @@
         <source>Target point</source>
         <target>Target point</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-accumulate" datatype="html">
+        <source>Accumulate type</source>
+        <target>Accumulate type</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Active</target>
@@ -1926,10 +1938,8 @@
         <target>A membership type has been updated</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm" datatype="html">
-        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
-        type {{0}}?</source>
-        <target>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
-          type {{0}}</target>
+        <source>Are you sure you want to delete membership type {{0}}?</source>
+        <target>Are you sure you want to delete membership type {{0}}?</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>

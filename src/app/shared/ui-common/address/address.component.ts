@@ -4,15 +4,12 @@ import {
   Input,
   Output,
   EventEmitter,
-  ViewChildren,
-  QueryList,
   ViewChild
 } from '@angular/core';
 import { Province, District } from '../../models/address.model';
 import { AddressService } from './address.service';
 import { Select2Component } from '../select2/select2.component';
 import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
-import { R } from 'ramda';
 
 @Component({
   selector: 'app-address',

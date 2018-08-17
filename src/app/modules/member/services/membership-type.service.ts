@@ -20,6 +20,10 @@ export class MembershipTypeService extends AbstractRestService {
     return this.get<MembershipType>(`${id}`);
   }
 
+  countMember(id: string): Observable<Number> {
+    return this.get<Number>(`${id}/countMember`);
+  }
+
   create(dto: MembershipType): Observable<Response> {
     return this.post('', dto);
   }
@@ -28,7 +32,7 @@ export class MembershipTypeService extends AbstractRestService {
     return this.put('', dto);
   }
 
-  deleteMembershipType(id: string): Observable<Response> {
-    return this.delete(id);
+  deleteMembershipType(id: string, newTypeId: string): Observable<Response> {
+    return this.delete(`${id}?newTypeId=${newTypeId}`);
   }
 }

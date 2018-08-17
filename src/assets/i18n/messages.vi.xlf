@@ -1863,6 +1863,14 @@
         <target>Sửa thông tin một loại hội viên, thông tin này cũng nên được sửa trên hệ thống IPOS để đảm bảo hệ thống hoạt động
           ổn định</target>
       </trans-unit>
+      <trans-unit id="membership-type-list-category-internal" datatype="html">
+        <source>Internal membership types</source>
+        <target>Loại hội viên nội bộ</target>
+      </trans-unit>
+      <trans-unit id="membership-type-list-category-accumulate" datatype="html">
+        <source>Accumulate membership types</source>
+        <target>Loại hội viên tích điểm xếp hạng</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Mã loại hội viên</target>
@@ -1899,6 +1907,10 @@
         <source>Target point</source>
         <target>Điểm cần tích</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-accumulate" datatype="html">
+        <source>Accumulate type</source>
+        <target>Loại xếp hạng hội viên</target>
+      </trans-unit>
       <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Áp dụng</target>
@@ -1916,10 +1928,8 @@
         <target>Loại hội viên được cập nhật thành công</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm" datatype="html">
-        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
-        type {{0}}?</source>
-        <target>Bạn có chắc muốn xoá loại hội viên {{0}}? Tất cả hội viên đang ở loại này sẽ được di chuyển qua loại có điểm thấp
-          hơn liền kề.</target>
+        <source>Are you sure you want to delete membership type {{0}}?</source>
+        <target>Bạn có chắc muốn xoá loại hội viên {{0}}?</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>

@@ -36,6 +36,11 @@
     color: #C2A16A;
 }
 
+.star {
+    margin-top: -1px;
+    font-size: 1rem!important;
+}
+
 .add-btn {
     margin-right: 13px;
     margin-bottom: 15px;
