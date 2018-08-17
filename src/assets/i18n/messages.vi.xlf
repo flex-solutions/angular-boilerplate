@@ -1940,11 +1940,11 @@
         <target>Xoá loại hội viên</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
-        <source>Membership type {{deletingMembershipType.name}} has 5 members. You have to choose a new membership type for those
+        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership type for those
           members.
         </source>
         <target>
-        Loại hội viên {{deletingMembershipType.name}} có 5 thành viên. Bạn phải chọn loại hội viên khác cho những thành viên này.
+        Loại hội viên {{deletingMembershipType.name}} có {{memberCount}} thành viên. Bạn phải chọn loại hội viên khác cho những thành viên này.
         </target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-lbl-new-type" datatype="html">

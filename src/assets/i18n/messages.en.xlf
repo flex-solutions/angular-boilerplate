@@ -1950,10 +1950,10 @@
         <target>Delete membership type</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
-        <source>Membership type {{deletingMembershipType.name}} has 5 members. You have to choose a new membership type for those
+        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership type for those
         members.
         </source>
-        <target>Membership type {{deletingMembershipType.name}} has 5 members. You have to choose a new membership type for those
+        <target>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership type for those
           members.
         </target>
       </trans-unit>

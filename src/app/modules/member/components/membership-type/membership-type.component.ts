@@ -60,7 +60,10 @@ export class MembershipTypeHomeComponent implements OnInit {
         }
         this.exDlg
           .openPrime(MembershipTypeDeleteConfirmationComponent, {
-            callerData: membershipType
+            callerData: {
+              memberCount: count,
+              membershipType
+            }
           })
           .subscribe(result => {
             if (result) {
