@@ -59,7 +59,6 @@ export class AddressComponent implements OnInit {
 
   set districts(val) {
     this._districts = val;
-    this.districtSelectControl.reset();
   }
 
   constructor(private readonly addressService: AddressService) {}
