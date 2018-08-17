@@ -1945,6 +1945,26 @@
         <source>A membership type has been deleted</source>
         <target>A membership type has been deleted</target>
       </trans-unit>
+      <trans-unit id="membership-type-delete-confirm-dlg-title" datatype="html">
+        <source>Delete membership type</source>
+        <target>Delete membership type</target>
+      </trans-unit>
+      <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
+        <source>Membership type {{deletingMembershipType.name}} has 5 members. You have to choose a new membership type for those
+        members.
+        </source>
+        <target>Membership type {{deletingMembershipType.name}} has 5 members. You have to choose a new membership type for those
+          members.
+        </target>
+      </trans-unit>
+      <trans-unit id="membership-type-delete-confirm-lbl-new-type" datatype="html">
+        <source>New membership type</source>
+        <target>New membership type</target>
+      </trans-unit>
+      <trans-unit id="membership-type-delete-warning-one-type" datatype="html">
+        <source>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</source>
+        <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</target>
+      </trans-unit>
       <!--STOP membership types-->
     </body>
   </file>

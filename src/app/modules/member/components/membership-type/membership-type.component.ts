@@ -17,7 +17,6 @@ export class MembershipTypeHomeComponent implements OnInit {
 
   public accumulateTypes: MembershipType[] = [];
   public internalTypes: MembershipType[] = [];
-  private confirmDeleteMsg: string;
   private deleteSuccessMsg: string;
 
   constructor(private readonly membershipTypeService: MembershipTypeService,
@@ -45,8 +44,8 @@ export class MembershipTypeHomeComponent implements OnInit {
 
     this.membershipTypeService.countMember(membershipType._id).subscribe(count => {
       if (count === 0) {
-        this.confirmDeleteMsg = this.translateService.translate('membership-type-delete-confirm', [membershipType.name]);
-        this.exDlg.openConfirm(this.confirmDeleteMsg).subscribe(result => {
+        const confirmDeleteMsg = this.translateService.translate('membership-type-delete-confirm', [membershipType.name]);
+        this.exDlg.openConfirm(confirmDeleteMsg).subscribe(result => {
           if (result) {
             this.membershipTypeService.deleteMembershipType(membershipType._id, '').subscribe(() => {
               this.refreshAfterDelete();
@@ -54,13 +53,20 @@ export class MembershipTypeHomeComponent implements OnInit {
           }
         });
       } else {
+        if (this.accumulateTypes.length + this.internalTypes.length === 1) {
+          const warningDeleteMsg = this.translateService.translate('membership-type-delete-warning-one-type', membershipType.name, count);
+          this.exDlg.openMessage(warningDeleteMsg);
+          return;
+        }
         this.exDlg
-        .openPrime(MembershipTypeDeleteConfirmationComponent, { callerData: membershipType })
-        .subscribe(result => {
-          if (result) {
-            this.refreshAfterDelete();
-          }
-        });
+          .openPrime(MembershipTypeDeleteConfirmationComponent, {
+            callerData: membershipType
+          })
+          .subscribe(result => {
+            if (result) {
+              this.refreshAfterDelete();
+            }
+          });
       }
     });
   }

@@ -36,9 +36,11 @@ export class MembershipTypeDeleteConfirmationComponent extends DialogComponent i
     }
 
     submit() {
-        this.membershipTypeService.deleteMembershipType(this.deletingMembershipType._id, this.newMembershipType._id).subscribe(() => {
-            this.result = true;
-            this.dialogResult();
-        });
+        if (!isEmpty(this.newMembershipType) && !isEmpty(this.deletingMembershipType)) {
+            this.membershipTypeService.deleteMembershipType(this.deletingMembershipType._id, this.newMembershipType._id).subscribe(() => {
+                this.result = true;
+                this.dialogResult();
+            });
+        }
     }
 }
