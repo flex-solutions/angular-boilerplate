@@ -29,6 +29,7 @@ export class MembershipTypeHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.deleteSuccessMsg = this.translateService.translate('membership-type-delete-success');
     this.getMembershipTypes();
   }
 
@@ -42,13 +43,14 @@ export class MembershipTypeHomeComponent implements OnInit {
 
   deleteMembershipType(membershipType: MembershipType) {
 
-    this.confirmDeleteMsg = this.translateService.translate('membership-type-delete-confirm', [membershipType.name]);
-    this.deleteSuccessMsg = this.translateService.translate('membership-type-delete-success');
     this.membershipTypeService.countMember(membershipType._id).subscribe(count => {
       if (count === 0) {
+        this.confirmDeleteMsg = this.translateService.translate('membership-type-delete-confirm', [membershipType.name]);
         this.exDlg.openConfirm(this.confirmDeleteMsg).subscribe(result => {
           if (result) {
-            this.doDelete(membershipType._id);
+            this.membershipTypeService.deleteMembershipType(membershipType._id, '').subscribe(() => {
+              this.refreshAfterDelete();
+            });
           }
         });
       } else {
@@ -56,18 +58,16 @@ export class MembershipTypeHomeComponent implements OnInit {
         .openPrime(MembershipTypeDeleteConfirmationComponent, { callerData: membershipType })
         .subscribe(result => {
           if (result) {
-            this.doDelete(membershipType._id, result.movingId);
+            this.refreshAfterDelete();
           }
         });
       }
     });
   }
 
-  private doDelete(id: string, movingId: string = '') {
-    this.membershipTypeService.deleteMembershipType(id, movingId).subscribe(() => {
-      this.notification.showSuccess(this.deleteSuccessMsg);
-      this.getMembershipTypes();
-    });
+  private refreshAfterDelete() {
+    this.notification.showSuccess(this.deleteSuccessMsg);
+    this.getMembershipTypes();
   }
 
   private getMembershipTypes() {
