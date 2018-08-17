@@ -42,7 +42,7 @@ export class Select2Component implements AfterViewInit {
     if (this._selectedItem && this._selectedItem.text) {
       this.onSelectedItemChange();
     } else {
-      this.reset();
+      this.host.val(null).trigger('change');
     }
   }
 
@@ -140,9 +140,7 @@ export class Select2Component implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
-    setTimeout(() => {
-      this.selectedItem = {};
-    });
+    this.selectedItem = {};
   }
 
   onSelectedItemChange() {
