@@ -17,11 +17,15 @@ export class Select2Component implements AfterViewInit {
   private _selectedItem: any;
   private _itemsSource: any[];
   private _placeholder: string;
+  private _displayPropertyName: string;
+  private _valuePropertyName: string;
 
   elementId: string;
 
-  @Output() selectedItemChange = new EventEmitter();
-  @Output() itemsSourceChange = new EventEmitter();
+  @Output()
+  selectedItemChange = new EventEmitter();
+  @Output()
+  itemsSourceChange = new EventEmitter();
 
   @Input()
   set itemsSource(value) {
@@ -38,7 +42,7 @@ export class Select2Component implements AfterViewInit {
     if (this._selectedItem && this._selectedItem.text) {
       this.onSelectedItemChange();
     } else {
-      this.reset();
+      this.host.val(null).trigger('change');
     }
   }
 
@@ -64,6 +68,22 @@ export class Select2Component implements AfterViewInit {
 
   get placeHolder() {
     return this._placeholder;
+  }
+
+  @Input()
+  set displayPropertyName(val) {
+    this._displayPropertyName = val;
+  }
+  get displayPropertyName() {
+    return this._displayPropertyName;
+  }
+
+  @Input()
+  set valuePropertyName(val) {
+    this._valuePropertyName = val;
+  }
+  get valuePropertyName() {
+    return this._valuePropertyName;
   }
 
   constructor() {
@@ -102,10 +122,17 @@ export class Select2Component implements AfterViewInit {
     if (!obj) {
       return obj;
     }
-    if (!obj.hasOwnProperty('id')) {
+
+    if (!isNullOrEmptyOrUndefine(this.valuePropertyName)) {
+      obj.id = obj[this.valuePropertyName];
+    } else if (!obj.hasOwnProperty('id')) {
       obj.id = obj._id || obj.key;
     }
-    if (!obj.hasOwnProperty('text')) {
+
+    if (!isNullOrEmptyOrUndefine(this.displayPropertyName)) {
+      obj.text = obj[this.displayPropertyName];
+    } else if (!obj.hasOwnProperty('text')) {
+      // Use default behavior
       obj.text = obj.name || obj.displayName;
     }
     return obj;
@@ -113,9 +140,7 @@ export class Select2Component implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
-    setTimeout(() => {
-      this.selectedItem = {};
-    });
+    this.selectedItem = {};
   }
 
   onSelectedItemChange() {

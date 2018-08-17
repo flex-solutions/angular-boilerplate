@@ -58,7 +58,7 @@
             <br/>
             <div class="form-group">
               <label i18n="@@members-filter-list-table-lbl-member_type">Member type</label>
-              <app-select2 [itemsSource]="membershipTypes" [(selectedItem)]="filter.membershipType"></app-select2>
+              <app-select2 [itemsSource]="membershipTypes" valuePropertyName="_id" displayPropertyName="name" [(selectedItem)]="filter.membershipType"></app-select2>
             </div>
             <br/>
             <app-input-range i18n-title="@@members-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
