@@ -6384,6 +6384,10 @@ timespan@2.3.x:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/timespan/-/timespan-2.3.0.tgz#4902ce040bd13d845c8f59b27e9d59bad6f39929"
 
+titatoggle@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/titatoggle/-/titatoggle-2.1.2.tgz#2ff80117eebd40042db98bfe057fe95e135b6f58"
+
 tmp@0.0.24:
   version "0.0.24"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.24.tgz#d6a5e198d14a9835cc6f2d7c3d9e302428c8cf12"

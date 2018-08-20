@@ -34,7 +34,7 @@ const routes: Routes = [
       loadChildren: 'app/modules/member/member.module#MemberModule',
     },
     {
-      path: 'vouchers',
+      path: 'voucher',
       loadChildren: 'app/modules/vouchers/vouchers.module#VouchersModule',
     }]
   },

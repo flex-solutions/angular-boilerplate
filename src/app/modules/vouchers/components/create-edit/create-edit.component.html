@@ -1,0 +1,88 @@
+<form class="cmxform" id="createEditVoucherForm" [formGroup]="formGroup">
+  <fieldset>
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <app-card title="Loại voucher">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Loại chương trình</label>
+                <select class="form-control border-light" id="exampleSelectWarning">
+                  <option>Giảm giá</option>
+                  <option>Mua X tặng Y</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Mục đích sử dụng</label>
+                <select class="form-control border-light" id="exampleSelectWarning">
+                  <option>Một mã sử dụng nhiều lần</option>
+                  <option>Xuất mã hàng loạt</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 grid-margin">
+        <app-card title="Thông tin chung">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tên chương trình</label>
+            <input type="email" class="form-control" id="exampleInputEmail1">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Số tiền giảm giá</label>
+            <div class="checkbox checkbox-slider--X">
+              <label>
+                <input type="checkbox">
+                <span>checked</span>
+              </label>
+            </div>
+          </div>
+        </app-card>
+      </div>
+      <div class="col-md-6 col-sm-12 grid-margin">
+        <app-card title="Thời gian">
+
+        </app-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="accordion basic-accordion" id="accordion" role="tablist">
+          <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+              <h6 class="mb-0">
+                <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                  <h4 class="card-title" style="margin-bottom:0px">Điều kiện nâng cao</h4>
+                </a>
+              </h6>
+            </div>
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+              <div class="card-body">
+                <form>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form buttons -->
+    <div class="form-cmds">
+      <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
+      <button class="btn btn-light mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+      <div class="form-check form-check-flat chk" *ngIf="!isEdit">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
+          <i class="input-helper"></i>
+          <label class="chk-label" i18n="@@common-action-create-another">Create another</label>
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</form>

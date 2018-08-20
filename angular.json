@@ -21,7 +21,11 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.css", "src/customStyles.css", "node_modules/dropify/dist/css/dropify.min.css", "src/assets/js/daterangepicker/daterangepicker.css"],
+            "styles": ["src/styles.css",
+              "src/customStyles.css",
+              "node_modules/dropify/dist/css/dropify.min.css",
+              "src/assets/js/daterangepicker/daterangepicker.css",
+              "node_modules/titatoggle/dist/titatoggle-dist-min.css"],
             "scripts": [
               "src/assets/js/jquery.min.js",
               "node_modules/toastr/build/toastr.min.js",
