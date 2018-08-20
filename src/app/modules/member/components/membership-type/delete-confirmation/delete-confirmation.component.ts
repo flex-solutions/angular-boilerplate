@@ -12,6 +12,7 @@ import { filter, eq, isEmpty } from 'lodash';
 
 export class MembershipTypeDeleteConfirmationComponent extends DialogComponent implements OnInit {
     deletingMembershipType: MembershipType;
+    memberCount: number;
     membershipTypes: MembershipType[] = [];
     newMembershipType: MembershipType;
 
@@ -21,7 +22,8 @@ export class MembershipTypeDeleteConfirmationComponent extends DialogComponent i
     }
 
     ngOnInit(): void {
-        this.deletingMembershipType = <MembershipType>this.callerData;
+        this.deletingMembershipType = <MembershipType>this.callerData.membershipType;
+        this.memberCount = this.callerData.memberCount;
         this.membershipTypeService.getMembershipTypes().subscribe(types => {
             this.membershipTypes = filter(types, type => !eq(type._id, this.deletingMembershipType._id));
             if (!isEmpty(this.membershipTypes)) {
@@ -36,9 +38,11 @@ export class MembershipTypeDeleteConfirmationComponent extends DialogComponent i
     }
 
     submit() {
-        this.membershipTypeService.deleteMembershipType(this.deletingMembershipType._id, this.newMembershipType._id).subscribe(() => {
-            this.result = true;
-            this.dialogResult();
-        });
+        if (!isEmpty(this.newMembershipType) && !isEmpty(this.deletingMembershipType)) {
+            this.membershipTypeService.deleteMembershipType(this.deletingMembershipType._id, this.newMembershipType._id).subscribe(() => {
+                this.result = true;
+                this.dialogResult();
+            });
+        }
     }
 }

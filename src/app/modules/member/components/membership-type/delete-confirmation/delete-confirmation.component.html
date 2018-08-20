@@ -1,8 +1,8 @@
 <div class="modal-content">
   <div class="modal-header">
     <div>
-      <h5 class="modal-title" style="width: 100%">Delete membership type</h5>
-      <p class="row col-12">Membership type {{deletingMembershipType.name}} has 5 members. You have to choose a new membership type for those members.</p>
+      <h5 class="modal-title" style="width: 100%" i18n="@@membership-type-delete-confirm-dlg-title">Delete membership type</h5>
+      <p class="row col-12" i18n="@@membership-type-delete-confirm-dlg-sub-title">Membership type {{deletingMembershipType.name}} has {{memberCount}} members. You have to choose a new membership type for those members.</p>
     </div>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
       <span aria-hidden="true">×</span>
@@ -12,7 +12,7 @@
     <form class="cmxform">
       <fieldset>
         <div class="form-group">
-          <label for="applyRangeTime">New membership type</label>
+          <label for="applyRangeTime" i18n="@@membership-type-delete-confirm-lbl-new-type">New membership type</label>
           <app-select2 [itemsSource]="membershipTypes" [(selectedItem)]="newMembershipType"></app-select2>
         </div>
       </fieldset>
@@ -20,6 +20,6 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
-    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()" i18n="@@common_button-cancel">Cancel</button>
   </div>
 </div>
