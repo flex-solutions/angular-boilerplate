@@ -36,6 +36,14 @@
         <source>Filter Tool</source>
         <target>Công cụ lọc</target>
       </trans-unit>
+      <trans-unit id="common_title-filter-run" datatype="html">
+        <source>Run filter</source>
+        <target>Chạy bộ lọc</target>
+      </trans-unit>
+      <trans-unit id="common_title-filter-reset" datatype="html">
+        <source>Reset filter</source>
+        <target>Huỷ bộ lọc</target>
+      </trans-unit>
       <trans-unit id="common_label-sex-man" datatype="html">
         <source>Man</source>
         <target>Nam</target>
@@ -1758,13 +1766,17 @@
         <source>Search voucher code, name</source>
         <target>Tìm kiếm mã voucher, tên voucher</target>
       </trans-unit>
+      <trans-unit id="vouchers-create" datatype="html">
+        <source>Create New Voucher</source>
+        <target>Tạo Voucher Mới</target>
+      </trans-unit>
       <trans-unit id="vouchers-title" datatype="html">
         <source>Vouchers</source>
         <target>Danh sách voucher</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
-        <source>Vouchers Management</source>
-        <target>Quản lý voucher</target>
+        <source>E-Voucher</source>
+        <target>E-Voucher</target>
       </trans-unit>
       <trans-unit id="list-voucher-status-running" datatype="html">
         <source>Running</source>
@@ -1773,6 +1785,10 @@
       <trans-unit id="list-voucher-status-expired" datatype="html">
         <source>Expired</source>
         <target>Hết hiệu lực</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-name-code" datatype="html">
+        <source>Name/Code</source>
+        <target>Tên/Mã</target>
       </trans-unit>
       <trans-unit id="vouchers-filter-list-table-placeholder-text" datatype="html">
         <source>Name/Code contains</source>
@@ -1940,11 +1956,12 @@
         <target>Xoá loại hội viên</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
-        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership type for those
-          members.
+        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership
+        type for those members.
         </source>
         <target>
-        Loại hội viên {{deletingMembershipType.name}} có {{memberCount}} thành viên. Bạn phải chọn loại hội viên khác cho những thành viên này.
+          Loại hội viên {{deletingMembershipType.name}} có {{memberCount}} thành viên. Bạn phải chọn loại hội viên khác cho những thành
+          viên này.
         </target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-lbl-new-type" datatype="html">
@@ -1953,7 +1970,8 @@
       </trans-unit>
       <trans-unit id="membership-type-delete-warning-one-type" datatype="html">
         <source>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</source>
-        <target>Loại hội viên {{0}} đang có {{1}} hội viên. Vui lòng tạo thêm loại hội viên để áp dụng cho những thành viên này trước khi xoá.</target>
+        <target>Loại hội viên {{0}} đang có {{1}} hội viên. Vui lòng tạo thêm loại hội viên để áp dụng cho những thành viên này trước
+          khi xoá.</target>
       </trans-unit>
 
       <!--STOP membership types-->
