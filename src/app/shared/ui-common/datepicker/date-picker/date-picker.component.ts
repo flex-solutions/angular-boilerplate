@@ -38,7 +38,9 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   set date(value: Date) {
     this._date = value;
     // set value
-    if (this._date && this._date) {
+    if (isNullOrEmptyOrUndefine(this._date)) {
+      this.picker.val('');
+    } else {
       const date = moment(this._date);
       this.picker.val(date.format('DD/MM/YYYY'));
     }
@@ -73,8 +75,8 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     this.picker.daterangepicker(
       {
         singleDatePicker: true,
-        startDate: moment(this.date),
-        endDate: moment(this.date),
+        startDate: moment(this.date ? this.date : new Date()),
+        endDate: moment(this.date ? this.date : new Date()),
         autoUpdateInput: false,
         ranges: this.buildRanges(),
         showDropdowns: true,
