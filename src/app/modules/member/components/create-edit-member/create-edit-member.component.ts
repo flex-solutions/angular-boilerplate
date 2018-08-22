@@ -135,6 +135,10 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
       this.memberService.get(this.memberId).subscribe((value: MemberModel) => {
         if (value) {
           this.member.clone(value as MemberModel);
+          this.member.membershipType = this.membershipTypes.find(
+            i => i._id === this.member.membershipType
+          );
+          this.member.sex = this.sexes.find(i => i.id === this.member.sex);
           if (
             this.member &&
             this.member.address &&
@@ -216,8 +220,8 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
 
   protected onSubmit() {
     if (!this.isEdit) {
-      this.prepareMember();
-      this.memberService.create(this.member).subscribe(() => {
+      const newMember = this.prepareMember();
+      this.memberService.create(newMember).subscribe(() => {
         // * Create news successful, display success notification
         const msg = this.getMessage(
           MemberErrors.Create_Member_Sucess,
@@ -236,8 +240,8 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   }
 
   saveMember() {
-    this.prepareMember();
-    this.memberService.update(this.member).subscribe(() => {
+    const newMember = this.prepareMember();
+    this.memberService.update(newMember).subscribe(() => {
       // * Create news successful, display success notification
       const msg = this.getMessage(
         MemberErrors.Edit_Member_Sucess,
@@ -248,22 +252,29 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
     });
   }
 
-  private prepareMember() {
+  private prepareMember(): MemberModel {
+    const newMember = new MemberModel();
+    newMember.clone(this.member as MemberModel);
+
     if (
       this.selectedCity != null &&
       !isNullOrEmptyOrUndefined(this.selectedCity.name)
     ) {
-      this.member.address.country = new Country();
-      this.member.address.country.provinces = [];
+      newMember.address.country = new Country();
+      newMember.address.country.provinces = [];
       const city = new Province();
       city.copyFrom(this.selectedCity);
-      this.member.address.country.provinces.push(city);
-      this.member.address.country.provinces[0].districts = [];
+      newMember.address.country.provinces.push(city);
+      newMember.address.country.provinces[0].districts = [];
 
       const district = new District();
       district.copyFrom(this.selectedDistrict);
-      this.member.address.country.provinces[0].districts.push(district);
+      newMember.address.country.provinces[0].districts.push(district);
     }
+    if (!isNullOrEmptyOrUndefined(newMember.sex)) {
+      newMember.sex = this.member.sex.id;
+    }
+    return newMember;
   }
 
   protected refreshPageIfCreateAnother() {
