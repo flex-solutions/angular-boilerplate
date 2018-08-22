@@ -5,7 +5,7 @@ import { MemberErrors } from '../../constants/member.constants';
 import { MemberService } from '../../services/member.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -20,7 +20,7 @@ import {
   GenericValidator,
   IValidationMessage
 } from '../../../../shared/validation/generic-validator';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
 import { appVariables } from '../../../../app.constant';
 
@@ -142,7 +142,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
               this.member.address.country.provinces.length > 0
             ) {
               if (
-                !isNullOrEmptyOrUndefine(
+                !isNullOrEmptyOrUndefined(
                   this.member.address.country.provinces[0].name
                 )
               ) {
@@ -248,7 +248,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   private prepareMember() {
     if (
       this.selectedCity != null &&
-      !isNullOrEmptyOrUndefine(this.selectedCity.name)
+      !isNullOrEmptyOrUndefined(this.selectedCity.name)
     ) {
       this.member.address.country = new Country();
       this.member.address.country.provinces = [];

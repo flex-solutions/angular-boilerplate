@@ -13,7 +13,7 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { MessageConstant } from '../../messages';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 import { promotionLimits } from '../../common.const';
 
@@ -153,7 +153,7 @@ export class CreatePromotionComponent implements OnInit {
   hasErrorBanner() {
     if (this.bannerError) {
       return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
-        && isNullOrEmptyOrUndefine(this.promotion.banner);
+        && isNullOrEmptyOrUndefined(this.promotion.banner);
     }
     return false;
   }

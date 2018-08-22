@@ -6,7 +6,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 declare const $: any;
 
 @Component({
@@ -109,7 +109,7 @@ export class Select2Component implements AfterViewInit {
 
   // Because select2 using format {id: string; text: string}
   formatDataSource(arrayData: any[]) {
-    if (isNullOrEmptyOrUndefine(arrayData)) {
+    if (isNullOrEmptyOrUndefined(arrayData)) {
       return [];
     }
     const data = arrayData.map(obj => {
@@ -123,13 +123,13 @@ export class Select2Component implements AfterViewInit {
       return obj;
     }
 
-    if (!isNullOrEmptyOrUndefine(this.valuePropertyName)) {
+    if (!isNullOrEmptyOrUndefined(this.valuePropertyName)) {
       obj.id = obj[this.valuePropertyName];
     } else if (!obj.hasOwnProperty('id')) {
       obj.id = obj._id || obj.key;
     }
 
-    if (!isNullOrEmptyOrUndefine(this.displayPropertyName)) {
+    if (!isNullOrEmptyOrUndefined(this.displayPropertyName)) {
       obj.text = obj[this.displayPropertyName];
     } else if (!obj.hasOwnProperty('text')) {
       // Use default behavior

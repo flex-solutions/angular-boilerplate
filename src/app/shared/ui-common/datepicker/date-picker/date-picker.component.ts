@@ -8,7 +8,7 @@ import {
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 declare const $: any;
 declare const moment: any;
 
@@ -38,7 +38,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   set date(value: Date) {
     this._date = value;
     // set value
-    if (isNullOrEmptyOrUndefine(this._date)) {
+    if (isNullOrEmptyOrUndefined(this._date)) {
       this.picker.val('');
     } else {
       const date = moment(this._date);
@@ -147,7 +147,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   onInputChanged($event) {
-    if (!isNullOrEmptyOrUndefine($event) && $event.target) {
+    if (!isNullOrEmptyOrUndefined($event) && $event.target) {
       try {
         const timeSpan = Date.parse($event.target.value);
         if (isNaN(timeSpan)) {

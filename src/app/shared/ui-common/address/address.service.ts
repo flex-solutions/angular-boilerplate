@@ -6,7 +6,7 @@ import {
   Province,
   District
 } from './../../../shared/models/address.model';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 
 @Injectable()
 export class AddressService extends AbstractRestService {
@@ -26,7 +26,7 @@ export class AddressService extends AbstractRestService {
 
   // Get the list of district with specific city province code
   async getDistricts(cityProvinceCode: string) {
-    if (isNullOrEmptyOrUndefine(cityProvinceCode)) {
+    if (isNullOrEmptyOrUndefined(cityProvinceCode)) {
       return [];
     }
     const selectedCountry = await this.ensureGetCountry();
@@ -68,7 +68,7 @@ export class AddressService extends AbstractRestService {
     let selectedCountry = this.country;
 
     // If have not yet initialize, get in local storage or api
-    if (isNullOrEmptyOrUndefine(selectedCountry)) {
+    if (isNullOrEmptyOrUndefined(selectedCountry)) {
       selectedCountry = await this.getCountry();
     }
     return selectedCountry;

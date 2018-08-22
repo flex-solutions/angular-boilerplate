@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { Errors } from '../../constants/news.constant';
 import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 const TITLE_CREATE_NEWS = 'news-create_edit_news-h4-create_news';
@@ -117,13 +117,13 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   hasErrorBanner() {
     if (this.bannerError) {
       return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
-        && isNullOrEmptyOrUndefine(this.news.banner);
+        && isNullOrEmptyOrUndefined(this.news.banner);
     }
     return false;
   }
 
   hasEmptyAndBlurContent() {
-    if (isNullOrEmptyOrUndefine(this.rawContent)) {
+    if (isNullOrEmptyOrUndefined(this.rawContent)) {
       return this.isBlurEditor;
     }
     return false;
