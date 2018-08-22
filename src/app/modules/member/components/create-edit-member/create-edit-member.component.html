@@ -39,7 +39,7 @@
                   <div class="input-group-text full-width" style="padding: 0.4rem 1.375rem;">
                     <div class="form-check form-check-flat" style="margin-top: 0; margin-bottom: 0">
                       <label class="form-check-label">
-                        <input type="checkbox" formControlName="isMemberAccumulated" class="form-check-input form-control" [(ngModel)]="member.isMemberAccumulated">
+                        <input type="checkbox" (change)="onIsMemberAccumulatedChanged($event)" formControlName="isMemberAccumulated" class="form-check-input form-control" [(ngModel)]="member.isMemberAccumulated">
                         <i class="input-helper"></i>
                         <label class="chk-label" style="padding-top: 0.1rem; font-weight: 300;" i18n="@@member-create_edit_member-label-is_member_accumulated">
                           Is Member Accumulated

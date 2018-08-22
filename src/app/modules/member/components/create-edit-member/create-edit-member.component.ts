@@ -51,6 +51,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   implements OnInit {
   isEdit = false;
   member: MemberModel = new MemberModel();
+  fullMembershipTypes: MembershipType[] = [];
   membershipTypes: MembershipType[] = [];
   selectedDistrict: District;
   selectedCity: Province;
@@ -86,6 +87,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
     private location: Location
   ) {
     super(translateService);
+    this.member.isMemberAccumulated = true;
   }
 
   ngOnInit() {
@@ -122,12 +124,10 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   }
 
   private async loadMembershipTypes() {
-    this.membershipTypes = await this.membershipTypeService
+    this.fullMembershipTypes = await this.membershipTypeService
       .getMembershipTypes()
       .toPromise();
-    if (!this.isEdit && !isEmpty(this.membershipTypes)) {
-      this.member.membershipType = this.membershipTypes[0];
-    }
+    this.buildMembershipTypes();
   }
 
   loadMember() {
@@ -283,6 +283,20 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
       this.member = new MemberModel();
     } else {
       this.location.back();
+    }
+  }
+
+  onIsMemberAccumulatedChanged($event) {
+    this.buildMembershipTypes();
+  }
+
+  buildMembershipTypes() {
+    this.membershipTypes = this.fullMembershipTypes.filter(
+      i => i.isAccumulated === this.member.isMemberAccumulated
+    );
+
+    if (!this.isEdit && !isEmpty(this.membershipTypes)) {
+      this.member.membershipType = this.membershipTypes[0];
     }
   }
 
