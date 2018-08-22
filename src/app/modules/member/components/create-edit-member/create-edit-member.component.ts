@@ -24,8 +24,7 @@ import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
 import { appVariables } from '../../../../app.constant';
 
-const TITLE_CREATE_MEMBER =
-  'member-create_edit_member-h4-create_member';
+const TITLE_CREATE_MEMBER = 'member-create_edit_member-h4-create_member';
 const DESCRIPTION_CREATE_MEMBER =
   'member-create_edit_member-h4-create_member_description';
 const TITLE_EDIT_MEMBER = 'member-create_edit_member-h4-edit_member';
@@ -62,7 +61,9 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   femaleResource: string;
   maleResource: string;
   otherSexResource: string;
-  @ViewChild('memberAddress') addressControl: AddressComponent;
+  sexes: any[] = [];
+  @ViewChild('memberAddress')
+  addressControl: AddressComponent;
 
   // Define validation message
   protected validationMessages: {
@@ -115,6 +116,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   }
 
   async loadInformation() {
+    this.sexes = this.memberService.getSexes();
     await this.loadMembershipTypes();
     this.loadMember();
   }
@@ -124,44 +126,42 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
       .getMembershipTypes()
       .toPromise();
     if (!this.isEdit && !isEmpty(this.membershipTypes)) {
-      this.member.membershipType = this.membershipTypes[0]._id;
+      this.member.membershipType = this.membershipTypes[0];
     }
   }
 
   loadMember() {
     if (this.isEdit) {
-      this.memberService
-        .get(this.memberId)
-        .subscribe((value: MemberModel) => {
-          if (value) {
-            this.member.clone(value as MemberModel);
+      this.memberService.get(this.memberId).subscribe((value: MemberModel) => {
+        if (value) {
+          this.member.clone(value as MemberModel);
+          if (
+            this.member &&
+            this.member.address &&
+            this.member.address.country &&
+            this.member.address.country.provinces.length > 0
+          ) {
             if (
-              this.member &&
-              this.member.address &&
-              this.member.address.country &&
-              this.member.address.country.provinces.length > 0
+              !isNullOrEmptyOrUndefined(
+                this.member.address.country.provinces[0].name
+              )
             ) {
+              // find selected id
+              this.selectedCity = this.member.address.country.provinces[0];
               if (
-                !isNullOrEmptyOrUndefined(
-                  this.member.address.country.provinces[0].name
-                )
+                this.selectedCity &&
+                this.selectedCity.districts &&
+                this.selectedCity.districts.length > 0
               ) {
-                // find selected id
-                this.selectedCity = this.member.address.country.provinces[0];
-                if (
-                  this.selectedCity &&
-                  this.selectedCity.districts &&
-                  this.selectedCity.districts.length > 0
-                ) {
-                  this.selectedDistrict = this.member.address.country.provinces[0].districts[0];
-                }
+                this.selectedDistrict = this.member.address.country.provinces[0].districts[0];
               }
             }
-          } else {
-            // Navigate to previous if user group not found.
-            this.location.back();
           }
-        });
+        } else {
+          // Navigate to previous if user group not found.
+          this.location.back();
+        }
+      });
     }
   }
 
@@ -191,7 +191,13 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
 
   protected onCreateForm() {
     this.formGroup = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern(appVariables.noSpecialCharactersRegex)]],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(appVariables.noSpecialCharactersRegex)
+        ]
+      ],
       phone: [
         '+84',
         [Validators.required, Validators.pattern('\\+84[0-9]{9,10}')]
@@ -203,24 +209,23 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
       district: [this.selectedCity, []],
       city: [this.selectedCity, []],
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
-      createAnother: ['', []]
+      createAnother: ['', []],
+      isMemberAccumulated: ['', []]
     });
   }
 
   protected onSubmit() {
     if (!this.isEdit) {
       this.prepareMember();
-      this.memberService
-        .create(this.member)
-        .subscribe(() => {
-          // * Create news successful, display success notification
-          const msg = this.getMessage(
-            MemberErrors.Create_Member_Sucess,
-            this.member.name
-          );
-          this.notificationService.showSuccess(msg);
-          this.refreshPageIfCreateAnother();
-        });
+      this.memberService.create(this.member).subscribe(() => {
+        // * Create news successful, display success notification
+        const msg = this.getMessage(
+          MemberErrors.Create_Member_Sucess,
+          this.member.name
+        );
+        this.notificationService.showSuccess(msg);
+        this.refreshPageIfCreateAnother();
+      });
     }
   }
 
@@ -232,17 +237,15 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
 
   saveMember() {
     this.prepareMember();
-    this.memberService
-      .update(this.member)
-      .subscribe(() => {
-        // * Create news successful, display success notification
-        const msg = this.getMessage(
-          MemberErrors.Edit_Member_Sucess,
-          this.member.name
-        );
-        this.notificationService.showSuccess(msg);
-        this.refreshPageIfCreateAnother();
-      });
+    this.memberService.update(this.member).subscribe(() => {
+      // * Create news successful, display success notification
+      const msg = this.getMessage(
+        MemberErrors.Edit_Member_Sucess,
+        this.member.name
+      );
+      this.notificationService.showSuccess(msg);
+      this.refreshPageIfCreateAnother();
+    });
   }
 
   private prepareMember() {
@@ -257,12 +260,9 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
       this.member.address.country.provinces.push(city);
       this.member.address.country.provinces[0].districts = [];
 
-
-    const district = new District();
-    district.copyFrom(this.selectedDistrict);
-      this.member.address.country.provinces[0].districts.push(
-        district
-      );
+      const district = new District();
+      district.copyFrom(this.selectedDistrict);
+      this.member.address.country.provinces[0].districts.push(district);
     }
   }
 

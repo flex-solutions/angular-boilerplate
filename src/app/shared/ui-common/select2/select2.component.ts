@@ -36,7 +36,9 @@ export class Select2Component implements AfterViewInit {
       .empty()
       .select2({
         placeholder: this._placeholder,
-        data: this.formatDataSource(this._itemsSource)
+        data: this.formatDataSource(this._itemsSource),
+        width: 'resolve',
+        dropdownAutoWidth: true
       });
 
     if (this._selectedItem && this._selectedItem.text) {
@@ -95,8 +97,12 @@ export class Select2Component implements AfterViewInit {
     this._placeholder = 'Select a value';
     this.host.select2({
       placeholder: this._placeholder,
-      allowClear: true
+      allowClear: true,
+      width: 'resolve',
+      data: this.formatDataSource(this._itemsSource),
+      dropdownAutoWidth: true
     });
+    this.host.val(null).trigger('change');
     this.host.on('select2:select', e => {
       const data = e.params.data;
       this.selectedItem = data;

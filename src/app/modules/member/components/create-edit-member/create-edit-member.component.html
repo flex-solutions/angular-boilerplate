@@ -14,10 +14,10 @@
             <label class="require">*</label>
             <input id="name" required class="form-control" formControlName="name" i18n-placeholder="@@member-create_edit_member-input-name_place_holder"
               placeholder="Enter member name" [(ngModel)]="member.name">
-            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_require"
-              *ngIf="name.invalid && name.errors.required && (name.dirty || name.touched)"> Please provide member name</label>
-            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_pattern"
-              *ngIf="name.invalid && name.errors.pattern && (name.dirty || name.touched)">Member name can only contains letters (a-Z), numbers, "-", "_", "."</label>
+            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_require" *ngIf="name.invalid && name.errors.required && (name.dirty || name.touched)">
+              Please provide member name</label>
+            <label id="name-error" class="error mt-2 text-danger" for="name" i18n="@@member-create_edit_member-label-name_pattern" *ngIf="name.invalid && name.errors.pattern && (name.dirty || name.touched)">Member
+              name can only contains letters (a-Z), numbers, "-", "_", "."</label>
           </div>
           <div class="form-group">
             <label for="phone" i18n="@@member-create_edit_member-label-phone_field">Phone number </label>
@@ -33,18 +33,30 @@
           </div>
           <div class="form-group">
             <label for="membershipType" i18n="@@member-create_edit_member-label-type_field">Membership Type </label>
-            <select id="membershipType" class="form-control" formControlName="membershipType" [(ngModel)]="member.membershipType">
-              <option *ngFor="let type of membershipTypes" [ngValue]="type._id">{{type.code}} - {{type.name}}</option>
-            </select>
+            <div class="input-group">
+              <div class="col-md-4 p-0">
+                <div class="input-group-prepend">
+                  <div class="input-group-text full-width" style="padding: 0.4rem 1.375rem;">
+                    <div class="form-check form-check-flat" style="margin-top: 0; margin-bottom: 0">
+                      <label class="form-check-label">
+                        <input type="checkbox" formControlName="isMemberAccumulated" class="form-check-input form-control" [(ngModel)]="member.isMemberAccumulated">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" style="padding-top: 0.1rem; font-weight: 300;" i18n="@@member-create_edit_member-label-is_member_accumulated">
+                          Is Member Accumulated
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-0">
+                <app-select2 class="full-width" [itemsSource]="membershipTypes" valuePropertyName="_id" displayPropertyName="name" [(selectedItem)]="member.membershipType"></app-select2>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="sex" i18n="@@member-create_edit_member-label-sex_field">Sex </label>
-            <select name="sex" id="sex" class="form-control" formControlName="sex" [(ngModel)]="member.sex">
-              <option value=""></option>
-              <option value="0" i18n="@@common_label-sex-woman">Woman</option>
-              <option value="1" i18n="@@common_label-sex-man">Man</option>
-              <option value="2" i18n="@@common_label-sex-other">Other</option>
-            </select>
+            <app-select2 style="width: 100%" [itemsSource]="sexes" [(selectedItem)]="member.sex"></app-select2>
           </div>
           <div class="row">
             <div class="col-md-5">
@@ -65,7 +77,9 @@
             <label for="email" i18n="@@member-create_edit_member-label-email_field">Email </label>
             <input id="email" class="form-control" formControlName="email" type="email" i18n-placeholder="@@member-create_member-input-email_place_holder"
               placeholder="Enter email" [(ngModel)]="member.email">
-            <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email }}</label>
+            <label id="email-error" class="error mt-2 text-danger" for="email" *ngIf="errorMessage.email"> {{ errorMessage.email
+              }}
+            </label>
           </div>
           <div class="form-cmds">
             <button *ngIf="!isEdit" class="btn btn-success btn-small mr-2" i18n="@@common_button-submit" (click)="submit()">Submit</button>

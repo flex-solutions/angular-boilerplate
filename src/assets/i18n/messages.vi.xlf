@@ -1630,6 +1630,10 @@
         <source>Email is invalid</source>
         <target>Email không hợp lệ</target>
       </trans-unit>
+      <trans-unit id="member-create_edit_member-label-is_member_accumulated" datatype="html">
+        <source>Is Member Accumulated</source>
+        <target>Là hội viên tích điểm</target>
+      </trans-unit>
       <!--End Create Edit Member Module-->
       <!--Start Member Filter-->
       <trans-unit id="members-filter-list-table-lbl-phone_number" datatype="html">

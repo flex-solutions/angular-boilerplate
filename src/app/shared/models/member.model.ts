@@ -14,11 +14,12 @@ class MemberModel {
   birthday: Date;
   sex = null;
   address: Address = new Address();
-  membershipType = '';
+  membershipType: any;
   email: string;
   point: number;
+  isMemberAccumulated: boolean;
 
-  clone(member: MemberModel ) {
+  clone(member: MemberModel) {
     this._id = member._id;
     this.memberId = member.memberId;
     this.name = member.name;
@@ -28,6 +29,7 @@ class MemberModel {
     this.membershipType = member.membershipType;
     this.email = member.email;
     this.point = member.point;
+    this.isMemberAccumulated = member.isMemberAccumulated;
     if (member.address) {
       this.address.copyFrom(member.address);
     }
@@ -76,10 +78,4 @@ const sexResourceKey = {
   Other: 'common_label-sex-other'
 };
 
-export {
-  MemberModel,
-  Sex,
-  MemberFilter,
-  memberFilterFields,
-  sexResourceKey
-};
+export { MemberModel, Sex, MemberFilter, memberFilterFields, sexResourceKey };
