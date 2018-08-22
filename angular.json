@@ -25,7 +25,7 @@
               "src/customStyles.css",
               "node_modules/dropify/dist/css/dropify.min.css",
               "src/assets/js/daterangepicker/daterangepicker.css",
-              "node_modules/titatoggle/dist/titatoggle-dist-min.css"],
+              "src/assets/css/toggle-switch.css"],
             "scripts": [
               "src/assets/js/jquery.min.js",
               "node_modules/toastr/build/toastr.min.js",
