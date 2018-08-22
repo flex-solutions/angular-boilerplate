@@ -19,6 +19,7 @@ import { DatePickerComponent } from './datepicker/date-picker/date-picker.compon
 import { DropDownCheckBoxesComponent } from './drop-down-check-boxes/drop-down-check-boxes.component';
 import { InputRangeComponent } from './input-range/input-range.component';
 import { Select2Component } from './select2/select2.component';
+import { Select2MultipleComponent } from './select2/select2-multiple.component';
 import { AddressService } from './address/address.service';
 import { AddressComponent } from './address/address.component';
 
@@ -40,6 +41,7 @@ import { AddressComponent } from './address/address.component';
     DropDownCheckBoxesComponent,
     InputRangeComponent,
     Select2Component,
+    Select2MultipleComponent,
     BooleanStatusCtrlDirective,
     AddressComponent
   ],
@@ -56,6 +58,7 @@ import { AddressComponent } from './address/address.component';
     DropDownCheckBoxesComponent,
     InputRangeComponent,
     Select2Component,
+    Select2MultipleComponent,
     BooleanStatusCtrlDirective,
     AddressComponent
   ],

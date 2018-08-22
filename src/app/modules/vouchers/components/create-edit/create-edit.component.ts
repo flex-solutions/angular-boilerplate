@@ -19,6 +19,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     voucher: Voucher = new Voucher();
     voucherId: string;
 
+    poses: any[] = [];
+
     constructor(private readonly voucherService: VoucherService,
         public readonly translateService: TranslateService,
         private readonly location: Location,
@@ -41,6 +43,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     ngOnInit() {
         super.ngOnInit();
+        this.getPoses();
     }
 
     protected onSubmit() {
@@ -60,5 +63,22 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
         super.onCreateForm();
         this.formGroup = this.formbuilder.group({
         });
-      }
+    }
+
+    private getPoses() {
+      this.poses = [
+        {
+          id: '1',
+          text: 'SNOB Tran Hung Dao'
+        },
+        {
+          id: '12',
+          text: 'SNOB Phan Van Tri'
+        },
+        {
+          id: '13',
+          text: 'SNOB Quan 1'
+        }
+      ];
+    }
 }
