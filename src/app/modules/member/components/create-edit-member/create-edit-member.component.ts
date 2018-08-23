@@ -23,6 +23,7 @@ import {
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
 import { appVariables } from '../../../../app.constant';
+import * as _ from 'lodash';
 
 const TITLE_CREATE_MEMBER = 'member-create_edit_member-h4-create_member';
 const DESCRIPTION_CREATE_MEMBER =
@@ -291,9 +292,15 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   }
 
   buildMembershipTypes() {
-    this.membershipTypes = this.fullMembershipTypes.filter(
+    const tmpMembershipTypes = this.fullMembershipTypes.filter(
       i => i.isAccumulated === this.member.isMemberAccumulated
     );
+
+    this.membershipTypes = _.sortBy(tmpMembershipTypes, [
+      function(o: MembershipType) {
+        return o.point;
+      }
+    ]);
 
     if (!this.isEdit && !isEmpty(this.membershipTypes)) {
       this.member.membershipType = this.membershipTypes[0];

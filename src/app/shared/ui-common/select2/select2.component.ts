@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
+import * as _ from 'lodash';
 declare const $: any;
 
 @Component({
@@ -105,7 +106,7 @@ export class Select2Component implements AfterViewInit {
     this.host.val(null).trigger('change');
     this.host.on('select2:select', e => {
       const data = e.params.data;
-      this.selectedItem = data;
+      this.selectedItem = _.pickBy(data, (val, key) => key !== 'element');
     });
   }
 
