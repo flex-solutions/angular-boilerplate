@@ -55,14 +55,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Danh sách nhà hàng áp dụng</label>
-            <!-- <select class="form-control" multiple="multiple" style="width:100%">
-              <option value="AL">Alabama</option>
-              <option value="WY">Wyoming</option>
-              <option value="AM">America</option>
-              <option value="CA">Canada</option>
-              <option value="RU">Russia</option>
-            </select> -->
-            <app-select2 [itemsSource]="poses"></app-select2>
+            <app-select2-multiple [itemsSource]="poses"></app-select2-multiple>
           </div>
         </app-card>
       </div>

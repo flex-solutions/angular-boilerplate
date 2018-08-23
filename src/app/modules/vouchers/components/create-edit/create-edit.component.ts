@@ -7,6 +7,8 @@ import { Voucher } from './../../../../shared/models/voucher.model';
 import { Component, OnInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { Location } from '@angular/common';
+import { POSService } from '../../services/pos.service';
+import { POSDto } from '../../../../shared/models/pos.model';
 
 @Component({
     selector: 'app-voucher-create-edit',
@@ -19,12 +21,13 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     voucher: Voucher = new Voucher();
     voucherId: string;
 
-    poses: any[] = [];
+    poses: POSDto[] = [];
 
     constructor(private readonly voucherService: VoucherService,
         public readonly translateService: TranslateService,
         private readonly location: Location,
         private readonly formbuilder: FormBuilder,
+        private readonly posService: POSService,
         activatedRoute: ActivatedRoute) {
             super();
         //     activatedRoute.params.subscribe((params: Params) => {
@@ -66,19 +69,10 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     private getPoses() {
-      this.poses = [
-        {
-          id: '1',
-          text: 'SNOB Tran Hung Dao'
-        },
-        {
-          id: '12',
-          text: 'SNOB Phan Van Tri'
-        },
-        {
-          id: '13',
-          text: 'SNOB Quan 1'
-        }
-      ];
+      this.posService.find().subscribe(poses => {
+
+        this.poses = poses;
+        console.log(this.poses);
+      });
     }
 }

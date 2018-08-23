@@ -1,3 +1,4 @@
+import { POSService } from './services/pos.service';
 import { voucherComponents } from './components/index';
 import { VoucherService } from './services/vouchers.service';
 import { VouchersRoutingModule } from './voucher-routing.module';
@@ -18,7 +19,7 @@ import { SharedModule } from '../../shared/shared.module';
   declarations: [
       VoucherStatusDirective, ...voucherComponents
   ],
-  providers: [VoucherService],
+  providers: [VoucherService, POSService],
 
 })
 
