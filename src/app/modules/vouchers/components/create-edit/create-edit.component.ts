@@ -10,6 +10,8 @@ import { Location } from '@angular/common';
 import { POSService } from '../../services/pos.service';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
+import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
+import { isEmpty } from 'lodash';
 
 @Component({
     selector: 'app-voucher-create-edit',
@@ -21,9 +23,11 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     voucher: Voucher = new Voucher();
     voucherId: string;
     isDiscountAmount = true;
-    applyMenuType = 0;
+    applyMenuType = -1;
 
     poses: POSDto[] = [];
+    menuItems: MenuItemDto[] = [];
+    menuItemTypes: MenuItemTypeDto[] = [];
     applyDays: any[] = [];
     applyHours: any[] = [];
 
@@ -84,5 +88,34 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
         this.poses = poses;
       });
+    }
+
+    private getMenuItems() {
+      if (!isEmpty(this.menuItems)) {
+        return;
+      }
+
+    }
+
+    private getMenuItemTypes() {
+      if (!isEmpty(this.menuItemTypes)) {
+        return;
+      }
+    }
+
+    onApplyMenuTypeChange() {
+      switch (this.applyMenuType) {
+        case -1:
+        this.menuItems = [];
+          if (isEmpty(this.menuItems)) {
+          }
+          break;
+        case 0:
+          this.getMenuItemTypes();
+          break;
+        case 1:
+          this.getMenuItems();
+          break;
+      }
     }
 }

@@ -34,5 +34,5 @@ export class VoucherCreationData {
     {id: 'TO_TT', name: '21h - 22h'},
     {id: 'TT_TTH', name: '22h - 23h'},
     {id: 'TTH_TF', name: '23h - 24h'},
-  ]
+  ];
 }
