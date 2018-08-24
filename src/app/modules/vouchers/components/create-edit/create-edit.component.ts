@@ -20,6 +20,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     voucher: Voucher = new Voucher();
     voucherId: string;
+    isDiscountAmount = true;
+    applyMenuType = 0;
 
     poses: POSDto[] = [];
     applyDays: any[] = [];
