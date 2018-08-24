@@ -1,33 +1,52 @@
 import { CheckedItem } from '../ui-common/drop-down-check-boxes/checked-items.model';
+import { ModelBase } from './model-base';
 
-export class Voucher {
-    _id: string;
-    voucher_code: string;
-    discount: number;
-    name: string;
-    published_count: number;
-    used_count: number;
-    status: number;
-    sales: number;
-    create_on: Date;
+export enum VoucherType {
+  DiscountAmount,
+  DiscountPercent,
+  XGetY
+}
+
+export enum VoucherOperationType {
+RepeatOneCode,
+BatchExport,
+ForMembersOnly,
+}
+
+export enum VoucherAdvanceMenuItemPriceAlow {
+  Highest,
+  MostLow
+}
+
+export class Voucher extends ModelBase {
+  name: string;
+  code: string;
+  discount: number;
+  publishedCount: number;
+  usedCount: number;
+  status: number;
+  sales: number;
+  type: VoucherType;
+  operationType: VoucherOperationType;
+  amount: number;
+  applyPoses: string[];
+  applyMenuItemTypes: string[];
+  applyMenuItems: string[];
+  applyDays: string[];
+  applyHourRanges: string[];
+  validFromDate: Date;
+  validToDate: Date;
+  advApplyMinBillAmount: number;
+  advApplyMaxDiscountAmount: number;
+  advApplyAllowMenuItemCount: number ;
+  advApplyMenuItemAllow: VoucherAdvanceMenuItemPriceAlow;
+  advApplyFromMenuItemIndex: number;
 }
 
 export enum VoucherStatus {
     running = 0,
     expired
 }
-
-export const VoucherFields = {
-    ID: '_id',
-    VOUCHER_CODE: 'voucher_code',
-    DISCOUNT: 'discount',
-    NAME: 'name',
-    PUBLISHED_COUNT: 'published_count',
-    USED_COUNT: 'used_count',
-    STATUS: 'status',
-    SALES: 'sales',
-    CREATE_ON: 'create_on'
-  };
 
 export class VoucherFilter {
     name: string;
