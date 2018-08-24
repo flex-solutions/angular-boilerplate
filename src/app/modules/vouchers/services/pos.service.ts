@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { POSDto } from '../../../shared/models/pos.model';
-import { MenuItemDto } from '../../../shared/models/menu.model';
+import { MenuItemDto, MenuItemTypeDto } from '../../../shared/models/menu.model';
 
 @Injectable()
 export class POSService extends AbstractRestService {
@@ -21,7 +21,11 @@ export class POSService extends AbstractRestService {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 
-  public findMenu(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemDto[]> {
-    return this.get(`menus?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  public findMenuItems(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemDto[]> {
+    return this.get(`menu-items?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
+
+  public findMenuItemTypes(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemTypeDto[]> {
+    return this.get(`menu-item-types?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
 }

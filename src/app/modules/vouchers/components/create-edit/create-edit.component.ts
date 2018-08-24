@@ -91,25 +91,15 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     private getMenuItems() {
-      if (!isEmpty(this.menuItems)) {
-        return;
-      }
-
+      this.posService.findMenuItems().subscribe(menuItems => this.menuItems = menuItems);
     }
 
     private getMenuItemTypes() {
-      if (!isEmpty(this.menuItemTypes)) {
-        return;
-      }
+      this.posService.findMenuItemTypes().subscribe(menuItemTypes => this.menuItemTypes = menuItemTypes);
     }
 
     onApplyMenuTypeChange() {
-      switch (this.applyMenuType) {
-        case -1:
-        this.menuItems = [];
-          if (isEmpty(this.menuItems)) {
-          }
-          break;
+      switch (+this.applyMenuType) {
         case 0:
           this.getMenuItemTypes();
           break;

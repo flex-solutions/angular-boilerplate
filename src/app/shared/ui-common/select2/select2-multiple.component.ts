@@ -12,7 +12,11 @@ declare const $: any;
 
 @Component({
   selector: 'app-select2-multiple',
-  template: '<select id="{{elementId}}" style="width:100%"></select>'
+  template: `<div style="display:flex">
+  <select id="{{elementId}}" style="width:100%;"></select>
+  <button style="margin-left:5px;border-color: #f3f3f3;"
+  type="button" class="btn" (click)="reset()"><i class="mdi mdi-close" style="margin-right:0px"></i></button>
+  </div>`
 })
 export class Select2MultipleComponent implements AfterViewInit {
   private _selectedItems: any[] = [];
