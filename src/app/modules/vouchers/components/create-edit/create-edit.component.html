@@ -7,19 +7,22 @@
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label for="exampleInputEmail1">Loại chương trình</label>
-                <select class="form-control border-light" id="exampleSelectWarning">
-                  <option>Giảm giá</option>
-                  <option>Mua X tặng Y</option>
+                <select [(ngModel)]="voucherType" [ngModelOptions]="{standalone: true}"
+                (change)="onVoucherTypeChange()"
+                class="form-control border-light" id="exampleSelectWarning">
+                  <option value="0">Giảm giá</option>
+                  <option value="1">Mua X tặng Y</option>
                 </select>
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label for="exampleInputEmail1">Mục đích sử dụng</label>
-                <select class="form-control border-light" id="exampleSelectWarning">
-                  <option>Một mã sử dụng nhiều lần</option>
-                  <option>Xuất mã hàng loạt</option>
-                  <option>Chiến dịch CSKH</option>
+                <select class="form-control border-light" [(ngModel)]="voucherOperationType" [ngModelOptions]="{standalone: true}"
+                (change)="onVoucherTypeChange()">
+                  <option value="0">Một mã sử dụng nhiều lần</option>
+                  <option value="1">Xuất mã hàng loạt</option>
+                  <option value="2">Chiến dịch CSKH</option>
                 </select>
               </div>
             </div>
@@ -32,15 +35,18 @@
         <app-card title="Thông tin chung">
           <div class="form-group">
             <label for="exampleInputEmail1">Tên chương trình</label>
+            <label class="require">*</label>
             <input type="email" class="form-control" id="exampleInputEmail1">
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="isShowVoucherCodeInput">
             <label for="exampleInputEmail1">Mã voucher</label>
+            <label class="require">*</label>
             <input type="email" class="form-control" id="exampleInputEmail1">
           </div>
           <div class="form-group">
             <label *ngIf="!isDiscountAmount" for="exampleInputEmail1">% giảm giá</label>
             <label *ngIf="isDiscountAmount" for="exampleInputEmail1">Số tiền giảm giá</label>
+            <label class="require">*</label>
             <div style="display:flex">
               <input type="email" class="form-control" id="exampleInputEmail1">
               <label class="tgl">

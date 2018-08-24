@@ -1,9 +1,11 @@
+import { init } from 'ramda';
+import { VoucherCreationFormBuilder } from './voucher-form.builder';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { VoucherService } from './../../services/vouchers.service';
-import { Voucher } from './../../../../shared/models/voucher.model';
+import { Voucher, VoucherGroupType, VoucherType, VoucherOperationType } from './../../../../shared/models/voucher.model';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { Location } from '@angular/common';
@@ -11,7 +13,7 @@ import { POSService } from '../../services/pos.service';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
 import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
-import { isEmpty } from 'lodash';
+import { eq } from 'lodash';
 
 @Component({
     selector: 'app-voucher-create-edit',
@@ -24,12 +26,17 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     voucherId: string;
     isDiscountAmount = true;
     applyMenuType = -1;
+    voucherType: VoucherGroupType = VoucherGroupType.Discount;
+    voucherOperationType: VoucherOperationType = VoucherOperationType.RepeatOneCode;
+    isShowVoucherCodeInput = true;
 
     poses: POSDto[] = [];
     menuItems: MenuItemDto[] = [];
     menuItemTypes: MenuItemTypeDto[] = [];
     applyDays: any[] = [];
     applyHours: any[] = [];
+
+    voucherFormBuilder: VoucherCreationFormBuilder;
 
     constructor(private readonly voucherService: VoucherService,
         public readonly translateService: TranslateService,
@@ -79,8 +86,11 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     protected onCreateForm() {
         super.onCreateForm();
-        this.formGroup = this.formbuilder.group({
-        });
+        if (!this.voucherFormBuilder) {
+          this.voucherFormBuilder = new VoucherCreationFormBuilder(this.formbuilder);
+        }
+
+        this.formGroup = this.voucherFormBuilder.with().build();
     }
 
     private getPoses() {
@@ -108,4 +118,32 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
           break;
       }
     }
+
+    onVoucherTypeChange() {
+
+      this.isShowVoucherCodeInput = !eq(+this.voucherOperationType, +VoucherOperationType.BatchExport);
+
+      switch (+this.voucherType) {
+        case VoucherGroupType.Discount:
+          this.buildDiscountFormGroup();
+          break;
+        case VoucherGroupType.XGetY:
+          this.buildXGetYFormGroup();
+          break;
+      }
+    }
+
+    buildDiscountFormGroup() {
+      switch (+this.voucherOperationType) {
+        case VoucherOperationType.ForMembersOnly:
+        case VoucherOperationType.RepeatOneCode:
+          this.formGroup = this.voucherFormBuilder.with().withDiscountType(this.isDiscountAmount).withMustHaveCode().build();
+          break;
+        case VoucherOperationType.BatchExport:
+          this.formGroup = this.voucherFormBuilder.with().withDiscountType(this.isDiscountAmount).build();
+          break;
+      }
+    }
+
+    buildXGetYFormGroup() {}
 }

@@ -1,6 +1,11 @@
 import { CheckedItem } from '../ui-common/drop-down-check-boxes/checked-items.model';
 import { ModelBase } from './model-base';
 
+export enum VoucherGroupType {
+  Discount,
+  XGetY
+}
+
 export enum VoucherType {
   DiscountAmount,
   DiscountPercent,
@@ -14,7 +19,7 @@ ForMembersOnly,
 }
 
 export enum VoucherAdvanceMenuItemPriceAlow {
-  Highest,
+  Highest = 0,
   MostLow
 }
 
