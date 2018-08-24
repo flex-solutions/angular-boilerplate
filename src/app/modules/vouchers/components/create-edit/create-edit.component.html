@@ -8,7 +8,7 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Loại chương trình</label>
                 <select [(ngModel)]="voucherType" [ngModelOptions]="{standalone: true}"
-                (change)="onVoucherTypeChange()"
+                (change)="buildFormGroup()"
                 class="form-control border-light" id="exampleSelectWarning">
                   <option value="0">Giảm giá</option>
                   <option value="1">Mua X tặng Y</option>
@@ -19,7 +19,7 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Mục đích sử dụng</label>
                 <select class="form-control border-light" [(ngModel)]="voucherOperationType" [ngModelOptions]="{standalone: true}"
-                (change)="onVoucherTypeChange()">
+                (change)="buildFormGroup()">
                   <option value="0">Một mã sử dụng nhiều lần</option>
                   <option value="1">Xuất mã hàng loạt</option>
                   <option value="2">Chiến dịch CSKH</option>
@@ -36,21 +36,30 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Tên chương trình</label>
             <label class="require">*</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <input type="text" required class="form-control" id="name" formControlName="name"
+            [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched) }">
+            <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.name">
+              <p *ngIf="name.hasError(error.type) && (name.dirty || name.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, name.value)}}</p>
+            </div>
           </div>
           <div class="form-group" *ngIf="isShowVoucherCodeInput">
             <label for="exampleInputEmail1">Mã voucher</label>
             <label class="require">*</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <input type="text" class="form-control" id="code" formControlName="code" style="text-transform: uppercase;"
+            [ngClass]="{'has-danger': code.invalid && (code.dirty || code.touched) }">
+            <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.code">
+              <p *ngIf="code.hasError(error.type) && (code.dirty || code.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, code.value)}}</p>
+            </div>
           </div>
           <div class="form-group">
             <label *ngIf="!isDiscountAmount" for="exampleInputEmail1">% giảm giá</label>
             <label *ngIf="isDiscountAmount" for="exampleInputEmail1">Số tiền giảm giá</label>
             <label class="require">*</label>
             <div style="display:flex">
-              <input type="email" class="form-control" id="exampleInputEmail1">
+              <input type="text" class="form-control" id="discount" formControlName="discount"
+              [ngClass]="{'has-danger': discount.invalid && (discount.dirty || discount.touched) }">
               <label class="tgl">
-                <input type="checkbox" [(ngModel)]="isDiscountAmount" [checked]="isDiscountAmount"
+                <input type="checkbox" [(ngModel)]="isDiscountAmount" [checked]="isDiscountAmount" (change)="buildFormGroup()"
                 [ngModelOptions]="{standalone: true}"/>
                 <span class="tgl_body">
                   <span class="tgl_switch"></span>
@@ -64,6 +73,9 @@
                   </span>
                 </span>
               </label>
+            </div>
+            <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.discount">
+              <p *ngIf="discount.hasError(error.type) && (discount.dirty || discount.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, discount.value)}}</p>
             </div>
           </div>
           <div class="form-group">

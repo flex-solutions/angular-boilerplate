@@ -45,18 +45,10 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
         private readonly posService: POSService,
         activatedRoute: ActivatedRoute) {
             super();
-        //     activatedRoute.params.subscribe((params: Params) => {
-        //         this.voucherId = params['id'] ? params['id'] : '';
-        //         this.isEdit = params['id'] ? true : false;
-        //           if (this.isEdit) {
-        //                 this.cardTitle = this.translateService.translate('membership-type-update-title');
-        //                 this.cardDescription = this.translateService.translate('membership-type-update-sub-title');
-        //               } else {
-        //                     this.cardTitle = this.translateService.translate('membership-type-create-title');
-
-        //     this.cardDescription = this.translateService.translate('membership-type-create-sub-title');
-        //   }
-        // });
+            activatedRoute.params.subscribe((params: Params) => {
+              this.voucherId = params['id'] ? params['id'] : '';
+              this.isEdit = params['id'] ? true : false;
+        });
     }
 
     ngOnInit() {
@@ -91,7 +83,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
         }
 
         this.formGroup = this.voucherFormBuilder.with().build();
-        this.onVoucherTypeChange();
+        this.buildFormGroup();
     }
 
     private getPoses() {
@@ -109,6 +101,18 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       this.posService.findMenuItemTypes().subscribe(menuItemTypes => this.menuItemTypes = menuItemTypes);
     }
 
+    get code() {
+      return this.formGroup.get(Voucher.validationFields.code);
+    }
+
+    get name() {
+      return this.formGroup.get(Voucher.validationFields.name);
+    }
+
+    get discount() {
+      return this.formGroup.get(Voucher.validationFields.discount);
+    }
+
     onApplyMenuTypeChange() {
       switch (+this.applyMenuType) {
         case 0:
@@ -120,8 +124,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       }
     }
 
-    onVoucherTypeChange() {
-      console.log('onVoucherTypeChange');
+    buildFormGroup() {
       this.isShowVoucherCodeInput = !eq(+this.voucherOperationType, +VoucherOperationType.BatchExport);
 
       switch (+this.voucherType) {
@@ -135,7 +138,6 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     buildDiscountFormGroup() {
-      console.log('[buildDiscountFormGroup] Enter;');
       switch (+this.voucherOperationType) {
         case VoucherOperationType.ForMembersOnly:
         case VoucherOperationType.RepeatOneCode:
@@ -145,7 +147,6 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
           this.formGroup = this.voucherFormBuilder.with().withDiscountType(this.isDiscountAmount).build();
           break;
       }
-      console.log('[buildDiscountFormGroup] Leave; this.formGroup: ', this.formGroup);
     }
 
     buildXGetYFormGroup() {}

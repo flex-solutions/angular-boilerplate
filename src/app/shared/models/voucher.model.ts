@@ -24,6 +24,12 @@ export enum VoucherAdvanceMenuItemPriceAlow {
 }
 
 export class Voucher extends ModelBase {
+  static validationFields = {
+    name: 'name',
+    code: 'code',
+    discount: 'discount'
+  };
+
   name: string;
   code: string;
   discount: number;
