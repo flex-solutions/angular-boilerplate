@@ -100,10 +100,36 @@
                 </a>
               </h6>
             </div>
-            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
-                <form>
-                </form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Áp dụng hóa đơn từ (vnđ)</label>
+                  <input class="form-control" type="number">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Giảm không quá (vnđ)</label>
+                  <input class="form-control" type="number">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Số món giảm giá</label>
+                  <input class="form-control" type="number">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Giảm giá món cao nhất / thấp nhất</label>
+                  <select class="form-control border-light">
+                    <option>Không</option>
+                    <option>Giảm giá cho món cao nhất</option>
+                    <option>Giảm giá cho món thấp nhất</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Giảm giá từ món thứ</label>
+                  <input class="form-control" type="number">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nhà phân phối</label>
+                  <app-select2></app-select2>
+                </div>
               </div>
             </div>
           </div>
