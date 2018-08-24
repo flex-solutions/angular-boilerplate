@@ -4,24 +4,26 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { VoucherService } from './../../services/vouchers.service';
 import { Voucher } from './../../../../shared/models/voucher.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { Location } from '@angular/common';
 import { POSService } from '../../services/pos.service';
 import { POSDto } from '../../../../shared/models/pos.model';
+import { VoucherCreationData } from '../../data';
 
 @Component({
     selector: 'app-voucher-create-edit',
     templateUrl: './create-edit.component.html',
     // styleUrls: ['./create-edit.component.css']
 })
-
-export class CreateEditVoucherComponent extends AbstractFormComponent implements OnInit {
+export class CreateEditVoucherComponent extends AbstractFormComponent implements OnInit, AfterViewInit {
 
     voucher: Voucher = new Voucher();
     voucherId: string;
 
     poses: POSDto[] = [];
+    applyDays: any[] = [];
+    applyHours: any[] = [];
 
     constructor(private readonly voucherService: VoucherService,
         public readonly translateService: TranslateService,
@@ -49,6 +51,13 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
         this.getPoses();
     }
 
+    ngAfterViewInit() {
+      setTimeout(() => {
+        this.applyDays = VoucherCreationData.applyDays;
+        this.applyHours = VoucherCreationData.applyHours;
+      });
+    }
+
     protected onSubmit() {
         throw new Error('Method not implemented.');
     }
@@ -72,7 +81,6 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       this.posService.find().subscribe(poses => {
 
         this.poses = poses;
-        console.log(this.poses);
       });
     }
 }

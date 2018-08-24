@@ -8,6 +8,5 @@ export class CanUpdateDirective implements OnInit {
 
   ngOnInit() {
       const component = (<any>this.el)._element.component;
-      console.log(component);
  }
 }

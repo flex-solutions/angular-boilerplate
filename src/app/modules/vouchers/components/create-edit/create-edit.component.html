@@ -19,6 +19,7 @@
                 <select class="form-control border-light" id="exampleSelectWarning">
                   <option>Một mã sử dụng nhiều lần</option>
                   <option>Xuất mã hàng loạt</option>
+                  <option>Chiến dịch CSKH</option>
                 </select>
               </div>
             </div>
@@ -27,7 +28,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 col-sm-12 grid-margin">
+      <div class="col-md-12 grid-margin">
         <app-card title="Thông tin chung">
           <div class="form-group">
             <label for="exampleInputEmail1">Tên chương trình</label>
@@ -54,14 +55,28 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Danh sách nhà hàng áp dụng</label>
+            <label for="exampleInputEmail1">Danh sách nhà hàng áp dụng (bỏ trống nếu áp dụng tất cả)</label>
             <app-select2-multiple [itemsSource]="poses"></app-select2-multiple>
           </div>
-        </app-card>
-      </div>
-      <div class="col-md-6 col-sm-12 grid-margin">
-        <app-card title="Thời gian">
-
+          <div class="form-group">
+            <label for="exampleInputEmail1">Chọn loại áp dụng</label>
+            <select class="form-control border-light" id="exampleSelectWarning">
+              <option value="0">Áp dụng cho nhóm món</option>
+              <option value="1">Áp dụng cho món</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <app-select2-multiple [itemsSource]="poses"></app-select2-multiple>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Ngày áp dụng (bỏ trống nếu áp dụng tất cả các ngày)</label>
+            <app-select2-multiple [itemsSource]="applyDays"></app-select2-multiple>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Giờ áp dụng (bỏ trống nếu áp dụng tất cả các giờ)</label>
+            <app-select2-multiple [itemsSource]="applyHours"></app-select2-multiple>
+          </div>
         </app-card>
       </div>
     </div>

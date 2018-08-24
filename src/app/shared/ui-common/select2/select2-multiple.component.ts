@@ -7,15 +7,16 @@ import {
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { isEmpty, forEach } from 'lodash';
 declare const $: any;
 
 @Component({
   selector: 'app-select2-multiple',
-  template: '<select [id]="elementId" style="width:100%"></select>'
+  template: '<select id="{{elementId}}" style="width:100%"></select>'
 })
 export class Select2MultipleComponent implements AfterViewInit {
-  private _selectedItem: any;
-  private _itemsSource: any[];
+  private _selectedItems: any[] = [];
+  private _itemsSource: any[] = [];
   private _placeholder: string;
   private _displayPropertyName: string;
   private _valuePropertyName: string;
@@ -37,10 +38,11 @@ export class Select2MultipleComponent implements AfterViewInit {
       .select2({
         placeholder: this._placeholder,
         data: this.formatDataSource(this._itemsSource),
-        multiple: true
+        multiple: true,
+        closeOnSelect: false
       });
 
-    if (this._selectedItem && this._selectedItem.text) {
+    if (!isEmpty(this.selectedItems)) {
       this.onSelectedItemChange();
     } else {
       this.host.val(null).trigger('change');
@@ -52,14 +54,14 @@ export class Select2MultipleComponent implements AfterViewInit {
   }
 
   @Input()
-  set selectedItem(val) {
-    this._selectedItem = val;
-    this.selectedItemChange.emit(this._selectedItem);
+  set selectedItems(val) {
+    this._selectedItems = val;
+    this.selectedItemChange.emit(this._selectedItems);
 
     this.onSelectedItemChange();
   }
-  get selectedItem() {
-    return this._selectedItem;
+  get selectedItems() {
+    return this._selectedItems;
   }
 
   @Input()
@@ -89,7 +91,6 @@ export class Select2MultipleComponent implements AfterViewInit {
 
   constructor() {
     this.elementId = Guid.create().toString();
-    this.itemsSource = [];
   }
 
   ngAfterViewInit() {
@@ -97,11 +98,12 @@ export class Select2MultipleComponent implements AfterViewInit {
     this.host.select2({
       placeholder: this._placeholder,
       allowClear: true,
-      multiple: true
+      multiple: true,
+      closeOnSelect: false
     });
     this.host.on('select2:select', e => {
       const data = e.params.data;
-      this.selectedItem = data;
+      this.selectedItems.push(data);
     });
   }
 
@@ -115,40 +117,48 @@ export class Select2MultipleComponent implements AfterViewInit {
       return [];
     }
     const data = arrayData.map(obj => {
-      return this.buildSelect2Data(obj);
+      return this.buldObjForSelect2(obj);
     });
     return data;
   }
 
-  buildSelect2Data(obj) {
-    if (!obj) {
-      return obj;
+  buildSelect2Data(items: any[]) {
+    if (isEmpty(items)) {
+      return items;
     }
 
+    forEach(items, item => {
+      item = this.buldObjForSelect2(item);
+    });
+    return items;
+  }
+
+  buldObjForSelect2(item: any) {
     if (!isNullOrEmptyOrUndefine(this.valuePropertyName)) {
-      obj.id = obj[this.valuePropertyName];
-    } else if (!obj.hasOwnProperty('id')) {
-      obj.id = obj._id || obj.key;
+      item.id = item[this.valuePropertyName];
+    } else if (!item.hasOwnProperty('id')) {
+      item.id = item._id || item.key;
     }
 
     if (!isNullOrEmptyOrUndefine(this.displayPropertyName)) {
-      obj.text = obj[this.displayPropertyName];
-    } else if (!obj.hasOwnProperty('text')) {
+      item.text = item[this.displayPropertyName];
+    } else if (!item.hasOwnProperty('text')) {
       // Use default behavior
-      obj.text = obj.name || obj.displayName;
+      item.text = item.name || item.displayName;
     }
-    return obj;
+
+    return item;
   }
 
   reset() {
     this.host.val(null).trigger('change');
-    this.selectedItem = {};
+    this.selectedItems = [];
   }
 
   onSelectedItemChange() {
-    const temp = this.buildSelect2Data(this._selectedItem);
-    if (temp && temp.id && temp.text) {
-      this.host.val(temp.id).trigger('change');
+    const temps = this.buildSelect2Data(this._selectedItems);
+    if (!isEmpty(temps)) {
+      this.host.val(temps).trigger('change');
     }
   }
 }
