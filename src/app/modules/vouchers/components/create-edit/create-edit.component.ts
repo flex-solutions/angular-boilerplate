@@ -91,6 +91,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
         }
 
         this.formGroup = this.voucherFormBuilder.with().build();
+        this.onVoucherTypeChange();
     }
 
     private getPoses() {
@@ -120,7 +121,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     onVoucherTypeChange() {
-
+      console.log('onVoucherTypeChange');
       this.isShowVoucherCodeInput = !eq(+this.voucherOperationType, +VoucherOperationType.BatchExport);
 
       switch (+this.voucherType) {
@@ -134,6 +135,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     buildDiscountFormGroup() {
+      console.log('[buildDiscountFormGroup] Enter;');
       switch (+this.voucherOperationType) {
         case VoucherOperationType.ForMembersOnly:
         case VoucherOperationType.RepeatOneCode:
@@ -143,6 +145,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
           this.formGroup = this.voucherFormBuilder.with().withDiscountType(this.isDiscountAmount).build();
           break;
       }
+      console.log('[buildDiscountFormGroup] Leave; this.formGroup: ', this.formGroup);
     }
 
     buildXGetYFormGroup() {}
