@@ -38,4 +38,8 @@ export class VoucherService extends AbstractRestService {
       query
     );
   }
+
+  create(dto: Voucher) {
+    return this.post('', dto);
+  }
 }

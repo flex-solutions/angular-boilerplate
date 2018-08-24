@@ -36,7 +36,7 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Tên chương trình</label>
             <label class="require">*</label>
-            <input type="text" required class="form-control" id="name" formControlName="name"
+            <input type="text" [(ngModel)]="voucher.name" required class="form-control" id="name" formControlName="name"
             [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched) }">
             <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.name">
               <p *ngIf="name.hasError(error.type) && (name.dirty || name.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, name.value)}}</p>
@@ -45,7 +45,7 @@
           <div class="form-group" *ngIf="isShowVoucherCodeInput">
             <label for="exampleInputEmail1">Mã voucher</label>
             <label class="require">*</label>
-            <input type="text" class="form-control" id="code" formControlName="code" style="text-transform: uppercase;"
+            <input type="text" [(ngModel)]="voucher.code" class="form-control" id="code" formControlName="code" style="text-transform: uppercase;"
             [ngClass]="{'has-danger': code.invalid && (code.dirty || code.touched) }">
             <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.code">
               <p *ngIf="code.hasError(error.type) && (code.dirty || code.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, code.value)}}</p>
@@ -56,7 +56,7 @@
             <label *ngIf="isDiscountAmount" for="exampleInputEmail1">Số tiền giảm giá</label>
             <label class="require">*</label>
             <div style="display:flex">
-              <input type="text" class="form-control" id="discount" formControlName="discount"
+              <input type="text" class="form-control" id="discount" formControlName="discount" [(ngModel)]="voucher.discount"
               [ngClass]="{'has-danger': discount.invalid && (discount.dirty || discount.touched) }">
               <label class="tgl">
                 <input type="checkbox" [(ngModel)]="isDiscountAmount" [checked]="isDiscountAmount" (change)="buildFormGroup()"
@@ -80,7 +80,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Danh sách nhà hàng áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="poses"></app-select2-multiple>
+            <app-select2-multiple [itemsSource]="poses" [(selectedItems)]="selectedPoses"></app-select2-multiple>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Chọn loại áp dụng (bỏ trống nếu áp dụng cho tất cả nhóm món và món)</label>
@@ -94,19 +94,19 @@
           </div>
           <div class="form-group" *ngIf="applyMenuType==0">
             <label>Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="menuItemTypes"></app-select2-multiple>
+            <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedMenuItemTypes"></app-select2-multiple>
           </div>
           <div class="form-group" *ngIf="applyMenuType==1">
             <label>Danh sách món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="menuItems"></app-select2-multiple>
+            <app-select2-multiple [itemsSource]="menuItems" [(selectedItems)]="selectedMenuItems"></app-select2-multiple>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Ngày áp dụng (bỏ trống nếu áp dụng tất cả các ngày)</label>
-            <app-select2-multiple [itemsSource]="applyDays"></app-select2-multiple>
+            <app-select2-multiple [itemsSource]="applyDays" [(selectedItems)]="selectedApplyDays"></app-select2-multiple>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Giờ áp dụng (bỏ trống nếu áp dụng tất cả các giờ)</label>
-            <app-select2-multiple [itemsSource]="applyHours"></app-select2-multiple>
+            <app-select2-multiple [itemsSource]="applyHours" [(selectedItems)]="selectedApplyHours"></app-select2-multiple>
           </div>
         </app-card>
       </div>
@@ -126,27 +126,27 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Áp dụng hóa đơn từ (vnđ)</label>
-                  <input class="form-control" type="number">
+                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyMinBillAmount" [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Giảm không quá (vnđ)</label>
-                  <input class="form-control" type="number">
+                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyMaxDiscountAmount" [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Số món giảm giá</label>
-                  <input class="form-control" type="number">
+                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyAllowMenuItemCount" [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Giảm giá món cao nhất / thấp nhất</label>
-                  <select class="form-control border-light">
-                    <option>Không</option>
-                    <option>Giảm giá cho món cao nhất</option>
-                    <option>Giảm giá cho món thấp nhất</option>
+                  <select class="form-control border-light" [(ngModel)]="voucher.advApplyMenuItemAllow" [ngModelOptions]="{standalone: true}">
+                    <option value="-1">Không</option>
+                    <option value="0">Giảm giá cho món cao nhất</option>
+                    <option value="1">Giảm giá cho món thấp nhất</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Giảm giá từ món thứ</label>
-                  <input class="form-control" type="number">
+                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyFromMenuItemIndex" [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nhà phân phối</label>

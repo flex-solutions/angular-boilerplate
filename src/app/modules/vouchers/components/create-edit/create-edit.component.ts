@@ -13,7 +13,7 @@ import { POSService } from '../../services/pos.service';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
 import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
-import { eq } from 'lodash';
+import { eq, isEmpty, map } from 'lodash';
 
 @Component({
     selector: 'app-voucher-create-edit',
@@ -31,10 +31,19 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     isShowVoucherCodeInput = true;
 
     poses: POSDto[] = [];
+    selectedPoses: any[] = [];
+
     menuItems: MenuItemDto[] = [];
+    selectedMenuItems: any[] = [];
+
     menuItemTypes: MenuItemTypeDto[] = [];
+    selectedMenuItemTypes: any[] = [];
+
     applyDays: any[] = [];
+    selectedApplyDays: any[] = [];
+
     applyHours: any[] = [];
+    selectedApplyHours: any[] = [];
 
     voucherFormBuilder: VoucherCreationFormBuilder;
 
@@ -43,6 +52,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
         private readonly location: Location,
         private readonly formbuilder: FormBuilder,
         private readonly posService: POSService,
+        private readonly notification: NotificationService,
         activatedRoute: ActivatedRoute) {
             super();
             activatedRoute.params.subscribe((params: Params) => {
@@ -64,7 +74,27 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     protected onSubmit() {
-        throw new Error('Method not implemented.');
+      if (this.voucherType === VoucherGroupType.Discount) {
+        if (this.isDiscountAmount) {
+          this.voucher.type = VoucherType.DiscountAmount;
+        } else {
+          this.voucher.type = VoucherType.DiscountPercent;
+        }
+      } else {
+        this.voucher.type = VoucherType.XGetY;
+      }
+
+      this.voucher.operationType = this.voucherOperationType;
+      this.voucher.applyPoses = map(this.selectedPoses, 'id');
+      this.voucher.applyMenuItemTypes = map(this.selectedMenuItemTypes, 'id');
+      this.voucher.applyMenuItems = map(this.selectedMenuItems, 'id');
+      this.voucher.applyDays = map(this.selectedApplyDays, 'id');
+      this.voucher.applyHourRanges = map(this.selectedApplyHours, 'id');
+
+      this.voucherService.create(this.voucher).subscribe(() => {
+        this.notification.showSuccess('Một voucher mới được tạo thành công');
+        this.finish();
+      });
     }
 
     protected resetForm() {

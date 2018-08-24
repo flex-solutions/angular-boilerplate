@@ -39,7 +39,6 @@ export class Voucher extends ModelBase {
   sales: number;
   type: VoucherType;
   operationType: VoucherOperationType;
-  amount: number;
   applyPoses: string[];
   applyMenuItemTypes: string[];
   applyMenuItems: string[];
