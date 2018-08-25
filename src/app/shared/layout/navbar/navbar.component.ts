@@ -48,11 +48,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.exDialog
         .openPrime(ChangePasswordComponent, {
 
-        })
-        .subscribe(t => {
-          if (t) {
-            console.log(t);
-          }
         });
   }
 

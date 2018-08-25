@@ -36,6 +36,14 @@
         <source>Filter tool</source>
         <target>Filter tool</target>
       </trans-unit>
+      <trans-unit id="common_title-filter-run" datatype="html">
+        <source>Run filter</source>
+        <target>Run filter</target>
+      </trans-unit>
+      <trans-unit id="common_title-filter-reset" datatype="html">
+        <source>Reset filter</source>
+        <target>Reset filter</target>
+      </trans-unit>
       <trans-unit id="common_label-sex-man" datatype="html">
         <source>Man</source>
         <target>Man</target>
@@ -1769,13 +1777,17 @@
         <source>Search voucher code, name</source>
         <target>Search voucher code, name</target>
       </trans-unit>
+      <trans-unit id="vouchers-create" datatype="html">
+        <source>Create New Voucher</source>
+        <target>Create New Voucher</target>
+      </trans-unit>
       <trans-unit id="vouchers-title" datatype="html">
         <source>Vouchers</source>
         <target>Vouchers</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
-        <source>Vouchers Management</source>
-        <target>Vouchers Management</target>
+        <source>E-Voucher</source>
+        <target>E-Voucher</target>
       </trans-unit>
       <trans-unit id="list-voucher-status-running" datatype="html">
         <source>Running</source>
@@ -1784,6 +1796,10 @@
       <trans-unit id="list-voucher-status-expired" datatype="html">
         <source>Expired</source>
         <target>Expired</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-name-code" datatype="html">
+        <source>Name/Code</source>
+        <target>Name/Code</target>
       </trans-unit>
       <trans-unit id="vouchers-filter-list-table-placeholder-text" datatype="html">
         <source>Name/Code contains</source>
@@ -1954,11 +1970,11 @@
         <target>Delete membership type</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
-        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership type for those
-        members.
+        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership
+        type for those members.
         </source>
-        <target>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership type for those
-          members.
+        <target>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership
+          type for those members.
         </target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-lbl-new-type" datatype="html">

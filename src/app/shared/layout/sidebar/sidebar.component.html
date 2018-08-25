@@ -75,18 +75,35 @@
         </li>
       </ul>
       <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToMembershipTypeListPage()" aria-controls="icons">
+            <span i18n="@@membership-type-menu">Membership Types</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#crm-e-voucher-sub-menu" aria-controls="crm-e-voucher-sub-menu">
+      <img class="menu-icon" src="../../../../assets/images/menu_icons/08.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-voucher-management">E-Voucher</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="crm-e-voucher-sub-menu">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToVoucherCreationPage()" aria-controls="icons">
+            <span>Create New Voucher</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" (click)="navigateToMembershipTypeListPage()" aria-controls="icons">
-              <span i18n="@@membership-type-menu">Membership Types</span>
+            <a class="nav-link" style="cursor: pointer;" (click)="navigateToVouchersPage()" aria-controls="icons">
+              <span i18n="@@vouchers-title">Vouchers</span>
             </a>
           </li>
         </ul>
     </div>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer;" (click)="navigateToVouchersPage()" aria-controls="icons">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/08.png" alt="menu icon">
-      <span class="menu-title" i18n="@@layout-sidebar-anchor-voucher-management">Vouchers Management</span>
-    </a>
-</li>
 </ul>

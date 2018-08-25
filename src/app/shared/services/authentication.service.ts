@@ -118,13 +118,9 @@ export class AuthenticationService extends AbstractRestService {
       return false;
     }
 
-    console.log(permissionComponent.prototype);
-
     permissionComponent.prototype.canInsert = permissionDetail.is_insert;
     permissionComponent.prototype.canUpdate = permissionDetail.is_update;
     permissionComponent.prototype.canDelete = permissionDetail.is_delete;
-
-    console.log(permissionComponent.prototype);
 
     return true;
   }

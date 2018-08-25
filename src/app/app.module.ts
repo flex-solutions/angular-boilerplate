@@ -20,7 +20,6 @@ import { UsersModule } from './modules/users/users.module';
 import { PromotionsModule } from './modules/promotions/promotions.module';
 import { MemberModule } from './modules/member/member.module';
 import { VouchersModule } from './modules/vouchers/vouchers.module';
-// import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,8 +30,8 @@ import { VouchersModule } from './modules/vouchers/vouchers.module';
     SharedModule,
     AppRoutingModule,
     PubSubClientModule,
-    UserGroupsModule,
     DialogModule,
+    UserGroupsModule,
     UsersModule,
     PermissionSchemeModule,
     NewsModule,

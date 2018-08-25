@@ -1,4 +1,4 @@
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Voucher } from './../../../shared/models/voucher.model';
 import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 import { Injectable } from '@angular/core';
@@ -9,7 +9,7 @@ export class VoucherService extends AbstractRestService {
   protected controllerName: string;
   constructor(private exDialog: ExDialog) {
     super();
-    this.controllerName = 'vouchers';
+    this.controllerName = 'voucher';
   }
 
   public remove(_id: string) {
@@ -37,5 +37,9 @@ export class VoucherService extends AbstractRestService {
       `filter?pageSize=${pageSize}&pageNumber=${pageNumber}`,
       query
     );
+  }
+
+  create(dto: Voucher) {
+    return this.post('', dto);
   }
 }

@@ -32,7 +32,7 @@ export class BrowserNotificationService {
       }
       if (self.permission !== 'granted') {
         console.log(
-          "The user hasn't granted you permission to send push notifications"
+          'The user hasn\'t granted you permission to send push notifications'
         );
         obs.complete();
       }
