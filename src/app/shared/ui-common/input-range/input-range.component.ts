@@ -5,7 +5,7 @@ import {
   EventEmitter,
   AfterViewInit
 } from '@angular/core';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 declare const $: any;
 
 export class Range {
@@ -70,8 +70,8 @@ export class InputRangeComponent implements AfterViewInit {
 
   private _validate() {
     if (
-      isNullOrEmptyOrUndefine(this._range.from) ||
-      isNullOrEmptyOrUndefine(this._range.to)
+      isNullOrEmptyOrUndefined(this._range.from) ||
+      isNullOrEmptyOrUndefined(this._range.to)
     ) {
       this.hasError = false;
       return;

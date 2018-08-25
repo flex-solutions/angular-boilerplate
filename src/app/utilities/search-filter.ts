@@ -1,4 +1,4 @@
-import { isNullOrEmptyOrUndefine } from './util';
+import { isNullOrEmptyOrUndefined } from './util';
 
 export class FilterSet {
   name?: string;
@@ -83,7 +83,7 @@ export class CriteriaBuilder
   }
 
   endWrapperFilter(): ICriteriaBuilder {
-    if (!isNullOrEmptyOrUndefine(this._wrapperFilter.value)) {
+    if (!isNullOrEmptyOrUndefined(this._wrapperFilter.value)) {
       this._criteria.filter = this._wrapperFilter;
     }
     return this;
@@ -98,7 +98,7 @@ export class CriteriaBuilder
     if (!this._wrapperFilter) {
       throw new Error('setWrapperFilter must call the first');
     }
-    if (isNullOrEmptyOrUndefine(value)) {
+    if (isNullOrEmptyOrUndefined(value)) {
       return this;
     }
     const filter = {
@@ -113,7 +113,7 @@ export class CriteriaBuilder
 
   withCriteria(action: () => Criteria) {
     const criteria = action();
-    if (!isNullOrEmptyOrUndefine(criteria)) {
+    if (!isNullOrEmptyOrUndefined(criteria)) {
       this.constructFilter(criteria.filter);
     }
     return this;
@@ -130,7 +130,7 @@ export class CriteriaBuilder
   }
 
   build() {
-    if (!isNullOrEmptyOrUndefine(this._criteria.filter)) {
+    if (!isNullOrEmptyOrUndefined(this._criteria.filter)) {
       return this._criteria;
     }
 

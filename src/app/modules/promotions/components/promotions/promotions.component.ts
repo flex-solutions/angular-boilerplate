@@ -18,7 +18,7 @@ import {
   ValueType
 } from '../../../../utilities/search-filter';
 import { PromotionFilter } from '../promotion-filter/promotion-filter.model';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import * as moment from 'moment';
 
 @Component({
@@ -114,8 +114,8 @@ export class PromotionsComponent implements OnInit {
     const startDate = this.promotionFilter.startDate;
     const endDate = this.promotionFilter.endDate;
     if (
-      !isNullOrEmptyOrUndefine(startDate) &&
-      !isNullOrEmptyOrUndefine(endDate)
+      !isNullOrEmptyOrUndefined(startDate) &&
+      !isNullOrEmptyOrUndefined(endDate)
     ) {
       builder
         .withFilter(
@@ -130,14 +130,14 @@ export class PromotionsComponent implements OnInit {
           endDate,
           ValueType.Date
         );
-    } else if (!isNullOrEmptyOrUndefine(startDate)) {
+    } else if (!isNullOrEmptyOrUndefined(startDate)) {
       builder.withFilter(
         FilterType.Equal,
         promotionFields.START_DATE,
         startDate,
         ValueType.Date
       );
-    } else if (!isNullOrEmptyOrUndefine(endDate)) {
+    } else if (!isNullOrEmptyOrUndefined(endDate)) {
       builder.withFilter(
         FilterType.Equal,
         promotionFields.EXPIRE_DATE,

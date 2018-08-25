@@ -1,7 +1,7 @@
 import { Observable, from } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { MemberModel } from '../../../shared/models/member.model';
+import { MemberModel, Sex, sexResourceKey } from '../../../shared/models/member.model';
 
 @Injectable()
 export class MemberService extends AbstractRestService {
@@ -39,5 +39,22 @@ export class MemberService extends AbstractRestService {
 
   update(member: MemberModel): Observable<Response> {
     return this.put('', member);
+  }
+
+  getSexes() {
+    return [
+      {
+        id: Sex.Female,
+        text: this.translateService.translate(sexResourceKey.Female)
+      },
+      {
+        id: Sex.Male,
+        text: this.translateService.translate(sexResourceKey.Male)
+      },
+      {
+        id: Sex.Other,
+        text: this.translateService.translate(sexResourceKey.Other)
+      }
+    ];
   }
 }
