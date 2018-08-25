@@ -6,7 +6,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 import { isEmpty, forEach } from 'lodash';
 declare const $: any;
 
@@ -117,7 +117,7 @@ export class Select2MultipleComponent implements AfterViewInit {
 
   // Because select2 using format {id: string; text: string}
   formatDataSource(arrayData: any[]) {
-    if (isNullOrEmptyOrUndefine(arrayData)) {
+    if (isNullOrEmptyOrUndefined(arrayData)) {
       return [];
     }
     const data = arrayData.map(obj => {
@@ -138,13 +138,13 @@ export class Select2MultipleComponent implements AfterViewInit {
   }
 
   buldObjForSelect2(item: any) {
-    if (!isNullOrEmptyOrUndefine(this.valuePropertyName)) {
+    if (!isNullOrEmptyOrUndefined(this.valuePropertyName)) {
       item.id = item[this.valuePropertyName];
     } else if (!item.hasOwnProperty('id')) {
       item.id = item._id || item.key;
     }
 
-    if (!isNullOrEmptyOrUndefine(this.displayPropertyName)) {
+    if (!isNullOrEmptyOrUndefined(this.displayPropertyName)) {
       item.text = item[this.displayPropertyName];
     } else if (!item.hasOwnProperty('text')) {
       // Use default behavior
