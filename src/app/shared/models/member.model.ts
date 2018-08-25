@@ -1,4 +1,5 @@
 import { Address } from './address.model';
+import { MembershipType } from './membership-type.model';
 
 enum Sex {
   Female = 0,
@@ -14,7 +15,7 @@ class MemberModel {
   birthday: Date;
   sex = null;
   address: Address = new Address();
-  membershipType: any;
+  membershipType: MembershipType;
   email: string;
   point: number;
   isMemberAccumulated: boolean;
@@ -29,7 +30,6 @@ class MemberModel {
     this.membershipType = member.membershipType;
     this.email = member.email;
     this.point = member.point;
-    this.isMemberAccumulated = member.isMemberAccumulated;
     if (member.address) {
       this.address.copyFrom(member.address);
     }

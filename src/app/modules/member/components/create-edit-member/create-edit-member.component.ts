@@ -121,52 +121,63 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
   async loadInformation() {
     this.sexes = this.memberService.getSexes();
     await this.loadMembershipTypes();
-    this.loadMember();
+    await this.loadMember();
+    this.buildMembershipTypes();
   }
 
   private async loadMembershipTypes() {
     this.fullMembershipTypes = await this.membershipTypeService
       .getMembershipTypes()
       .toPromise();
-    this.buildMembershipTypes();
   }
 
-  loadMember() {
+  async loadMember() {
     if (this.isEdit) {
-      this.memberService.get(this.memberId).subscribe((value: MemberModel) => {
-        if (value) {
-          this.member.clone(value as MemberModel);
-          this.member.membershipType = this.membershipTypes.find(
-            i => i._id === this.member.membershipType
-          );
-          this.member.sex = this.sexes.find(i => i.id === this.member.sex);
+      const value = (await this.memberService
+        .get(this.memberId)
+        .toPromise()) as MemberModel;
+      if (value) {
+        this.member._id = value._id;
+        this.member.membershipType = this.fullMembershipTypes.find(
+          i => i._id === value.membershipType
+        );
+        this.member.isMemberAccumulated = this.member.membershipType.isAccumulated;
+        this.member.sex = this.sexes.find(i => i.id === value.sex);
+        if (this.member.address) {
+          this.member.address.copyFrom(value.address);
+        }
+        if (
+          this.member &&
+          this.member.address &&
+          this.member.address.country &&
+          this.member.address.country.provinces.length > 0
+        ) {
           if (
-            this.member &&
-            this.member.address &&
-            this.member.address.country &&
-            this.member.address.country.provinces.length > 0
+            !isNullOrEmptyOrUndefined(
+              this.member.address.country.provinces[0].name
+            )
           ) {
+            // find selected id
+            this.selectedCity = this.member.address.country.provinces[0];
             if (
-              !isNullOrEmptyOrUndefined(
-                this.member.address.country.provinces[0].name
-              )
+              this.selectedCity &&
+              this.selectedCity.districts &&
+              this.selectedCity.districts.length > 0
             ) {
-              // find selected id
-              this.selectedCity = this.member.address.country.provinces[0];
-              if (
-                this.selectedCity &&
-                this.selectedCity.districts &&
-                this.selectedCity.districts.length > 0
-              ) {
-                this.selectedDistrict = this.member.address.country.provinces[0].districts[0];
-              }
+              this.selectedDistrict = this.member.address.country.provinces[0].districts[0];
             }
           }
-        } else {
-          // Navigate to previous if user group not found.
-          this.location.back();
         }
-      });
+        this.member.memberId = value.memberId;
+        this.member.name = value.name;
+        this.member.birthday = value.birthday;
+        this.member.phoneNumber = value.phoneNumber;
+        this.member.email = value.email;
+        this.member.point = value.point;
+      } else {
+        // Navigate to previous if user group not found.
+        this.location.back();
+      }
     }
   }
 
