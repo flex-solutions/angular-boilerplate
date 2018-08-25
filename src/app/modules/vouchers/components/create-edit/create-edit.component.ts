@@ -1,8 +1,7 @@
-import { init } from 'ramda';
 import { VoucherCreationFormBuilder } from './voucher-form.builder';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { VoucherService } from './../../services/vouchers.service';
 import { Voucher, VoucherGroupType, VoucherType, VoucherOperationType } from './../../../../shared/models/voucher.model';
@@ -13,7 +12,7 @@ import { POSService } from '../../services/pos.service';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
 import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
-import { eq, isEmpty, map } from 'lodash';
+import { eq, map } from 'lodash';
 
 @Component({
     selector: 'app-voucher-create-edit',
