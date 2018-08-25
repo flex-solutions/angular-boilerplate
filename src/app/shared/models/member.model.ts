@@ -1,4 +1,5 @@
 import { Address } from './address.model';
+import { MembershipType } from './membership-type.model';
 
 enum Sex {
   Female = 0,
@@ -14,11 +15,12 @@ class MemberModel {
   birthday: Date;
   sex = null;
   address: Address = new Address();
-  membershipType = '';
+  membershipType: MembershipType;
   email: string;
   point: number;
+  isMemberAccumulated: boolean;
 
-  clone(member: MemberModel ) {
+  clone(member: MemberModel) {
     this._id = member._id;
     this.memberId = member.memberId;
     this.name = member.name;
@@ -76,10 +78,4 @@ const sexResourceKey = {
   Other: 'common_label-sex-other'
 };
 
-export {
-  MemberModel,
-  Sex,
-  MemberFilter,
-  memberFilterFields,
-  sexResourceKey
-};
+export { MemberModel, Sex, MemberFilter, memberFilterFields, sexResourceKey };

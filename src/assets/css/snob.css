@@ -42652,6 +42652,9 @@ div.tagsinput span.tag a {
   outline: 1px solid slategrey;
 }
 
+.full-width {
+  width: 100% !important;
+}
 /*-------------------------------------------------------------------*/
 
 /*# sourceMappingURL=maps/style.css.map */

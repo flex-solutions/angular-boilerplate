@@ -1,4 +1,4 @@
-import { isNullOrEmptyOrUndefine } from '../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../utilities/util';
 class District {
   _id: any;
   code: string;
@@ -10,7 +10,7 @@ class District {
   }
 
   copyFrom(inDistrict: District) {
-    if (isNullOrEmptyOrUndefine(inDistrict)) {
+    if (isNullOrEmptyOrUndefined(inDistrict)) {
       return;
     }
     this._id = inDistrict._id;
@@ -65,7 +65,7 @@ class Address {
   copyFrom(address: Address) {
     this._id = address._id;
     this.address = '';
-    if (!isNullOrEmptyOrUndefine(address.address)) {
+    if (!isNullOrEmptyOrUndefined(address.address)) {
       this.address = address.address;
     }
     this.country = new Country();

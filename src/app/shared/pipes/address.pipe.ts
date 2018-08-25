@@ -1,7 +1,7 @@
 import { isNil } from 'ramda';
 import { Pipe, PipeTransform } from '@angular/core';
 import { Address } from '../models/address.model';
-import { isNullOrEmptyOrUndefine } from '../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../utilities/util';
 
 @Pipe({ name: 'address' })
 export class AddressPipe implements PipeTransform {
@@ -13,8 +13,8 @@ export class AddressPipe implements PipeTransform {
       addresses.push(value.address);
 
       if (
-        isNullOrEmptyOrUndefine(value.country) ||
-        isNullOrEmptyOrUndefine(value.country.provinces)
+        isNullOrEmptyOrUndefined(value.country) ||
+        isNullOrEmptyOrUndefined(value.country.provinces)
       ) {
         return addresses.join(',');
       }

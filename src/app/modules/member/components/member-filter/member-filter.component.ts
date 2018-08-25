@@ -1,12 +1,10 @@
+import { MemberService } from './../../services/member.service';
 import { Component, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import {
-  MemberFilter,
-  Sex,
-  sexResourceKey
+  MemberFilter
 } from '../../../../shared/models/member.model';
 import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
 import { MembershipTypeService } from '../../services/membership-type.service';
-import { TranslateService } from '../../../../shared/services/translate.service';
 import { MembershipType } from '../../../../shared/models/membership-type.model';
 import { MemberData } from '../../services/member-filter.data';
 import { AddressComponent } from '../../../../shared/ui-common/address/address.component';
@@ -32,27 +30,10 @@ export class MemberFilterComponent extends AbstractFilterComponent<MemberFilter>
 
   constructor(
     private readonly membershipTypeService: MembershipTypeService,
-    private readonly translateService: TranslateService
+    private readonly memberService: MemberService
   ) {
     super();
     this.filter = new MemberFilter();
-  }
-
-  getSexes() {
-    return [
-      {
-        id: Sex.Female,
-        text: this.translateService.translate(sexResourceKey.Female)
-      },
-      {
-        id: Sex.Male,
-        text: this.translateService.translate(sexResourceKey.Male)
-      },
-      {
-        id: Sex.Other,
-        text: this.translateService.translate(sexResourceKey.Other)
-      }
-    ];
   }
 
   loadData() {
@@ -62,7 +43,7 @@ export class MemberFilterComponent extends AbstractFilterComponent<MemberFilter>
 
     this.months = MemberData.months;
 
-    this.sexes = this.getSexes();
+    this.sexes = this.memberService.getSexes();
   }
 
   onResetFilter() {
