@@ -8,7 +8,6 @@ import { MembershipTypeService } from './../../../services/membership-type.servi
 import { OnInit, Component, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-form-component';
 import * as _ from 'lodash';
-declare let $: any;
 
 @Component({
   selector: 'app-membership-type-create-edit',
@@ -88,18 +87,6 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   }
 
   ngAfterViewInit() {
-    if ($('#editable-form').length) {
-      $.fn.editable.defaults.mode = 'inline';
-      $.fn.editableform.buttons =
-        '<button type="submit" class="btn btn-primary btn-sm editable-submit">' +
-        '<i class="mdi mdi-add-circle-add"></i>' +
-        '</button>' +
-        '<button type="button" class="btn btn-default btn-sm editable-cancel">' +
-        '<i class="mdi mdi-close-circle-outline"></i>' +
-        '</button>';
-
-      $('.validDateCount').editable({});
-    }
     setTimeout(() => {
       this.vouchers = [
         { id: 'Sun', name: 'Giảm 30% ngay sau khi đăng ký' },
