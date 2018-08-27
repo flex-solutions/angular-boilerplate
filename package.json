@@ -1,7 +1,7 @@
 {
   "name": "snobrs-cms",
-  "version": "0.3.3",
-  "license": "snob",
+  "version": "0.4",
+  "license": "SNOB",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

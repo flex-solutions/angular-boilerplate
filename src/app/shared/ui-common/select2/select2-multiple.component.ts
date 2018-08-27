@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
-import { isEmpty, forEach } from 'lodash';
+import { isEmpty, forEach, remove, eq } from 'lodash';
 declare const $: any;
 
 @Component({
@@ -109,6 +109,10 @@ export class Select2MultipleComponent implements AfterViewInit {
       const data = e.params.data;
       this.selectedItems.push(data);
     });
+    this.host.on('select2:unselect', e => {
+      const data = e.params.data;
+      remove(this.selectedItems, item => eq(item.id, data.id));
+    });
   }
 
   get host() {
@@ -156,7 +160,7 @@ export class Select2MultipleComponent implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
-    this.selectedItems = [];
+    remove(this.selectedItems, item => item.id);
   }
 
   onSelectedItemChange() {
