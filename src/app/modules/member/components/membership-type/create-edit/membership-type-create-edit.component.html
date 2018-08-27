@@ -75,18 +75,18 @@
           </app-card>
         </div>
         <div class="col-md-12 grid-margin">
-          <app-card title="Static benefits">
+          <app-card i18n-title="@@membership-type-create-form-static-benefits-title" title="Static benefits">
             <div class="form-group">
-              <label>Voucher care campaign</label>
+              <label i18n="@@membership-type-create-form-voucher_care_campaign-label">Voucher care campaign</label>
               <app-select2-multiple [itemsSource]="vouchers" [(selectedItems)]="selectedVouchers" valuePropertyName="voucherCode" displayPropertyName="voucherName"></app-select2-multiple>
               <table class="table list-wrapper">
                 <thead>
                   <tr>
-                    <th>Tên chương trình</th>
-                    <th>Voucher code</th>
-                    <th>Thời điểm add cho user</th>
-                    <th>Số ngày có hiệu lực</th>
-                    <th>Xoá</th>
+                    <th i18n="@@membership-type-create-form-campaign_name-label">Campaign name</th>
+                    <th i18n="@@membership-type-create-form-voucher_code-label">Voucher code</th>
+                    <th i18n="@@membership-type-create-form-schedule-label">Schedule</th>
+                    <th i18n="@@membership-type-create-form-valid_date_count-label">Valid date count</th>
+                    <th i18n="@@common-action-delete">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -97,10 +97,10 @@
                     <td>{{selectedVoucher.voucherName}}</td>
                     <td>
                       <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" class="form-control border-light" (change)="onApplyMenuTypeChange()">
-                        <option value="0">Áp dụng cho nhóm món</option>
-                        <option value="1">Áp dụng cho món</option>
-                        <option value="2">Áp dụng cho món 2</option>
-                        <option value="3">Áp dụng cho món 3</option>
+                        <option value="0" i18n="@@membership-type-create-form-reach_rank-option">After reach rank</option>
+                        <option value="1" i18n="@@membership-type-create-form-repeat_birthday-option">Repeat at a birthday</option>
+                        <option value="2" i18n="@@membership-type-create-form-repeat_at_specific_date-option">Repeat at a specific date</option>
+                        <option value="3" i18n="@@membership-type-create-form-get_x_points-option">After get x points</option>
                       </select>
                     </td>
                     <td>
@@ -115,11 +115,10 @@
             </div>
             <br/>
             <div class="form-group">
-              <label>Non voucher benefits</label>
+              <label i18n="@@membership-type-create-form-non_voucher_benefits-label">Non voucher benefits</label>
               <div class="add-items d-flex">
-                <input type="text" [(ngModel)]="inputBenefit" [ngModelOptions]="{standalone: true}" class="form-control todo-list-input"
-                  placeholder="What do you need to do today?">
-                <button class="add btn btn-success font-weight-bold todo-list-add-btn" (click)="addNonBenefit()" id="add-benefit">Add</button>
+                <input type="text" [(ngModel)]="inputBenefit" [ngModelOptions]="{standalone: true}" class="form-control todo-list-input">
+                <button class="add btn btn-success font-weight-bold todo-list-add-btn" (click)="addNonBenefit()" id="add-benefit" i18n="@@edit-members-add-btn">Add</button>
               </div>
               <div class="tagsinput">
                 <span *ngFor="let benefit of benefits" class="tag tag-light">
