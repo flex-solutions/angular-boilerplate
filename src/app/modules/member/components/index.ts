@@ -4,6 +4,7 @@ import { CreateEditMemberComponent } from './create-edit-member/create-edit-memb
 import { MemberHomeComponent } from './home/home.component';
 import { MemberFilterComponent } from './member-filter/member-filter.component';
 import { MembershipTypeHomeComponent } from './membership-type/membership-type.component';
+import { AssignScheduleOptionComponent } from './membership-type/assign-schedule-option/assign-schedule-option.component';
 
 export const memberComponents = [
     MemberHomeComponent,
@@ -11,9 +12,11 @@ export const memberComponents = [
     CreateEditMemberComponent,
     MembershipTypeHomeComponent,
     MembershipTypeCreateEditComponent,
-    MembershipTypeDeleteConfirmationComponent
+    MembershipTypeDeleteConfirmationComponent,
+    AssignScheduleOptionComponent
 ];
 
 export const memberEntryComponents = [
-    MembershipTypeDeleteConfirmationComponent
+    MembershipTypeDeleteConfirmationComponent,
+    AssignScheduleOptionComponent
 ];

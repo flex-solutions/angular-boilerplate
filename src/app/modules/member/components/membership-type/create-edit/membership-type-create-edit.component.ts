@@ -1,16 +1,20 @@
-import { log } from 'util';
+import { AssignScheduleOptionComponent } from './../assign-schedule-option/assign-schedule-option.component';
 import { Voucher } from './../../../../../shared/models/voucher.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from './../../../../../shared/services/translate.service';
-import { MembershipType } from './../../../../../shared/models/membership-type.model';
+import {
+  MembershipType,
+  BenefitScheduleType,
+  VoucherBenefit
+} from './../../../../../shared/models/membership-type.model';
 import { MembershipTypeService } from './../../../services/membership-type.service';
-import { OnInit, Component, AfterViewInit } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-form-component';
 import * as _ from 'lodash';
-import { VoucherBenefit, BenefitScheduleType } from './voucher.model';
+import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
 
 @Component({
   selector: 'app-membership-type-create-edit',
@@ -18,7 +22,7 @@ import { VoucherBenefit, BenefitScheduleType } from './voucher.model';
   styles: []
 })
 export class MembershipTypeCreateEditComponent extends AbstractFormComponent
-  implements OnInit, AfterViewInit {
+  implements OnInit {
   public membershipType: MembershipType = new MembershipType();
   membershipTypeId: string;
   benefits: string[] = [];
@@ -56,7 +60,8 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
     private formbuilder: FormBuilder,
     private location: Location,
     private notification: NotificationService,
-    activatedRoute: ActivatedRoute
+    activatedRoute: ActivatedRoute,
+    private readonly exDlg: ExDialog
   ) {
     super();
     activatedRoute.params.subscribe((params: Params) => {
@@ -86,26 +91,33 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
       this.isEdit === false
         ? this.translateService.translate('membership-type-create-form-success')
         : this.translateService.translate('membership-type-edit-form-success');
-    this.getMembershipTypeInfoForEdit();
-    this.membershipTypeService
-      .getAllVoucherCareCampaign()
-      .subscribe((vouchers: Voucher[]) => {
-        const benefitVouchers = [];
-        for (const v of vouchers) {
-          benefitVouchers.push({
-            campaignName: v.name,
-            voucher: v,
-            voucherCode: v.code,
-            voucherName: v.name,
-            validDateCount: 30,
-            schedule: BenefitScheduleType.ReachRank
-          });
-        }
-        this.vouchers = benefitVouchers;
-      });
+    this.loadMembershipInfo();
   }
 
-  ngAfterViewInit() {}
+  async loadMembershipInfo() {
+    await this.getMembershipTypeInfoForEdit();
+    const vouchers = (await this.membershipTypeService
+      .getAllVoucherCareCampaign()
+      .toPromise()) as any[];
+    const benefitVouchers = [];
+    for (const v of vouchers) {
+      benefitVouchers.push({
+        campaignName: v.name,
+        voucher: v,
+        voucherCode: v.code,
+        voucherName: v.name,
+        validDateCount: 30,
+        schedule: BenefitScheduleType.ReachRank
+      });
+    }
+    this.vouchers = benefitVouchers;
+    if (this.membershipType.staticBenefits) {
+      this.selectedVouchers = this.membershipType.staticBenefits;
+    }
+    if (this.membershipType.nonBenefits) {
+      this.benefits = this.membershipType.nonBenefits;
+    }
+  }
 
   get membershipTypeCode() {
     return this.formGroup.get('membershipTypeCode');
@@ -120,6 +132,7 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   }
 
   protected onSubmit() {
+    this.fillBenefitToMembershipType();
     if (this.isEdit === true) {
       this.membershipTypeService.update(this.membershipType).subscribe(() => {
         this.notification.showSuccess(this.createSuccessMsg);
@@ -153,13 +166,22 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
     this.membershipType = new MembershipType();
   }
 
-  private getMembershipTypeInfoForEdit() {
+  private async getMembershipTypeInfoForEdit() {
     if (this.isEdit === true) {
-      this.membershipTypeService
+      const tMembershipType = await this.membershipTypeService
         .getMembershipType(this.membershipTypeId)
-        .subscribe(membershipType => {
-          this.membershipType = membershipType;
-        });
+        .toPromise();
+      this.membershipType = tMembershipType;
+      if (this.membershipType.staticBenefits) {
+        this.membershipType.staticBenefits = _.map(
+          this.membershipType.staticBenefits,
+          (val: VoucherBenefit, key: string) => {
+            val.voucherCode = _.get(val.voucher, 'code', null);
+            val.voucherName = _.get(val.voucher, 'name', null);
+            return val;
+          }
+        );
+      }
     }
   }
 
@@ -180,5 +202,32 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
       return val.voucherCode === selectedVoucher.voucherCode;
     });
     this.selectedVouchers = copySelectedVouchers;
+  }
+
+  private fillBenefitToMembershipType() {
+    this.membershipType.nonBenefits = this.benefits;
+    this.membershipType.staticBenefits = this.selectedVouchers;
+  }
+
+  onScheduleChange(selectedVoucher: VoucherBenefit) {
+    this.exDlg
+      .openPrime(AssignScheduleOptionComponent, {
+        callerData: {
+          schedule: selectedVoucher.schedule,
+          membershipType: this.membershipType
+        }
+      })
+      .subscribe(result => {
+        if (result) {
+          switch (selectedVoucher.schedule) {
+            case BenefitScheduleType.RepeatAtSpecificDate:
+              selectedVoucher.selectedDate = result;
+              break;
+            case BenefitScheduleType.GetXPoints:
+              selectedVoucher.selectedPoint = result;
+              break;
+          }
+        }
+      });
   }
 }

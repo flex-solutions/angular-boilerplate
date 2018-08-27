@@ -96,7 +96,7 @@
                     </td>
                     <td>{{selectedVoucher.voucherName}}</td>
                     <td>
-                      <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" class="form-control border-light" (change)="onApplyMenuTypeChange()">
+                      <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" (change)="onScheduleChange(selectedVoucher)" class="form-control border-light">
                         <option value="0" i18n="@@membership-type-create-form-reach_rank-option">After reach rank</option>
                         <option value="1" i18n="@@membership-type-create-form-repeat_birthday-option">Repeat at a birthday</option>
                         <option value="2" i18n="@@membership-type-create-form-repeat_at_specific_date-option">Repeat at a specific date</option>
