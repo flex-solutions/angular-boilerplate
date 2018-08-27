@@ -33,9 +33,11 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     menuItems: MenuItemDto[] = [];
     selectedMenuItems: any[] = [];
+    selectedAttachMenuItems: any[] = [];
 
     menuItemTypes: MenuItemTypeDto[] = [];
     selectedMenuItemTypes: any[] = [];
+    selectedAttachMenuItemTypes: any[] = [];
 
     applyDays: any[] = [];
     selectedApplyDays: any[] = [];
@@ -78,6 +80,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       this.voucher.applyMenuItems = map(this.selectedMenuItems, 'id');
       this.voucher.applyDays = map(this.selectedApplyDays, 'id');
       this.voucher.applyHourRanges = map(this.selectedApplyHours, 'id');
+      this.voucher.attachGiftOfMenuItemTypes = map(this.selectedAttachMenuItemTypes, 'id');
+      this.voucher.attachGiftOfMenuItems = map(this.selectedAttachMenuItems, 'id');
 
       this.voucherService.create(this.voucher).subscribe(() => {
         this.notification.showSuccess('Một voucher mới được tạo thành công');

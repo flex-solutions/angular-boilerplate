@@ -69,6 +69,10 @@ export class Voucher extends ModelBase {
   applyPoses: string[];
   applyMenuItemTypes: string[];
   applyMenuItems: string[];
+  attachGiftOfMenuItemTypes: string[];
+  attachGiftOfMenuItems: string[];
+  numberBuyItem: number;
+  numberGiftItem: number;
   applyDays: string[];
   applyHourRanges: string[];
   validFromDate: Date;
