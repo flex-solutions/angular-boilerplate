@@ -52,17 +52,14 @@ export class InputEditableInlineComponent implements AfterViewInit {
       <button type="submit" class="btn btn-success editable-submit"><i class="mdi mdi-check"></i></button>
       <button type="button" class="btn btn-light editable-cancel"><i class="mdi mdi-refresh"></i></button>
       `;
-      if (this.isNumberOnly) {
-        $(`#${this.elementId}`).editable({
-          validate: function(value) {
-            if ($.isNumeric(value) == '') {
-              return '  ';
-            }
+      $(`#${this.elementId}`).editable({
+        validate: val => {
+          if (this.isNumberOnly && $.isNumeric(val) == '') {
+            return '  ';
           }
-        });
-      } else {
-        $(`#${this.elementId}`).editable({});
-      }
+          this.value = val;
+        }
+      });
     }
   }
 }

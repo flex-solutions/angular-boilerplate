@@ -154,6 +154,8 @@ export class Select2Component implements AfterViewInit {
     const temp = this.buildSelect2Data(this._selectedItem);
     if (temp && temp.id && temp.text) {
       this.host.val(temp.id).trigger('change');
+    } else {
+      this.host.val(null).trigger('change');
     }
   }
 }

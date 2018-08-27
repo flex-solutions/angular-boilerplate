@@ -78,7 +78,7 @@
           <app-card title="Static benefits">
             <div class="form-group">
               <label>Voucher care campaign</label>
-              <app-select2-multiple [itemsSource]="vouchers" [(selectedItems)]="selectedVouchers"></app-select2-multiple>
+              <app-select2-multiple [itemsSource]="vouchers" [(selectedItems)]="selectedVouchers" valuePropertyName="voucherCode" displayPropertyName="voucherName"></app-select2-multiple>
               <table class="table list-wrapper">
                 <thead>
                   <tr>
@@ -91,14 +91,23 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let selectedVoucher of selectedVouchers">
-                    <td>{{selectedVoucher.name}}</td>
-                    <td>{{selectedVoucher.name}}</td>
-                    <td>12 May 2017</td>
                     <td>
-                      <app-input-editable value="0" isNumberOnly="true"></app-input-editable>
+                      <input type="text" [(ngModel)]="selectedVoucher.campaignName" [ngModelOptions]="{standalone: true}" class="form-control">
+                    </td>
+                    <td>{{selectedVoucher.voucherName}}</td>
+                    <td>
+                      <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" class="form-control border-light" (change)="onApplyMenuTypeChange()">
+                        <option value="0">Áp dụng cho nhóm món</option>
+                        <option value="1">Áp dụng cho món</option>
+                        <option value="2">Áp dụng cho món 2</option>
+                        <option value="3">Áp dụng cho món 3</option>
+                      </select>
                     </td>
                     <td>
-                      <i class="remove mdi mdi-close-circle-outline" (click)="removeNonBenefits(benefit)"></i>
+                      <app-input-editable [(value)]="selectedVoucher.validDateCount" isNumberOnly="true"></app-input-editable>
+                    </td>
+                    <td>
+                      <i class="remove mdi mdi-close-circle-outline" (click)="removeVoucherBenefit(selectedVoucher)"></i>
                     </td>
                   </tr>
                 </tbody>

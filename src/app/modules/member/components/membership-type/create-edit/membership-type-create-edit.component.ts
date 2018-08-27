@@ -1,3 +1,5 @@
+import { log } from 'util';
+import { Voucher } from './../../../../../shared/models/voucher.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Location } from '@angular/common';
@@ -8,6 +10,7 @@ import { MembershipTypeService } from './../../../services/membership-type.servi
 import { OnInit, Component, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-form-component';
 import * as _ from 'lodash';
+import { VoucherBenefit, BenefitScheduleType } from './voucher.model';
 
 @Component({
   selector: 'app-membership-type-create-edit',
@@ -20,8 +23,8 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   membershipTypeId: string;
   benefits: string[] = [];
   inputBenefit: string;
-  vouchers: any[];
-  selectedVouchers: any[] = [];
+  vouchers: VoucherBenefit[] = [];
+  selectedVouchers: VoucherBenefit[] = [];
   validDateCount: 30;
 
   public errors = {
@@ -84,21 +87,25 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
         ? this.translateService.translate('membership-type-create-form-success')
         : this.translateService.translate('membership-type-edit-form-success');
     this.getMembershipTypeInfoForEdit();
+    this.membershipTypeService
+      .getAllVoucherCareCampaign()
+      .subscribe((vouchers: Voucher[]) => {
+        const benefitVouchers = [];
+        for (const v of vouchers) {
+          benefitVouchers.push({
+            campaignName: v.name,
+            voucher: v,
+            voucherCode: v.code,
+            voucherName: v.name,
+            validDateCount: 30,
+            schedule: BenefitScheduleType.ReachRank
+          });
+        }
+        this.vouchers = benefitVouchers;
+      });
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.vouchers = [
-        { id: 'Sun', name: 'Giảm 30% ngay sau khi đăng ký' },
-        { id: 'Mon', name: 'Mua 1 tặng 1 khi tích lũy được 25 điểm' },
-        { id: 'Tue', name: 'Miễn phí 1 ly nước khi nâng hạng ' },
-        { id: 'Wed', name: 'Miễn phí 1 ly nước mỗi khi tích lũy đủ 50 điểm' },
-        { id: 'Thu', name: 'Miễn phí 1 ly nước khi nâng hạng' },
-        { id: 'Fri', name: 'Một phần bánh miễn phí trong ngày sinh nhật' },
-        { id: 'Sat', name: 'Miễn phí 1 ly nước mỗi khi tích lũy được 50 điểm' }
-      ];
-    });
-  }
+  ngAfterViewInit() {}
 
   get membershipTypeCode() {
     return this.formGroup.get('membershipTypeCode');
@@ -161,9 +168,17 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
     this.inputBenefit = '';
   }
 
-  removeNonBenefit(benefit: string) {
-    this.benefits = _.remove(this.benefits, val => {
+  removeNonBenefits(benefit: string) {
+    _.remove(this.benefits, val => {
       return val === benefit;
     });
+  }
+
+  removeVoucherBenefit(selectedVoucher: VoucherBenefit) {
+    const copySelectedVouchers = _.map(this.selectedVouchers, _.clone);
+    _.remove(copySelectedVouchers, (val: VoucherBenefit) => {
+      return val.voucherCode === selectedVoucher.voucherCode;
+    });
+    this.selectedVouchers = copySelectedVouchers;
   }
 }
