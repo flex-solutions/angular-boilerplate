@@ -2029,6 +2029,10 @@
         <source>Non Voucher benefits</source>
         <target>Non Voucher benefits</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
+        <source>Extra information</source>
+        <target>Extra information</target>
+      </trans-unit>
       <!--STOP membership types-->
     </body>
   </file>

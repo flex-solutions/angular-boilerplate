@@ -2021,6 +2021,10 @@
         <source>Non Voucher benefits</source>
         <target>Ưu đãi không giá trị</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
+        <source>Extra information</source>
+        <target>Thông tin thêm</target>
+      </trans-unit>
       <!--STOP membership types-->
     </body>
   </file>

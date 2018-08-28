@@ -1,5 +1,3 @@
-import { AssignScheduleOptionComponent } from './../assign-schedule-option/assign-schedule-option.component';
-import { Voucher } from './../../../../../shared/models/voucher.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Location } from '@angular/common';
@@ -14,7 +12,6 @@ import { MembershipTypeService } from './../../../services/membership-type.servi
 import { OnInit, Component } from '@angular/core';
 import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-form-component';
 import * as _ from 'lodash';
-import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
 
 @Component({
   selector: 'app-membership-type-create-edit',
@@ -61,7 +58,6 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
     private location: Location,
     private notification: NotificationService,
     activatedRoute: ActivatedRoute,
-    private readonly exDlg: ExDialog
   ) {
     super();
     activatedRoute.params.subscribe((params: Params) => {
@@ -207,27 +203,5 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   private fillBenefitToMembershipType() {
     this.membershipType.nonBenefits = this.benefits;
     this.membershipType.staticBenefits = this.selectedVouchers;
-  }
-
-  onScheduleChange(selectedVoucher: VoucherBenefit) {
-    this.exDlg
-      .openPrime(AssignScheduleOptionComponent, {
-        callerData: {
-          schedule: selectedVoucher.schedule,
-          membershipType: this.membershipType
-        }
-      })
-      .subscribe(result => {
-        if (result) {
-          switch (selectedVoucher.schedule) {
-            case BenefitScheduleType.RepeatAtSpecificDate:
-              selectedVoucher.selectedDate = result;
-              break;
-            case BenefitScheduleType.GetXPoints:
-              selectedVoucher.selectedPoint = result;
-              break;
-          }
-        }
-      });
   }
 }

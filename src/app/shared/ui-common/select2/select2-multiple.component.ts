@@ -44,7 +44,8 @@ export class Select2MultipleComponent implements AfterViewInit {
         placeholder: this._placeholder,
         data: this.formatDataSource(this._itemsSource),
         multiple: true,
-        closeOnSelect: false
+        closeOnSelect: false,
+        tags: true
       });
 
     if (!isEmpty(this.selectedItems)) {
@@ -104,7 +105,8 @@ export class Select2MultipleComponent implements AfterViewInit {
       placeholder: this._placeholder,
       allowClear: true,
       multiple: true,
-      closeOnSelect: false
+      closeOnSelect: false,
+      tags: true
     });
     this.host.on('select2:select', e => {
       const data = e.params.data;

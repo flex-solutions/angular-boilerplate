@@ -84,30 +84,51 @@
                   <tr>
                     <th i18n="@@membership-type-create-form-campaign_name-label">Campaign name</th>
                     <th i18n="@@membership-type-create-form-voucher_code-label">Voucher code</th>
-                    <th i18n="@@membership-type-create-form-schedule-label">Schedule</th>
                     <th i18n="@@membership-type-create-form-valid_date_count-label">Valid date count</th>
+                    <th i18n="@@membership-type-create-form-schedule-label">Schedule</th>
+                    <th i18n="@@membership-type-create-form-extra_information-label">Extra information</th>
                     <th i18n="@@common-action-delete">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let selectedVoucher of selectedVouchers">
                     <td>
-                      <input type="text" [(ngModel)]="selectedVoucher.campaignName" [ngModelOptions]="{standalone: true}" class="form-control">
-                    </td>
-                    <td>{{selectedVoucher.voucherName}}</td>
-                    <td>
-                      <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" (change)="onScheduleChange(selectedVoucher)" class="form-control border-light">
-                        <option value="0" i18n="@@membership-type-create-form-reach_rank-option">After reach rank</option>
-                        <option value="1" i18n="@@membership-type-create-form-repeat_birthday-option">Repeat at a birthday</option>
-                        <option value="2" i18n="@@membership-type-create-form-repeat_at_specific_date-option">Repeat at a specific date</option>
-                        <option value="3" i18n="@@membership-type-create-form-get_x_points-option">After get x points</option>
-                      </select>
+                      <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedVoucher.campaignName" [ngModelOptions]="{standalone: true}" class="form-control">
+                      </div>
                     </td>
                     <td>
-                      <app-input-editable [(value)]="selectedVoucher.validDateCount" isNumberOnly="true"></app-input-editable>
+                      <div class="form-group">
+                        {{selectedVoucher.voucherName}}
+                      </div>
                     </td>
                     <td>
-                      <i class="remove mdi mdi-close-circle-outline" (click)="removeVoucherBenefit(selectedVoucher)"></i>
+                      <div class="form-group">
+                        <app-input-editable [(value)]="selectedVoucher.validDateCount" isNumberOnly="true"></app-input-editable>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" class="form-control border-light">
+                          <option value="0" i18n="@@membership-type-create-form-reach_rank-option">After reach rank</option>
+                          <option value="1" i18n="@@membership-type-create-form-repeat_birthday-option">Repeat at a birthday</option>
+                          <option value="2" i18n="@@membership-type-create-form-repeat_at_specific_date-option">Repeat at
+                            a specific date</option>
+                          <option value="3" i18n="@@membership-type-create-form-get_x_points-option">After get x points</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <app-date-picker *ngIf="selectedVoucher.schedule == 2" [(date)]="selectedVoucher.selectedDate"></app-date-picker>
+                        <input *ngIf="selectedVoucher.schedule == 3" [(ngModel)]="selectedVoucher.selectedPoint" id="afterGetXPoints" class="form-control"
+                          [ngModelOptions]="{standalone: true}" type="number" placeholder="Enter the target point" i18n-placeholder="@@membership-type-create-form-target-point-placeholder">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <i class="remove mdi mdi-close-circle-outline" (click)="removeVoucherBenefit(selectedVoucher)"></i>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
