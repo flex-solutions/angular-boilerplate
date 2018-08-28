@@ -1985,6 +1985,54 @@
         <source>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</source>
         <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
+        <source>Voucher care campaign</source>
+        <target>Voucher care campaign</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
+        <source>Campaign name</source>
+        <target>Campaign name</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
+        <source>Voucher code</source>
+        <target>Voucher code</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
+        <source>Schedule</source>
+        <target>Schedule</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-valid_date_count-label" datatype="html">
+        <source>Valid date count</source>
+        <target>Valid date count</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-static-benefits-title" datatype="html">
+        <source>Static benefits</source>
+        <target>Static benefits</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-repeat_birthday-option" datatype="html">
+        <source>Repeat at a birthday</source>
+        <target>Repeat at a birthday</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-repeat_at_specific_date-option" datatype="html">
+        <source>Repeat at a specific date</source>
+        <target>Repeat at a specific date</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-reach_rank-option" datatype="html">
+        <source>After reach rank</source>
+        <target>After reach rank</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
+        <source>After get X points</source>
+        <target>After get X points</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
+        <source>Non Voucher benefits</source>
+        <target>Non Voucher benefits</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
+        <source>Extra information</source>
+        <target>Extra information</target>
+      </trans-unit>
       <!--STOP membership types-->
     </body>
   </file>

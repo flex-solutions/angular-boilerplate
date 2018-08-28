@@ -22,9 +22,11 @@ export class InputRangeComponent implements AfterViewInit {
   private _range: Range;
   hasError: boolean;
 
-  @Output() rangeChange = new EventEmitter();
+  @Output()
+  rangeChange = new EventEmitter();
 
-  @Input() title: string;
+  @Input()
+  title: string;
 
   @Input()
   set range(val) {
@@ -40,25 +42,7 @@ export class InputRangeComponent implements AfterViewInit {
     this.hasError = false;
   }
 
-  ngAfterViewInit() {
-    $('input.number-only').bind({
-      keydown: function(e) {
-        if (e.shiftKey === true) {
-          if (e.which === 9) {
-            return true;
-          }
-          return false;
-        }
-        if (e.which > 57) {
-          return false;
-        }
-        if (e.which === 32) {
-          return false;
-        }
-        return true;
-      }
-    });
-  }
+  ngAfterViewInit() {}
 
   onFromChange($event) {
     this._validate();

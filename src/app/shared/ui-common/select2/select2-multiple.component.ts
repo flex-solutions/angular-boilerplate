@@ -8,6 +8,7 @@ import {
 import { Guid } from 'guid-typescript';
 import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 import { isEmpty, forEach } from 'lodash';
+import * as _ from 'lodash';
 declare const $: any;
 
 @Component({
@@ -28,7 +29,7 @@ export class Select2MultipleComponent implements AfterViewInit {
   elementId: string;
 
   @Output()
-  selectedItemChange = new EventEmitter();
+  selectedItemsChange = new EventEmitter();
   @Output()
   itemsSourceChange = new EventEmitter();
 
@@ -43,7 +44,8 @@ export class Select2MultipleComponent implements AfterViewInit {
         placeholder: this._placeholder,
         data: this.formatDataSource(this._itemsSource),
         multiple: true,
-        closeOnSelect: false
+        closeOnSelect: false,
+        tags: true
       });
 
     if (!isEmpty(this.selectedItems)) {
@@ -60,7 +62,7 @@ export class Select2MultipleComponent implements AfterViewInit {
   @Input()
   set selectedItems(val) {
     this._selectedItems = val;
-    this.selectedItemChange.emit(this._selectedItems);
+    this.selectedItemsChange.emit(this._selectedItems);
 
     this.onSelectedItemChange();
   }
@@ -103,11 +105,20 @@ export class Select2MultipleComponent implements AfterViewInit {
       placeholder: this._placeholder,
       allowClear: true,
       multiple: true,
-      closeOnSelect: false
+      closeOnSelect: false,
+      tags: true
     });
     this.host.on('select2:select', e => {
       const data = e.params.data;
-      this.selectedItems.push(data);
+      this.selectedItems.push(_.pickBy(data, (val, key) => key !== 'element'));
+      this.selectedItemsChange.emit(this.selectedItems);
+    });
+    this.host.on('select2:unselect', e => {
+      const data = e.params.data;
+      _.remove(this.selectedItems, val => {
+        return val.id === data.id;
+      });
+      this.selectedItemsChange.emit(this.selectedItems);
     });
   }
 
@@ -163,6 +174,8 @@ export class Select2MultipleComponent implements AfterViewInit {
     const temps = this.buildSelect2Data(this._selectedItems);
     if (!isEmpty(temps)) {
       this.host.val(temps).trigger('change');
+    } else {
+      this.host.val(null).trigger('change');
     }
   }
 }

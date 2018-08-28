@@ -22,6 +22,8 @@ import { Select2Component } from './select2/select2.component';
 import { Select2MultipleComponent } from './select2/select2-multiple.component';
 import { AddressService } from './address/address.service';
 import { AddressComponent } from './address/address.component';
+import { InputEditableInlineComponent } from './input-editable-inline/input-editable-inline.component';
+import { InputNumberDirective } from './directives/input-number.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -43,7 +45,9 @@ import { AddressComponent } from './address/address.component';
     Select2Component,
     Select2MultipleComponent,
     BooleanStatusCtrlDirective,
-    AddressComponent
+    AddressComponent,
+    InputEditableInlineComponent,
+    InputNumberDirective
   ],
   declarations: [
     LoaderComponent,
@@ -60,7 +64,9 @@ import { AddressComponent } from './address/address.component';
     Select2Component,
     Select2MultipleComponent,
     BooleanStatusCtrlDirective,
-    AddressComponent
+    AddressComponent,
+    InputEditableInlineComponent,
+    InputNumberDirective
   ],
   providers: [LoaderService, AddressService]
 })

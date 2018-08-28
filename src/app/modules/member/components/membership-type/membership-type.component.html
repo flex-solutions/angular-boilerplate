@@ -37,12 +37,12 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <ul class="rank-promotion-ul">
-                            <li>
-                              <i class="mdi mdi-approval"></i>
-                              <p class="mb-0">1 ly nước + 1 phần bánh free nhân dịp sinh nhật</p>
-                            </li>
-                          </ul> -->
+                    <ul class="rank-promotion-ul">
+                      <li *ngFor="let nonBenefit of membershipType.nonBenefits">
+                        <i class="mdi mdi-approval"></i>
+                        <p class="mb-0">{{nonBenefit}}</p>
+                      </li>
+                    </ul>
                     <div class="row cmd-container">
                       <button class="btn btn-light ml-auto" (click)="editMembershipType(membershipType._id)">
                         <i class="mdi mdi-pencil text-primary"></i>
