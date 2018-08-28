@@ -57,7 +57,7 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
     private formbuilder: FormBuilder,
     private location: Location,
     private notification: NotificationService,
-    activatedRoute: ActivatedRoute,
+    activatedRoute: ActivatedRoute
   ) {
     super();
     activatedRoute.params.subscribe((params: Params) => {
@@ -182,8 +182,10 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   }
 
   addNonBenefit() {
-    this.benefits.push(this.inputBenefit);
-    this.inputBenefit = '';
+    if (this.inputBenefit) {
+      this.benefits.push(this.inputBenefit);
+      this.inputBenefit = '';
+    }
   }
 
   removeNonBenefits(benefit: string) {
