@@ -6,23 +6,23 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="exampleInputEmail1">Loại chương trình</label>
+                <label for="exampleInputEmail1" i18n="@@voucher-pool-title-voucher-type">Loại chương trình</label>
                 <select [(ngModel)]="voucherGroupType" [ngModelOptions]="{standalone: true}"
                 (change)="buildFormGroupBaseOnVoucherType()"
                 class="form-control border-light" id="exampleSelectWarning">
-                  <option value="0">Giảm giá</option>
-                  <option value="1">Mua X tặng Y</option>
+                  <option value="0" i18n="@@voucher-type-discount">Giảm giá</option>
+                  <option value="1" i18n="@@voucher-type-x-get-y">Mua X tặng Y</option>
                 </select>
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="exampleInputEmail1">Mục đích sử dụng</label>
+                <label for="exampleInputEmail1" i18n="@@voucher-type-using-purpose">Mục đích sử dụng</label>
                 <select class="form-control border-light" [(ngModel)]="voucherOperationType" [ngModelOptions]="{standalone: true}"
                 (change)="buildFormGroupBaseOnVoucherOperationType()">
-                  <option value="0">Một mã sử dụng nhiều lần</option>
-                  <option value="1">Xuất mã hàng loạt</option>
-                  <option value="2">Chiến dịch CSKH</option>
+                  <option value="0" i18n="@@voucher-using-purpose-repeat-one-code">Một mã sử dụng nhiều lần</option>
+                  <option value="1" i18n="@@voucher-using-purpose-export-batch-code">Xuất mã hàng loạt</option>
+                  <option value="2" i18n="@@voucher-using-purpose-customer-care">Chiến dịch CSKH</option>
                 </select>
               </div>
             </div>
