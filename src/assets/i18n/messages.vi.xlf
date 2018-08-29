@@ -2009,7 +2009,54 @@
         <target>Loại hội viên {{0}} đang có {{1}} hội viên. Vui lòng tạo thêm loại hội viên để áp dụng cho những thành viên này trước
           khi xoá.</target>
       </trans-unit>
-
+      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
+        <source>Voucher care campaign</source>
+        <target>Chiến dịch chăm sóc khách hàng</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
+        <source>Campaign name</source>
+        <target>Tên chiến dịch</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
+        <source>Voucher code</source>
+        <target>Voucher code</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
+        <source>Schedule</source>
+        <target>Lịch trình</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-valid_date_count-label" datatype="html">
+        <source>Valid date count</source>
+        <target>Số ngày hiệu lực</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-static-benefits-title" datatype="html">
+        <source>Static benefits</source>
+        <target>Ưu đãi cố định</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-repeat_birthday-option" datatype="html">
+        <source>Repeat at a birthday</source>
+        <target>Lặp lại vào sinh nhật</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-repeat_at_specific_date-option" datatype="html">
+        <source>Repeat at a specific date</source>
+        <target>Lặp lại vào 1 ngày xác định</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-reach_rank-option" datatype="html">
+        <source>After reach rank</source>
+        <target>Sau khi thăng hạng</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
+        <source>After get X points</source>
+        <target>Sau khi đạt được X điểm</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
+        <source>Non Voucher benefits</source>
+        <target>Ưu đãi không giá trị</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
+        <source>Extra information</source>
+        <target>Thông tin thêm</target>
+      </trans-unit>
       <!--STOP membership types-->
     </body>
   </file>

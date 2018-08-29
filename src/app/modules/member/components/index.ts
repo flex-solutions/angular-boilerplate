@@ -6,14 +6,14 @@ import { MemberFilterComponent } from './member-filter/member-filter.component';
 import { MembershipTypeHomeComponent } from './membership-type/membership-type.component';
 
 export const memberComponents = [
-    MemberHomeComponent,
-    MemberFilterComponent,
-    CreateEditMemberComponent,
-    MembershipTypeHomeComponent,
-    MembershipTypeCreateEditComponent,
-    MembershipTypeDeleteConfirmationComponent
+  MemberHomeComponent,
+  MemberFilterComponent,
+  CreateEditMemberComponent,
+  MembershipTypeHomeComponent,
+  MembershipTypeCreateEditComponent,
+  MembershipTypeDeleteConfirmationComponent
 ];
 
 export const memberEntryComponents = [
-    MembershipTypeDeleteConfirmationComponent
+  MembershipTypeDeleteConfirmationComponent
 ];

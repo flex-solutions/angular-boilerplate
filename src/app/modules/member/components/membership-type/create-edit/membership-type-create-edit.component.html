@@ -1,76 +1,168 @@
 <div class="row">
-  <div class="col-md-2 grid-margin">
-  </div>
-  <div class="col-md-8 grid-margin">
-    <app-card [title]="cardTitle" [subTitle]="cardDescription">
-      <form class="cmxform" id="createEditMembershipTypeForm" [formGroup]="formGroup">
-        <fieldset>
-          <!-- Membership type id field -->
-          <div class="form-group" [ngClass]="{'has-danger': membershipTypeCode.invalid && (membershipTypeCode.dirty || membershipTypeCode.touched)}">
-            <label for="membershipTypeCode" i18n="@@membership-type-create-form-code-label">Id</label>
-            <label class="require">*</label>
-            <input [(ngModel)]="membershipType.code" required id="membershipTypeCode" class="form-control" formControlName="membershipTypeCode"
-              type="text" [ngClass]="{'has-danger': membershipTypeCode.invalid && (membershipTypeCode.dirty || membershipTypeCode.touched) }"
-              placeholder="Enter membership type id" i18n-placeholder="@@membership-type-create-form-code-placeholder">
-            <div class="form-control-feedback" *ngFor="let error of errors.membershipTypeCode">
-              <p *ngIf="membershipTypeCode.hasError(error.type) && (membershipTypeCode.dirty || membershipTypeCode.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, membershipTypeCode.value)}}</p>
+  <div class="col-md-12 grid-margin">
+    <form class="cmxform" id="editable-form" [formGroup]="formGroup">
+      <fieldset>
+        <div class="col-md-12 grid-margin">
+          <app-card [title]="cardTitle" [subTitle]="cardDescription">
+            <div class="row">
+              <!-- Membership type id field -->
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group" [ngClass]="{'has-danger': membershipTypeCode.invalid && (membershipTypeCode.dirty || membershipTypeCode.touched)}">
+                  <label for="membershipTypeCode" i18n="@@membership-type-create-form-code-label">Id</label>
+                  <label class="require">*</label>
+                  <input [(ngModel)]="membershipType.code" required id="membershipTypeCode" class="form-control" formControlName="membershipTypeCode"
+                    type="text" [ngClass]="{'has-danger': membershipTypeCode.invalid && (membershipTypeCode.dirty || membershipTypeCode.touched) }"
+                    placeholder="Enter membership type id" i18n-placeholder="@@membership-type-create-form-code-placeholder">
+                  <div class="form-control-feedback" *ngFor="let error of errors.membershipTypeCode">
+                    <p *ngIf="membershipTypeCode.hasError(error.type) && (membershipTypeCode.dirty || membershipTypeCode.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message,
+                      membershipTypeCode.value)}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Membership type name field -->
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group" [ngClass]="{'has-danger': membershipTypeName.invalid && (membershipTypeName.dirty || membershipTypeName.touched)}">
+                  <label for="membershipTypeName" i18n="@@membership-type-create-form-name-label">Name</label>
+                  <label class="require">*</label>
+                  <input [(ngModel)]="membershipType.name" required id="membershipTypeName" class="form-control" formControlName="membershipTypeName"
+                    type="text" [ngClass]="{'has-danger': membershipTypeName.invalid && (membershipTypeName.dirty || membershipTypeName.touched) }"
+                    placeholder="Enter membership type name" i18n-placeholder="@@membership-type-create-form-name-placeholder">
+                  <div class="form-control-feedback" *ngFor="let error of errors.membershipTypeName">
+                    <p *ngIf="membershipTypeName.hasError(error.type) && (membershipTypeName.dirty || membershipTypeName.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message,
+                      membershipTypeCode.value)}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Membership type point field -->
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label for="membershipTypePoint" i18n="@@membership-type-create-form-name-target-point">Target point</label>
+                  <input [(ngModel)]="membershipType.point" id="membershipTypePoint" class="form-control" formControlName="membershipTypePoint"
+                    type="number" placeholder="Enter the target point" i18n-placeholder="@@membership-type-create-form-target-point-placeholder">
+                </div>
+              </div>
+              <!-- Membership type isAccumulated field -->
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <div class="form-check form-check-flat chk">
+                    <label class="form-check-label">
+                      <input type="checkbox" [(ngModel)]="membershipType.isAccumulated" [checked]="membershipType.isAccumulated" class="form-check-input"
+                        [ngModelOptions]="{standalone: true}">
+                      <i class="input-helper"></i>
+                      <label class="chk-label" style="margin-top: 5px" i18n="@@membership-type-create-form-accumulate">Accumulate
+                        type
+                      </label>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- Membership type isActive field -->
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <div class="form-check form-check-flat chk">
+                    <label class="form-check-label">
+                      <input type="checkbox" [(ngModel)]="membershipType.isActive" [checked]="membershipType.isActive" class="form-check-input"
+                        [ngModelOptions]="{standalone: true}">
+                      <i class="input-helper"></i>
+                      <label class="chk-label" style="margin-top: 5px" i18n="@@membership-type-create-form-name-active">Active</label>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Membership type name field -->
-          <div class="form-group" [ngClass]="{'has-danger': membershipTypeName.invalid && (membershipTypeName.dirty || membershipTypeName.touched)}">
-            <label for="membershipTypeName" i18n="@@membership-type-create-form-name-label">Name</label>
-            <label class="require">*</label>
-            <input [(ngModel)]="membershipType.name" required id="membershipTypeName" class="form-control" formControlName="membershipTypeName"
-              type="text" [ngClass]="{'has-danger': membershipTypeName.invalid && (membershipTypeName.dirty || membershipTypeName.touched) }"
-              placeholder="Enter membership type name" i18n-placeholder="@@membership-type-create-form-name-placeholder">
-            <div class="form-control-feedback" *ngFor="let error of errors.membershipTypeName">
-              <p *ngIf="membershipTypeName.hasError(error.type) && (membershipTypeName.dirty || membershipTypeName.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, membershipTypeCode.value)}}</p>
+          </app-card>
+        </div>
+        <div class="col-md-12 grid-margin">
+          <app-card i18n-title="@@membership-type-create-form-static-benefits-title" title="Static benefits">
+            <div class="form-group">
+              <label i18n="@@membership-type-create-form-voucher_care_campaign-label">Voucher care campaign</label>
+              <app-select2-multiple [itemsSource]="vouchers" [(selectedItems)]="selectedVouchers" valuePropertyName="voucherCode" displayPropertyName="voucherName"></app-select2-multiple>
+              <table class="table list-wrapper">
+                <thead>
+                  <tr>
+                    <th i18n="@@membership-type-create-form-campaign_name-label">Campaign name</th>
+                    <th i18n="@@membership-type-create-form-voucher_code-label">Voucher code</th>
+                    <th i18n="@@membership-type-create-form-valid_date_count-label">Valid date count</th>
+                    <th i18n="@@membership-type-create-form-schedule-label">Schedule</th>
+                    <th i18n="@@membership-type-create-form-extra_information-label">Extra information</th>
+                    <th i18n="@@common-action-delete">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let selectedVoucher of selectedVouchers">
+                    <td>
+                      <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedVoucher.campaignName" [ngModelOptions]="{standalone: true}" class="form-control">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        {{selectedVoucher.voucherName}}
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <app-input-editable [(value)]="selectedVoucher.validDateCount" isNumberOnly="true"></app-input-editable>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select [(ngModel)]="selectedVoucher.schedule" [ngModelOptions]="{standalone: true}" class="form-control border-light">
+                          <option value="0" i18n="@@membership-type-create-form-reach_rank-option">After reach rank</option>
+                          <option value="1" i18n="@@membership-type-create-form-repeat_birthday-option">Repeat at a birthday</option>
+                          <option value="2" i18n="@@membership-type-create-form-repeat_at_specific_date-option">Repeat at
+                            a specific date</option>
+                          <option value="3" i18n="@@membership-type-create-form-get_x_points-option">After get x points</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <app-date-picker *ngIf="selectedVoucher.schedule == 2" [(date)]="selectedVoucher.selectedDate"></app-date-picker>
+                        <input *ngIf="selectedVoucher.schedule == 3" [(ngModel)]="selectedVoucher.selectedPoint" id="afterGetXPoints" class="form-control"
+                          [ngModelOptions]="{standalone: true}" type="number" placeholder="Enter the target point" i18n-placeholder="@@membership-type-create-form-target-point-placeholder">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <i class="remove mdi mdi-close-circle-outline" (click)="removeVoucherBenefit(selectedVoucher)"></i>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-          <!-- Membership type point field -->
-          <div class="form-group">
-            <label for="membershipTypePoint" i18n="@@membership-type-create-form-name-target-point">Target point</label>
-            <input [(ngModel)]="membershipType.point" id="membershipTypePoint" class="form-control" formControlName="membershipTypePoint"
-              type="number" placeholder="Enter the target point" i18n-placeholder="@@membership-type-create-form-target-point-placeholder">
-          </div>
-          <!-- Membership type isAccumulated field -->
-          <div class="form-group">
-            <div class="form-check form-check-flat chk">
-              <label class="form-check-label">
-                <input type="checkbox" [(ngModel)]="membershipType.isAccumulated" [checked]="membershipType.isAccumulated" class="form-check-input"
-                  [ngModelOptions]="{standalone: true}">
-                <i class="input-helper"></i>
-                <label class="chk-label" style="margin-top: 5px" i18n="@@membership-type-create-form-accumulate">Accumulate type</label>
-              </label>
+            <br/>
+            <div class="form-group">
+              <label i18n="@@membership-type-create-form-non_voucher_benefits-label">Non voucher benefits</label>
+              <div class="add-items d-flex">
+                <input type="text" [(ngModel)]="inputBenefit" [ngModelOptions]="{standalone: true}" class="form-control todo-list-input">
+                <button class="add btn btn-success font-weight-bold todo-list-add-btn" (click)="addNonBenefit()" id="add-benefit" i18n="@@edit-members-add-btn">Add</button>
+              </div>
+              <div class="tagsinput">
+                <span *ngFor="let benefit of benefits" class="tag tag-light">
+                  <span>{{benefit}}&nbsp;&nbsp;</span>
+                  <a style="cursor: pointer;" title="Removing tag" (click)="removeNonBenefits(benefit)">x</a>
+                </span>
+              </div>
             </div>
+          </app-card>
+        </div>
+        <!-- Form buttons -->
+        <div class="form-cmds always-bottom-panel">
+          <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
+          <button class="btn btn-light mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+          <div class="form-check form-check-flat chk" *ngIf="!isEdit">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
+              <i class="input-helper"></i>
+              <label class="chk-label" i18n="@@common-action-create-another">Create another</label>
+            </label>
           </div>
-          <!-- Membership type isActive field -->
-          <div class="form-group">
-            <div class="form-check form-check-flat chk">
-              <label class="form-check-label">
-                <input type="checkbox" [(ngModel)]="membershipType.isActive" [checked]="membershipType.isActive" class="form-check-input"
-                  [ngModelOptions]="{standalone: true}">
-                <i class="input-helper"></i>
-                <label class="chk-label" style="margin-top: 5px" i18n="@@membership-type-create-form-name-active">Active</label>
-              </label>
-            </div>
-          </div>
-          <!-- Form buttons -->
-          <div class="form-cmds">
-            <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
-            <button class="btn btn-light mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
-            <div class="form-check form-check-flat chk" *ngIf="!isEdit">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input form-control" [(ngModel)]="isCreateAnother" [ngModelOptions]="{standalone: true}">
-                <i class="input-helper"></i>
-                <label class="chk-label" i18n="@@common-action-create-another">Create another</label>
-              </label>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </app-card>
-  </div>
-  <div class="col-md-2 grid-margin">
+        </div>
+      </fieldset>
+    </form>
   </div>
 </div>

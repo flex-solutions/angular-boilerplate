@@ -20,6 +20,10 @@ export class MembershipTypeService extends AbstractRestService {
     return this.get<MembershipType>(`${id}`);
   }
 
+  getAllVoucherCareCampaign() {
+    return this.getWithAbsoluteUrl(`voucher/voucher-care-campaign`);
+  }
+
   countMember(id: string): Observable<Number> {
     return this.get<Number>(`${id}/countMember`);
   }
