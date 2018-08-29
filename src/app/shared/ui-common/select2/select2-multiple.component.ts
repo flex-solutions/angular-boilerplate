@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
-import { isEmpty, forEach } from 'lodash';
-import * as _ from 'lodash';
+import { isEmpty, forEach, remove, eq } from 'lodash';
 declare const $: any;
 
 @Component({
@@ -29,7 +28,7 @@ export class Select2MultipleComponent implements AfterViewInit {
   elementId: string;
 
   @Output()
-  selectedItemsChange = new EventEmitter();
+  selectedItemChange = new EventEmitter();
   @Output()
   itemsSourceChange = new EventEmitter();
 
@@ -44,8 +43,7 @@ export class Select2MultipleComponent implements AfterViewInit {
         placeholder: this._placeholder,
         data: this.formatDataSource(this._itemsSource),
         multiple: true,
-        closeOnSelect: false,
-        tags: true
+        closeOnSelect: false
       });
 
     if (!isEmpty(this.selectedItems)) {
@@ -62,7 +60,7 @@ export class Select2MultipleComponent implements AfterViewInit {
   @Input()
   set selectedItems(val) {
     this._selectedItems = val;
-    this.selectedItemsChange.emit(this._selectedItems);
+    this.selectedItemChange.emit(this._selectedItems);
 
     this.onSelectedItemChange();
   }
@@ -105,20 +103,15 @@ export class Select2MultipleComponent implements AfterViewInit {
       placeholder: this._placeholder,
       allowClear: true,
       multiple: true,
-      closeOnSelect: false,
-      tags: true
+      closeOnSelect: false
     });
     this.host.on('select2:select', e => {
       const data = e.params.data;
-      this.selectedItems.push(_.pickBy(data, (val, key) => key !== 'element'));
-      this.selectedItemsChange.emit(this.selectedItems);
+      this.selectedItems.push(data);
     });
     this.host.on('select2:unselect', e => {
       const data = e.params.data;
-      _.remove(this.selectedItems, val => {
-        return val.id === data.id;
-      });
-      this.selectedItemsChange.emit(this.selectedItems);
+      remove(this.selectedItems, item => eq(item.id, data.id));
     });
   }
 
@@ -167,15 +160,13 @@ export class Select2MultipleComponent implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
-    this.selectedItems = [];
+    remove(this.selectedItems, item => item.id);
   }
 
   onSelectedItemChange() {
     const temps = this.buildSelect2Data(this._selectedItems);
     if (!isEmpty(temps)) {
       this.host.val(temps).trigger('change');
-    } else {
-      this.host.val(null).trigger('change');
     }
   }
 }

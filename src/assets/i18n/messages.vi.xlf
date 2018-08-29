@@ -1861,6 +1861,38 @@
         <target>Hết hạn: </target>
       </trans-unit>
       <!--END Start stop promotions-->
+
+      <!--Start create/edit voucher-->
+      <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
+        <source>Voucher type</source>
+        <target>Loại chương trình</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-discount" datatype="html">
+        <source>Discount</source>
+        <target>Giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-x-get-y" datatype="html">
+        <source>Buy X get Y</source>
+        <target>Mua X tặng Y</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-using-purpose" datatype="html">
+        <source>Using purpose</source>
+        <target>Mục đích sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-repeat-one-code" datatype="html">
+        <source>A code used many times</source>
+        <target>Một mã sử dụng nhiều lần</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
+        <source>Export batch code</source>
+        <target>Xuất mã hàng loạt</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
+        <source>Customer care</source>
+        <target>Chiến dịch CSKH</target>
+      </trans-unit>
+      <!--End create/edit voucher-->
+
       <!--START membership types-->
       <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>

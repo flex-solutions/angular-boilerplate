@@ -1830,6 +1830,14 @@
         <target>Delete</target>
       </trans-unit>
       <!--End Voucher Home -->
+
+      <!--Start create/edit voucher-->
+      <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
+        <source>Voucher type</source>
+        <target>Voucher type</target>
+      </trans-unit>
+      <!--End create/edit voucher-->
+
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>

@@ -6,23 +6,23 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="exampleInputEmail1">Loại chương trình</label>
-                <select [(ngModel)]="voucherType" [ngModelOptions]="{standalone: true}"
-                (change)="buildFormGroup()"
+                <label for="exampleInputEmail1" i18n="@@voucher-pool-title-voucher-type">Loại chương trình</label>
+                <select [(ngModel)]="voucherGroupType" [ngModelOptions]="{standalone: true}"
+                (change)="buildFormGroupBaseOnVoucherType()"
                 class="form-control border-light" id="exampleSelectWarning">
-                  <option value="0">Giảm giá</option>
-                  <option value="1">Mua X tặng Y</option>
+                  <option value="0" i18n="@@voucher-type-discount">Giảm giá</option>
+                  <option value="1" i18n="@@voucher-type-x-get-y">Mua X tặng Y</option>
                 </select>
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="exampleInputEmail1">Mục đích sử dụng</label>
+                <label for="exampleInputEmail1" i18n="@@voucher-type-using-purpose">Mục đích sử dụng</label>
                 <select class="form-control border-light" [(ngModel)]="voucherOperationType" [ngModelOptions]="{standalone: true}"
-                (change)="buildFormGroup()">
-                  <option value="0">Một mã sử dụng nhiều lần</option>
-                  <option value="1">Xuất mã hàng loạt</option>
-                  <option value="2">Chiến dịch CSKH</option>
+                (change)="buildFormGroupBaseOnVoucherOperationType()">
+                  <option value="0" i18n="@@voucher-using-purpose-repeat-one-code">Một mã sử dụng nhiều lần</option>
+                  <option value="1" i18n="@@voucher-using-purpose-export-batch-code">Xuất mã hàng loạt</option>
+                  <option value="2" i18n="@@voucher-using-purpose-customer-care">Chiến dịch CSKH</option>
                 </select>
               </div>
             </div>
@@ -38,7 +38,7 @@
             <label class="require">*</label>
             <input type="text" [(ngModel)]="voucher.name" required class="form-control" id="name" formControlName="name"
             [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched) }">
-            <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.name">
+            <div class="form-control-feedback" *ngFor="let error of voucherFormFactory.errors.name">
               <p *ngIf="name.hasError(error.type) && (name.dirty || name.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, name.value)}}</p>
             </div>
           </div>
@@ -47,11 +47,11 @@
             <label class="require">*</label>
             <input type="text" [(ngModel)]="voucher.code" class="form-control" id="code" formControlName="code" style="text-transform: uppercase;"
             [ngClass]="{'has-danger': code.invalid && (code.dirty || code.touched) }">
-            <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.code">
+            <div class="form-control-feedback" *ngFor="let error of voucherFormFactory.errors.code">
               <p *ngIf="code.hasError(error.type) && (code.dirty || code.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, code.value)}}</p>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="voucherGroupType==0">
             <label *ngIf="!isDiscountAmount" for="exampleInputEmail1">% giảm giá</label>
             <label *ngIf="isDiscountAmount" for="exampleInputEmail1">Số tiền giảm giá</label>
             <label class="require">*</label>
@@ -59,7 +59,7 @@
               <input type="text" class="form-control" id="discount" formControlName="discount" [(ngModel)]="voucher.discount"
               [ngClass]="{'has-danger': discount.invalid && (discount.dirty || discount.touched) }">
               <label class="tgl">
-                <input type="checkbox" [(ngModel)]="isDiscountAmount" [checked]="isDiscountAmount" (change)="buildFormGroup()"
+                <input type="checkbox" [(ngModel)]="isDiscountAmount" [checked]="isDiscountAmount" (change)="buildFormGroupBaseOnVoucherType()"
                 [ngModelOptions]="{standalone: true}"/>
                 <span class="tgl_body">
                   <span class="tgl_switch"></span>
@@ -74,8 +74,20 @@
                 </span>
               </label>
             </div>
-            <div class="form-control-feedback" *ngFor="let error of voucherFormBuilder.errors.discount">
+            <div class="form-control-feedback" *ngFor="let error of voucherFormFactory.errors.discount">
               <p *ngIf="discount.hasError(error.type) && (discount.dirty || discount.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, discount.value)}}</p>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="voucherGroupType==1">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Số lượng món cần mua</label>
+                <input class="form-control" type="number" [(ngModel)]="voucher.numberBuyItem" [ngModelOptions]="{standalone: true}">
+              </div>
+              <div class="col-md-6">
+                <label>Số lượng món được tặng</label>
+                <input class="form-control" type="number" [(ngModel)]="voucher.numberGiftItem" [ngModelOptions]="{standalone: true}">
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -93,12 +105,22 @@
             </select>
           </div>
           <div class="form-group" *ngIf="applyMenuType==0">
-            <label>Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==0">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==1">Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</label>
             <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedMenuItemTypes"></app-select2-multiple>
           </div>
+          <div class="form-group" *ngIf="applyMenuType==0 && voucherGroupType==1">
+            <label>Nhóm món được tặng (bỏ trống nếu áp dụng tất cả)</label>
+            <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedAttachMenuItemTypes"></app-select2-multiple>
+          </div>
           <div class="form-group" *ngIf="applyMenuType==1">
-            <label>Danh sách món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==0">Danh sách món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==1">Danh sách món cần mua (bỏ trống nếu áp dụng tất cả)</label>
             <app-select2-multiple [itemsSource]="menuItems" [(selectedItems)]="selectedMenuItems"></app-select2-multiple>
+          </div>
+          <div class="form-group" *ngIf="applyMenuType==1 && voucherGroupType==1">
+            <label>Danh sách món được tặng (bỏ trống nếu áp dụng tất cả)</label>
+            <app-select2-multiple [itemsSource]="menuItems" [(selectedItems)]="selectedAttachMenuItems"></app-select2-multiple>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Ngày áp dụng (bỏ trống nếu áp dụng tất cả các ngày)</label>
