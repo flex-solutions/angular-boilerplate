@@ -1823,6 +1823,140 @@
         <target>Xoá</target>
       </trans-unit>
       <!--End Voucher Home -->
+      <!--Start create/edit voucher-->
+      <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
+        <source>Voucher type</source>
+        <target>Loại chương trình</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-discount" datatype="html">
+        <source>Discount</source>
+        <target>Giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-x-get-y" datatype="html">
+        <source>Buy X get Y</source>
+        <target>Mua X tặng Y</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-using-purpose" datatype="html">
+        <source>Using purpose</source>
+        <target>Mục đích sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-repeat-one-code" datatype="html">
+        <source>A code used many times</source>
+        <target>Một mã sử dụng nhiều lần</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
+        <source>Export batch code</source>
+        <target>Xuất mã hàng loạt</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
+        <source>Customer care</source>
+        <target>Chiến dịch CSKH</target>
+      </trans-unit>
+      <trans-unit id="voucher-campaign-name" datatype="html">
+        <source>Campaign name</source>
+        <target>Tên chương trình</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-voucher-code" datatype="html">
+        <source>Voucher code</source>
+        <target>Mã voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-discount-percent" datatype="html">
+        <source>% discount</source>
+        <target>% giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-discount-amount" datatype="html">
+        <source>Discount amount</source>
+        <target>Số tiền giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-number-item-to-buy" datatype="html">
+        <source>Number of items to buy</source>
+        <target>Số lượng món cần mua</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-number-item-donated" datatype="html">
+        <source>Number of items donated</source>
+        <target>Số lượng món được tặng</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-restaurants" datatype="html">
+        <source>POS applicable (blank if applicable all)</source>
+        <target>Danh sách nhà hàng áp dụng (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type" datatype="html">
+        <source>Choose applicable type (blank if applicable to all groups and dishes)</source>
+        <target>Chọn loại áp dụng (bỏ trống nếu áp dụng cho tất cả nhóm món và món)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-group-dishes" datatype="html">
+        <source>Applies to group dishes</source>
+        <target>Áp dụng cho nhóm món</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-dishes" datatype="html">
+        <source>Applies to dishes</source>
+        <target>Áp dụng cho món</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-gift-set" datatype="html">
+        <source>Gift set (blank if applicable all)</source>
+        <target>Nhóm món được tặng (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-items" datatype="html">
+        <source>List of applicable items (blank if applicable all)</source>
+        <target>Danh sách món áp dụng (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-items" datatype="html">
+        <source>List of items to be purchased (blank if applicable all)</source>
+        <target>Danh sách món cần mua (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-donated-items" datatype="html">
+        <source>List of donated items (blank if applicable all)</source>
+        <target>Danh sách món được tặng (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applied-days" datatype="html">
+        <source>Applied days (blank if all days apply)</source>
+        <target>Ngày áp dụng (bỏ trống nếu áp dụng tất cả các ngày)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applied-hours" datatype="html">
+        <source>Applied hours (blank if all hoours apply)</source>
+        <target>Giờ áp dụng (bỏ trống nếu áp dụng tất cả các giờ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-title-advance-condition" datatype="html">
+        <source>Advanced conditions</source>
+        <target>Điều kiện nâng cao</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-apply-invoice-from" datatype="html">
+        <source>Apply invoice from (vnđ)</source>
+        <target>Áp dụng hóa đơn từ (vnđ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-decrease-not-over" datatype="html">
+        <source>Decrease not over (vnđ)</source>
+        <target>Giảm không quá (vnđ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-number-discount-dishes" datatype="html">
+        <source>Number of discounted dishes</source>
+        <target>Số món giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-discount-lowest-highest" datatype="html">
+        <source>Discount highest/lowest dish</source>
+        <target>Giảm giá món cao nhất/thấp nhất</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-none-option" datatype="html">
+        <source>None</source>
+        <target>Không</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-highest-option" datatype="html">
+        <source>Discount for the highest dish</source>
+        <target>Giảm giá cho món cao nhất</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-lowest-option" datatype="html">
+        <source>Discount for the lowest dish</source>
+        <target>Giảm giá cho món thấp nhất</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-discount-from-item" datatype="html">
+        <source>Discount from item</source>
+        <target>Giảm giá từ món thứ</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-distributor" datatype="html">
+        <source>Distributor</source>
+        <target>Nhà phân phối</target>
+      </trans-unit>
+      <!--End create/edit voucher-->
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>
@@ -1861,37 +1995,6 @@
         <target>Hết hạn: </target>
       </trans-unit>
       <!--END Start stop promotions-->
-
-      <!--Start create/edit voucher-->
-      <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
-        <source>Voucher type</source>
-        <target>Loại chương trình</target>
-      </trans-unit>
-      <trans-unit id="voucher-type-discount" datatype="html">
-        <source>Discount</source>
-        <target>Giảm giá</target>
-      </trans-unit>
-      <trans-unit id="voucher-type-x-get-y" datatype="html">
-        <source>Buy X get Y</source>
-        <target>Mua X tặng Y</target>
-      </trans-unit>
-      <trans-unit id="voucher-type-using-purpose" datatype="html">
-        <source>Using purpose</source>
-        <target>Mục đích sử dụng</target>
-      </trans-unit>
-      <trans-unit id="voucher-using-purpose-repeat-one-code" datatype="html">
-        <source>A code used many times</source>
-        <target>Một mã sử dụng nhiều lần</target>
-      </trans-unit>
-      <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
-        <source>Export batch code</source>
-        <target>Xuất mã hàng loạt</target>
-      </trans-unit>
-      <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
-        <source>Customer care</source>
-        <target>Chiến dịch CSKH</target>
-      </trans-unit>
-      <!--End create/edit voucher-->
 
       <!--START membership types-->
       <trans-unit id="membership-type-menu" datatype="html">
