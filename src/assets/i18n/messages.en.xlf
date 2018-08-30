@@ -1842,6 +1842,14 @@
         <source>Voucher type</source>
         <target>Voucher type</target>
       </trans-unit>
+      <trans-unit id="voucher-pool-title-general-info" datatype="html">
+        <source>General Information</source>
+        <target>General Information</target>
+      </trans-unit>
+      <trans-unit id="voucher-pool-program-type" datatype="html">
+        <source>Program type</source>
+        <target>Program type</target>
+      </trans-unit>
       <trans-unit id="voucher-type-discount" datatype="html">
         <source>Discount</source>
         <target>Discount</target>

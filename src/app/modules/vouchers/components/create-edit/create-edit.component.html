@@ -2,11 +2,11 @@
   <fieldset>
     <div class="row">
       <div class="col-md-12 grid-margin">
-        <app-card title="Loại voucher">
+        <app-card title="Loại voucher" i18n-title="@@voucher-pool-title-voucher-type">
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="exampleInputEmail1" i18n="@@voucher-pool-title-voucher-type">Loại chương trình</label>
+                <label for="exampleInputEmail1" i18n="@@voucher-pool-program-type">Loại chương trình</label>
                 <select [(ngModel)]="voucherGroupType" [ngModelOptions]="{standalone: true}"
                 (change)="buildFormGroupBaseOnVoucherType()"
                 class="form-control border-light" id="exampleSelectWarning">
@@ -32,7 +32,7 @@
     </div>
     <div class="row">
       <div class="col-md-12 grid-margin">
-        <app-card title="Thông tin chung">
+        <app-card title="Thông tin chung" i18n-title="@@voucher-pool-title-general-info">
           <div class="form-group">
             <label for="exampleInputEmail1" i18n="@@voucher-campaign-name">Tên chương trình</label>
             <label class="require">*</label>

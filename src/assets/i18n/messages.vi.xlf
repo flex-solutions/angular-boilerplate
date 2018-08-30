@@ -1826,6 +1826,14 @@
       <!--Start create/edit voucher-->
       <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
         <source>Voucher type</source>
+        <target>Loại voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-pool-title-general-info" datatype="html">
+        <source>General Information</source>
+        <target>Thông tin chung</target>
+      </trans-unit>
+      <trans-unit id="voucher-pool-program-type" datatype="html">
+        <source>Program type</source>
         <target>Loại chương trình</target>
       </trans-unit>
       <trans-unit id="voucher-type-discount" datatype="html">
