@@ -1,5 +1,5 @@
-import { TranslateService } from './../../../shared/services/translate.service';
-import { Select2Component } from './../../../shared/ui-common/select2/select2.component';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { Select2Component } from '../../../../shared/ui-common/select2/select2.component';
 import {
   Component,
   AfterViewInit,
@@ -10,7 +10,7 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { VoucherFilter } from '../../../shared/models/voucher.model';
+import { VoucherFilter } from '../../../../shared/models/voucher.model';
 
 @Component({
   selector: 'app-voucher-filter',

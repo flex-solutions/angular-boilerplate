@@ -1,5 +1,5 @@
-import { FilterType, CriteriaBuilder } from './../../../utilities/search-filter';
-import { VoucherFilter, voucherFilterFields } from './../../../shared/models/voucher.model';
+import { FilterType, CriteriaBuilder } from '../../../../utilities/search-filter';
+import { VoucherFilter, voucherFilterFields } from '../../../../shared/models/voucher.model';
 
 
 export class VoucherCriteriaBuilder {
