@@ -1,5 +1,3 @@
-import { VoucherStatusCheckedItem } from './../../../shared/models/voucher.model';
-import { SelectableModel } from './../../../shared/models/selectable.model';
 import { TranslateService } from './../../../shared/services/translate.service';
 import { Select2Component } from './../../../shared/ui-common/select2/select2.component';
 import {
@@ -12,8 +10,7 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { VoucherFilter, VoucherStatus } from '../../../shared/models/voucher.model';
-import { VoucherMessageConst } from '../vouchers.constants';
+import { VoucherFilter } from '../../../shared/models/voucher.model';
 
 @Component({
   selector: 'app-voucher-filter',
@@ -22,7 +19,6 @@ import { VoucherMessageConst } from '../vouchers.constants';
 })
 export class VoucherFilterComponent implements AfterViewInit {
   private _voucherFilter: VoucherFilter;
-  selectedStatus: VoucherStatusCheckedItem[] = [];
   private _resetFunction: () => void;
 
   // Get list select2 component
@@ -58,7 +54,6 @@ export class VoucherFilterComponent implements AfterViewInit {
 
   name: string;
   create_on: Date;
-  statuses: SelectableModel<VoucherStatusCheckedItem>[] = [];
 
   constructor(
     private ref: ChangeDetectorRef, private translateService: TranslateService
@@ -67,16 +62,9 @@ export class VoucherFilterComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.buildStatusItemSource();
   }
 
   runFilter() {
-    this._voucherFilter.status = [];
-    if (this.selectedStatus && this.selectedStatus.length > 0) {
-      this.selectedStatus.forEach((value) => {
-        this._voucherFilter.status.push(value.status);
-      });
-    }
     this.runFilterClicked.emit();
   }
 
@@ -84,26 +72,5 @@ export class VoucherFilterComponent implements AfterViewInit {
     this.voucherFilter = new VoucherFilter();
     this.select2Components.forEach(i => i.reset());
     this.resetFunction();
-  }
-
-
-  buildStatusItemSource() {
-    this.statuses.push(
-      {
-        isSelected: false,
-        model: {
-          status: VoucherStatus.running,
-          displayName: this.translateService.translate(VoucherMessageConst.RunningStatus)
-        }
-      },
-      {
-        isSelected: false,
-        model: {
-          status: VoucherStatus.expired,
-          displayName: this.translateService.translate(VoucherMessageConst.ExpiredStatus)
-        }
-      });
-
-    this.selectedStatus = [];
   }
 }

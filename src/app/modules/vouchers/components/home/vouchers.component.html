@@ -9,27 +9,19 @@
     </div>
     <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
         <tr role="row">
-            <th i18n="@@vouchers-code">Code</th>
-            <th i18n="@@vouchers-createdDate">Created Date</th>
+            <th i18n="@@voucher-campaign-name">Tên chương trình</th>
+            <th i18n="@@voucher-type-using-purpose">Mục đích sử dụng</th>
             <th i18n="@@vouchers-discount">Discount</th>
-            <th i18n="@@vouchers-name">Name</th>
-            <th i18n="@@vouchers-publishCount">Published Count</th>
-            <th i18n="@@vouchers-usedCount">Used Count</th>
-            <th i18n="@@vouchers-status">Status</th>
-            <th i18n="@@vouchers-sales">Sales</th>
+            <th i18n="@@vouchers-createdDate">Ngày tạo</th>
         </tr>
         <tbody>
             <tr *ngFor="let item of items">
                 <td>
-                    <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item._id)">{{item.voucher_code}}</p>
+                    <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item._id)">{{item.name}}</p>
                 </td>
-                <td>{{item.create_on | date:'yyyy-MM-dd'}}</td>
+                <td>{{item.operationType}}</td>
                 <td>{{item.discount}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.published_count}}</td>
-                <td>{{item.used_count}}</td>
-                <td appVoucherStatus [status]="item.status"></td>
-                <td>{{item.sale}}</td>
+                <td>{{item.create_on}}</td>
                 <td>
                     <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="navigateToEditPage(item)">
                         <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>

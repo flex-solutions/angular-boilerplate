@@ -1726,10 +1726,6 @@
         <source>Create voucher</source>
         <target>Tạo voucher</target>
       </trans-unit>
-      <trans-unit id="vouchers-code" datatype="html">
-        <source>Code</source>
-        <target>Mã</target>
-      </trans-unit>
       <trans-unit id="vouchers-createdDate" datatype="html">
         <source>Created Date</source>
         <target>Ngày tạo</target>
