@@ -1,0 +1,37 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div>
+      <h5 class="modal-title" style="width: 100%">Run voucher program</h5>
+      <p class="row col-12">Batch export a voucher</p>
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="cmxform">
+      <fieldset>
+        <div class="form-group">
+          <label for="txtFrom">Phát hành mã từ</label>
+          <input type="number" class="form-control" id="txtFrom" name="txtFrom">
+        </div>
+        <div class="form-group">
+          <label for="txtTo">đến</label>
+          <input type="number" class="form-control" id="txtTo" name="txtTo">
+        </div>
+        <div class="form-group">
+          <label for="applyRangeTime">Thời gian có hiệu lực</label>
+          <app-date-range-picker [(dateRange)]="dateRange"></app-date-range-picker>
+        </div>
+        <div class="form-group">
+          <label for="txtPrefix">Tiền tố của mã (nếu có - 2 kí tự)</label>
+          <input type="text" class="form-control" id="txtPrefix" name="txtPrefix">
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+  </div>
+</div>

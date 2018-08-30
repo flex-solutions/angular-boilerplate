@@ -1,17 +1,15 @@
 
 import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { VoucherCriteriaBuilder } from './../../voucher-filter/voucher-filter.builder';
+import { VoucherCriteriaBuilder } from './../voucher-filter/voucher-filter.builder';
 import { Voucher, VoucherFilter } from './../../../../shared/models/voucher.model';
 import { VoucherService } from './../../services/vouchers.service';
-import { TranslateService } from './../../../../shared/services/translate.service';
-import { Component, OnInit, ViewChild, LOCALE_ID, Inject } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import ArrayExtension from '../../../../utilities/array.extension';
-import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { Permission } from '../../../../shared/guards/decorator';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
+import { VoucherRunner } from '../run-voucher/voucher-runner';
 
 @Component({
   moduleId: module.id,
@@ -29,9 +27,8 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   filter: IFilterChangedEvent;
   @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
-  constructor(
-    private voucherService: VoucherService,
-  ) {
+  constructor(private voucherService: VoucherService,
+    private voucherRunner: VoucherRunner) {
     super();
   }
 
@@ -100,7 +97,7 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   }
 
   runACampaign(voucher: Voucher) {
-
+    this.voucherRunner.run(voucher);
   }
 
 }
