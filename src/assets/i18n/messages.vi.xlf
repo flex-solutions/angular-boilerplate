@@ -1708,17 +1708,9 @@
         <source>To</source>
         <target>Đến</target>
       </trans-unit>
-      <trans-unit id="members-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Lọc</target>
-      </trans-unit>
       <trans-unit id="input-change-control-lbl-fromLessThanTo" datatype="html">
         <source>From is not greater than to</source>
         <target>Giá trị từ phải nhỏ hơn giá trị đến</target>
-      </trans-unit>
-      <trans-unit id="members-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Thiết lập lại</target>
       </trans-unit>
       <!--End Member Filter-->
       <!--Start Voucher Home -->
@@ -1753,14 +1745,6 @@
       <trans-unit id="vouchers-sales" datatype="html">
         <source>Sales</source>
         <target>Doanh số</target>
-      </trans-unit>
-      <trans-unit id="vouchers-edit" datatype="html">
-        <source>Edit</source>
-        <target>Sửa</target>
-      </trans-unit>
-      <trans-unit id="vouchers-delete-voucher" datatype="html">
-        <source>Delete</source>
-        <target>Xoá</target>
       </trans-unit>
       <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
         <source>Search voucher code, name</source>
@@ -1802,21 +1786,6 @@
         <source>Status</source>
         <target>Tình trạng</target>
       </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Áp dụng bộ lọc</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Làm mới bộ lọc</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-lbl-title" datatype="html">
-        <source>Voucher Filter</source>
-        <target>Lọc voucher</target>
-      </trans-unit>
-      <trans-unit id="voucher-detail-delete-voucher" datatype="html">
-        <source>Delete</source>
-        <target>Xoá</target>
       </trans-unit>
       <!--End Voucher Home -->
       <!--Start create/edit voucher-->

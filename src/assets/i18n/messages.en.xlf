@@ -1721,17 +1721,9 @@
         <source>To</source>
         <target>To</target>
       </trans-unit>
-      <trans-unit id="members-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Run filter</target>
-      </trans-unit>
       <trans-unit id="input-change-control-lbl-fromLessThanTo" datatype="html">
         <source>From is not greater than to</source>
         <target>From is not greater than to</target>
-      </trans-unit>
-      <trans-unit id="members-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Reset filter</target>
       </trans-unit>
       <!--End Member Filter-->
       <!--Start Voucher Home -->
@@ -1766,14 +1758,6 @@
       <trans-unit id="vouchers-sales" datatype="html">
         <source>Sales</source>
         <target>Sales</target>
-      </trans-unit>
-      <trans-unit id="vouchers-edit" datatype="html">
-        <source>Edit</source>
-        <target>Edit</target>
-      </trans-unit>
-      <trans-unit id="vouchers-delete-voucher" datatype="html">
-        <source>Delete</source>
-        <target>Delete</target>
       </trans-unit>
       <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
         <source>Search voucher code, name</source>
@@ -1814,22 +1798,6 @@
       <trans-unit id="list-vouchers-th-status" datatype="html">
         <source>Status</source>
         <target>Status</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Run filter</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Reset filter</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-lbl-title" datatype="html">
-        <source>Voucher Filter</source>
-        <target>Voucher Filter</target>
-      </trans-unit>
-      <trans-unit id="voucher-detail-delete-voucher" datatype="html">
-        <source>Delete</source>
-        <target>Delete</target>
       </trans-unit>
       <!--End Voucher Home -->
 

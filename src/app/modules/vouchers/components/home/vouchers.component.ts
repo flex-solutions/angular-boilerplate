@@ -99,4 +99,8 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     this.loadData();
   }
 
+  runACampaign(voucher: Voucher) {
+
+  }
+
 }
