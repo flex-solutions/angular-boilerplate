@@ -1839,8 +1839,8 @@
         <target>Customer care</target>
       </trans-unit>
       <trans-unit id="voucher-campaign-name" datatype="html">
-        <source>Campaign name</source>
-        <target>Campaign name</target>
+        <source>Program name</source>
+        <target>Program name</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-voucher-code" datatype="html">
         <source>Voucher code</source>
@@ -1942,10 +1942,44 @@
         <source>Distributor</source>
         <target>Distributor</target>
       </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-name-required" datatype="html">
+        <source>Please input program name</source>
+        <target>Vui lòng nhập tên chương trình</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-name-special-char" datatype="html">
+        <source>Program name doesn't allow special characters</source>
+        <target>Tên chương trình không cho phép ký tự đặc biệt</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-required" datatype="html">
+        <source>Please input voucher code</source>
+        <target>Vui lòng nhập mã voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-special-char" datatype="html">
+        <source>Voucher code doesn't allow special characters</source>
+        <target>Mã voucher không cho phép ký tự đặc biệt</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-required" datatype="html">
+        <source>Please input discount</source>
+        <target>Vui lòng nhập chỉ số giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-min" datatype="html">
+        <source>Minimum discount is 0đ or 0%</source>
+        <target>Giảm giá thấp nhất là 0đ hoặc 0%</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-max" datatype="html">
+        <source>Maximum discount percent is 100%</source>
+        <target>Phần trăm giảm giá tối đa là 100%</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-pattern" datatype="html">
+        <source>Discount must be number</source>
+        <target>Chỉ số giảm giá phải là số</target>
+      </trans-unit>
       <trans-unit id="voucher-create-success" datatype="html">
         <source>A new voucher has been created</source>
         <target>A new voucher has been created</target>
       </trans-unit>
+      <!--End create/edit voucher-->
+      <!--Start running voucher-->
       <trans-unit id="voucher-runner-title" datatype="html">
         <source>Run program for a voucher</source>
         <target>Run program for a voucher</target>
@@ -1959,16 +1993,16 @@
         <target>Let's export batch code for voucher "{{voucher.name}}"</target>
       </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
-        <source>Publish code from number</source>
-        <target>Publish code from number</target>
+        <source>Publish code from number (equal 1 if empty)</source>
+        <target>Publish code from number (equal 1 if empty)</target>
       </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
-        <source>to number</source>
-        <target>to number</target>
+        <source>to number (equal 1000 if empty)</source>
+        <target>to number (equal 1000 if empty)</target>
       </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
-        <source>Prefix of code (if applicable - 2 characters)</source>
-        <target>Prefix of code (if applicable - 2 characters)</target>
+        <source>Prefix of code (2 characters)</source>
+        <target>Prefix of code (2 characters)</target>
       </trans-unit>
       <trans-unit id="voucher-runner-effective-time" datatype="html">
         <source>Effective time</source>
@@ -1978,8 +2012,7 @@
         <source>Usage limit (empty if not limited)</source>
         <target>Usage limit (empty if not limited)</target>
       </trans-unit>
-      <!--End create/edit voucher-->
-
+      <!--End running voucher-->
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>

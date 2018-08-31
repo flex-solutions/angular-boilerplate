@@ -11,40 +11,40 @@ export class VoucherFormFactory {
     name: [
       {
         type: 'required',
-        message: 'Vui lòng nhập tên chương trình'
+        message: 'voucher-create-edit-validation-name-required'
       },
       {
           type: 'pattern',
-          message: 'Tên chương trình không cho phép ký tự đặc biệt'
+          message: 'voucher-create-edit-validation-name-special-char'
       }
     ],
     code: [
       {
         type: 'required',
-        message: 'Vui lòng nhập mã voucher'
+        message: 'voucher-create-edit-validation-voucher-code-required'
       },
       {
           type: 'pattern',
-          message: 'Mã voucher không cho phép ký tự đặc biệt'
+          message: 'voucher-create-edit-validation-voucher-code-special-char'
       }
     ],
     discount: [
         {
             type: 'required',
-            message: 'Vui lòng nhập chỉ số giảm giá'
+            message: 'voucher-create-edit-validation-discount-required'
         },
         {
             type: 'min',
-            message: 'Giảm giá thấp nhất là 0đ hoặc 0%'
+            message: 'voucher-create-edit-validation-discount-min'
         },
         {
             type: 'max',
-            message: 'Phần trăm giảm giá tối đa là 100%'
+            message: 'voucher-create-edit-validation-discount-max'
         }
         ,
         {
             type: 'pattern',
-            message: 'Chỉ số giảm giá phải là số'
+            message: 'voucher-create-edit-validation-discount-pattern'
         }
     ]
   };
