@@ -1786,6 +1786,9 @@
         <source>Status</source>
         <target>Tình trạng</target>
       </trans-unit>
+      <trans-unit id="list-vouchers-run-voucher" datatype="html">
+        <source>Run program</source>
+        <target>Chạy chương trình</target>
       </trans-unit>
       <!--End Voucher Home -->
       <!--Start create/edit voucher-->
