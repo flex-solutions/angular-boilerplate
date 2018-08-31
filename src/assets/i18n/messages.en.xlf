@@ -1799,8 +1799,11 @@
         <source>Status</source>
         <target>Status</target>
       </trans-unit>
+      <trans-unit id="list-vouchers-run-voucher" datatype="html">
+        <source>Run program</source>
+        <target>Run program</target>
+      </trans-unit>
       <!--End Voucher Home -->
-
       <!--Start create/edit voucher-->
       <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
         <source>Voucher type</source>
@@ -1944,35 +1947,35 @@
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-name-required" datatype="html">
         <source>Please input program name</source>
-        <target>Vui lòng nhập tên chương trình</target>
+        <target>Please input program name</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-name-special-char" datatype="html">
         <source>Program name doesn't allow special characters</source>
-        <target>Tên chương trình không cho phép ký tự đặc biệt</target>
+        <target>Program name doesn't allow special characters</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-voucher-code-required" datatype="html">
         <source>Please input voucher code</source>
-        <target>Vui lòng nhập mã voucher</target>
+        <target>Please input voucher code</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-voucher-code-special-char" datatype="html">
         <source>Voucher code doesn't allow special characters</source>
-        <target>Mã voucher không cho phép ký tự đặc biệt</target>
+        <target>Voucher code doesn't allow special characters</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-discount-required" datatype="html">
         <source>Please input discount</source>
-        <target>Vui lòng nhập chỉ số giảm giá</target>
+        <target>Please input discount</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-discount-min" datatype="html">
         <source>Minimum discount is 0đ or 0%</source>
-        <target>Giảm giá thấp nhất là 0đ hoặc 0%</target>
+        <target>Minimum discount is 0đ or 0%</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-discount-max" datatype="html">
         <source>Maximum discount percent is 100%</source>
-        <target>Phần trăm giảm giá tối đa là 100%</target>
+        <target>Maximum discount percent is 100%</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-discount-pattern" datatype="html">
         <source>Discount must be number</source>
-        <target>Chỉ số giảm giá phải là số</target>
+        <target>Discount must be number</target>
       </trans-unit>
       <trans-unit id="voucher-create-success" datatype="html">
         <source>A new voucher has been created</source>
