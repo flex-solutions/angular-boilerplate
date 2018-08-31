@@ -632,11 +632,13 @@
         <target>Delete user group</target>
       </trans-unit>
       <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
-        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users".
+        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group
+        "snob-cms-users".
         Are you sure you want to deleted?
         </source>
         <target>
-          The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you
+          The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group
+          "snob-cms-users". Are you
           sure you want to deleted?
         </target>
       </trans-unit>
@@ -886,9 +888,11 @@
         <target>Delete permission scheme</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-confirm" datatype="html">
-        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the
+        "default-user-permission-scheme".
         Are you sure you want to delete?</source>
-        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the
+          "default-user-permission-scheme".
           Are you sure you want to delete?</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-success" datatype="html">
@@ -1556,9 +1560,11 @@
         <target>Create member</target>
       </trans-unit>
       <trans-unit id="member-create_edit_member-h4-create_member_description" datatype="html">
-        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+        <source>Manual creating a new member account, member can user phone number to login mobile app and this account
+        will be also
         created on IPOS system</source>
-        <target>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+        <target>Manual creating a new member account, member can user phone number to login mobile app and this account
+          will be also
           created on IPOS system</target>
       </trans-unit>
       <trans-unit id="member-create_edit_member-h4-edit_member" datatype="html">
@@ -1715,27 +1721,15 @@
         <source>To</source>
         <target>To</target>
       </trans-unit>
-      <trans-unit id="members-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Run filter</target>
-      </trans-unit>
       <trans-unit id="input-change-control-lbl-fromLessThanTo" datatype="html">
         <source>From is not greater than to</source>
         <target>From is not greater than to</target>
-      </trans-unit>
-      <trans-unit id="members-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Reset filter</target>
       </trans-unit>
       <!--End Member Filter-->
       <!--Start Voucher Home -->
       <trans-unit id="vouchers-create-voucher" datatype="html">
         <source>Create voucher</source>
         <target>Create voucher</target>
-      </trans-unit>
-      <trans-unit id="vouchers-code" datatype="html">
-        <source>Code</source>
-        <target>Code</target>
       </trans-unit>
       <trans-unit id="vouchers-createdDate" datatype="html">
         <source>Created Date</source>
@@ -1764,14 +1758,6 @@
       <trans-unit id="vouchers-sales" datatype="html">
         <source>Sales</source>
         <target>Sales</target>
-      </trans-unit>
-      <trans-unit id="vouchers-edit" datatype="html">
-        <source>Edit</source>
-        <target>Edit</target>
-      </trans-unit>
-      <trans-unit id="vouchers-delete-voucher" datatype="html">
-        <source>Delete</source>
-        <target>Delete</target>
       </trans-unit>
       <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
         <source>Search voucher code, name</source>
@@ -1813,22 +1799,6 @@
         <source>Status</source>
         <target>Status</target>
       </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Run filter</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Reset filter</target>
-      </trans-unit>
-      <trans-unit id="vouchers-filter-list-table-lbl-title" datatype="html">
-        <source>Voucher Filter</source>
-        <target>Voucher Filter</target>
-      </trans-unit>
-      <trans-unit id="voucher-detail-delete-voucher" datatype="html">
-        <source>Delete</source>
-        <target>Delete</target>
-      </trans-unit>
       <!--End Voucher Home -->
 
       <!--Start create/edit voucher-->
@@ -1836,8 +1806,213 @@
         <source>Voucher type</source>
         <target>Voucher type</target>
       </trans-unit>
+      <trans-unit id="voucher-pool-title-general-info" datatype="html">
+        <source>General Information</source>
+        <target>General Information</target>
+      </trans-unit>
+      <trans-unit id="voucher-pool-program-type" datatype="html">
+        <source>Program type</source>
+        <target>Program type</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-discount" datatype="html">
+        <source>Discount</source>
+        <target>Discount</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-x-get-y" datatype="html">
+        <source>Buy X get Y</source>
+        <target>Buy X get Y</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-using-purpose" datatype="html">
+        <source>Using purpose</source>
+        <target>Using purpose</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-repeat-one-code" datatype="html">
+        <source>A code used many times</source>
+        <target>A code used many times</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
+        <source>Export batch code</source>
+        <target>Export batch code</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
+        <source>Customer care</source>
+        <target>Customer care</target>
+      </trans-unit>
+      <trans-unit id="voucher-campaign-name" datatype="html">
+        <source>Program name</source>
+        <target>Program name</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-voucher-code" datatype="html">
+        <source>Voucher code</source>
+        <target>Voucher code</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-discount-percent" datatype="html">
+        <source>% discount</source>
+        <target>% discount</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-discount-amount" datatype="html">
+        <source>Discount amount</source>
+        <target>Discount amount</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-number-item-to-buy" datatype="html">
+        <source>Number of items to buy</source>
+        <target>Number of items to buy</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-number-item-donated" datatype="html">
+        <source>Number of items donated</source>
+        <target>Number of items donated</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-restaurants" datatype="html">
+        <source>POS applicable (blank if applicable all)</source>
+        <target>POS applicable (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type" datatype="html">
+        <source>Choose applicable type (blank if applicable to all groups and dishes)</source>
+        <target>Choose applicable type (blank if applicable to all groups and dishes)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-group-dishes" datatype="html">
+        <source>Applies to group dishes</source>
+        <target>Applies to group dishes</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-dishes" datatype="html">
+        <source>Applies to dishes</source>
+        <target>Applies to dishes</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-gift-set" datatype="html">
+        <source>Gift group dishes (blank if applicable all)</source>
+        <target>Gift group dishes (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-items" datatype="html">
+        <source>List of applicable items (blank if applicable all)</source>
+        <target>List of applicable items (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-items" datatype="html">
+        <source>List of items to be purchased (blank if applicable all)</source>
+        <target>List of items to be purchased (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-donated-items" datatype="html">
+        <source>List of donated items (blank if applicable all)</source>
+        <target>Danh sách món được tặng (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applied-days" datatype="html">
+        <source>Applied days (blank if all days apply)</source>
+        <target>Applied days (blank if all days apply)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applied-hours" datatype="html">
+        <source>Applied hours (blank if all hoours apply)</source>
+        <target>Applied hours (blank if all hoours apply)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-title-advance-condition" datatype="html">
+        <source>Advanced conditions</source>
+        <target>Advanced conditions</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-apply-invoice-from" datatype="html">
+        <source>Apply invoice from (vnđ)</source>
+        <target>Apply invoice from (vnđ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-decrease-not-over" datatype="html">
+        <source>Decrease not over (vnđ)</source>
+        <target>Decrease not over (vnđ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-number-discount-dishes" datatype="html">
+        <source>Number of discounted dishes</source>
+        <target>Number of discounted dishes</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-discount-lowest-highest" datatype="html">
+        <source>Discount highest/lowest dish</source>
+        <target>Discount highest/lowest dish</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-none-option" datatype="html">
+        <source>None</source>
+        <target>None</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-highest-option" datatype="html">
+        <source>Discount for the highest dish</source>
+        <target>Discount for the highest dish</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-lowest-option" datatype="html">
+        <source>Discount for the lowest dish</source>
+        <target>Discount for the lowest dish</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-discount-from-item" datatype="html">
+        <source>Discount from item</source>
+        <target>Discount from item</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-distributor" datatype="html">
+        <source>Distributor</source>
+        <target>Distributor</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-name-required" datatype="html">
+        <source>Please input program name</source>
+        <target>Vui lòng nhập tên chương trình</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-name-special-char" datatype="html">
+        <source>Program name doesn't allow special characters</source>
+        <target>Tên chương trình không cho phép ký tự đặc biệt</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-required" datatype="html">
+        <source>Please input voucher code</source>
+        <target>Vui lòng nhập mã voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-special-char" datatype="html">
+        <source>Voucher code doesn't allow special characters</source>
+        <target>Mã voucher không cho phép ký tự đặc biệt</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-required" datatype="html">
+        <source>Please input discount</source>
+        <target>Vui lòng nhập chỉ số giảm giá</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-min" datatype="html">
+        <source>Minimum discount is 0đ or 0%</source>
+        <target>Giảm giá thấp nhất là 0đ hoặc 0%</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-max" datatype="html">
+        <source>Maximum discount percent is 100%</source>
+        <target>Phần trăm giảm giá tối đa là 100%</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-pattern" datatype="html">
+        <source>Discount must be number</source>
+        <target>Chỉ số giảm giá phải là số</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-success" datatype="html">
+        <source>A new voucher has been created</source>
+        <target>A new voucher has been created</target>
+      </trans-unit>
       <!--End create/edit voucher-->
-
+      <!--Start running voucher-->
+      <trans-unit id="voucher-runner-title" datatype="html">
+        <source>Run program for a voucher</source>
+        <target>Run program for a voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-repeate-one-code-sub-title" datatype="html">
+        <source>Let's run a code using many times for voucher "{{voucher.name}}"</source>
+        <target>Let's run a code using many times for voucher "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-sub-title" datatype="html">
+        <source>Let's export batch code for voucher "{{voucher.name}}"</source>
+        <target>Let's export batch code for voucher "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
+        <source>Publish code from number (equal 1 if empty)</source>
+        <target>Publish code from number (equal 1 if empty)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
+        <source>to number (equal 1000 if empty)</source>
+        <target>to number (equal 1000 if empty)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
+        <source>Prefix of code (2 characters)</source>
+        <target>Prefix of code (2 characters)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-effective-time" datatype="html">
+        <source>Effective time</source>
+        <target>Effective time</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-repeate-one-code-usage-limit" datatype="html">
+        <source>Usage limit (empty if not limited)</source>
+        <target>Usage limit (empty if not limited)</target>
+      </trans-unit>
+      <!--End running voucher-->
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>
@@ -1978,10 +2153,12 @@
         <target>Delete membership type</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
-        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership
+        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new
+        membership
         type for those members.
         </source>
-        <target>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new membership
+        <target>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new
+          membership
           type for those members.
         </target>
       </trans-unit>
@@ -1990,8 +2167,10 @@
         <target>New membership type</target>
       </trans-unit>
       <trans-unit id="membership-type-delete-warning-one-type" datatype="html">
-        <source>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</source>
-        <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members before deleting.</target>
+        <source>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members
+        before deleting.</source>
+        <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members
+          before deleting.</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
         <source>Voucher care campaign</source>
