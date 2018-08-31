@@ -1942,6 +1942,42 @@
         <source>Distributor</source>
         <target>Distributor</target>
       </trans-unit>
+      <trans-unit id="voucher-create-success" datatype="html">
+        <source>A new voucher has been created</source>
+        <target>A new voucher has been created</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-title" datatype="html">
+        <source>Run program for a voucher</source>
+        <target>Run program for a voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-repeate-one-code-sub-title" datatype="html">
+        <source>Let's run a code using many times for voucher "{{voucher.name}}"</source>
+        <target>Let's run a code using many times for voucher "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-sub-title" datatype="html">
+        <source>Let's export batch code for voucher "{{voucher.name}}"</source>
+        <target>Let's export batch code for voucher "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
+        <source>Publish code from number</source>
+        <target>Publish code from number</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
+        <source>to number</source>
+        <target>to number</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
+        <source>Prefix of code (if applicable - 2 characters)</source>
+        <target>Prefix of code (if applicable - 2 characters)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-effective-time" datatype="html">
+        <source>Effective time</source>
+        <target>Effective time</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-repeate-one-code-usage-limit" datatype="html">
+        <source>Usage limit (empty if not limited)</source>
+        <target>Usage limit (empty if not limited)</target>
+      </trans-unit>
       <!--End create/edit voucher-->
 
       <!--Start stop promotions-->

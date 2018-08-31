@@ -45,6 +45,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     applyHours: any[] = [];
     selectedApplyHours: any[] = [];
 
+    createVoucherSuccessMsg: string;
+
     constructor(private readonly voucherService: VoucherService,
         public readonly translateService: TranslateService,
         private readonly location: Location,
@@ -62,6 +64,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     ngOnInit() {
         super.ngOnInit();
         this.getPoses();
+        this.createVoucherSuccessMsg = this.translateService.translate('voucher-create-success');
     }
 
     ngAfterViewInit() {
@@ -84,7 +87,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       this.voucher.attachGiftOfMenuItems = map(this.selectedAttachMenuItems, 'id');
 
       this.voucherService.create(this.voucher).subscribe(() => {
-        this.notification.showSuccess('Một voucher mới được tạo thành công');
+        this.notification.showSuccess(this.createVoucherSuccessMsg);
         this.finish();
       });
     }
