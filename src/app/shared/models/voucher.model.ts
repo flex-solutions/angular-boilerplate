@@ -1,4 +1,3 @@
-import { CheckedItem } from '../ui-common/drop-down-check-boxes/checked-items.model';
 import { ModelBase } from './model-base';
 
 export enum VoucherGroupType {
@@ -69,6 +68,10 @@ export class Voucher extends ModelBase {
   applyPoses: string[];
   applyMenuItemTypes: string[];
   applyMenuItems: string[];
+  attachGiftOfMenuItemTypes: string[];
+  attachGiftOfMenuItems: string[];
+  numberBuyItem: number;
+  numberGiftItem: number;
   applyDays: string[];
   applyHourRanges: string[];
   validFromDate: Date;
@@ -88,23 +91,14 @@ export enum VoucherStatus {
 export class VoucherFilter {
     name: string;
     create_on: Date;
-    status: number[];
 
     constructor() {
       this.name = '';
       this.create_on = null;
-      this.status = [];
     }
   }
 
 export const voucherFilterFields = {
     NAME: 'name',
     CREATE_ON: 'create_on',
-    STATUS: 'status'
   };
-
-
-export class VoucherStatusCheckedItem implements CheckedItem {
-  displayName: string;
-  status: VoucherStatus;
-}

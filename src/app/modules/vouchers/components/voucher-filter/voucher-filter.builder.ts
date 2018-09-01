@@ -1,5 +1,5 @@
-import { FilterType, CriteriaBuilder } from './../../../utilities/search-filter';
-import { VoucherFilter, voucherFilterFields } from './../../../shared/models/voucher.model';
+import { FilterType, CriteriaBuilder } from '../../../../utilities/search-filter';
+import { VoucherFilter, voucherFilterFields } from '../../../../shared/models/voucher.model';
 
 
 export class VoucherCriteriaBuilder {
@@ -20,11 +20,6 @@ export class VoucherCriteriaBuilder {
         FilterType.Regex,
         voucherFilterFields.CREATE_ON,
         voucherFilter[voucherFilterFields.CREATE_ON]
-      )
-      .withFilter(
-        FilterType.Regex,
-        voucherFilterFields.STATUS,
-        voucherFilter[voucherFilterFields.STATUS]
       );
 
       return builder.endWrapperFilter().build();
