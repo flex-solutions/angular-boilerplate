@@ -163,7 +163,7 @@ export class Select2MultipleComponent implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
-    this.selectedItems = [];
+    remove(this.selectedItems, item => item.id);
   }
 
   onSelectedItemChange() {
