@@ -50,8 +50,8 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
           dateRangePicker.setStartDate(date);
           dateRangePicker.setEndDate(date);
         }
-        this._ignoreSetStartEndDate = false;
       }
+      this._ignoreSetStartEndDate = false;
     }
     this.dateChange.emit(this._date);
   }
@@ -69,6 +69,16 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.initialize();
+
+    // Incase the value of date was before view init
+    const displayText = this.picker.val();
+    if (
+      isNullOrEmptyOrUndefined(displayText) &&
+      !isNullOrEmptyOrUndefined(this._date)
+    ) {
+      const date = moment(this._date);
+      this.picker.val(date.format('DD/MM/YYYY'));
+    }
 
     this.picker.on('apply.daterangepicker', (ev, picker) => {
       this.picker.val(picker.startDate.format('DD/MM/YYYY'));
