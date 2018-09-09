@@ -113,6 +113,12 @@
         <source>Members</source>
         <target>Members</target>
       </trans-unit>
+
+      <trans-unit id="vouchers-running" datatype="html">
+        <source>Vouchers Running</source>
+        <target>Vouchers Running</target>
+      </trans-unit>
+
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
