@@ -92,7 +92,7 @@ export class VoucherFormFactory {
       case VoucherOperationType.BatchExport:
         break;
       case VoucherOperationType.RepeatOneCode:
-      case VoucherOperationType.ForMembersOnly:
+      case VoucherOperationType.CustomerCare:
         this.formGroup.addControl(Voucher.validationFields.code, new FormControl('', [Validators.required,
         Validators.pattern(validationRegex.notAllowSpecialCharacters)]));
         break;

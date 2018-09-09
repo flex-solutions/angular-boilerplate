@@ -2224,6 +2224,12 @@
         <target>Extra information</target>
       </trans-unit>
       <!--STOP membership types-->
+      <!--START voucher running-->
+      <trans-unit id="voucher-running-customer-care" datatype="html">
+        <source>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</source>
+        <target>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</target>
+      </trans-unit>
+      <!--STOP voucher running-->
     </body>
   </file>
 </xliff>
