@@ -7,6 +7,7 @@ import { VoucherRunning } from '../../../shared/models/voucher-campaign.model';
 
 @Injectable()
 export class VoucherService extends AbstractRestService {
+
   protected controllerName: string;
 
   constructor(private exDialog: ExDialog) {

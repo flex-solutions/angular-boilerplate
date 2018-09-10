@@ -2229,7 +2229,35 @@
       <trans-unit id="voucher-running-customer-care" datatype="html">
         <source>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</source>
         <target>Để chạy chương trình cho voucher "{{0}}",
-        vui lòng chạy chiến dịch chăm sóc khách hàng hoặc dùng làm khuyến mãi cho hạng hội viên.</target>
+          vui lòng chạy chiến dịch chăm sóc khách hàng hoặc dùng làm khuyến mãi cho hạng hội viên.</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-effect-from" datatype="html">
+        <source>Effect from date</source>
+        <target>Có hiệu lực từ ngày</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-effect-to" datatype="html">
+        <source>To date</source>
+        <target>Đến ngày</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-usage-limit" datatype="html">
+        <source>Usage limit</source>
+        <target>Số lần sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-used-count" datatype="html">
+        <source>Used count</source>
+        <target>Đã sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-remain-count" datatype="html">
+        <source>Remaining count</source>
+        <target>Còn lại</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-prefix" datatype="html">
+        <source>Prefix</source>
+        <target>Tiền tố</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-code-scope" datatype="html">
+        <source>Scope of code</source>
+        <target>Phạm vi mã</target>
       </trans-unit>
       <!--STOP voucher running-->
     </body>
