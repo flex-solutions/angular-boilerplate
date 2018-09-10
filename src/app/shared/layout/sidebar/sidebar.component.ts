@@ -55,4 +55,8 @@ export class SidebarComponent implements OnInit {
   navigateToVoucherCreationPage() {
     this.router.navigate([`${ModuleRoute.VOUCHER}/create`]);
   }
+
+  navigateToVouchersRunningPage() {
+    this.router.navigate([`${ModuleRoute.VOUCHER}/vouchers-running`]);
+  }
 }

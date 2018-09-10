@@ -7,6 +7,7 @@ import { VoucherRunning } from '../../../shared/models/voucher-campaign.model';
 
 @Injectable()
 export class VoucherService extends AbstractRestService {
+
   protected controllerName: string;
 
   constructor(private exDialog: ExDialog) {
@@ -47,5 +48,9 @@ export class VoucherService extends AbstractRestService {
 
   runVoucher<T extends VoucherOperationDtoBase>(dto: T, type: number): Observable<Response> {
     return this.post(`run-voucher?type=${type}`, dto);
+  }
+
+  getVouchersRunning(): Observable<any[]> {
+    return this.get('vouchers-running');
   }
 }
