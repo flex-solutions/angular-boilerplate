@@ -2259,6 +2259,10 @@
         <source>Scope of code</source>
         <target>Phạm vi mã</target>
       </trans-unit>
+      <trans-unit id="voucher-running-success" datatype="html">
+        <source>Voucher "{{0}}" has been run</source>
+        <target>Voucher "{{0}}" đã được áp dụng</target>
+      </trans-unit>
       <!--STOP voucher running-->
     </body>
   </file>
