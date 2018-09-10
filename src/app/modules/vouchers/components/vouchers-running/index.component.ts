@@ -1,9 +1,8 @@
+import { isEmpty, find, get } from 'lodash';
+import { RepeatOneCodeDto, BatchExportCodeDto, VoucherOperationType } from './../../../../shared/models/voucher.model';
 import { Component, OnInit } from '@angular/core';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
-import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { VoucherService } from '../../services/vouchers.service';
-import { VoucherRunning } from '../../../../shared/models/voucher-campaign.model';
-import { Observable } from 'rxjs';
 
 @Component({
   moduleId: module.id,
@@ -13,12 +12,23 @@ import { Observable } from 'rxjs';
 
 export class VouchersRunningComponent extends AbstractBaseComponent implements OnInit {
 
-  items: VoucherRunning[] = [];
+  repeatCodeItems: RepeatOneCodeDto[] = [];
+  batchExportItems: BatchExportCodeDto[] = [];
 
   constructor(private voucherService: VoucherService) {
     super();
   }
 
   ngOnInit(): void {
+    this.getVouchersRunning();
+  }
+
+  private getVouchersRunning() {
+    this.voucherService.getVouchersRunning().subscribe(result => {
+      if (!isEmpty(result)) {
+        this.repeatCodeItems = get(find(result, {operationType: VoucherOperationType.RepeatOneCode}), 'voucherRunnings');
+        this.batchExportItems = get(find(result, {operationType: VoucherOperationType.BatchExport}), 'voucherRunnings');
+      }
+    });
   }
 }

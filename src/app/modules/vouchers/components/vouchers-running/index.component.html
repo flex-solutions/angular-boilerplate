@@ -28,7 +28,16 @@
                   </tr>
                 </thead>
                 <tbody>
-
+                  <tr *ngFor="let item of repeatCodeItems">
+                    <td>{{item.voucher.name}}</td>
+                    <td>{{item.voucher.code}}</td>
+                    <td>{{item.voucher.discount}}</td>
+                    <td>{{item.start_date | dateFormat}}</td>
+                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.usageLimit}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -69,7 +78,16 @@
                   </tr>
                 </thead>
                 <tbody>
-
+                  <tr *ngFor="let item of batchExportItems">
+                    <td>{{item.voucher.name}}</td>
+                    <td>{{item.prefix}}</td>
+                    <td>{{item.voucher.discount}}</td>
+                    <td>{{item.start_date | dateFormat}}</td>
+                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.minRange}} - {{item.maxRange}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
