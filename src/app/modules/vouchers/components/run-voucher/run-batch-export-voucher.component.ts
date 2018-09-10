@@ -1,7 +1,6 @@
 import { VoucherService } from './../../services/vouchers.service';
 import { DialogService } from './../../../../shared/ui-common/modal/services/dialog.service';
-import { Voucher } from './../../../../shared/models/voucher.model';
-import { VoucherRunning } from './../../../../shared/models/voucher-campaign.model';
+import { Voucher, BatchExportCodeDto, VoucherOperationType } from './../../../../shared/models/voucher.model';
 import { DateRangeModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
@@ -14,7 +13,7 @@ import { DialogComponent } from '../../../../shared/ui-common/modal/components/d
 export class RunBatchExportVoucherComponent extends DialogComponent implements OnInit {
   dateRange: DateRangeModel = new DateRangeModel();
   voucher: Voucher;
-  voucherRunning: VoucherRunning = new VoucherRunning();
+  dto: BatchExportCodeDto = new BatchExportCodeDto();
 
   constructor(protected dialogService: DialogService,
     private readonly voucherService: VoucherService) {
@@ -23,6 +22,10 @@ export class RunBatchExportVoucherComponent extends DialogComponent implements O
 
   ngOnInit() {
     this.voucher = this.callerData;
+    const initDate = new DateRangeModel();
+    initDate.startDate = new Date();
+    initDate.endDate = new Date();
+    this.dateRange = initDate;
   }
 
   cancel() {
@@ -31,7 +34,12 @@ export class RunBatchExportVoucherComponent extends DialogComponent implements O
   }
 
   submit() {
-    this.voucherService.runVoucher(this.voucherRunning).subscribe(res => {
+
+    this.dto.start_date = this.dateRange.startDate;
+    this.dto.end_date = this.dateRange.endDate;
+    this.dto.voucher = this.voucher;
+
+    this.voucherService.runVoucher(this.dto, VoucherOperationType.BatchExport).subscribe(res => {
       this.result = true;
       this.dialogResult();
     });

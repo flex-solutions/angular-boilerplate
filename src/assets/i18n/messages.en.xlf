@@ -113,6 +113,12 @@
         <source>Members</source>
         <target>Members</target>
       </trans-unit>
+
+      <trans-unit id="vouchers-running" datatype="html">
+        <source>Vouchers Running</source>
+        <target>Vouchers Running</target>
+      </trans-unit>
+
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -2224,6 +2230,12 @@
         <target>Extra information</target>
       </trans-unit>
       <!--STOP membership types-->
+      <!--START voucher running-->
+      <trans-unit id="voucher-running-customer-care" datatype="html">
+        <source>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</source>
+        <target>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</target>
+      </trans-unit>
+      <!--STOP voucher running-->
     </body>
   </file>
 </xliff>

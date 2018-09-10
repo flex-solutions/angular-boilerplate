@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { VoucherService } from './../../services/vouchers.service';
@@ -49,7 +49,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     constructor(private readonly voucherService: VoucherService,
         public readonly translateService: TranslateService,
-        private readonly location: Location,
+        private readonly router: Router,
         private readonly posService: POSService,
         private readonly notification: NotificationService,
         public readonly voucherFormFactory: VoucherFormFactory,
@@ -98,7 +98,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       }
 
     protected onCancel() {
-        this.location.back();
+        this.router.navigate(['voucher']);
     }
 
     protected onCreateForm() {

@@ -14,7 +14,7 @@ export enum VoucherType {
 export enum VoucherOperationType {
 RepeatOneCode,
 BatchExport,
-ForMembersOnly,
+CustomerCare,
 }
 
 export enum VoucherAdvanceMenuItemPriceAlow {
@@ -101,4 +101,19 @@ export class VoucherFilter {
 export const voucherFilterFields = {
     NAME: 'name',
     CREATE_ON: 'create_on',
-  };
+};
+
+export class VoucherOperationDtoBase {
+  start_date: Date;
+  end_date: Date;
+  voucher: Voucher;
+}
+export class RepeatOneCodeDto extends VoucherOperationDtoBase {
+  usageLimit: number;
+}
+
+export class BatchExportCodeDto extends VoucherOperationDtoBase {
+  minRange: number;
+  maxRange: number;
+  prefix: string;
+}
