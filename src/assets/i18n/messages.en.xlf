@@ -1887,6 +1887,14 @@
         <source>Applies to dishes</source>
         <target>Applies to dishes</target>
       </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-item-types" datatype="html">
+        <source>List of applicable set (blank if applicable all)</source>
+        <target>List of applicable set (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-item-types" datatype="html">
+        <source>List of set to be purchased (blank if applicable all)</source>
+        <target>List of set to be purchased (blank if applicable all)</target>
+      </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-type-gift-set" datatype="html">
         <source>Gift group dishes (blank if applicable all)</source>
         <target>Gift group dishes (blank if applicable all)</target>
@@ -1901,7 +1909,7 @@
       </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-type-be-donated-items" datatype="html">
         <source>List of donated items (blank if applicable all)</source>
-        <target>Danh sách món được tặng (bỏ trống nếu áp dụng tất cả)</target>
+        <target>List of donated items (blank if applicable all)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-applied-days" datatype="html">
         <source>Applied days (blank if all days apply)</source>

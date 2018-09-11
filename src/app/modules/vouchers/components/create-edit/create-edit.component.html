@@ -105,8 +105,8 @@
             </select>
           </div>
           <div class="form-group" *ngIf="applyMenuType==0">
-            <label *ngIf="voucherGroupType==0">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <label *ngIf="voucherGroupType==1">Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==0" i18n="@@voucher-create-edit-applicable-type-applicable-item-types">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==1" i18n="@@voucher-create-edit-applicable-type-be-purchased-item-types">Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</label>
             <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedMenuItemTypes"></app-select2-multiple>
           </div>
           <div class="form-group" *ngIf="applyMenuType==0 && voucherGroupType==1">

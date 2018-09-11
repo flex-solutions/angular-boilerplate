@@ -1881,6 +1881,14 @@
         <source>Applies to dishes</source>
         <target>Áp dụng cho món</target>
       </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-item-types" datatype="html">
+        <source>List of applicable set (blank if applicable all)</source>
+        <target>Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-item-types" datatype="html">
+        <source>List of set to be purchased (blank if applicable all)</source>
+        <target>Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</target>
+      </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-type-gift-set" datatype="html">
         <source>Gift set (blank if applicable all)</source>
         <target>Nhóm món được tặng (bỏ trống nếu áp dụng tất cả)</target>
