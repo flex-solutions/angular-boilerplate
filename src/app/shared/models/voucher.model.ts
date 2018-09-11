@@ -107,6 +107,8 @@ export class VoucherOperationDtoBase {
   start_date: Date;
   end_date: Date;
   voucher: Voucher;
+  usedCount: number;
+  remainCount: number;
 }
 export class RepeatOneCodeDto extends VoucherOperationDtoBase {
   usageLimit: number;
