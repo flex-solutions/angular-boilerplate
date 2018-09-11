@@ -31,12 +31,14 @@
                   <tr *ngFor="let item of repeatCodeItems">
                     <td>{{item.voucher.name}}</td>
                     <td>{{item.voucher.code}}</td>
-                    <td>{{item.voucher.discount}}</td>
+                    <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
+                    <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
+                    <td *ngIf="item.voucher.type == 2"></td>
                     <td>{{item.start_date | dateFormat}}</td>
                     <td>{{item.end_date | dateFormat}}</td>
                     <td>{{item.usageLimit}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{item.usedCount}}</td>
+                    <td>{{item.remainCount}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -81,12 +83,14 @@
                   <tr *ngFor="let item of batchExportItems">
                     <td>{{item.voucher.name}}</td>
                     <td>{{item.prefix}}</td>
-                    <td>{{item.voucher.discount}}</td>
+                    <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
+                    <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
+                    <td *ngIf="item.voucher.type == 2"></td>
                     <td>{{item.start_date | dateFormat}}</td>
                     <td>{{item.end_date | dateFormat}}</td>
                     <td>{{item.minRange}} - {{item.maxRange}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{item.usedCount}}</td>
+                    <td>{{item.remainCount}}</td>
                   </tr>
                 </tbody>
               </table>
