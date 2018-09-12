@@ -2,55 +2,67 @@
   <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
     <fieldset>
       <div class="row">
-        <div class="col-sm-6">
-          <!-- Title field -->
-          <div class="form-group" [ngClass]="{
+        <!-- Title field -->
+        <div class="form-group col-md-12" [ngClass]="{
               'has-danger': title.invalid && (title.dirty || title.touched),
               'has-success': title.valid && (title.dirty || title.touched)
          }">
-            <label for="title" i18n="@@news-create_edit_news-label-title_field">Title </label>
-            <label class="require">*</label>
-            <input id="title" required class="form-control" formControlName="title" i18n-placeholder="@@news-create_edit_news-input-title_place_holder"
-              placeholder="Enter title" [(ngModel)]="news.title">
-            <label id="title-error" class="error mt-2 text-danger" for="title" i18n="@@news-create_edit_news-label-title_require" *ngIf="title.invalid && (title.dirty || title.touched)">Please provide the title</label>
-            <br *ngIf="!(title.invalid && (title.dirty || title.touched))" />
-          </div>
-          <div class="form-group">
-            <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Banner </label>
-            <app-dropify height="225" allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" " [(image)]="news.banner"
-              [(exportError)]="bannerError" (onFinishedInitialization)="finishBannerComponent()"></app-dropify>
-            <label id="banner-error" class="error text-danger show-errors" for="banner" i18n="@@news-create_edit_news-file_size_error"
-              *ngIf="hasErrorBanner()">The banner size must be lower or equal 500kb</label>
-            <br *ngIf="!hasErrorBanner()" />
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label for="content" i18n="@@news-create_edit_news-label-content_field">Content </label>
-            <label class="require">*</label> &nbsp;&nbsp;&nbsp;&nbsp;
-            <app-tinymce-editor elementId="contentEditor" [(content)]="news.content" (onBlur)="onTinyEditorBlur($event)" editorHeight="200"
-              [hasError]="hasEmptyAndBlurContent()" [(rawContent)]="rawContent" (onFinishedInitialization)="finishContentComponent()"></app-tinymce-editor>
-            <label id="content-error" class="error text-danger show-errors" for="content" i18n="@@news-create_edit_news-label-content_require"
-              *ngIf="hasEmptyAndBlurContent()">Please provide the content</label>
-            <br *ngIf="!hasEmptyAndBlurContent()" />
-          </div>
+          <label for="title" i18n="@@news-create_edit_news-label-title_field">Title </label>
+          <label class="require">*</label>
+          <input id="title" required class="form-control" formControlName="title" i18n-placeholder="@@news-create_edit_news-input-title_place_holder"
+            placeholder="Enter title" [(ngModel)]="news.title">
+          <label id="title-error" class="error mt-2 text-danger" for="title" i18n="@@news-create_edit_news-label-title_require"
+            *ngIf="title.invalid && (title.dirty || title.touched)">Please provide the title</label>
+          <br *ngIf="!(title.invalid && (title.dirty || title.touched))" />
         </div>
       </div>
-      <div class="row news-group">
-        <button *ngIf="!isEdit" class="btn btn-fw btn-primary mr-2 btn-small" i18n="@@news-create_edit_news-button-submit" (click)="submit()">Submit</button>
-        <button *ngIf="!isEdit" class="btn btn-fw btn-success  mr-2 btn-small" i18n="@@news-create_edit_news-button-submit_publish" (click)="submitAndPublishNews()">Submit & publish</button>
-        <button *ngIf="isEdit" class="btn btn-fw btn-success  mr-2 btn-small" i18n="@@news-create_edit_news-button-save" (click)="saveNews()">Save</button>
-        <button class="btn btn-fw btn-light mr-2 btn-small" i18n="@@news-create_edit_news-button-cancel" (click)="cancel()">Cancel</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <div class="form-group" *ngIf="!isEdit">
-          <div class="form-check form-check-flat">
-            <label class="form-check-label">
-              <input type="checkbox" formControlName="createAnother" class="form-check-input form-control" [(ngModel)]="isCreateAnother">
-              <i class="input-helper"></i>
-              <label class="form-check-label" i18n="@@news-create_edit_news-label-create_another_news">Create another</label>
-            </label>
-          </div>
+      <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <label for="banner" i18n="@@news-create_edit_news-label-banner_field">Banner </label>
+          <app-dropify allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" "
+            [(image)]="news.banner" [(exportError)]="bannerError" (onFinishedInitialization)="finishBannerComponent()"></app-dropify>
+          <label id="banner-error" class="error text-danger show-errors" for="banner" i18n="@@news-create_edit_news-file_size_error"
+            *ngIf="hasErrorBanner()">The banner size must be lower or equal 500kb</label>
+          <br *ngIf="!hasErrorBanner()" />
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <label style="margin-bottom:0">
+            <div class="form-check form-check-flat chk" style="margin-top:0;margin-bottom:0">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input form-control" formControlName="isNotification" [(ngModel)]="news.isNotification">
+                <i class="input-helper"></i>
+                <label class="chk-label" style="margin-top:4px" i18n="@@common_label-push_notification_msg">Notification Message</label>
+              </label>
+            </div>
+          </label>
+          <textarea class="form-control" style="max-height:200px;height:100%" formControlName="notificationMessage" [(ngModel)]="news.notificationMessage"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="content" i18n="@@news-create_edit_news-label-content_field">Content </label>
+          <label class="require">*</label> &nbsp;&nbsp;&nbsp;&nbsp;
+          <app-tinymce-editor elementId="contentEditor" [(content)]="news.content" (onBlur)="onTinyEditorBlur($event)"
+            editorHeight="500" [hasError]="hasEmptyAndBlurContent()" [(rawContent)]="rawContent"
+            (onFinishedInitialization)="finishContentComponent()"></app-tinymce-editor>
+          <label id="content-error" class="error text-danger show-errors" for="content" i18n="@@news-create_edit_news-label-content_require"
+            *ngIf="hasEmptyAndBlurContent()">Please provide the content</label>
+          <br *ngIf="!hasEmptyAndBlurContent()" />
+        </div>
+      </div>
+      <!-- Form buttons -->
+      <div class="form-cmds always-bottom-panel">
+        <button *ngIf="!isEdit" class="btn btn-primary mr-2" i18n="@@common_button-submit" (click)="submit()">Submit</button>
+        <button *ngIf="!isEdit" class="btn btn-success  mr-2" i18n="@@news-create_edit_news-button-submit_publish"
+          (click)="submitAndPublishNews()">Submit & publish</button>
+        <button *ngIf="isEdit" class="btn btn-success  mr-2" i18n="@@news-create_edit_news-button-save" (click)="saveNews()">Save</button>
+        <button class="btn btn-light mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+        <div class="form-check form-check-flat chk" *ngIf="!isEdit">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input form-control" formControlName="createAnother" [(ngModel)]="isCreateAnother">
+            <i class="input-helper"></i>
+            <label class="chk-label" i18n="@@common-action-create-another">Create another</label>
+          </label>
         </div>
       </div>
       <!-- Form buttons -->

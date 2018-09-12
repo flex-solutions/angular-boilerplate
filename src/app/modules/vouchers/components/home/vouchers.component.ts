@@ -1,3 +1,4 @@
+import { TranslateService } from './../../../../shared/services/translate.service';
 
 import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { VoucherCriteriaBuilder } from './../voucher-filter/voucher-filter.builder';
@@ -6,10 +7,11 @@ import { VoucherService } from './../../services/vouchers.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import ArrayExtension from '../../../../utilities/array.extension';
 import { Permission } from '../../../../shared/guards/decorator';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
 import { VoucherRunner } from '../run-voucher/voucher-runner';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
 
 @Component({
   moduleId: module.id,
@@ -27,8 +29,11 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   filter: IFilterChangedEvent;
   @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
 
-  constructor(private voucherService: VoucherService,
-    private voucherRunner: VoucherRunner) {
+  constructor(private readonly voucherService: VoucherService,
+    private readonly voucherRunner: VoucherRunner,
+    private readonly exDialog: ExDialog,
+    private readonly notification: NotificationService,
+    private readonly translateService: TranslateService) {
     super();
   }
 
@@ -53,11 +58,19 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     this.getVouchers();
   }
 
-  async deletevoucher(voucher: Voucher) {
-    // Call service to delete voucher
-    await this.voucherService.remove(voucher._id);
-    // Remove voucher in voucher list
-    ArrayExtension.removeItemFromArray(this.items, voucher);
+  async deleteVoucher(voucher: Voucher) {
+
+    const deleteConfirmMsg = this.translateService.translate('vouchers-delete-confirm', voucher.name);
+    const deleteSuccessMsg = this.translateService.translate('vouchers-delete-success', voucher.name);
+    this.exDialog.openConfirm(deleteConfirmMsg).subscribe(result => {
+      if (result === true) {
+        // Call service to delete voucher
+        this.voucherService.remove(voucher._id).subscribe(() => {
+          this.notification.showSuccess(deleteSuccessMsg);
+          this.getVouchers();
+        });
+      }
+    });
   }
 
   navigateToCreatePage() {

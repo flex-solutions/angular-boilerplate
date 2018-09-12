@@ -2,7 +2,6 @@ import { NewsStatusType } from '../enums/news-type.enum';
 import { ModelBase } from './model-base';
 
 class News extends ModelBase {
-    _id: string;
     title: string;
     banner: any;
     content: string;
@@ -11,10 +10,8 @@ class News extends ModelBase {
     viewCount = 0;
     published_on: Date;
     published_by: string;
-    updated_on: Date;
-    updated_by: string;
-    create_on: Date;
-    create_by: string;
+    isNotification = true;
+    notificationMessage: string;
 }
 
 const NewsFields = {

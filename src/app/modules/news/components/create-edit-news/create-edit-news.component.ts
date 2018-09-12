@@ -79,7 +79,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     this.onCreateForm();
   }
 
-  LoadNews() {
+  loadNews() {
     if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
       return;
     }
@@ -110,6 +110,14 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     return this.formGroup.get('banner');
   }
 
+  get isNotification() {
+    return this.formGroup.get('isNotification');
+  }
+
+  get notificationMessage() {
+    return this.formGroup.get('notificationMessage');
+  }
+
   get createAnother() {
     return this.formGroup.get('createAnother');
   }
@@ -134,7 +142,9 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
       title: ['', [Validators.required]],
       banner: ['', []],
       content: ['', []],
-      createAnother: ['', []]
+      createAnother: ['', []],
+      isNotification: ['', []],
+      notificationMessage: ['', []],
     });
   }
 
@@ -142,7 +152,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
 
   protected onSubmit() {
     if (!this.isEdit) {
-      this.news.brief_content = this.ValidateRawContent();
+      this.news.brief_content = this.validateRawContent();
       this.newsService.create(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification
@@ -158,7 +168,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   }
 
   public submitAndPublishNews() {
-    this.news.brief_content = this.ValidateRawContent();
+    this.news.brief_content = this.validateRawContent();
     this.newsService.createAndPublish(this.news).subscribe(
       (value: News) => {
         // * Create news successful, display success notification
@@ -193,7 +203,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
 
   saveNews() {
     if (this.isEdit) {
-      this.news.brief_content = this.ValidateRawContent();
+      this.news.brief_content = this.validateRawContent();
       this.newsService.update(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification
@@ -210,15 +220,15 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
 
   finishBannerComponent() {
     this.isFinishedBannerComponent = true;
-    this.LoadNews();
+    this.loadNews();
   }
 
   finishContentComponent() {
     this.isFinishedContentComponent = true;
-    this.LoadNews();
+    this.loadNews();
   }
 
-  private ValidateRawContent(): string {
+  private validateRawContent(): string {
     if (this.rawContent.length > BRIEF_LENGTH) {
       return this.rawContent.substring(0, BRIEF_LENGTH) + '...';
     }

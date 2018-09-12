@@ -16,7 +16,7 @@ export class VoucherService extends AbstractRestService {
   }
 
   public remove(_id: string) {
-    return this.delete(_id, {});
+    return this.delete(`${_id}`);
   }
 
   countWithFilterQuery(query?: any): Observable<number> {

@@ -78,6 +78,10 @@
               <p *ngIf="discount.hasError(error.type) && (discount.dirty || discount.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message, discount.value)}}</p>
             </div>
           </div>
+          <div class="form-group" *ngIf="voucherOperationType==2">
+              <label for="notificationMessage" i18n="@@common_label-push_notification_msg">Nội dung thông báo</label>
+              <textarea class="form-control" id="notificationMessage" [(ngModel)]="voucher.notificationMessage" [ngModelOptions]="{standalone: true}" rows="6"></textarea>
+          </div>
           <div class="form-group" *ngIf="voucherGroupType==1">
             <div class="row">
               <div class="col-md-6">
@@ -105,8 +109,8 @@
             </select>
           </div>
           <div class="form-group" *ngIf="applyMenuType==0">
-            <label *ngIf="voucherGroupType==0">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <label *ngIf="voucherGroupType==1">Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==0" i18n="@@voucher-create-edit-applicable-type-applicable-item-types">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
+            <label *ngIf="voucherGroupType==1" i18n="@@voucher-create-edit-applicable-type-be-purchased-item-types">Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</label>
             <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedMenuItemTypes"></app-select2-multiple>
           </div>
           <div class="form-group" *ngIf="applyMenuType==0 && voucherGroupType==1">
@@ -150,7 +154,7 @@
                   <label for="exampleInputEmail1" i18n="@@voucher-create-edit-advance-condition-apply-invoice-from">Áp dụng hóa đơn từ (vnđ)</label>
                   <input class="form-control" type="number" [(ngModel)]="voucher.advApplyMinBillAmount" [ngModelOptions]="{standalone: true}">
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="!isDiscountAmount">
                   <label for="exampleInputEmail1" i18n="@@voucher-create-edit-advance-condition-decrease-not-over">Giảm không quá (vnđ)</label>
                   <input class="form-control" type="number" [(ngModel)]="voucher.advApplyMaxDiscountAmount" [ngModelOptions]="{standalone: true}">
                 </div>
