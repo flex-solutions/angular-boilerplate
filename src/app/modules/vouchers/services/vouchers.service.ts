@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Voucher } from './../../../shared/models/voucher.model';
+import { Voucher, VoucherOperationDtoBase } from './../../../shared/models/voucher.model';
 import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
@@ -7,6 +7,7 @@ import { VoucherRunning } from '../../../shared/models/voucher-campaign.model';
 
 @Injectable()
 export class VoucherService extends AbstractRestService {
+
   protected controllerName: string;
 
   constructor(private exDialog: ExDialog) {
@@ -45,7 +46,11 @@ export class VoucherService extends AbstractRestService {
     return this.post('', dto);
   }
 
-  runVoucher(voucherRunning: VoucherRunning): Observable<Response> {
-    return this.post('run-voucher', voucherRunning);
+  runVoucher<T extends VoucherOperationDtoBase>(dto: T, type: number): Observable<Response> {
+    return this.post(`run-voucher?type=${type}`, dto);
+  }
+
+  getVouchersRunning(): Observable<any[]> {
+    return this.get('vouchers-running');
   }
 }

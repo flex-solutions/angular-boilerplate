@@ -3,6 +3,7 @@ import { VouchersComponent } from './components/home/vouchers.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { VouchersRunningComponent } from './components/vouchers-running/index.component';
 const VoucherRoutes: Routes = [
   {
     path: '',
@@ -16,6 +17,13 @@ const VoucherRoutes: Routes = [
     component: CreateEditVoucherComponent,
     data: {
       breadcrumb: 'Create new voucher'
+    }
+  },
+  {
+    path: 'vouchers-running',
+    component: VouchersRunningComponent,
+    data: {
+      breadcrumb: 'Vouchers are running'
     }
   }
 ];
