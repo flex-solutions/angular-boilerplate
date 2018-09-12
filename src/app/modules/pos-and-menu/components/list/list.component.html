@@ -1,0 +1,38 @@
+<app-card title="SNOB Point Of Sale" i18n-title="@@pos-menu-list-title">
+  <div class="command-region">
+    <button type="button" class="btn btn-primary btn-fw pull-right" (click)="synchronize()">
+      <i class="mdi mdi-cloud-sync"></i>
+      <span i18n="@@pos-menu-list-btn-synchronize">Synchronize</span>
+    </button>
+  </div>
+  <app-dg #dg searchLabel="Search by name, phone number, address" i18n-searchLabel="@@pos-menu-list-txt-search" (pageChanged)="onPageChanged($event)"
+    [countFunction]="count">
+    <tr>
+      <th style="width: 15%" i18n="@@pos-menu-list-th-name">Tên</th>
+      <th style="width: 30%" i18n="@@pos-menu-list-th-address">Địa chỉ</th>
+      <th i18n="@@pos-menu-list-th-phone-number">Số ĐT</th>
+      <th i18n="@@pos-menu-list-th-open-time">Giờ mở cửa</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let pos of poses | posFilter: dg.searchKey">
+        <td>{{pos.name}}</td>
+        <td>{{pos.address}}</td>
+        <td>{{pos.phoneNumber}}</td>
+        <td>{{pos.openTime}}</td>
+        <!-- <td>
+          <button type="button" class="btn btn-light btn-custom-css" appPublishButton [status]="item.status" (click)="NewProcessing(item._id)">
+          </button>
+          <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-edit" (click)="navigateToEdit(item._id)">Edit
+              news</a>
+            <a class="dropdown-item" href="javascript:;" i18n="@@list-news-btn-delete" (click)="deletenew(item)">Delete
+              news</a>
+          </div>
+        </td> -->
+      </tr>
+    </tbody>
+  </app-dg>
+</app-card>

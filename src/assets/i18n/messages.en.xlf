@@ -113,12 +113,14 @@
         <source>Members</source>
         <target>Members</target>
       </trans-unit>
-
       <trans-unit id="vouchers-running" datatype="html">
         <source>Vouchers Running</source>
         <target>Vouchers Running</target>
       </trans-unit>
-
+      <trans-unit id="sidebar-pos-and-menu" datatype="html">
+        <source>POS & Dishes</source>
+        <target>POS & Dishes</target>
+      </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -2280,6 +2282,36 @@
         <target>Voucher "{{0}}" has been run</target>
       </trans-unit>
       <!--STOP voucher running-->
+      <!--START Pos and Menu Module-->
+      <trans-unit id="pos-menu-list-title" datatype="html">
+        <source>SNOB Point Of Sales</source>
+        <target>SNOB Point Of Sales</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-btn-synchronize" datatype="html">
+        <source>Synchronize</source>
+        <target>Synchronize</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-txt-search" datatype="html">
+        <source>Search by name, phone number, address</source>
+        <target>Search by name, phone number, address</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-address" datatype="html">
+        <source>Address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-phone-number" datatype="html">
+        <source>Phone number</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-open-time" datatype="html">
+        <source>Open time</source>
+        <target>Open time</target>
+      </trans-unit>
+      <!--END Pos and Menu Module-->
     </body>
   </file>
 </xliff>

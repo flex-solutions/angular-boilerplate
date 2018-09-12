@@ -20,6 +20,7 @@ import { UsersModule } from './modules/users/users.module';
 import { PromotionsModule } from './modules/promotions/promotions.module';
 import { MemberModule } from './modules/member/member.module';
 import { VouchersModule } from './modules/vouchers/vouchers.module';
+import { PosAndMenuModule } from './modules/pos-and-menu/module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,8 @@ import { VouchersModule } from './modules/vouchers/vouchers.module';
     NewsModule,
     PromotionsModule,
     MemberModule,
-    VouchersModule
+    VouchersModule,
+    PosAndMenuModule
   ],
   providers: [
     {

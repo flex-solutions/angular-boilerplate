@@ -1,3 +1,4 @@
+import { POSService } from './../../../pos-and-menu/services/pos';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { TranslateService } from './../../../../shared/services/translate.service';
@@ -5,8 +6,6 @@ import { VoucherService } from './../../services/vouchers.service';
 import { Voucher, VoucherGroupType, VoucherType, VoucherOperationType } from './../../../../shared/models/voucher.model';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
-import { Location } from '@angular/common';
-import { POSService } from '../../services/pos.service';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
 import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
@@ -63,8 +62,9 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     ngOnInit() {
         super.ngOnInit();
-        this.getPoses();
         this.createVoucherSuccessMsg = this.translateService.translate('voucher-create-success');
+        this.getPoses();
+        this.getVoucherForEdit();
     }
 
     ngAfterViewInit() {
@@ -122,6 +122,23 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     private getMenuItemTypes() {
       this.posService.findMenuItemTypes().subscribe(menuItemTypes => this.menuItemTypes = menuItemTypes);
+    }
+
+    private getVoucherForEdit() {
+      if (!this.isEdit) {
+        return;
+      }
+
+      this.voucherService.getById(this.voucherId).subscribe(res => {
+        this.voucher = res;
+        if (this.voucher.type !== VoucherType.XGetY) {
+          this.isDiscountAmount = this.voucher.type === VoucherType.DiscountAmount;
+          this.voucherGroupType = VoucherGroupType.Discount;
+        } else {
+          this.voucherGroupType = VoucherGroupType.XGetY;
+        }
+        this.voucherOperationType = this.voucher.operationType;
+      });
     }
 
     get code() {
