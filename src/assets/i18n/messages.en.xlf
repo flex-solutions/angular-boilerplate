@@ -56,6 +56,10 @@
         <source>Other</source>
         <target>Other</target>
       </trans-unit>
+      <trans-unit id="common_label-push_notification_msg" datatype="html">
+        <source>Push notification message</source>
+        <target>Push notification message</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -76,33 +80,29 @@
         <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
-        <source>User Management</source>
-        <target>User Management</target>
+        <source>Users</source>
+        <target>Users</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
-        <source>Permission Management</source>
-        <target>Permission Management</target>
+      <trans-unit id="layout-sidebar-anchor-user-and-permission" datatype="html">
+        <source>User & Permission</source>
+        <target>User & Permission</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
-        <source>News Management</source>
-        <target>News Management</target>
+        <source>News</source>
+        <target>News</target>
       </trans-unit>
 
-      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
-        <source>Promotion Management</source>
-        <target>Promotion Management</target>
-      </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
-        <source>Promotion</source>
-        <target>Promotion</target>
+      <trans-unit id="layout-sidebar-anchor-customer-care" datatype="html">
+        <source>Customer Care Campaign</source>
+        <target>Customer Care Campaign</target>
       </trans-unit>
 
       <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
@@ -1036,10 +1036,6 @@
         <source>Enter content</source>
         <target>Enter content</target>
       </trans-unit>
-      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
       <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
         <source>Submit & publish</source>
         <target>Submit & publish</target>
@@ -1346,8 +1342,8 @@
         <target>Publish</target>
       </trans-unit>
       <trans-unit id="list-news-btn-edit" datatype="html">
-        <source>Edit</source>
-        <target>Edit</target>
+        <source>Edit news</source>
+        <target>Edit news</target>
       </trans-unit>
       <trans-unit id="list-news-btn-delete" datatype="html">
         <source>Delete news</source>
@@ -1809,6 +1805,14 @@
         <source>Run program</source>
         <target>Run program</target>
       </trans-unit>
+      <trans-unit id="vouchers-delete-confirm" datatype="html">
+        <source>Are you sure you want to delete voucher "{{0}}"?</source>
+        <target>Are you sure you want to delete voucher "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-success" datatype="html">
+        <source>Voucher "{{0}}" has been deleted</source>
+        <target>Voucher "{{0}}" has been deleted</target>
+      </trans-unit>
       <!--End Voucher Home -->
       <!--Start create/edit voucher-->
       <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
@@ -1887,6 +1891,14 @@
         <source>Applies to dishes</source>
         <target>Applies to dishes</target>
       </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-item-types" datatype="html">
+        <source>List of applicable set (blank if applicable all)</source>
+        <target>List of applicable set (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-item-types" datatype="html">
+        <source>List of set to be purchased (blank if applicable all)</source>
+        <target>List of set to be purchased (blank if applicable all)</target>
+      </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-type-gift-set" datatype="html">
         <source>Gift group dishes (blank if applicable all)</source>
         <target>Gift group dishes (blank if applicable all)</target>
@@ -1901,7 +1913,7 @@
       </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-type-be-donated-items" datatype="html">
         <source>List of donated items (blank if applicable all)</source>
-        <target>Danh sách món được tặng (bỏ trống nếu áp dụng tất cả)</target>
+        <target>List of donated items (blank if applicable all)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-applied-days" datatype="html">
         <source>Applied days (blank if all days apply)</source>
