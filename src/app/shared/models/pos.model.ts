@@ -9,6 +9,7 @@ class POSDto extends ModelBase {
   latitude: string;
   address: string;
   posParent: string;
+  openTime: string;
 }
 
 export {POSDto};

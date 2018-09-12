@@ -28,4 +28,8 @@ export class POSService extends AbstractRestService {
   public findMenuItemTypes(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemTypeDto[]> {
     return this.get(`menu-item-types?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
+
+  public synchronize() {
+    return this.post('', null);
+  }
 }

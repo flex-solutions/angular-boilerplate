@@ -1,4 +1,4 @@
-import { POSService } from './services/pos.service';
+import { PosAndMenuModule } from './../pos-and-menu/module';
 import { voucherComponents, voucherEntryComponents } from './components/index';
 import { VoucherService } from './services/vouchers.service';
 import { VouchersRoutingModule } from './voucher-routing.module';
@@ -16,12 +16,13 @@ import { VoucherRunner } from './components/run-voucher/voucher-runner';
   imports: [
     CommonModule, VouchersRoutingModule,
     FormsModule, ReactiveFormsModule,
-    UICommonModule, SharedModule
+    UICommonModule, SharedModule,
+    PosAndMenuModule
   ],
   declarations: [
       VoucherStatusDirective, ...voucherComponents
   ],
-  providers: [VoucherService, POSService, VoucherFormFactory, VoucherRunner],
+  providers: [VoucherService, VoucherFormFactory, VoucherRunner],
   entryComponents: [...voucherEntryComponents]
 })
 

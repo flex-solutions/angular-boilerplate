@@ -1,4 +1,3 @@
-import { VouchersRoutingModule } from './../../voucher-routing.module';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { VoucherCriteriaBuilder } from './../voucher-filter/voucher-filter.builder';

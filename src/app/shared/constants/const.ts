@@ -16,7 +16,8 @@ const ModuleRoute = {
     PROMOTION: 'promotions',
     MEMBER: 'members',
     MEMBERSHIP_TYPE: 'membership-type',
-    VOUCHER : 'voucher'
+    VOUCHER : 'voucher',
+    POS_AND_MENU: 'pos'
 };
 
 const PagingDefault = {
