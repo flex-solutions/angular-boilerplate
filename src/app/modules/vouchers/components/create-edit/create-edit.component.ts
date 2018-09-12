@@ -63,8 +63,9 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     ngOnInit() {
         super.ngOnInit();
-        this.getPoses();
         this.createVoucherSuccessMsg = this.translateService.translate('voucher-create-success');
+        this.getPoses();
+        this.getVoucherForEdit();
     }
 
     ngAfterViewInit() {
@@ -122,6 +123,23 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     private getMenuItemTypes() {
       this.posService.findMenuItemTypes().subscribe(menuItemTypes => this.menuItemTypes = menuItemTypes);
+    }
+
+    private getVoucherForEdit() {
+      if (!this.isEdit) {
+        return;
+      }
+
+      this.voucherService.getById(this.voucherId).subscribe(res => {
+        this.voucher = res;
+        if (this.voucher.type !== VoucherType.XGetY) {
+          this.isDiscountAmount = this.voucher.type === VoucherType.DiscountAmount;
+          this.voucherGroupType = VoucherGroupType.Discount;
+        } else {
+          this.voucherGroupType = VoucherGroupType.XGetY;
+        }
+        this.voucherOperationType = this.voucher.operationType;
+      });
     }
 
     get code() {

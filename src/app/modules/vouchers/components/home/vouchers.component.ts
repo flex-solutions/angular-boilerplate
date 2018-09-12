@@ -1,5 +1,5 @@
+import { VouchersRoutingModule } from './../../voucher-routing.module';
 import { TranslateService } from './../../../../shared/services/translate.service';
-
 import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { VoucherCriteriaBuilder } from './../voucher-filter/voucher-filter.builder';
 import { Voucher, VoucherFilter } from './../../../../shared/models/voucher.model';
@@ -12,6 +12,8 @@ import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base
 import { VoucherRunner } from '../run-voucher/voucher-runner';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from '../../../../shared/services/notification.service';
+import { Router } from '@angular/router';
+import { VoucherRouteNames } from '../../vouchers.constants';
 
 @Component({
   moduleId: module.id,
@@ -33,7 +35,8 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     private readonly voucherRunner: VoucherRunner,
     private readonly exDialog: ExDialog,
     private readonly notification: NotificationService,
-    private readonly translateService: TranslateService) {
+    private readonly translateService: TranslateService,
+    private readonly router: Router) {
     super();
   }
 
@@ -77,8 +80,8 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     // this.router.navigate([VouchersRoutingModule.CREATE_PAGE]);
   }
 
-  navigateToEditPage(voucher: Voucher) {
-    // this.router.navigate([VouchersRoutingModule.EDIT_PAGE, voucher._id]);
+  editVoucher(voucher: Voucher) {
+    this.router.navigate([`${VoucherRouteNames.EDIT}/${voucher._id}`]);
   }
 
   navigateTovoucherDetailPage(voucher: Voucher) {
