@@ -76,32 +76,28 @@
         <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
-        <source>User Management</source>
-        <target>Quản Lý User</target>
+        <source>Users</source>
+        <target>Danh Sách User</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
         <source>User Management</source>
         <target>Quản Lý Nhóm User</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
-        <source>Permission Management</source>
-        <target>Quản Lý Phân Quyền</target>
+      <trans-unit id="layout-sidebar-anchor-user-and-permission" datatype="html">
+        <source>User & Permission</source>
+        <target>User & Phân Quyền</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
         <source>Permission Schemes</source>
         <target>Kế Hoạch Phân Quyền</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
-        <source>News Management</source>
-        <target>Quản Lý Tin Tức</target>
+        <source>News</source>
+        <target>Tin Tức</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
-        <source>Promotion Management</source>
-        <target>Quản Lý Khuyến Mãi</target>
-      </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
-        <source>Promotion</source>
-        <target>Khuyến mãi</target>
+      <trans-unit id="layout-sidebar-anchor-customer-care" datatype="html">
+        <source>Customer Care Campaign</source>
+        <target>Chiến Dịch Chăm Sóc KH</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
         <source>Member Management</source>

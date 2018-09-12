@@ -76,33 +76,29 @@
         <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
-        <source>User Management</source>
-        <target>User Management</target>
+        <source>Users</source>
+        <target>Users</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
-        <source>Permission Management</source>
-        <target>Permission Management</target>
+      <trans-unit id="layout-sidebar-anchor-user-and-permission" datatype="html">
+        <source>User & Permission</source>
+        <target>User & Permission</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
-        <source>News Management</source>
-        <target>News Management</target>
+        <source>News</source>
+        <target>News</target>
       </trans-unit>
 
-      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
-        <source>Promotion Management</source>
-        <target>Promotion Management</target>
-      </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
-        <source>Promotion</source>
-        <target>Promotion</target>
+      <trans-unit id="layout-sidebar-anchor-customer-care" datatype="html">
+        <source>Customer Care Campaign</source>
+        <target>Customer Care Campaign</target>
       </trans-unit>
 
       <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
