@@ -111,12 +111,15 @@
         <source>Members</source>
         <target>Danh Sách Hội Viên</target>
       </trans-unit>
-
       <trans-unit id="vouchers-running" datatype="html">
         <source>Vouchers Running</source>
         <target>Danh Sách Voucher Đang Áp Dụng</target>
       </trans-unit>
-
+      <trans-unit id="sidebar-pos-and-menu" datatype="html">
+        <source>POS & Dishes</source>
+        <target>Điểm Bán Hàng & Thực Đơn</target>
+      </trans-unit>
+      <!-- END Side Bar -->
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
