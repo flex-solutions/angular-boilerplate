@@ -1024,10 +1024,6 @@
         <source>Enter content</source>
         <target>Nhập nội dung </target>
       </trans-unit>
-      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Lưu </target>
-      </trans-unit>
       <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
         <source>Submit & publish</source>
         <target>Lưu và đăng tin </target>

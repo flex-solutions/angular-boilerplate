@@ -1032,10 +1032,6 @@
         <source>Enter content</source>
         <target>Enter content</target>
       </trans-unit>
-      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
-      </trans-unit>
       <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
         <source>Submit & publish</source>
         <target>Submit & publish</target>
