@@ -56,6 +56,10 @@
         <source>Other</source>
         <target>Khác</target>
       </trans-unit>
+      <trans-unit id="common_label-push_notification_msg" datatype="html">
+        <source>Push notification message</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -1331,8 +1335,8 @@
         <target>Đăng tải</target>
       </trans-unit>
       <trans-unit id="list-news-btn-edit" datatype="html">
-        <source>Edit</source>
-        <target>Sửa</target>
+        <source>Edit news</source>
+        <target>Sửa bản tin</target>
       </trans-unit>
       <trans-unit id="list-news-btn-delete" datatype="html">
         <source>Delete news</source>
@@ -1794,6 +1798,14 @@
       <trans-unit id="list-vouchers-run-voucher" datatype="html">
         <source>Run program</source>
         <target>Chạy chương trình</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-confirm" datatype="html">
+        <source>Are you sure you want to delete voucher "{{0}}"?</source>
+        <target>Bạn có chắc muốn xoá voucher "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-success" datatype="html">
+        <source>Voucher "{{0}}" has been deleted</source>
+        <target>Voucher "{{0}}" đã được xoá</target>
       </trans-unit>
       <!--End Voucher Home -->
       <!--Start create/edit voucher-->

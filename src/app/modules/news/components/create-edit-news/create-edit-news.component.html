@@ -29,13 +29,13 @@
           <label style="margin-bottom:0">
             <div class="form-check form-check-flat chk" style="margin-top:0;margin-bottom:0">
               <label class="form-check-label">
-                <input type="checkbox" class="form-check-input form-control">
+                <input type="checkbox" class="form-check-input form-control" formControlName="isNotification" [(ngModel)]="news.isNotification">
                 <i class="input-helper"></i>
-                <label class="chk-label" style="margin-top:4px">Notification Message</label>
+                <label class="chk-label" style="margin-top:4px" i18n="@@common_label-push_notification_msg">Notification Message</label>
               </label>
             </div>
           </label>
-          <textarea class="form-control" style="max-height:200px;height:100%"></textarea>
+          <textarea class="form-control" style="max-height:200px;height:100%" formControlName="notificationMessage" [(ngModel)]="news.notificationMessage"></textarea>
         </div>
       </div>
       <div class="row">

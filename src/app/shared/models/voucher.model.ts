@@ -81,6 +81,7 @@ export class Voucher extends ModelBase {
   advApplyAllowMenuItemCount: number ;
   advApplyMenuItemAllow: VoucherAdvanceMenuItemPriceAlow;
   advApplyFromMenuItemIndex: number;
+  notificationMessage: string;
 }
 
 export enum VoucherStatus {

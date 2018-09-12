@@ -56,7 +56,7 @@ export class VoucherFormFactory {
   private initForm() {
     this.formGroup = this.formBuilder.group({});
     this.formGroup.addControl(Voucher.validationFields.name, new FormControl('',
-    [Validators.required, Validators.pattern(validationRegex.notAllowSpecialCharacters)]));
+    [ Validators.required ]));
   }
 
   produceBaseOnVoucherType(voucherType: VoucherType): FormGroup {
