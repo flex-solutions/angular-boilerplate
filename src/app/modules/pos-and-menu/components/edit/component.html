@@ -3,13 +3,13 @@
     <fieldset>
       <div class="row">
         <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <label for="image">Banner </label>
+          <label for="image" i18n="@@pos-menu-image">Banner</label>
           <app-dropify #posImageUploader allowedFileExtensions="jpg png jpeg" maxFileSize="500K" [(file)]="pos.image"></app-dropify>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12" [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched)}">
-          <label for="name">Name</label>
+          <label for="name" i18n="@@pos-menu-list-th-name">Name</label>
           <label class="require">*</label>
           <input id="name" required class="form-control" formControlName="name" [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched) }"
             [(ngModel)]="pos.name" placeholder="Enter name">
@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-md-5">
           <div class="form-group" [ngClass]="{'has-danger': address.invalid && (address.dirty || address.touched)}">
-            <label for="address" i18n="@@member-create_edit_member-label-address_field">Address</label>
+            <label for="address" i18n="@@pos-menu-list-th-address">Address</label>
             <label class="require">*</label>
             <input id="address" required class="form-control" formControlName="address" [(ngModel)]="pos.address"
               [ngClass]="{'has-danger': address.invalid && (address.dirty || address.touched) }" i18n-placeholder="@@member-create_edit_member-input-address_place_holder"
@@ -44,7 +44,7 @@
       </div>
       <div class="row">
         <div class="form-group col-md-12" [ngClass]="{'has-danger': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}">
-          <label for="phoneNumber">Phone number</label>
+          <label for="phoneNumber" i18n="@@pos-menu-list-th-phone-number">Phone number</label>
           <label class="require">*</label>
           <input id="phoneNumber" required class="form-control" formControlName="phoneNumber" [ngClass]="{'has-danger': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched) }"
             [(ngModel)]="pos.phoneNumber" placeholder="Enter phone number">
@@ -57,25 +57,25 @@
       </div>
       <div class="row">
         <div class="form-group col-md-12">
-          <label for="openTime">Open time</label>
+          <label for="openTime" i18n="@@pos-menu-list-th-open-time">Open time</label>
           <label class="require">*</label>
           <div class="d-flex mb-2" *ngFor="let openTime of pos.openTimes">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-prepend">
-                <span class="input-group-text">@Thứ trong tuần</span>
+                <span class="input-group-text" i18n="@@pos-menu-weekdays">@Thứ trong tuần</span>
               </div>
               <input type="text" class="form-control form-control-sm" id="inlineFormInputGroup1" placeholder="Add user"
                 [(ngModel)]="openTime.weekDays" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-prepend">
-                <span class="input-group-text">@Thời gian</span>
+                <span class="input-group-text" i18n="@@pos-menu-open-time">@Thời gian</span>
               </div>
               <input type="text" class="form-control form-control-sm" id="inlineFormInputGroup1" placeholder="Add user"
                 [(ngModel)]="openTime.time" [ngModelOptions]="{standalone: true}">
             </div>
-            <button type="submit" class="btn btn-inverse-danger btn-sm mr-2" (click)="deleteOpenTime(openTime)">Delete</button>
-            <button type="submit" class="btn btn-inverse-primary btn-sm" (click)="addNewOpenTime(openTime)">Add</button>
+            <button type="submit" class="btn btn-inverse-danger btn-sm mr-2" (click)="deleteOpenTime(openTime)" i18n="@@pos-menu-open-time-delete">Delete</button>
+            <button type="submit" class="btn btn-inverse-primary btn-sm" (click)="addNewOpenTime(openTime)" i18n="@@pos-menu-open-time-add">Add</button>
           </div>
         </div>
       </div>

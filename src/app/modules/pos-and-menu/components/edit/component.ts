@@ -29,23 +29,23 @@ export class POSEditComponent extends AbstractFormComponent implements OnInit, A
         name: [
           {
             type: 'required',
-            message: 'Vui lòng nhập tên POS'
+            message: 'pos-menu-name-validate-required'
           },
           {
             type: 'pattern',
-            message: 'Tên POS không được chứa ký tự đặc biệt'
+            message: 'pos-menu-name-validate-pattern'
           }
         ],
         address: [
           {
             type: 'required',
-            message: 'Vui lòng nhập địa chỉ'
+            message: 'pos-menu-address-validate-required'
           }
         ],
         phoneNumber: [
             {
               type: 'required',
-              message: 'Vui lòng nhập số điện thoại'
+              message: 'pos-menu-phone-number-validate-required'
             }
         ]
     };
@@ -100,14 +100,15 @@ export class POSEditComponent extends AbstractFormComponent implements OnInit, A
 
     protected onSubmit() {
         if (isEmpty(this.pos.openTimes)) {
-            this.notification.showError('Vui lòng nhập thời gian hoạt động');
+            this.notification.showError(this.translateService.translate('pos-menu-open-time-validate-required'));
             return;
         }
 
         this.pos.province = this.selectedCity;
         this.pos.district = this.selectedDistrict;
-        this.posService.update(this.pos).subscribe(res => {
-            this.notification.showSuccess(`Đã cập nhật thông tin cho pos "${this.pos.name}"`);
+        this.posService.update(this.pos).subscribe(() => {
+            const successMsg = this.translateService.translate('pos-menu-update-pos-success', this.pos.name);
+            this.notification.showSuccess(successMsg);
         });
     }
 

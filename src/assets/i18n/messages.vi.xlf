@@ -2308,6 +2308,50 @@
         <source>Open time</source>
         <target>Giờ mở cửa</target>
       </trans-unit>
+      <trans-unit id="pos-menu-image" datatype="html">
+        <source>Avatar</source>
+        <target>Hình ảnh</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-weekdays" datatype="html">
+        <source>@Weekdays</source>
+        <target>@Thứ trong tuần</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time" datatype="html">
+        <source>@Time</source>
+        <target>@Thời gian</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-add" datatype="html">
+        <source>Add</source>
+        <target>Thêm</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-delete" datatype="html">
+        <source>Delete</source>
+        <target>Xoá</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-name-validate-required" datatype="html">
+        <source>Please input pos name</source>
+        <target>Vui lòng nhập tên POS</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-name-validate-pattern" datatype="html">
+        <source>POS name doesn't allow special characters</source>
+        <target>Tên POS không được chứa ký tự đặc biệt</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-address-validate-required" datatype="html">
+        <source>Please input pos's address</source>
+        <target>Vui lòng nhập địa chỉ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-phone-number-validate-required" datatype="html">
+        <source>Please input pos's phone number</source>
+        <target>Vui lòng nhập số điện thoại</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
+        <source>Please input pos's open time</source>
+        <target>Vui lòng nhập thời gian hoạt động</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-update-pos-success" datatype="html">
+        <source>POS "{{0}}" has been updated</source>
+        <target>Đã cập nhật thông tin cho pos "{{0}}"</target>
+      </trans-unit>
       <!--END Pos and Menu Module-->
     </body>
   </file>

@@ -2311,6 +2311,50 @@
         <source>Open time</source>
         <target>Open time</target>
       </trans-unit>
+      <trans-unit id="pos-menu-image" datatype="html">
+        <source>Avatar</source>
+        <target>Avatar</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-weekdays" datatype="html">
+        <source>@Weekdays</source>
+        <target>@Weekdays</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time" datatype="html">
+        <source>@Time</source>
+        <target>@Time</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-add" datatype="html">
+        <source>Add</source>
+        <target>Add</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-delete" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-name-validate-required" datatype="html">
+        <source>Please input pos name</source>
+        <target>Please input pos name</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-name-validate-pattern" datatype="html">
+        <source>POS name doesn't allow special characters</source>
+        <target>POS name doesn't allow special characters</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-address-validate-required" datatype="html">
+        <source>Please input pos's address</source>
+        <target>Please input pos's address</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-phone-number-validate-required" datatype="html">
+        <source>Please input pos's phone number</source>
+        <target>Please input pos's phone number</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
+        <source>Please input pos's open time</source>
+        <target>Please input pos's open time</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-update-pos-success" datatype="html">
+        <source>POS "{{0}}" has been updated</source>
+        <target>POS "{{0}}" has been updated</target>
+      </trans-unit>
       <!--END Pos and Menu Module-->
     </body>
   </file>

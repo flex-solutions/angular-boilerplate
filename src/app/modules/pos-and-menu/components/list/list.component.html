@@ -21,7 +21,13 @@
         <td>{{pos.name}}</td>
         <td>{{pos.address}}</td>
         <td>{{pos.phoneNumber}}</td>
-        <td>{{pos.openTime}}</td>
+        <td>
+          <div style="display:grid">
+            <label *ngFor="let openTime of pos.openTimes">
+              <span>{{openTime.weekDays}}&nbsp;&nbsp;&nbsp;{{openTime.time}}</span>
+            </label>
+          </div>
+        </td>
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="editPos(pos)">
             <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
