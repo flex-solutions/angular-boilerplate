@@ -1,0 +1,92 @@
+<app-card title="Update pos" subTitle="update pos">
+  <form class="cmxform" id="createEditForm" [formGroup]="formGroup">
+    <fieldset>
+      <div class="row">
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <label for="image">Banner </label>
+          <app-dropify #posImageUploader allowedFileExtensions="jpg png jpeg" maxFileSize="500K" [(file)]="pos.image"></app-dropify>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12" [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched)}">
+          <label for="name">Name</label>
+          <label class="require">*</label>
+          <input id="name" required class="form-control" formControlName="name" [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched) }"
+            [(ngModel)]="pos.name" placeholder="Enter name">
+          <div class="form-control-feedback" *ngFor="let error of errors.name">
+            <p *ngIf="name.hasError(error.type) && (name.dirty || name.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message,
+              name.value)}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group" [ngClass]="{'has-danger': address.invalid && (address.dirty || address.touched)}">
+            <label for="address" i18n="@@member-create_edit_member-label-address_field">Address</label>
+            <label class="require">*</label>
+            <input id="address" required class="form-control" formControlName="address" [(ngModel)]="pos.address"
+              [ngClass]="{'has-danger': address.invalid && (address.dirty || address.touched) }" i18n-placeholder="@@member-create_edit_member-input-address_place_holder"
+              placeholder="Enter address">
+            <div class="form-control-feedback" *ngFor="let error of errors.address">
+              <p *ngIf="address.hasError(error.type) && (address.dirty || address.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message,
+                address.value)}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7" style="padding-left:0">
+          <div class="form-group">
+            <label for="address">&nbsp;</label>
+            <app-address id="address" #posAddress [(cityProvince)]="selectedCity" [(district)]="selectedDistrict"></app-address>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12" [ngClass]="{'has-danger': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}">
+          <label for="phoneNumber">Phone number</label>
+          <label class="require">*</label>
+          <input id="phoneNumber" required class="form-control" formControlName="phoneNumber" [ngClass]="{'has-danger': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched) }"
+            [(ngModel)]="pos.phoneNumber" placeholder="Enter phone number">
+          <div class="form-control-feedback" *ngFor="let error of errors.phoneNumber">
+            <p *ngIf="phoneNumber.hasError(error.type) && (phoneNumber.dirty || phoneNumber.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message,
+              phoneNumber.value)}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="openTime">Open time</label>
+          <label class="require">*</label>
+          <div class="d-flex mb-2" *ngFor="let openTime of pos.openTimes">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@Thứ trong tuần</span>
+              </div>
+              <input type="text" class="form-control form-control-sm" id="inlineFormInputGroup1" placeholder="Add user"
+                [(ngModel)]="openTime.weekDays" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@Thời gian</span>
+              </div>
+              <input type="text" class="form-control form-control-sm" id="inlineFormInputGroup1" placeholder="Add user"
+                [(ngModel)]="openTime.time" [ngModelOptions]="{standalone: true}">
+            </div>
+            <button type="submit" class="btn btn-inverse-danger btn-sm mr-2" (click)="deleteOpenTime(openTime)">Delete</button>
+            <button type="submit" class="btn btn-inverse-primary btn-sm" (click)="addNewOpenTime(openTime)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form buttons -->
+      <div class="form-cmds always-bottom-panel">
+        <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid || posImageUploader.error">Submit</button>
+        <button class="btn btn-light" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
+      </div>
+      <!-- Form buttons -->
+
+    </fieldset>
+  </form>
+</app-card>

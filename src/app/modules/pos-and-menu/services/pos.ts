@@ -17,6 +17,10 @@ export class POSService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
+  public findById(id: string): Observable<POSDto> {
+    return this.get(`${id}`);
+  }
+
   public find(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<POSDto[]> {
     return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
   }
@@ -31,5 +35,9 @@ export class POSService extends AbstractRestService {
 
   public synchronize() {
     return this.post('', null);
+  }
+
+  update(pos: POSDto): Observable<Response> {
+    return this.patch(`pos/${pos._id}`, pos);
   }
 }
