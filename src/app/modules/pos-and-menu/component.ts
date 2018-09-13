@@ -1,7 +1,9 @@
-import { PosComponent } from './components/list/list.component';
+import { POSEditComponent } from './components/edit/component';
+import { POSComponent } from './components/list/list.component';
 
 const components = [
-    PosComponent
+    POSComponent,
+    POSEditComponent
 ];
 
 export {components};

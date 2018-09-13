@@ -1,5 +1,5 @@
 
-import { ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
+import { DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
@@ -30,10 +30,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   isEdit = false;
   isPublish = false;
   isCreateAnother = false;
-  bannerError: DropifyError;
   rawContent: string;
   isBlurEditor = false;
-  isFinishedBannerComponent = false;
   isFinishedContentComponent = false;
 
   news: News = new News();
@@ -80,7 +78,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   }
 
   loadNews() {
-    if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+    if (!this.isFinishedContentComponent) {
       return;
     }
     if (this.isEdit) {
@@ -120,14 +118,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
 
   get createAnother() {
     return this.formGroup.get('createAnother');
-  }
-
-  hasErrorBanner() {
-    if (this.bannerError) {
-      return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
-        && isNullOrEmptyOrUndefined(this.news.banner);
-    }
-    return false;
   }
 
   hasEmptyAndBlurContent() {
@@ -216,11 +206,6 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
         }
       );
     }
-  }
-
-  finishBannerComponent() {
-    this.isFinishedBannerComponent = true;
-    this.loadNews();
   }
 
   finishContentComponent() {

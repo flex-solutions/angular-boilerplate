@@ -1,15 +1,23 @@
+import { POSEditComponent } from './components/edit/component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PosComponent } from './components/list/list.component';
+import { POSComponent } from './components/list/list.component';
 
 const routes: Routes = [
     {
       path: '',
-      component: PosComponent,
+      component: POSComponent,
       data: {
         breadcrumb: 'SNOB Point Of Sales'
       }
-    }
+    },
+    {
+      path: 'update/:id',
+      component: POSEditComponent,
+      data: {
+        breadcrumb: 'Update POS'
+      }
+    },
 ];
 
 @NgModule({

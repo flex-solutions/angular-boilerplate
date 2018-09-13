@@ -28,7 +28,7 @@
         <td>{{item.expire_date | promotionDate:'dd/MM/y'}}</td>
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
-            <i class="mdi mdi-pencil btn-pink" aria-hidden="false"></i>
+            <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
             <span i18n="@@list-promotions-btn-edit">Edit</span>
           </button>
           <button type="button" class="btn btn-light btn-custom-css" appStartStopButton [status]="item.status" [buttonSize]="0" (click)="startStopPromotion(item)">

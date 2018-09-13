@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { OnInit, Component } from '@angular/core';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
@@ -10,18 +11,17 @@ import { POSDto } from '../../../../shared/models/pos.model';
   selector: 'app-pos',
   templateUrl: './list.component.html',
 })
-export class PosComponent extends AbstractBaseComponent implements OnInit {
+export class POSComponent extends AbstractBaseComponent implements OnInit {
 
   filterEventArgs: IFilterChangedEvent;
   poses: POSDto[] = [];
 
-  constructor(private readonly posService: POSService) {
+  constructor(private readonly posService: POSService,
+    private readonly router: Router) {
     super();
-
   }
 
   ngOnInit() {
-    this.getPoses();
   }
 
   private getPoses() {
@@ -38,11 +38,16 @@ export class PosComponent extends AbstractBaseComponent implements OnInit {
 
   onPageChanged(eventArg: IFilterChangedEvent) {
     this.filterEventArgs = eventArg;
+    this.getPoses();
   }
 
   synchronize() {
     this.posService.synchronize().subscribe(() => {
       this.getPoses();
     });
+  }
+
+  editPos(pos: POSDto) {
+    this.router.navigate([`pos/update/${pos._id}`]);
   }
 }
