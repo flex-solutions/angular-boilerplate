@@ -46,6 +46,10 @@ export class VoucherService extends AbstractRestService {
     return this.post('', dto);
   }
 
+  getById(id: string): Observable<Voucher> {
+    return this.get(`${id}`);
+  }
+
   runVoucher<T extends VoucherOperationDtoBase>(dto: T, type: number): Observable<Response> {
     return this.post(`run-voucher?type=${type}`, dto);
   }

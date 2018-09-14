@@ -211,7 +211,6 @@ export abstract class AbstractRestService {
             ]);
             break;
           default:
-            console.log(displayError);
             break;
         }
       }

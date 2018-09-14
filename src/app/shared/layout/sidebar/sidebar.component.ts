@@ -52,6 +52,10 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([ModuleRoute.VOUCHER]);
   }
 
+  navigateToPosPage() {
+    this.router.navigate([ModuleRoute.POS_AND_MENU]);
+  }
+
   navigateToVoucherCreationPage() {
     this.router.navigate([`${ModuleRoute.VOUCHER}/create`]);
   }

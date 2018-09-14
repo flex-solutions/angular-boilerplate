@@ -4,8 +4,8 @@ export const VoucherMessageConst = {
 };
 
 export const VoucherRouteNames = {
-    CREATE: 'vouchers/create',
-    EDIT: 'vouchers/update/',
-    VOUCHER_HOME: 'vouchers',
-    VIEW: 'vouchers/detail/'
+    CREATE: 'voucher/create',
+    EDIT: 'voucher/update/',
+    VOUCHER_HOME: 'voucher',
+    VIEW: 'voucher/detail/'
   };

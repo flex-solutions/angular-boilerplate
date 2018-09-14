@@ -36,6 +36,10 @@ const routes: Routes = [
     {
       path: 'voucher',
       loadChildren: 'app/modules/vouchers/vouchers.module#VouchersModule',
+    },
+    {
+      path: 'pos',
+      loadChildren: 'app/modules/pos-and-menu/module#PosAndMenuModule',
     }]
   },
   {

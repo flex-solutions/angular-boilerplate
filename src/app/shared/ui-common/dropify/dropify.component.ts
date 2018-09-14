@@ -5,9 +5,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  ViewChild,
-  ElementRef,
-  SimpleChange
 } from '@angular/core';
 import { readBase64 } from '../../../utilities/convert-image-to-base64';
 import { convertStringToBase64 } from '../../../utilities/convertStringToBase64';
@@ -28,23 +25,20 @@ export interface FileInfo {
   size: number;
 }
 
-export enum ErrorType {
-  FileSize,
-  MinWidth,
-  MaxWidth,
-  MinHeight,
-  MaxHeight,
-  ImageFormat
+export interface IDropifyMessage {
+  defaultMessage: string;
+  replaceMessage: string;
+  removeMessage: string;
+  errorMessage: string;
 }
 
-export class DropifyError {
-  errorValue: boolean;
-  errorType: ErrorType;
-
-  constructor(inputValue: boolean = false, errorType: ErrorType = null) {
-    this.errorValue = inputValue;
-    this.errorType = errorType;
-  }
+export interface IDropifyErrorMessage {
+  fileSize: string;
+  minWidth: string;
+  maxWidth: string;
+  minHeight: string;
+  maxHeight: string;
+  imageFormat: string;
 }
 
 @Component({
@@ -54,74 +48,37 @@ export class DropifyError {
 export class DropifyComponent implements AfterViewInit {
   // A max file size
   @Input() maxFileSize: string;
-
   // A allowed file extensions
   @Input() allowedFileExtensions: string;
-
   // Height of input content
   @Input() height: string;
+  @Input() message: IDropifyMessage;
+  @Input() errorMessage: IDropifyErrorMessage;
 
-  // Is show errors
-  @Input() isShowError: boolean;
-
-  // Error message
-  @Input() errorMessage: string;
-
-  // Default message
-  @Input() defaultMessage: string;
-
-  // Replace message
-  @Input() replaceMessage: string;
-
-  // Remove message
-  @Input() removeMessage: string;
-
-  private _image: string;
-  @Input('image')
-  get image(): string {
-    return this._image;
+  @Output() fileChange = new EventEmitter<string>();
+  private _file: string;
+  @Input()
+  get file(): string {
+    return this._file;
   }
-
-  set image(value: string) {
+  set file(value: string) {
     // check value is base 64 or not
     const base64 = convertStringToBase64(value);
-    if (base64 !== value) {
+    if (base64 === this._file) {
       return;
     }
     // when value is base 64, set preview
-    this._image = value;
-    this.imageChange.emit(this._image);
-    if (this.dropify) {
-      this.dropify.showLoader();
-      this.dropify.setPreview(true, this._image);
-    }
+    this.setPreview(base64);
+    setTimeout(() => {
+      this.fileChange.emit(this._file);
+    });
   }
-
-  @Output() imageChange = new EventEmitter<string>();
-
-  private _exportError: DropifyError = new DropifyError();
-  @Input('exportError')
-  get exportError(): DropifyError {
-    return this._exportError;
-  }
-
-  set exportError(value: DropifyError) {
-    this._exportError = value;
-    this.exportErrorChange.emit(this._exportError);
-  }
-
-  @Output() exportErrorChange = new EventEmitter<DropifyError>();
-
-  // Call when have an error occurs
-  @Output() errors = new EventEmitter<any>();
-
-  @Output() onFinishedInitialization = new EventEmitter();
 
   // A dropify instance
   private dropify: any;
   private maxSize = 0;
 
-  constructor() {}
+  public error = false;
 
   ngAfterViewInit() {
     this.initializeDropify();
@@ -142,56 +99,53 @@ export class DropifyComponent implements AfterViewInit {
         this.maxSize *= 1000000;
         break;
     }
-    this.onFinishedInitialization.emit();
 
     // Register droptify error occurs
-    drEvent.on('dropify.error.fileSize', (event, element) => {
-      this.raiseError(ErrorType.FileSize);
+    drEvent.on('dropify.error.fileSize', () => {
+      this.raiseError();
     });
-    drEvent.on('dropify.error.minWidth', (event, element) => {
-      this.raiseError(ErrorType.MinWidth);
+    drEvent.on('dropify.error.minWidth', () => {
+      this.raiseError();
     });
-    drEvent.on('dropify.error.maxWidth', (event, element) => {
-      this.raiseError(ErrorType.MaxWidth);
+    drEvent.on('dropify.error.maxWidth', () => {
+      this.raiseError();
     });
-    drEvent.on('dropify.error.minHeight', (event, element) => {
-      this.raiseError(ErrorType.MinHeight);
+    drEvent.on('dropify.error.minHeight', () => {
+      this.raiseError();
     });
-    drEvent.on('dropify.error.maxHeight', (event, element) => {
-      this.raiseError(ErrorType.MaxHeight);
+    drEvent.on('dropify.error.maxHeight', () => {
+      this.raiseError();
     });
-    drEvent.on('dropify.error.imageFormat', (event, element) => {
-      this.raiseError(ErrorType.ImageFormat);
+    drEvent.on('dropify.error.imageFormat', () => {
+      this.raiseError();
     });
-    drEvent.on('dropify.afterClear', (event, element) => {
-      this.image = '';
+    drEvent.on('dropify.afterClear', () => {
+      this.file = undefined;
       this.resetError();
     });
   }
 
-  raiseError(errorType: ErrorType) {
-    const error = new DropifyError(true, errorType);
-    this.exportError = error;
+  raiseError() {
+    this.error = true;
   }
 
   resetError() {
-    const error = new DropifyError(false, null);
-    this.exportError = error;
+    this.error = false;
   }
 
   onChanged($event) {
     const tgt = $event.target || window.event.srcElement,
-      files = tgt.files;
+    files = tgt.files;
 
     // Convert to base64
     if (files && files.length) {
       if (this.maxSize <= files[0].size) {
-        this.image = '';
+        this.file = undefined;
         return;
       }
       readBase64(files[0]).then(data => {
         if (data) {
-          this.image = data as string;
+          this.file = data as string;
         }
       });
     }
@@ -203,24 +157,45 @@ export class DropifyComponent implements AfterViewInit {
     this.dropify.clearElement();
   }
 
+  private setPreview(value) {
+    if (this._file === value) {
+      return;
+    }
+
+    this._file = value;
+    if (this.dropify) {
+      this.dropify.showLoader();
+      this.dropify.setPreview(true, this._file);
+      this.resetError();
+    }
+  }
+
   private buildOptions() {
     return {
       maxFileSize: this.maxFileSize ? this.maxFileSize : 0,
       allowedFileExtensions: this.allowedFileExtensions
         ? this.allowedFileExtensions
         : ['*'],
-      showErrors: this.isShowError ? this.isShowError : true,
+      showErrors: true,
       messages: {
-        default: this.defaultMessage
-          ? this.defaultMessage
+        default: this.message
+          ? this.message.defaultMessage
           : 'Drag and drop a file here or click',
-        replace: this.replaceMessage
-          ? this.replaceMessage
+        replace: this.message
+          ? this.message.replaceMessage
           : 'Drag and drop or click to replace',
-        remove: this.removeMessage ? this.removeMessage : 'Remove',
-        error: this.errorMessage
-          ? this.errorMessage
+        remove: this.message ? this.message.removeMessage : 'Remove',
+        error: this.message
+          ? this.message.errorMessage
           : 'Ooops, something wrong happended.'
+      },
+      error: {
+        'fileSize': this.errorMessage ? this.errorMessage.fileSize : 'The file size is too big ({{ value }} max)',
+        'minWidth': this.errorMessage ? this.errorMessage.minWidth : 'The image width is too small ({{ value }}}px min)',
+        'maxWidth': this.errorMessage ? this.errorMessage.maxWidth : 'The image width is too big ({{ value }}}px max)',
+        'minHeight': this.errorMessage ? this.errorMessage.minHeight : 'The image height is too small ({{ value }}}px min)',
+        'maxHeight': this.errorMessage ? this.errorMessage.maxHeight : 'The image height is too big ({{ value }}px max)',
+        'imageFormat': this.errorMessage ? this.errorMessage.imageFormat : 'The image format is not allowed ({{ value }} only)'
       }
     };
   }

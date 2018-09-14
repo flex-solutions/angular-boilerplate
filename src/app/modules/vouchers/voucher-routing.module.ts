@@ -25,7 +25,15 @@ const VoucherRoutes: Routes = [
     data: {
       breadcrumb: 'Vouchers are running'
     }
-  }
+  },
+  {
+    // TODO: update after finish create news
+    path: 'update/:id',
+    component: CreateEditVoucherComponent,
+    data: {
+      breadcrumb: 'Edit voucher'
+    }
+  },
 ];
 
 @NgModule({
