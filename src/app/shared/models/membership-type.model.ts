@@ -30,4 +30,5 @@ export class MembershipType extends ModelBase {
   isAccumulated = true;
   staticBenefits: Array<VoucherBenefit>;
   nonBenefits: Array<string>;
+  benefits: Array<string>;
 }
