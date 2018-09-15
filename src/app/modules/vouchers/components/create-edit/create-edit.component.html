@@ -96,7 +96,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1" i18n="@@voucher-create-edit-applicable-restaurants">Danh sách nhà hàng áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="poses" [(selectedItems)]="selectedPoses"></app-select2-multiple>
+            <app-select2-multiple [itemsSource]="poses" [(selectedItems)]="selectedPoses" (selectedItemsChange)="onSelectedPosesChanged()"></app-select2-multiple>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1" i18n="@@voucher-create-edit-applicable-type">Chọn loại áp dụng (bỏ trống nếu áp dụng cho tất cả nhóm món và món)</label>

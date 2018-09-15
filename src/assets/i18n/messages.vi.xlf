@@ -113,7 +113,7 @@
       </trans-unit>
       <trans-unit id="vouchers-running" datatype="html">
         <source>Vouchers Running</source>
-        <target>Danh Sách Voucher Đang Áp Dụng</target>
+        <target>Voucher Đang Áp Dụng</target>
       </trans-unit>
       <trans-unit id="sidebar-pos-and-menu" datatype="html">
         <source>POS & Dishes</source>
@@ -1768,7 +1768,7 @@
       </trans-unit>
       <trans-unit id="vouchers-title" datatype="html">
         <source>Vouchers</source>
-        <target>Danh sách voucher</target>
+        <target>Kho Voucher</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
         <source>E-Voucher</source>
