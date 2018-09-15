@@ -9,8 +9,9 @@ import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
 import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
-import { eq, map } from 'lodash';
+import { eq, map, remove, join, find } from 'lodash';
 import { VoucherFormFactory } from './voucher-form.factory';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
 @Component({
     selector: 'app-voucher-create-edit',
@@ -63,8 +64,11 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     ngOnInit() {
         super.ngOnInit();
         this.createVoucherSuccessMsg = this.translateService.translate('voucher-create-success');
-        this.getPoses();
-        this.getVoucherForEdit();
+        if (!this.isEdit) {
+          this.getPoses();
+        } else {
+          this.getVoucherForEdit();
+        }
     }
 
     ngAfterViewInit() {
@@ -86,10 +90,16 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
       this.voucher.attachGiftOfMenuItemTypes = map(this.selectedAttachMenuItemTypes, 'id');
       this.voucher.attachGiftOfMenuItems = map(this.selectedAttachMenuItems, 'id');
 
-      this.voucherService.create(this.voucher).subscribe(() => {
-        this.notification.showSuccess(this.createVoucherSuccessMsg);
-        this.finish();
-      });
+      if (!this.isEdit) {
+        this.voucherService.create(this.voucher).subscribe(() => {
+          this.notification.showSuccess(this.createVoucherSuccessMsg);
+          this.finish();
+        });
+      } else {
+        this.voucherService.update(this.voucher).subscribe(() => {
+          this.notification.showSuccess(`Voucher "${this.voucher.name}" has been updated`);
+        });
+      }
     }
 
     protected resetForm() {
@@ -111,24 +121,21 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
 
     private getPoses() {
       this.posService.find().subscribe(poses => {
-
         this.poses = poses;
       });
     }
 
     private getMenuItems() {
-      this.posService.findMenuItems().subscribe(menuItems => this.menuItems = menuItems);
+      const posIds = this.getPosIds();
+      this.posService.findMenuItems(posIds).subscribe(menuItems => this.menuItems = menuItems);
     }
 
     private getMenuItemTypes() {
-      this.posService.findMenuItemTypes().subscribe(menuItemTypes => this.menuItemTypes = menuItemTypes);
+      const posIds = this.getPosIds();
+      this.posService.findMenuItemTypes(posIds).subscribe(menuItemTypes => this.menuItemTypes = menuItemTypes);
     }
 
     private getVoucherForEdit() {
-      if (!this.isEdit) {
-        return;
-      }
-
       this.voucherService.getById(this.voucherId).subscribe(res => {
         this.voucher = res;
         if (this.voucher.type !== VoucherType.XGetY) {
@@ -138,7 +145,30 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
           this.voucherGroupType = VoucherGroupType.XGetY;
         }
         this.voucherOperationType = this.voucher.operationType;
+
+        this.getPoses();
       });
+    }
+
+    private removeSelectedGiftSet() {
+      if (this.voucherGroupType === VoucherGroupType.XGetY) {
+        remove(this.selectedAttachMenuItems, item => item.id);
+        remove(this.selectedAttachMenuItemTypes, item => item.id);
+      }
+    }
+
+    private removeSelectedMenus() {
+      remove(this.selectedMenuItems, item => item.id);
+      remove(this.selectedMenuItemTypes, item => item.id);
+    }
+
+    private getPosIds(): string {
+      let posIds = '';
+      if (!isNullOrEmptyOrUndefined(this.selectedPoses)) {
+        const ids = map(this.selectedPoses, 'id');
+        posIds = join(ids, ';');
+      }
+      return posIds;
     }
 
     get code() {
@@ -164,6 +194,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     onApplyMenuTypeChange() {
+      this.removeSelectedMenus();
+      this.removeSelectedGiftSet();
       switch (+this.applyMenuType) {
         case 0:
           this.getMenuItemTypes();
@@ -175,11 +207,20 @@ export class CreateEditVoucherComponent extends AbstractFormComponent implements
     }
 
     buildFormGroupBaseOnVoucherType() {
+      this.removeSelectedGiftSet();
       this.formGroup = this.voucherFormFactory.produceBaseOnVoucherType(this.voucherType);
     }
 
     buildFormGroupBaseOnVoucherOperationType() {
       this.isShowVoucherCodeInput = !eq(+this.voucherOperationType, +VoucherOperationType.BatchExport);
       this.formGroup = this.voucherFormFactory.produceBaseOnVoucherOperationType(this.voucherOperationType);
+    }
+
+    onSelectedPosesChanged() {
+      this.removeSelectedMenus();
+      this.removeSelectedGiftSet();
+
+      this.getMenuItems();
+      this.getMenuItemTypes();
     }
 }

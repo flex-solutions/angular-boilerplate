@@ -22,15 +22,15 @@ export class POSService extends AbstractRestService {
   }
 
   public find(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<POSDto[]> {
-    return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+    return this.get(`?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}}`);
   }
 
-  public findMenuItems(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemDto[]> {
-    return this.get(`menu-items?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  public findMenuItems(poses?: string, pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemDto[]> {
+    return this.get(`menu-items?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}&poses=${poses}`);
   }
 
-  public findMenuItemTypes(pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemTypeDto[]> {
-    return this.get(`menu-item-types?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  public findMenuItemTypes(poses?: string, pageSize?: number, pageNumber?: number, searchKey?: string): Observable<MenuItemTypeDto[]> {
+    return this.get(`menu-item-types?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}&poses=${poses}`);
   }
 
   public synchronize() {
