@@ -1,0 +1,42 @@
+<div class="accordion basic-accordion" id="accordion" role="tablist">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h6 class="mb-0">
+        <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+          <i class="card-icon mdi mdi-filter-outline"></i>
+          <span i18n="@@common_title-filter-tool">Filter Tool</span>
+        </a>
+      </h6>
+    </div>
+    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="form-group">
+              <label i18n="@@vouchers-filter-name-code">Name/Code</label>
+              <input class="form-control" i18n-placeholder="@@vouchers-filter-list-table-placeholder-text" placeholder="Name/Code contain"
+                aria-label="Name" [(ngModel)]="voucherFilter.name" [ngModelOptions]="{standalone: true}" type="text">
+            </div>
+            <br/>
+            <div class="form-group">
+              <label i18n="@@list-vouchers-th-create-date">Created Date</label>
+              <app-date-picker class="dataTables_customfilter startdatepicker" [(date)]="voucherFilter.create_on" style="margin: 0 5px;"></app-date-picker>
+            </div>
+            <br/>
+          </div>
+          <br/>
+          <div class="row" style="margin-left: -4px">
+            <button type="submit" class="btn btn-primary mr-2" (click)="runFilter()">
+              <i class="mdi mdi-filter-outline"></i>
+              <span i18n="@@common_title-filter-run">Run filter</span>
+            </button>
+            <button type="submit" class="btn btn-light mr-2" (click)="resetFilter()">
+              <i class="mdi mdi-filter-remove-outline"></i>
+              <span i18n="@@common_title-filter-reset">Reset filter</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

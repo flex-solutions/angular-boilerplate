@@ -40,11 +40,27 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([ModuleRoute.PROMOTION]);
   }
 
-  navigateToCustomerManagementPage() {
-    this.router.navigate([ModuleRoute.CUSTOMER]);
+  navigateToMemberManagementPage() {
+    this.router.navigate([ModuleRoute.MEMBER]);
   }
 
-  navigateToMemberTypeListPage() {
-    this.router.navigate([`${ModuleRoute.CUSTOMER}/${ModuleRoute.MEMBER_TYPE}`]);
+  navigateToMembershipTypeListPage() {
+    this.router.navigate([`${ModuleRoute.MEMBER}/${ModuleRoute.MEMBERSHIP_TYPE}`]);
+  }
+
+  navigateToVouchersPage() {
+    this.router.navigate([ModuleRoute.VOUCHER]);
+  }
+
+  navigateToPosPage() {
+    this.router.navigate([ModuleRoute.POS_AND_MENU]);
+  }
+
+  navigateToVoucherCreationPage() {
+    this.router.navigate([`${ModuleRoute.VOUCHER}/create`]);
+  }
+
+  navigateToVouchersRunningPage() {
+    this.router.navigate([`${ModuleRoute.VOUCHER}/vouchers-running`]);
   }
 }

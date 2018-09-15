@@ -1,8 +1,8 @@
 <div class="form-row">
-  <div class="col-auto">
-    <app-select2 #provinceSelect [(itemsSource)]="provinces" [(selectedItem)]="cityProvince" (selectedItemChange)="onProvinceChange($event)"></app-select2>
-  </div>
-  <div class="col-auto">
+  <div class="col-md-6">
     <app-select2 #districtSelect [(itemsSource)]="districts" [(selectedItem)]="district"></app-select2>
+  </div>
+  <div class="col-md-6">
+    <app-select2 #provinceSelect [(itemsSource)]="provinces" [(selectedItem)]="cityProvince" (selectedItemChange)="onProvinceChange($event)"></app-select2>
   </div>
 </div>

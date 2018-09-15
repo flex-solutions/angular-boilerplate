@@ -1,0 +1,62 @@
+.membership-type-container {
+    padding-bottom: 20px;
+}
+
+.star-container {
+    display: flex;
+}
+
+.star-container p {
+    margin-bottom: 0px;
+    margin-right: 3px;
+    font-size: 1em;
+}
+
+.rank-promotion-ul {
+    margin-top: 40px;
+    list-style: none;
+    padding-left: 5px;
+}
+
+.rank-promotion-ul li {
+    display: flex;
+}
+
+.rank-promotion-ul li i {
+    font-size: 1.275rem;
+}
+
+.rank-promotion-ul li p {
+    margin-left: 4px;
+    margin-top: 7px;
+    font-size: 0.8rem;
+}
+
+.text-snob {
+    color: #C2A16A;
+}
+
+.star {
+    margin-top: -1px;
+    font-size: 1rem!important;
+}
+
+.add-btn {
+    margin-right: 13px;
+    margin-bottom: 15px;
+}
+
+.last-btn {
+    margin-left: 10px;
+}
+
+.cmd-container {
+    margin-top: 35px;
+    margin-right: -3px;
+}
+
+.status-badge {
+    margin-bottom: 9px;
+    margin-left: 10px;
+    margin-top: 2px;
+}

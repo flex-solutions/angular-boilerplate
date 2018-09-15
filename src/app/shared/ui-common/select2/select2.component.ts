@@ -6,7 +6,8 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Guid } from 'guid-typescript';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
+import * as _ from 'lodash';
 declare const $: any;
 
 @Component({
@@ -17,11 +18,15 @@ export class Select2Component implements AfterViewInit {
   private _selectedItem: any;
   private _itemsSource: any[];
   private _placeholder: string;
+  private _displayPropertyName: string;
+  private _valuePropertyName: string;
 
   elementId: string;
 
-  @Output() selectedItemChange = new EventEmitter();
-  @Output() itemsSourceChange = new EventEmitter();
+  @Output()
+  selectedItemChange = new EventEmitter();
+  @Output()
+  itemsSourceChange = new EventEmitter();
 
   @Input()
   set itemsSource(value) {
@@ -32,13 +37,15 @@ export class Select2Component implements AfterViewInit {
       .empty()
       .select2({
         placeholder: this._placeholder,
-        data: this.formatDataSource(this._itemsSource)
+        data: this.formatDataSource(this._itemsSource),
+        width: 'resolve',
+        dropdownAutoWidth: true
       });
 
     if (this._selectedItem && this._selectedItem.text) {
       this.onSelectedItemChange();
     } else {
-      this.reset();
+      this.host.val(null).trigger('change');
     }
   }
 
@@ -66,6 +73,22 @@ export class Select2Component implements AfterViewInit {
     return this._placeholder;
   }
 
+  @Input()
+  set displayPropertyName(val) {
+    this._displayPropertyName = val;
+  }
+  get displayPropertyName() {
+    return this._displayPropertyName;
+  }
+
+  @Input()
+  set valuePropertyName(val) {
+    this._valuePropertyName = val;
+  }
+  get valuePropertyName() {
+    return this._valuePropertyName;
+  }
+
   constructor() {
     this.elementId = Guid.create().toString();
     this.itemsSource = [];
@@ -75,11 +98,15 @@ export class Select2Component implements AfterViewInit {
     this._placeholder = 'Select a value';
     this.host.select2({
       placeholder: this._placeholder,
-      allowClear: true
+      allowClear: true,
+      width: 'resolve',
+      data: this.formatDataSource(this._itemsSource),
+      dropdownAutoWidth: true
     });
+    this.host.val(null).trigger('change');
     this.host.on('select2:select', e => {
       const data = e.params.data;
-      this.selectedItem = data;
+      this.selectedItem = _.pickBy(data, (val, key) => key !== 'element');
     });
   }
 
@@ -89,7 +116,7 @@ export class Select2Component implements AfterViewInit {
 
   // Because select2 using format {id: string; text: string}
   formatDataSource(arrayData: any[]) {
-    if (isNullOrEmptyOrUndefine(arrayData)) {
+    if (isNullOrEmptyOrUndefined(arrayData)) {
       return [];
     }
     const data = arrayData.map(obj => {
@@ -102,10 +129,17 @@ export class Select2Component implements AfterViewInit {
     if (!obj) {
       return obj;
     }
-    if (!obj.hasOwnProperty('id')) {
+
+    if (!isNullOrEmptyOrUndefined(this.valuePropertyName)) {
+      obj.id = obj[this.valuePropertyName];
+    } else if (!obj.hasOwnProperty('id')) {
       obj.id = obj._id || obj.key;
     }
-    if (!obj.hasOwnProperty('text')) {
+
+    if (!isNullOrEmptyOrUndefined(this.displayPropertyName)) {
+      obj.text = obj[this.displayPropertyName];
+    } else if (!obj.hasOwnProperty('text')) {
+      // Use default behavior
       obj.text = obj.name || obj.displayName;
     }
     return obj;
@@ -113,15 +147,15 @@ export class Select2Component implements AfterViewInit {
 
   reset() {
     this.host.val(null).trigger('change');
-    setTimeout(() => {
-      this.selectedItem = {};
-    });
+    this.selectedItem = {};
   }
 
   onSelectedItemChange() {
     const temp = this.buildSelect2Data(this._selectedItem);
     if (temp && temp.id && temp.text) {
       this.host.val(temp.id).trigger('change');
+    } else {
+      this.host.val(null).trigger('change');
     }
   }
 }

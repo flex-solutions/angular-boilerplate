@@ -7,7 +7,7 @@ import { AuthenticationTokenHelper } from '../../utilities/authentication-token'
 import { AbstractRestService } from '../abstract/abstract-rest-service';
 import { IPermissionModule, IHasPermission } from '../guards/common';
 import { IPermissionScheme, IPermissionSchemeDetail } from '../models/permission-scheme.model';
-import { isNullOrEmptyOrUndefine } from '../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../utilities/util';
 import { equals } from 'ramda';
 import ArrayExtension from '../../utilities/array.extension';
 
@@ -108,23 +108,19 @@ export class AuthenticationService extends AbstractRestService {
 
   hasPermission(permission: IPermissionModule, permissionComponent: any): boolean {
     const currentPermission = <IPermissionScheme> JSON.parse(AuthenticationTokenHelper.userPermissions);
-    if (isNullOrEmptyOrUndefine(currentPermission) || isNullOrEmptyOrUndefine(currentPermission.permission_details)) {
+    if (isNullOrEmptyOrUndefined(currentPermission) || isNullOrEmptyOrUndefined(currentPermission.permission_details)) {
       return false;
     }
 
     const permissionDetail = ArrayExtension.getItem(currentPermission.permission_details,
       pd => equals(pd.controller.name, permission.module)) as IPermissionSchemeDetail;
-    if (isNullOrEmptyOrUndefine(permissionDetail)) {
+    if (isNullOrEmptyOrUndefined(permissionDetail)) {
       return false;
     }
-
-    console.log(permissionComponent.prototype);
 
     permissionComponent.prototype.canInsert = permissionDetail.is_insert;
     permissionComponent.prototype.canUpdate = permissionDetail.is_update;
     permissionComponent.prototype.canDelete = permissionDetail.is_delete;
-
-    console.log(permissionComponent.prototype);
 
     return true;
   }
