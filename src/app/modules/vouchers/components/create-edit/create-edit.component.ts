@@ -144,14 +144,38 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     const posIds = this.getPosIds();
     this.posService
       .findMenuItems(posIds)
-      .subscribe(menuItems => (this.menuItems = menuItems));
+      .subscribe(menuItems => {
+        this.menuItems = menuItems;
+        if (this.isEdit && this.voucher) {
+          if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItems)) {
+            this.selectedMenuItems = this.menuItems.filter(
+              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItems.find(p => p === i._id)));
+          }
+          if (!isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems)) {
+            this.selectedAttachMenuItems = this.menuItems.filter(
+              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems.find(p => p === i._id)));
+          }
+        }
+      });
   }
 
   private getMenuItemTypes() {
     const posIds = this.getPosIds();
     this.posService
       .findMenuItemTypes(posIds)
-      .subscribe(menuItemTypes => (this.menuItemTypes = menuItemTypes));
+      .subscribe(menuItemTypes => {
+        this.menuItemTypes = menuItemTypes;
+        if (this.isEdit && this.voucher) {
+          if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
+            this.selectedMenuItemTypes = this.menuItemTypes.filter(
+              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes.find(p => p === i._id)));
+          }
+          if (!isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes)) {
+            this.selectedAttachMenuItemTypes = this.menuItemTypes.filter(
+              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes.find(p => p === i._id)));
+          }
+        }
+      });
   }
 
   private async getVoucherForEdit() {
@@ -181,6 +205,13 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
             this.voucher.applyHourRanges.find(p => p === i.id)
           )
       );
+
+      if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
+        this.applyMenuType = 0;
+      } else {
+        this.applyMenuType = 1;
+      }
+
       if (this.voucher.type !== VoucherType.XGetY) {
         this.isDiscountAmount =
           this.voucher.type === VoucherType.DiscountAmount;

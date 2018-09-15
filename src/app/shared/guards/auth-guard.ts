@@ -35,7 +35,6 @@ export class AuthGuard implements CanActivate {
     //   } else {
     //     const component = route.component;
     //     if (component) {
-    //       console.log(route);
     //       const permissionDecorator = Reflect.getMetadata(PermissionDecoratorKey, component) as IPermissionModule;
     //       if (permissionDecorator) {
     //         return this.authenticationService.hasPermission(permissionDecorator, component);
