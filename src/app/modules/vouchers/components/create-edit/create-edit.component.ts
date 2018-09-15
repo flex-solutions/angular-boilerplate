@@ -13,11 +13,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { VoucherCreationData } from '../../data';
-import {
-  MenuItemDto,
-  MenuItemTypeDto
-} from '../../../../shared/models/menu.model';
-import { eq, map, remove, join, find } from 'lodash';
+import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
+import { eq, map, remove, join, find, isEmpty } from 'lodash';
 import { VoucherFormFactory } from './voucher-form.factory';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
