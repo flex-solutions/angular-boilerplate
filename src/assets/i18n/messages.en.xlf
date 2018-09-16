@@ -1857,6 +1857,10 @@
         <source>Program name</source>
         <target>Program name</target>
       </trans-unit>
+      <trans-unit id="voucher-description" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
       <trans-unit id="voucher-create-edit-voucher-code" datatype="html">
         <source>Voucher code</source>
         <target>Voucher code</target>
@@ -1968,6 +1972,10 @@
       <trans-unit id="voucher-create-edit-validation-name-required" datatype="html">
         <source>Please input program name</source>
         <target>Please input program name</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-description-required" datatype="html">
+        <source>Please input description</source>
+        <target>Please input description</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-name-special-char" datatype="html">
         <source>Program name doesn't allow special characters</source>
