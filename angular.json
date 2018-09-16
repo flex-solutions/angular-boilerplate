@@ -11,10 +11,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cms-en",
+            "outputPath": "dist/vi",
             "aot": true,
-            "i18nFile": "src/assets/i18n/messages.en.xlf",
-            "i18nLocale": "en",
+            "i18nFile": "src/assets/i18n/messages.vi.xlf",
+            "i18nLocale": "vi",
             "i18nFormat": "xlf",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -39,25 +39,14 @@
             ]
           },
           "configurations": {
-            "production": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
+            "production-vi": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
-            },
-            "production-vi": {
-              "outputPath": "dist/cms-vi",
+              ],
+              "outputPath": "dist/vi",
               "i18nFile": "src/assets/i18n/messages.vi.xlf",
               "i18nLocale": "vi",
               "i18nFormat": "xlf",
@@ -69,16 +58,16 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
+              "buildOptimizer": true
+            },
+            "production-en": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
-            },
-            "production-en": {
-              "outputPath": "dist/cms-en",
+              ],
+              "outputPath": "dist/en",
               "i18nFile": "src/assets/i18n/messages.en.xlf",
               "i18nLocale": "en",
               "i18nFormat": "xlf",
@@ -90,13 +79,7 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "buildOptimizer": true
             }
           }
         },
