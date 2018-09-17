@@ -41,5 +41,5 @@ export const appVariables = {
     return `http://docs.google.com/gview?url=${url}&embedded=true`;
   },
   defaultHOBranch: 'Head Office',
-  noSpecialCharactersRegex: /^[^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:]+$/
+  noSpecialCharactersRegex: /^[^\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:]+$/,
 };

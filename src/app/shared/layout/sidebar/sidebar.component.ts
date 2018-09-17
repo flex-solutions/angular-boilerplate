@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { BasicUserInfo } from '../../models/user.model';
 import { ModuleRoute } from '../../constants/const';
+import { VERSION_TOKEN, IVersionController } from '../../interfaces/version';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,7 +15,8 @@ export class SidebarComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    @Inject(VERSION_TOKEN) private readonly versionController: IVersionController) { }
 
   ngOnInit() {
     this.currentUser = this.authenticationService.getCurrentUser();
@@ -62,5 +64,9 @@ export class SidebarComponent implements OnInit {
 
   navigateToVouchersRunningPage() {
     this.router.navigate([`${ModuleRoute.VOUCHER}/vouchers-running`]);
+  }
+
+  showVersion() {
+    this.versionController.showVersion();
   }
 }
