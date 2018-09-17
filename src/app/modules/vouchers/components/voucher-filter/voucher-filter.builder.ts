@@ -17,7 +17,7 @@ export class VoucherCriteriaBuilder {
         voucherFilter[voucherFilterFields.NAME]
       )
       .withFilter(
-        FilterType.Regex,
+        FilterType.Equal,
         voucherFilterFields.CREATE_ON,
         voucherFilter[voucherFilterFields.CREATE_ON]
       );
