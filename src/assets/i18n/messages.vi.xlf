@@ -1852,6 +1852,10 @@
         <source>Program name</source>
         <target>Tên chương trình</target>
       </trans-unit>
+      <trans-unit id="voucher-description" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
       <trans-unit id="voucher-create-edit-voucher-code" datatype="html">
         <source>Voucher code</source>
         <target>Mã voucher</target>
@@ -1963,6 +1967,10 @@
       <trans-unit id="voucher-create-edit-validation-name-required" datatype="html">
         <source>Please input program name</source>
         <target>Vui lòng nhập tên chương trình</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-description-required" datatype="html">
+        <source>Please input description</source>
+        <target>Vui lòng mô tả ngắn gọn về voucher này</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-name-special-char" datatype="html">
         <source>Program name doesn't allow special characters</source>

@@ -18,6 +18,12 @@ export class VoucherFormFactory {
           message: 'voucher-create-edit-validation-name-special-char'
       }
     ],
+    description: [
+      {
+        type: 'required',
+        message: 'voucher-create-edit-validation-description-required'
+      },
+    ],
     code: [
       {
         type: 'required',
@@ -56,6 +62,8 @@ export class VoucherFormFactory {
   private initForm() {
     this.formGroup = this.formBuilder.group({});
     this.formGroup.addControl(Voucher.validationFields.name, new FormControl('',
+    [ Validators.required ]));
+    this.formGroup.addControl(Voucher.validationFields.description, new FormControl('',
     [ Validators.required ]));
   }
 

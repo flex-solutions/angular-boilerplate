@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build-i18n
+# RUN npm run build-i18n
 
 # Stage 1, Based on Nginx
 FROM nginx:1.15.2-alpine

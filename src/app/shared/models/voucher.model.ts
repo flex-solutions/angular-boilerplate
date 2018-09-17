@@ -52,6 +52,7 @@ export const VoucherApplyHourRanges = {
 export class Voucher extends ModelBase {
   static validationFields = {
     name: 'name',
+    description: 'description',
     code: 'code',
     discount: 'discount'
   };
@@ -82,6 +83,7 @@ export class Voucher extends ModelBase {
   advApplyMenuItemAllow: VoucherAdvanceMenuItemPriceAlow;
   advApplyFromMenuItemIndex: number;
   notificationMessage: string;
+  description: string;
 }
 
 export enum VoucherStatus {

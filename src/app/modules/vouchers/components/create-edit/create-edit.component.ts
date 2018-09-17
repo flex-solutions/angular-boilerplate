@@ -256,6 +256,10 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     return this.formGroup.get(Voucher.validationFields.discount);
   }
 
+  get description() {
+    return this.formGroup.get(Voucher.validationFields.description);
+  }
+
   get voucherType() {
     if (+this.voucherGroupType === VoucherGroupType.Discount) {
       if (this.isDiscountAmount) {
