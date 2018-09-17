@@ -1,5 +1,5 @@
 
-import { ErrorType, DropifyComponent, DropifyError } from './../../../../shared/ui-common/dropify/dropify.component';
+import { DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { News } from './../../../../shared/models/news.model';
 import { NewsService } from './../../services/news.service';
@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { Errors } from '../../constants/news.constant';
 import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 
 const TITLE_CREATE_NEWS = 'news-create_edit_news-h4-create_news';
@@ -30,10 +30,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   isEdit = false;
   isPublish = false;
   isCreateAnother = false;
-  bannerError: DropifyError;
   rawContent: string;
   isBlurEditor = false;
-  isFinishedBannerComponent = false;
   isFinishedContentComponent = false;
 
   news: News = new News();
@@ -79,8 +77,8 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     this.onCreateForm();
   }
 
-  LoadNews() {
-    if (!this.isFinishedBannerComponent || !this.isFinishedContentComponent) {
+  loadNews() {
+    if (!this.isFinishedContentComponent) {
       return;
     }
     if (this.isEdit) {
@@ -110,20 +108,20 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     return this.formGroup.get('banner');
   }
 
+  get isNotification() {
+    return this.formGroup.get('isNotification');
+  }
+
+  get notificationMessage() {
+    return this.formGroup.get('notificationMessage');
+  }
+
   get createAnother() {
     return this.formGroup.get('createAnother');
   }
 
-  hasErrorBanner() {
-    if (this.bannerError) {
-      return this.bannerError.errorType === ErrorType.FileSize && this.bannerError.errorValue === true
-        && isNullOrEmptyOrUndefine(this.news.banner);
-    }
-    return false;
-  }
-
   hasEmptyAndBlurContent() {
-    if (isNullOrEmptyOrUndefine(this.rawContent)) {
+    if (isNullOrEmptyOrUndefined(this.rawContent)) {
       return this.isBlurEditor;
     }
     return false;
@@ -134,7 +132,9 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
       title: ['', [Validators.required]],
       banner: ['', []],
       content: ['', []],
-      createAnother: ['', []]
+      createAnother: ['', []],
+      isNotification: ['', []],
+      notificationMessage: ['', []],
     });
   }
 
@@ -142,7 +142,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
 
   protected onSubmit() {
     if (!this.isEdit) {
-      this.news.brief_content = this.ValidateRawContent();
+      this.news.brief_content = this.validateRawContent();
       this.newsService.create(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification
@@ -158,7 +158,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
   }
 
   public submitAndPublishNews() {
-    this.news.brief_content = this.ValidateRawContent();
+    this.news.brief_content = this.validateRawContent();
     this.newsService.createAndPublish(this.news).subscribe(
       (value: News) => {
         // * Create news successful, display success notification
@@ -193,7 +193,7 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
 
   saveNews() {
     if (this.isEdit) {
-      this.news.brief_content = this.ValidateRawContent();
+      this.news.brief_content = this.validateRawContent();
       this.newsService.update(this.news).subscribe(
         (value: News) => {
           // * Create news successful, display success notification
@@ -208,17 +208,12 @@ export class CreateEditNewsComponent extends AbstractFormComponent implements On
     }
   }
 
-  finishBannerComponent() {
-    this.isFinishedBannerComponent = true;
-    this.LoadNews();
-  }
-
   finishContentComponent() {
     this.isFinishedContentComponent = true;
-    this.LoadNews();
+    this.loadNews();
   }
 
-  private ValidateRawContent(): string {
+  private validateRawContent(): string {
     if (this.rawContent.length > BRIEF_LENGTH) {
       return this.rawContent.substring(0, BRIEF_LENGTH) + '...';
     }

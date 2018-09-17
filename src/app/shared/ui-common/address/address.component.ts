@@ -4,15 +4,12 @@ import {
   Input,
   Output,
   EventEmitter,
-  ViewChildren,
-  QueryList,
   ViewChild
 } from '@angular/core';
 import { Province, District } from '../../models/address.model';
 import { AddressService } from './address.service';
 import { Select2Component } from '../select2/select2.component';
-import { isNullOrEmptyOrUndefine } from '../../../utilities/util';
-import { R } from 'ramda';
+import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 
 @Component({
   selector: 'app-address',
@@ -62,7 +59,6 @@ export class AddressComponent implements OnInit {
 
   set districts(val) {
     this._districts = val;
-    this.districtSelectControl.reset();
   }
 
   constructor(private readonly addressService: AddressService) {}

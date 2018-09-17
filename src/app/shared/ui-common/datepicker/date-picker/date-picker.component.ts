@@ -8,7 +8,7 @@ import {
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
-import { isNullOrEmptyOrUndefine } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 declare const $: any;
 declare const moment: any;
 
@@ -19,6 +19,7 @@ declare const moment: any;
 })
 export class DatePickerComponent implements OnInit, AfterViewInit {
   private _date: Date;
+  private _ignoreSetStartEndDate: boolean;
 
   elementId: string;
   inputClasses: string;
@@ -38,9 +39,19 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   set date(value: Date) {
     this._date = value;
     // set value
-    if (this._date && this._date) {
+    if (isNullOrEmptyOrUndefined(this._date)) {
+      this.picker.val('');
+    } else {
       const date = moment(this._date);
       this.picker.val(date.format('DD/MM/YYYY'));
+      if (!this._ignoreSetStartEndDate) {
+        const dateRangePicker = this.picker.data('daterangepicker');
+        if (dateRangePicker) {
+          dateRangePicker.setStartDate(date);
+          dateRangePicker.setEndDate(date);
+        }
+      }
+      this._ignoreSetStartEndDate = false;
     }
     this.dateChange.emit(this._date);
   }
@@ -59,8 +70,19 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.initialize();
 
+    // Incase the value of date was before view init
+    const displayText = this.picker.val();
+    if (
+      isNullOrEmptyOrUndefined(displayText) &&
+      !isNullOrEmptyOrUndefined(this._date)
+    ) {
+      const date = moment(this._date);
+      this.picker.val(date.format('DD/MM/YYYY'));
+    }
+
     this.picker.on('apply.daterangepicker', (ev, picker) => {
       this.picker.val(picker.startDate.format('DD/MM/YYYY'));
+      this._ignoreSetStartEndDate = true;
       this.date = new Date(picker.startDate.toISOString());
     });
 
@@ -73,8 +95,8 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     this.picker.daterangepicker(
       {
         singleDatePicker: true,
-        startDate: moment(this.date),
-        endDate: moment(this.date),
+        startDate: moment(this.date ? this.date : new Date()),
+        endDate: moment(this.date ? this.date : new Date()),
         autoUpdateInput: false,
         ranges: this.buildRanges(),
         showDropdowns: true,
@@ -95,6 +117,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
       },
       (start, end, label) => {
         const result = new Date(start.toISOString());
+        this._ignoreSetStartEndDate = true;
         this.date = result;
       }
     );
@@ -132,6 +155,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   reset() {
+    this._ignoreSetStartEndDate = true;
     this.date = null;
     this.picker.val('');
   }
@@ -145,13 +169,15 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   onInputChanged($event) {
-    if (!isNullOrEmptyOrUndefine($event) && $event.target) {
+    if (!isNullOrEmptyOrUndefined($event) && $event.target) {
       try {
         const timeSpan = Date.parse($event.target.value);
         if (isNaN(timeSpan)) {
+          this._ignoreSetStartEndDate = true;
           this.date = null;
         }
       } catch {
+        this._ignoreSetStartEndDate = true;
         this.date = null;
       }
     }

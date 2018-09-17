@@ -14,8 +14,10 @@ const ModuleRoute = {
     PERMISSION_SCHEMES: 'permission-schemes',
     NEWS: 'news',
     PROMOTION: 'promotions',
-    CUSTOMER: 'customers',
-    MEMBER_TYPE: 'member-type'
+    MEMBER: 'members',
+    MEMBERSHIP_TYPE: 'membership-type',
+    VOUCHER : 'voucher',
+    POS_AND_MENU: 'pos'
 };
 
 const PagingDefault = {

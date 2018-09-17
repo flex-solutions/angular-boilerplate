@@ -30,8 +30,16 @@ const routes: Routes = [
       loadChildren: 'app/modules/promotions/promotions.module#PromotionsModule',
     },
     {
-      path: 'customers',
-      loadChildren: 'app/modules/customers/customer.module#CustomerManagementModule',
+      path: 'members',
+      loadChildren: 'app/modules/member/member.module#MemberModule',
+    },
+    {
+      path: 'voucher',
+      loadChildren: 'app/modules/vouchers/vouchers.module#VouchersModule',
+    },
+    {
+      path: 'pos',
+      loadChildren: 'app/modules/pos-and-menu/module#PosAndMenuModule',
     }]
   },
   {

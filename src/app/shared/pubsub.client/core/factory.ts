@@ -23,13 +23,10 @@ export class NotificationChannelFactory implements INotificationChannelFactory {
     }
 
     public host() {
-        console.log('connecting to socket server: ' + this.configService.config.host);
         this.socket = io(this.configService.config.host);
         this.socket.on('connect', () => {
-            console.log('connected to ws server');
         });
         this.socket.on('disconnect', () => {
-            console.log('Disconnected to ws socket server');
         });
     }
     get<T extends PubSubMessageBase>(channel: string): INotificationChannel<T> {

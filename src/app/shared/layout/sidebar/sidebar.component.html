@@ -12,15 +12,9 @@
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer;" (click)="navigateToUsersPage()" aria-controls="icons">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/12.png" alt="menu icon">
-      <span class="menu-title" i18n="@@layout-sidebar-anchor-user-management">User Management</span>
-    </a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-controls="page-layouts">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/01.png" alt="menu icon">
-      <span class="menu-title" i18n="@@layout-sidebar-anchor-permission-management">Permission Management</span>
+      <img class="menu-icon" src="assets/images/menu_icons/07.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-user-and-permission">User & Permission</span>
       <i class="menu-arrow"></i>
     </a>
     <div class="collapse" id="page-layouts">
@@ -35,52 +29,98 @@
             <span i18n="@@layout-sidebar-anchor-user-group-management">User Groups</span>
           </a>
         </li>
-      </ul>
-    </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer;" (click)="navigateToNewsPage()" aria-controls="icons">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/08.png" alt="menu icon">
-      <span class="menu-title" i18n="@@layout-sidebar-anchor-news-management">News Management</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#page-promotion-layouts" aria-controls="page-promotion-layouts">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/17.png" alt="menu icon">
-      <span class="menu-title" i18n="@@layout-sidebar-anchor-promotion-management">Promotion Management</span>
-      <i class="menu-arrow"></i>
-    </a>
-    <div class="collapse" id="page-promotion-layouts">
-      <ul class="nav flex-column sub-menu">
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" (click)="navigateToPromotionPage()">
-            <span i18n="@@layout-sidebar-anchor-promotion">Promotion</span>
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToUsersPage()" aria-controls="icons">
+            <span class="menu-title" i18n="@@layout-sidebar-anchor-user-management">Users</span>
           </a>
         </li>
       </ul>
     </div>
   </li>
   <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#page-layouts-pos-and-menu"  (click)="navigateToPosPage()" aria-controls="page-layouts">
+      <img class="menu-icon" src="assets/images/menu_icons/12.png" alt="menu icon">
+      <span class="menu-title" i18n="@@sidebar-pos-and-menu">Nhà Hàng & Thực Đơn</span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#crm-marketing-sub-menu" aria-controls="crm-marketing-sub-menu">
-      <img class="menu-icon" src="../../../../assets/images/menu_icons/10.png" alt="menu icon">
+      <img class="menu-icon" src="assets/images/menu_icons/17.png" alt="menu icon">
       <span class="menu-title" i18n="@@layout-sidebar-anchor-member-management">Member Management</span>
       <i class="menu-arrow"></i>
     </a>
     <div class="collapse" id="crm-marketing-sub-menu">
       <ul class="nav flex-column sub-menu">
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" (click)="navigateToCustomerManagementPage()" aria-controls="icons">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToMemberManagementPage()" aria-controls="icons">
             <span i18n="@@layout-sidebar-anchor-member-management-members">Members</span>
           </a>
         </li>
       </ul>
       <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" (click)="navigateToMemberTypeListPage()" aria-controls="icons">
-              <span i18n="@@member-type-menu">Membership Types</span>
-            </a>
-          </li>
-        </ul>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToMembershipTypeListPage()" aria-controls="icons">
+            <span i18n="@@membership-type-menu">Membership Types</span>
+          </a>
+        </li>
+      </ul>
     </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#page-marketing-layouts" aria-controls="page-marketing-layouts">
+      <img class="menu-icon" src="assets/images/menu_icons/20.png" alt="menu icon">
+      <span class="menu-title">Marketing</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="page-marketing-layouts">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToNewsPage()">
+            <span class="menu-title" i18n="@@layout-sidebar-anchor-news-management">News</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToPromotionPage()">
+            <span i18n="@@layout-sidebar-anchor-customer-care">Customer Care Campaign</span>
+          </a>
+        </li> -->
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#crm-e-voucher-sub-menu" aria-controls="crm-e-voucher-sub-menu">
+      <img class="menu-icon" src="assets/images/menu_icons/08.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-voucher-management">E-Voucher</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="crm-e-voucher-sub-menu">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToVouchersRunningPage()" aria-controls="icons">
+            <span i18n="@@vouchers-running">Voucher Running</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToVoucherCreationPage()" aria-controls="icons">
+            <span i18n="@@vouchers-create">Create New Voucher</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToVouchersPage()" aria-controls="icons">
+            <span i18n="@@vouchers-title">Vouchers</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#crm-about" (click)="showVersion()" aria-controls="crm-about">
+      <img class="menu-icon" src="assets/images/menu_icons/16.png" alt="menu icon">
+      <span class="menu-title">About</span>
+    </a>
   </li>
 </ul>

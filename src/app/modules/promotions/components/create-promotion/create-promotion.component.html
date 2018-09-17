@@ -16,14 +16,7 @@
             <div class="form-group">
               <label for="banner" style="font-weight: 400" i18n="@@promotions-create_edit_promotion-label-banner_field">Banner </label>
               <label class="require">*</label>
-              <app-dropify 
-                height="400"
-                allowedFileExtensions="jpg png jpeg" maxFileSize="500K" isShowError="false" errorMessage=" "
-                (onFinishedInitialization) = "finishBannerComponent()"
-                [(image)]="promotion.banner" [(exportError)] = "bannerError"></app-dropify>
-              <label id="title-error" class="error mt-2 text-danger" for="name" style="margin-left: 0;" i18n="@@promotion-create_promotion-error-banner_exceed_size"
-                *ngIf="hasErrorBanner()">The banner size doesn't exceed 500kb</label>
-              <br *ngIf="!hasErrorBanner()"/>
+              <app-dropify height="400" allowedFileExtensions="jpg png jpeg" maxFileSize="500K" [(file)]="promotion.banner"></app-dropify>
             </div>
           </div>
 
@@ -45,7 +38,7 @@
       <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers">
         <p>COMING SOON</p>
       </app-wizard-step>
-      <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Customer Target">
+      <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field" title="Member Target">
         <p>COMING SOON</p>
       </app-wizard-step>
       <!--Extend wizard button. Current step = 2 mean that is last wizard step-->

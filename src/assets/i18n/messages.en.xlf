@@ -36,6 +36,14 @@
         <source>Filter tool</source>
         <target>Filter tool</target>
       </trans-unit>
+      <trans-unit id="common_title-filter-run" datatype="html">
+        <source>Run filter</source>
+        <target>Run filter</target>
+      </trans-unit>
+      <trans-unit id="common_title-filter-reset" datatype="html">
+        <source>Reset filter</source>
+        <target>Reset filter</target>
+      </trans-unit>
       <trans-unit id="common_label-sex-man" datatype="html">
         <source>Man</source>
         <target>Man</target>
@@ -47,6 +55,10 @@
       <trans-unit id="common_label-sex-other" datatype="html">
         <source>Other</source>
         <target>Other</target>
+      </trans-unit>
+      <trans-unit id="common_label-push_notification_msg" datatype="html">
+        <source>Push notification message</source>
+        <target>Push notification message</target>
       </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
@@ -68,33 +80,29 @@
         <target>Demo</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-management" datatype="html">
-        <source>User Management</source>
-        <target>User Management</target>
+        <source>Users</source>
+        <target>Users</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-user-group-management" datatype="html">
         <source>User Groups</source>
         <target>User Groups</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-permission-management" datatype="html">
-        <source>Permission Management</source>
-        <target>Permission Management</target>
+      <trans-unit id="layout-sidebar-anchor-user-and-permission" datatype="html">
+        <source>User & Permission</source>
+        <target>User & Permission</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-permission-schemes" datatype="html">
         <source>Permission Schemes</source>
         <target>Permission Schemes</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-news-management" datatype="html">
-        <source>News Management</source>
-        <target>News Management</target>
+        <source>News</source>
+        <target>News</target>
       </trans-unit>
 
-      <trans-unit id="layout-sidebar-anchor-promotion-management" datatype="html">
-        <source>Promotion Management</source>
-        <target>Promotion Management</target>
-      </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-promotion" datatype="html">
-        <source>Promotion</source>
-        <target>Promotion</target>
+      <trans-unit id="layout-sidebar-anchor-customer-care" datatype="html">
+        <source>Customer Care Campaign</source>
+        <target>Customer Care Campaign</target>
       </trans-unit>
 
       <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
@@ -104,6 +112,14 @@
       <trans-unit id="layout-sidebar-anchor-member-management-members" datatype="html">
         <source>Members</source>
         <target>Members</target>
+      </trans-unit>
+      <trans-unit id="vouchers-running" datatype="html">
+        <source>Vouchers Running</source>
+        <target>Vouchers Running</target>
+      </trans-unit>
+      <trans-unit id="sidebar-pos-and-menu" datatype="html">
+        <source>POS & Dishes</source>
+        <target>POS & Dishes</target>
       </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -624,11 +640,13 @@
         <target>Delete user group</target>
       </trans-unit>
       <trans-unit id="user_groups-user_groups_list-delete_user_group_action_message" datatype="html">
-        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users".
+        <source> The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group
+        "snob-cms-users".
         Are you sure you want to deleted?
         </source>
         <target>
-          The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group "snob-cms-users". Are you
+          The user group "{{0}}"" will be permanently deleted and all users will be moved to the user group
+          "snob-cms-users". Are you
           sure you want to deleted?
         </target>
       </trans-unit>
@@ -878,9 +896,11 @@
         <target>Delete permission scheme</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-confirm" datatype="html">
-        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        <source>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the
+        "default-user-permission-scheme".
         Are you sure you want to delete?</source>
-        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the "default-user-permission-scheme".
+        <target>The permission scheme "{{0}}"" will be deleted permanently deleted and all groups will be moved to the
+          "default-user-permission-scheme".
           Are you sure you want to delete?</target>
       </trans-unit>
       <trans-unit id="permission_scheme-delete-success" datatype="html">
@@ -1017,10 +1037,6 @@
       <trans-unit id="news-create_edit_news-input-content_place_holder" datatype="html">
         <source>Enter content</source>
         <target>Enter content</target>
-      </trans-unit>
-      <trans-unit id="news-create_edit_news-button-submit" datatype="html">
-        <source>Submit</source>
-        <target>Submit</target>
       </trans-unit>
       <trans-unit id="news-create_edit_news-button-submit_publish" datatype="html">
         <source>Submit & publish</source>
@@ -1230,8 +1246,8 @@
         <target>Voucher</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-wizard_step-custmer_title_field" datatype="html">
-        <source>Customer Target</source>
-        <target>Customer Target</target>
+        <source>Member Target</source>
+        <target>Member Target</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-input-title_place_holder" datatype="html">
         <source>Enter news title</source>
@@ -1328,8 +1344,8 @@
         <target>Publish</target>
       </trans-unit>
       <trans-unit id="list-news-btn-edit" datatype="html">
-        <source>Edit</source>
-        <target>Edit</target>
+        <source>Edit news</source>
+        <target>Edit news</target>
       </trans-unit>
       <trans-unit id="list-news-btn-delete" datatype="html">
         <source>Delete news</source>
@@ -1504,214 +1520,530 @@
         <target>Last month</target>
       </trans-unit>
       <!--END Date time picker-->
-      <!--Start Customer Module-->
-      <trans-unit id="customers-list-tbl-title" datatype="html">
+      <!--Start Member Module-->
+      <trans-unit id="members-list-tbl-title" datatype="html">
         <source>Members</source>
         <target>Members</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-btn-create" datatype="html">
+      <trans-unit id="members-tbl-btn-create" datatype="html">
         <source>New member</source>
         <target>New member</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-name" datatype="html">
+      <trans-unit id="members-tbl-name" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-member-id" datatype="html">
+      <trans-unit id="members-tbl-member-id" datatype="html">
         <source>Member ID</source>
         <target>Member ID</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-phone-number" datatype="html">
+      <trans-unit id="members-tbl-phone-number" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-birthday" datatype="html">
+      <trans-unit id="members-tbl-birthday" datatype="html">
         <source>Birthday</source>
         <target>Birthday</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-sex" datatype="html">
+      <trans-unit id="members-tbl-sex" datatype="html">
         <source>Sex</source>
         <target>Sex</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-address" datatype="html">
+      <trans-unit id="members-tbl-address" datatype="html">
         <source>Address</source>
         <target>Address</target>
       </trans-unit>
-      <trans-unit id="customers-tbl-customer-point" datatype="html">
+      <trans-unit id="members-tbl-member-point" datatype="html">
         <source>Point</source>
         <target>Point</target>
       </trans-unit>
-      <!--End Customer Module-->
-      <!--Start Create Edit Customer Module-->
-      <trans-unit id="customer-create_edit_customer-h4-create_customer" datatype="html">
+      <!--End Member Module-->
+      <!--Start Create Edit Member Module-->
+      <trans-unit id="member-create_edit_member-h4-create_member" datatype="html">
         <source>Create member</source>
         <target>Create member</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-h4-create_customer_description" datatype="html">
-        <source>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+      <trans-unit id="member-create_edit_member-h4-create_member_description" datatype="html">
+        <source>Manual creating a new member account, member can user phone number to login mobile app and this account
+        will be also
         created on IPOS system</source>
-        <target>Manual creating a new member account, member can user phone number to login mobile app and this account will be also
+        <target>Manual creating a new member account, member can user phone number to login mobile app and this account
+          will be also
           created on IPOS system</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-h4-edit_customer" datatype="html">
+      <trans-unit id="member-create_edit_member-h4-edit_member" datatype="html">
         <source>Edit member</source>
         <target>Edit member</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-h4-edit_customer_description" datatype="html">
+      <trans-unit id="member-create_edit_member-h4-edit_member_description" datatype="html">
         <source>Manual editing a member account, all change information will be also updated to IPOS</source>
         <target>Manual editing a member account, all change information will be also updated to IPOS</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-name_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-name_field" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-input-name_place_holder" datatype="html">
+      <trans-unit id="member-create_edit_member-input-name_place_holder" datatype="html">
         <source>Enter member name</source>
         <target>Enter member name</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-name_require" datatype="html">
+      <trans-unit id="member-create_edit_member-label-name_require" datatype="html">
         <source>Please provide member name</source>
         <target>Please provide member name</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-phone_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-name_pattern" datatype="html">
+        <source>Member name contains invalid characters.</source>
+        <target>Member name contains invalid characters.</target>
+      </trans-unit>
+      <trans-unit id="member-create_edit_member-label-phone_field" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-input-phone_place_holder" datatype="html">
+      <trans-unit id="member-create_edit_member-input-phone_place_holder" datatype="html">
         <source>Enter member phone</source>
         <target>Enter member phone</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-phone_require" datatype="html">
+      <trans-unit id="member-create_edit_member-label-phone_require" datatype="html">
         <source>Please provide phone number</source>
         <target>Please provide phone number</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-birthday_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-birthday_field" datatype="html">
         <source>Birthday</source>
         <target>Birthday</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-type_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-type_field" datatype="html">
         <source>Membership type</source>
         <target>Membership type</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-sex_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-sex_field" datatype="html">
         <source>Sex</source>
         <target>Sex</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-address_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-address_field" datatype="html">
         <source>Address</source>
         <target>Address</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-district_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-district_field" datatype="html">
         <source>District</source>
         <target>District</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-city_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-city_field" datatype="html">
         <source>City/Province</source>
         <target>City/Province</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-label-email_field" datatype="html">
+      <trans-unit id="member-create_edit_member-label-email_field" datatype="html">
         <source>Email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="customer-create_customer-input-email_place_holder" datatype="html">
+      <trans-unit id="member-create_member-input-email_place_holder" datatype="html">
         <source>Enter email</source>
         <target>Enter email</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-input-address_place_holder" datatype="html">
+      <trans-unit id="member-create_edit_member-input-address_place_holder" datatype="html">
         <source>Enter address</source>
         <target>Enter address</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-create_customer_ok" datatype="html">
+      <trans-unit id="member-create_edit_member-create_member_ok" datatype="html">
         <source>A new member account has been created</source>
         <target>A new member account has been created</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-edit_customer_ok" datatype="html">
+      <trans-unit id="member-create_edit_member-edit_member_ok" datatype="html">
         <source>A member account has been updated</source>
         <target>A member account has been updated</target>
       </trans-unit>
-      <trans-unit id="customer-create_edit_customer-email_invalid" datatype="html">
+      <trans-unit id="member-create_edit_member-email_invalid" datatype="html">
         <source>Email is invalid</source>
         <target>Email is invalid</target>
       </trans-unit>
-      <!--End Create Edit Customer Module-->
-      <!--Start Customer Filter-->
-      <trans-unit id="customers-filter-list-table-lbl-phone_number" datatype="html">
+      <trans-unit id="member-create_edit_member-label-is_member_accumulated" datatype="html">
+        <source>Is Member Accumulated</source>
+        <target>Is Member Accumulated</target>
+      </trans-unit>
+      <!--End Create Edit Member Module-->
+      <!--Start Member Filter-->
+      <trans-unit id="members-filter-list-table-lbl-phone_number" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-placeholder-phone_number" datatype="html">
+      <trans-unit id="members-filter-list-table-placeholder-phone_number" datatype="html">
         <source>Phone number contains</source>
         <target>Phone number contains</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-sex" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-sex" datatype="html">
         <source>Sex</source>
         <target>Sex</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-address" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-address" datatype="html">
         <source>Address</source>
         <target>Address</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-member_id" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-member_id" datatype="html">
         <source>Member id</source>
         <target>Member id</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-placeholder-member_id" datatype="html">
+      <trans-unit id="members-filter-list-table-placeholder-member_id" datatype="html">
         <source>Member id contains</source>
         <target>Member id contains</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-month_of_birthday" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-month_of_birthday" datatype="html">
         <source>Month of birthday</source>
         <target>Month of birthday</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-day_are_not_returned" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-day_are_not_returned" datatype="html">
         <source>Days are not returned</source>
         <target>Days are not returned</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-number_of_times_eaten" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-number_of_times_eaten" datatype="html">
         <source>Number of times eaten</source>
         <target>Number of times eaten</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-name" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-name" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-placeholder-name" datatype="html">
+      <trans-unit id="members-filter-list-table-placeholder-name" datatype="html">
         <source>Name contains</source>
         <target>Name contains</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-member_type" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-member_type" datatype="html">
         <source>Member type</source>
         <target>Member type</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-have_score" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-have_score" datatype="html">
         <source>Have score</source>
         <target>Have score</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-spend_money_total" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-spend_money_total" datatype="html">
         <source>Spend money total</source>
         <target>Spend money total</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-placeholder_from" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-placeholder_from" datatype="html">
         <source>From</source>
         <target>From</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-lbl-placeholder_to" datatype="html">
+      <trans-unit id="members-filter-list-table-lbl-placeholder_to" datatype="html">
         <source>To</source>
         <target>To</target>
-      </trans-unit>
-      <trans-unit id="customers-filter-list-table-btn-run_filter" datatype="html">
-        <source>Run filter</source>
-        <target>Run filter</target>
       </trans-unit>
       <trans-unit id="input-change-control-lbl-fromLessThanTo" datatype="html">
         <source>From is not greater than to</source>
         <target>From is not greater than to</target>
       </trans-unit>
-      <trans-unit id="customers-filter-list-table-btn-reset_filter" datatype="html">
-        <source>Reset filter</source>
-        <target>Reset filter</target>
+      <!--End Member Filter-->
+      <!--Start Voucher Home -->
+      <trans-unit id="vouchers-create-voucher" datatype="html">
+        <source>Create voucher</source>
+        <target>Create voucher</target>
       </trans-unit>
-      <!--End Customer Filter-->
+      <trans-unit id="vouchers-createdDate" datatype="html">
+        <source>Created Date</source>
+        <target>Created Date</target>
+      </trans-unit>
+      <trans-unit id="vouchers-discount" datatype="html">
+        <source>Discount</source>
+        <target>Discount</target>
+      </trans-unit>
+      <trans-unit id="vouchers-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="vouchers-publishCount" datatype="html">
+        <source>Published Count</source>
+        <target>Published Count</target>
+      </trans-unit>
+      <trans-unit id="vouchers-usedCount" datatype="html">
+        <source>Used Count</source>
+        <target>Used Count</target>
+      </trans-unit>
+      <trans-unit id="vouchers-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="vouchers-sales" datatype="html">
+        <source>Sales</source>
+        <target>Sales</target>
+      </trans-unit>
+      <trans-unit id="vouchers-list-tbl-search-label" datatype="html">
+        <source>Search voucher code, name</source>
+        <target>Search voucher code, name</target>
+      </trans-unit>
+      <trans-unit id="vouchers-create" datatype="html">
+        <source>Create New Voucher</source>
+        <target>Create New Voucher</target>
+      </trans-unit>
+      <trans-unit id="vouchers-title" datatype="html">
+        <source>Vouchers</source>
+        <target>Vouchers</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-voucher-management" datatype="html">
+        <source>E-Voucher</source>
+        <target>E-Voucher</target>
+      </trans-unit>
+      <trans-unit id="list-voucher-status-running" datatype="html">
+        <source>Running</source>
+        <target>Running</target>
+      </trans-unit>
+      <trans-unit id="list-voucher-status-expired" datatype="html">
+        <source>Expired</source>
+        <target>Expired</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-name-code" datatype="html">
+        <source>Name/Code</source>
+        <target>Name/Code</target>
+      </trans-unit>
+      <trans-unit id="vouchers-filter-list-table-placeholder-text" datatype="html">
+        <source>Name/Code contains</source>
+        <target>Name/Code contains</target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-th-create-date" datatype="html">
+        <source>Created Date</source>
+        <target>Created Date</target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-th-status" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="list-vouchers-run-voucher" datatype="html">
+        <source>Run program</source>
+        <target>Run program</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-confirm" datatype="html">
+        <source>Are you sure you want to delete voucher "{{0}}"?</source>
+        <target>Are you sure you want to delete voucher "{{0}}"?</target>
+      </trans-unit>
+      <trans-unit id="vouchers-delete-success" datatype="html">
+        <source>Voucher "{{0}}" has been deleted</source>
+        <target>Voucher "{{0}}" has been deleted</target>
+      </trans-unit>
+      <!--End Voucher Home -->
+      <!--Start create/edit voucher-->
+      <trans-unit id="voucher-pool-title-voucher-type" datatype="html">
+        <source>Voucher type</source>
+        <target>Voucher type</target>
+      </trans-unit>
+      <trans-unit id="voucher-pool-title-general-info" datatype="html">
+        <source>General Information</source>
+        <target>General Information</target>
+      </trans-unit>
+      <trans-unit id="voucher-pool-program-type" datatype="html">
+        <source>Program type</source>
+        <target>Program type</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-discount" datatype="html">
+        <source>Discount</source>
+        <target>Discount</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-x-get-y" datatype="html">
+        <source>Buy X get Y</source>
+        <target>Buy X get Y</target>
+      </trans-unit>
+      <trans-unit id="voucher-type-using-purpose" datatype="html">
+        <source>Using purpose</source>
+        <target>Using purpose</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-repeat-one-code" datatype="html">
+        <source>A code used many times</source>
+        <target>A code used many times</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
+        <source>Export batch code</source>
+        <target>Export batch code</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
+        <source>Customer care</source>
+        <target>Customer care</target>
+      </trans-unit>
+      <trans-unit id="voucher-campaign-name" datatype="html">
+        <source>Program name</source>
+        <target>Program name</target>
+      </trans-unit>
+      <trans-unit id="voucher-description" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-voucher-code" datatype="html">
+        <source>Voucher code</source>
+        <target>Voucher code</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-discount-percent" datatype="html">
+        <source>% discount</source>
+        <target>% discount</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-discount-amount" datatype="html">
+        <source>Discount amount</source>
+        <target>Discount amount</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-number-item-to-buy" datatype="html">
+        <source>Number of items to buy</source>
+        <target>Number of items to buy</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-number-item-donated" datatype="html">
+        <source>Number of items donated</source>
+        <target>Number of items donated</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-restaurants" datatype="html">
+        <source>POS applicable (blank if applicable all)</source>
+        <target>POS applicable (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type" datatype="html">
+        <source>Choose applicable type (blank if applicable to all groups and dishes)</source>
+        <target>Choose applicable type (blank if applicable to all groups and dishes)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-group-dishes" datatype="html">
+        <source>Applies to group dishes</source>
+        <target>Applies to group dishes</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-dishes" datatype="html">
+        <source>Applies to dishes</source>
+        <target>Applies to dishes</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-item-types" datatype="html">
+        <source>List of applicable set (blank if applicable all)</source>
+        <target>List of applicable set (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-item-types" datatype="html">
+        <source>List of set to be purchased (blank if applicable all)</source>
+        <target>List of set to be purchased (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-gift-set" datatype="html">
+        <source>Gift group dishes (blank if applicable all)</source>
+        <target>Gift group dishes (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-applicable-items" datatype="html">
+        <source>List of applicable items (blank if applicable all)</source>
+        <target>List of applicable items (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-purchased-items" datatype="html">
+        <source>List of items to be purchased (blank if applicable all)</source>
+        <target>List of items to be purchased (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applicable-type-be-donated-items" datatype="html">
+        <source>List of donated items (blank if applicable all)</source>
+        <target>List of donated items (blank if applicable all)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applied-days" datatype="html">
+        <source>Applied days (blank if all days apply)</source>
+        <target>Applied days (blank if all days apply)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-applied-hours" datatype="html">
+        <source>Applied hours (blank if all hoours apply)</source>
+        <target>Applied hours (blank if all hoours apply)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-title-advance-condition" datatype="html">
+        <source>Advanced conditions</source>
+        <target>Advanced conditions</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-apply-invoice-from" datatype="html">
+        <source>Apply invoice from (vnđ)</source>
+        <target>Apply invoice from (vnđ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-decrease-not-over" datatype="html">
+        <source>Decrease not over (vnđ)</source>
+        <target>Decrease not over (vnđ)</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-number-discount-dishes" datatype="html">
+        <source>Number of discounted dishes</source>
+        <target>Number of discounted dishes</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-discount-lowest-highest" datatype="html">
+        <source>Discount highest/lowest dish</source>
+        <target>Discount highest/lowest dish</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-none-option" datatype="html">
+        <source>None</source>
+        <target>None</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-highest-option" datatype="html">
+        <source>Discount for the highest dish</source>
+        <target>Discount for the highest dish</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-lowest-option" datatype="html">
+        <source>Discount for the lowest dish</source>
+        <target>Discount for the lowest dish</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-discount-from-item" datatype="html">
+        <source>Discount from item</source>
+        <target>Discount from item</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-advance-condition-distributor" datatype="html">
+        <source>Distributor</source>
+        <target>Distributor</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-name-required" datatype="html">
+        <source>Please input program name</source>
+        <target>Please input program name</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-description-required" datatype="html">
+        <source>Please input description</source>
+        <target>Please input description</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-name-special-char" datatype="html">
+        <source>Program name doesn't allow special characters</source>
+        <target>Program name doesn't allow special characters</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-required" datatype="html">
+        <source>Please input voucher code</source>
+        <target>Please input voucher code</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-special-char" datatype="html">
+        <source>Voucher code doesn't allow special characters</source>
+        <target>Voucher code doesn't allow special characters</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-required" datatype="html">
+        <source>Please input discount</source>
+        <target>Please input discount</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-min" datatype="html">
+        <source>Minimum discount is 0đ or 0%</source>
+        <target>Minimum discount is 0đ or 0%</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-max" datatype="html">
+        <source>Maximum discount percent is 100%</source>
+        <target>Maximum discount percent is 100%</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-discount-pattern" datatype="html">
+        <source>Discount must be number</source>
+        <target>Discount must be number</target>
+      </trans-unit>
+      <trans-unit id="voucher-create-success" datatype="html">
+        <source>A new voucher has been created</source>
+        <target>A new voucher has been created</target>
+      </trans-unit>
+      <!--End create/edit voucher-->
+      <!--Start running voucher-->
+      <trans-unit id="voucher-runner-title" datatype="html">
+        <source>Run program for a voucher</source>
+        <target>Run program for a voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-repeate-one-code-sub-title" datatype="html">
+        <source>Let's run a code using many times for voucher "{{voucher.name}}"</source>
+        <target>Let's run a code using many times for voucher "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-sub-title" datatype="html">
+        <source>Let's export batch code for voucher "{{voucher.name}}"</source>
+        <target>Let's export batch code for voucher "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
+        <source>Publish code from number (equal 1 if empty)</source>
+        <target>Publish code from number (equal 1 if empty)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
+        <source>to number (equal 1000 if empty)</source>
+        <target>to number (equal 1000 if empty)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
+        <source>Prefix of code (2 characters)</source>
+        <target>Prefix of code (2 characters)</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-effective-time" datatype="html">
+        <source>Effective time</source>
+        <target>Effective time</target>
+      </trans-unit>
+      <trans-unit id="voucher-runner-repeate-one-code-usage-limit" datatype="html">
+        <source>Usage limit (empty if not limited)</source>
+        <target>Usage limit (empty if not limited)</target>
+      </trans-unit>
+      <!--End running voucher-->
       <!--Start stop promotions-->
       <trans-unit id="promotions-start-promotion-h5-start_promotion_title" datatype="html">
         <source>Start a promotion</source>
@@ -1750,94 +2082,288 @@
         <target>Expire on: </target>
       </trans-unit>
       <!--END Start stop promotions-->
-      <!--START member types-->
-      <trans-unit id="member-type-menu" datatype="html">
+      <!--START membership types-->
+      <trans-unit id="membership-type-menu" datatype="html">
         <source>Membership Types</source>
         <target>Membership Types</target>
       </trans-unit>
-      <trans-unit id="member-type-btn-new" datatype="html">
+      <trans-unit id="membership-type-btn-new" datatype="html">
         <source>New membership type</source>
         <target>New membership type</target>
       </trans-unit>
-      <trans-unit id="member-type-create-title" datatype="html">
+      <trans-unit id="membership-type-create-title" datatype="html">
         <source>Add new membership type</source>
         <target>Add new membership type</target>
       </trans-unit>
-      <trans-unit id="member-type-update-title" datatype="html">
+      <trans-unit id="membership-type-update-title" datatype="html">
         <source>Edit membership type</source>
         <target>Edit membership type</target>
       </trans-unit>
-      <trans-unit id="member-type-update-sub-title" datatype="html">
+      <trans-unit id="membership-type-update-sub-title" datatype="html">
         <source>Allow to update information of a membership type, it also should be updated on IPOS system too</source>
         <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
       </trans-unit>
-      <trans-unit id="member-type-create-sub-title" datatype="html">
+      <trans-unit id="membership-type-create-sub-title" datatype="html">
         <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
         <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-label" datatype="html">
+      <trans-unit id="membership-type-list-category-internal" datatype="html">
+        <source>Internal membership types</source>
+        <target>Internal membership types</target>
+      </trans-unit>
+      <trans-unit id="membership-type-list-category-accumulate" datatype="html">
+        <source>Accumulate membership types</source>
+        <target>Accumulate membership types</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-code-label" datatype="html">
         <source>Id</source>
         <target>Id</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-code-placeholder" datatype="html">
         <source>Enter membership type id</source>
         <target>Enter membership type id</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-required" datatype="html">
+      <trans-unit id="membership-type-create-form-code-required" datatype="html">
         <source>Please provide membership type id</source>
         <target>Please provide membership type id</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-code-pattern" datatype="html">
+      <trans-unit id="membership-type-create-form-code-pattern" datatype="html">
         <source>The membership type id doesn't allow space charracter</source>
         <target>The membership type id doesn't allow space charracter</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-label" datatype="html">
+      <trans-unit id="membership-type-create-form-name-label" datatype="html">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-name-placeholder" datatype="html">
         <source>Enter membership type name</source>
         <target>Enter membership type name</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-required" datatype="html">
+      <trans-unit id="membership-type-create-form-name-required" datatype="html">
         <source>Please provide membership type name</source>
         <target>Please provide membership type name</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-target-point-placeholder" datatype="html">
+      <trans-unit id="membership-type-create-form-target-point-placeholder" datatype="html">
         <source>Enter the target point</source>
         <target>Enter the target point</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-target-point" datatype="html">
+      <trans-unit id="membership-type-create-form-name-target-point" datatype="html">
         <source>Target point</source>
         <target>Target point</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-name-active" datatype="html">
+      <trans-unit id="membership-type-create-form-accumulate" datatype="html">
+        <source>Accumulate type</source>
+        <target>Accumulate type</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-name-active" datatype="html">
         <source>Active</source>
         <target>Active</target>
       </trans-unit>
-      <trans-unit id="member-type-inactive" datatype="html">
+      <trans-unit id="membership-type-inactive" datatype="html">
         <source>Inactive</source>
         <target>Inactive</target>
       </trans-unit>
-      <trans-unit id="member-type-create-form-success" datatype="html">
+      <trans-unit id="membership-type-create-form-success" datatype="html">
         <source>A new membership type has been created</source>
         <target>A new membership type has been created</target>
       </trans-unit>
-      <trans-unit id="member-type-edit-form-success" datatype="html">
+      <trans-unit id="membership-type-edit-form-success" datatype="html">
         <source>A membership type has been updated</source>
         <target>A membership type has been updated</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-confirm" datatype="html">
-        <source>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
-        type {{0}}?</source>
-        <target>All members are in membership type {{0}} will be moved to the near lower membership type. Are you sure you want delete
-          type {{0}}</target>
+      <trans-unit id="membership-type-delete-confirm" datatype="html">
+        <source>Are you sure you want to delete membership type {{0}}?</source>
+        <target>Are you sure you want to delete membership type {{0}}?</target>
       </trans-unit>
-      <trans-unit id="member-type-delete-success" datatype="html">
+      <trans-unit id="membership-type-delete-success" datatype="html">
         <source>A membership type has been deleted</source>
         <target>A membership type has been deleted</target>
       </trans-unit>
-      <!--STOP member types-->
+      <trans-unit id="membership-type-delete-confirm-dlg-title" datatype="html">
+        <source>Delete membership type</source>
+        <target>Delete membership type</target>
+      </trans-unit>
+      <trans-unit id="membership-type-delete-confirm-dlg-sub-title" datatype="html">
+        <source>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new
+        membership
+        type for those members.
+        </source>
+        <target>Membership type {{deletingMembershipType.name}} has {{memberCount}} member(s). You have to choose a new
+          membership
+          type for those members.
+        </target>
+      </trans-unit>
+      <trans-unit id="membership-type-delete-confirm-lbl-new-type" datatype="html">
+        <source>New membership type</source>
+        <target>New membership type</target>
+      </trans-unit>
+      <trans-unit id="membership-type-delete-warning-one-type" datatype="html">
+        <source>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members
+        before deleting.</source>
+        <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members
+          before deleting.</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
+        <source>Voucher care campaign</source>
+        <target>Voucher care campaign</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
+        <source>Campaign name</source>
+        <target>Campaign name</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
+        <source>Voucher code</source>
+        <target>Voucher code</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
+        <source>Schedule</source>
+        <target>Schedule</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-valid_date_count-label" datatype="html">
+        <source>Valid date count</source>
+        <target>Valid date count</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-static-benefits-title" datatype="html">
+        <source>Static benefits</source>
+        <target>Static benefits</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-repeat_birthday-option" datatype="html">
+        <source>Repeat at a birthday</source>
+        <target>Repeat at a birthday</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-repeat_at_specific_date-option" datatype="html">
+        <source>Repeat at a specific date</source>
+        <target>Repeat at a specific date</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-reach_rank-option" datatype="html">
+        <source>After reach rank</source>
+        <target>After reach rank</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
+        <source>After get X points</source>
+        <target>After get X points</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
+        <source>Non Voucher benefits</source>
+        <target>Non Voucher benefits</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
+        <source>Schedule parameters</source>
+        <target>Schedule parameters</target>
+      </trans-unit>
+      <!--STOP membership types-->
+      <!--START voucher running-->
+      <trans-unit id="voucher-running-customer-care" datatype="html">
+        <source>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</source>
+        <target>To run voucher "{{0}}", please run a customer care campaign or use it for membership type</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-effect-from" datatype="html">
+        <source>Effect from date</source>
+        <target>Effect from date</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-effect-to" datatype="html">
+        <source>To date</source>
+        <target>To date</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-usage-limit" datatype="html">
+        <source>Usage limit</source>
+        <target>Usage limit</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-used-count" datatype="html">
+        <source>Used count</source>
+        <target>Used count</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-remain-count" datatype="html">
+        <source>Remaining count</source>
+        <target>Remaining count</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-prefix" datatype="html">
+        <source>Prefix</source>
+        <target>Prefix</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-code-scope" datatype="html">
+        <source>Scope of code</source>
+        <target>Scope of code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-success" datatype="html">
+        <source>Voucher "{{0}}" has been run</source>
+        <target>Voucher "{{0}}" has been run</target>
+      </trans-unit>
+      <!--STOP voucher running-->
+      <!--START Pos and Menu Module-->
+      <trans-unit id="pos-menu-list-title" datatype="html">
+        <source>SNOB Point Of Sales</source>
+        <target>SNOB Point Of Sales</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-btn-synchronize" datatype="html">
+        <source>Synchronize</source>
+        <target>Synchronize</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-txt-search" datatype="html">
+        <source>Search by name, phone number, address</source>
+        <target>Search by name, phone number, address</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-address" datatype="html">
+        <source>Address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-phone-number" datatype="html">
+        <source>Phone number</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-th-open-time" datatype="html">
+        <source>Open time</source>
+        <target>Open time</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-image" datatype="html">
+        <source>Avatar</source>
+        <target>Avatar</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-weekdays" datatype="html">
+        <source>@Weekdays</source>
+        <target>@Weekdays</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time" datatype="html">
+        <source>@Time</source>
+        <target>@Time</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-add" datatype="html">
+        <source>Add</source>
+        <target>Add</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-delete" datatype="html">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-name-validate-required" datatype="html">
+        <source>Please input pos name</source>
+        <target>Please input pos name</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-name-validate-pattern" datatype="html">
+        <source>POS name doesn't allow special characters</source>
+        <target>POS name doesn't allow special characters</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-address-validate-required" datatype="html">
+        <source>Please input pos's address</source>
+        <target>Please input pos's address</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-phone-number-validate-required" datatype="html">
+        <source>Please input pos's phone number</source>
+        <target>Please input pos's phone number</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
+        <source>Please input pos's open time</source>
+        <target>Please input pos's open time</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-update-pos-success" datatype="html">
+        <source>POS "{{0}}" has been updated</source>
+        <target>POS "{{0}}" has been updated</target>
+      </trans-unit>
+      <!--END Pos and Menu Module-->
     </body>
   </file>
 </xliff>

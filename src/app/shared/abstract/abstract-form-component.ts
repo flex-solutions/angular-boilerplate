@@ -5,7 +5,7 @@ import { AbstractBaseComponent } from './abstract-base-component';
 import { GenericValidator } from '../validation/generic-validator';
 import { Observable, merge, fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { isNullOrEmptyOrUndefine } from '../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../utilities/util';
 
 // Define common behavior for Form component
 export abstract class AbstractFormComponent extends AbstractBaseComponent
@@ -53,7 +53,7 @@ export abstract class AbstractFormComponent extends AbstractBaseComponent
   protected onCreateForm() {}
 
   validate() {
-    if (!isNullOrEmptyOrUndefine(this.genericValidator)) {
+    if (!isNullOrEmptyOrUndefined(this.genericValidator)) {
       this.errorMessage = this.genericValidator.validate(this.formGroup);
     }
     this.onValidate();
