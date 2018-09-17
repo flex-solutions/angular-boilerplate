@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, LOCALE_ID, Inject, OnInit } from '@angular/core';
 import * as moment from 'moment';
@@ -10,6 +9,7 @@ import { BrowserNotificationService } from './shared/services/browser-notificati
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   title = 'app';
 
   languages = [
@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(LOCALE_ID) protected localeId: string,
     public authenticationService: AuthenticationService,
-    private router: Router,
     private browserNotificationService: BrowserNotificationService
   ) {
     moment.locale(this.localeId);

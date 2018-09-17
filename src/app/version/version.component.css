@@ -1,0 +1,16 @@
+.about-logo {
+    width: 139px;
+    height: 140px;
+    background: url('assets/images/logo-mini.svg') no-repeat left;
+}
+
+.about-frm {
+    display: flex;
+    margin-top: 1px;
+}
+
+.about-copyright {
+    text-align: left!important;
+    font-size: smaller;
+    margin-right: 8.25rem;
+}

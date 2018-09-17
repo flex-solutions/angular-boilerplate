@@ -1,3 +1,5 @@
+import { VersionComponent } from './version/version.component';
+import { AppService } from './app.service';
 import { IPubSubConfig, PubSubConfigService } from './shared/pubsub.client/config';
 import { environment } from './../environments/environment';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -21,9 +23,11 @@ import { PromotionsModule } from './modules/promotions/promotions.module';
 import { MemberModule } from './modules/member/member.module';
 import { VouchersModule } from './modules/vouchers/vouchers.module';
 import { PosAndMenuModule } from './modules/pos-and-menu/module';
+import { VersionController } from './version/controller';
+import { VERSION_TOKEN } from './shared/interfaces/version';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, VersionComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -48,14 +52,20 @@ import { PosAndMenuModule } from './modules/pos-and-menu/module';
       useValue: '/'
     },
     {
+      provide: VERSION_TOKEN,
+      useClass: VersionController
+    },
+    {
       provide: TRANSLATIONS,
       useFactory: locale => i18nFactory(locale),
       deps: [LOCALE_ID]
     },
     ApplicationConfigurationService,
-    AuthenticationService
+    AuthenticationService,
+    AppService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [VersionComponent],
 })
 export class AppModule {
   constructor(pubsubConfigService: PubSubConfigService,
