@@ -61,7 +61,7 @@
       </app-wizard-step>
       <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field"
         title="Member Target">
-        <p>COMING SOON</p>
+        <app-member-home canAddOrUpdateMember="false"></app-member-home>
       </app-wizard-step>
       <!--Extend wizard button. Current step = 2 mean that is last wizard step-->
       <button *ngIf="currentStep===2 && !isEditableMode" class="afterFinishButton btn btn-fw btn-success float-left"

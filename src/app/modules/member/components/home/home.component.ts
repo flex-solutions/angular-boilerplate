@@ -1,7 +1,7 @@
 import { MemberRouteNames } from '../../constants/member.constants';
 import { MemberService } from '../../services/member.service';
 import { Observable } from 'rxjs';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   MemberModel,
@@ -12,6 +12,7 @@ import {
   DatagridComponent
 } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { MemberCriteriaBuilder } from '../member-filter/member-filter.builder';
+import { parseStringToBoolean } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-member-home',
@@ -21,15 +22,23 @@ export class MemberHomeComponent implements OnInit {
   filter: IFilterChangedEvent;
   members: MemberModel[] = [];
   memberFilter: MemberFilter = new MemberFilter();
-  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
+  @ViewChild(DatagridComponent)
+  dataGrid: DatagridComponent;
 
-  constructor(
-    private memberService: MemberService,
-    private route: Router
-  ) {}
+  private _canAddOrUpdateMember = true;
+
+  @Input()
+  set canAddOrUpdateMember(val) {
+    this._canAddOrUpdateMember = parseStringToBoolean(val);
+  }
+  get canAddOrUpdateMember() {
+    return this._canAddOrUpdateMember;
+  }
+
+  constructor(private memberService: MemberService, private route: Router) {}
 
   public count = (searchKey: string): Observable<number> => {
-    return this.memberService.count(this.getQuery());
+    return this.memberService.count(this.getFilterQuery());
   }
 
   createNewMember() {
@@ -50,7 +59,7 @@ export class MemberHomeComponent implements OnInit {
     this.loadData();
   }
 
-  private getQuery() {
+  getFilterQuery() {
     const query = MemberCriteriaBuilder.build(this.memberFilter);
     return query;
   }
@@ -60,7 +69,7 @@ export class MemberHomeComponent implements OnInit {
       .getMembers(
         this.filter.pagination.page,
         this.filter.pagination.itemsPerPage,
-        this.getQuery()
+        this.getFilterQuery()
       )
       .subscribe(res => {
         this.members = res;

@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { PromotionModuleComponents, PromotionsModuleEntryComponents } from './components';
 import { VouchersModule } from '../vouchers/vouchers.module';
+import { MemberModule } from '../member/member.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { VouchersModule } from '../vouchers/vouchers.module';
     FormsModule,
     ReactiveFormsModule,
     UICommonModule,
-    VouchersModule
+    VouchersModule,
+    MemberModule
   ],
   providers: [PromotionService, StartStopPromotionService],
   declarations: [
