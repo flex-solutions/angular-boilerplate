@@ -16,6 +16,7 @@ import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-edi
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 import { promotionLimits } from '../../common.const';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
+import { UTF8Encoding } from '../../../../utilities/ utf8-regex';
 
 @Component({
   selector: 'app-create-promotion',
@@ -23,7 +24,6 @@ import { MemberHomeComponent } from '../../../member/components/home/home.compon
   styleUrls: ['./create-promotion.component.css']
 })
 export class CreatePromotionComponent implements OnInit {
-
   // Properties
   cardTitle: string;
   cardSubTitle: string;
@@ -80,11 +80,19 @@ export class CreatePromotionComponent implements OnInit {
   // Resolve multilingual message for app card title and sub title
   private resolveTitle() {
     if (!this.isEditableMode) {
-      this.cardTitle = this.translateService.translate(MessageConstant.CreatePromotionTitle);
-      this.cardSubTitle = this.translateService.translate(MessageConstant.CreatePromotionDescription);
+      this.cardTitle = this.translateService.translate(
+        MessageConstant.CreatePromotionTitle
+      );
+      this.cardSubTitle = this.translateService.translate(
+        MessageConstant.CreatePromotionDescription
+      );
     } else {
-      this.cardTitle = this.translateService.translate(MessageConstant.EditPromotionTitle);
-      this.cardSubTitle = this.translateService.translate(MessageConstant.EditPromotionDescription);
+      this.cardTitle = this.translateService.translate(
+        MessageConstant.EditPromotionTitle
+      );
+      this.cardSubTitle = this.translateService.translate(
+        MessageConstant.EditPromotionDescription
+      );
     }
   }
 
@@ -104,12 +112,15 @@ export class CreatePromotionComponent implements OnInit {
   onFinishAndStart() {
     // Create promotion
     this.promotion.brief_content = this.ValidateRawContent();
-    this._promotionService.create(this.promotion).subscribe((createdPromotion: Promotion) => {
-      this.showNotification(MessageConstant.CreatePromotionSuccess);
-      this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
-        this.onHandleCreateSuccess();
+    this.promotion.member_filter = this.getMemberFilterAsString();
+    this._promotionService
+      .create(this.promotion)
+      .subscribe((createdPromotion: Promotion) => {
+        this.showNotification(MessageConstant.CreatePromotionSuccess);
+        this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
+          this.onHandleCreateSuccess();
+        });
       });
-    });
   }
 
   onWizardCancel() {
@@ -118,6 +129,7 @@ export class CreatePromotionComponent implements OnInit {
 
   onWizardFinish() {
     this.promotion.brief_content = this.ValidateRawContent();
+    this.promotion.member_filter = this.getMemberFilterAsString();
     if (this.isEditableMode) {
       // Update promotion
       this._promotionService.update(this.promotion).subscribe(() => {
@@ -175,7 +187,10 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   isTinymceContentEmpty() {
-    return (isNil(this.promotion.content) || this.promotion.content === '') && this.isBlurEditor;
+    return (
+      (isNil(this.promotion.content) || this.promotion.content === '') &&
+      this.isBlurEditor
+    );
   }
 
   private onHandleCreateSuccess() {
@@ -187,7 +202,6 @@ export class CreatePromotionComponent implements OnInit {
       this.tynimceEditor.reset();
       // Reset wizard
       this.wizardComponent.reset();
-
     } else {
       this._location.back();
     }
@@ -204,5 +218,11 @@ export class CreatePromotionComponent implements OnInit {
     }
 
     return this.rawContent;
+  }
+
+  private getMemberFilterAsString() {
+    const filter = this.membersList.getFilterQuery();
+    const filterString = JSON.stringify(filter);
+    return UTF8Encoding.utf8Encode(filterString);
   }
 }
