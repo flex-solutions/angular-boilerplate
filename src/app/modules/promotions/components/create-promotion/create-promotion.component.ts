@@ -15,6 +15,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 import { promotionLimits } from '../../common.const';
+import { MemberHomeComponent } from '../../../member/components/home/home.component';
 
 @Component({
   selector: 'app-create-promotion',
@@ -47,6 +48,9 @@ export class CreatePromotionComponent implements OnInit {
 
   @ViewChild(TynimceEditorComponent)
   private tynimceEditor: TynimceEditorComponent;
+
+  @ViewChild(MemberHomeComponent)
+  membersList: MemberHomeComponent;
 
   constructor(
     protected fb: FormBuilder,
