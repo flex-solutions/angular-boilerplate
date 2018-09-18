@@ -11,6 +11,7 @@ export class Promotion extends ModelBase {
     expire_date: Date;
     viewCount: number;
     brief_content: string;
+    member_filter: string;
 }
 
 export class StatusCheckedItem implements CheckedItem {
