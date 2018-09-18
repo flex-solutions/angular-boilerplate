@@ -8,6 +8,7 @@ import { PromotionsRoutingModule } from './promotions-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { PromotionModuleComponents, PromotionsModuleEntryComponents } from './components';
+import { VouchersModule } from '../vouchers/vouchers.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { PromotionModuleComponents, PromotionsModuleEntryComponents } from './co
     PromotionsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UICommonModule
+    UICommonModule,
+    VouchersModule
   ],
   providers: [PromotionService, StartStopPromotionService],
   declarations: [

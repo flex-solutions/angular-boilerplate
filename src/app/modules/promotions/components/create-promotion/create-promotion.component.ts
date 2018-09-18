@@ -1,3 +1,5 @@
+import { Voucher } from './../../../../shared/models/voucher.model';
+import { VoucherService } from './../../../vouchers/services/vouchers.service';
 import { StartStopPromotionService } from './../../services/start-stop-promotion.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
@@ -34,10 +36,15 @@ export class CreatePromotionComponent implements OnInit {
   isBlurEditor: boolean;
   promotionId: string;
   rawContent: string;
+  notificationMessage: string;
+  applyDays = 30;
 
   // For editable mode
   isEditableMode: boolean;
   isFinishedContentComponent = false;
+
+  vouchers: Voucher[] = [];
+  selectedVoucher: Voucher = new Voucher();
 
   @ViewChild(WizardComponent)
   private wizardComponent: WizardComponent;
@@ -55,7 +62,8 @@ export class CreatePromotionComponent implements OnInit {
     private _promotionService: PromotionService,
     private _notificationService: NotificationService,
     private _location: Location,
-    private _startStopPromotionHandler: StartStopPromotionService
+    private _startStopPromotionHandler: StartStopPromotionService,
+    private readonly voucherService: VoucherService
   ) {
     this.promotion = new Promotion();
     this.titleInvalid = false;
@@ -71,6 +79,7 @@ export class CreatePromotionComponent implements OnInit {
 
       this.resolveTitle();
     });
+    this.getCampaignVoucher();
   }
 
   // Resolve multilingual message for app card title and sub title
@@ -95,6 +104,13 @@ export class CreatePromotionComponent implements OnInit {
         this.promotion.banner = convertStringToBase64(this.promotion.banner);
       });
     }
+  }
+
+  private getCampaignVoucher() {
+    this.voucherService.getAllVoucherCareCampaign().subscribe(vouchers => {
+      this.vouchers = vouchers;
+      console.log('this.vouchers: ', this.vouchers);
+    });
   }
 
   onFinishAndStart() {
@@ -192,6 +208,12 @@ export class CreatePromotionComponent implements OnInit {
   finishContentComponent() {
     this.isFinishedContentComponent = true;
     this.loadPromotion(this.promotionId);
+  }
+
+  onSelectedVoucherChanged() {
+    if (this.selectedVoucher) {
+      this.notificationMessage = this.selectedVoucher.notificationMessage;
+    }
   }
 
   private ValidateRawContent(): string {
