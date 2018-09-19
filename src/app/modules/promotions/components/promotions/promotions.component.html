@@ -15,7 +15,7 @@
       <th i18n="@@list-promotions-th-status">Status</th>
       <th i18n="@@list-promotions-th-start-date">Start Date</th>
       <th i18n="@@list-promotions-th-expỉre-date">Expire Date</th>
-      <th i18n="@@list-promotions-btn-actions">Actions</th>
+      <th i18n="@@common-tbl-actions">Actions</th>
     </tr>
     <tbody>
       <tr *ngFor="let item of items">
@@ -29,7 +29,7 @@
         <td>
           <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
             <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
-            <span i18n="@@list-promotions-btn-edit">Edit</span>
+            <span i18n="@@common-action-edit">Edit</span>
           </button>
           <button type="button" class="btn btn-light btn-custom-css" appStartStopButton [status]="item.status" [buttonSize]="0" (click)="startStopPromotion(item)">
           </button>
