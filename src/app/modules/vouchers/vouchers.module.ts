@@ -14,16 +14,16 @@ import { VoucherRunner } from './components/run-voucher/voucher-runner';
 
 @NgModule({
   imports: [
-    CommonModule, VouchersRoutingModule,
-    FormsModule, ReactiveFormsModule,
-    UICommonModule, SharedModule,
+    CommonModule,
+    VouchersRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UICommonModule,
+    SharedModule,
     PosAndMenuModule
   ],
-  declarations: [
-      VoucherStatusDirective, ...voucherComponents
-  ],
+  declarations: [VoucherStatusDirective, ...voucherComponents],
   providers: [VoucherService, VoucherFormFactory, VoucherRunner],
   entryComponents: [...voucherEntryComponents]
 })
-
-export class VouchersModule { }
+export class VouchersModule {}

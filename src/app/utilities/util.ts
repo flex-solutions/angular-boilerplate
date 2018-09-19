@@ -17,4 +17,20 @@ const sleep = (milliseconds: number) => {
   }
 };
 
-export { isNullOrEmptyOrUndefined, sleep };
+const parseStringToBoolean = (string) => {
+  let bool;
+  bool = (function() {
+    switch (false) {
+      case string.toLowerCase() !== 'true':
+        return true;
+      case string.toLowerCase() !== 'false':
+        return false;
+    }
+  })();
+  if (typeof bool === 'boolean') {
+    return bool;
+  }
+  return void 0;
+};
+
+export { isNullOrEmptyOrUndefined, sleep, parseStringToBoolean };
