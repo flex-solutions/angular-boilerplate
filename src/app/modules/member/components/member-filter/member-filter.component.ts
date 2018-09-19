@@ -1,5 +1,5 @@
 import { MemberService } from './../../services/member.service';
-import { Component, QueryList, ViewChildren, ViewChild } from '@angular/core';
+import { Component, QueryList, ViewChildren, ViewChild, Input } from '@angular/core';
 import {
   MemberFilter
 } from '../../../../shared/models/member.model';
@@ -21,6 +21,9 @@ export class MemberFilterComponent extends AbstractFilterComponent<MemberFilter>
   select2Components: QueryList<Select2Component>;
 
   @ViewChild('filterAddress') addressControl: AddressComponent;
+
+  @Input()
+  setRawMemberFilter: MemberFilter;
 
   membershipTypes: any[];
   provinces: any[];

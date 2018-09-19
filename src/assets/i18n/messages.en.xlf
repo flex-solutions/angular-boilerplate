@@ -100,9 +100,9 @@
         <target>News</target>
       </trans-unit>
 
-      <trans-unit id="layout-sidebar-anchor-customer-care" datatype="html">
-        <source>Customer Care Campaign</source>
-        <target>Customer Care Campaign</target>
+      <trans-unit id="layout-sidebar-anchor-member-care" datatype="html">
+        <source>Member Care Campaign</source>
+        <target>Member Care Campaign</target>
       </trans-unit>
 
       <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
@@ -1186,48 +1186,48 @@
       <!--END Wizard control-->
       <!--Create edit promotion-->
       <trans-unit id="promotions-create_promotion-app-card-promotions_title_field" datatype="html">
-        <source>Create Promotion</source>
-        <target>Create Promotion</target>
+        <source>Create campaign</source>
+        <target>Create campaign</target>
       </trans-unit>
       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
-        <source>Delete Promotion</source>
-        <target>Delete Promotion</target>
+        <source>Delete campaign</source>
+        <target>Delete campaign</target>
       </trans-unit>
       <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
-        <source>Promotion</source>
-        <target>Promotion</target>
+        <source>Campaign</source>
+        <target>Campaign</target>
       </trans-unit>
       <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
-        <source>This page allows you creating a promotion and starts it if you want</source>
-        <target>This page allows you creating a promotion and starts it if you want</target>
+        <source>This page allows you creating a campaign and starts it if you want</source>
+        <target>This page allows you creating a campaign and starts it if you want</target>
       </trans-unit>
       <trans-unit id="promotions-edit_promotion-app-card-promotions_title_field" datatype="html">
-        <source>Edit Promotion</source>
-        <target>Edit Promotion</target>
+        <source>Edit campaign</source>
+        <target>Edit campaign</target>
       </trans-unit>
       <trans-unit id="promotions-edit_promotion-app-card-promotions_subtitle_field" datatype="html">
-        <source>This page allows you editting a promotion</source>
-        <target>This page allows you editting a promotion</target>
+        <source>This page allows you editting a campaign</source>
+        <target>This page allows you editting a campaign</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-wizard_step-promotions_title_field" datatype="html">
-        <source>Promotion News</source>
-        <target>Promotion News</target>
+        <source>News</source>
+        <target>News</target>
       </trans-unit>
       <trans-unit id="promotion-detail-view_count" datatype="html">
-        <source>View Count</source>
-        <target>View Count</target>
+        <source>View count</source>
+        <target>View count</target>
       </trans-unit>
       <trans-unit id="promotion-delete-title-dialog" datatype="html">
-        <source>Delete promotion news</source>
-        <target>Delete promotion news</target>
+        <source>Delete news</source>
+        <target>Delete news</target>
       </trans-unit>
       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
-        <source>Are you sure you want to delete promotion news "{{0}}"?</source>
-        <target>Are you sure you want to delete promotion news "{{0}}"?</target>
+        <source>Are you sure you want to delete news "{{0}}"?</source>
+        <target>Are you sure you want to delete news "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="promotion-delete-successfully-notification" datatype="html">
-        <source>Delete promotion news successfully</source>
-        <target>Delete promotion news successfully</target>
+        <source>Delete news successfully</source>
+        <target>Delete news successfully</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
         <source>Title</source>
@@ -1266,16 +1266,16 @@
         <target>The banner size doesn't exceed 500kb</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-message-create_success" datatype="html">
-        <source>A promotion is created successfully</source>
-        <target>A promotion is created successfully</target>
+        <source>A campaign is created successfully</source>
+        <target>A campaign is created successfully</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-message-create_start_success" datatype="html">
-        <source>A promotion is created and started successfully</source>
-        <target>A promotion is created and started successfully</target>
+        <source>A campaign is created and started successfully</source>
+        <target>A campaign is created and started successfully</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-message-update_success" datatype="html">
-        <source>Promotion is updated successfully</source>
-        <target>Promotion is updated successfully</target>
+        <source>Campaign is updated successfully</source>
+        <target>Campaign is updated successfully</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-error-require_title" datatype="html">
         <source>Please provide the title</source>
@@ -1421,8 +1421,8 @@
       <!-- END CHANGE PASSWORD -->
       <!--List promotions-->
       <trans-unit id="list-promotions-title-promtions" datatype="html">
-        <source>Promotions</source>
-        <target>Promotions</target>
+        <source>Campaigns</source>
+        <target>Campaigns</target>
       </trans-unit>
       <trans-unit id="list-promotions-filter-placeholders" datatype="html">
         <source>Search by title, content</source>
@@ -1457,8 +1457,8 @@
         <target>Edit</target>
       </trans-unit>
       <trans-unit id="list-promotions-btn-delete" datatype="html">
-        <source>Delete Promotion</source>
-        <target>Delete Promotion</target>
+        <source>Delete campaign</source>
+        <target>Delete campaign</target>
       </trans-unit>
       <trans-unit id="list-promotions-btn-start-promotion" datatype="html">
         <source>Start</source>

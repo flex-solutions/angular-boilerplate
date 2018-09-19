@@ -28,6 +28,10 @@ export class PromotionService extends AbstractRestService {
     return this.put(promotion._id, promotion);
   }
 
+  updateMemberFilter(promotionId: string, memberFilter: any) {
+    return this.patch(`${promotionId}/update-member-filter`, memberFilter);
+  }
+
   count(query?: any): Observable<number> {
     if (!query) {
       query = {};
@@ -43,7 +47,10 @@ export class PromotionService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.getWithFilter(`?pageSize=${pageSize}&pageNumber=${pageNumber}`, query);
+    return this.getWithFilter(
+      `?pageSize=${pageSize}&pageNumber=${pageNumber}`,
+      query
+    );
   }
 
   deletePromotion(id: string) {

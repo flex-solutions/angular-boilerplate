@@ -99,9 +99,9 @@
         <source>News</source>
         <target>Tin Tức</target>
       </trans-unit>
-      <trans-unit id="layout-sidebar-anchor-customer-care" datatype="html">
-        <source>Customer Care Campaign</source>
-        <target>Chiến Dịch Chăm Sóc KH</target>
+      <trans-unit id="layout-sidebar-anchor-member-care" datatype="html">
+        <source>Member Care Campaign</source>
+        <target>Chiến Dịch Chăm Sóc HV</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-member-management" datatype="html">
         <source>Member Management</source>
@@ -1180,48 +1180,48 @@
       <!--END Wizard control-->
       <!--Create edit promotion-->
       <trans-unit id="promotions-create_promotion-app-card-promotions_title_field" datatype="html">
-        <source>Create Promotion</source>
-        <target>Tạo khuyến mãi</target>
+        <source>New campaign</source>
+        <target>Chiến dịch mới</target>
       </trans-unit>
       <trans-unit id="promotions-delete-app-card-promotions_title_field" datatype="html">
-        <source>Delete Promotion</source>
-        <target>Xoá khuyến mãi</target>
+        <source>Delete campaign</source>
+        <target>Xoá chiến dịch</target>
       </trans-unit>
       <trans-unit id="promotions-app-card-promotions_title_field" datatype="html">
-        <source>Promotion</source>
-        <target>Khuyến mãi</target>
+        <source>Campaign</source>
+        <target>Chiến dịch</target>
       </trans-unit>
       <trans-unit id="promotions-create_promotion-app-card-promotions_subtitle_field" datatype="html">
-        <source>This page allows you creating a promotion and starts it if you want</source>
-        <target>Trang này cho phép bạn tạo một khuyến mãi mới và bắt đầu áp dụng nó nếu cần thiết</target>
+        <source>This page allows you creating a campaign and starts it if you want</source>
+        <target>Trang này cho phép bạn tạo một chiến dịch chăm sóc hội viên và bắt đầu chạy nó nếu cần thiết</target>
       </trans-unit>
       <trans-unit id="promotions-edit_promotion-app-card-promotions_title_field" datatype="html">
-        <source>Edit Promotion</source>
-        <target>Sửa khuyến mãi</target>
+        <source>Edit campaign</source>
+        <target>Sửa chiến dịch</target>
       </trans-unit>
       <trans-unit id="promotions-edit_promotion-app-card-promotions_subtitle_field" datatype="html">
-        <source>This page allows you editting a promotion</source>
-        <target>Trang này cho phép sửa thông tin khuyến mãi </target>
+        <source>This page allows you editting a campaign</source>
+        <target>Trang này cho phép sửa thông tin chiến dịch </target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-wizard_step-promotions_title_field" datatype="html">
-        <source>Promotion News</source>
-        <target>Tin Khuyến Mãi</target>
+        <source>News</source>
+        <target>Tin tức</target>
       </trans-unit>
       <trans-unit id="promotion-detail-view_count" datatype="html">
         <source>View Count</source>
         <target>Số Lần Xem</target>
       </trans-unit>
       <trans-unit id="promotion-delete-title-dialog" datatype="html">
-        <source>Delete promotion news</source>
-        <target>Xóa tin tức khuyến mãi</target>
+        <source>Delete campaign</source>
+        <target>Xóa chiến dịch</target>
       </trans-unit>
       <trans-unit id="promotion-delete-confirm-message-dialog" datatype="html">
-        <source>Are you sure you want to delete promotion news "{{0}}"?</source>
-        <target>Bạn có chắc muốn xóa tin tức khuyến mãi "{{0}}"?</target>
+        <source>Are you sure you want to delete chiến dịch "{{0}}"?</source>
+        <target>Bạn có chắc muốn xóa chiến dịch "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="promotion-delete-successfully-notification" datatype="html">
-        <source>Delete promotion news successfully</source>
-        <target>Xoá tin tức khuyến mãi thành công</target>
+        <source>Delete campaign successfully</source>
+        <target>Xoá chiến dịch thành công</target>
       </trans-unit>
       <trans-unit id="promotions-create_edit_promotion-label-title_field" datatype="html">
         <source>Title</source>
@@ -1249,27 +1249,27 @@
       </trans-unit>
       <trans-unit id="wizard-wizard-actions-finish_start_button" datatype="html">
         <source>Finish & Start</source>
-        <target>Hoàn tất & Áp dụng khuyến mãi</target>
+        <target>Hoàn tất & Chạy chiến dịch</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-label-create_another_field" datatype="html">
         <source>Create another</source>
-        <target>Tạo khuyến mãi khác</target>
+        <target>Tạo chiến dịch khác</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-error-banner_exceed_size" datatype="html">
         <source>The banner size doesn't exceed 500kb</source>
         <target>Dung lượng hình chủ đề không được vượt quá 500kb</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-message-create_success" datatype="html">
-        <source>A promotion is created successfully</source>
-        <target>Một khuyến mãi được tạo thành công</target>
+        <source>A campaign is created successfully</source>
+        <target>Một chiến dịch được tạo thành công</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-message-create_start_success" datatype="html">
-        <source>A promotion is created and started successfully</source>
-        <target>Một khuyến mãi được tạo và áp dụng thành công</target>
+        <source>A campaign is created and started successfully</source>
+        <target>Một chiến dịch được tạo và áp dụng thành công</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-message-update_success" datatype="html">
-        <source>Promotion is updated successfully</source>
-        <target>Một khuyến mãi được tạo và áp dụng thành công</target>
+        <source>Campaign is updated successfully</source>
+        <target>Một chiến dịch được tạo và áp dụng thành công</target>
       </trans-unit>
       <trans-unit id="promotion-create_promotion-error-require_title" datatype="html">
         <source>Please provide the title</source>
@@ -1415,8 +1415,8 @@
 
       <!--List promotions-->
       <trans-unit id="list-promotions-title-promtions" datatype="html">
-        <source>Promotions</source>
-        <target>Danh Sách Khuyến Mãi</target>
+        <source>Campaigns</source>
+        <target>Danh Sách Chiến Dịch</target>
       </trans-unit>
       <trans-unit id="list-promotions-filter-placeholders" datatype="html">
         <source>Search by title, content</source>
@@ -1442,25 +1442,21 @@
         <source>Expire Date</source>
         <target>Ngày hết hạn</target>
       </trans-unit>
-      <trans-unit id="list-promotions-btn-actions" datatype="html">
-        <source>Actions</source>
-        <target>Thao tác</target>
-      </trans-unit>
       <trans-unit id="list-promotions-btn-edit" datatype="html">
         <source>Edit</source>
         <target>Sửa</target>
       </trans-unit>
       <trans-unit id="list-promotions-btn-delete" datatype="html">
-        <source>Delete Promotion</source>
-        <target>Xoá khuyến mãi</target>
+        <source>Delete campaign</source>
+        <target>Xoá chiến dịch</target>
       </trans-unit>
       <trans-unit id="list-promotions-btn-start-promotion" datatype="html">
         <source>Start</source>
-        <target>Chạy khuyến mãi</target>
+        <target>Chạy chiến dịch</target>
       </trans-unit>
       <trans-unit id="list-promotions-btn-stop-promotion" datatype="html">
         <source>Stop</source>
-        <target>Dừng khuyến mãi</target>
+        <target>Dừng chiến dịch</target>
       </trans-unit>
       <trans-unit id="list-promotions-status-new-promotion" datatype="html">
         <source>New</source>
