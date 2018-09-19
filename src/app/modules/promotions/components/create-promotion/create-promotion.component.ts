@@ -19,6 +19,7 @@ import { convertStringToBase64 } from '../../../../utilities/convertStringToBase
 import { promotionLimits } from '../../common.const';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
 import { UTF8Encoding } from '../../../../utilities/ utf8-regex';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-create-promotion',
@@ -114,6 +115,16 @@ export class CreatePromotionComponent implements OnInit {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
         this.promotion.banner = convertStringToBase64(this.promotion.banner);
+        this.applyDays = this.promotion.valid_date_count;
+        this.notificationMessage = this.promotion.notification_message;
+        if (!isNullOrEmptyOrUndefined(this.promotion.voucher)) {
+          this.selectedVoucher = this.promotion.voucher;
+        }
+
+        if (isNullOrEmptyOrUndefined(this.promotion.start_date)) {
+          Object.assign(this.membersList.memberFilter, this.promotion.member_filter);
+          this.membersList.loadData();
+        }
       });
     }
   }
@@ -126,7 +137,7 @@ export class CreatePromotionComponent implements OnInit {
 
   onFinishAndStart() {
     // Create promotion
-    this.updateCustomerCareCampaginModel();
+    this.updateCustomerCareCampaignModel();
     this._promotionService
       .create(this.promotion)
       .subscribe((createdPromotion: Promotion) => {
@@ -142,7 +153,7 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onWizardFinish() {
-    this.updateCustomerCareCampaginModel();
+    this.updateCustomerCareCampaignModel();
 
     if (this.isEditableMode) {
       // Update promotion
@@ -223,7 +234,7 @@ export class CreatePromotionComponent implements OnInit {
 
   finishContentComponent() {
     this.isFinishedContentComponent = true;
-    this.loadPromotion(this.promotionId);
+    setTimeout(() => this.loadPromotion(this.promotionId));
   }
 
   onSelectedVoucherChanged() {
@@ -246,10 +257,14 @@ export class CreatePromotionComponent implements OnInit {
     return UTF8Encoding.utf8Encode(filterString);
   }
 
-  private updateCustomerCareCampaginModel() {
+  private updateCustomerCareCampaignModel() {
     this.promotion.brief_content = this.ValidateRawContent();
-    this.promotion.member_filter = this.getMemberFilterAsString();
+
+    // If campaign have not yet started, we save the member filter object to support edit easy
+    // Otherwise, we convert the member filter to query string to support api query member easy
+    this.promotion.member_filter = this.membersList.memberFilter;
     this.promotion.valid_date_count = this.applyDays;
     this.promotion.notification_message = this.notificationMessage;
+    this.promotion.voucher = this.selectedVoucher;
   }
 }
