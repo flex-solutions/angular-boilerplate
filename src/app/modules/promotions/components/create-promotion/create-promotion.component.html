@@ -41,7 +41,7 @@
       <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers">
         <div class="row">
           <div class="form-group col-md-12">
-            <app-select2 [(itemsSource)]="vouchers" [(selectedItem)]="selectedVoucher"
+            <app-select2 [(itemsSource)]="vouchers" [(selectedItem)]="selectedVoucher" placeHolder="Select a voucher"
             displayPropertyName="name" (onSelectedItemChange)="onSelectedVoucherChanged()"></app-select2>
           </div>
           <div class="form-group col-md-12">
@@ -50,12 +50,15 @@
           <div class="form-group col-md-12">
             <label>Số ngày áp dụng</label>
             <label class="require">*</label>
-            <input type="number" class="form-control">
+            <input id="applyDays" class="form-control" (change)="onTitleChange($event)" [(ngModel)]="applyDays"
+                name='applyDays' #applyDays="ngModel" required
+                [ngClass]="{'has-error': (applyDays.invalid && (applyDays.dirty || applyDays.touched))}">
+              <!-- <label id="applyDays-error" class="error mt-2 text-danger" for="title" style="margin-left: 0;" *ngIf="(title.invalid && (title.dirty || title.touched)) || titleInvalid">{{titleError}}</label> -->
           </div>
           <div class="form-group col-md-12">
             <label>Nội dung thông báo</label>
             <label class="require">*</label>
-            <textarea type="number" class="form-control" rows="6"></textarea>
+            <!-- <textarea type="number" class="form-control" rows="6"  #notificationMessage="ngModel" [(ngModel)]="notificationMessage"></textarea> -->
           </div>
         </div>
       </app-wizard-step>

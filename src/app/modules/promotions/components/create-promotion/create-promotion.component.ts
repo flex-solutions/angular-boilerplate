@@ -121,7 +121,6 @@ export class CreatePromotionComponent implements OnInit {
   private getCampaignVoucher() {
     this.voucherService.getAllVoucherCareCampaign().subscribe(vouchers => {
       this.vouchers = vouchers;
-      console.log('this.vouchers: ', this.vouchers);
     });
   }
 

@@ -95,9 +95,12 @@ export class Select2Component implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this._placeholder = 'Select a value';
+    if (_.isEmpty(this.placeHolder)) {
+      this._placeholder = 'Select a value';
+    }
+
     this.host.select2({
-      placeholder: this._placeholder,
+      placeholder: this.placeHolder,
       allowClear: true,
       width: 'resolve',
       data: this.formatDataSource(this._itemsSource),
