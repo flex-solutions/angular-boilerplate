@@ -126,8 +126,7 @@ export class CreatePromotionComponent implements OnInit {
 
   onFinishAndStart() {
     // Create promotion
-    this.promotion.brief_content = this.ValidateRawContent();
-    this.promotion.member_filter = this.getMemberFilterAsString();
+    this.updateCustomerCareCampaginModel();
     this._promotionService
       .create(this.promotion)
       .subscribe((createdPromotion: Promotion) => {
@@ -143,8 +142,8 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onWizardFinish() {
-    this.promotion.brief_content = this.ValidateRawContent();
-    this.promotion.member_filter = this.getMemberFilterAsString();
+    this.updateCustomerCareCampaginModel();
+
     if (this.isEditableMode) {
       // Update promotion
       this._promotionService.update(this.promotion).subscribe(() => {
@@ -245,5 +244,12 @@ export class CreatePromotionComponent implements OnInit {
     const filter = this.membersList.getFilterQuery();
     const filterString = JSON.stringify(filter);
     return UTF8Encoding.utf8Encode(filterString);
+  }
+
+  private updateCustomerCareCampaginModel() {
+    this.promotion.brief_content = this.ValidateRawContent();
+    this.promotion.member_filter = this.getMemberFilterAsString();
+    this.promotion.valid_date_count = this.applyDays;
+    this.promotion.notification_message = this.notificationMessage;
   }
 }
