@@ -16,7 +16,6 @@ export class Promotion extends ModelBase {
   member_filter: any;
   is_publish_news: boolean;
   valid_date_count: number;
-  notification_message: string;
 }
 
 export class StatusCheckedItem implements CheckedItem {

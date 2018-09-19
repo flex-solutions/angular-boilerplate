@@ -116,13 +116,16 @@ export class CreatePromotionComponent implements OnInit {
         this.promotion = p as Promotion;
         this.promotion.banner = convertStringToBase64(this.promotion.banner);
         this.applyDays = this.promotion.valid_date_count;
-        this.notificationMessage = this.promotion.notification_message;
         if (!isNullOrEmptyOrUndefined(this.promotion.voucher)) {
           this.selectedVoucher = this.promotion.voucher;
+          this.notificationMessage = this.promotion.voucher.notificationMessage;
         }
 
         if (isNullOrEmptyOrUndefined(this.promotion.start_date)) {
-          Object.assign(this.membersList.memberFilter, this.promotion.member_filter);
+          Object.assign(
+            this.membersList.memberFilter,
+            this.promotion.member_filter
+          );
           this.membersList.loadData();
         }
       });
@@ -259,12 +262,11 @@ export class CreatePromotionComponent implements OnInit {
 
   private updateCustomerCareCampaignModel() {
     this.promotion.brief_content = this.ValidateRawContent();
-
-    // If campaign have not yet started, we save the member filter object to support edit easy
-    // Otherwise, we convert the member filter to query string to support api query member easy
     this.promotion.member_filter = this.membersList.memberFilter;
     this.promotion.valid_date_count = this.applyDays;
-    this.promotion.notification_message = this.notificationMessage;
     this.promotion.voucher = this.selectedVoucher;
+    if (!isNullOrEmptyOrUndefined(this.promotion.voucher)) {
+      this.promotion.voucher.notificationMessage = this.notificationMessage;
+    }
   }
 }
