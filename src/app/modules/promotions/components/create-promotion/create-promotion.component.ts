@@ -1,3 +1,5 @@
+import { Voucher } from './../../../../shared/models/voucher.model';
+import { VoucherService } from './../../../vouchers/services/vouchers.service';
 import { StartStopPromotionService } from './../../services/start-stop-promotion.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { DropifyComponent } from './../../../../shared/ui-common/dropify/dropify.component';
@@ -15,6 +17,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { TynimceEditorComponent } from '../../../../shared/ui-common/tinymce-editor/tinymce-editor.component';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
 import { promotionLimits } from '../../common.const';
+import { MemberHomeComponent } from '../../../member/components/home/home.component';
+import { UTF8Encoding } from '../../../../utilities/ utf8-regex';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-create-promotion',
@@ -22,7 +27,6 @@ import { promotionLimits } from '../../common.const';
   styleUrls: ['./create-promotion.component.css']
 })
 export class CreatePromotionComponent implements OnInit {
-
   // Properties
   cardTitle: string;
   cardSubTitle: string;
@@ -34,10 +38,15 @@ export class CreatePromotionComponent implements OnInit {
   isBlurEditor: boolean;
   promotionId: string;
   rawContent: string;
+  notificationMessage: string;
+  applyDays = 30;
 
   // For editable mode
   isEditableMode: boolean;
   isFinishedContentComponent = false;
+
+  vouchers: Voucher[] = [];
+  selectedVoucher: Voucher = new Voucher();
 
   @ViewChild(WizardComponent)
   private wizardComponent: WizardComponent;
@@ -48,6 +57,9 @@ export class CreatePromotionComponent implements OnInit {
   @ViewChild(TynimceEditorComponent)
   private tynimceEditor: TynimceEditorComponent;
 
+  @ViewChild(MemberHomeComponent)
+  membersList: MemberHomeComponent;
+
   constructor(
     protected fb: FormBuilder,
     protected translateService: TranslateService,
@@ -55,7 +67,8 @@ export class CreatePromotionComponent implements OnInit {
     private _promotionService: PromotionService,
     private _notificationService: NotificationService,
     private _location: Location,
-    private _startStopPromotionHandler: StartStopPromotionService
+    private _startStopPromotionHandler: StartStopPromotionService,
+    private readonly voucherService: VoucherService
   ) {
     this.promotion = new Promotion();
     this.titleInvalid = false;
@@ -71,16 +84,25 @@ export class CreatePromotionComponent implements OnInit {
 
       this.resolveTitle();
     });
+    this.getCampaignVoucher();
   }
 
   // Resolve multilingual message for app card title and sub title
   private resolveTitle() {
     if (!this.isEditableMode) {
-      this.cardTitle = this.translateService.translate(MessageConstant.CreatePromotionTitle);
-      this.cardSubTitle = this.translateService.translate(MessageConstant.CreatePromotionDescription);
+      this.cardTitle = this.translateService.translate(
+        MessageConstant.CreatePromotionTitle
+      );
+      this.cardSubTitle = this.translateService.translate(
+        MessageConstant.CreatePromotionDescription
+      );
     } else {
-      this.cardTitle = this.translateService.translate(MessageConstant.EditPromotionTitle);
-      this.cardSubTitle = this.translateService.translate(MessageConstant.EditPromotionDescription);
+      this.cardTitle = this.translateService.translate(
+        MessageConstant.EditPromotionTitle
+      );
+      this.cardSubTitle = this.translateService.translate(
+        MessageConstant.EditPromotionDescription
+      );
     }
   }
 
@@ -93,19 +115,40 @@ export class CreatePromotionComponent implements OnInit {
       this._promotionService.getPromotion(promotionId).subscribe(p => {
         this.promotion = p as Promotion;
         this.promotion.banner = convertStringToBase64(this.promotion.banner);
+        this.applyDays = this.promotion.valid_date_count;
+        if (!isNullOrEmptyOrUndefined(this.promotion.voucher)) {
+          this.selectedVoucher = this.promotion.voucher;
+          this.notificationMessage = this.promotion.voucher.notificationMessage;
+        }
+
+        if (isNullOrEmptyOrUndefined(this.promotion.start_date)) {
+          Object.assign(
+            this.membersList.memberFilter,
+            this.promotion.member_filter
+          );
+          this.membersList.loadData();
+        }
       });
     }
   }
 
+  private getCampaignVoucher() {
+    this.voucherService.getAllVoucherCareCampaign().subscribe(vouchers => {
+      this.vouchers = vouchers;
+    });
+  }
+
   onFinishAndStart() {
     // Create promotion
-    this.promotion.brief_content = this.ValidateRawContent();
-    this._promotionService.create(this.promotion).subscribe((createdPromotion: Promotion) => {
-      this.showNotification(MessageConstant.CreatePromotionSuccess);
-      this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
-        this.onHandleCreateSuccess();
+    this.updateCustomerCareCampaignModel();
+    this._promotionService
+      .create(this.promotion)
+      .subscribe((createdPromotion: Promotion) => {
+        this.showNotification(MessageConstant.CreatePromotionSuccess);
+        this._startStopPromotionHandler.startPromotion(createdPromotion, () => {
+          this.onHandleCreateSuccess();
+        });
       });
-    });
   }
 
   onWizardCancel() {
@@ -113,7 +156,8 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   onWizardFinish() {
-    this.promotion.brief_content = this.ValidateRawContent();
+    this.updateCustomerCareCampaignModel();
+
     if (this.isEditableMode) {
       // Update promotion
       this._promotionService.update(this.promotion).subscribe(() => {
@@ -171,7 +215,10 @@ export class CreatePromotionComponent implements OnInit {
   }
 
   isTinymceContentEmpty() {
-    return (isNil(this.promotion.content) || this.promotion.content === '') && this.isBlurEditor;
+    return (
+      (isNil(this.promotion.content) || this.promotion.content === '') &&
+      this.isBlurEditor
+    );
   }
 
   private onHandleCreateSuccess() {
@@ -183,7 +230,6 @@ export class CreatePromotionComponent implements OnInit {
       this.tynimceEditor.reset();
       // Reset wizard
       this.wizardComponent.reset();
-
     } else {
       this._location.back();
     }
@@ -191,7 +237,13 @@ export class CreatePromotionComponent implements OnInit {
 
   finishContentComponent() {
     this.isFinishedContentComponent = true;
-    this.loadPromotion(this.promotionId);
+    setTimeout(() => this.loadPromotion(this.promotionId));
+  }
+
+  onSelectedVoucherChanged() {
+    if (this.selectedVoucher) {
+      this.notificationMessage = this.selectedVoucher.notificationMessage;
+    }
   }
 
   private ValidateRawContent(): string {
@@ -200,5 +252,21 @@ export class CreatePromotionComponent implements OnInit {
     }
 
     return this.rawContent;
+  }
+
+  private getMemberFilterAsString() {
+    const filter = this.membersList.getFilterQuery();
+    const filterString = JSON.stringify(filter);
+    return UTF8Encoding.utf8Encode(filterString);
+  }
+
+  private updateCustomerCareCampaignModel() {
+    this.promotion.brief_content = this.ValidateRawContent();
+    this.promotion.member_filter = this.membersList.memberFilter;
+    this.promotion.valid_date_count = this.applyDays;
+    this.promotion.voucher = this.selectedVoucher;
+    if (!isNullOrEmptyOrUndefined(this.promotion.voucher)) {
+      this.promotion.voucher.notificationMessage = this.notificationMessage;
+    }
   }
 }
