@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 import { MessageConstant } from '../../messages';
 import { StartStopPromotionService } from '../../services/start-stop-promotion.service';
 import { convertStringToBase64 } from '../../../../utilities/convertStringToBase64';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
 @Component({
   selector: 'app-detail-promotion',
@@ -20,11 +21,11 @@ import { convertStringToBase64 } from '../../../../utilities/convertStringToBase
   styleUrls: ['./detail-promotion.component.css']
 })
 export class DetailPromotionComponent implements OnInit {
-
   @ViewChild(WizardComponent)
   private wizardComponent: WizardComponent;
 
   currentStep: WizardStep;
+  canEdit = true;
 
   promotion: Promotion;
 
@@ -36,7 +37,8 @@ export class DetailPromotionComponent implements OnInit {
     private location: Location,
     private dialogManager: ExDialog,
     private notificationService: NotificationService,
-    private startStopPromotionHandler: StartStopPromotionService) { }
+    private startStopPromotionHandler: StartStopPromotionService
+  ) {}
 
   ngOnInit() {
     this.promotion = new Promotion();
@@ -60,7 +62,9 @@ export class DetailPromotionComponent implements OnInit {
   }
 
   startStopPromotion() {
-    this.startStopPromotionHandler.startStopPromotion(this.promotion, () => { this.loadPromotion(this.promotion._id); });
+    this.startStopPromotionHandler.startStopPromotion(this.promotion, () => {
+      this.loadPromotion(this.promotion._id);
+    });
   }
 
   // Load promotion info from server
@@ -68,20 +72,30 @@ export class DetailPromotionComponent implements OnInit {
     this.promotionService.getPromotion(promotionId).subscribe(p => {
       this.promotion = p as Promotion;
       this.promotion.banner = convertStringToBase64(this.promotion.banner);
+      this.canEdit = isNullOrEmptyOrUndefined(this.promotion.start_date);
     });
   }
 
   deletePromotion(model: Promotion) {
-    const confirmMsg = this.translateService.translate(MessageConstant.DeleteConfirmation, model.title);
-    const confirmTitle = this.translateService.translate(MessageConstant.DeleteTitle);
-    this.dialogManager.openConfirm(confirmMsg, confirmTitle).subscribe(result => {
-      if (result) {
-        const successMessage = this.translateService.translate(MessageConstant.DeleteSuccessfullyNotification);
-        this.promotionService.deletePromotion(model._id).subscribe(res => {
-          this.notificationService.showSuccess(successMessage);
-          this.location.back();
-        });
-      }
-    });
+    const confirmMsg = this.translateService.translate(
+      MessageConstant.DeleteConfirmation,
+      model.title
+    );
+    const confirmTitle = this.translateService.translate(
+      MessageConstant.DeleteTitle
+    );
+    this.dialogManager
+      .openConfirm(confirmMsg, confirmTitle)
+      .subscribe(result => {
+        if (result) {
+          const successMessage = this.translateService.translate(
+            MessageConstant.DeleteSuccessfullyNotification
+          );
+          this.promotionService.deletePromotion(model._id).subscribe(res => {
+            this.notificationService.showSuccess(successMessage);
+            this.location.back();
+          });
+        }
+      });
   }
 }

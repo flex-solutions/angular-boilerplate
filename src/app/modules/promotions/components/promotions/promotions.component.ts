@@ -48,7 +48,7 @@ export class PromotionsComponent implements OnInit {
   public count = (searchKey: string) => {
     const query = this.buildPromotionFilter();
     return this.service.count(query);
-  };
+  }
 
   onPageChanged(eventArg: IFilterChangedEvent) {
     this.currentFilterArgs = eventArg;
@@ -180,7 +180,7 @@ export class PromotionsComponent implements OnInit {
 
   resetFilter = () => {
     this.loadDataWithFilter();
-  };
+  }
 
   private loadDataWithFilter() {
     this.count('').subscribe(total => {
@@ -188,5 +188,16 @@ export class PromotionsComponent implements OnInit {
       this.dataGrid.countPageEntry();
       this.loadPromotions();
     });
+  }
+
+  canEdit(promotion: Promotion) {
+    if (
+      isNullOrEmptyOrUndefined(promotion) ||
+      isNullOrEmptyOrUndefined(promotion.start_date)
+    ) {
+      return true;
+    }
+
+    return false;
   }
 }
