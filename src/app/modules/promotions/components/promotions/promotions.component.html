@@ -27,7 +27,7 @@
         <td>{{item.start_date | promotionDate:'dd/MM/y'}}</td>
         <td>{{item.expire_date | promotionDate:'dd/MM/y'}}</td>
         <td>
-          <button type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
+          <button *ngIf="canEdit(item)" type="button" class="btn btn-light btn-custom-css" (click)="navigateToEdit(item._id)">
             <i class="mdi mdi-pencil text-primary" aria-hidden="false"></i>
             <span i18n="@@common-action-edit">Edit</span>
           </button>
