@@ -1,7 +1,7 @@
 <app-card>
   <div class="command-region">
     <div class="template-demo">
-      <button type="button" class="btn btn-primary btn-md" style="margin-top: 0px !important" i18n="@@promotions-edit_promotion-app-card-promotions_title_field"
+      <button *ngIf="canEdit" type="button" class="btn btn-primary btn-md" style="margin-top: 0px !important" i18n="@@promotions-edit_promotion-app-card-promotions_title_field"
         (click)="navigateToEdit(promotion._id)">
         <i class="mdi mdi-pencil"></i>Edit Promotion</button>
       <button type="button" class="btn btn-light btn-custom-css" style="margin: 0px !important; padding: 0 !important" appStartStopButton
