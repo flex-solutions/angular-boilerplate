@@ -74,11 +74,14 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     this.createVoucherSuccessMsg = this.translateService.translate(
       'voucher-create-success'
     );
-    if (!this.isEdit) {
-      this.getPosesAsync();
-    } else {
-      this.getVoucherForEdit();
-    }
+
+    setTimeout(() => {
+      if (!this.isEdit) {
+        this.getPosesAsync();
+      } else {
+        this.getVoucherForEdit();
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -130,10 +133,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
 
   protected onCreateForm() {
     super.onCreateForm();
-
-    this.buildFormGroupBaseOnVoucherType();
-    this.buildFormGroupBaseOnVoucherOperationType();
-    this.formGroup = this.voucherFormFactory.formGroup;
+    this.rebuildFormGroup();
   }
 
   private async getPosesAsync() {
@@ -220,7 +220,14 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
         this.voucherGroupType = VoucherGroupType.XGetY;
       }
       this.voucherOperationType = this.voucher.operationType;
+      this.rebuildFormGroup();
     });
+  }
+
+  private rebuildFormGroup() {
+    this.buildFormGroupBaseOnVoucherType();
+    this.buildFormGroupBaseOnVoucherOperationType();
+    this.formGroup = this.voucherFormFactory.formGroup;
   }
 
   private removeSelectedGiftSet() {
