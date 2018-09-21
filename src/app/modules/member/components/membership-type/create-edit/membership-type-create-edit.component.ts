@@ -1,3 +1,4 @@
+import { Guid } from 'guid-typescript';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Location } from '@angular/common';
@@ -9,9 +10,12 @@ import {
   VoucherBenefit
 } from './../../../../../shared/models/membership-type.model';
 import { MembershipTypeService } from './../../../services/membership-type.service';
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, AfterViewInit } from '@angular/core';
 import { AbstractFormComponent } from '../../../../../shared/abstract/abstract-form-component';
 import * as _ from 'lodash';
+
+import { Voucher } from '../../../../../shared/models/voucher.model';
+import { isNullOrEmptyOrUndefined } from '../../../../../utilities/util';
 
 @Component({
   selector: 'app-membership-type-create-edit',
@@ -19,12 +23,12 @@ import * as _ from 'lodash';
   styles: []
 })
 export class MembershipTypeCreateEditComponent extends AbstractFormComponent
-  implements OnInit {
+  implements OnInit, AfterViewInit {
   public membershipType: MembershipType = new MembershipType();
   membershipTypeId: string;
   benefits: string[] = [];
   inputBenefit: string;
-  vouchers: VoucherBenefit[] = [];
+  vouchers: Voucher[] = [];
   selectedVouchers: VoucherBenefit[] = [];
   validDateCount: 30;
 
@@ -87,26 +91,18 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
       this.isEdit === false
         ? this.translateService.translate('membership-type-create-form-success')
         : this.translateService.translate('membership-type-edit-form-success');
-    this.loadMembershipInfo();
   }
 
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+    this.loadMembershipInfo();
+  }
   async loadMembershipInfo() {
-    await this.getMembershipTypeInfoForEdit();
     const vouchers = (await this.membershipTypeService
       .getAllVoucherCareCampaign()
       .toPromise()) as any[];
-    const benefitVouchers = [];
-    for (const v of vouchers) {
-      benefitVouchers.push({
-        campaignName: v.name,
-        voucher: v,
-        voucherCode: v.code,
-        voucherName: v.name,
-        validDateCount: 30,
-        schedule: BenefitScheduleType.ReachRank
-      });
-    }
-    this.vouchers = benefitVouchers;
+    this.vouchers = vouchers;
+    await this.getMembershipTypeInfoForEdit();
     if (this.membershipType.staticBenefits) {
       this.selectedVouchers = this.membershipType.staticBenefits;
     }
@@ -172,6 +168,7 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
         this.membershipType.staticBenefits = _.map(
           this.membershipType.staticBenefits,
           (val: VoucherBenefit, key: string) => {
+            val.voucherBenefitId = Guid.create().toString();
             val.voucherCode = _.get(val.voucher, 'code', null);
             val.voucherName = _.get(val.voucher, 'name', null);
             return val;
@@ -197,7 +194,7 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   removeVoucherBenefit(selectedVoucher: VoucherBenefit) {
     const copySelectedVouchers = _.map(this.selectedVouchers, _.clone);
     _.remove(copySelectedVouchers, (val: VoucherBenefit) => {
-      return val.voucherCode === selectedVoucher.voucherCode;
+      return val.voucherBenefitId === selectedVoucher.voucherBenefitId;
     });
     this.selectedVouchers = copySelectedVouchers;
   }
@@ -205,5 +202,27 @@ export class MembershipTypeCreateEditComponent extends AbstractFormComponent
   private fillBenefitToMembershipType() {
     this.membershipType.nonBenefits = this.benefits;
     this.membershipType.staticBenefits = this.selectedVouchers;
+  }
+
+  onSelectedVoucherChanged($event: Voucher, selectedVoucher: VoucherBenefit) {
+    if (!isNullOrEmptyOrUndefined($event)) {
+      const currentSelectedBenefit = this.selectedVouchers.find(
+        i => i.voucherBenefitId === selectedVoucher.voucherBenefitId
+      );
+      if (currentSelectedBenefit) {
+        currentSelectedBenefit.voucher = $event;
+        if (isNullOrEmptyOrUndefined(currentSelectedBenefit.campaignName)) {
+          currentSelectedBenefit.campaignName = $event.name;
+        }
+      }
+    }
+  }
+
+  addSelectedVoucher() {
+    const benefit = new VoucherBenefit();
+    benefit.voucherBenefitId = Guid.create().toString();
+    benefit.validDateCount = 30;
+    benefit.schedule = BenefitScheduleType.ReachRank;
+    this.selectedVouchers.push(benefit);
   }
 }
