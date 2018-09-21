@@ -2208,8 +2208,8 @@
         <target>Voucher care campaign</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
-        <source>Campaign name</source>
-        <target>Campaign name</target>
+        <source>Voucher name</source>
+        <target>Voucher name</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
         <source>Voucher code</source>
@@ -2250,6 +2250,10 @@
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>
         <target>Schedule parameters</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-add-voucher-button" datatype="html">
+        <source>Add voucher</source>
+        <target>Add voucher</target>
       </trans-unit>
       <!--STOP membership types-->
       <!--START voucher running-->

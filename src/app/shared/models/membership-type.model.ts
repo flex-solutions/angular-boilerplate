@@ -8,7 +8,8 @@ export enum BenefitScheduleType {
   GetXPoints
 }
 
-export interface VoucherBenefit {
+export class VoucherBenefit {
+  voucherBenefitId: string;
   campaignName: string;
   voucher: Voucher;
   voucherCode: string;

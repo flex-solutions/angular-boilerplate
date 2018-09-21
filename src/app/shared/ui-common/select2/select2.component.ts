@@ -42,11 +42,7 @@ export class Select2Component implements AfterViewInit {
         dropdownAutoWidth: true
       });
 
-    if (this._selectedItem && this._selectedItem.text) {
-      this.onSelectedItemChange();
-    } else {
-      this.host.val(null).trigger('change');
-    }
+    this.initializedSelect2();
   }
 
   get itemsSource() {
@@ -106,11 +102,19 @@ export class Select2Component implements AfterViewInit {
       data: this.formatDataSource(this._itemsSource),
       dropdownAutoWidth: true
     });
-    this.host.val(null).trigger('change');
+    this.initializedSelect2();
     this.host.on('select2:select', e => {
       const data = e.params.data;
       this.selectedItem = _.pickBy(data, (val, key) => key !== 'element');
     });
+  }
+
+  private initializedSelect2() {
+    if (this._selectedItem && this._selectedItem.text) {
+      this.onSelectedItemChange();
+    } else {
+      this.host.val(null).trigger('change');
+    }
   }
 
   get host() {

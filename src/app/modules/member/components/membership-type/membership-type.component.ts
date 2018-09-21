@@ -105,9 +105,7 @@ export class MembershipTypeHomeComponent implements OnInit {
             !isNullOrEmptyOrUndefined(type.nonBenefits) &&
             !isNullOrEmptyOrUndefined(type.staticBenefits)
           ) {
-            type.benefits = type.nonBenefits.concat(
-              type.staticBenefits.map(m => m.campaignName)
-            );
+            type.benefits = type.staticBenefits.map(m => m.campaignName).concat(type.nonBenefits);
           } else if (!isNullOrEmptyOrUndefined(type.nonBenefits)) {
             type.benefits = type.nonBenefits;
           } else if (!isNullOrEmptyOrUndefined(type.staticBenefits)) {

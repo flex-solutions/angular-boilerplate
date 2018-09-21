@@ -2200,12 +2200,12 @@
         <target>Chiến dịch chăm sóc khách hàng</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
-        <source>Campaign name</source>
-        <target>Tên chiến dịch</target>
+        <source>Voucher name</source>
+        <target>Tên ưu đãi</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
         <source>Voucher code</source>
-        <target>Voucher code</target>
+        <target>Mã voucher</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
         <source>Schedule</source>
@@ -2242,6 +2242,10 @@
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>
         <target>Tham số lịch trình</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-add-voucher-button" datatype="html">
+        <source>Add voucher</source>
+        <target>Thêm ưu đãi</target>
       </trans-unit>
       <!--STOP membership types-->
       <!--START voucher running-->
