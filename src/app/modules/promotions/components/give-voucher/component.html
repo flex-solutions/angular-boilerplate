@@ -1,0 +1,42 @@
+<app-card title="Give voucher" subTitle="This page allows you give a voucher for one or many members">
+
+  <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)"
+    (validated)="onWizardValidated()">
+    <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field"
+      title="Vouchers">
+      <form id="promotionForm" #f="ngForm">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Voucher</label>
+            <label class="require">*</label>
+            <app-select2 [(itemsSource)]="vouchers" [(selectedItem)]="selectedVoucher" placeHolder="Select a voucher"
+              displayPropertyName="name" (selectedItemChange)="onSelectedVoucherChanged()"></app-select2>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Mã voucher đã chọn</label>
+            <label class="form-control">{{selectedVoucher.code}}&nbsp;</label>
+          </div>
+          <div class="form-group col-md-12">
+            <label for="applyDays">Số ngày áp dụng</label>
+            <label class="require">*</label>
+            <input id="applyDays" class="form-control" [(ngModel)]="applyDays" [ngModelOptions]="{standalone: true}"  name='applyDays'
+              required appInputNumber>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Nội dung thông báo</label>
+            <label class="require">*</label>
+            <textarea type="number" class="form-control" rows="6" [ngModelOptions]="{standalone: true}" [(ngModel)]="notificationMessage"></textarea>
+          </div>
+        </div>
+      </form>
+    </app-wizard-step>
+    <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field"
+      title="Member Target">
+      <app-member-home canAddOrUpdateMember="false"></app-member-home>
+    </app-wizard-step>
+    <!--Extend wizard button. Current step = 2 mean that is last wizard step-->
+    <button *ngIf="currentStep===2" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinishAndStart()">Give
+      with love!</button>
+  </app-wizard>
+
+</app-card>

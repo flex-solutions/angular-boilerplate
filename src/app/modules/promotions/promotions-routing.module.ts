@@ -1,3 +1,4 @@
+import { GiveVoucherComponent } from './components/give-voucher/component';
 import { CreatePromotionComponent } from './components/create-promotion/create-promotion.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,13 @@ const routes: Routes = [
     component: CreatePromotionComponent,
     data: {
       breadcrumb: 'Create Promotion'
+    }
+  },
+  {
+    path: 'give-voucher',
+    component: GiveVoucherComponent,
+    data: {
+      breadcrumb: 'Give voucher'
     }
   },
   {

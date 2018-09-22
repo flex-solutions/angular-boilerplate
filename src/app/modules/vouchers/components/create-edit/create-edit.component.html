@@ -95,11 +95,11 @@
             <div class="row">
               <div class="col-md-6">
                 <label i18n="@@voucher-create-edit-number-item-to-buy">Số lượng món cần mua</label>
-                <input class="form-control" type="number" [(ngModel)]="voucher.numberBuyItem" [ngModelOptions]="{standalone: true}">
+                <input class="form-control" type="number" appInputNumber [(ngModel)]="voucher.numberBuyItem" [ngModelOptions]="{standalone: true}">
               </div>
               <div class="col-md-6">
                 <label i18n="@@voucher-create-edit-number-item-donated">Số lượng món được tặng</label>
-                <input class="form-control" type="number" [(ngModel)]="voucher.numberGiftItem" [ngModelOptions]="{standalone: true}">
+                <input class="form-control" type="number" appInputNumber [(ngModel)]="voucher.numberGiftItem" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" i18n="@@voucher-create-edit-advance-condition-number-discount-dishes">Số món giảm giá</label>
-                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyAllowMenuItemCount" [ngModelOptions]="{standalone: true}">
+                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyAllowMenuItemCount" appInputNumber [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" i18n="@@voucher-create-edit-advance-condition-discount-lowest-highest">Giảm giá món cao nhất / thấp nhất</label>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" i18n="@@voucher-create-edit-advance-condition-discount-from-item">Giảm giá từ món thứ</label>
-                  <input class="form-control" type="number" [(ngModel)]="voucher.advApplyFromMenuItemIndex" [ngModelOptions]="{standalone: true}">
+                  <input class="form-control" appInputNumber type="number" [(ngModel)]="voucher.advApplyFromMenuItemIndex" [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" i18n="@@voucher-create-edit-advance-condition-distributor">Nhà phân phối</label>
