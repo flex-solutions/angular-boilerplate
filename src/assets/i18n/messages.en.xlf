@@ -2203,17 +2203,9 @@
         <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members
           before deleting.</target>
       </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
-        <source>Voucher care campaign</source>
-        <target>Voucher care campaign</target>
-      </trans-unit>
       <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
         <source>Voucher name</source>
         <target>Voucher name</target>
-      </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
-        <source>Voucher code</source>
-        <target>Voucher code</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
         <source>Schedule</source>

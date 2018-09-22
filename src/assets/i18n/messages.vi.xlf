@@ -2195,17 +2195,9 @@
           viên này trước
           khi xoá.</target>
       </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
-        <source>Voucher care campaign</source>
-        <target>Chiến dịch chăm sóc khách hàng</target>
-      </trans-unit>
       <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
         <source>Voucher name</source>
         <target>Tên ưu đãi</target>
-      </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
-        <source>Voucher code</source>
-        <target>Mã voucher</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
         <source>Schedule</source>
