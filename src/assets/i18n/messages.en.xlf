@@ -1285,6 +1285,10 @@
         <source>Please provide the content</source>
         <target>Please provide the content</target>
       </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_selected_voucher" datatype="html">
+        <source>Please select the voucher care campaign</source>
+        <target>Please select the voucher care campaign</target>
+      </trans-unit>
       <!--END Create edit promotion-->
       <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">

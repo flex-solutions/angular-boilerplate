@@ -1,8 +1,7 @@
 <app-card title="{{cardTitle}}" subTitle="{{cardSubTitle}}">
   <form id="promotionForm" #f="ngForm">
-    <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)"
-      (validated)="onWizardValidated()">
-      <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field"
+    <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)">
+      <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-promotions_title_field" (beforeNext)="beforeNextStep1()"
         title="Promotion News">
         <div class="row">
           <div class="col col-md-6" style="min-height: 600">
@@ -38,11 +37,12 @@
           </div>
         </div>
       </app-wizard-step>
-      <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers">
+      <app-wizard-step i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" title="Vouchers" (beforeNext)="beforeNextStep2()">
         <div class="row">
           <div class="form-group col-md-12">
             <app-select2 [(itemsSource)]="vouchers" [(selectedItem)]="selectedVoucher" placeHolder="Select a voucher"
-              displayPropertyName="name" (selectedItemChange)="onSelectedVoucherChanged()"></app-select2>
+              displayPropertyName="name" (selectedItemChange)="onSelectedVoucherChanged()" [ngClass]="{'has-error': selectedVoucherInvalid}"></app-select2>
+              <label id="title-error" class="error mt-2 text-danger" for="title" style="margin-left: 0;" *ngIf="selectedVoucherInvalid" i18n="@@promotion-create_promotion-error-require_selected_voucher">Please select the voucher care campaign</label>
           </div>
           <div class="form-group col-md-12">
             <label>Mã Voucher: {{selectedVoucher.code}}</label>

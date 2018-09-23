@@ -1279,6 +1279,10 @@
         <source>Please provide the content</source>
         <target>Vui lòng cung cấp nội dung</target>
       </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_selected_voucher" datatype="html">
+        <source>Please select the voucher care campaign</source>
+        <target>Vui lòng chọn phiếu ưu đãi</target>
+      </trans-unit>
       <!--END Create edit promotion-->
       <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">
