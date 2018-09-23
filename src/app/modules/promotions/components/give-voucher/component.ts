@@ -72,7 +72,7 @@ export class GiveVoucherComponent implements OnInit {
   private updateCustomerCareCampaignModel() {
     this.model = {
       voucher: this.selectedVoucher,
-      member_filter: this.membersList.memberFilter,
+      member_filter:  this.membersList.getFilterQuery(),
       applyDays: this.applyDays,
       notificationMsg: this.notificationMessage,
     };

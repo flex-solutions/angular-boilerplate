@@ -2283,6 +2283,28 @@
         <target>Voucher "{{0}}" đã được áp dụng</target>
       </trans-unit>
       <!--STOP voucher running-->
+      <!--START Give Voucher-->
+      <trans-unit id="give-voucher-title" datatype="html">
+        <source>Give voucher with love!</source>
+        <target>Tặng Voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-sub-title" datatype="html">
+        <source>This page allows you give a voucher for one or many members</source>
+        <target>Hỗ trợ bạn tặng một voucher cho một hoặc nhiều hội viên</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-selected-voucher" datatype="html">
+        <source>Selected voucher code</source>
+        <target>Mã voucher đã chọn</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-effect-days" datatype="html">
+        <source>Effect days</source>
+        <target>Số ngày áp dụng</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-notification-message" datatype="html">
+        <source>Notification message</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
+      <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
       <trans-unit id="pos-menu-list-title" datatype="html">
         <source>SNOB Point Of Sales</source>

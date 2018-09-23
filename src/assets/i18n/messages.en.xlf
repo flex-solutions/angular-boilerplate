@@ -2290,6 +2290,28 @@
         <target>Voucher "{{0}}" has been run</target>
       </trans-unit>
       <!--STOP voucher running-->
+      <!--START Give Voucher-->
+      <trans-unit id="give-voucher-title" datatype="html">
+        <source>Give voucher with love!</source>
+        <target>Give voucher with love!</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-sub-title" datatype="html">
+        <source>This page allows you give a voucher for one or many members</source>
+        <target>This page allows you give a voucher for one or many members</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-selected-voucher" datatype="html">
+        <source>Selected voucher code</source>
+        <target>Selected voucher code</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-effect-days" datatype="html">
+        <source>Effect days</source>
+        <target>Effect days</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-notification-message" datatype="html">
+        <source>Notification message</source>
+        <target>Notification message</target>
+      </trans-unit>
+      <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
       <trans-unit id="pos-menu-list-title" datatype="html">
         <source>SNOB Point Of Sales</source>
