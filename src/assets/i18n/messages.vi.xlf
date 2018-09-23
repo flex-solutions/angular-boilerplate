@@ -1337,7 +1337,11 @@
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
-      <trans-unit id="list-news-btn-publishs" datatype="html">
+      <trans-unit id="list-news-btn-unpublishs" datatype="html">
+        <source>Unpublish</source>
+        <target>Hủy bài đăng</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-deactivate" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>

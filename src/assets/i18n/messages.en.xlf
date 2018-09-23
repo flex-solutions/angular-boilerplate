@@ -1347,6 +1347,10 @@
         <source>Publish</source>
         <target>Publish</target>
       </trans-unit>
+      <trans-unit id="list-news-btn-unpublishs" datatype="html">
+        <source>Unpublish</source>
+        <target>Unpublish</target>
+      </trans-unit>
       <trans-unit id="list-news-btn-edit" datatype="html">
         <source>Edit news</source>
         <target>Edit news</target>
