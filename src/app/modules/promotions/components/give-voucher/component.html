@@ -1,8 +1,7 @@
 <app-card title="Give voucher" subTitle="This page allows you give a voucher for one or many members">
 
-  <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)"
-    (validated)="onWizardValidated()">
-    <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field"
+  <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()" (stepChanged)="onStepChanged($event)">
+    <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" (beforeNext)="beforeNextStep1()"
       title="Vouchers">
       <form id="promotionForm" #f="ngForm">
         <div class="row">

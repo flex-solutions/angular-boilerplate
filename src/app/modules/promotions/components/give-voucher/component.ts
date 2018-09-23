@@ -19,7 +19,6 @@ import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 })
 export class GiveVoucherComponent implements OnInit {
   // Properties
-  currentStep: WizardStep;
   model: IGiveVoucherModel;
   notificationMessage: string;
   applyDays = 30;
@@ -43,7 +42,6 @@ export class GiveVoucherComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.wizardComponent.canNext = true;
     this.getCampaignVoucher();
   }
 
@@ -61,14 +59,8 @@ export class GiveVoucherComponent implements OnInit {
     this.updateCustomerCareCampaignModel();
   }
 
-  onWizardValidated() {
-    if (this.currentStep === 1) {
-      this.wizardComponent.canNext = !isNullOrEmptyOrUndefined(this.selectedVoucher) && !isNil(this.selectedVoucher.code);
-    }
-  }
-
-  onStepChanged(step: WizardStep) {
-    this.currentStep = step;
+  beforeNextStep1() {
+    this.wizardComponent.selectedStep.canNext = !isNullOrEmptyOrUndefined(this.selectedVoucher) && !isNil(this.selectedVoucher.code);
   }
 
   onSelectedVoucherChanged() {
