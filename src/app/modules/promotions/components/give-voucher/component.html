@@ -34,9 +34,6 @@
       title="Member Target">
       <app-member-home canAddOrUpdateMember="false"></app-member-home>
     </app-wizard-step>
-    <!--Extend wizard button. Current step = 2 mean that is last wizard step-->
-    <button *ngIf="currentStep===2" class="afterFinishButton btn btn-fw btn-success float-left" (click)="onFinishAndStart()">Give
-      with love!</button>
   </app-wizard>
 
 </app-card>
