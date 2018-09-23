@@ -63,11 +63,11 @@ export class StartPromotionComponent extends DialogComponent implements OnInit {
       const memberFilter = new MemberFilter();
       Object.assign(memberFilter, this.promotion.member_filter);
       const query = MemberCriteriaBuilder.build(memberFilter);
+      const putMemberFilter = isNullOrEmptyOrUndefined(query)
+        ? null
+        : UTF8Encoding.utf8Encode(JSON.stringify(query));
       this.promotionService
-        .updateMemberFilter(
-          this.promotion._id,
-          UTF8Encoding.utf8Encode(JSON.stringify(query))
-        )
+        .updateMemberFilter(this.promotion._id, putMemberFilter)
         .subscribe(res => {
           this.promotionService
             .start(this.promotion._id, this.promotion)
