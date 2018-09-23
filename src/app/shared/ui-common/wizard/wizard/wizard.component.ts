@@ -1,91 +1,95 @@
-import { Component, AfterContentInit, QueryList, ContentChildren, EventEmitter, Output, Input } from '@angular/core';
+import {
+  Component,
+  AfterContentInit,
+  QueryList,
+  ContentChildren,
+  EventEmitter,
+  Output,
+  Input
+} from '@angular/core';
 import { WizardNavigator } from '../wizard-navigator';
-import { WizardStepComponent, WizardStep } from '../wizard-step/wizard-step.component';
+import {
+  WizardStepComponent,
+  WizardStep
+} from '../wizard-step/wizard-step.component';
 
 @Component({
-    selector: 'app-wizard',
-    templateUrl: './wizard.component.html',
-    styleUrls: ['./wizard.component.css'],
-    providers: [WizardNavigator]
+  selector: 'app-wizard',
+  templateUrl: './wizard.component.html',
+  styleUrls: ['./wizard.component.css'],
+  providers: [WizardNavigator]
 })
 export class WizardComponent implements AfterContentInit {
+  //  Call when cancel button clicked
+  @Output()
+  cancelClicked = new EventEmitter();
 
-    //  Call when cancel button clicked
-    @Output()
-    cancelClicked = new EventEmitter();
+  // Call when finish clicked
+  @Output()
+  finishClicked = new EventEmitter();
 
-    // Call when finish clicked
-    @Output()
-    finishClicked = new EventEmitter();
+  // Call when selected step changed
+  @Output()
+  stepChanged = new EventEmitter<WizardStep>();
 
-    // Call when selected step changed
-    @Output()
-    stepChanged = new EventEmitter<WizardStep>();
+  isEnableCancelButton = true;
+  /**
+   * A QueryList containing all [[WizardStep]]s inside this wizard
+   */
+  @ContentChildren(WizardStepComponent)
+  wizardSteps: QueryList<WizardStepComponent>;
 
-    @Output()
-    validated = new EventEmitter();
+  // A wizard step was showed
+  selectedStep: WizardStepComponent;
 
-    // Call before execute next action
-    canNext: boolean;
+  constructor(public wizardNavigator: WizardNavigator) {}
 
-    // Call before excute previous action
-    canPrevious: boolean;
+  ngAfterContentInit(): void {
+    // add a subscriber to the wizard steps QueryList to listen to changes in the DOM
+    this.wizardSteps.changes.subscribe(changedWizardSteps => {
+      this.wizardNavigator.updateWizardSteps(
+        changedWizardSteps.toArray(),
+        this
+      );
+    });
 
-    isEnableCancelButton = true;
-    /**
-    * A QueryList containing all [[WizardStep]]s inside this wizard
-    */
-    @ContentChildren(WizardStepComponent)
-    wizardSteps: QueryList<WizardStepComponent>;
+    // initialize the model
+    this.wizardNavigator.updateWizardSteps(this.wizardSteps.toArray(), this);
+  }
 
-    // A wizard step was showed
-    selectedStep: WizardStepComponent;
-
-    constructor(public wizardNavigator: WizardNavigator) {
-        this.canNext = true;
-        this.canPrevious = true;
+  onPrevious() {
+    this.selectedStep.beforePrevious.emit();
+    if (this.selectedStep.canPrevious) {
+      this.wizardNavigator.previous();
     }
+  }
 
-    ngAfterContentInit(): void {
-        // add a subscriber to the wizard steps QueryList to listen to changes in the DOM
-        this.wizardSteps.changes.subscribe(changedWizardSteps => {
-            this.wizardNavigator.updateWizardSteps(changedWizardSteps.toArray(), this);
-        });
-
-        // initialize the model
-        this.wizardNavigator.updateWizardSteps(this.wizardSteps.toArray(), this);
+  onNext() {
+    this.selectedStep.beforeNext.emit();
+    if (this.selectedStep.canNext) {
+      this.wizardNavigator.next();
     }
+  }
 
-    onPrevious() {
-        if (this.canPrevious) {
-            this.wizardNavigator.previous();
-        }
-    }
+  onCancel() {
+    this.cancelClicked.emit();
+  }
 
-    onNext() {
-        this.validated.emit();
-        if (this.canNext) {
-            this.wizardNavigator.next();
-        }
-    }
+  onFinish() {
+    this.finishClicked.emit();
+  }
 
-    onCancel() {
-        this.cancelClicked.emit();
-    }
+  reset() {
+    this.wizardNavigator.resetToDefaultStep();
+  }
 
-    onFinish() {
-        this.finishClicked.emit();
-    }
-
-    reset() {
-        this.wizardNavigator.resetToDefaultStep();
-    }
-
-    onSelectedStepChanged(selectedStep: WizardStepComponent) {
-        this.selectedStep = selectedStep;
-        const step = this.selectedStep.isFirstStep ? WizardStep.First :
-            (this.selectedStep.isLastStep ? WizardStep.Last : WizardStep.Unknow);
-        this.stepChanged.emit(step);
-    }
-
+  onSelectedStepChanged(selectedStep: WizardStepComponent) {
+    this.selectedStep = selectedStep;
+    const step = this.selectedStep.isFirstStep
+      ? WizardStep.First
+      : this.selectedStep.isLastStep
+        ? WizardStep.Last
+        : WizardStep.Unknow;
+    this.stepChanged.emit(step);
+  }
 }

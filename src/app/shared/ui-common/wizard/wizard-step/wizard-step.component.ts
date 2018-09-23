@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-wizard-step',
@@ -6,8 +6,6 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./wizard-step.component.css'],
 })
 export class WizardStepComponent {
-
-
     @Input()
     title: string;
 
@@ -16,6 +14,18 @@ export class WizardStepComponent {
 
     @Input()
     isLastStep: boolean;
+
+    @Output()
+    beforeNext = new EventEmitter();
+
+    @Output()
+    beforePrevious = new EventEmitter();
+
+    // Call before execute next action
+    canNext: boolean;
+
+    // Call before excute previous action
+    canPrevious: boolean;
 
     titleClasses: string;
     bodyClasses: string;
@@ -30,6 +40,8 @@ export class WizardStepComponent {
         this.title = '';
         this.isFirstStep = false;
         this.isFirstStep = false;
+        this.canNext = true;
+        this.canPrevious = true;
     }
 
     updateClasses() {
