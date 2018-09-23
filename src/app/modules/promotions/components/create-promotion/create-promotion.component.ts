@@ -34,6 +34,7 @@ export class CreatePromotionComponent implements OnInit {
   promotion: Promotion;
   contentInvalid: boolean;
   titleInvalid: boolean;
+  selectedVoucherInvalid: boolean;
   isCreateAnother: boolean;
   isBlurEditor: boolean;
   promotionId: string;
@@ -75,9 +76,9 @@ export class CreatePromotionComponent implements OnInit {
     this.contentInvalid = false;
     this.isEditableMode = false;
     this.isCreateAnother = false;
+    this.selectedVoucherInvalid = false;
   }
   ngOnInit() {
-    this.wizardComponent.canNext = true;
     this._activeRoute.params.subscribe((params: Params) => {
       this.promotionId = params['id'] ? params['id'] : null;
       this.isEditableMode = this.promotionId ? true : false;
@@ -172,7 +173,7 @@ export class CreatePromotionComponent implements OnInit {
     }
   }
 
-  onWizardValidated() {
+  beforeNextStep1() {
     this.titleInvalid = false;
     this.contentInvalid = false;
     // Content is empty
@@ -185,7 +186,16 @@ export class CreatePromotionComponent implements OnInit {
       this.titleInvalid = true;
     }
 
-    this.wizardComponent.canNext = !this.contentInvalid && !this.titleInvalid;
+    this.wizardComponent.selectedStep.canNext =
+      !this.contentInvalid && !this.titleInvalid;
+  }
+
+  beforeNextStep2() {
+    this.selectedVoucherInvalid = false;
+    if (isNullOrEmptyOrUndefined(this.selectedVoucher) || isNullOrEmptyOrUndefined(this.selectedVoucher._id)) {
+      this.selectedVoucherInvalid = true;
+    }
+    this.wizardComponent.selectedStep.canNext = !this.selectedVoucherInvalid;
   }
 
   onStepChanged(step: WizardStep) {
@@ -242,6 +252,7 @@ export class CreatePromotionComponent implements OnInit {
 
   onSelectedVoucherChanged() {
     if (this.selectedVoucher) {
+      this.selectedVoucherInvalid = false;
       this.notificationMessage = this.selectedVoucher.notificationMessage;
     }
   }
@@ -252,12 +263,6 @@ export class CreatePromotionComponent implements OnInit {
     }
 
     return this.rawContent;
-  }
-
-  private getMemberFilterAsString() {
-    const filter = this.membersList.getFilterQuery();
-    const filterString = JSON.stringify(filter);
-    return UTF8Encoding.utf8Encode(filterString);
   }
 
   private updateCustomerCareCampaignModel() {
