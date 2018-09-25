@@ -9,9 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-i18n": "for lang in vi en; do ng build --output-path=dist/$lang --aot --base-href /$lang/ --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-format=xlf --i18n-locale=$lang; done",
+    "build-i18n": "for lang in vi en; do ng build --aot=false --build-optimizer=false --configuration=production-$lang; done",
     "vi": "ng serve --aot --i18n-file=src/assets/i18n/messages.vi-VN.xlf --locale=vi --i18n-format=xlf",
-    "en": "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf"
+    "en": "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf",
+    "build:client-and-server-bundles-i18n": "ng run snobrs-cms:build:production-en && ng run snobrs-cms:build:production-vi"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +36,8 @@
     "rxjs": "^6.1.0",
     "socket.io-client": "^2.1.1",
     "toastr": "^2.1.4",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "xliff": "^4.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",
@@ -59,7 +61,6 @@
     "protractor": "^5.3.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "2.7.2",
-    "webpack": "^4.8.3"
+    "typescript": "2.7.2"
   }
 }
