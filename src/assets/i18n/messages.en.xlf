@@ -2112,7 +2112,7 @@
         <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
       </trans-unit>
       <trans-unit id="membership-type-create-sub-title" datatype="html">
-        <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
         <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
       </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
