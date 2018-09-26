@@ -58,6 +58,7 @@
             },
             "production-vi": {
               "optimization": true,
+              "outputHashing": "all",
               "outputPath": "dist/vi",
               "sourceMap": false,
               "extractCss": true,
@@ -80,6 +81,7 @@
             },
             "production-en": {
               "optimization": true,
+              "outputHashing": "all",
               "outputPath": "dist/en",
               "sourceMap": false,
               "extractCss": true,
