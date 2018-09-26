@@ -2105,6 +2105,10 @@
           hoạt động
           ổn định</target>
       </trans-unit>
+      <trans-unit id="membership-type-create-sub-title" datatype="html">
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <target>Thêm và áp dụng các loại ưu đãi cố định cho một loại hội viên</target>
+      </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
         <source>Internal membership types</source>
         <target>Loại hội viên nội bộ</target>

@@ -1,5 +1,5 @@
 # Stage 0
-ARG NODE_VERSION=8.111.3
+ARG NODE_VERSION=8.11.3
 FROM node:${NODE_VERSION} as build-stage
 WORKDIR /app
 
