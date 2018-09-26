@@ -32,6 +32,10 @@ export class VoucherFormFactory {
       {
           type: 'pattern',
           message: 'voucher-create-edit-validation-voucher-code-special-char'
+      },
+      {
+        type: 'maxlength',
+        message: 'voucher-create-edit-validation-voucher-code-max'
       }
     ],
     discount: [
@@ -102,7 +106,7 @@ export class VoucherFormFactory {
       case VoucherOperationType.RepeatOneCode:
       case VoucherOperationType.CustomerCare:
         this.formGroup.addControl(Voucher.validationFields.code, new FormControl('', [Validators.required,
-        Validators.pattern(validationRegex.notAllowSpecialCharacters)]));
+        Validators.pattern(validationRegex.notAllowSpecialCharacters), Validators.maxLength(6)]));
         break;
     }
   }
