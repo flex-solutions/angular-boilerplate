@@ -13,6 +13,7 @@ import { TranslateService } from '../../../../shared/services/translate.service'
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { UTF8Encoding } from '../../../../utilities/ utf8-regex';
+import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
 
 @Component({
   selector: 'app-give-voucher',
@@ -73,12 +74,9 @@ export class GiveVoucherComponent implements OnInit {
   }
 
   private updateCustomerCareCampaignModel() {
-    const filter = this.membersList.getFilterQuery();
     this.model = {
       voucher: this.selectedVoucher,
-      member_filter: isNullOrEmptyOrUndefined(filter)
-        ? ''
-        : UTF8Encoding.utf8Encode(JSON.stringify(filter)),
+      member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
       applyDays: this.applyDays,
       notificationMsg: this.notificationMessage
     };
