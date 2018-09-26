@@ -54,8 +54,11 @@ export class InputEditableInlineComponent implements AfterViewInit {
       `;
       $(`#${this.elementId}`).editable({
         validate: val => {
-          if (this.isNumberOnly && $.isNumeric(val) == '') {
-            return '  ';
+          if (this.isNumberOnly) {
+            const numberValue = parseInt(val, 10);
+            if (isNaN(numberValue) || +val < 0) {
+              return '  ';
+            }
           }
           this.value = val;
         }

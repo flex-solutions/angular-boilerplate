@@ -18,6 +18,13 @@ export class Promotion extends ModelBase {
   valid_date_count: number;
 }
 
+export interface IGiveVoucherModel {
+  voucher: Voucher;
+  member_filter: any;
+  notificationMsg: string;
+  applyDays: number;
+}
+
 export class StatusCheckedItem implements CheckedItem {
   displayName: string;
   status: PromotionStatus;

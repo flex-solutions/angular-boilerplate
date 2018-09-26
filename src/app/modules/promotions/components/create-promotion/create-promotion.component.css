@@ -1,7 +1,3 @@
-:host ::ng-deep .wizard > .content {
-  background: #f3f3f3 !important;
-}
-
 .form-check .form-check-label {
   font-size: 0.8rem;
   line-height: 1.5;
