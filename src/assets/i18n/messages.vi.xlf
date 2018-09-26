@@ -1279,6 +1279,10 @@
         <source>Please provide the content</source>
         <target>Vui lòng cung cấp nội dung</target>
       </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_selected_voucher" datatype="html">
+        <source>Please select the voucher care campaign</source>
+        <target>Vui lòng chọn phiếu ưu đãi</target>
+      </trans-unit>
       <!--END Create edit promotion-->
       <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">
@@ -1333,7 +1337,11 @@
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
-      <trans-unit id="list-news-btn-publishs" datatype="html">
+      <trans-unit id="list-news-btn-unpublishs" datatype="html">
+        <source>Unpublish</source>
+        <target>Hủy bài đăng</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-deactivate" datatype="html">
         <source>Publish</source>
         <target>Đăng tải</target>
       </trans-unit>
@@ -2195,17 +2203,9 @@
           viên này trước
           khi xoá.</target>
       </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
-        <source>Voucher care campaign</source>
-        <target>Chiến dịch chăm sóc khách hàng</target>
-      </trans-unit>
       <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
-        <source>Campaign name</source>
-        <target>Tên chiến dịch</target>
-      </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
-        <source>Voucher code</source>
-        <target>Voucher code</target>
+        <source>Voucher name</source>
+        <target>Tên ưu đãi</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
         <source>Schedule</source>
@@ -2242,6 +2242,10 @@
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>
         <target>Tham số lịch trình</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-add-voucher-button" datatype="html">
+        <source>Add voucher</source>
+        <target>Thêm ưu đãi</target>
       </trans-unit>
       <!--STOP membership types-->
       <!--START voucher running-->
@@ -2283,6 +2287,28 @@
         <target>Voucher "{{0}}" đã được áp dụng</target>
       </trans-unit>
       <!--STOP voucher running-->
+      <!--START Give Voucher-->
+      <trans-unit id="give-voucher-title" datatype="html">
+        <source>Give voucher with love!</source>
+        <target>Tặng Voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-sub-title" datatype="html">
+        <source>This page allows you give a voucher for one or many members</source>
+        <target>Hỗ trợ bạn tặng một voucher cho một hoặc nhiều hội viên</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-selected-voucher" datatype="html">
+        <source>Selected voucher code</source>
+        <target>Mã voucher đã chọn</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-effect-days" datatype="html">
+        <source>Effect days</source>
+        <target>Số ngày áp dụng</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-notification-message" datatype="html">
+        <source>Notification message</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
+      <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
       <trans-unit id="pos-menu-list-title" datatype="html">
         <source>SNOB Point Of Sales</source>

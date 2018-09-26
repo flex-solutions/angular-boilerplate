@@ -30,7 +30,7 @@ export class PublishButtonDirective implements OnChanges, AfterViewInit {
         switch (this.status) {
             case NewsStatusType.Published:
                 {
-                    this.text = this.translateService.translate(NewMessageConst.DeactivedStatus);
+                    this.text = this.translateService.translate(NewMessageConst.UnpublishNews);
                     $(this.host).html(`<i class="mdi mdi-eye-off btn-pink" aria-hidden="false"></i>
                      <span i18n="@@list-news-btn-publish">${this.text}</span>`);
                 }

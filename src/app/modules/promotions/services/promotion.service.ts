@@ -1,12 +1,13 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { Promotion } from '../interfaces/promotion';
+import { Promotion, IGiveVoucherModel } from '../interfaces/promotion';
 import { PromotionStatus } from '../directives/promotion-status.directive';
 import { convertStringToBase64 } from '../../../utilities/convertStringToBase64';
 
 @Injectable()
 export class PromotionService extends AbstractRestService {
+
   protected controllerName: string;
 
   constructor() {
@@ -68,5 +69,9 @@ export class PromotionService extends AbstractRestService {
   private updateBanner(promotion: Promotion) {
     // Convert banner to base64 if not
     promotion.banner = convertStringToBase64(promotion.banner);
+  }
+
+  giveVoucher(model: IGiveVoucherModel): Observable<Response> {
+    return this.post('give-voucher', model);
   }
 }

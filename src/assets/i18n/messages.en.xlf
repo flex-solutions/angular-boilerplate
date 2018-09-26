@@ -1285,6 +1285,10 @@
         <source>Please provide the content</source>
         <target>Please provide the content</target>
       </trans-unit>
+      <trans-unit id="promotion-create_promotion-error-require_selected_voucher" datatype="html">
+        <source>Please select the voucher care campaign</source>
+        <target>Please select the voucher care campaign</target>
+      </trans-unit>
       <!--END Create edit promotion-->
       <!-- List news -->
       <trans-unit id="list-news-menu-new-managements" datatype="html">
@@ -1342,6 +1346,10 @@
       <trans-unit id="list-news-btn-publish" datatype="html">
         <source>Publish</source>
         <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="list-news-btn-unpublishs" datatype="html">
+        <source>Unpublish</source>
+        <target>Unpublish</target>
       </trans-unit>
       <trans-unit id="list-news-btn-edit" datatype="html">
         <source>Edit news</source>
@@ -2203,17 +2211,9 @@
         <target>The membership type {{0}} has {{1}} member(s). Please create new membership type for those members
           before deleting.</target>
       </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_care_campaign-label" datatype="html">
-        <source>Voucher care campaign</source>
-        <target>Voucher care campaign</target>
-      </trans-unit>
       <trans-unit id="membership-type-create-form-campaign_name-label" datatype="html">
-        <source>Campaign name</source>
-        <target>Campaign name</target>
-      </trans-unit>
-      <trans-unit id="membership-type-create-form-voucher_code-label" datatype="html">
-        <source>Voucher code</source>
-        <target>Voucher code</target>
+        <source>Voucher name</source>
+        <target>Voucher name</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-schedule-label" datatype="html">
         <source>Schedule</source>
@@ -2250,6 +2250,10 @@
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>
         <target>Schedule parameters</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-add-voucher-button" datatype="html">
+        <source>Add voucher</source>
+        <target>Add voucher</target>
       </trans-unit>
       <!--STOP membership types-->
       <!--START voucher running-->
@@ -2290,6 +2294,28 @@
         <target>Voucher "{{0}}" has been run</target>
       </trans-unit>
       <!--STOP voucher running-->
+      <!--START Give Voucher-->
+      <trans-unit id="give-voucher-title" datatype="html">
+        <source>Give voucher with love!</source>
+        <target>Give voucher with love!</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-sub-title" datatype="html">
+        <source>This page allows you give a voucher for one or many members</source>
+        <target>This page allows you give a voucher for one or many members</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-selected-voucher" datatype="html">
+        <source>Selected voucher code</source>
+        <target>Selected voucher code</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-effect-days" datatype="html">
+        <source>Effect days</source>
+        <target>Effect days</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-notification-message" datatype="html">
+        <source>Notification message</source>
+        <target>Notification message</target>
+      </trans-unit>
+      <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
       <trans-unit id="pos-menu-list-title" datatype="html">
         <source>SNOB Point Of Sales</source>

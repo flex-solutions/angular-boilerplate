@@ -42655,6 +42655,10 @@ div.tagsinput span.tag a {
 .full-width {
   width: 100% !important;
 }
+
+.has-error .select2-container--default .select2-selection--single {
+  border-color: #ff7474 !important;
+}
 /*-------------------------------------------------------------------*/
 
 /*# sourceMappingURL=maps/style.css.map */
