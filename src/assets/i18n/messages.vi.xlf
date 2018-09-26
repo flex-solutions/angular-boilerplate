@@ -2251,6 +2251,10 @@
         <source>Add voucher</source>
         <target>Thêm ưu đãi</target>
       </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-max" datatype="html">
+        <source>The voucher code length is 6 characters</source>
+        <target>Mã voucher tối đa 6 ký tự</target>
+      </trans-unit>
       <!--STOP membership types-->
       <!--START voucher running-->
       <trans-unit id="voucher-running-customer-care" datatype="html">
