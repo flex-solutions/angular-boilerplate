@@ -65,7 +65,8 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     // Build login form
     this.formGroup = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      recaptcha: []
     });
   }
 
@@ -127,5 +128,9 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
 
   get password() {
     return this.formGroup.get('password').value;
+  }
+
+  get recaptcha() {
+    return this.formGroup.get('recaptcha').value;
   }
 }

@@ -27,3 +27,9 @@
   vertical-align: -webkit-baseline-middle;
   font-size: 0.9em;
 }
+
+.login-title {
+  height: 65px;
+  width: 273px;
+  background: url('../../../../../assets/images/logo-default-inverse.svg') no-repeat center;
+}
