@@ -4,7 +4,6 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { environment } from '../../../environments/environment';
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 
 @NgModule({
@@ -13,9 +12,7 @@ import { RecoveryPasswordComponent } from './components/recovery-password/recove
     AccountRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxCaptchaModule.forRoot({
-      invisibleCaptchaSiteKey: environment.INVISIBLE_RECAPTCHA_SITEKEY,
-    }),
+    NgxCaptchaModule,
   ],
   declarations: [LoginComponent, RecoveryPasswordComponent]
 })

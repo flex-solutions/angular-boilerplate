@@ -13,6 +13,7 @@ import { HttpExceptionResponse } from '../../../../shared/models/http-exception-
 import { AuthenticationResponse } from '../../../../shared/models/authentication.model';
 import { AuthenticationTokenHelper } from '../../../../utilities/authentication-token';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,8 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   @ViewChild('captchaRef') captchaRef: InvisibleReCaptchaComponent;
   errorMessage: { [key: string]: string } = {}; // Error message for login form validation
   loginError: string; // Error message when login failed
+
+  siteKey: string;
   protected genericValidator: GenericValidator;
 
   constructor(
@@ -38,6 +41,8 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
       this.validationMessages,
       this.translateService
     );
+
+    this.siteKey = environment.INVISIBLE_RECAPTCHA_SITEKEY;
   }
 
   // Define validation message
@@ -96,6 +101,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     // Reset login error
     this.loginError = null;
     // Execute check captcha and login if recaptcha is valid
+    console.log(this.captchaRef);
     this.captchaRef.execute();
   }
 
