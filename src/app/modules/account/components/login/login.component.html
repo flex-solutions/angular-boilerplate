@@ -21,7 +21,8 @@
                 <input type="text" class="form-control" formControlName="username" [ngClass]="{'form-control-danger': errorMessage.username }"
                   i18n-placeholder="@@account-login-input-username_place_holder" placeholder="Username">
               </div>
-              <label id="username-error" class="error mt-2 text-danger" for="username" *ngIf="errorMessage.username"> {{ errorMessage.username }}</label>
+              <label id="username-error" class="error mt-2 text-danger" for="username" *ngIf="errorMessage.username">
+                {{ errorMessage.username }}</label>
             </div>
             <div class="form-group">
               <div class="input-group">
@@ -33,22 +34,28 @@
                 <input type="password" class="form-control" formControlName="password" [ngClass]="{'form-control-danger': errorMessage.password }"
                   i18n-placeholder="@@account-login-input-password_place_holder" placeholder="Password">
               </div>
-              <label id="password-error" class="error mt-2 text-danger" for="password" *ngIf="errorMessage.password"> {{ errorMessage.password }}</label>
+              <label id="password-error" class="error mt-2 text-danger" for="password" *ngIf="errorMessage.password">
+                {{ errorMessage.password }}</label>
             </div>
             <div class="form-group">
-              <ngx-invisible-recaptcha #captchaRef (success)="reCaptchaCallback($event)"></ngx-invisible-recaptcha>
+              <!-- <ngx-invisible-recaptcha #captchaRef (success)="reCaptchaCallback($event)"></ngx-invisible-recaptcha> -->
+              <ngx-invisible-recaptcha [siteKey]="siteKey" #captchaRef (success)="reCaptchaCallback($event)">
+              </ngx-invisible-recaptcha>
             </div>
             <div class="form-group">
               <div class="form-group row action-row">
-                <button (click)="submit()" class="btn btn-primary submit-btn" i18n="@@account-login-button-sign_in">SIGN IN</button>
+                <button (click)="submit()" class="btn btn-primary submit-btn" i18n="@@account-login-button-sign_in">SIGN
+                  IN</button>
                 <div class="col-8 forgot-container">
-                  <a routerLink="/account/recovery-password" class="text-small forgot-password text-black" i18n="@@account-recovery-anchor-forgot-password">Forgot Password</a>
+                  <a routerLink="/account/recovery-password" class="text-small forgot-password text-black" i18n="@@account-recovery-anchor-forgot-password">Forgot
+                    Password</a>
                 </div>
               </div>
               <label id="login-error" class="error mt-2 text-danger" *ngIf="loginError"> {{ loginError }}</label>
             </div>
             <div class="wrapper mt-5 text-gray">
-              <p class="footer-text" i18n="@@account-login-paragraph-copyright">Copyright © 2018 Urbanui. All rights reserved.</p>
+              <p class="footer-text" i18n="@@account-login-paragraph-copyright">Copyright © 2018 Urbanui. All rights
+                reserved.</p>
             </div>
           </form>
         </div>
