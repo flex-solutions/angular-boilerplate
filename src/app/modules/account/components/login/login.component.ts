@@ -101,7 +101,6 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
     // Reset login error
     this.loginError = null;
     // Execute check captcha and login if recaptcha is valid
-    console.log(this.captchaRef);
     this.captchaRef.execute();
   }
 
