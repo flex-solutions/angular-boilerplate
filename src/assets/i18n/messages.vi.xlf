@@ -2237,7 +2237,7 @@
       </trans-unit>
       <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
         <source>After get X points</source>
-        <target>Sau khi đạt được X điểm</target>
+        <target>Tích thêm X điểm sau khi thăng hạng</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
         <source>Non Voucher benefits</source>
