@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-i18n": "for lang in vi en; do ng build --output-path=dist/$lang --base-href=/$lang/ --aot --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-locale=$lang --i18n-format=xlf; done",
+    "build-i18n-prod": "for lang in vi en; do ng build --prod --output-path=dist/$lang --base-href=/$lang/ --aot --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-locale=$lang --i18n-format=xlf; done",
+    "build-i18n-dev": "for lang in vi en; do ng build --output-path=dist/$lang --base-href=/$lang/ --aot --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-locale=$lang --i18n-format=xlf; done",
     "vi": "ng serve --aot --i18n-file=src/assets/i18n/messages.vi-VN.xlf --locale=vi --i18n-format=xlf",
     "en": "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf",
     "build:client-and-server-bundles-i18n": "ng run snobrs-cms:build:production-en && ng run snobrs-cms:build:production-vi"
