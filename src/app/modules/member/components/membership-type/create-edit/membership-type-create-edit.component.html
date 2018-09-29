@@ -121,13 +121,14 @@
                             at
                             a specific date</option>
                           <option value="3" i18n="@@membership-type-create-form-get_x_points-option">After get x points</option>
+                          <option value="4" i18n="@@membership-type-create-form-get_x_points_at_first_time-option">After get x points at the first time</option>
                         </select>
                       </div>
                     </td>
                     <td>
                       <div class="form-group">
                         <app-date-picker *ngIf="selectedVoucher.schedule == 2" [(date)]="selectedVoucher.selectedDate"></app-date-picker>
-                        <input *ngIf="selectedVoucher.schedule == 3" [(ngModel)]="selectedVoucher.selectedPoint" id="afterGetXPoints"
+                        <input *ngIf="selectedVoucher.schedule == 3 || selectedVoucher.schedule == 4" [(ngModel)]="selectedVoucher.selectedPoint" id="afterGetXPoints"
                           class="form-control" [ngModelOptions]="{standalone: true}" type="number" placeholder="Enter the target point"
                           i18n-placeholder="@@membership-type-create-form-target-point-placeholder">
                       </div>

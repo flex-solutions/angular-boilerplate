@@ -145,7 +145,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
           this.member.isMemberAccumulated = this.member.membershipType.isAccumulated;
         }
         this.member.sex = this.sexes.find(i => i.id === value.sex);
-        if (this.member.address) {
+        if (this.member.address && !isNullOrEmptyOrUndefined(value.address)) {
           this.member.address.copyFrom(value.address);
         }
         if (

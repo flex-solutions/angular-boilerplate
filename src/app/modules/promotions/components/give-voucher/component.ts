@@ -12,10 +12,12 @@ import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
+import { UTF8Encoding } from '../../../../utilities/ utf8-regex';
+import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
 
 @Component({
   selector: 'app-give-voucher',
-  templateUrl: './component.html',
+  templateUrl: './component.html'
 })
 export class GiveVoucherComponent implements OnInit {
   // Properties
@@ -60,7 +62,9 @@ export class GiveVoucherComponent implements OnInit {
   }
 
   beforeNextStep1() {
-    this.wizardComponent.selectedStep.canNext = !isNullOrEmptyOrUndefined(this.selectedVoucher) && !isNil(this.selectedVoucher.code);
+    this.wizardComponent.selectedStep.canNext =
+      !isNullOrEmptyOrUndefined(this.selectedVoucher) &&
+      !isNil(this.selectedVoucher.code);
   }
 
   onSelectedVoucherChanged() {
@@ -72,9 +76,9 @@ export class GiveVoucherComponent implements OnInit {
   private updateCustomerCareCampaignModel() {
     this.model = {
       voucher: this.selectedVoucher,
-      member_filter:  this.membersList.getFilterQuery(),
+      member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
       applyDays: this.applyDays,
-      notificationMsg: this.notificationMessage,
+      notificationMsg: this.notificationMessage
     };
     this._promotionService.giveVoucher(this.model).subscribe(() => {
       this._notificationService.showSuccess('Tặng voucher hoàn tất');
