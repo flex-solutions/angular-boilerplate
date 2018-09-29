@@ -2245,8 +2245,12 @@
         <target>After reach rank</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
-        <source>After get X points</source>
-        <target>After get X points</target>
+        <source>Repeat after get X points</source>
+        <target>Repeat after get X points</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-get_x_points_at_first_time-option" datatype="html">
+        <source>After get X points at first time</source>
+        <target>After get X points at first time</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
         <source>Non Voucher benefits</source>

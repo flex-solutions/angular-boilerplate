@@ -2236,8 +2236,12 @@
         <target>Sau khi thăng hạng</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
-        <source>After get X points</source>
-        <target>Tích thêm X điểm sau khi thăng hạng</target>
+        <source>Repeat after get X points</source>
+        <target>Lặp lại sau mỗi lần tích X điểm</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-get_x_points_at_first_time-option" datatype="html">
+        <source>After get X points at first time</source>
+        <target>Tặng 1 lần sau khi tích X điểm đầu tiên</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
         <source>Non Voucher benefits</source>
