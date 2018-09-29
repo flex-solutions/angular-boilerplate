@@ -2017,6 +2017,11 @@
         <source>A new voucher has been created</source>
         <target>A new voucher has been created</target>
       </trans-unit>
+      <trans-unit id="voucher-create-edit-validation-voucher-code-max" datatype="html">
+        <source>The voucher code length is 6 characters</source>
+        <target>The voucher code length is 6 characters</target>
+      </trans-unit>
+      
       <!--End create/edit voucher-->
       <!--Start running voucher-->
       <trans-unit id="voucher-runner-title" datatype="html">
@@ -2112,7 +2117,7 @@
         <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
       </trans-unit>
       <trans-unit id="membership-type-create-sub-title" datatype="html">
-        <source>Allow add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
         <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
       </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
@@ -2240,8 +2245,12 @@
         <target>After reach rank</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-get_x_points-option" datatype="html">
-        <source>After get X points</source>
-        <target>After get X points</target>
+        <source>Repeat after get X points</source>
+        <target>Repeat after get X points</target>
+      </trans-unit>
+      <trans-unit id="membership-type-create-form-get_x_points_at_first_time-option" datatype="html">
+        <source>After get X points at first time</source>
+        <target>After get X points at first time</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
         <source>Non Voucher benefits</source>

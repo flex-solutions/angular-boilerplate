@@ -5,7 +5,8 @@ export enum BenefitScheduleType {
   ReachRank,
   RepeatAtBirthday,
   RepeatAtSpecificDate,
-  GetXPoints
+  GetXPoints,
+  GetXPointsAtFirstTime
 }
 
 export class VoucherBenefit {

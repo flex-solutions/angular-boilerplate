@@ -1,5 +1,5 @@
 .login-background {
-  background: url('assets/images/login-bg.jpg') no-repeat center
+  background: url('../../../../../assets/images/login-bg.jpg') no-repeat center
     center;
   background-size: auto auto;
   background-size: cover;
@@ -26,4 +26,10 @@
   vertical-align: -moz-middle-with-baseline;
   vertical-align: -webkit-baseline-middle;
   font-size: 0.9em;
+}
+
+.login-title {
+  height: 65px;
+  width: 273px;
+  background: url('../../../../../assets/images/logo-default-inverse.svg') no-repeat center;
 }

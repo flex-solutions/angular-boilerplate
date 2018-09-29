@@ -1,15 +1,21 @@
 # Stage 0
-ARG NODE_VERSION=8.111.3
+ARG NODE_VERSION=8.11.3
+ARG BUILD_MODE
 FROM node:${NODE_VERSION} as build-stage
+
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm i npm@latest -g
+
+RUN npm install -g webpack@4.8.3
+RUN npm install -g @angular/cli@6.0.3
+
+# COPY package*.json ./
 RUN npm install
 
 COPY . .
 
-# RUN npm run build-i18n
+RUN npm run build-i18n-dev
 
 # Stage 1, Based on Nginx
 FROM nginx:1.15.2-alpine

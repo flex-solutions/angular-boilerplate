@@ -1,6 +1,7 @@
 import { isNullOrEmptyOrUndefined } from './util';
+import { UTF8Encoding } from './ utf8-regex';
 
-export class FilterSet {
+class FilterSet {
   name?: string;
   type: FilterType;
   value?: string | FilterSet[];
@@ -11,7 +12,7 @@ export class FilterSet {
   }
 }
 
-export enum FilterType {
+enum FilterType {
   Default = '',
   Regex = '$regex',
   GreatThan = '$gt',
@@ -25,16 +26,16 @@ export enum FilterType {
   ElementMatch = '$elemMatch'
 }
 
-export enum ValueType {
+enum ValueType {
   String = 'string',
   Number = 'number',
   Array = 'array',
   Date = 'date',
   ObjectId = 'objectId',
-  RegexContains = 'regex-contains',
+  RegexContains = 'regex-contains'
 }
 
-export class Criteria {
+class Criteria {
   filter: FilterSet;
 
   constructor() {}
@@ -62,7 +63,7 @@ interface IWithFilterCriteria {
 
   withCriteria(action: () => Criteria): IWithFilterCriteria;
 }
-export class CriteriaBuilder
+class CriteriaBuilder
   implements ICriteriaBuilder, IStartWrapperFilter, IWithFilterCriteria {
   private _criteria: Criteria;
   private _wrapperFilter: FilterSet;
@@ -137,3 +138,18 @@ export class CriteriaBuilder
     return null;
   }
 }
+
+const convertCriteriaToQueryString = (criteria: Criteria): string => {
+  return isNullOrEmptyOrUndefined(criteria)
+    ? ''
+    : UTF8Encoding.utf8Encode(JSON.stringify(criteria));
+};
+
+export {
+  convertCriteriaToQueryString,
+  Criteria,
+  FilterSet,
+  FilterType,
+  ValueType,
+  CriteriaBuilder
+};
