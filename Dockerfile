@@ -1,7 +1,8 @@
 # Stage 0
 ARG NODE_VERSION=8.11.3
-ARG BUILD_MODE
 FROM node:${NODE_VERSION} as build-stage
+
+ARG BUILD_MODE=build-i18n-prod
 
 WORKDIR /app
 
@@ -15,7 +16,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build-i18n-prod
+RUN npm run ${BUILD_MODE}
 
 # Stage 1, Based on Nginx
 FROM nginx:1.15.2-alpine
