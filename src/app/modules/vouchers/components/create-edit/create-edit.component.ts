@@ -211,6 +211,7 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
       } else {
         this.applyMenuType = 1;
       }
+      this.onApplyMenuTypeChange();
 
       if (this.voucher.type !== VoucherType.XGetY) {
         this.isDiscountAmount =
