@@ -127,7 +127,7 @@
                     </td>
                     <td>
                       <div class="form-group">
-                        <app-date-picker *ngIf="selectedVoucher.schedule == 2" [(date)]="selectedVoucher.selectedDate"></app-date-picker>
+                        <app-date-picker *ngIf="selectedVoucher.schedule == 2" [(date)]="selectedVoucher.selectedDate" showDropDowns="false" formatDate="DD/MM" showRangeLabel="false"></app-date-picker>
                         <input *ngIf="selectedVoucher.schedule == 3 || selectedVoucher.schedule == 4" [(ngModel)]="selectedVoucher.selectedPoint" id="afterGetXPoints"
                           class="form-control" [ngModelOptions]="{standalone: true}" type="number" placeholder="Enter the target point"
                           i18n-placeholder="@@membership-type-create-form-target-point-placeholder">
