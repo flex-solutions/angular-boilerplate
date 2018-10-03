@@ -2018,8 +2018,8 @@
         <target>A new voucher has been created</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-voucher-code-max" datatype="html">
-        <source>The voucher code length is 6 characters</source>
-        <target>The voucher code length is 6 characters</target>
+        <source>The voucher code length is 8 characters</source>
+        <target>The voucher code length is 8 characters</target>
       </trans-unit>
       
       <!--End create/edit voucher-->
