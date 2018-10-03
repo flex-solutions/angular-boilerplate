@@ -1656,7 +1656,7 @@
       </trans-unit>
       <trans-unit id="member-create_edit_member-label-is_member_accumulated" datatype="html">
         <source>Is Member Accumulated</source>
-        <target>Là hội viên tích điểm</target>
+        <target>Là hội viên xếp hạng</target>
       </trans-unit>
       <!--End Create Edit Member Module-->
       <!--Start Member Filter-->
@@ -2244,8 +2244,8 @@
         <target>Tặng 1 lần sau khi tích X điểm đầu tiên</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
-        <source>Non Voucher benefits</source>
-        <target>Ưu đãi không giá trị</target>
+        <source>Other benefits</source>
+        <target>Đặc quyền khác</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>

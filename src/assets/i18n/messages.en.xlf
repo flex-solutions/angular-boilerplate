@@ -2253,8 +2253,8 @@
         <target>After get X points at first time</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
-        <source>Non Voucher benefits</source>
-        <target>Non Voucher benefits</target>
+        <source>Other benefits</source>
+        <target>Other benefits</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>
