@@ -1,17 +1,18 @@
-<app-card title="Push notification"
-subTitle="This page allows you pushes a notification to one or many members">
+<app-card title="Push notification" i18n-title="@@push-notification-title"
+subTitle="This page allows you pushes a notification to one or many members"
+i18n-subTitle="@@push-notification-sub-title">
   <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()">
-    <app-wizard-step isFirstStep="true" title="Nội dung" (beforeNext)="beforeNextStep1()">
+    <app-wizard-step isFirstStep="true" title="Content" i18n-title="@@push-notification-step-1-title" (beforeNext)="beforeNextStep1()">
       <form id="promotionForm" #f="ngForm">
         <div class="row">
           <div class="form-group col-md-12">
-            <label for="title">Tiêu đề</label>
+            <label for="title" i18n="@@push-notification-step-1-frm-title">Title</label>
             <label class="require">*</label>
             <input id="title" class="form-control" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"  name='title'
               required>
           </div>
           <div class="form-group col-md-12">
-            <label i18n="@@give-voucher-notification-message">Nội dung</label>
+            <label i18n="@@give-voucher-notification-message" i18n="@@push-notification-step-1-frm-body">Message</label>
             <label class="require">*</label>
             <textarea type="number" class="form-control" rows="6" [ngModelOptions]="{standalone: true}" [(ngModel)]="notificationMessage"></textarea>
           </div>

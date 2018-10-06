@@ -116,8 +116,12 @@
         <target>Voucher Đang Áp Dụng</target>
       </trans-unit>
       <trans-unit id="sidebar-pos-and-menu" datatype="html">
-        <source>POS & Dishes</source>
-        <target>Điểm Bán Hàng & Thực Đơn</target>
+        <source>POS & Menu</source>
+        <target>Điểm Bán Hàng & Menu</target>
+      </trans-unit>
+      <trans-unit id="sidebar-push-notification" datatype="html">
+        <source>Push Notification</source>
+        <target>Gởi Tin Nhắn</target>
       </trans-unit>
       <!-- END Side Bar -->
       <!-- Modal -->
@@ -2320,6 +2324,10 @@
         <source>Notification message</source>
         <target>Nội dung thông báo</target>
       </trans-unit>
+      <trans-unit id="give-voucher-success" datatype="html">
+        <source>Give voucher successfully</source>
+        <target>Tặng voucher hoàn tất</target>
+      </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
       <trans-unit id="pos-menu-list-title" datatype="html">
@@ -2395,6 +2403,32 @@
         <target>Đã cập nhật thông tin cho pos "{{0}}"</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
+      <!--START Push Notification-->
+      <trans-unit id="push-notification-success" datatype="html">
+        <source>Push notification successfully</source>
+        <target>Gởi thông báo thành công</target>
+      </trans-unit>
+      <trans-unit id="push-notification-title" datatype="html">
+        <source>Push notification</source>
+        <target>Gởi tin nhắn</target>
+      </trans-unit>
+      <trans-unit id="push-notification-sub-title" datatype="html">
+        <source>This page allows you pushes a notification to one or many members</source>
+        <target>Trang này cho phép bạn gởi tin nhắn tới điện thoại của một hoặc nhiều hội viên</target>
+      </trans-unit>
+      <trans-unit id="push-notification-step-1-title" datatype="html">
+        <source>Content</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <trans-unit id="push-notification-step-1-frm-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề</target>
+      </trans-unit>
+      <trans-unit id="push-notification-step-1-frm-body" datatype="html">
+        <source>Message</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <!--END Push Notification-->
     </body>
   </file>
 </xliff>
