@@ -1,3 +1,4 @@
+import { PushNotificaionComponent } from './push-notification/component';
 import { PromotionFilterComponent } from './promotion-filter/promotion-filter.component';
 import { StartPromotionComponent } from './start-promotion/start-promotion.component';
 import { PromotionsComponent } from './promotions/promotions.component';
@@ -11,7 +12,8 @@ export const PromotionModuleComponents = [
     DetailPromotionComponent,
     StartPromotionComponent,
     PromotionFilterComponent,
-    GiveVoucherComponent
+    GiveVoucherComponent,
+    PushNotificaionComponent
 ];
 
 export const PromotionsModuleEntryComponents = [

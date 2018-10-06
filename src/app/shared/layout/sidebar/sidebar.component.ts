@@ -46,6 +46,10 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([`${ModuleRoute.PROMOTION}/give-voucher`]);
   }
 
+  navigateToPushNotificationPage() {
+    this.router.navigate([`${ModuleRoute.PROMOTION}/push-notification`]);
+  }
+
   navigateToMemberManagementPage() {
     this.router.navigate([ModuleRoute.MEMBER]);
   }

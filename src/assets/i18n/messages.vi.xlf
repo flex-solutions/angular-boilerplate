@@ -116,8 +116,12 @@
         <target>Voucher Đang Áp Dụng</target>
       </trans-unit>
       <trans-unit id="sidebar-pos-and-menu" datatype="html">
-        <source>POS & Dishes</source>
-        <target>Điểm Bán Hàng & Thực Đơn</target>
+        <source>POS & Menu</source>
+        <target>Điểm Bán Hàng & Menu</target>
+      </trans-unit>
+      <trans-unit id="sidebar-push-notification" datatype="html">
+        <source>Push Notification</source>
+        <target>Gởi Tin Nhắn</target>
       </trans-unit>
       <!-- END Side Bar -->
       <!-- Modal -->
@@ -1656,7 +1660,7 @@
       </trans-unit>
       <trans-unit id="member-create_edit_member-label-is_member_accumulated" datatype="html">
         <source>Is Member Accumulated</source>
-        <target>Là hội viên tích điểm</target>
+        <target>Là hội viên xếp hạng</target>
       </trans-unit>
       <!--End Create Edit Member Module-->
       <!--Start Member Filter-->
@@ -2244,8 +2248,8 @@
         <target>Tặng 1 lần sau khi tích X điểm đầu tiên</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-non_voucher_benefits-label" datatype="html">
-        <source>Non Voucher benefits</source>
-        <target>Ưu đãi không giá trị</target>
+        <source>Other benefits</source>
+        <target>Đặc quyền khác</target>
       </trans-unit>
       <trans-unit id="membership-type-create-form-extra_information-label" datatype="html">
         <source>Schedule parameters</source>
@@ -2256,8 +2260,8 @@
         <target>Thêm ưu đãi</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-validation-voucher-code-max" datatype="html">
-        <source>The voucher code length is 6 characters</source>
-        <target>Mã voucher tối đa 6 ký tự</target>
+        <source>The voucher code length is 8 characters</source>
+        <target>Mã voucher tối đa 8 ký tự</target>
       </trans-unit>
       <!--STOP membership types-->
       <!--START voucher running-->
@@ -2319,6 +2323,10 @@
       <trans-unit id="give-voucher-notification-message" datatype="html">
         <source>Notification message</source>
         <target>Nội dung thông báo</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-success" datatype="html">
+        <source>Give voucher successfully</source>
+        <target>Tặng voucher hoàn tất</target>
       </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
@@ -2395,6 +2403,32 @@
         <target>Đã cập nhật thông tin cho pos "{{0}}"</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
+      <!--START Push Notification-->
+      <trans-unit id="push-notification-success" datatype="html">
+        <source>Push notification successfully</source>
+        <target>Gởi thông báo thành công</target>
+      </trans-unit>
+      <trans-unit id="push-notification-title" datatype="html">
+        <source>Push notification</source>
+        <target>Gởi tin nhắn</target>
+      </trans-unit>
+      <trans-unit id="push-notification-sub-title" datatype="html">
+        <source>This page allows you pushes a notification to one or many members</source>
+        <target>Trang này cho phép bạn gởi tin nhắn tới điện thoại của một hoặc nhiều hội viên</target>
+      </trans-unit>
+      <trans-unit id="push-notification-step-1-title" datatype="html">
+        <source>Content</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <trans-unit id="push-notification-step-1-frm-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề</target>
+      </trans-unit>
+      <trans-unit id="push-notification-step-1-frm-body" datatype="html">
+        <source>Message</source>
+        <target>Nội dung</target>
+      </trans-unit>
+      <!--END Push Notification-->
     </body>
   </file>
 </xliff>
