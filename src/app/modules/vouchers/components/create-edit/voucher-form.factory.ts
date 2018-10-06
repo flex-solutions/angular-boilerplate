@@ -106,7 +106,7 @@ export class VoucherFormFactory {
       case VoucherOperationType.RepeatOneCode:
       case VoucherOperationType.CustomerCare:
         this.formGroup.addControl(Voucher.validationFields.code, new FormControl('', [Validators.required,
-        Validators.pattern(validationRegex.notAllowSpecialCharacters), Validators.maxLength(6)]));
+        Validators.pattern(validationRegex.notAllowSpecialCharacters), Validators.maxLength(8)]));
         break;
     }
   }

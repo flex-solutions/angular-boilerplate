@@ -8,7 +8,7 @@ import {
 import { Component } from '@angular/core';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
-import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
+import { isNullOrEmptyOrUndefined, parseStringToBoolean } from '../../../../utilities/util';
 declare const $: any;
 declare const moment: any;
 
@@ -20,6 +20,9 @@ declare const moment: any;
 export class DatePickerComponent implements OnInit, AfterViewInit {
   private _date: Date;
   private _ignoreSetStartEndDate: boolean;
+  private _formatDate: string;
+  private _showRangeLabel = true;
+  private _showDropDowns = true;
 
   elementId: string;
   inputClasses: string;
@@ -43,7 +46,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
       this.picker.val('');
     } else {
       const date = moment(this._date);
-      this.picker.val(date.format('DD/MM/YYYY'));
+      this.picker.val(date.format(this.formatDate));
       if (!this._ignoreSetStartEndDate) {
         const dateRangePicker = this.picker.data('daterangepicker');
         if (dateRangePicker) {
@@ -56,9 +59,37 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     this.dateChange.emit(this._date);
   }
 
+  @Input()
+  set formatDate(val) {
+    this._formatDate = val;
+  }
+
+  get formatDate() {
+    return this._formatDate;
+  }
+
+  @Input()
+  set showRangeLabel(val) {
+    this._showRangeLabel = parseStringToBoolean(val);
+  }
+
+  get showRangeLabel() {
+    return this._showRangeLabel;
+  }
+
+  @Input()
+  set showDropDowns(val) {
+    this._showDropDowns = parseStringToBoolean(val);
+  }
+
+  get showDropDowns() {
+    return this._showDropDowns;
+  }
+
   constructor(private translateService: TranslateService) {
     this.elementId = Guid.create().toString();
     this.inputClasses = `form-control`;
+    this._formatDate = 'DD/MM/YYYY';
   }
 
   ngOnInit(): void {
@@ -77,11 +108,11 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
       !isNullOrEmptyOrUndefined(this._date)
     ) {
       const date = moment(this._date);
-      this.picker.val(date.format('DD/MM/YYYY'));
+      this.picker.val(date.format(this.formatDate));
     }
 
     this.picker.on('apply.daterangepicker', (ev, picker) => {
-      this.picker.val(picker.startDate.format('DD/MM/YYYY'));
+      this.picker.val(picker.startDate.format(this.formatDate));
       this._ignoreSetStartEndDate = true;
       this.date = new Date(picker.startDate.toISOString());
     });
@@ -99,9 +130,10 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
         endDate: moment(this.date ? this.date : new Date()),
         autoUpdateInput: false,
         ranges: this.buildRanges(),
-        showDropdowns: true,
-        alwaysShowCalendars: true,
+        alwaysShowCalendars: false,
         showCustomRangeLabel: false,
+        showDropdowns: this._showDropDowns,
+        opens: 'center',
         locale: {
           cancelLabel: this.translateService.translate(
             'date-range-picker_button_cancel'
@@ -112,7 +144,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
           customRangeLabel: this.translateService.translate(
             'date-range-picker_button_custom_range'
           ),
-          format: 'DD/MM/YYYY'
+          format: this.formatDate
         }
       },
       (start, end, label) => {
@@ -125,32 +157,37 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
 
   buildRanges() {
     const ranges = {};
-    ranges[this.translateService.translate('date-range-picker_title_today')] = [
-      moment(),
-      moment()
-    ];
-    ranges[
-      this.translateService.translate('date-range-picker_title_yesterday')
-    ] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
-    ranges[
-      this.translateService.translate('date-range-picker_title-seven-days-ago')
-    ] = [moment().subtract(6, 'days'), moment()];
-    ranges[
-      this.translateService.translate('date-range-picker_title-30-days-ago')
-    ] = [moment().subtract(29, 'days'), moment()];
-    ranges[
-      this.translateService.translate('date-range-picker_title-current_month')
-    ] = [moment().startOf('month'), moment().endOf('month')];
-    ranges[
-      this.translateService.translate('date-range-picker_title-previous_month')
-    ] = [
-      moment()
-        .subtract(1, 'month')
-        .startOf('month'),
-      moment()
-        .subtract(1, 'month')
-        .endOf('month')
-    ];
+    if (this._showRangeLabel) {
+      ranges[
+        this.translateService.translate('date-range-picker_title_today')
+      ] = [moment(), moment()];
+      ranges[
+        this.translateService.translate('date-range-picker_title_yesterday')
+      ] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
+      ranges[
+        this.translateService.translate(
+          'date-range-picker_title-seven-days-ago'
+        )
+      ] = [moment().subtract(6, 'days'), moment()];
+      ranges[
+        this.translateService.translate('date-range-picker_title-30-days-ago')
+      ] = [moment().subtract(29, 'days'), moment()];
+      ranges[
+        this.translateService.translate('date-range-picker_title-current_month')
+      ] = [moment().startOf('month'), moment().endOf('month')];
+      ranges[
+        this.translateService.translate(
+          'date-range-picker_title-previous_month'
+        )
+      ] = [
+        moment()
+          .subtract(1, 'month')
+          .startOf('month'),
+        moment()
+          .subtract(1, 'month')
+          .endOf('month')
+      ];
+    }
     return ranges;
   }
 
