@@ -1,13 +1,15 @@
 import { Observable } from 'rxjs';
-import { Voucher, VoucherOperationDtoBase } from './../../../shared/models/voucher.model';
+import {
+  Voucher,
+  VoucherOperationDtoBase
+} from './../../../shared/models/voucher.model';
 import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { VoucherRunning } from '../../../shared/models/voucher-campaign.model';
+import { MembershipType } from '../../../shared/models/membership-type.model';
 
 @Injectable()
 export class VoucherService extends AbstractRestService {
-
   protected controllerName: string;
 
   constructor(private exDialog: ExDialog) {
@@ -23,9 +25,7 @@ export class VoucherService extends AbstractRestService {
     if (!query) {
       query = {};
     }
-    return this.getWithFilter(
-      `count?`, query
-    );
+    return this.getWithFilter(`count?`, query);
   }
 
   getVouchersWithFilterQuery(
@@ -54,7 +54,10 @@ export class VoucherService extends AbstractRestService {
     return this.get(`${id}`);
   }
 
-  runVoucher<T extends VoucherOperationDtoBase>(dto: T, type: number): Observable<Response> {
+  runVoucher<T extends VoucherOperationDtoBase>(
+    dto: T,
+    type: number
+  ): Observable<Response> {
     return this.post(`run-voucher?type=${type}`, dto);
   }
 
@@ -64,5 +67,9 @@ export class VoucherService extends AbstractRestService {
 
   getAllVoucherCareCampaign(): Observable<Voucher[]> {
     return this.get('voucher-care-campaign');
+  }
+
+  getMembershipTypes(id: string): Observable<MembershipType[]> {
+    return this.get(`${id}/membership-types`);
   }
 }
