@@ -27,6 +27,7 @@ export class GiveVoucherComponent implements OnInit {
 
   vouchers: Voucher[] = [];
   selectedVoucher: Voucher = new Voucher();
+  successMsg: string;
 
   @ViewChild(WizardComponent)
   private wizardComponent: WizardComponent;
@@ -44,6 +45,7 @@ export class GiveVoucherComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.successMsg = this.translateService.translate('give-voucher-success');
     this.getCampaignVoucher();
   }
 
@@ -81,7 +83,7 @@ export class GiveVoucherComponent implements OnInit {
       notificationMsg: this.notificationMessage
     };
     this._promotionService.giveVoucher(this.model).subscribe(() => {
-      this._notificationService.showSuccess('Tặng voucher hoàn tất');
+      this._notificationService.showSuccess(this.successMsg);
     });
   }
 }
