@@ -1815,8 +1815,8 @@
         <target>Bạn có chắc muốn xoá voucher "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-warning-confirm" datatype="html">
-        <source>Voucher "{{0}}" has been used for membership types "{{1}}". Are you sure you want to delete voucher "{{0}}"?</source>
-        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên "{{1}}", nếu bạn tiếp tục xóa, ưu đãi trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
+        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</source>
+        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-success" datatype="html">
         <source>Voucher "{{0}}" has been deleted</source>

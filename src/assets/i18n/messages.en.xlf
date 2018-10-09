@@ -1823,6 +1823,10 @@
         <source>Are you sure you want to delete voucher "{{0}}"?</source>
         <target>Are you sure you want to delete voucher "{{0}}"?</target>
       </trans-unit>
+      <trans-unit id="vouchers-delete-warning-confirm" datatype="html">
+        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</source>
+        <target>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</target>
+      </trans-unit>
       <trans-unit id="vouchers-delete-success" datatype="html">
         <source>Voucher "{{0}}" has been deleted</source>
         <target>Voucher "{{0}}" has been deleted</target>
