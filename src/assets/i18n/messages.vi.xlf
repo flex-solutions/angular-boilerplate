@@ -1538,6 +1538,10 @@
         <source>Member ID</source>
         <target>Mã hội viên</target>
       </trans-unit>
+      <trans-unit id="members-tbl-registered-on" datatype="html">
+        <source>Registered on</source>
+        <target>Đăng ký ngày</target>
+      </trans-unit>
       <trans-unit id="members-tbl-phone-number" datatype="html">
         <source>Phone number</source>
         <target>Số điện thoại</target>
@@ -1855,6 +1859,10 @@
       <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
         <source>Export batch code</source>
         <target>Xuất mã hàng loạt</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-member-care" datatype="html">
+        <source>Member care</source>
+        <target>Chăm sóc hội viên</target>
       </trans-unit>
       <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
         <source>Customer care</source>
@@ -2289,6 +2297,10 @@
       <trans-unit id="voucher-running-used-count" datatype="html">
         <source>Used count</source>
         <target>Đã sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-available-code" datatype="html">
+        <source>Available</source>
+        <target>Chưa sử dụng</target>
       </trans-unit>
       <trans-unit id="voucher-running-remain-count" datatype="html">
         <source>Remaining count</source>
