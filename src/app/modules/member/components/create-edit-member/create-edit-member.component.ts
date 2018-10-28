@@ -315,7 +315,7 @@ export class CreateEditMemberComponent extends AbstractFormCreateMoreComponent
       }
     ]);
 
-    if (!this.isEdit && !isEmpty(this.membershipTypes)) {
+    if (!isEmpty(this.membershipTypes)) {
       this.member.membershipType = this.membershipTypes[0];
     }
   }

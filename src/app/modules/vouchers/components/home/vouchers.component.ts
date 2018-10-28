@@ -1,7 +1,10 @@
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { VoucherCriteriaBuilder } from './../voucher-filter/voucher-filter.builder';
-import { Voucher, VoucherFilter } from './../../../../shared/models/voucher.model';
+import {
+  Voucher,
+  VoucherFilter
+} from './../../../../shared/models/voucher.model';
 import { VoucherService } from './../../services/vouchers.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,6 +16,7 @@ import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { Router } from '@angular/router';
 import { VoucherRouteNames } from '../../vouchers.constants';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
 @Component({
   moduleId: module.id,
@@ -20,7 +24,6 @@ import { VoucherRouteNames } from '../../vouchers.constants';
   templateUrl: './vouchers.component.html',
   styleUrls: ['./vouchers.component.css']
 })
-
 @Permission({
   module: 'Voucher Management'
 })
@@ -28,14 +31,17 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   public items: Voucher[] = [];
   voucherFilter: VoucherFilter = new VoucherFilter();
   filter: IFilterChangedEvent;
-  @ViewChild(DatagridComponent) dataGrid: DatagridComponent;
+  @ViewChild(DatagridComponent)
+  dataGrid: DatagridComponent;
 
-  constructor(private readonly voucherService: VoucherService,
+  constructor(
+    private readonly voucherService: VoucherService,
     private readonly voucherRunner: VoucherRunner,
     private readonly exDialog: ExDialog,
     private readonly notification: NotificationService,
     private readonly translateService: TranslateService,
-    private readonly router: Router) {
+    private readonly router: Router
+  ) {
     super();
   }
 
@@ -43,8 +49,7 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
     return this.voucherService.countWithFilterQuery(this.getQuery());
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onRunFilterClicked() {
     this.loadData();
@@ -61,9 +66,28 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   }
 
   async deleteVoucher(voucher: Voucher) {
-
-    const deleteConfirmMsg = this.translateService.translate('vouchers-delete-confirm', voucher.name);
-    const deleteSuccessMsg = this.translateService.translate('vouchers-delete-success', voucher.name);
+    // Get all membership type which are reference to this voucher
+    const membershipTypes = await this.voucherService
+      .getMembershipTypes(voucher._id)
+      .toPromise();
+    let deleteConfirmMsg;
+    if (isNullOrEmptyOrUndefined(membershipTypes)) {
+      deleteConfirmMsg = this.translateService.translate(
+        'vouchers-delete-confirm',
+        voucher.name
+      );
+    } else {
+      const membershipTypeNames = membershipTypes.map(m => m.name);
+      deleteConfirmMsg = this.translateService.translate(
+        'vouchers-delete-warning-confirm',
+        voucher.name,
+        membershipTypeNames.join(', ')
+      );
+    }
+    const deleteSuccessMsg = this.translateService.translate(
+      'vouchers-delete-success',
+      voucher.name
+    );
     this.exDialog.openConfirm(deleteConfirmMsg).subscribe(result => {
       if (result === true) {
         // Call service to delete voucher
@@ -109,10 +133,9 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
 
   resetFilter = () => {
     this.loadData();
-  }
+  };
 
   runACampaign(voucher: Voucher) {
     this.voucherRunner.run(voucher);
   }
-
 }
