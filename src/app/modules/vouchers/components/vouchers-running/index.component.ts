@@ -1,5 +1,5 @@
 import { isEmpty, find, get } from 'lodash';
-import { RepeatOneCodeDto, BatchExportCodeDto, VoucherOperationType } from './../../../../shared/models/voucher.model';
+import { RepeatOneCodeDto, BatchExportCodeDto, VoucherOperationType, CareCampaignCodeDto } from './../../../../shared/models/voucher.model';
 import { Component, OnInit } from '@angular/core';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
 import { VoucherService } from '../../services/vouchers.service';
@@ -14,6 +14,7 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
 
   repeatCodeItems: RepeatOneCodeDto[] = [];
   batchExportItems: BatchExportCodeDto[] = [];
+  memberCareItems: CareCampaignCodeDto[] = [];
 
   constructor(private voucherService: VoucherService) {
     super();
@@ -28,6 +29,7 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
       if (!isEmpty(result)) {
         this.repeatCodeItems = get(find(result, {operationType: VoucherOperationType.RepeatOneCode}), 'voucherRunnings');
         this.batchExportItems = get(find(result, {operationType: VoucherOperationType.BatchExport}), 'voucherRunnings');
+        this.memberCareItems = get(find(result, {operationType: VoucherOperationType.MemberCare}), 'voucherRunnings');
       }
     });
   }
