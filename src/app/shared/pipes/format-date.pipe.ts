@@ -11,7 +11,7 @@ export class DateFormat implements PipeTransform {
   transform(rawDate: any, arg: any): any {
     if (rawDate) {
       const localDate: Date = moment(rawDate).toDate();
-      return moment(localDate).format('DD - MM - YYYY');
+      return moment(localDate).format('DD/MM/YYYY');
     } else {
       return '';
     }

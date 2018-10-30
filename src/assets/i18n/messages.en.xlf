@@ -1549,6 +1549,10 @@
         <source>Member ID</source>
         <target>Member ID</target>
       </trans-unit>
+      <trans-unit id="members-tbl-registered-on" datatype="html">
+        <source>Registered on</source>
+        <target>Registered on</target>
+      </trans-unit>
       <trans-unit id="members-tbl-phone-number" datatype="html">
         <source>Phone number</source>
         <target>Phone number</target>
@@ -1864,6 +1868,10 @@
       <trans-unit id="voucher-using-purpose-export-batch-code" datatype="html">
         <source>Export batch code</source>
         <target>Export batch code</target>
+      </trans-unit>
+      <trans-unit id="voucher-using-purpose-member-care" datatype="html">
+        <source>Member care</source>
+        <target>Member care</target>
       </trans-unit>
       <trans-unit id="voucher-using-purpose-customer-care" datatype="html">
         <source>Customer care</source>
@@ -2293,6 +2301,10 @@
       <trans-unit id="voucher-running-used-count" datatype="html">
         <source>Used count</source>
         <target>Used count</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-available-code" datatype="html">
+        <source>Available</source>
+        <target>Available</target>
       </trans-unit>
       <trans-unit id="voucher-running-remain-count" datatype="html">
         <source>Remaining count</source>

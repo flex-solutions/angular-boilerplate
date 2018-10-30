@@ -23,7 +23,7 @@ export class VoucherRunner {
       case VoucherOperationType.RepeatOneCode:
         this.exDialog.openPrime(RunRepeatOneCodeVoucherComponent, dialogData).subscribe(result => this.onRunnerClosed(result, voucher));
         break;
-      case VoucherOperationType.CustomerCare:
+      case VoucherOperationType.MemberCare:
         const msg = this.translateService.translate('voucher-running-customer-care', voucher.name);
         this.exDialog.openMessage(msg);
         break;
