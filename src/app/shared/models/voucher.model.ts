@@ -14,7 +14,7 @@ export enum VoucherType {
 export enum VoucherOperationType {
 RepeatOneCode,
 BatchExport,
-CustomerCare,
+MemberCare,
 }
 
 export enum VoucherAdvanceMenuItemPriceAlow {
@@ -121,4 +121,9 @@ export class BatchExportCodeDto extends VoucherOperationDtoBase {
   minRange: number;
   maxRange: number;
   prefix: string;
+}
+
+export class CareCampaignCodeDto extends VoucherOperationDtoBase {
+  validDateCount: number;
+  running_details: any[];
 }
