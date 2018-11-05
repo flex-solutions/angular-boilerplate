@@ -2333,8 +2333,8 @@
         <target>Mã voucher đã chọn</target>
       </trans-unit>
       <trans-unit id="give-voucher-effect-days" datatype="html">
-        <source>Effect days</source>
-        <target>Số ngày áp dụng</target>
+        <source>Affect time</source>
+        <target>Thời gian có hiệu lực</target>
       </trans-unit>
       <trans-unit id="give-voucher-notification-message" datatype="html">
         <source>Notification message</source>
