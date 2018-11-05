@@ -1,8 +1,9 @@
-<app-card title="Give voucher with love!" i18n-title="@@give-voucher-title" i18n-subTitle="@@give-voucher-sub-title" subTitle="This page allows you give a voucher for one or many members">
+<app-card title="Give voucher with love!" i18n-title="@@give-voucher-title" i18n-subTitle="@@give-voucher-sub-title"
+  subTitle="This page allows you give a voucher for one or many members">
 
   <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()">
-    <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field" (beforeNext)="beforeNextStep1()"
-      title="Vouchers">
+    <app-wizard-step isFirstStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-vouchers_title_field"
+      (beforeNext)="beforeNextStep1()" title="Vouchers">
       <form id="promotionForm" #f="ngForm">
         <div class="row">
           <div class="form-group col-md-12">
@@ -16,10 +17,9 @@
             <label class="form-control">{{selectedVoucher.code}}&nbsp;</label>
           </div>
           <div class="form-group col-md-12">
-            <label for="applyDays" i18n="@@give-voucher-effect-days">Số ngày áp dụng</label>
+            <label for="applyDays" i18n="@@give-voucher-effect-days">Effective time</label>
             <label class="require">*</label>
-            <input id="applyDays" class="form-control" [(ngModel)]="applyDays" [ngModelOptions]="{standalone: true}"  name='applyDays'
-              required appInputNumber>
+            <app-date-range-picker [(dateRange)]="affectTime" [timePicker]="true" [canReset]="false"></app-date-range-picker>
           </div>
           <div class="form-group col-md-12">
             <label i18n="@@give-voucher-notification-message">Nội dung thông báo</label>
