@@ -98,6 +98,15 @@ export class GiveVoucherComponent implements OnInit {
 
     this._promotionService.giveVoucher(this.model).subscribe(() => {
       this._notificationService.showSuccess(this.successMsg);
+      this.reset();
     });
+  }
+
+  private reset() {
+    this.selectedVoucher = new Voucher();
+    this.membersList.resetFilter();
+    this.initAffectTime();
+    this.notificationMessage = '';
+    this.wizardComponent.reset();
   }
 }
