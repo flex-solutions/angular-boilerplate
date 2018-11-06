@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 import {
   Voucher,
   VoucherOperationDtoBase
@@ -7,6 +8,7 @@ import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.s
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { MembershipType } from '../../../shared/models/membership-type.model';
+import { DateRangeModel } from '../../../shared/ui-common/datepicker/model/date-range.model';
 
 @Injectable()
 export class VoucherService extends AbstractRestService {
@@ -67,5 +69,16 @@ export class VoucherService extends AbstractRestService {
 
   getMembershipTypes(id: string): Observable<MembershipType[]> {
     return this.get(`${id}/membership-types`);
+  }
+
+  initAffectTime() {
+    const startDate = moment();
+    const endDate = startDate.clone().add({days: 1}).set({hour: 23, minute: 59});
+
+    const dateRange = new DateRangeModel();
+    dateRange.startDate = startDate.toDate();
+    dateRange.endDate = endDate.toDate();
+
+    return dateRange;
   }
 }

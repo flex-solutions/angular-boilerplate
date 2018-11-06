@@ -46,19 +46,8 @@ export class GiveVoucherComponent implements OnInit {
 
   ngOnInit() {
     this.successMsg = this.translateService.translate('give-voucher-success');
-    this.initAffectTime();
+    this.affectTime = this.voucherService.initAffectTime();
     this.getCampaignVoucher();
-  }
-
-  private initAffectTime() {
-    const startDate = moment();
-    const endDate = startDate.clone().add({days: 1}).set({hour: 23, minute: 59});
-
-    const dateRange = new DateRangeModel();
-    dateRange.startDate = startDate.toDate();
-    dateRange.endDate = endDate.toDate();
-
-    this.affectTime = dateRange;
   }
 
   private getCampaignVoucher() {
@@ -105,7 +94,7 @@ export class GiveVoucherComponent implements OnInit {
   private reset() {
     this.selectedVoucher = new Voucher();
     this.membersList.resetFilter();
-    this.initAffectTime();
+    this.affectTime = this.voucherService.initAffectTime();
     this.notificationMessage = '';
     this.wizardComponent.reset();
   }
