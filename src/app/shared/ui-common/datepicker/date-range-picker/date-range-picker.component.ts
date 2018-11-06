@@ -1,10 +1,10 @@
+import * as moment from 'moment';
 import { AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { DateRangeModel } from '../model/date-range.model';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
 declare const $: any;
-declare const moment: any;
 
 @Component({
   selector: 'app-date-range-picker',
@@ -17,6 +17,7 @@ export class DateRangePickerComponent implements AfterViewInit {
 
   @Input() timePicker: boolean;
   @Input() canReset = true;
+  @Input() canSelectPastDate = true;
 
   // Call when date ranged have changed
   @Output()
@@ -50,9 +51,11 @@ export class DateRangePickerComponent implements AfterViewInit {
   initialize() {
     this.picker.daterangepicker({
         timePicker: this.timePicker,
+        timePicker24Hour: this.timePicker,
         autoUpdateInput: false,
         startDate: moment(this.dateRange.startDate),
         endDate: moment(this.dateRange.endDate),
+        minDate: this._getMinDate(),
         ranges: this.buildRanges(),
         showDropdowns: true,
         alwaysShowCalendars: true,
@@ -114,6 +117,10 @@ export class DateRangePickerComponent implements AfterViewInit {
   }
 
   _getDateFormat() {
-    return this.timePicker ? 'DD/MM/YYYY hh:mm' : 'DD/MM/YYYY';
+    return this.timePicker ? 'DD/MM/YYYY HH:mm' : 'DD/MM/YYYY';
+  }
+
+  _getMinDate() {
+    return this.canSelectPastDate ? moment('19180101', 'YYYYMMDD') : moment();
   }
 }
