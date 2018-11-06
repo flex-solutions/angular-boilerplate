@@ -117,7 +117,7 @@ export class DateRangePickerComponent implements AfterViewInit {
   }
 
   _getDateFormat() {
-    return this.timePicker ? 'DD/MM/YYYY hh:mm' : 'DD/MM/YYYY';
+    return this.timePicker ? 'DD/MM/YYYY HH:mm' : 'DD/MM/YYYY';
   }
 
   _getMinDate() {
