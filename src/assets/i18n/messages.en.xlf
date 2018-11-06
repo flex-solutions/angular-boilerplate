@@ -2330,6 +2330,10 @@
         <source>A promotion has been deleted</source>
         <target>A promotion has been deleted</target>
       </trans-unit>
+      <trans-unit id="voucher-running-view-voucher" datatype="html">
+        <source>View voucher</source>
+        <target>View voucher</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">

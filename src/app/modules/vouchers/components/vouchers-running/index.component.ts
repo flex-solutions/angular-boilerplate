@@ -1,3 +1,4 @@
+import { VoucherRouteNames } from './../../vouchers.constants';
 import { ExDialog } from './../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { isEmpty, find, get } from 'lodash';
@@ -12,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
 import { PromotionsService } from '../../services/promotions.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -30,7 +32,8 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
   constructor(private promotionsService: PromotionsService,
     private notificationService: NotificationService,
     private exDialog: ExDialog,
-    private translator: TranslateService) {
+    private translator: TranslateService,
+    private router: Router) {
     super();
   }
 
@@ -60,5 +63,10 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
         });
       }
     });
+  }
+
+  viewVoucher(item: VoucherOperationDtoBase) {
+    const voucherCode = item.voucher.code;
+    this.router.navigate([VoucherRouteNames.PROMOTIONS, voucherCode, true]);
   }
 }

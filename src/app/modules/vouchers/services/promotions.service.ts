@@ -1,9 +1,11 @@
+import { Voucher } from './../../../shared/models/voucher.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class PromotionsService extends AbstractRestService {
+
   protected controllerName = 'promotions';
 
   getVouchersRunning(): Observable<any[]> {
@@ -12,5 +14,9 @@ export class PromotionsService extends AbstractRestService {
 
   deleteVoucherRunning(id: any): Observable<Response> {
     return this.delete(`${id}`);
+  }
+
+  getVoucher(voucherCode: string): Observable<Voucher> {
+    return this.get(`${voucherCode}`);
   }
 }

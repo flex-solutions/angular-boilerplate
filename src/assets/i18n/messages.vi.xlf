@@ -2326,6 +2326,10 @@
         <source>A promotion has been deleted</source>
         <target>Một chương trình khuyến mãi đã bị xóa</target>
       </trans-unit>
+      <trans-unit id="voucher-running-view-voucher" datatype="html">
+        <source>View voucher</source>
+        <target>Xem thông tin voucher</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
