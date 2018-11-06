@@ -61,10 +61,6 @@ export class VoucherService extends AbstractRestService {
     return this.post(`run-voucher?type=${type}`, dto);
   }
 
-  getVouchersRunning(): Observable<any[]> {
-    return this.get('vouchers-running');
-  }
-
   getAllVoucherCareCampaign(): Observable<Voucher[]> {
     return this.get('voucher-care-campaign');
   }

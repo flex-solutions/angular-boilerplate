@@ -112,6 +112,7 @@ export class VoucherOperationDtoBase {
   voucher: Voucher;
   usedCount: number;
   remainCount: number;
+  id: any;
 }
 export class RepeatOneCodeDto extends VoucherOperationDtoBase {
   usageLimit: number;

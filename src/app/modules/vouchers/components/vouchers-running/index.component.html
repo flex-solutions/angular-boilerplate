@@ -25,6 +25,7 @@
                     <th i18n="@@voucher-running-usage-limit">Số lần sử dụng</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-remain-count">Còn lại</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -34,11 +35,21 @@
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
                     <td *ngIf="item.voucher.type == 2"></td>
-                    <td>{{item.start_date | dateFormat}}</td>
-                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.start_date | dateTimeFormat}}</td>
+                    <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>{{item.usageLimit}}</td>
                     <td>{{item.usedCount}}</td>
                     <td>{{item.remainCount}}</td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@common-action-edit">Edit</a>
+                        <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -77,6 +88,7 @@
                     <th i18n="@@voucher-running-code-scope">Phạm vi mã</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-remain-count">Còn lại</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -86,11 +98,21 @@
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
                     <td *ngIf="item.voucher.type == 2"></td>
-                    <td>{{item.start_date | dateFormat}}</td>
-                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.start_date | dateTimeFormat}}</td>
+                    <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>{{item.minRange}} - {{item.maxRange}}</td>
                     <td>{{item.usedCount}}</td>
                     <td>{{item.remainCount}}</td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@common-action-edit">Edit</a>
+                        <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -128,6 +150,7 @@
                     <th i18n="@@voucher-running-effect-to">Đến ngày</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-available-code">Available</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -137,13 +160,23 @@
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
                     <td *ngIf="item.voucher.type == 2"></td>
-                    <td>{{item.start_date | dateFormat}}</td>
-                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.start_date | dateTimeFormat}}</td>
+                    <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>
                       <a class="a-clickable">{{item.usedCount}}</a>
                     </td>
                     <td>
                       <a class="a-clickable">{{item.remainCount}}</a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@common-action-edit">Edit</a>
+                        <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+                      </div>
                     </td>
                   </tr>
                 </tbody>

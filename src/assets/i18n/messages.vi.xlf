@@ -2318,6 +2318,14 @@
         <source>Voucher "{{0}}" has been run</source>
         <target>Voucher "{{0}}" đã được áp dụng</target>
       </trans-unit>
+      <trans-unit id="voucher-running-delete-confirm" datatype="html">
+        <source>You are deleting promotion "{{0}}". {{1}} published voucher will be deleted, continue?</source>
+        <target>Bạn đang xóa chương trình "{{0}}". {{1}} voucher đã phát hành sẽ bị xóa, bạn có muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-success" datatype="html">
+        <source>A promotion has been deleted</source>
+        <target>Một chương trình khuyến mãi đã bị xóa</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">

@@ -2322,6 +2322,14 @@
         <source>Voucher "{{0}}" has been run</source>
         <target>Voucher "{{0}}" has been run</target>
       </trans-unit>
+      <trans-unit id="voucher-running-delete-confirm" datatype="html">
+        <source>You are deleting promotion "{{0}}". {{1}} published voucher will be deleted, continue?</source>
+        <target>You are deleting promotion "{{0}}". {{1}} published voucher will be deleted, continue?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-success" datatype="html">
+        <source>A promotion has been deleted</source>
+        <target>A promotion has been deleted</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
