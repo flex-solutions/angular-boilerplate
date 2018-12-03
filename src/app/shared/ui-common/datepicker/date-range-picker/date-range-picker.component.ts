@@ -1,10 +1,10 @@
+import * as moment from 'moment';
 import { AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { DateRangeModel } from '../model/date-range.model';
 import { TranslateService } from '../../../services/translate.service';
 import { Guid } from 'guid-typescript';
 declare const $: any;
-declare const moment: any;
 
 @Component({
   selector: 'app-date-range-picker',
@@ -14,6 +14,10 @@ export class DateRangePickerComponent implements AfterViewInit {
 
   private _dateRange: DateRangeModel;
   elementId: string;
+
+  @Input() timePicker: boolean;
+  @Input() canReset = true;
+  @Input() canSelectPastDate = true;
 
   // Call when date ranged have changed
   @Output()
@@ -38,30 +42,34 @@ export class DateRangePickerComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.initialize();
 
+    const format = this._getDateFormat();
     this.picker.on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      $(this).val(picker.startDate.format(format) + ' - ' + picker.endDate.format(format));
     });
   }
 
   initialize() {
     this.picker.daterangepicker({
-      autoUpdateInput: false,
-      startDate: moment(this.dateRange.startDate),
-      endDate: moment(this.dateRange.endDate),
-      ranges: this.buildRanges(),
-      showDropdowns: true,
-      alwaysShowCalendars: true,
-      locale: {
-        cancelLabel: this.translateService.translate('date-range-picker_button_cancel'),
-        applyLabel: this.translateService.translate('date-range-picker_button_apply'),
-        customRangeLabel: this.translateService.translate('date-range-picker_button_custom_range'),
-        format: 'DD/MM/YYYY'
-      }
-    },
+        timePicker: this.timePicker,
+        timePicker24Hour: this.timePicker,
+        autoUpdateInput: false,
+        startDate: moment(this.dateRange.startDate),
+        endDate: moment(this.dateRange.endDate),
+        minDate: this._getMinDate(),
+        ranges: this.buildRanges(),
+        showDropdowns: true,
+        alwaysShowCalendars: true,
+        locale: {
+          cancelLabel: this.translateService.translate('date-range-picker_button_cancel'),
+          applyLabel: this.translateService.translate('date-range-picker_button_apply'),
+          customRangeLabel: this.translateService.translate('date-range-picker_button_custom_range'),
+          format: this._getDateFormat()
+        }
+      },
       (start, end, label) => {
         const result = new DateRangeModel();
-        result.startDate = new Date(start.toISOString());
-        result.endDate = new Date(end.toISOString());
+        result.startDate = moment(start).toDate();
+        result.endDate = moment(end).toDate();
         this.dateRange = result;
       });
 
@@ -69,7 +77,8 @@ export class DateRangePickerComponent implements AfterViewInit {
     if (this.dateRange && this.dateRange.startDate && this.dateRange.endDate) {
       const startDate = moment(this.dateRange.startDate);
       const endDate = moment(this.dateRange.endDate);
-      this.picker.val(startDate.format('MM/DD/YYYY') + ' - ' + endDate.format('MM/DD/YYYY'));
+      const format = this._getDateFormat();
+      this.picker.val(startDate.format(format) + ' - ' + endDate.format(format));
     }
   }
 
@@ -105,5 +114,13 @@ export class DateRangePickerComponent implements AfterViewInit {
 
   onIconClicked() {
     this.picker.focus();
+  }
+
+  _getDateFormat() {
+    return this.timePicker ? 'DD/MM/YYYY HH:mm' : 'DD/MM/YYYY';
+  }
+
+  _getMinDate() {
+    return this.canSelectPastDate ? moment('19180101', 'YYYYMMDD') : moment();
   }
 }

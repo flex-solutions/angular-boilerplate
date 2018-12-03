@@ -1,8 +1,13 @@
 <div class="input-group date-picker">
-    <input type="text" name="daterange" [id]="elementId" class="form-control" style="border-radius: 0 0 3px 0; background:white;" readonly/>
-    <span (click)="onIconClicked()" class="input-group-addon input-group-append border-left">
-        <span class="mdi mdi-calendar input-group-text" style="border-right: 1px solid #ced4da;
-            border-radius: 0 3px 3px 0;
-            border-left: none;"></span>
+  <input type="text" name="daterange" [id]="elementId" class="form-control" style="border-radius: 0 0 3px 0; background:white;"
+    readonly />
+  <div class="input-group-append">
+    <span style="cursor:pointer" class="input-group-addon input-group-append border-left" (click)="reset()" *ngIf="canReset">
+      <span class="mdi mdi-close input-group-text"></span>
     </span>
+
+    <span (click)="onIconClicked()" class="input-group-addon input-group-append border-left">
+      <span class="mdi mdi-calendar input-group-text"></span>
+    </span>
+  </div>
 </div>

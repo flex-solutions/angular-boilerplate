@@ -2337,8 +2337,8 @@
         <target>Selected voucher code</target>
       </trans-unit>
       <trans-unit id="give-voucher-effect-days" datatype="html">
-        <source>Effect days</source>
-        <target>Effect days</target>
+        <source>Affect time</source>
+        <target>Affect time</target>
       </trans-unit>
       <trans-unit id="give-voucher-notification-message" datatype="html">
         <source>Notification message</source>
