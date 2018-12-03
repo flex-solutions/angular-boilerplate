@@ -1819,8 +1819,10 @@
         <target>Bạn có chắc muốn xoá voucher "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-warning-confirm" datatype="html">
-        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</source>
-        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
+        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for
+        those membership types is also deleted too. Are you sure you still delete?</source>
+        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi
+          trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-success" datatype="html">
         <source>Voucher "{{0}}" has been deleted</source>
@@ -2374,6 +2376,18 @@
         <source>Name</source>
         <target>Tên</target>
       </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates" datatype="html">
+        <source>Coordinates</source>
+        <target>Tọa Độ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates-long" datatype="html">
+        <source>Longitude</source>
+        <target>Kinh Độ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates-lat" datatype="html">
+        <source>Latitude</source>
+        <target>Vĩ Độ</target>
+      </trans-unit>
       <trans-unit id="pos-menu-list-th-address" datatype="html">
         <source>Address</source>
         <target>Địa chỉ</target>
@@ -2421,6 +2435,10 @@
       <trans-unit id="pos-menu-phone-number-validate-required" datatype="html">
         <source>Please input pos's phone number</source>
         <target>Vui lòng nhập số điện thoại</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-coordinates-validate-required" datatype="html">
+        <source>Please input coordinates</source>
+        <target>Vui lòng nhập tọa độ của POS</target>
       </trans-unit>
       <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
         <source>Please input pos's open time</source>
