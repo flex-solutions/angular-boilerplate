@@ -22,10 +22,7 @@ export class RunBatchExportVoucherComponent extends DialogComponent implements O
 
   ngOnInit() {
     this.voucher = this.callerData;
-    const initDate = new DateRangeModel();
-    initDate.startDate = new Date();
-    initDate.endDate = new Date();
-    this.dateRange = initDate;
+    this.dateRange = this.voucherService.initAffectTime();
   }
 
   cancel() {

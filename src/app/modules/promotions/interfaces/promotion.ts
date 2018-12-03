@@ -22,7 +22,8 @@ export interface IGiveVoucherModel {
   voucher: Voucher;
   member_filter: any;
   notificationMsg: string;
-  applyDays: number;
+  startDate: Date;
+  endDate: Date;
 }
 
 export class StatusCheckedItem implements CheckedItem {

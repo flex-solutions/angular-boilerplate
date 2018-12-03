@@ -1,21 +1,17 @@
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 import {
   Voucher,
   VoucherOperationDtoBase
 } from './../../../shared/models/voucher.model';
-import { ExDialog } from './../../../shared/ui-common/modal/services/ex-dialog.service';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { MembershipType } from '../../../shared/models/membership-type.model';
+import { DateRangeModel } from '../../../shared/ui-common/datepicker/model/date-range.model';
 
 @Injectable()
 export class VoucherService extends AbstractRestService {
-  protected controllerName: string;
-
-  constructor(private exDialog: ExDialog) {
-    super();
-    this.controllerName = 'voucher';
-  }
+  protected controllerName = 'voucher';
 
   public remove(_id: string) {
     return this.delete(`${_id}`);
@@ -61,15 +57,26 @@ export class VoucherService extends AbstractRestService {
     return this.post(`run-voucher?type=${type}`, dto);
   }
 
-  getVouchersRunning(): Observable<any[]> {
-    return this.get('vouchers-running');
-  }
-
   getAllVoucherCareCampaign(): Observable<Voucher[]> {
     return this.get('voucher-care-campaign');
   }
 
   getMembershipTypes(id: string): Observable<MembershipType[]> {
     return this.get(`${id}/membership-types`);
+  }
+
+  getByCode(voucherCode: any): Observable<Voucher> {
+    throw new Error('Method not implemented.');
+  }
+
+  initAffectTime() {
+    const startDate = moment();
+    const endDate = startDate.clone().add({days: 1}).set({hour: 23, minute: 59});
+
+    const dateRange = new DateRangeModel();
+    dateRange.startDate = startDate.toDate();
+    dateRange.endDate = endDate.toDate();
+
+    return dateRange;
   }
 }

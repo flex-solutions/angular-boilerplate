@@ -59,6 +59,14 @@ export class PushNotificaionComponent implements OnInit {
     };
     this.pushNotificationService.pushNotification(model).subscribe(() => {
       this._notificationService.showSuccess(this.successMsg);
+      this.reset();
     });
+  }
+
+  private reset() {
+    this.membersList.resetFilter();
+    this.notificationMessage = '';
+    this.title = '';
+    this.wizardComponent.reset();
   }
 }
