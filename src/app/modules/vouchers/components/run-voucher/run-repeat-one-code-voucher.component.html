@@ -13,7 +13,7 @@
         <fieldset>
           <div class="form-group">
             <label for="applyRangeTime" i18n="@@voucher-runner-effective-time">Thời gian có hiệu lực</label>
-            <app-date-range-picker [(dateRange)]="dateRange"></app-date-range-picker>
+            <app-date-range-picker [(dateRange)]="dateRange" [canReset]="false" [canSelectPastDate]="false" [timePicker]="true"></app-date-range-picker>
           </div>
           <div class="form-group">
             <label for="txtUsageLimit" i18n="@@voucher-runner-repeate-one-code-usage-limit">Giới hạn số lần sử dụng (để trống nếu không giới hạn)</label>
