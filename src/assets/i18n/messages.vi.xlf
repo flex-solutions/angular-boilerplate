@@ -1819,8 +1819,10 @@
         <target>Bạn có chắc muốn xoá voucher "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-warning-confirm" datatype="html">
-        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</source>
-        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
+        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for
+        those membership types is also deleted too. Are you sure you still delete?</source>
+        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi
+          trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-success" datatype="html">
         <source>Voucher "{{0}}" has been deleted</source>
@@ -2318,6 +2320,18 @@
         <source>Voucher "{{0}}" has been run</source>
         <target>Voucher "{{0}}" đã được áp dụng</target>
       </trans-unit>
+      <trans-unit id="voucher-running-delete-confirm" datatype="html">
+        <source>You are deleting promotion "{{0}}". {{1}} published voucher will be deleted, continue?</source>
+        <target>Bạn đang xóa chương trình "{{0}}". {{1}} voucher đã phát hành sẽ bị xóa, bạn có muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-success" datatype="html">
+        <source>A promotion has been deleted</source>
+        <target>Một chương trình khuyến mãi đã bị xóa</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-view-voucher" datatype="html">
+        <source>View voucher</source>
+        <target>Xem thông tin voucher</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
@@ -2333,8 +2347,8 @@
         <target>Mã voucher đã chọn</target>
       </trans-unit>
       <trans-unit id="give-voucher-effect-days" datatype="html">
-        <source>Effect days</source>
-        <target>Số ngày áp dụng</target>
+        <source>Affect time</source>
+        <target>Thời gian có hiệu lực</target>
       </trans-unit>
       <trans-unit id="give-voucher-notification-message" datatype="html">
         <source>Notification message</source>
@@ -2361,6 +2375,18 @@
       <trans-unit id="pos-menu-list-th-name" datatype="html">
         <source>Name</source>
         <target>Tên</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates" datatype="html">
+        <source>Coordinates</source>
+        <target>Tọa Độ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates-long" datatype="html">
+        <source>Longitude</source>
+        <target>Kinh Độ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates-lat" datatype="html">
+        <source>Latitude</source>
+        <target>Vĩ Độ</target>
       </trans-unit>
       <trans-unit id="pos-menu-list-th-address" datatype="html">
         <source>Address</source>
@@ -2409,6 +2435,10 @@
       <trans-unit id="pos-menu-phone-number-validate-required" datatype="html">
         <source>Please input pos's phone number</source>
         <target>Vui lòng nhập số điện thoại</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-coordinates-validate-required" datatype="html">
+        <source>Please input coordinates</source>
+        <target>Vui lòng nhập tọa độ của POS</target>
       </trans-unit>
       <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
         <source>Please input pos's open time</source>

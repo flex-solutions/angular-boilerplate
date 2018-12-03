@@ -1,3 +1,4 @@
+import { ViewVoucherComponent } from './components/view-voucher/component';
 import { CreateEditVoucherComponent } from './components/create-edit/create-edit.component';
 import { VouchersComponent } from './components/home/vouchers.component';
 
@@ -24,6 +25,13 @@ const VoucherRoutes: Routes = [
     component: VouchersRunningComponent,
     data: {
       breadcrumb: 'Vouchers are running'
+    }
+  },
+  {
+    path: 'promotions/view/:id/:isRunning',
+    component: ViewVoucherComponent,
+    data: {
+      breadcrumb: 'View voucher'
     }
   },
   {

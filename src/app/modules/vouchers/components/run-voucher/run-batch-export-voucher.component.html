@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
           <label for="applyRangeTime" i18n="@@voucher-runner-effective-time">Thời gian có hiệu lực</label>
-          <app-date-range-picker [(dateRange)]="dateRange"></app-date-range-picker>
+          <app-date-range-picker [(dateRange)]="dateRange" [canReset]="false" [canSelectPastDate]="false" [timePicker]="true"></app-date-range-picker>
         </div>
         <div class="form-group">
           <label for="txtPrefix" i18n="@@voucher-runner-batch-export-code-prefix">Tiền tố của mã (2 kí tự)</label>

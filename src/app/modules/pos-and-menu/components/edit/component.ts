@@ -47,6 +47,12 @@ export class POSEditComponent extends AbstractFormComponent implements OnInit, A
               type: 'required',
               message: 'pos-menu-phone-number-validate-required'
             }
+        ],
+        coordinates: [
+            {
+              type: 'required',
+              message: 'pos-menu-coordinates-validate-required'
+            }
         ]
     };
 
@@ -75,6 +81,10 @@ export class POSEditComponent extends AbstractFormComponent implements OnInit, A
 
     get phoneNumber() {
         return this.formGroup.get('phoneNumber');
+    }
+
+    get coordinates() {
+        return this.formGroup.get('coordinates');
     }
 
     private getPos() {
@@ -123,7 +133,8 @@ export class POSEditComponent extends AbstractFormComponent implements OnInit, A
             '', [Validators.required, Validators.pattern(validationRegex.notAllowSpecialCharacters)]
           ],
           address: ['', [Validators.required]],
-          phoneNumber: ['', [Validators.required]]
+          phoneNumber: ['', [Validators.required]],
+          coordinates: ['', [Validators.required]]
         });
     }
 

@@ -43,6 +43,30 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-6">
+          <div class="form-group" [ngClass]="{'has-danger': coordinates.invalid && (coordinates.dirty || coordinates.touched)}">
+            <label for="longitude" i18n="@@pos-menu-label-coordinates">Coordinates</label>
+            <label class="require">*</label>
+            <input id="longitude" required class="form-control" formControlName="coordinates" i18n-placeholder="@@pos-menu-label-coordinates-long" placeholder="Longitude"
+            [ngClass]="{'has-danger': coordinates.invalid && (coordinates.dirty || coordinates.touched) }"
+            [(ngModel)]="pos.longitude">
+            <div class="form-control-feedback" *ngFor="let error of errors.coordinates">
+                <p *ngIf="coordinates.hasError(error.type) && (coordinates.dirty || coordinates.touched)" class="error mt-2 text-danger">
+                    {{translateService.translate(error.message, coordinates.value)}}
+                </p>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" [ngClass]="{'has-danger': coordinates.invalid && (coordinates.dirty || coordinates.touched)}">
+            <label for="latitude">&nbsp;</label>
+            <input id="latitude" required class="form-control" formControlName="coordinates" i18n-placeholder="@@pos-menu-label-coordinates-lat" placeholder="Latitude"
+            [ngClass]="{'has-danger': coordinates.invalid && (coordinates.dirty || coordinates.touched) }"
+            [(ngModel)]="pos.latitude">
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="form-group col-md-12" [ngClass]="{'has-danger': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}">
           <label for="phoneNumber" i18n="@@pos-menu-list-th-phone-number">Phone number</label>
           <label class="require">*</label>
