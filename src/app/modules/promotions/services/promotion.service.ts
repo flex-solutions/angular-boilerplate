@@ -12,7 +12,7 @@ export class PromotionService extends AbstractRestService {
 
   constructor() {
     super();
-    this.controllerName = 'promotions';
+    this.controllerName = 'member-care';
   }
 
   getPromotion(id) {
