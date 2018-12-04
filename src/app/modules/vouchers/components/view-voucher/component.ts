@@ -18,7 +18,7 @@ export class ViewVoucherComponent extends AbstractBaseComponent implements OnIni
 
     voucher: Voucher = new Voucher();
     voucherCode: string;
-    isRunning: boolean;
+    isRunning: string;
 
     constructor(private readonly voucherService: VoucherService,
         private readonly promotionsService: PromotionsService,
@@ -43,7 +43,7 @@ export class ViewVoucherComponent extends AbstractBaseComponent implements OnIni
     }
 
     private getVoucher() {
-        const func = this.isRunning === true ? this.getVoucherRunning : this.getStaticVoucher;
+        const func = this.isRunning === 'true' ? this.getVoucherRunning : this.getStaticVoucher;
 
         func(this.voucherCode).subscribe(res => {
             this.voucher = res;
