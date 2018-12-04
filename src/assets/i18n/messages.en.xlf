@@ -2052,13 +2052,9 @@
         <source>Let's export batch code for voucher "{{voucher.name}}"</source>
         <target>Let's export batch code for voucher "{{voucher.name}}"</target>
       </trans-unit>
-      <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
-        <source>Publish code from number (equal 1 if empty)</source>
-        <target>Publish code from number (equal 1 if empty)</target>
-      </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
-        <source>to number (equal 1000 if empty)</source>
-        <target>to number (equal 1000 if empty)</target>
+        <source>Publish quantity (default 1000 code)</source>
+        <target>Publish quantity (default 1000 code)</target>
       </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
         <source>Prefix of code (2 characters)</source>
@@ -2315,8 +2311,8 @@
         <target>Prefix</target>
       </trans-unit>
       <trans-unit id="voucher-running-code-scope" datatype="html">
-        <source>Scope of code</source>
-        <target>Scope of code</target>
+        <source>Publish count</source>
+        <target>Publish count</target>
       </trans-unit>
       <trans-unit id="voucher-running-success" datatype="html">
         <source>Voucher "{{0}}" has been run</source>
@@ -2333,6 +2329,42 @@
       <trans-unit id="voucher-running-view-voucher" datatype="html">
         <source>View voucher</source>
         <target>View voucher</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-pos" datatype="html">
+        <source>Applied poses:</source>
+        <target>Applied poses:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-menu" datatype="html">
+        <source>Applied menu:</source>
+        <target>Applied menu:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-require-menu" datatype="html">
+        <source>Require menu:</source>
+        <target>Require menu:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-gift-menu" datatype="html">
+        <source>Gift menu:</source>
+        <target>Gift menu:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-menu-group" datatype="html">
+        <source>Menu group:</source>
+        <target>Menu group:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-require-menu-group" datatype="html">
+        <source>Require menu group:</source>
+        <target>Require menu group:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-gift-menu-group" datatype="html">
+        <source>Gift menu group:</source>
+        <target>Gift menu group:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-days" datatype="html">
+        <source>Applied days:</source>
+        <target>Applied days:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-hours" datatype="html">
+        <source>Applied hours:</source>
+        <target>Applied hours:</target>
       </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->

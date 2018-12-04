@@ -119,7 +119,6 @@ export class RepeatOneCodeDto extends VoucherOperationDtoBase {
 }
 
 export class BatchExportCodeDto extends VoucherOperationDtoBase {
-  minRange: number;
   maxRange: number;
   prefix: string;
 }

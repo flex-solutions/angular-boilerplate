@@ -85,7 +85,7 @@
                     <th i18n="@@vouchers-discount">Discount</th>
                     <th i18n="@@voucher-running-effect-from">Có hiệu lực từ ngày</th>
                     <th i18n="@@voucher-running-effect-to">Đến ngày</th>
-                    <th i18n="@@voucher-running-code-scope">Phạm vi mã</th>
+                    <th i18n="@@voucher-running-code-scope">SL mã phát hành</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-remain-count">Còn lại</th>
                     <th></th>
@@ -100,7 +100,7 @@
                     <td *ngIf="item.voucher.type == 2"></td>
                     <td>{{item.start_date | dateTimeFormat}}</td>
                     <td>{{item.end_date | dateTimeFormat}}</td>
-                    <td>{{item.minRange}} - {{item.maxRange}}</td>
+                    <td>{{item.maxRange}}</td>
                     <td>{{item.usedCount}}</td>
                     <td>{{item.remainCount}}</td>
                     <td>
