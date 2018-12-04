@@ -65,10 +65,6 @@ export class VoucherService extends AbstractRestService {
     return this.get(`${id}/membership-types`);
   }
 
-  getByCode(voucherCode: any): Observable<Voucher> {
-    throw new Error('Method not implemented.');
-  }
-
   initAffectTime() {
     const startDate = moment();
     const endDate = startDate.clone().add({days: 1}).set({hour: 23, minute: 59});

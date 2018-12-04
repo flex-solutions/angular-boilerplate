@@ -2,6 +2,10 @@
 <app-voucher-filter [(voucherFilter)]="voucherFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-voucher-filter>
 <app-card title="Vouchers" i18n-title="@@vouchers-title">
   <div class="command-region">
+    <button type="button" class="btn btn-sm btn-primary" (click)="navigateToCreatePage()">
+      <i class="mdi mdi-plus"></i>
+      <span>New voucher</span>
+    </button>
   </div>
   <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
     <tr role="row">
@@ -13,7 +17,7 @@
     <tbody>
       <tr *ngFor="let item of items">
         <td>
-          <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item._id)">{{item.name}}</p>
+          <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item)">{{item.name}}</p>
         </td>
         <td *ngIf="item.operationType == 0" i18n="@@voucher-using-purpose-repeat-one-code">Một mã sử dụng nhiều lần</td>
         <td *ngIf="item.operationType == 1" i18n="@@voucher-using-purpose-export-batch-code">Xuất mã hàng loạt</td>
