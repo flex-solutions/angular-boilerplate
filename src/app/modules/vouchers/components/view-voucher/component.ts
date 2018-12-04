@@ -34,8 +34,8 @@ export class ViewVoucherComponent extends AbstractBaseComponent implements OnIni
         return this.promotionsService.getVoucher(voucherCode);
     }
 
-    getStaticVoucher = (voucherCode): Observable<Voucher> => {
-        return this.voucherService.getByCode(voucherCode);
+    getStaticVoucher = (voucherId): Observable<Voucher> => {
+        return this.voucherService.getById(voucherId);
     }
 
     ngOnInit() {
@@ -43,7 +43,7 @@ export class ViewVoucherComponent extends AbstractBaseComponent implements OnIni
     }
 
     private getVoucher() {
-        const func = this.isRunning ? this.getVoucherRunning : this.getStaticVoucher;
+        const func = this.isRunning === true ? this.getVoucherRunning : this.getStaticVoucher;
 
         func(this.voucherCode).subscribe(res => {
             this.voucher = res;
@@ -53,8 +53,6 @@ export class ViewVoucherComponent extends AbstractBaseComponent implements OnIni
 
             const applyHours = VoucherCreationData.applyHours;
             this.voucher.applyHourRanges = applyHours.filter(h => this.voucher.applyHourRanges.find(hr => h.id === hr));
-
-            console.log('this.voucher: ', this.voucher);
         });
     }
 }

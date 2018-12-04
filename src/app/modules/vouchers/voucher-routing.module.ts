@@ -35,6 +35,13 @@ const VoucherRoutes: Routes = [
     }
   },
   {
+    path: 'detail/:id/:isRunning',
+    component: ViewVoucherComponent,
+    data: {
+      breadcrumb: 'View voucher'
+    }
+  },
+  {
     // TODO: update after finish create news
     path: 'update/:id',
     component: CreateEditVoucherComponent,

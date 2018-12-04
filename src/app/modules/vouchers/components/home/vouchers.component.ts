@@ -100,7 +100,7 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   }
 
   navigateToCreatePage() {
-    // this.router.navigate([VouchersRoutingModule.CREATE_PAGE]);
+    this.router.navigate([VoucherRouteNames.CREATE]);
   }
 
   editVoucher(voucher: Voucher) {
@@ -108,7 +108,7 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
   }
 
   navigateTovoucherDetailPage(voucher: Voucher) {
-    // this.router.navigate([VouchersRoutingModule.DETAIL_PAGE, voucher._id]);
+    this.router.navigate([VoucherRouteNames.VIEW, voucher._id, false]);
   }
 
   private getVouchers() {
@@ -133,7 +133,7 @@ export class VouchersComponent extends AbstractBaseComponent implements OnInit {
 
   resetFilter = () => {
     this.loadData();
-  };
+  }
 
   runACampaign(voucher: Voucher) {
     this.voucherRunner.run(voucher);
