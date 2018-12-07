@@ -43,9 +43,9 @@
               <app-select2 [itemsSource]="months" [(selectedItem)]="filter.monthOfBirthday"></app-select2>
             </div>
             <br/>
-            <app-input-range i18n-title="@@members-filter-list-table-lbl-day_are_not_returned" title="Days are not returned"></app-input-range>
+            <app-input-range  [range]="filter.daysAreNotReturned"i18n-title="@@members-filter-list-table-lbl-day_are_not_returned" title="Days are not returned"></app-input-range>
             <br/>
-            <app-input-range i18n-title="@@members-filter-list-table-lbl-number_of_times_eaten" title="Number of times eaten"></app-input-range>
+            <app-input-range  [range]="filter.numberOfTimesEaten" i18n-title="@@members-filter-list-table-lbl-number_of_times_eaten" title="Number of times eaten"></app-input-range>
           </div>
           <br/>
 
@@ -61,9 +61,9 @@
               <app-select2 [itemsSource]="membershipTypes" valuePropertyName="_id" displayPropertyName="name" [(selectedItem)]="filter.membershipType"></app-select2>
             </div>
             <br/>
-            <app-input-range i18n-title="@@members-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
+            <app-input-range [range]="filter.hasScore" i18n-title="@@members-filter-list-table-lbl-have_score" title="Have score"></app-input-range>
             <br/>
-            <app-input-range i18n-title="@@members-filter-list-table-lbl-spend_money_total" title="Spend money total"></app-input-range>
+            <app-input-range  [range]="filter.totalAmount" i18n-title="@@members-filter-list-table-lbl-spend_money_total" title="Spend money total"></app-input-range>
           </div>
           <br/>
 

@@ -62,6 +62,22 @@ export class MemberCriteriaBuilder {
         FilterType.Equal,
         memberFilterFields.DISTRICT,
         memberFilter[memberFilterFields.DISTRICT].name
+      )
+      .withFilterInRange(
+        memberFilterFields.HAS_SCORE,
+        memberFilter[memberFilterFields.HAS_SCORE]
+      )
+      .withFilterInRange(
+        memberFilterFields.TOTAL_AMOUNT,
+        memberFilter[memberFilterFields.TOTAL_AMOUNT]
+      )
+      .withFilterInRange(
+        memberFilterFields.NUMBER_OF_TIME_EATEN,
+        memberFilter[memberFilterFields.NUMBER_OF_TIME_EATEN]
+      )
+      .withFilterInRange(
+        memberFilterFields.DAYS_ARE_NOT_RETURNED,
+        memberFilter[memberFilterFields.DAYS_ARE_NOT_RETURNED]
       );
     return builder.endWrapperFilter().build();
   }
