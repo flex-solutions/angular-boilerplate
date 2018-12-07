@@ -48,9 +48,9 @@ class MemberFilter {
   district: any;
   address: string;
   daysAreNotReturned: Range;
-  numberOfTimesEaten: Range;
-  hasScore: Range;
-  totalAmount: Range;
+  totalOrders: Range;
+  point: Range;
+  amount: Range;
 
   constructor() {
     this.name = '';
@@ -63,9 +63,9 @@ class MemberFilter {
     this.province = {};
     this.district = {};
     this.daysAreNotReturned = new Range();
-    this.numberOfTimesEaten = new Range();
-    this.hasScore = new Range();
-    this.totalAmount = new Range();
+    this.totalOrders = new Range();
+    this.point = new Range();
+    this.amount = new Range();
   }
 }
 
@@ -80,9 +80,9 @@ const memberFilterFields = {
   PROVINCE: 'province',
   DISTRICT: 'district',
   DAYS_ARE_NOT_RETURNED: 'daysAreNotReturned',
-  NUMBER_OF_TIME_EATEN: 'numberOfTimesEaten',
-  HAS_SCORE: 'hasScore',
-  TOTAL_AMOUNT: 'totalAmount'
+  TOTAL_ORDERS: 'totalOrders',
+  POINT: 'point',
+  AMOUNT: 'amount'
 };
 
 const sexResourceKey = {

@@ -64,16 +64,16 @@ export class MemberCriteriaBuilder {
         memberFilter[memberFilterFields.DISTRICT].name
       )
       .withFilterInRange(
-        memberFilterFields.HAS_SCORE,
-        memberFilter[memberFilterFields.HAS_SCORE]
+        memberFilterFields.POINT,
+        memberFilter[memberFilterFields.POINT]
       )
       .withFilterInRange(
-        memberFilterFields.TOTAL_AMOUNT,
-        memberFilter[memberFilterFields.TOTAL_AMOUNT]
+        memberFilterFields.AMOUNT,
+        memberFilter[memberFilterFields.AMOUNT]
       )
       .withFilterInRange(
-        memberFilterFields.NUMBER_OF_TIME_EATEN,
-        memberFilter[memberFilterFields.NUMBER_OF_TIME_EATEN]
+        memberFilterFields.TOTAL_ORDERS,
+        memberFilter[memberFilterFields.TOTAL_ORDERS]
       )
       .withFilterInRange(
         memberFilterFields.DAYS_ARE_NOT_RETURNED,
