@@ -62,6 +62,24 @@ export class MemberCriteriaBuilder {
         FilterType.Equal,
         memberFilterFields.DISTRICT,
         memberFilter[memberFilterFields.DISTRICT].name
+      )
+      .withFilterInRange(
+        memberFilterFields.POINT,
+        memberFilter[memberFilterFields.POINT]
+      )
+      .withFilterInRange(
+        memberFilterFields.AMOUNT,
+        memberFilter[memberFilterFields.AMOUNT]
+      )
+      .withFilterInRange(
+        memberFilterFields.TOTAL_ORDERS,
+        memberFilter[memberFilterFields.TOTAL_ORDERS]
+      )
+      .withFilter(
+        FilterType.Custom,
+        memberFilterFields.DAYS_ARE_NOT_RETURNED,
+        memberFilter[memberFilterFields.DAYS_ARE_NOT_RETURNED],
+        ValueType.Object
       );
     return builder.endWrapperFilter().build();
   }

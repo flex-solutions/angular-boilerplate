@@ -1562,7 +1562,10 @@
         <source>Point</source>
         <target>Điểm</target>
       </trans-unit>
-
+      <trans-unit id="members-tbl-member-total-amount" datatype="html">
+        <source>Total Amount</source>
+        <target>Đã chi tiêu</target>
+      </trans-unit>
       <!--End Member Module-->
       <!--Start Create Edit Member Module-->
       <trans-unit id="member-create_edit_member-h4-create_member" datatype="html">
