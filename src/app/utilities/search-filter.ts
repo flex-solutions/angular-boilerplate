@@ -24,7 +24,8 @@ enum FilterType {
   In = '$in',
   GreatThanEqual = '$gte',
   LessThanEqual = '$lte',
-  ElementMatch = '$elemMatch'
+  ElementMatch = '$elemMatch',
+  Custom = 'custom'
 }
 
 enum ValueType {
@@ -33,6 +34,7 @@ enum ValueType {
   Array = 'array',
   Date = 'date',
   ObjectId = 'objectId',
+  Object = 'object',
   RegexContains = 'regex-contains'
 }
 

@@ -75,9 +75,11 @@ export class MemberCriteriaBuilder {
         memberFilterFields.TOTAL_ORDERS,
         memberFilter[memberFilterFields.TOTAL_ORDERS]
       )
-      .withFilterInRange(
+      .withFilter(
+        FilterType.Custom,
         memberFilterFields.DAYS_ARE_NOT_RETURNED,
-        memberFilter[memberFilterFields.DAYS_ARE_NOT_RETURNED]
+        memberFilter[memberFilterFields.DAYS_ARE_NOT_RETURNED],
+        ValueType.Object
       );
     return builder.endWrapperFilter().build();
   }
