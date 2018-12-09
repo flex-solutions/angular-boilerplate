@@ -1,0 +1,34 @@
+<app-card title="Menu" i18n-title="@@pos-menu-item-list-title" subTitle= "{{subTitle}}">
+    <app-dg #dg searchLabel="Search by name, type" i18n-searchLabel="@@pos-menu-item-list-txt-search" (pageChanged)="onPageChanged($event)"
+        [countFunction]="count">
+        <tr>
+            <th></th>
+            <th style="width: 60%"></th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let menuItem of pos_menu  | posMenuFilter: dg.searchKey">
+                <td>
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <img src="{{menuItem.image}}" class="img-lg rounded" alt="image">
+                            <div class="ml-3">
+                                <h6>
+                                    {{menuItem.itemId}} - {{menuItem.name}} 
+                                    <span [appMenuItemStatus]="menuItem.status"> </span>
+                                </h6>
+                                <p class="mt-2">{{menuItem.itemType.name}}</p>
+                                <p class="text-muted">{{menuItem.description}}</p>
+                                <p class="mt-2">{{menuItem.otsPrice}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="template-demo">
+                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-fw" style="float: left;">Edit</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </app-dg>
+</app-card>

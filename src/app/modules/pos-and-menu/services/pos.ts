@@ -17,6 +17,10 @@ export class POSService extends AbstractRestService {
     return this.get(`count?searchKey=${searchKey}`);
   }
 
+  public countMenuItem(searchKey?: string, poses?: string): Observable<number> {
+    return this.get(`count-menu-items?searchKey=${searchKey}&poses=${poses}`);
+  }
+
   public findById(id: string): Observable<POSDto> {
     return this.get(`${id}`);
   }

@@ -2,6 +2,7 @@ import { POSEditComponent } from './components/edit/component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { POSComponent } from './components/list/list.component';
+import { MenuDetailComponent } from './components/detail/menu-detail.component';
 
 const routes: Routes = [
     {
@@ -16,6 +17,20 @@ const routes: Routes = [
       component: POSEditComponent,
       data: {
         breadcrumb: 'Update POS'
+      }
+    },
+    {
+      path: 'detail/:id',
+      component: MenuDetailComponent,
+      data: {
+        breadcrumb: 'Menu Detail'
+      }
+    },
+    {
+      path: 'detail',
+      component: MenuDetailComponent,
+      data: {
+        breadcrumb: 'Menu Detail'
       }
     },
 ];
