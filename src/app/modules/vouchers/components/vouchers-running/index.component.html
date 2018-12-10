@@ -17,6 +17,7 @@
               <table class="table center-aligned-table">
                 <thead>
                   <tr>
+                    <th >QR Code</th>
                     <th i18n="@@voucher-campaign-name">Tên chương trình</th>
                     <th i18n="@@voucher-create-edit-voucher-code">Mã voucher</th>
                     <th i18n="@@vouchers-discount">Discount</th>
@@ -30,7 +31,10 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of repeatCodeItems">
-                    <td>{{item.voucher.name}}</td>
+                    <td><img style="width:150px;height:150px;border-radius:0" appImgBinary [data]="item.barcode"></td>
+                    <td>
+                      <p class="a-clickable pull-left centered" (click)="viewVoucher(item)">{{item.voucher.name}}</p>
+                    </td>
                     <td>{{item.voucher.code}}</td>
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
@@ -46,7 +50,6 @@
                         <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
                       </button>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" (click)="viewVoucher(item)" href="javascript:;" i18n="@@voucher-running-view-voucher">View voucher</a>
                         <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
                       </div>
                     </td>
@@ -93,7 +96,9 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of batchExportItems">
-                    <td>{{item.voucher.name}}</td>
+                    <td>
+                      <p class="a-clickable pull-left centered" (click)="viewVoucher(item)">{{item.voucher.name}}</p>
+                    </td>
                     <td>{{item.prefix}}</td>
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
@@ -109,7 +114,8 @@
                         <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
                       </button>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" (click)="viewVoucher(item)" href="javascript:;" i18n="@@voucher-running-view-voucher">View voucher</a>
+                        <a class="dropdown-item" (click)="exportCode(item)" href="javascript:;" i18n="@@voucher-running-batch-voucher-export">Export
+                          code</a>
                         <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
                       </div>
                     </td>
@@ -155,7 +161,9 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of memberCareItems">
-                    <td>{{item.voucher.name}}</td>
+                    <td>
+                      <p class="a-clickable pull-left centered" (click)="viewVoucher(item)">{{item.voucher.name}}</p>
+                    </td>
                     <td>{{item.voucher.code}}</td>
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
@@ -174,7 +182,6 @@
                         <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
                       </button>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" (click)="viewVoucher(item)" href="javascript:;" i18n="@@voucher-running-view-voucher">View voucher</a>
                         <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
                       </div>
                     </td>
