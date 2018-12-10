@@ -2367,6 +2367,10 @@
         <source>Applied hours:</source>
         <target>Giờ áp dụng:</target>
       </trans-unit>
+      <trans-unit id="voucher-running-batch-voucher-export" datatype="html">
+        <source>Download code</source>
+        <target>Tải mã voucher</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
