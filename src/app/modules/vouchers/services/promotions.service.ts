@@ -20,7 +20,7 @@ export class PromotionsService extends AbstractRestService {
     return this.get(`${voucherCode}`);
   }
 
-  exportBatchVoucher(voucherCode: string) {
-    return this.get(`export-batch-voucher/${voucherCode}`);
+  exportBatchVoucher(voucherCode: string, fileName: string) {
+    this.download(fileName, `export-batch-voucher/${voucherCode}`);
   }
 }

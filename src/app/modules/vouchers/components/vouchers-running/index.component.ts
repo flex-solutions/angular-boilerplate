@@ -14,8 +14,6 @@ import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base
 import { PromotionsService } from '../../services/promotions.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { Router } from '@angular/router';
-import FileSaver from 'file-saver';
-import { Response } from '@angular/http';
 
 @Component({
   moduleId: module.id,
@@ -73,8 +71,7 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
   }
 
   exportCode(item: VoucherOperationDtoBase) {
-    this.promotionsService.exportBatchVoucher(item.voucher.code).subscribe((res: Response) => {
-      FileSaver.saveAs(res.blob(), 'abc.xlsx');
-    });
+    const fileName = `${item.voucher.name}.xlsx`;
+    this.promotionsService.exportBatchVoucher(item.voucher.code, fileName);
   }
 }
