@@ -24,6 +24,7 @@ import { AddressService } from './address/address.service';
 import { AddressComponent } from './address/address.component';
 import { InputEditableInlineComponent } from './input-editable-inline/input-editable-inline.component';
 import { InputNumberDirective } from './directives/input-number.directive';
+import { ImgBinaryDirective } from './directives/img-binary.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -45,6 +46,7 @@ import { InputNumberDirective } from './directives/input-number.directive';
     Select2Component,
     Select2MultipleComponent,
     BooleanStatusCtrlDirective,
+    ImgBinaryDirective,
     AddressComponent,
     InputEditableInlineComponent,
     InputNumberDirective
@@ -64,6 +66,7 @@ import { InputNumberDirective } from './directives/input-number.directive';
     Select2Component,
     Select2MultipleComponent,
     BooleanStatusCtrlDirective,
+    ImgBinaryDirective,
     AddressComponent,
     InputEditableInlineComponent,
     InputNumberDirective
