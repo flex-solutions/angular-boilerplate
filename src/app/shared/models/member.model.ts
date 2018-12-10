@@ -1,5 +1,6 @@
 import { Address } from './address.model';
 import { MembershipType } from './membership-type.model';
+import { Range } from '../ui-common/input-range/input-range.component';
 
 enum Sex {
   Female = 0,
@@ -46,6 +47,10 @@ class MemberFilter {
   province: any;
   district: any;
   address: string;
+  daysAreNotReturned: Range;
+  totalOrders: Range;
+  point: Range;
+  amount: Range;
 
   constructor() {
     this.name = '';
@@ -57,6 +62,10 @@ class MemberFilter {
     this.membershipType = {};
     this.province = {};
     this.district = {};
+    this.daysAreNotReturned = new Range();
+    this.totalOrders = new Range();
+    this.point = new Range();
+    this.amount = new Range();
   }
 }
 
@@ -69,7 +78,11 @@ const memberFilterFields = {
   ADDRESS: 'address.country.provinces',
   MEMBERSHIP_TYPE: 'membershipType',
   PROVINCE: 'province',
-  DISTRICT: 'district'
+  DISTRICT: 'district',
+  DAYS_ARE_NOT_RETURNED: 'daysAreNotReturned',
+  TOTAL_ORDERS: 'totalOrders',
+  POINT: 'point',
+  AMOUNT: 'amount'
 };
 
 const sexResourceKey = {

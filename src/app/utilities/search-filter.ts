@@ -1,5 +1,6 @@
 import { isNullOrEmptyOrUndefined } from './util';
 import { UTF8Encoding } from './ utf8-regex';
+import { Range } from '../shared/ui-common/input-range/input-range.component';
 
 class FilterSet {
   name?: string;
@@ -23,7 +24,8 @@ enum FilterType {
   In = '$in',
   GreatThanEqual = '$gte',
   LessThanEqual = '$lte',
-  ElementMatch = '$elemMatch'
+  ElementMatch = '$elemMatch',
+  Custom = 'custom'
 }
 
 enum ValueType {
@@ -32,6 +34,7 @@ enum ValueType {
   Array = 'array',
   Date = 'date',
   ObjectId = 'objectId',
+  Object = 'object',
   RegexContains = 'regex-contains'
 }
 
@@ -59,6 +62,11 @@ interface IWithFilterCriteria {
     name?: string,
     value?: any,
     valueType?: ValueType
+  ): IWithFilterCriteria;
+
+  withFilterInRange(
+    name?: string,
+    value?: any,
   ): IWithFilterCriteria;
 
   withCriteria(action: () => Criteria): IWithFilterCriteria;
@@ -109,6 +117,14 @@ class CriteriaBuilder
       valueType: valueType
     };
     this.constructFilter(filter);
+    return this;
+  }
+  withFilterInRange(
+    name?: string,
+    value?: Range,
+  ): IWithFilterCriteria {
+    this.withFilter(FilterType.GreatThanEqual, name, value.from, ValueType.Number);
+    this.withFilter(FilterType.LessThanEqual, name, value.to, ValueType.Number);
     return this;
   }
 

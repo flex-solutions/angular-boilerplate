@@ -1562,7 +1562,10 @@
         <source>Point</source>
         <target>Điểm</target>
       </trans-unit>
-
+      <trans-unit id="members-tbl-member-total-amount" datatype="html">
+        <source>Total Amount</source>
+        <target>Đã chi tiêu</target>
+      </trans-unit>
       <!--End Member Module-->
       <!--Start Create Edit Member Module-->
       <trans-unit id="member-create_edit_member-h4-create_member" datatype="html">
@@ -2040,13 +2043,9 @@
         <source>Let's export batch code for voucher "{{voucher.name}}"</source>
         <target>Xuất mã hàng loạt cho voucher "{{voucher.name}}"</target>
       </trans-unit>
-      <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
-        <source>Publish code from number (equal 1 if empty)</source>
-        <target>Phát hành mã từ số (bằng 1 nếu bỏ trống)</target>
-      </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
-        <source>to number (equal 1000 if empty)</source>
-        <target>đến số (bằng 1000 nếu bỏ trống)</target>
+        <source>Publish quantity (default 1000 code)</source>
+        <target>Số lượng mã được phát hành (bằng 1000 nếu bỏ trống)</target>
       </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
         <source>Prefix of code (2 characters)</source>
@@ -2313,8 +2312,8 @@
         <target>Tiền tố</target>
       </trans-unit>
       <trans-unit id="voucher-running-code-scope" datatype="html">
-        <source>Scope of code</source>
-        <target>Phạm vi mã</target>
+        <source>Publish count</source>
+        <target>SL mã phát hành</target>
       </trans-unit>
       <trans-unit id="voucher-running-success" datatype="html">
         <source>Voucher "{{0}}" has been run</source>
@@ -2331,6 +2330,42 @@
       <trans-unit id="voucher-running-view-voucher" datatype="html">
         <source>View voucher</source>
         <target>Xem thông tin voucher</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-pos" datatype="html">
+        <source>Applied poses:</source>
+        <target>POS áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-menu" datatype="html">
+        <source>Applied menu:</source>
+        <target>Món áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-require-menu" datatype="html">
+        <source>Require menu:</source>
+        <target>Món cần mua:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-gift-menu" datatype="html">
+        <source>Gift menu:</source>
+        <target>Món được tặng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-menu-group" datatype="html">
+        <source>Menu group:</source>
+        <target>Nhóm món áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-require-menu-group" datatype="html">
+        <source>Require menu group:</source>
+        <target>Nhóm món cần mua:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-gift-menu-group" datatype="html">
+        <source>Gift menu group:</source>
+        <target>Nhóm món được tặng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-days" datatype="html">
+        <source>Applied days:</source>
+        <target>Áp dụng vào thứ:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-hours" datatype="html">
+        <source>Applied hours:</source>
+        <target>Giờ áp dụng:</target>
       </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
