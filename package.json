@@ -26,6 +26,7 @@
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
+    "base-64": "^0.1.0",
     "core-js": "^2.4.1",
     "dropify": "^0.2.2",
     "file-saver": "^2.0.0",

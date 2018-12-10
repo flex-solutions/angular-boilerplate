@@ -116,6 +116,7 @@ export class VoucherOperationDtoBase {
 }
 export class RepeatOneCodeDto extends VoucherOperationDtoBase {
   usageLimit: number;
+  barcode: any;
 }
 
 export class BatchExportCodeDto extends VoucherOperationDtoBase {
