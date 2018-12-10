@@ -2558,6 +2558,10 @@
         <source>Delete notification</source>
         <target>Delete notification</target>
       </trans-unit>
+      <trans-unit id="scheduled-notification-txt-search" datatype="html">
+        <source>Search by name</source>
+        <target>Search by name</target>
+      </trans-unit>
       <!--END Scheduled notification-->
     </body>
   </file>

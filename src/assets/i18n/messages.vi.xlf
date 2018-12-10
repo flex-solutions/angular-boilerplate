@@ -125,7 +125,7 @@
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-push-notification" datatype="html">
         <source>Push Notification</source>
-        <target>Gởi Tin Nhắn</target>
+        <target>Gửi Tin Nhắn</target>
       </trans-unit>
       <trans-unit id="layout-sidebar-anchor-scheduled-notification" datatype="html">
         <source>Scheduled Notification</source>
@@ -2554,6 +2554,10 @@
       <trans-unit id="scheduled-notification-btn-delete-notification" datatype="html">
         <source>Delete notification</source>
         <target>Xoá thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-txt-search" datatype="html">
+        <source>Search by name</source>
+        <target>Tìm kiếm theo tên thông báo</target>
       </trans-unit>
       <!--END Scheduled notification-->
     </body>
