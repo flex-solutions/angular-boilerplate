@@ -40,6 +40,10 @@ const routes: Routes = [
     {
       path: 'pos',
       loadChildren: 'app/modules/pos-and-menu/module#PosAndMenuModule',
+    },
+    {
+      path: 'push-notification',
+      loadChildren: 'app/modules/push-notification/module#PushNotificationModule',
     }]
   },
   {

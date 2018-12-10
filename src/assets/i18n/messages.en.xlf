@@ -125,6 +125,14 @@
         <source>Push Notification</source>
         <target>Push Notification</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-scheduled-notification" datatype="html">
+        <source>Scheduled Notification</source>
+        <target>Scheduled Notification</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-manual-notification" datatype="html">
+        <source>Manual Notification</source>
+        <target>Manual Notification</target>
+      </trans-unit>
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
         <source>OK</source>
@@ -2513,6 +2521,40 @@
         <target>Message</target>
       </trans-unit>
       <!--END Push Notification-->
+      <!--START Scheduled notification-->
+      <trans-unit id="scheduled-notification-tbl-title" datatype="html">
+        <source>Scheduled Notification</source>
+        <target>Scheduled Notification</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-btn-create" datatype="html">
+        <source>New notification</source>
+        <target>New notification</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-title" datatype="html">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-content" datatype="html">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-schedule" datatype="html">
+        <source>Schedule</source>
+        <target>Schedule</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-last-run-at" datatype="html">
+        <source>Last Run At</source>
+        <target>Last Run At</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-btn-delete-notification" datatype="html">
+        <source>Delete notification</source>
+        <target>Delete notification</target>
+      </trans-unit>
+      <!--END Scheduled notification-->
     </body>
   </file>
 </xliff>

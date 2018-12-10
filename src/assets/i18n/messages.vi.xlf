@@ -123,6 +123,18 @@
         <source>Push Notification</source>
         <target>Gởi Tin Nhắn</target>
       </trans-unit>
+      <trans-unit id="sidebar-push-notification" datatype="html">
+        <source>Push Notification</source>
+        <target>Gởi Tin Nhắn</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-scheduled-notification" datatype="html">
+        <source>Scheduled Notification</source>
+        <target>Gửi tin nhắn theo lịch</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-manual-notification" datatype="html">
+        <source>Manual Notification</source>
+        <target>Gửi tin nhắn ngay</target>
+      </trans-unit>
       <!-- END Side Bar -->
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -2510,6 +2522,40 @@
         <target>Nội dung</target>
       </trans-unit>
       <!--END Push Notification-->
+      <!--START Scheduled notification-->
+      <trans-unit id="scheduled-notification-tbl-title" datatype="html">
+        <source>Scheduled Notification</source>
+        <target>Thông báo theo lịch</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-btn-create" datatype="html">
+        <source>New notification</source>
+        <target>Tạo thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-name" datatype="html">
+        <source>Name</source>
+        <target>Tên gợi nhớ</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-content" datatype="html">
+        <source>Content</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-schedule" datatype="html">
+        <source>Schedule</source>
+        <target>Lịch gửi</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-last-run-at" datatype="html">
+        <source>Last Run At</source>
+        <target>Lần gửi cuối cùng</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-btn-delete-notification" datatype="html">
+        <source>Delete notification</source>
+        <target>Xoá thông báo</target>
+      </trans-unit>
+      <!--END Scheduled notification-->
     </body>
   </file>
 </xliff>
