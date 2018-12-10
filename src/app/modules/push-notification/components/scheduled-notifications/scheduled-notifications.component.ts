@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ScheduledNotificationService } from '../../services/scheduled-notification.service';
+import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { ScheduledNotification } from '../../models/schedule-notification.model';
 
 @Component({
   selector: 'app-scheduled-notifications',
@@ -7,15 +9,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./scheduled-notifications.component.css']
 })
 export class ScheduledNotificationsComponent implements OnInit {
-  public notifications: any[];
+  public notifications: ScheduledNotification[];
 
-  constructor() {}
+  constructor(
+    private readonly scheduledNotificationService: ScheduledNotificationService
+  ) {
+    this.notifications = [];
+  }
 
   ngOnInit() {}
 
-  count = (searchKey: string): Observable<number> => {};
+  count = (searchKey: string) => this.scheduledNotificationService.count(searchKey);
 
-  onPageChanged($event) {}
+  onPageChanged($event: IFilterChangedEvent) {
+    this.scheduledNotificationService.fetchScheduledNotifications(
+      $event.pagination.page,
+      $event.pagination.itemsPerPage,
+      $event.searchKey
+    );
+  }
 
   createNewScheduledNotification() {}
 

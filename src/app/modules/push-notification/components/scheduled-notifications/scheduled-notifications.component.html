@@ -1,4 +1,7 @@
-<app-card title="Scheduled Notification" i18n-title="@@scheduled-notification-tbl-title">
+<app-card
+  title="Scheduled Notification"
+  i18n-title="@@scheduled-notification-tbl-h2-title"
+>
   <div class="command-region">
     <button
       type="button"
@@ -6,7 +9,9 @@
       (click)="createNewScheduledNotification()"
     >
       <i class="mdi mdi-plus"></i>
-      <span i18n="@@scheduled-notification-tbl-btn-create">New notification</span>
+      <span i18n="@@scheduled-notification-tbl-btn-create"
+        >New notification</span
+      >
     </button>
   </div>
   <app-dg
@@ -21,31 +26,49 @@
       <th i18n="@@scheduled-notification-tbl-content">Content</th>
       <th i18n="@@scheduled-notification-tbl-schedule">Schedule</th>
       <th i18n="@@scheduled-notification-tbl-last-run-at">Last Run At</th>
-      </th>
       <th i18n="@@common-tbl-actions">Actions</th>
     </tr>
     <tbody>
       <tr *ngFor="let notification of notifications">
         <td>
-          <a class="a-clickable" (click)="onNotificationClicked(notification)">{{
-            notification.name
-          }}</a>
+          <a
+            class="a-clickable"
+            (click)="onNotificationClicked(notification)"
+            >{{ notification.name }}</a
+          >
         </td>
         <td>{{ notification.title }}</td>
         <td>{{ notification.content }}</td>
         <td>{{ notification.schedule }}</td>
-        <td>{{ notification.lastRunAt | dateFormat}}</td>
+        <td>{{ notification.lastRunAt | dateFormat }}</td>
         <td>
           <div class="row">
-            <button class="btn btn-light" (click)="editNotification(notification)">
+            <button
+              class="btn btn-light"
+              (click)="editNotification(notification)"
+            >
               <i class="mdi mdi-pencil text-primary"></i>
               <span i18n="@@common-action-edit">Edit</span>
             </button>
-            <button type="button" class="btn btn-sm btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+            <button
+              type="button"
+              class="btn btn-sm btn-light "
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i
+                class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"
+              ></i>
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" (click)="deleteNotification(notification)" href="javascript:;" i18n="@@scheduled-notification-btn-delete-notification">Delete notification</a>
+              <a
+                class="dropdown-item"
+                (click)="deleteNotification(notification)"
+                href="javascript:;"
+                i18n="@@scheduled-notification-btn-delete-notification"
+                >Delete notification</a
+              >
             </div>
           </div>
         </td>

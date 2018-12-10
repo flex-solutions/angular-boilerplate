@@ -43,7 +43,7 @@ const routes: Routes = [
     },
     {
       path: 'push-notification',
-      loadChildren: 'app/modules/push-notification/module#PushNotificationModule',
+      loadChildren: 'app/modules/push-notification/push-notification.module#PushNotificationModule',
     }]
   },
   {

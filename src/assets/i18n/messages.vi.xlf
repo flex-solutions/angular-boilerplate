@@ -123,7 +123,7 @@
         <source>Push Notification</source>
         <target>Gởi Tin Nhắn</target>
       </trans-unit>
-      <trans-unit id="sidebar-push-notification" datatype="html">
+      <trans-unit id="layout-sidebar-anchor-push-notification" datatype="html">
         <source>Push Notification</source>
         <target>Gởi Tin Nhắn</target>
       </trans-unit>
@@ -2523,7 +2523,7 @@
       </trans-unit>
       <!--END Push Notification-->
       <!--START Scheduled notification-->
-      <trans-unit id="scheduled-notification-tbl-title" datatype="html">
+      <trans-unit id="scheduled-notification-tbl-h2-title" datatype="html">
         <source>Scheduled Notification</source>
         <target>Thông báo theo lịch</target>
       </trans-unit>
