@@ -1,4 +1,4 @@
-<app-card title="Voucher {{voucher.name}}" subTitle="anc">
+<app-card title="Voucher {{voucher.name}}">
   <div class="command-region">
   </div>
 
@@ -21,45 +21,45 @@
     <span *ngIf="voucher.type == 1" class="col-md-6">{{voucher.discount}}%</span>
   </div>
   <div class="info-block">
-    <p class="col-md-6 font-weight-bold">Applied Poses:</p>
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-applied-pos">Applied Poses:</p>
     <div class="col-md-6">
       <span *ngFor="let pos of voucher.applyPoses" class="tag"><span>{{pos.name}}</span></span>
     </div>
   </div>
   <div class="info-block">
-    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1">Món áp dụng:</p>
-    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2">Món cần mua:</p>
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1" i18n="@@view-voucher-applied-menu">Món áp dụng:</p>
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2" i18n="@@view-voucher-require-menu">Món cần mua:</p>
     <div class="col-md-6">
       <span *ngFor="let menuItem of voucher.applyMenuItems" class="tag"><span>{{menuItem.name}}</span></span>
     </div>
   </div>
   <div class="info-block" *ngIf="voucher.type==2">
-    <p class="col-md-6 font-weight-bold">Món được tặng:</p>
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-gift-menu">Món được tặng:</p>
     <div class="col-md-6">
       <span *ngFor="let menuItem of voucher.attachGiftOfMenuItems" class="tag"><span>{{menuItem.name}}</span></span>
     </div>
   </div>
   <div class="info-block">
-    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1">Nhóm món áp dụng:</p>
-    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2">Nhóm món cần mua:</p>
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1" i18n="@@view-voucher-menu-group">Nhóm món áp dụng:</p>
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2" i18n="@@view-voucher-require-menu-group">Nhóm món cần mua:</p>
     <div class="col-md-6">
       <span *ngFor="let menuItemType of voucher.applyMenuItemTypes" class="tag"><span>{{menuItemType.name}}</span></span>
     </div>
   </div>
   <div class="info-block" *ngIf="voucher.type==2">
-    <p class="col-md-6 font-weight-bold">Nhóm món được tặng:</p>
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-gift-menu-group">Nhóm món được tặng:</p>
     <div class="col-md-6">
       <span *ngFor="let menuItemType of voucher.attachGiftOfMenuItemTypes" class="tag"><span>{{menuItemType.name}}</span></span>
     </div>
   </div>
   <div class="info-block">
-    <p class="col-md-6 font-weight-bold">Áp dụng vào thứ:</p>
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-applied-days">Áp dụng vào thứ:</p>
     <div class="col-md-6">
       <span *ngFor="let day of voucher.applyDays" class="tag"><span>{{day.name}}</span></span>
     </div>
   </div>
   <div class="info-block">
-    <p class="col-md-6 font-weight-bold">Giờ áp dụng:</p>
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-applied-hours">Giờ áp dụng:</p>
     <div class="col-md-6">
       <span *ngFor="let hour of voucher.applyHourRanges" class="tag"><span>{{hour.name}}</span></span>
     </div>

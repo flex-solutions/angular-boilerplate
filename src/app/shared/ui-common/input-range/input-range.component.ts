@@ -32,6 +32,7 @@ export class InputRangeComponent implements AfterViewInit {
   set range(val) {
     this._range = val;
     this.rangeChange.emit(this._range);
+    this._validate();
   }
   get range(): Range {
     return this._range;
@@ -45,10 +46,16 @@ export class InputRangeComponent implements AfterViewInit {
   ngAfterViewInit() {}
 
   onFromChange($event) {
+    if (isNullOrEmptyOrUndefined(this._range.to)) {
+      this._range.to = $event.target.value;
+    }
     this._validate();
   }
 
   onToChange($event) {
+    if (isNullOrEmptyOrUndefined(this._range.from)) {
+      this._range.from = $event.target.value;
+    }
     this._validate();
   }
 
@@ -61,7 +68,7 @@ export class InputRangeComponent implements AfterViewInit {
       return;
     }
 
-    if (this._range.from < this._range.to) {
+    if (this._range.from <= this._range.to) {
       this.hasError = false;
       return;
     }
