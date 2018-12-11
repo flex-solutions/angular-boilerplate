@@ -69,4 +69,9 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
     const voucherCode = item.voucher.code;
     this.router.navigate([VoucherRouteNames.PROMOTIONS, voucherCode, true]);
   }
+
+  exportCode(item: VoucherOperationDtoBase) {
+    const fileName = `${item.voucher.name}.xlsx`;
+    this.promotionsService.exportBatchVoucher(item.id, fileName);
+  }
 }

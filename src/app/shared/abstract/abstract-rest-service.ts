@@ -14,6 +14,7 @@ import { TranslateService } from '../services/translate.service';
 import { BrowserNotificationService } from '../services/browser-notification.service';
 import { ForbiddenHandler } from '../services/forbidden-handler.service';
 import { UTF8Encoding } from '../../utilities/ utf8-regex';
+import FileSaver from 'file-saver';
 
 export abstract class AbstractRestService {
   protected abstract controllerName: string;
@@ -47,6 +48,18 @@ export abstract class AbstractRestService {
       catchError(err => this.handleError(err)),
       finalize(() => this.hideLoader())
     );
+  }
+
+  download(fileName, relativeUrl?: string) {
+    this.showLoader();
+    const url = this.getFullUrl(relativeUrl);
+    return this.httpClient.get(url, { responseType: 'arraybuffer' }).pipe(
+      catchError(err => this.handleError(err)),
+      finalize(() => this.hideLoader())
+    ).subscribe(res => {
+      const blob = new Blob([new Uint8Array(res)]);
+      FileSaver.saveAs(blob, fileName);
+    });
   }
 
   getWithAbsoluteUrl<T>(absoluteUrl: string) {

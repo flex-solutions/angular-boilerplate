@@ -1573,6 +1573,10 @@
         <source>Point</source>
         <target>Point</target>
       </trans-unit>
+      <trans-unit id="members-tbl-member-total-amount" datatype="html">
+        <source>Total Amount</source>
+        <target>Total Amount</target>
+      </trans-unit>
       <!--End Member Module-->
       <!--Start Create Edit Member Module-->
       <trans-unit id="member-create_edit_member-h4-create_member" datatype="html">
@@ -2365,6 +2369,10 @@
       <trans-unit id="view-voucher-applied-hours" datatype="html">
         <source>Applied hours:</source>
         <target>Applied hours:</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-batch-voucher-export" datatype="html">
+        <source>Download code</source>
+        <target>Download code</target>
       </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->

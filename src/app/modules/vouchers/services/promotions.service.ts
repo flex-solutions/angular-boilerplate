@@ -19,4 +19,8 @@ export class PromotionsService extends AbstractRestService {
   getVoucher(voucherCode: string): Observable<Voucher> {
     return this.get(`${voucherCode}`);
   }
+
+  exportBatchVoucher(id: string, fileName: string) {
+    this.download(fileName, `export-batch-voucher/${id}`);
+  }
 }
