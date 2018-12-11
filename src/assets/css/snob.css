@@ -24010,8 +24010,8 @@ pre {
 }
 
 .img-lg {
-  width: 92px !important;
-  height: 92px !important;
+  width: 92px;
+  height: 92px;
 }
 
 .img-md {

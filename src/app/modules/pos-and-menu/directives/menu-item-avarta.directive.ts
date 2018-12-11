@@ -34,12 +34,12 @@ export class MenuItemAvartaDirective implements OnChanges, AfterViewInit {
     if (isNullOrEmptyOrUndefined(this.avarta)) {
       getBase64('assets/images/defaultavatar.png').then(data => {
         $(this.host).html(
-          `<img src="${data.toString()}" class="img-lg rounded" alt="image">`
+          `<img src="${data.toString()}" class="rounded" alt="image" style="width: 92px !important;height: 92px !important;">`
         );
       });
     } else {
       $(this.host).html(
-        `<img src="${this.avarta}" class="img-lg rounded" alt="image">`
+        `<img src="${this.avarta}" class="rounded" alt="image" style="width: 92px !important;height: 92px !important;">`
       );
     }
   }
