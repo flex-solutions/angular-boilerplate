@@ -13,6 +13,7 @@ import { District, Province } from '../../../../shared/models/address.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { validationRegex } from '../../../../shared/validation/validators';
 import { MenuItemDto } from '../../../../shared/models/menu.model';
+import { PAGINATION_CONTROL_VALUE_ACCESSOR } from '../../../../shared/ui-common/pagination/pagination.component';
 
 @Component({
   moduleId: module.id,
@@ -40,7 +41,7 @@ export class EditMenuItemComponent extends AbstractFormComponent
   ) {
     super();
     this.itemId = activatedRoute.snapshot.params['id'];
-    this.isApplyAll = false;
+    this.isApplyAll = true;
   }
 
   ngOnInit() {

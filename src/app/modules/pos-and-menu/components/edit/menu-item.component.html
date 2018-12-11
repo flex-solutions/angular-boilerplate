@@ -10,7 +10,6 @@
       <div class="row">
         <div class="form-group col-md-12" [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched)}">
           <label for="description" i18n="@@pos-menu-item-th-description">Description</label>
-          <label class="require">*</label>
           <input id="description" required class="form-control" formControlName="description" [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched) }"
             [(ngModel)]="menuItem.description" placeholder="Enter description">
           <div class="form-control-feedback" *ngFor="let error of errors.description">

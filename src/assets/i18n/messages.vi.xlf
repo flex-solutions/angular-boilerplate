@@ -2509,6 +2509,14 @@
         <source>Description</source>
         <target>Mô tả</target>
       </trans-unit>
+        <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
+        <source> Apply all for same items</source>
+        <target>Áp dụng cho những sản phẩm cùng loại</target>
+      </trans-unit>
+      <trans-unit id="menu-item-edit-label-can_exchange_point" datatype="html">
+        <source> Can Exchange Point</source>
+        <target> Có thể đổi điểm thưởng</target>
+      </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
       <trans-unit id="push-notification-success" datatype="html">
