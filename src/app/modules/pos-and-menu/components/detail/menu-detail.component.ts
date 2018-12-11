@@ -19,10 +19,10 @@ import { getBase64 } from '../../../../utilities/convert-image-to-base64';
 export class MenuDetailComponent extends AbstractBaseComponent
   implements OnInit {
   filterEventArgs: IFilterChangedEvent;
+  isShowAll: boolean;
   posId: string;
   posName: string;
   subTitle: string;
-  deFaultImage: any;
   pos_menu: MenuItemDto[] = [];
 
   constructor(
@@ -33,21 +33,14 @@ export class MenuDetailComponent extends AbstractBaseComponent
   ) {
     super();
     this.posId = activatedRoute.snapshot.params['id'];
-
-    this.setDefaultImage();
+    this.isShowAll = isNullOrEmptyOrUndefined(this.posId);
     this.setDetail();
   }
 
   ngOnInit() {}
 
-  private setDefaultImage() {
-    getBase64('assets/images/defaultavatar.png').then(data => {
-      this.deFaultImage = data.toString();
-    });
-  }
-
   private setDetail() {
-    if (!isNullOrEmptyOrUndefined(this.posId)) {
+    if (!this.isShowAll) {
       this.posService.findById(this.posId).subscribe(res => {
         this.subTitle = this.translateService.translate(
           MessageConst.sub_title_for_pos,
@@ -70,11 +63,6 @@ export class MenuDetailComponent extends AbstractBaseComponent
         this.filterEventArgs.searchKey
       )
       .subscribe(res => {
-        res.forEach(item => {
-          item.image = isNullOrEmptyOrUndefined(item.image)
-            ? this.deFaultImage
-            : item.image;
-        });
         this.pos_menu = res;
       });
   }
@@ -86,5 +74,9 @@ export class MenuDetailComponent extends AbstractBaseComponent
   onPageChanged(eventArg: IFilterChangedEvent) {
     this.filterEventArgs = eventArg;
     this.getPosesMenu();
+  }
+
+  edit(menuItem: MenuItemDto) {
+    this.router.navigate([`pos/menu-items/update/${menuItem._id}`]);
   }
 }

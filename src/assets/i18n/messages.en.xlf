@@ -2503,6 +2503,14 @@
         <source>Search by name, type</source>
         <target>Search by name, type</target>
       </trans-unit>
+      <trans-unit id="pos-menu-item-image" datatype="html">
+        <source>Avarta</source>
+        <target>Avarta</target>
+      </trans-unit>
+       <trans-unit id="pos-menu-item-th-description" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
      
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->

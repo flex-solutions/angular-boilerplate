@@ -2501,6 +2501,14 @@
         <source>Search by name, type</source>
         <target>Tìm kiếm theo tên và loại</target>
       </trans-unit>
+         <trans-unit id="pos-menu-item-image" datatype="html">
+        <source>Avarta</source>
+        <target>Hình</target>
+      </trans-unit>
+       <trans-unit id="pos-menu-item-th-description" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
       <trans-unit id="push-notification-success" datatype="html">
