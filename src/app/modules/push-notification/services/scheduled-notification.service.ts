@@ -38,4 +38,12 @@ export class ScheduledNotificationService extends AbstractRestService {
     ];
     return from(new Promise(res => res(mockData)));
   }
+
+  createScheduledNotification(notification) {
+    return from(new Promise(res => res({})));
+  }
+
+  updateScheduledNotification(notification) {
+    return from(new Promise(res => res({})));
+  }
 }

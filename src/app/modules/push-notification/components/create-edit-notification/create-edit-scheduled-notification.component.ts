@@ -1,3 +1,4 @@
+import { ScheduledNotificationService } from './../../services/scheduled-notification.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WizardComponent } from '../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
@@ -6,7 +7,14 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { Location } from '@angular/common';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
-import { ScheduleType, getScheduleTypeName } from '../../models/create-edit-schedule-notification.model';
+import {
+    ScheduleType,
+    getScheduleTypeName,
+    DailyScheduledNotification,
+    WeeklyScheduledNotification,
+    MonthlyScheduledNotification,
+    CustomerAreNotReturnedXDaysScheduledNotification
+} from '../../models/create-edit-schedule-notification.model';
 import { ScheduledNotificationCreationData, IOption } from '../../models/schedule-notification-creation-data';
 
 @Component({
@@ -37,7 +45,6 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     notificationContent: string;
     notificationTitle: string;
 
-    successMsg: string;
     isEditMode: boolean;
     isForceValidate = false;
 
@@ -50,15 +57,12 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     constructor(
         private readonly _translateService: TranslateService,
         private readonly _notificationService: NotificationService,
-        private readonly _location: Location
+        private readonly _location: Location,
+        private readonly _scheduledNotificationService: ScheduledNotificationService
     ) {}
 
     ngOnInit() {
         this.initialData();
-        const msgCode = this.isEditMode
-            ? 'edit-scheduled-notification-wizard_step-success-message'
-            : 'create-scheduled-notification-wizard_step-success-message';
-        this.successMsg = this._translateService.translate(msgCode);
     }
 
     onWizardCancel() {
@@ -77,15 +81,51 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     }
 
     private onSubmit() {
-        const model = {
-            memberFilter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
-            message: this.notificationContent,
-            title: this.notificationTitle
-        };
-        // this._pushNotificationService.pushNotification(model).subscribe(() => {
-        //     this._notificationService.showSuccess(this.successMsg);
-        //     this.reset();
-        // });
+        const notification = this.buildScheduledNotification();
+        if (this.isEditMode) {
+            this._scheduledNotificationService.updateScheduledNotification(notification).subscribe(() => {
+                this._notificationService.showSuccess(
+                    this._translateService.translate('edit-scheduled-notification-wizard_step-success-message')
+                );
+                this.reset();
+            });
+        } else {
+            this._scheduledNotificationService.createScheduledNotification(notification).subscribe(() => {
+                this._notificationService.showSuccess(
+                    this._translateService.translate('create-scheduled-notification-wizard_step-success-message')
+                );
+                this.reset();
+            });
+        }
+    }
+
+    private buildScheduledNotification() {
+        let scheduledNotification;
+        switch (this.selectedSchedule.id) {
+            case ScheduleType.Daily:
+                scheduledNotification = new DailyScheduledNotification();
+                break;
+            case ScheduleType.Weekly:
+                scheduledNotification = new WeeklyScheduledNotification();
+                scheduledNotification.dayOfWeek = this.selectedDayOfWeek.id;
+                break;
+
+            case ScheduleType.Monthly:
+                scheduledNotification = new MonthlyScheduledNotification();
+                scheduledNotification.dayOfMonth = this.selectedDayOfMonth.id;
+                break;
+
+            case ScheduleType.DaysAreNotReturned:
+                scheduledNotification = new CustomerAreNotReturnedXDaysScheduledNotification();
+                scheduledNotification.days = this.selectedDays;
+                break;
+        }
+        scheduledNotification.type = this.selectedSchedule.id;
+        scheduledNotification.timeToPush = this.selectedTimeToPushNotification.id;
+        scheduledNotification.title = this.notificationTitle;
+        scheduledNotification.content = this.notificationContent;
+        scheduledNotification.member_filter = convertCriteriaToQueryString(this.membersList.getFilterQuery()); // TODO
+        return scheduledNotification;
     }
 
     private reset() {
