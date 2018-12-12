@@ -19,11 +19,11 @@
                             id="schedule-select-2"
                             [(itemsSource)]="scheduleTypes"
                             [(selectedItem)]="selectedSchedule"
-                            placeHolder="Select a schedule"
                             displayPropertyName="name"
+                            [autoClear]="false"
                         ></app-select2>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '3'">
                         <label for="days-input" i18n="@@create-scheduled-notification-step-1-frm-days">Days</label>
                         <label class="require">*</label>
                         <input
@@ -35,6 +35,30 @@
                             [ngModelOptions]="{ standalone: true }"
                             required
                         />
+                    </div>
+                    <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '1'">
+                        <label for="day-of-week-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-week">Day of week</label>
+                        <label class="require">*</label>
+                        <app-select2
+                            id="day-of-week-select-2"
+                            [(itemsSource)]="daysOfWeek"
+                            [(selectedItem)]="selectedDayOfWeek"
+                            placeHolder="Select a day of week"
+                            displayPropertyName="name"
+                        ></app-select2>
+                    </div>
+                    <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '2'">
+                        <label for="day-of-month-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-month"
+                            >Day of month</label
+                        >
+                        <label class="require">*</label>
+                        <app-select2
+                            id="day-of-month-select-2"
+                            [(itemsSource)]="daysOfMonth"
+                            [(selectedItem)]="selectedDayOfMonth"
+                            placeHolder="Select a day of month"
+                            displayPropertyName="name"
+                        ></app-select2>
                     </div>
                     <div class="form-group col-md-12">
                         <label
@@ -48,30 +72,6 @@
                             [(itemsSource)]="timesToPushNotification"
                             [(selectedItem)]="selectedTimeToPushNotification"
                             placeHolder="Select a time to push notification"
-                            displayPropertyName="name"
-                        ></app-select2>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="day-of-week-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-week">Day of week</label>
-                        <label class="require">*</label>
-                        <app-select2
-                            id="day-of-week-select-2"
-                            [(itemsSource)]="daysOfWeek"
-                            [(selectedItem)]="selectedDayOfWeek"
-                            placeHolder="Select a day of week"
-                            displayPropertyName="name"
-                        ></app-select2>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="day-of-month-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-month"
-                            >Day of month</label
-                        >
-                        <label class="require">*</label>
-                        <app-select2
-                            id="day-of-month-select-2"
-                            [(itemsSource)]="daysOfMonth"
-                            [(selectedItem)]="selectedDayOfMonth"
-                            placeHolder="Select a day of month"
                             displayPropertyName="name"
                         ></app-select2>
                     </div>

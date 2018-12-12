@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
 import { ScheduleType, getScheduleTypeName } from '../../models/create-edit-schedule-notification.model';
-import { ScheduledNotificationCreationData } from '../../models/schedule-notification-creation-data';
+import { ScheduledNotificationCreationData, IOption } from '../../models/schedule-notification-creation-data';
 
 @Component({
     templateUrl: './create-edit-scheduled-notification.component.html',
@@ -21,11 +21,11 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     daysOfMonth = [];
 
     // Binding model
-    selectedSchedule: any;
+    selectedSchedule: IOption;
     selectedDays: number;
-    selectedTimeToPushNotification: any;
-    selectedDayOfWeek: any;
-    selectedDayOfMonth: any;
+    selectedTimeToPushNotification: IOption;
+    selectedDayOfWeek: IOption;
+    selectedDayOfMonth: IOption;
     notificationContent: string;
     notificationTitle: string;
 
@@ -94,8 +94,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
                 name: this._translateService.translate(getScheduleTypeName(ScheduleType.DaysAreNotReturned))
             }
         ];
+        this.selectedSchedule = types[0];
         this.scheduleTypes.push(...types);
-
         this.daysOfWeek = ScheduledNotificationCreationData.dayOfWeek.map(i => {
             i.name = this._translateService.translate(i.messageCode);
             return i;

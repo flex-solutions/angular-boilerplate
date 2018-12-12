@@ -68,3 +68,8 @@ export class ScheduledNotificationCreationData {
         { id: '23', name: '23h' }
     ];
 }
+
+export interface IOption {
+    id: any;
+    name: string;
+}
