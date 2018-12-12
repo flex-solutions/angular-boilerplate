@@ -2559,6 +2559,74 @@
         <source>Search by name</source>
         <target>Tìm kiếm theo tên thông báo</target>
       </trans-unit>
+      <trans-unit id="create-scheduled-notification-title" datatype="html">
+        <source>Create notification</source>
+        <target>Tạo thông báo</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-title" datatype="html">
+        <source>Edit notification</source>
+        <target>Sửa thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-sub-title" datatype="html">
+        <source>This page allows you create scheduled notification for a group of customers</source>
+        <target>Trang này cho phép bạn tạo thông báo mới gởi tới một nhóm hội viên được chọn theo một lịch trình cố định</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-sub-title" datatype="html">
+        <source>This page allows you edit scheduled notification for a group of customers</source>
+        <target>Trang này cho phép bạn sửa thông báo gởi tới một nhóm hội viên được chọn theo một lịch trình cố định</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-title" datatype="html">
+        <source>Notification</source>
+        <target>Thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-schedule" datatype="html">
+        <source>Schedule</source>
+        <target>Lịch gửi</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-days" datatype="html">
+        <source>Days</source>
+        <target>Số ngày</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-time-to-push-notification" datatype="html">
+        <source>Time to push notification</source>
+        <target>Thời gian gửi thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-day-of-week" datatype="html">
+        <source>Day of week</source>
+        <target>Thứ trong tuần</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-day-of-month" datatype="html">
+        <source>Day of month</source>
+        <target>Ngày trong tháng</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-title" datatype="html">
+        <source>Notification title</source>
+        <target>Tiêu đề thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-content" datatype="html">
+        <source>Notification content</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-wizard_step-custmer_title_field" datatype="html">
+        <source>Customer target</source>
+        <target>Đối tượng khách hàng</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-wizard_step-success-message" datatype="html">
+        <source>Create schedule notification successfully</source>
+        <target>Tạo thông báo mới thành công</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-wizard_step-success-message" datatype="html">
+        <source>Edit schedule notification successfully</source>
+        <target>Sửa thông báo thành công</target>
+      </trans-unit>
+      <trans-unit id="delete-create-scheduled-notification-confirm-message" datatype="html">
+        <source>Notification "{{0}}" will be permanently deleted. Are you sure you want to delete?</source>
+        <target>Thông báo "{{0}}" sẽ bị xoá vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="delete-create-scheduled-notification-confirm-title" datatype="html">
+        <source>Delete scheduled notification</source>
+        <target>Xoá thông báo</target>
+      </trans-unit>
       <!--END Scheduled notification-->
     </body>
   </file>

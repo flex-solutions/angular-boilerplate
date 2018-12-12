@@ -2562,6 +2562,74 @@
         <source>Search by name</source>
         <target>Search by name</target>
       </trans-unit>
+      <trans-unit id="create-scheduled-notification-title" datatype="html">
+        <source>Create notification</source>
+        <target>Create notification</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-title" datatype="html">
+        <source>Edit notification</source>
+        <target>Edit notification</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-sub-title" datatype="html">
+        <source>This page allows you create scheduled notification for a group of customers</source>
+        <target>This page allows you create scheduled notification for a group of customers</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-sub-title" datatype="html">
+        <source>This page allows you edit scheduled notification for a group of customers</source>
+        <target>This page allows you edit scheduled notification for a group of customers</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-title" datatype="html">
+        <source>Notification</source>
+        <target>Notification</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-schedule" datatype="html">
+        <source>Schedule</source>
+        <target>Schedule</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-days" datatype="html">
+        <source>Days</source>
+        <target>Days</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-time-to-push-notification" datatype="html">
+        <source>Time to push notification</source>
+        <target>Time to push notification</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-day-of-week" datatype="html">
+        <source>Day of week</source>
+        <target>Day of week</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-day-of-month" datatype="html">
+        <source>Day of month</source>
+        <target>Day of month</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-title" datatype="html">
+        <source>Notification title</source>
+        <target>Notification title</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-content" datatype="html">
+        <source>Notification content</source>
+        <target>Notification content</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-wizard_step-custmer_title_field" datatype="html">
+        <source>Customer target</source>
+        <target>Customer target</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-wizard_step-success-message" datatype="html">
+        <source>Create schedule notification successfully</source>
+        <target>Create schedule notification successfully</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-wizard_step-success-message" datatype="html">
+        <source>Edit schedule notification successfully</source>
+        <target>Edit schedule notification successfully</target>
+      </trans-unit>
+      <trans-unit id="delete-create-scheduled-notification-confirm-message" datatype="html">
+        <source>Notification "{{0}}" will be permanently deleted. Are you sure you want to delete?</source>
+        <target>Notification "{{0}}" will be permanently deleted. Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="delete-create-scheduled-notification-confirm-title" datatype="html">
+        <source>Delete scheduled notification</source>
+        <target>Delete scheduled notification</target>
+      </trans-unit>
       <!--END Scheduled notification-->
     </body>
   </file>

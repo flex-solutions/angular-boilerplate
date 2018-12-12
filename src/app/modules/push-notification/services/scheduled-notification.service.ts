@@ -1,4 +1,4 @@
-import { ScheduledNotification } from './../models/schedule-notification.model';
+import { ScheduledNotificationView } from '../models/schedule-notification-view.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
 import { from } from 'rxjs';
