@@ -118,6 +118,9 @@ export class Select2Component implements AfterViewInit {
             const data = e.params.data;
             this.selectedItem = _.pickBy(data, (val, key) => key !== 'element');
         });
+        this.host.on('select2:unselect', e => {
+            this.selectedItem = {};
+        });
     }
 
     private initializedSelect2() {

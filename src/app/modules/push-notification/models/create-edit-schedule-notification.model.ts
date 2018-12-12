@@ -27,6 +27,7 @@ class ScheduledNotificationBase {
     timeToPush: string;
     title: string;
     content: string;
+    member_filter: any;
 }
 
 class DailyScheduledNotification extends ScheduledNotificationBase {}
