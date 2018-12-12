@@ -20,6 +20,7 @@ class MenuItemDto extends ModelBase {
   itemType: any;
   status: MenuItemStatus;
   canExchangePoint: true;
+  image: any;
 }
 
 class MenuItemTypeDto extends ModelBase {
@@ -31,4 +32,4 @@ class MenuItemTypeDto extends ModelBase {
   textId: string;
 }
 
-export { MenuItemDto, MenuItemTypeDto };
+export { MenuItemDto, MenuItemTypeDto, MenuItemStatus };

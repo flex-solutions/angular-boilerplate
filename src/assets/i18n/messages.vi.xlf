@@ -2485,7 +2485,44 @@
       </trans-unit>
       <trans-unit id="pos-menu-update-pos-success" datatype="html">
         <source>POS "{{0}}" has been updated</source>
-        <target>Đã cập nhật thông tin cho pos "{{0}}"</target>
+        <target>Đã cập nhật thông tin cho pos {{0}}</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-title" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+
+      <trans-unit id="pos-menu-item-list-sub-title-general" datatype="html">
+        <source>Display and modify menu info</source>
+        <target>Hiển thị và sửa thông tin menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-sub-title" datatype="html">
+        <source>Display and modify menu info of {{0}}</source>
+        <target>Hiển thị và sửa thông tin menu của {{0}}</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-btn-menu" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-txt-search" datatype="html">
+        <source>Search by name, type</source>
+        <target>Tìm kiếm theo tên và loại</target>
+      </trans-unit>
+         <trans-unit id="pos-menu-item-image" datatype="html">
+        <source>Avarta</source>
+        <target>Hình</target>
+      </trans-unit>
+       <trans-unit id="pos-menu-item-th-description" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
+        <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
+        <source> Apply all for same items</source>
+        <target>Áp dụng cho những sản phẩm cùng loại</target>
+      </trans-unit>
+      <trans-unit id="menu-item-edit-label-can_exchange_point" datatype="html">
+        <source> Can Exchange Point</source>
+        <target> Có thể đổi điểm thưởng</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
