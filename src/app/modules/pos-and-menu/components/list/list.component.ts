@@ -9,27 +9,31 @@ import { POSDto } from '../../../../shared/models/pos.model';
 @Component({
   moduleId: module.id,
   selector: 'app-pos',
-  templateUrl: './list.component.html',
+  templateUrl: './list.component.html'
 })
 export class POSComponent extends AbstractBaseComponent implements OnInit {
-
   filterEventArgs: IFilterChangedEvent;
   poses: POSDto[] = [];
 
-  constructor(private readonly posService: POSService,
-    private readonly router: Router) {
+  constructor(
+    private readonly posService: POSService,
+    private readonly router: Router
+  ) {
     super();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   private getPoses() {
-    this.posService.find(this.filterEventArgs.pagination.itemsPerPage,
-      this.filterEventArgs.pagination.page,
-      this.filterEventArgs.searchKey).subscribe(res => {
+    this.posService
+      .find(
+        this.filterEventArgs.pagination.itemsPerPage,
+        this.filterEventArgs.pagination.page,
+        this.filterEventArgs.searchKey
+      )
+      .subscribe(res => {
         this.poses = res;
-    });
+      });
   }
 
   public count = (searchKey: string): Observable<number> => {
@@ -49,5 +53,13 @@ export class POSComponent extends AbstractBaseComponent implements OnInit {
 
   editPos(pos: POSDto) {
     this.router.navigate([`pos/update/${pos._id}`]);
+  }
+
+  viewMenuItems(pos: POSDto) {
+    this.router.navigate([`pos/detail/${pos._id}`]);
+  }
+
+  viewAll() {
+    this.router.navigate([`pos/detail`]);
   }
 }
