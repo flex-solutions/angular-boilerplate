@@ -6,6 +6,8 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { Location } from '@angular/common';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
+import { ScheduleType, getScheduleTypeName } from '../../models/create-edit-schedule-notification.model';
+import { ScheduledNotificationCreationData } from '../../models/schedule-notification-creation-data';
 
 @Component({
     templateUrl: './create-edit-scheduled-notification.component.html',
@@ -13,10 +15,10 @@ import { convertCriteriaToQueryString } from '../../../../utilities/search-filte
 })
 export class CreateEditScheduledNotificationComponent implements OnInit {
     // Items source
-    scheduleTypes: [];
-    timesToPushNotification: [];
-    daysOfWeek: [];
-    daysOfMonth: [];
+    scheduleTypes = [];
+    timesToPushNotification = [];
+    daysOfWeek = [];
+    daysOfMonth = [];
 
     // Binding model
     selectedSchedule: any;
@@ -43,6 +45,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.initialData();
         const msgCode = this.isEditMode
             ? 'edit-scheduled-notification-wizard_step-success-message'
             : 'create-scheduled-notification-wizard_step-success-message';
@@ -79,5 +82,25 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         this.notificationContent = '';
         this.notificationTitle = '';
         this.wizardComponent.reset();
+    }
+
+    private initialData() {
+        const types = [
+            { id: ScheduleType.Daily, name: this._translateService.translate(getScheduleTypeName(ScheduleType.Daily)) },
+            { id: ScheduleType.Weekly, name: this._translateService.translate(getScheduleTypeName(ScheduleType.Weekly)) },
+            { id: ScheduleType.Monthly, name: this._translateService.translate(getScheduleTypeName(ScheduleType.Monthly)) },
+            {
+                id: ScheduleType.DaysAreNotReturned,
+                name: this._translateService.translate(getScheduleTypeName(ScheduleType.DaysAreNotReturned))
+            }
+        ];
+        this.scheduleTypes.push(...types);
+
+        this.daysOfWeek = ScheduledNotificationCreationData.dayOfWeek.map(i => {
+            i.name = this._translateService.translate(i.messageCode);
+            return i;
+        });
+        this.daysOfMonth = ScheduledNotificationCreationData.dayOfMonth;
+        this.timesToPushNotification = ScheduledNotificationCreationData.timeToPushNotification;
     }
 }

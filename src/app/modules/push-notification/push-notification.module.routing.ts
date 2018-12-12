@@ -11,14 +11,14 @@ const pushNotificationModuleRoutes: Routes = [
         }
     },
     {
-        path: 'create-scheduled-notification',
+        path: 'scheduled-notification/create',
         component: CreateEditScheduledNotificationComponent,
         data: {
             breadcrumb: 'Create Scheduled Notification'
         }
     },
     {
-        path: 'edit-scheduled-notification/:id',
+        path: 'scheduled-notification/edit/:id',
         component: CreateEditScheduledNotificationComponent,
         data: {
             breadcrumb: 'Edit Scheduled Notification'

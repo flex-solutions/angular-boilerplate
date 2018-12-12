@@ -5,8 +5,22 @@ enum ScheduleType {
 
     Monthly,
 
-    AfterXDays
+    DaysAreNotReturned
 }
+
+const getScheduleTypeName = (type: ScheduleType) => {
+    switch (type) {
+        case ScheduleType.Daily:
+            return 'create-schedule-notification-schedule-daily';
+        case ScheduleType.Weekly:
+            return 'create-schedule-notification-schedule-weekly';
+        case ScheduleType.Monthly:
+            return 'create-schedule-notification-schedule-monthly';
+        case ScheduleType.DaysAreNotReturned:
+            return 'create-schedule-notification-schedule-days-are-not-returned';
+    }
+    return '';
+};
 
 class ScheduledNotificationBase {
     type: ScheduleType;
@@ -25,7 +39,7 @@ class MonthlyScheduledNotification extends ScheduledNotificationBase {
     dayOfMonth: string;
 }
 
-class AfterXDaysScheduledNotification extends ScheduledNotificationBase {
+class CustomerAreNotReturnedXDaysScheduledNotification extends ScheduledNotificationBase {
     days: number;
 }
 
@@ -34,5 +48,6 @@ export {
     DailyScheduledNotification,
     WeeklyScheduledNotification,
     MonthlyScheduledNotification,
-    AfterXDaysScheduledNotification
+    CustomerAreNotReturnedXDaysScheduledNotification,
+    getScheduleTypeName
 };

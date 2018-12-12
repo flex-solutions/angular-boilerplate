@@ -60,6 +60,34 @@
         <source>Push notification message</source>
         <target>Nội dung thông báo</target>
       </trans-unit>
+      <trans-unit id="common-monday" datatype="html">
+        <source>Monday</source>
+        <target>Thứ 2</target>
+      </trans-unit>
+      <trans-unit id="common-tuesday" datatype="html">
+        <source>Tuesday</source>
+        <target>Thứ 3</target>
+      </trans-unit>
+      <trans-unit id="common-wednesday" datatype="html">
+        <source>Wednesday</source>
+        <target>Thứ 4</target>
+      </trans-unit>
+      <trans-unit id="common-thursday" datatype="html">
+        <source>Thursday</source>
+        <target>Thứ 5</target>
+      </trans-unit>
+      <trans-unit id="common-friday" datatype="html">
+        <source>Friday</source>
+        <target>Thứ 6</target>
+      </trans-unit>
+      <trans-unit id="common-saturday" datatype="html">
+        <source>Saturday</source>
+        <target>Thứ 7</target>
+      </trans-unit>
+      <trans-unit id="common-sunday" datatype="html">
+        <source>Sunday</source>
+        <target>Chủ nhật</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -2626,6 +2654,22 @@
       <trans-unit id="delete-create-scheduled-notification-confirm-title" datatype="html">
         <source>Delete scheduled notification</source>
         <target>Xoá thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-daily" datatype="html">
+        <source>Daily</source>
+        <target>Hằng ngày</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-weekly" datatype="html">
+        <source>Weekly</source>
+        <target>Hằng tuần</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-monthly" datatype="html">
+        <source>Monthly</source>
+        <target>Hàng tháng</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-days-are-not-returned" datatype="html">
+        <source>Days are not returned</source>
+        <target>Khách hàng không tới cửa hàng trong X ngày</target>
       </trans-unit>
       <!--END Scheduled notification-->
     </body>

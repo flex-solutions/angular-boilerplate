@@ -29,13 +29,13 @@ export class ScheduledNotificationsComponent implements OnInit {
     }
 
     createNewScheduledNotification() {
-        this.route.navigate(['create-scheduled-notification']);
+        this.route.navigate(['push-notification/scheduled-notification/create']);
     }
 
     viewNotification(notification) {}
 
     editNotification(notification) {
-        this.route.navigate([`edit-scheduled-notification/${notification.id}`]);
+        this.route.navigate([`push-notification/scheduled-notification/edit/${notification.id}`]);
     }
 
     deleteNotification(notification) {}
