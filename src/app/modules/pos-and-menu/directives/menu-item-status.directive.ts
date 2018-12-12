@@ -24,10 +24,10 @@ export class MenuItemStatusDirective implements OnChanges, AfterViewInit {
     private createStatusCtrl() {
         switch (this.status) {
             case MenuItemStatus[MenuItemStatus.ACTIVE]:
-                $(this.host).html(`<i class="mdi mdi-emoticon-happy text-success"></i><i class="mdi mdi-heart green-color"></i>`);
+                $(this.host).html(`<i class="mdi mdi-emoticon-happy text-success"></i><i class="mdi mdi-heart text-success"></i>`);
                 break;
             case MenuItemStatus[MenuItemStatus.DEACTIVE]:
-                $(this.host).html(`<i class="mdi mdi-emoticon-sad text-danger"></i><i class="mdi mdi-heart-broken red-color"></i>`);
+                $(this.host).html(`<i class="mdi mdi-emoticon-sad text-danger"></i><i class="mdi mdi-heart-broken text-danger"></i>`);
                 break;
         }
     }
