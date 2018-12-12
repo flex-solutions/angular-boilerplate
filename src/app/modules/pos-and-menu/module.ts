@@ -6,20 +6,17 @@ import { components } from './component';
 import { PosAndMenuRoutingModule } from './routing.module';
 import { POSService } from './services/pos';
 import { pipes } from './pipe';
+import { PosDirectives } from './directives/index';
 
 @NgModule({
-    imports: [
-      CommonModule,
-      FormsModule,
-      ReactiveFormsModule,
-      PosAndMenuRoutingModule,
-      UICommonModule
-    ],
-    declarations: [
-        ...components,
-        ...pipes,
-    ],
-    providers: [POSService],
-  })
-
-  export class PosAndMenuModule { }
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PosAndMenuRoutingModule,
+    UICommonModule
+  ],
+  declarations: [...components, ...pipes, ...PosDirectives],
+  providers: [POSService]
+})
+export class PosAndMenuModule {}

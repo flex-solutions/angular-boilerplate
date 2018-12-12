@@ -1586,7 +1586,7 @@
       <trans-unit id="member-create_edit_member-h4-create_member_description" datatype="html">
         <source>Manual creating a new member account, member can user phone number to login mobile app and this account
         will be also
-        created on IPOS system</source>
+        created on Imensystem</source>
         <target>Manual creating a new member account, member can user phone number to login mobile app and this account
           will be also
           created on IPOS system</target>
@@ -2489,6 +2489,43 @@
       <trans-unit id="pos-menu-update-pos-success" datatype="html">
         <source>POS "{{0}}" has been updated</source>
         <target>POS "{{0}}" has been updated</target>
+      </trans-unit>
+
+      <trans-unit id="pos-menu-item-list-title" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-sub-title-general" datatype="html">
+        <source>Display and modify menu info</source>
+        <target>Display and modify menu info</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-sub-title" datatype="html">
+        <source>Display and modify menu info of {{0}}</source>
+        <target>Display and modify menu info of {{0}}</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-btn-menu" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+        <trans-unit id="pos-menu-item-list-txt-search" datatype="html">
+        <source>Search by name, type</source>
+        <target>Search by name, type</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-image" datatype="html">
+        <source>Avarta</source>
+        <target>Avarta</target>
+      </trans-unit>
+       <trans-unit id="pos-menu-item-th-description" datatype="html">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
+        <source> Apply all for same items</source>
+        <target> Apply all for same items</target>
+      </trans-unit>
+      <trans-unit id="menu-item-edit-label-can_exchange_point" datatype="html">
+        <source> Can Exchange Point</source>
+        <target> Can Exchange Point</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
