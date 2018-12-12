@@ -1,6 +1,7 @@
 import { ScheduledNotification } from './../models/schedule-notification.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
+import { from } from 'rxjs';
 
 @Injectable()
 export class ScheduledNotificationService extends AbstractRestService {
@@ -11,7 +12,7 @@ export class ScheduledNotificationService extends AbstractRestService {
   }
 
   count(searchKey: string) {
-    return 10;
+    return from(new Promise(res => res(10)));
   }
 
   fetchScheduledNotifications(
@@ -19,7 +20,7 @@ export class ScheduledNotificationService extends AbstractRestService {
     pageSize: number,
     searchKey?: any
   ) {
-    return [
+    const mockData = [
       {
         name: 'Notification 1',
         title: 'ScheduledNotification',
@@ -35,5 +36,6 @@ export class ScheduledNotificationService extends AbstractRestService {
         lastRunAt: new Date()
       }
     ];
+    return from(new Promise(res => res(mockData)));
   }
 }

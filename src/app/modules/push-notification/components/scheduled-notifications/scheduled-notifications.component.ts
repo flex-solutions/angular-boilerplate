@@ -1,7 +1,7 @@
+import { ScheduledNotification } from './../../models/schedule-notification.model';
 import { Component, OnInit } from '@angular/core';
 import { ScheduledNotificationService } from '../../services/scheduled-notification.service';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { ScheduledNotification } from '../../models/schedule-notification.model';
 
 @Component({
   selector: 'app-scheduled-notifications',
@@ -19,14 +19,19 @@ export class ScheduledNotificationsComponent implements OnInit {
 
   ngOnInit() {}
 
-  count = (searchKey: string) => this.scheduledNotificationService.count(searchKey);
+  count = (searchKey: string) =>
+    this.scheduledNotificationService.count(searchKey);
 
   onPageChanged($event: IFilterChangedEvent) {
-    this.scheduledNotificationService.fetchScheduledNotifications(
-      $event.pagination.page,
-      $event.pagination.itemsPerPage,
-      $event.searchKey
-    );
+    this.scheduledNotificationService
+      .fetchScheduledNotifications(
+        $event.pagination.page,
+        $event.pagination.itemsPerPage,
+        $event.searchKey
+      )
+      .subscribe((data: ScheduledNotification[]) => {
+        this.notifications = data;
+      });
   }
 
   createNewScheduledNotification() {}
