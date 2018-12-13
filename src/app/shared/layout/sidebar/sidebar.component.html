@@ -84,9 +84,25 @@
             <span i18n="@@give-voucher-title">Give voucher</span>
           </a>
         </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#page-push-notification-layouts" aria-controls="page-push-notification-layouts">
+      <img class="menu-icon" src="assets/images/menu_icons/13.png" alt="menu icon">
+      <span class="menu-title" i18n="@@layout-sidebar-anchor-push-notification">Push Notification</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="page-push-notification-layouts">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="navigateToScheduleNotification()">
+            <span class="menu-title" i18n="@@layout-sidebar-anchor-scheduled-notification">Scheduled Notification</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" style="cursor: pointer;" (click)="navigateToPushNotificationPage()">
-            <span i18n="@@sidebar-push-notification">Push Notification</span>
+            <span i18n="@@layout-sidebar-anchor-manual-notification">Manual Notification</span>
           </a>
         </li>
       </ul>

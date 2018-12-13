@@ -13,10 +13,13 @@ import { VERSION_TOKEN, IVersionController } from '../../interfaces/version';
 export class SidebarComponent implements OnInit {
   currentUser: BasicUserInfo;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    @Inject(VERSION_TOKEN) private readonly versionController: IVersionController) { }
+    @Inject(VERSION_TOKEN)
+    private readonly versionController: IVersionController
+  ) {}
 
   ngOnInit() {
     this.currentUser = this.authenticationService.getCurrentUser();
@@ -55,7 +58,9 @@ export class SidebarComponent implements OnInit {
   }
 
   navigateToMembershipTypeListPage() {
-    this.router.navigate([`${ModuleRoute.MEMBER}/${ModuleRoute.MEMBERSHIP_TYPE}`]);
+    this.router.navigate([
+      `${ModuleRoute.MEMBER}/${ModuleRoute.MEMBERSHIP_TYPE}`
+    ]);
   }
 
   navigateToVouchersPage() {
@@ -72,6 +77,10 @@ export class SidebarComponent implements OnInit {
 
   navigateToVouchersRunningPage() {
     this.router.navigate([`${ModuleRoute.VOUCHER}/vouchers-running`]);
+  }
+
+  navigateToScheduleNotification() {
+    this.router.navigate([`${ModuleRoute.PUSH_NOTIFICATION}/scheduled-notification`]);
   }
 
   showVersion() {
