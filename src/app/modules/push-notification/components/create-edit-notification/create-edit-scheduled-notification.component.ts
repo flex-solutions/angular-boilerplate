@@ -28,12 +28,10 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     daysOfWeek = [];
     daysOfMonth = [];
     errors = {
-        selectedDayOfMonth: null,
         selectedDays: null,
-        selectedTimeToPushNotification: null,
-        selectedDayOfWeek: null,
         notificationTitle: null,
-        notificationContent: null
+        notificationContent: null,
+        notificationName: null
     };
 
     // Binding model
@@ -44,6 +42,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     selectedDayOfMonth: IOption;
     notificationContent: string;
     notificationTitle: string;
+    notificationName: string;
 
     isEditMode: boolean;
     isForceValidate = false;
@@ -151,43 +150,17 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
             i.name = this._translateService.translate(i.messageCode);
             return i;
         });
+        this.selectedDayOfWeek = this.daysOfWeek[0];
         this.daysOfMonth = ScheduledNotificationCreationData.dayOfMonth;
+        this.selectedDayOfMonth = this.daysOfMonth[0];
         this.timesToPushNotification = ScheduledNotificationCreationData.timeToPushNotification;
+        this.selectedTimeToPushNotification = this.timesToPushNotification[0];
     }
 
-    private onValidate() {
-        this.errors.selectedDayOfMonth = isNullOrEmptyOrUndefined(this.selectedDayOfMonth) ? 'Required' : null;
-        this.errors.selectedDayOfWeek = isNullOrEmptyOrUndefined(this.selectedDayOfWeek) ? 'Required' : null;
+    onValidate() {
         this.errors.notificationContent = isNullOrEmptyOrUndefined(this.notificationContent) ? 'Required' : null;
         this.errors.notificationTitle = isNullOrEmptyOrUndefined(this.notificationTitle) ? 'Required' : null;
-        this.errors.selectedTimeToPushNotification = isNullOrEmptyOrUndefined(this.selectedTimeToPushNotification) ? 'Required' : null;
+        this.errors.notificationName = isNullOrEmptyOrUndefined(this.notificationName) ? 'Required' : null;
         this.errors.selectedDays = isNullOrEmptyOrUndefined(this.selectedDays) ? 'Required' : null;
-    }
-
-    onSelectedScheduleChange() {
-        this.onValidate();
-    }
-
-    onSelectedDaysChange() {
-        this.onValidate();
-    }
-    onSelectedTimeToPushNotificationChange() {
-        this.onValidate();
-    }
-
-    onSelectedDayOfMonthChange() {
-        this.onValidate();
-    }
-
-    onSelectedDayOfWeekChange() {
-        this.onValidate();
-    }
-
-    onNotificationTitleChange() {
-        this.onValidate();
-    }
-
-    onNotificationContentChange() {
-        this.onValidate();
     }
 }

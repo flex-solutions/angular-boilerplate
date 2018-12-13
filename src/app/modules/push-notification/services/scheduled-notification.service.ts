@@ -46,4 +46,8 @@ export class ScheduledNotificationService extends AbstractRestService {
   updateScheduledNotification(notification) {
     return from(new Promise(res => res({})));
   }
+
+  deleteScheduledNotification(id) {
+    return from(new Promise(res => res({})));
+  }
 }

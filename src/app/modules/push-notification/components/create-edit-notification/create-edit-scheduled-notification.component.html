@@ -19,7 +19,6 @@
                             id="schedule-select-2"
                             [(itemsSource)]="scheduleTypes"
                             [(selectedItem)]="selectedSchedule"
-                            (selectedItemChange)="onSelectedScheduleChange()"
                             displayPropertyName="name"
                             [autoClear]="false"
                         ></app-select2>
@@ -53,18 +52,10 @@
                             id="day-of-week-select-2"
                             [(itemsSource)]="daysOfWeek"
                             [(selectedItem)]="selectedDayOfWeek"
-                            (selectedItemChange)="onSelectedDayOfWeekChange()"
                             placeHolder="Select a day of week"
                             displayPropertyName="name"
-                            [ngClass]="{ 'has-error': errors.selectedDayOfWeek && isForceValidate }"
+                            [autoClear]="false"
                         ></app-select2>
-                        <label
-                            id="day-of-week-select-2-error"
-                            class="error mt-2 text-danger ml-0"
-                            for="day-of-week-select-2"
-                            *ngIf="errors.selectedDayOfWeek && isForceValidate"
-                            >{{ errors.selectedDayOfWeek }}</label
-                        >
                     </div>
                     <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '2'">
                         <label for="day-of-month-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-month"
@@ -76,17 +67,9 @@
                             [(itemsSource)]="daysOfMonth"
                             [(selectedItem)]="selectedDayOfMonth"
                             placeHolder="Select a day of month"
-                            (selectedItemChange)="onSelectedDayOfMonthChange()"
                             displayPropertyName="name"
-                            [ngClass]="{ 'has-error': errors.selectedDayOfMonth && isForceValidate }"
+                            [autoClear]="false"
                         ></app-select2>
-                        <label
-                            id="day-of-month-select-2-error"
-                            class="error mt-2 text-danger ml-0"
-                            for="day-of-month-select-2"
-                            *ngIf="errors.selectedDayOfMonth && isForceValidate"
-                            >{{ errors.selectedDayOfMonth }}</label
-                        >
                     </div>
                     <div class="form-group col-md-12">
                         <label
@@ -99,17 +82,31 @@
                             id="time-to-push-notification-select-2"
                             [(itemsSource)]="timesToPushNotification"
                             [(selectedItem)]="selectedTimeToPushNotification"
-                            (selectedItemChange)="onSelectedTimeToPushNotificationChange()"
                             placeHolder="Select a time to push notification"
                             displayPropertyName="name"
-                            [ngClass]="{ 'has-error': (errors.selectedTimeToPushNotification && isForceValidate) }"
+                            [autoClear]="false"
                         ></app-select2>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="notification-title-input" i18n="@@scheduled-notification-tbl-name"
+                            >Name</label
+                        >
+                        <label class="require">*</label>
+                        <input
+                            id="notification-name-input"
+                            class="form-control"
+                            [(ngModel)]="notificationName"
+                            [ngModelOptions]="{ standalone: true }"
+                            (change)="onValidate()"
+                            [ngClass]="{ 'has-error': errors.notificationName && (isForceValidate || name.dirty || name.touched) }"
+                            #name="ngModel"
+                        />
                         <label
-                            id="time-to-push-notification-select-2-error"
+                            id="notification-name-input-error"
                             class="error mt-2 text-danger ml-0"
-                            for="time-to-push-notification-select-2"
-                            *ngIf="(errors.selectedTimeToPushNotification && isForceValidate)"
-                            >{{ errors.selectedTimeToPushNotification }}</label
+                            for="notification-name-input"
+                            *ngIf="errors.notificationName && (isForceValidate || name.dirty || name.touched)"
+                            >{{ errors.notificationName }}</label
                         >
                     </div>
                     <div class="form-group col-md-12">
@@ -122,7 +119,7 @@
                             class="form-control"
                             [(ngModel)]="notificationTitle"
                             [ngModelOptions]="{ standalone: true }"
-                            (change)="onNotificationTitleChange()"
+                            (change)="onValidate()"
                             [ngClass]="{ 'has-error': errors.notificationTitle && (isForceValidate || title.dirty || title.touched) }"
                             #title="ngModel"
                         />
@@ -146,7 +143,7 @@
                             rows="6"
                             [ngModelOptions]="{ standalone: true }"
                             [(ngModel)]="notificationContent"
-                            (change)="onNotificationContentChange()"
+                            (change)="onValidate()"
                             [ngClass]="{ 'has-error': errors.notificationContent && (isForceValidate || content.dirty || content.touched) }"
                             #content="ngModel"
                         ></textarea>
