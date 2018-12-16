@@ -22,33 +22,18 @@ const getScheduleTypeName = (type: ScheduleType) => {
     return '';
 };
 
-class ScheduledNotificationBase {
+class ScheduledNotification {
     type: ScheduleType;
     timeToPush: string;
+    name: string;
     title: string;
     content: string;
     member_filter: any;
-}
-
-class DailyScheduledNotification extends ScheduledNotificationBase {}
-
-class WeeklyScheduledNotification extends ScheduledNotificationBase {
-    dayOfWeek: string;
-}
-
-class MonthlyScheduledNotification extends ScheduledNotificationBase {
-    dayOfMonth: string;
-}
-
-class CustomerAreNotReturnedXDaysScheduledNotification extends ScheduledNotificationBase {
+    member_filter_raw: any;
     days: number;
 }
-
 export {
     ScheduleType,
-    DailyScheduledNotification,
-    WeeklyScheduledNotification,
-    MonthlyScheduledNotification,
-    CustomerAreNotReturnedXDaysScheduledNotification,
+    ScheduledNotification,
     getScheduleTypeName
 };

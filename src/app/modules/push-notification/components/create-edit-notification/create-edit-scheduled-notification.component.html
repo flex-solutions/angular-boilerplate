@@ -1,8 +1,5 @@
 <app-card
-    title="Create notification"
-    i18n-title="@@create-scheduled-notification-title"
-    subTitle="This page allows you create scheduled notification for a group of members"
-    i18n-subTitle="@@create-scheduled-notification-sub-title"
+    [title]="cardTitle" [subTitle]="cardDescription"
 >
     <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()">
         <app-wizard-step

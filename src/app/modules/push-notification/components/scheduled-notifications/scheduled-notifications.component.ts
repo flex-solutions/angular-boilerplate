@@ -54,7 +54,7 @@ export class ScheduledNotificationsComponent implements OnInit {
     viewNotification(notification) {}
 
     editNotification(notification) {
-        this.route.navigate([`push-notification/scheduled-notification/edit/${notification.id}`]);
+        this.route.navigate([`push-notification/scheduled-notification/edit/${notification._id}`]);
     }
 
     deleteNotification(notification) {
