@@ -10,10 +10,7 @@ import { convertCriteriaToQueryString } from '../../../../utilities/search-filte
 import {
     ScheduleType,
     getScheduleTypeName,
-    DailyScheduledNotification,
-    WeeklyScheduledNotification,
-    MonthlyScheduledNotification,
-    CustomerAreNotReturnedXDaysScheduledNotification
+    ScheduledNotification
 } from '../../models/create-edit-schedule-notification.model';
 import { ScheduledNotificationCreationData, IOption } from '../../models/schedule-notification-creation-data';
 
@@ -99,31 +96,28 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     }
 
     private buildScheduledNotification() {
-        let scheduledNotification;
+        const scheduledNotification = new ScheduledNotification();
         switch (this.selectedSchedule.id) {
-            case ScheduleType.Daily:
-                scheduledNotification = new DailyScheduledNotification();
-                break;
             case ScheduleType.Weekly:
-                scheduledNotification = new WeeklyScheduledNotification();
-                scheduledNotification.dayOfWeek = this.selectedDayOfWeek.id;
+                scheduledNotification.days = this.selectedDayOfWeek.id;
                 break;
 
             case ScheduleType.Monthly:
-                scheduledNotification = new MonthlyScheduledNotification();
-                scheduledNotification.dayOfMonth = this.selectedDayOfMonth.id;
+                scheduledNotification.days = this.selectedDayOfMonth.id;
                 break;
 
             case ScheduleType.DaysAreNotReturned:
-                scheduledNotification = new CustomerAreNotReturnedXDaysScheduledNotification();
                 scheduledNotification.days = this.selectedDays;
                 break;
         }
+        scheduledNotification.name = this.notificationName;
         scheduledNotification.type = this.selectedSchedule.id;
         scheduledNotification.timeToPush = this.selectedTimeToPushNotification.id;
         scheduledNotification.title = this.notificationTitle;
         scheduledNotification.content = this.notificationContent;
-        scheduledNotification.member_filter = convertCriteriaToQueryString(this.membersList.getFilterQuery()); // TODO
+        const memberCriteria = this.membersList.getFilterQuery();
+        scheduledNotification.member_filter_raw = memberCriteria;
+        scheduledNotification.member_filter = convertCriteriaToQueryString(memberCriteria);
         return scheduledNotification;
     }
 

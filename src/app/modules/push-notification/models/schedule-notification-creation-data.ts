@@ -1,12 +1,12 @@
 export class ScheduledNotificationCreationData {
     static dayOfWeek = [
-        { id: 'Sun', name: 'Chủ nhật', messageCode: 'common-sunday' },
-        { id: 'Mon', name: 'Thứ 2', messageCode: 'common-monday' },
-        { id: 'Tue', name: 'Thứ 3', messageCode: 'common-tuesday' },
-        { id: 'Wed', name: 'Thứ 4', messageCode: 'common-wednesday' },
-        { id: 'Thu', name: 'Thứ 5', messageCode: 'common-thursday' },
-        { id: 'Fri', name: 'Thứ 6', messageCode: 'common-friday' },
-        { id: 'Sat', name: 'Thứ 7', messageCode: 'common-saturday' }
+        { id: '1', name: 'Chủ nhật', messageCode: 'common-sunday' },
+        { id: '2', name: 'Thứ 2', messageCode: 'common-monday' },
+        { id: '3', name: 'Thứ 3', messageCode: 'common-tuesday' },
+        { id: '4', name: 'Thứ 4', messageCode: 'common-wednesday' },
+        { id: '5', name: 'Thứ 5', messageCode: 'common-thursday' },
+        { id: '6', name: 'Thứ 6', messageCode: 'common-friday' },
+        { id: '7', name: 'Thứ 7', messageCode: 'common-saturday' }
     ];
     static dayOfMonth = [
         { id: '1', name: '1' },
