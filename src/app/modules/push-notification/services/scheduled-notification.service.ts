@@ -24,12 +24,16 @@ export class ScheduledNotificationService extends AbstractRestService {
         return this.get(params);
     }
 
+    getScheduledNotificationById(id) {
+      return this.get(`${id}`);
+    }
+
     createScheduledNotification(notification) {
         return this.post('', notification);
     }
 
-    updateScheduledNotification(notification) {
-        return this.patch(`${notification.id}`, notification);
+    updateScheduledNotification(id, notification) {
+        return this.patch(`${id}`, notification);
     }
 
     deleteScheduledNotification(id) {

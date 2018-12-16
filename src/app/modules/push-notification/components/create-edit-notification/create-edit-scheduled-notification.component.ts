@@ -7,12 +7,10 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { Location } from '@angular/common';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
-import {
-    ScheduleType,
-    getScheduleTypeName,
-    ScheduledNotification
-} from '../../models/create-edit-schedule-notification.model';
+import { ScheduleType, getScheduleTypeName, ScheduledNotification } from '../../models/create-edit-schedule-notification.model';
 import { ScheduledNotificationCreationData, IOption } from '../../models/schedule-notification-creation-data';
+import { ActivatedRoute, Params } from '@angular/router';
+import { tick } from '@angular/core/testing';
 
 @Component({
     templateUrl: './create-edit-scheduled-notification.component.html',
@@ -42,7 +40,10 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     notificationName: string;
 
     isEditMode: boolean;
+    editingId: any;
     isForceValidate = false;
+    cardTitle: string;
+    cardDescription: string;
 
     @ViewChild(WizardComponent)
     private wizardComponent: WizardComponent;
@@ -54,11 +55,26 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         private readonly _translateService: TranslateService,
         private readonly _notificationService: NotificationService,
         private readonly _location: Location,
+        private readonly _activeRoute: ActivatedRoute,
         private readonly _scheduledNotificationService: ScheduledNotificationService
     ) {}
 
     ngOnInit() {
         this.initialData();
+        this._activeRoute.params.subscribe((params: Params) => {
+            this.editingId = params['id'] ? params['id'] : '';
+            this.isEditMode = params['id'] ? true : false;
+            if (this.isEditMode) {
+                this.cardTitle = this._translateService.translate('edit-scheduled-notification-title');
+                this.cardDescription = this._translateService.translate('edit-scheduled-notification-sub-title');
+                this._scheduledNotificationService.getScheduledNotificationById(this.editingId).subscribe((data: ScheduledNotification) => {
+                    this.setDataForEditMode(data);
+                });
+            } else {
+                this.cardTitle = this._translateService.translate('create-scheduled-notification-title');
+                this.cardDescription = this._translateService.translate('create-scheduled-notification-sub-title');
+            }
+        });
     }
 
     onWizardCancel() {
@@ -79,7 +95,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     private onSubmit() {
         const notification = this.buildScheduledNotification();
         if (this.isEditMode) {
-            this._scheduledNotificationService.updateScheduledNotification(notification).subscribe(() => {
+            this._scheduledNotificationService.updateScheduledNotification(this.editingId, notification).subscribe(() => {
                 this._notificationService.showSuccess(
                     this._translateService.translate('edit-scheduled-notification-wizard_step-success-message')
                 );
@@ -97,7 +113,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
 
     private buildScheduledNotification() {
         const scheduledNotification = new ScheduledNotification();
-        switch (this.selectedSchedule.id) {
+        switch (+this.selectedSchedule.id) {
             case ScheduleType.Weekly:
                 scheduledNotification.days = this.selectedDayOfWeek.id;
                 break;
@@ -116,7 +132,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         scheduledNotification.title = this.notificationTitle;
         scheduledNotification.content = this.notificationContent;
         const memberCriteria = this.membersList.getFilterQuery();
-        scheduledNotification.member_filter_raw = memberCriteria;
+        scheduledNotification.member_filter_raw = this.membersList.memberFilter;
         scheduledNotification.member_filter = convertCriteriaToQueryString(memberCriteria);
         return scheduledNotification;
     }
@@ -140,6 +156,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         ];
         this.selectedSchedule = types[0];
         this.scheduleTypes.push(...types);
+
         this.daysOfWeek = ScheduledNotificationCreationData.dayOfWeek.map(i => {
             i.name = this._translateService.translate(i.messageCode);
             return i;
@@ -149,6 +166,32 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         this.selectedDayOfMonth = this.daysOfMonth[0];
         this.timesToPushNotification = ScheduledNotificationCreationData.timeToPushNotification;
         this.selectedTimeToPushNotification = this.timesToPushNotification[0];
+    }
+
+    private setDataForEditMode(editingNotification: ScheduledNotification) {
+        this.selectedSchedule = this.scheduleTypes.find(t => t.id == editingNotification.type);
+        this.selectedTimeToPushNotification = this.timesToPushNotification.find(t => t.id == editingNotification.timeToPush);
+        this.notificationContent = editingNotification.content;
+        this.notificationName = editingNotification.name;
+        this.notificationTitle = editingNotification.title;
+        if (!isNullOrEmptyOrUndefined(editingNotification.member_filter_raw)) {
+            Object.assign(this.membersList.memberFilter, editingNotification.member_filter_raw);
+            this.membersList.loadData();
+        }
+
+        switch (+this.selectedSchedule.id) {
+            case ScheduleType.Weekly:
+                this.selectedDayOfWeek = this.daysOfWeek.find(t => t.id == editingNotification.days);
+                break;
+
+            case ScheduleType.Monthly:
+                this.selectedDayOfMonth = this.daysOfMonth.find(t => t.id == editingNotification.days);
+                break;
+
+            case ScheduleType.DaysAreNotReturned:
+                this.selectedDays = editingNotification.days;
+                break;
+        }
     }
 
     onValidate() {
