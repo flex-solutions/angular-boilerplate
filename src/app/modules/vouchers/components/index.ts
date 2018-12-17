@@ -5,6 +5,7 @@ import { VoucherFilterComponent } from './voucher-filter/voucher-filter.componen
 import { RunBatchExportVoucherComponent } from './run-voucher/run-batch-export-voucher.component';
 import { RunRepeatOneCodeVoucherComponent } from './run-voucher/run-repeat-one-code-voucher.component';
 import { VouchersRunningComponent } from './vouchers-running/index.component';
+import { CommonCreateEditVoucherComponent } from './create-edit/common.component.';
 
 const voucherComponents = [
     VouchersComponent,
@@ -13,7 +14,8 @@ const voucherComponents = [
     RunBatchExportVoucherComponent,
     RunRepeatOneCodeVoucherComponent,
     VouchersRunningComponent,
-    ViewVoucherComponent
+    ViewVoucherComponent,
+    CommonCreateEditVoucherComponent
 ];
 
 const voucherEntryComponents = [
