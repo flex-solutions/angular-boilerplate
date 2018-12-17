@@ -1,4 +1,4 @@
-import { remove, map, join } from 'lodash';
+import { remove, map, join, isObject } from 'lodash';
 import { Component, Input, AfterViewInit } from '@angular/core';
 import { POSDto } from '../../../../shared/models/pos.model';
 import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
@@ -97,29 +97,31 @@ export class CommonCreateEditVoucherComponent implements AfterViewInit {
 
   assignData(voucher: Voucher) {
     this.voucher = voucher;
-    if (
-      !isNullOrEmptyOrUndefined(this.voucher.applyPoses) &&
-      !isNullOrEmptyOrUndefined(this.poses)
-    ) {
+    if ( !isNullOrEmptyOrUndefined(this.voucher.applyPoses)
+    && !isNullOrEmptyOrUndefined(this.poses)) {
       this.selectedPoses = this.poses.filter(
-        i =>
-          !isNullOrEmptyOrUndefined(
-            this.voucher.applyPoses.find(p => p === i._id)
-          )
+        i => !isNullOrEmptyOrUndefined(
+            this.voucher.applyPoses.find(p => this.getId(p) === i._id))
       );
     }
+
     this.selectedApplyDays = VoucherCreationData.applyDays.filter(
-      i =>
-        !isNullOrEmptyOrUndefined(
-          this.voucher.applyDays.find(p => p === i.id)
-        )
+      i => !isNullOrEmptyOrUndefined(
+          this.voucher.applyDays.find(p => p === i.id))
     );
+
     this.selectedApplyHours = VoucherCreationData.applyHours.filter(
-      i =>
-        !isNullOrEmptyOrUndefined(
-          this.voucher.applyHourRanges.find(p => p === i.id)
-        )
+      i => !isNullOrEmptyOrUndefined(
+          this.voucher.applyHourRanges.find(p => p === i.id))
     );
+
+    if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
+      this.applyMenuType = 0;
+    } else {
+      this.applyMenuType = 1;
+    }
+
+    this.onApplyMenuTypeChange();
   }
 
   private getPosIds(): string {
@@ -149,11 +151,12 @@ export class CommonCreateEditVoucherComponent implements AfterViewInit {
         if (this.isEdit && this.voucher) {
           if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItems)) {
             this.selectedMenuItems = this.menuItems.filter(
-              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItems.find(p => p === i._id)));
+              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItems.find(p => this.getId(p) === i._id)));
           }
+
           if (!isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems)) {
             this.selectedAttachMenuItems = this.menuItems.filter(
-              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems.find(p => p === i._id)));
+              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems.find(p => this.getId(p) === i._id)));
           }
         }
       });
@@ -168,13 +171,21 @@ export class CommonCreateEditVoucherComponent implements AfterViewInit {
         if (this.isEdit && this.voucher) {
           if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
             this.selectedMenuItemTypes = this.menuItemTypes.filter(
-              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes.find(p => p === i._id)));
+              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes.find(p => this.getId(p) === i._id)));
           }
+
           if (!isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes)) {
             this.selectedAttachMenuItemTypes = this.menuItemTypes.filter(
-              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes.find(p => p === i._id)));
+              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes.find(p => this.getId(p) === i._id)));
           }
         }
       });
+  }
+
+  private getId(value: any) {
+    if (isObject(value)) {
+      return value._id;
+    }
+    return value;
   }
 }

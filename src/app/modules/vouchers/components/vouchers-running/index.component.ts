@@ -76,6 +76,6 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
   }
 
   editVoucher(item: VoucherOperationDtoBase) {
-
+    this.router.navigate([VoucherRouteNames.EDIT_VOUCHER_RUNNING, item.id, item.voucher.code]);
   }
 }

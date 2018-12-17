@@ -76,9 +76,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
       });
     } else {
       this.voucherService.update(this.voucher).subscribe(() => {
-        this.notification.showSuccess(
-          `Voucher "${this.voucher.name}" has been updated`
-        );
+        const msg = this.translateService.translate('voucher-edit-success', this.voucher.name);
+        this.notification.showSuccess(msg);
       });
     }
   }
@@ -102,12 +101,6 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     this.voucherService.getById(this.voucherId).subscribe(res => {
       this.voucher = res;
       this.commonCreateEditVoucher.assignData(this.voucher);
-      if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
-        this.commonCreateEditVoucher.applyMenuType = 0;
-      } else {
-        this.commonCreateEditVoucher.applyMenuType = 1;
-      }
-      this.commonCreateEditVoucher.onApplyMenuTypeChange();
 
       if (this.voucher.type !== VoucherType.XGetY) {
         this.isDiscountAmount =

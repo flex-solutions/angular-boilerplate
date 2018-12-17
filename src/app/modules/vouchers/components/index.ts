@@ -1,3 +1,4 @@
+import { EditVoucherRunningComponent } from './create-edit/edit-voucher-running.component';
 import { ViewVoucherComponent } from './view-voucher/component';
 import { CreateEditVoucherComponent } from './create-edit/create-edit.component';
 import { VouchersComponent } from './home/vouchers.component';
@@ -15,7 +16,8 @@ const voucherComponents = [
     RunRepeatOneCodeVoucherComponent,
     VouchersRunningComponent,
     ViewVoucherComponent,
-    CommonCreateEditVoucherComponent
+    CommonCreateEditVoucherComponent,
+    EditVoucherRunningComponent,
 ];
 
 const voucherEntryComponents = [
