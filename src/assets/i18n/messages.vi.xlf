@@ -2069,6 +2069,10 @@
         <source>A new voucher has been created</source>
         <target>Một voucher mới được tạo thành công</target>
       </trans-unit>
+      <trans-unit id="voucher-edit-success" datatype="html">
+        <source>Voucher "{{0}}" has been updated</source>
+        <target>Voucher "{{0}}" được cập nhật thành công</target>
+      </trans-unit>
       <!--End create/edit voucher-->
       <!--Start running voucher-->
       <trans-unit id="voucher-runner-title" datatype="html">
@@ -2410,6 +2414,18 @@
       <trans-unit id="voucher-running-batch-voucher-export" datatype="html">
         <source>Download code</source>
         <target>Tải mã voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-edit" datatype="html">
+        <source>Edit voucher</source>
+        <target>Sửa thông tin voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-update-success" datatype="html">
+        <source>Update voucher for promotion {{0}} successfully</source>
+        <target>Cập nhật thông tin voucher cho chương trình {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-edit-title" datatype="html">
+        <source>Voucher information</source>
+        <target>Thông tin voucher</target>
       </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->

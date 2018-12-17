@@ -1872,8 +1872,10 @@
         <target>Are you sure you want to delete voucher "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-warning-confirm" datatype="html">
-        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</source>
-        <target>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</target>
+        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for
+        those membership types is also deleted too. Are you sure you still delete?</source>
+        <target>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for
+          those membership types is also deleted too. Are you sure you still delete?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-success" datatype="html">
         <source>Voucher "{{0}}" has been deleted</source>
@@ -2081,7 +2083,10 @@
         <source>The voucher code length is 8 characters</source>
         <target>The voucher code length is 8 characters</target>
       </trans-unit>
-
+      <trans-unit id="voucher-edit-success" datatype="html">
+        <source>Voucher "{{0}}" has been updated</source>
+        <target>Voucher "{{0}}" has been updated</target>
+      </trans-unit>
       <!--End create/edit voucher-->
       <!--Start running voucher-->
       <trans-unit id="voucher-runner-title" datatype="html">
@@ -2414,6 +2419,18 @@
         <source>Download code</source>
         <target>Download code</target>
       </trans-unit>
+      <trans-unit id="voucher-running-edit" datatype="html">
+        <source>Edit voucher</source>
+        <target>Edit voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-update-success" datatype="html">
+        <source>Update voucher for promotion {{0}} successfully</source>
+        <target>Update voucher for promotion {{0}} successfully</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-edit-title" datatype="html">
+        <source>Voucher information</source>
+        <target>Voucher information</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
@@ -2547,7 +2564,7 @@
         <source>Menu</source>
         <target>Menu</target>
       </trans-unit>
-        <trans-unit id="pos-menu-item-list-txt-search" datatype="html">
+      <trans-unit id="pos-menu-item-list-txt-search" datatype="html">
         <source>Search by name, type</source>
         <target>Search by name, type</target>
       </trans-unit>
@@ -2555,7 +2572,7 @@
         <source>Avarta</source>
         <target>Avarta</target>
       </trans-unit>
-       <trans-unit id="pos-menu-item-th-description" datatype="html">
+      <trans-unit id="pos-menu-item-th-description" datatype="html">
         <source>Description</source>
         <target>Description</target>
       </trans-unit>

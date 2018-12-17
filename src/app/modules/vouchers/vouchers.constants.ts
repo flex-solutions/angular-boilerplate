@@ -8,5 +8,6 @@ export const VoucherRouteNames = {
     EDIT: 'voucher/update/',
     VOUCHER_HOME: 'voucher',
     VIEW: 'voucher/detail/',
-    PROMOTIONS: 'voucher/promotions/view/'
+    PROMOTIONS: 'voucher/promotions/view/',
+    EDIT_VOUCHER_RUNNING: 'voucher/voucher-running/edit/'
   };
