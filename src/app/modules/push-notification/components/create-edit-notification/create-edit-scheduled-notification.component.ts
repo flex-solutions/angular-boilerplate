@@ -11,6 +11,7 @@ import { ScheduleType, getScheduleTypeName, ScheduledNotification } from '../../
 import { ScheduledNotificationCreationData, IOption } from '../../models/schedule-notification-creation-data';
 import { ActivatedRoute, Params } from '@angular/router';
 import { tick } from '@angular/core/testing';
+import { Range } from '../../../../shared/ui-common/input-range/input-range.component';
 
 @Component({
     templateUrl: './create-edit-scheduled-notification.component.html',
@@ -90,6 +91,21 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         this.onValidate();
         this.wizardComponent.selectedStep.canNext =
             !isNullOrEmptyOrUndefined(this.notificationContent) && !isNullOrEmptyOrUndefined(this.notificationTitle);
+    }
+
+    onNextStep1() {
+        if (+this.selectedSchedule.id === ScheduleType.DaysAreNotReturned) {
+            Object.assign(this.membersList.memberFilter, {
+                daysAreNotReturned: {
+                    from: this.selectedDays ? this.selectedDays : 0,
+                    to: Number.MAX_VALUE
+                }
+            });
+
+            this.membersList.loadData();
+        } else {
+            this.membersList.resetFilter();
+        }
     }
 
     private onSubmit() {

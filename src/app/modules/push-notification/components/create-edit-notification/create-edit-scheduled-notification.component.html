@@ -1,11 +1,10 @@
-<app-card
-    [title]="cardTitle" [subTitle]="cardDescription"
->
+<app-card [title]="cardTitle" [subTitle]="cardDescription">
     <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()">
         <app-wizard-step
             isFirstStep="true"
             title="Notification"
             i18n-title="@@create-scheduled-notification-step-1-title"
+            (doNext)="onNextStep1()"
             (beforeNext)="beforeNextStep1()"
         >
             <form id="createEditScheduledNotificationForm" #f="ngForm">
@@ -30,7 +29,7 @@
                             type="number"
                             [(ngModel)]="selectedDays"
                             [ngModelOptions]="{ standalone: true }"
-                            (change)="onSelectedDaysChange()"
+                            (change)="onValidate()"
                             [ngClass]="{ 'has-error': errors.selectedDays && (isForceValidate || days.dirty || days.touched) }"
                             #days="ngModel"
                         />
@@ -85,9 +84,7 @@
                         ></app-select2>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="notification-title-input" i18n="@@scheduled-notification-tbl-name"
-                            >Name</label
-                        >
+                        <label for="notification-title-input" i18n="@@scheduled-notification-tbl-name">Name</label>
                         <label class="require">*</label>
                         <input
                             id="notification-name-input"
@@ -144,13 +141,6 @@
                             [ngClass]="{ 'has-error': errors.notificationContent && (isForceValidate || content.dirty || content.touched) }"
                             #content="ngModel"
                         ></textarea>
-                        <label
-                            id="notification-content-textarea-error"
-                            class="error mt-2 text-danger ml-0"
-                            for="notification-content-textarea"
-                            *ngIf="errors.notificationContent && (isForceValidate || content.dirty || content.touched)"
-                            >{{ errors.notificationContent }}</label
-                        >
                     </div>
                 </div>
             </form>
@@ -160,7 +150,10 @@
             i18n-title="@@create-scheduled-notification-wizard_step-custmer_title_field"
             title="Customer Target"
         >
-            <app-member-home canAddOrUpdateMember="false"></app-member-home>
+            <app-member-home
+                [isHideFilterControl]="selectedSchedule && selectedSchedule.id == '3'"
+                canAddOrUpdateMember="false"
+            ></app-member-home>
         </app-wizard-step>
     </app-wizard>
 </app-card>

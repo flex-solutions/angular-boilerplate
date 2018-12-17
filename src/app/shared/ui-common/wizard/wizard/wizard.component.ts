@@ -67,6 +67,7 @@ export class WizardComponent implements AfterContentInit {
   onNext() {
     this.selectedStep.beforeNext.emit();
     if (this.selectedStep.canNext) {
+      this.selectedStep.doNext.emit();
       this.wizardNavigator.next();
     }
   }
