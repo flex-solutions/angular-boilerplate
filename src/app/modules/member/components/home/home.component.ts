@@ -87,4 +87,8 @@ export class MemberHomeComponent implements OnInit {
   resetFilter = () => {
     this.loadData();
   }
+
+  navigateToFilterMember(member) {
+    // TODO: Implement in the feature
+  }
 }
