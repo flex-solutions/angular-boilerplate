@@ -2411,6 +2411,10 @@
         <source>Download code</source>
         <target>Tải mã voucher</target>
       </trans-unit>
+      <trans-unit id="voucher-running-edit" datatype="html">
+        <source>Edit voucher</source>
+        <target>Sửa thông tin voucher</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
