@@ -1,4 +1,4 @@
-import { POSService } from './../../../pos-and-menu/services/pos';
+import { CommonCreateEditVoucherComponent } from './common.component.';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { TranslateService } from './../../../../shared/services/translate.service';
@@ -9,12 +9,9 @@ import {
   VoucherType,
   VoucherOperationType
 } from './../../../../shared/models/voucher.model';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractFormComponent } from '../../../../shared/abstract/abstract-form-component';
-import { POSDto } from '../../../../shared/models/pos.model';
-import { VoucherCreationData } from '../../data';
-import { MenuItemDto, MenuItemTypeDto } from '../../../../shared/models/menu.model';
-import { eq, map, remove, join } from 'lodash';
+import { eq } from 'lodash';
 import { VoucherFormFactory } from './voucher-form.factory';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
@@ -24,40 +21,23 @@ import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
   // styleUrls: ['./create-edit.component.css']
 })
 export class CreateEditVoucherComponent extends AbstractFormComponent
-  implements OnInit, AfterViewInit {
+  implements OnInit {
   voucher: Voucher = new Voucher();
   voucherId: string;
   isDiscountAmount = true;
-  applyMenuType = -1;
   voucherGroupType: VoucherGroupType = VoucherGroupType.Discount;
   voucherOperationType: VoucherOperationType =
     VoucherOperationType.RepeatOneCode;
   isShowVoucherCodeInput = true;
 
-  poses: POSDto[] = [];
-  selectedPoses: any[] = [];
-
-  menuItems: MenuItemDto[] = [];
-  selectedMenuItems: any[] = [];
-  selectedAttachMenuItems: any[] = [];
-
-  menuItemTypes: MenuItemTypeDto[] = [];
-  selectedMenuItemTypes: any[] = [];
-  selectedAttachMenuItemTypes: any[] = [];
-
-  applyDays: any[] = [];
-  selectedApplyDays: any[] = [];
-
-  applyHours: any[] = [];
-  selectedApplyHours: any[] = [];
-
   createVoucherSuccessMsg: string;
+
+  @ViewChild('commonCreateEditVoucher') commonCreateEditVoucher: CommonCreateEditVoucherComponent;
 
   constructor(
     private readonly voucherService: VoucherService,
     public readonly translateService: TranslateService,
     private readonly router: Router,
-    private readonly posService: POSService,
     private readonly notification: NotificationService,
     public readonly voucherFormFactory: VoucherFormFactory,
     activatedRoute: ActivatedRoute
@@ -77,36 +57,17 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
 
     setTimeout(() => {
       if (!this.isEdit) {
-        this.getPosesAsync();
+        this.commonCreateEditVoucher.init();
       } else {
         this.getVoucherForEdit();
       }
     });
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.applyDays = VoucherCreationData.applyDays;
-      this.applyHours = VoucherCreationData.applyHours;
-    });
-  }
-
   protected onSubmit() {
     this.voucher.type = this.voucherType;
     this.voucher.operationType = this.voucherOperationType;
-    this.voucher.applyPoses = map(this.selectedPoses, 'id');
-    this.voucher.applyMenuItemTypes = map(this.selectedMenuItemTypes, 'id');
-    this.voucher.applyMenuItems = map(this.selectedMenuItems, 'id');
-    this.voucher.applyDays = map(this.selectedApplyDays, 'id');
-    this.voucher.applyHourRanges = map(this.selectedApplyHours, 'id');
-    this.voucher.attachGiftOfMenuItemTypes = map(
-      this.selectedAttachMenuItemTypes,
-      'id'
-    );
-    this.voucher.attachGiftOfMenuItems = map(
-      this.selectedAttachMenuItems,
-      'id'
-    );
+    this.commonCreateEditVoucher.submit(this.voucher);
 
     if (!this.isEdit) {
       this.voucherService.create(this.voucher).subscribe(() => {
@@ -115,9 +76,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
       });
     } else {
       this.voucherService.update(this.voucher).subscribe(() => {
-        this.notification.showSuccess(
-          `Voucher "${this.voucher.name}" has been updated`
-        );
+        const msg = this.translateService.translate('voucher-edit-success', this.voucher.name);
+        this.notification.showSuccess(msg);
       });
     }
   }
@@ -136,82 +96,11 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     this.rebuildFormGroup();
   }
 
-  private async getPosesAsync() {
-    this.poses = await this.posService.find().toPromise();
-  }
-
-  private getMenuItems() {
-    const posIds = this.getPosIds();
-    this.posService
-      .findMenuItems(posIds)
-      .subscribe(menuItems => {
-        this.menuItems = menuItems;
-        if (this.isEdit && this.voucher) {
-          if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItems)) {
-            this.selectedMenuItems = this.menuItems.filter(
-              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItems.find(p => p === i._id)));
-          }
-          if (!isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems)) {
-            this.selectedAttachMenuItems = this.menuItems.filter(
-              (i: MenuItemDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItems.find(p => p === i._id)));
-          }
-        }
-      });
-  }
-
-  private getMenuItemTypes() {
-    const posIds = this.getPosIds();
-    this.posService
-      .findMenuItemTypes(posIds)
-      .subscribe(menuItemTypes => {
-        this.menuItemTypes = menuItemTypes;
-        if (this.isEdit && this.voucher) {
-          if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
-            this.selectedMenuItemTypes = this.menuItemTypes.filter(
-              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes.find(p => p === i._id)));
-          }
-          if (!isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes)) {
-            this.selectedAttachMenuItemTypes = this.menuItemTypes.filter(
-              (i: MenuItemTypeDto) => !isNullOrEmptyOrUndefined(this.voucher.attachGiftOfMenuItemTypes.find(p => p === i._id)));
-          }
-        }
-      });
-  }
-
   private async getVoucherForEdit() {
-    await this.getPosesAsync();
+    await this.commonCreateEditVoucher.init();
     this.voucherService.getById(this.voucherId).subscribe(res => {
       this.voucher = res;
-      if (
-        !isNullOrEmptyOrUndefined(this.voucher.applyPoses) &&
-        !isNullOrEmptyOrUndefined(this.poses)
-      ) {
-        this.selectedPoses = this.poses.filter(
-          i =>
-            !isNullOrEmptyOrUndefined(
-              this.voucher.applyPoses.find(p => p === i._id)
-            )
-        );
-      }
-      this.selectedApplyDays = VoucherCreationData.applyDays.filter(
-        i =>
-          !isNullOrEmptyOrUndefined(
-            this.voucher.applyDays.find(p => p === i.id)
-          )
-      );
-      this.selectedApplyHours = VoucherCreationData.applyHours.filter(
-        i =>
-          !isNullOrEmptyOrUndefined(
-            this.voucher.applyHourRanges.find(p => p === i.id)
-          )
-      );
-
-      if (!isNullOrEmptyOrUndefined(this.voucher.applyMenuItemTypes)) {
-        this.applyMenuType = 0;
-      } else {
-        this.applyMenuType = 1;
-      }
-      this.onApplyMenuTypeChange();
+      this.commonCreateEditVoucher.assignData(this.voucher);
 
       if (this.voucher.type !== VoucherType.XGetY) {
         this.isDiscountAmount =
@@ -229,27 +118,6 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     this.buildFormGroupBaseOnVoucherType();
     this.buildFormGroupBaseOnVoucherOperationType();
     this.formGroup = this.voucherFormFactory.formGroup;
-  }
-
-  private removeSelectedGiftSet() {
-    if (this.voucherGroupType === VoucherGroupType.XGetY) {
-      remove(this.selectedAttachMenuItems, item => item.id);
-      remove(this.selectedAttachMenuItemTypes, item => item.id);
-    }
-  }
-
-  private removeSelectedMenus() {
-    remove(this.selectedMenuItems, item => item.id);
-    remove(this.selectedMenuItemTypes, item => item.id);
-  }
-
-  private getPosIds(): string {
-    let posIds = '';
-    if (!isNullOrEmptyOrUndefined(this.selectedPoses)) {
-      const ids = map(this.selectedPoses, 'id');
-      posIds = join(ids, ';');
-    }
-    return posIds;
   }
 
   get code() {
@@ -278,21 +146,8 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     return VoucherType.XGetY;
   }
 
-  onApplyMenuTypeChange() {
-    this.removeSelectedMenus();
-    this.removeSelectedGiftSet();
-    switch (+this.applyMenuType) {
-      case 0:
-        this.getMenuItemTypes();
-        break;
-      case 1:
-        this.getMenuItems();
-        break;
-    }
-  }
-
   buildFormGroupBaseOnVoucherType() {
-    this.removeSelectedGiftSet();
+    this.commonCreateEditVoucher.removeSelectedGiftSet();
     this.formGroup = this.voucherFormFactory.produceBaseOnVoucherType(
       this.voucherType
     );
@@ -306,13 +161,5 @@ export class CreateEditVoucherComponent extends AbstractFormComponent
     this.formGroup = this.voucherFormFactory.produceBaseOnVoucherOperationType(
       this.voucherOperationType
     );
-  }
-
-  onSelectedPosesChanged() {
-    this.removeSelectedMenus();
-    this.removeSelectedGiftSet();
-
-    this.getMenuItems();
-    this.getMenuItemTypes();
   }
 }

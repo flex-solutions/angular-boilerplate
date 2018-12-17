@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'app-wizard-step',
     templateUrl: './wizard-step.component.html',
-    styleUrls: ['./wizard-step.component.css'],
+    styleUrls: ['./wizard-step.component.css']
 })
 export class WizardStepComponent {
     @Input()
@@ -19,6 +19,9 @@ export class WizardStepComponent {
     beforeNext = new EventEmitter();
 
     @Output()
+    doNext = new EventEmitter();
+
+    @Output()
     beforePrevious = new EventEmitter();
 
     // Call before execute next action
@@ -32,8 +35,8 @@ export class WizardStepComponent {
     headerClasses: string;
 
     /**
-    * A boolean describing if the wizard step is currently selected
-    */
+     * A boolean describing if the wizard step is currently selected
+     */
     public selected = false;
 
     constructor() {

@@ -2,6 +2,7 @@
   [(filter)]="memberFilter"
   (runFilterClicked)="onRunFilterClicked()"
   [resetFunction]="resetFilter"
+  *ngIf="!isHideFilterControl"
 ></app-member-filter>
 <app-card title="Members" i18n-title="@@members-list-tbl-title">
   <div class="command-region">

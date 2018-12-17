@@ -1,0 +1,159 @@
+<app-card [title]="cardTitle" [subTitle]="cardDescription">
+    <app-wizard (cancelClicked)="onWizardCancel()" (finishClicked)="onWizardFinish()">
+        <app-wizard-step
+            isFirstStep="true"
+            title="Notification"
+            i18n-title="@@create-scheduled-notification-step-1-title"
+            (doNext)="onNextStep1()"
+            (beforeNext)="beforeNextStep1()"
+        >
+            <form id="createEditScheduledNotificationForm" #f="ngForm">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="schedule-select-2" i18n="@@create-scheduled-notification-step-1-frm-schedule">Schedule</label>
+                        <app-select2
+                            id="schedule-select-2"
+                            [(itemsSource)]="scheduleTypes"
+                            [(selectedItem)]="selectedSchedule"
+                            displayPropertyName="name"
+                            [autoClear]="false"
+                        ></app-select2>
+                    </div>
+                    <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '3'">
+                        <label for="days-input" i18n="@@create-scheduled-notification-step-1-frm-days">Days</label>
+                        <label class="require">*</label>
+                        <input
+                            id="days-input"
+                            class="form-control"
+                            appInputNumber
+                            type="number"
+                            [(ngModel)]="selectedDays"
+                            [ngModelOptions]="{ standalone: true }"
+                            (change)="onValidate()"
+                            [ngClass]="{ 'has-error': errors.selectedDays && (isForceValidate || days.dirty || days.touched) }"
+                            #days="ngModel"
+                        />
+                        <label
+                            id="days-input-error"
+                            class="error mt-2 text-danger ml-0"
+                            for="days-input"
+                            *ngIf="errors.selectedDays && (isForceValidate || days.dirty || days.touched)"
+                            >{{ errors.selectedDays }}</label
+                        >
+                    </div>
+                    <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '1'">
+                        <label for="day-of-week-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-week">Day of week</label>
+                        <label class="require">*</label>
+                        <app-select2
+                            id="day-of-week-select-2"
+                            [(itemsSource)]="daysOfWeek"
+                            [(selectedItem)]="selectedDayOfWeek"
+                            placeHolder="Select a day of week"
+                            displayPropertyName="name"
+                            [autoClear]="false"
+                        ></app-select2>
+                    </div>
+                    <div class="form-group col-md-12" *ngIf="selectedSchedule && selectedSchedule.id == '2'">
+                        <label for="day-of-month-select-2" i18n="@@create-scheduled-notification-step-1-frm-day-of-month"
+                            >Day of month</label
+                        >
+                        <label class="require">*</label>
+                        <app-select2
+                            id="day-of-month-select-2"
+                            [(itemsSource)]="daysOfMonth"
+                            [(selectedItem)]="selectedDayOfMonth"
+                            placeHolder="Select a day of month"
+                            displayPropertyName="name"
+                            [autoClear]="false"
+                        ></app-select2>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label
+                            for="time-to-push-notification-select-2"
+                            i18n="@@create-scheduled-notification-step-1-frm-time-to-push-notification"
+                            >Time to push notification</label
+                        >
+                        <label class="require">*</label>
+                        <app-select2
+                            id="time-to-push-notification-select-2"
+                            [(itemsSource)]="timesToPushNotification"
+                            [(selectedItem)]="selectedTimeToPushNotification"
+                            placeHolder="Select a time to push notification"
+                            displayPropertyName="name"
+                            [autoClear]="false"
+                        ></app-select2>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="notification-title-input" i18n="@@scheduled-notification-tbl-name">Name</label>
+                        <label class="require">*</label>
+                        <input
+                            id="notification-name-input"
+                            class="form-control"
+                            [(ngModel)]="notificationName"
+                            [ngModelOptions]="{ standalone: true }"
+                            (change)="onValidate()"
+                            [ngClass]="{ 'has-error': errors.notificationName && (isForceValidate || name.dirty || name.touched) }"
+                            #name="ngModel"
+                        />
+                        <label
+                            id="notification-name-input-error"
+                            class="error mt-2 text-danger ml-0"
+                            for="notification-name-input"
+                            *ngIf="errors.notificationName && (isForceValidate || name.dirty || name.touched)"
+                            >{{ errors.notificationName }}</label
+                        >
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="notification-title-input" i18n="@@create-scheduled-notification-step-1-frm-title"
+                            >Notification Title</label
+                        >
+                        <label class="require">*</label>
+                        <input
+                            id="notification-title-input"
+                            class="form-control"
+                            [(ngModel)]="notificationTitle"
+                            [ngModelOptions]="{ standalone: true }"
+                            (change)="onValidate()"
+                            [ngClass]="{ 'has-error': errors.notificationTitle && (isForceValidate || title.dirty || title.touched) }"
+                            #title="ngModel"
+                        />
+                        <label
+                            id="notification-title-input-error"
+                            class="error mt-2 text-danger ml-0"
+                            for="notification-title-input"
+                            *ngIf="errors.notificationTitle && (isForceValidate || title.dirty || title.touched)"
+                            >{{ errors.notificationTitle }}</label
+                        >
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="notification-content-textarea" i18n="@@create-scheduled-notification-step-1-frm-content"
+                            >Notification Content</label
+                        >
+                        <label class="require">*</label>
+                        <textarea
+                            id="title"
+                            name="title"
+                            class="form-control"
+                            rows="6"
+                            [ngModelOptions]="{ standalone: true }"
+                            [(ngModel)]="notificationContent"
+                            (change)="onValidate()"
+                            [ngClass]="{ 'has-error': errors.notificationContent && (isForceValidate || content.dirty || content.touched) }"
+                            #content="ngModel"
+                        ></textarea>
+                    </div>
+                </div>
+            </form>
+        </app-wizard-step>
+        <app-wizard-step
+            isLastStep="true"
+            i18n-title="@@create-scheduled-notification-wizard_step-custmer_title_field"
+            title="Customer Target"
+        >
+            <app-member-home
+                [isHideFilterControl]="selectedSchedule && selectedSchedule.id == '3'"
+                canAddOrUpdateMember="false"
+            ></app-member-home>
+        </app-wizard-step>
+    </app-wizard>
+</app-card>
