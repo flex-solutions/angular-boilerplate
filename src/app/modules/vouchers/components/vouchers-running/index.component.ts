@@ -74,4 +74,8 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
     const fileName = `${item.voucher.name}.xlsx`;
     this.promotionsService.exportBatchVoucher(item.id, fileName);
   }
+
+  editVoucher(item: VoucherOperationDtoBase) {
+
+  }
 }
