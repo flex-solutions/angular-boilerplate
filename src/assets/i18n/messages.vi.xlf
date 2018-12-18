@@ -1913,6 +1913,10 @@
         <source>Customer care</source>
         <target>Chiến dịch CSKH</target>
       </trans-unit>
+      <trans-unit id="voucher-using-purpose-register-care" datatype="html">
+        <source>Register app</source>
+        <target>Đăng ký app</target>
+      </trans-unit>
       <trans-unit id="voucher-campaign-name" datatype="html">
         <source>Program name</source>
         <target>Tên chương trình</target>

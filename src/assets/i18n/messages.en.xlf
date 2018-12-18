@@ -1923,6 +1923,10 @@
         <source>Customer care</source>
         <target>Customer care</target>
       </trans-unit>
+      <trans-unit id="voucher-using-purpose-register-care" datatype="html">
+        <source>Register app</source>
+        <target>Register app</target>
+      </trans-unit>
       <trans-unit id="voucher-campaign-name" datatype="html">
         <source>Program name</source>
         <target>Program name</target>
