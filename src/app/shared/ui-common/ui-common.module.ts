@@ -26,6 +26,7 @@ import { InputEditableInlineComponent } from './input-editable-inline/input-edit
 import { InputNumberDirective } from './directives/input-number.directive';
 import { ImgBinaryDirective } from './directives/img-binary.directive';
 import { INJECT_TOKEN } from './const';
+import { LoadingElementDirective } from './loading-bar/loading-element.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -51,6 +52,7 @@ import { INJECT_TOKEN } from './const';
     AddressComponent,
     InputEditableInlineComponent,
     InputNumberDirective,
+    LoadingElementDirective
   ],
   declarations: [
     LoaderComponent,
@@ -70,7 +72,8 @@ import { INJECT_TOKEN } from './const';
     ImgBinaryDirective,
     AddressComponent,
     InputEditableInlineComponent,
-    InputNumberDirective
+    InputNumberDirective,
+    LoadingElementDirective
   ],
   providers: [{
     provide: INJECT_TOKEN.LOADING_INDICATOR,

@@ -13,7 +13,7 @@ export class LoaderComponent implements OnInit, OnDestroy {
   show = false;
   private subscription: Subscription;
 
-  constructor(@Inject(INJECT_TOKEN.LOADING_INDICATOR)private loaderService: LoaderService) {
+  constructor(@Inject(INJECT_TOKEN.LOADING_INDICATOR) private loaderService: LoaderService) {
     this.subscription = this.loaderService.loaderState.subscribe((state: LoaderState) => {
       this.show = state.show;
     });
