@@ -8,13 +8,13 @@ import { TranslateService } from './services/translate.service';
 import { HelperService } from './services/helper.service';
 import { CustomErrorHandlerService } from './services/custom-error-handler.service';
 import { httpInterceptorProviders } from './http-interceptors';
-import { UICommonModule } from './ui-common/ui-common.module';
 import { BrowserNotificationService } from './services/browser-notification.service';
 import { ForbiddenHandler } from './services/forbidden-handler.service';
 import { GlobalPipes } from './pipes';
+import { UICommonModule } from './ui-common/ui-common.module';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, UICommonModule],
   exports: [LayoutModule, UICommonModule, ...GlobalPipes],
   providers: [
     NotificationService,
@@ -24,10 +24,11 @@ import { GlobalPipes } from './pipes';
     CustomErrorHandlerService,
     httpInterceptorProviders,
     BrowserNotificationService,
-    ForbiddenHandler
+    ForbiddenHandler,
   ],
   declarations: [ CanUpdateDirective, ...GlobalPipes ]
 })
+
 export class SharedModule {
   static injector: Injector;
 

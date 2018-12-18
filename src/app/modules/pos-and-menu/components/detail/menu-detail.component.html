@@ -16,16 +16,17 @@
                                 <h6>
                                     {{menuItem.itemId}} - {{menuItem.name}} 
                                     <span *ngIf="!isShowAll" [appMenuItemStatus]="menuItem.status"> </span>
+                                    <span [appMenuItemExchangePoint] = "menuItem.canExchangePoint"> </span>
                                 </h6>
-                                <p class="mt-2">{{menuItem.itemType.name}}</p>
+                                <p class="mt-2">{{menuItem.itemType?.name}}</p>
                                 <p class="text-muted" style="word-break: break-word">{{menuItem.description}}</p>
-                                <p class="mt-2">{{menuItem.otsPrice}}</p>
+                                <p class="mt-2">{{menuItem.taPrice | currency:'đ':'symbol':'1.0-2'}}</p>
                             </div>
                         </div>
                     </div>
                 </td>
                 <td >
-                    <div class="template-demo" *ngIf="!isShowAll">
+                    <div class="template-demo">
                         <button type="button" class="btn btn-inverse-primary btn-rounded btn-fw" (click)="edit(menuItem)"  style="float: left;">Edit</button>
                     </div>
                 </td>
