@@ -25,6 +25,8 @@ import { AddressComponent } from './address/address.component';
 import { InputEditableInlineComponent } from './input-editable-inline/input-editable-inline.component';
 import { InputNumberDirective } from './directives/input-number.directive';
 import { ImgBinaryDirective } from './directives/img-binary.directive';
+import { INJECT_TOKEN } from './const';
+import { LoadingElementDirective } from './loading-bar/loading-element.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
@@ -49,7 +51,8 @@ import { ImgBinaryDirective } from './directives/img-binary.directive';
     ImgBinaryDirective,
     AddressComponent,
     InputEditableInlineComponent,
-    InputNumberDirective
+    InputNumberDirective,
+    LoadingElementDirective
   ],
   declarations: [
     LoaderComponent,
@@ -69,8 +72,12 @@ import { ImgBinaryDirective } from './directives/img-binary.directive';
     ImgBinaryDirective,
     AddressComponent,
     InputEditableInlineComponent,
-    InputNumberDirective
+    InputNumberDirective,
+    LoadingElementDirective
   ],
-  providers: [LoaderService, AddressService]
+  providers: [{
+    provide: INJECT_TOKEN.LOADING_INDICATOR,
+    useValue: new LoaderService()
+  }, AddressService]
 })
 export class UICommonModule {}
