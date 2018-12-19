@@ -78,20 +78,19 @@ export class GiveVoucherComponent implements OnInit {
   }
 
   private updateCustomerCareCampaignModel() {
-    console.log(this.skipType);
-    // this.model = {
-    //   voucher: this.selectedVoucher,
-    //   member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
-    //   startDate: this.affectTime.startDate,
-    //   endDate: this.affectTime.endDate,
-    //   notificationMsg: this.notificationMessage,
-    //   skipType: this.skipType
-    // };
+    this.model = {
+      voucher: this.selectedVoucher,
+      member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
+      startDate: this.affectTime.startDate,
+      endDate: this.affectTime.endDate,
+      notificationMsg: this.notificationMessage,
+      skipType: this.skipType
+    };
 
-    // this._promotionService.giveVoucher(this.model).subscribe(() => {
-    //   this._notificationService.showSuccess(this.successMsg);
-    //   this.reset();
-    // });
+    this._promotionService.giveVoucher(this.model).subscribe(() => {
+      this._notificationService.showSuccess(this.successMsg);
+      this.reset();
+    });
   }
 
   private reset() {
