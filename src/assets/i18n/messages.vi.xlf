@@ -2457,6 +2457,10 @@
         <source>Give voucher successfully</source>
         <target>Tặng voucher hoàn tất</target>
       </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members" datatype="html">
+        <source>Ignore duplicate giving</source>
+        <target>Không gởi hội viên đã được tặng trước đây</target>
+      </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
       <trans-unit id="pos-menu-list-title" datatype="html">

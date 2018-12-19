@@ -24,6 +24,7 @@ export class GiveVoucherComponent implements OnInit {
   model: IGiveVoucherModel;
   notificationMessage: string;
   affectTime: DateRangeModel;
+  isIgnoreAssignedMember = true;
 
   vouchers: Voucher[] = [];
   selectedVoucher: Voucher = new Voucher();
@@ -82,7 +83,8 @@ export class GiveVoucherComponent implements OnInit {
       member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
       startDate: this.affectTime.startDate,
       endDate: this.affectTime.endDate,
-      notificationMsg: this.notificationMessage
+      notificationMsg: this.notificationMessage,
+      isIgnoreAssignedMember: this.isIgnoreAssignedMember
     };
 
     this._promotionService.giveVoucher(this.model).subscribe(() => {

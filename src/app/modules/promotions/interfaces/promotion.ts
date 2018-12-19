@@ -24,6 +24,7 @@ export interface IGiveVoucherModel {
   notificationMsg: string;
   startDate: Date;
   endDate: Date;
+  isIgnoreAssignedMember: boolean;
 }
 
 export class StatusCheckedItem implements CheckedItem {

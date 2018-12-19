@@ -1,3 +1,4 @@
+import { TranslateService } from './../../services/translate.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Directive, Inject, OnDestroy, ElementRef, Input, OnChanges } from '@angular/core';
 import { INJECT_TOKEN } from '../const';
@@ -10,12 +11,14 @@ declare let $: any;
 export class LoadingElementDirective implements OnDestroy, OnChanges, AfterViewInit {
 
   @Input() showBusy = 'true';
+  @Input() content: string;
+  private _content: string;
   private loading = false;
   private subscription: Subscription;
   private host: any;
-  private hostContent: any;
 
   constructor(@Inject(INJECT_TOKEN.LOADING_INDICATOR) private loaderService: LoaderService,
+  private translator: TranslateService,
   el: ElementRef) {
     this.subscription = this.loaderService.loaderState.subscribe((state: LoaderState) => {
       this.loading = state.show;
@@ -34,7 +37,18 @@ export class LoadingElementDirective implements OnDestroy, OnChanges, AfterViewI
 
   ngAfterViewInit() {
     this.setState();
-    this.hostContent = $(this.host).text();
+  }
+
+  get elementContent() {
+    if (this.content.trim() === '') {
+      this._content = $(this.host).text();
+    } else {
+      if (this._content === '' || this._content === undefined || this._content === null) {
+        this._content = this.translator.translate(this.content);
+      }
+    }
+
+    return this._content;
   }
 
   setState() {
@@ -60,7 +74,7 @@ export class LoadingElementDirective implements OnDestroy, OnChanges, AfterViewI
     } else {
       $(this.host).removeAttr('disabled');
       if (this.showBusy === 'true') {
-        $(this.host).html(this.hostContent);
+        $(this.host).html(this.elementContent);
       }
     }
   }
