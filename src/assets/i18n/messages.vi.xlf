@@ -2459,7 +2459,15 @@
       </trans-unit>
       <trans-unit id="give-voucher-ignore-assigned-members" datatype="html">
         <source>Ignore duplicate giving</source>
-        <target>Không gởi hội viên đã được tặng trước đây</target>
+        <target>Bỏ qua hội viên đã được tặng nhưng chưa sử dụng voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members-history" datatype="html">
+        <source>Ignore duplicate giving voucher and member used this voucher</source>
+        <target>Bỏ qua hội viên đã được tặng nhưng chưa sử dụng hoặc đã sử dụng voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-no-ignored" datatype="html">
+        <source>No ignore</source>
+        <target>Không bỏ qua</target>
       </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
@@ -2572,15 +2580,15 @@
         <source>Search by name, type</source>
         <target>Tìm kiếm theo tên và loại</target>
       </trans-unit>
-         <trans-unit id="pos-menu-item-image" datatype="html">
+      <trans-unit id="pos-menu-item-image" datatype="html">
         <source>Avarta</source>
         <target>Hình</target>
       </trans-unit>
-       <trans-unit id="pos-menu-item-th-description" datatype="html">
+      <trans-unit id="pos-menu-item-th-description" datatype="html">
         <source>Description</source>
         <target>Mô tả</target>
       </trans-unit>
-        <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
+      <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
         <source> Apply all for same items</source>
         <target>Áp dụng cho những sản phẩm cùng loại</target>
       </trans-unit>
@@ -2662,7 +2670,8 @@
       </trans-unit>
       <trans-unit id="create-scheduled-notification-sub-title" datatype="html">
         <source>This page allows you create scheduled notification for a group of customers</source>
-        <target>Trang này cho phép bạn tạo thông báo mới gởi tới một nhóm hội viên được chọn theo một lịch trình cố định</target>
+        <target>Trang này cho phép bạn tạo thông báo mới gởi tới một nhóm hội viên được chọn theo một lịch trình cố
+          định</target>
       </trans-unit>
       <trans-unit id="edit-scheduled-notification-sub-title" datatype="html">
         <source>This page allows you edit scheduled notification for a group of customers</source>

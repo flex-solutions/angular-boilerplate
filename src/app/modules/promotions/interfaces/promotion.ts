@@ -24,9 +24,14 @@ export interface IGiveVoucherModel {
   notificationMsg: string;
   startDate: Date;
   endDate: Date;
-  isIgnoreAssignedMember: boolean;
+  skipType: VoucherGivingSkipType;
 }
 
+export enum VoucherGivingSkipType {
+  AssignedAndNotUse = 0,
+  AssignedAndUseOrNotUse,
+  None
+}
 export class StatusCheckedItem implements CheckedItem {
   displayName: string;
   status: PromotionStatus;

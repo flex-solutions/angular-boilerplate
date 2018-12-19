@@ -2463,7 +2463,15 @@
       </trans-unit>
       <trans-unit id="give-voucher-ignore-assigned-members" datatype="html">
         <source>Ignore duplicate giving</source>
-        <target>Không gởi hội viên đã được tặng trước đây</target>
+        <target>Ignore duplicate giving</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members-history" datatype="html">
+        <source>Ignore duplicate giving voucher and member used this voucher</source>
+        <target>Ignore duplicate giving voucher and member used this voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-no-ignored" datatype="html">
+        <source>No ignore</source>
+        <target>No ignore</target>
       </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->

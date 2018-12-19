@@ -37,7 +37,8 @@
           <div class="card">
             <div class="card-header" role="tab" id="headingConfig">
               <h6 class="mb-0">
-                <a data-toggle="collapse" href="#collapseConfig" aria-expanded="true" aria-controls="collapseConfig" class="collapsed">
+                <a data-toggle="collapse" href="#collapseConfig" aria-expanded="true" aria-controls="collapseConfig"
+                  class="collapsed">
                   <i class="card-icon mdi mdi-settings-outline"></i>
                   <span>Tùy chọn</span>
                 </a>
@@ -48,14 +49,35 @@
               <div class="card-body">
                 <form>
                   <div class="row">
-                    <div class="form-group">
-                      <div class="form-check form-check-flat chk" style="margin-top:0; margin-bottom:0;margin-left:7px">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" [(ngModel)]="isIgnoreAssignedMember" [ngModelOptions]="{standalone: true}">
-                          <i class="input-helper"></i>
-                          <label class="chk-label" style="margin-top:5px" i18n="@@give-voucher-ignore-assigned-members">Ignore duplicate giving</label>
-                        </label>
-                      </div>
+                    <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                      <label class="form-check-label">
+                        <input type="radio" name="give-voucher-skip-option" [checked]="skipType === 1" value="1" class="form-check-input"
+                          (change)="skipType = $event.target.value">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" i18n="@@give-voucher-ignore-assigned-members-history">Ignore
+                          duplicate giving voucher and member used this voucher</label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                      <label class="form-check-label">
+                        <input type="radio" name="give-voucher-skip-option" [checked]="skipType === 0" value="0" class="form-check-input"
+                          (change)="skipType = $event.target.value">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" i18n="@@give-voucher-ignore-assigned-members">Ignore
+                          duplicate giving</label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                      <label class="form-check-label">
+                        <input type="radio" name="give-voucher-skip-option" [checked]="skipType === 2" value="2" class="form-check-input"
+                          (change)="skipType = $event.target.value">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" i18n="@@give-voucher-no-ignored">Không bỏ qua</label>
+                      </label>
                     </div>
                   </div>
                 </form>
