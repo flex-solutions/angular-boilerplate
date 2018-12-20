@@ -27695,7 +27695,7 @@ pre {
 .form-radio .form-check-label input + .input-helper:before {
   position: absolute;
   content: '';
-  top: 2px;
+  top: 7px;
   left: 0;
   border: 2px solid #e6e6e6;
   width: 20px;
