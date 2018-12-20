@@ -40,7 +40,7 @@ export class LoadingElementDirective implements OnDestroy, OnChanges, AfterViewI
   }
 
   get elementContent() {
-    if (this.content.trim() === '') {
+    if (this.content && this.content.trim() === '') {
       this._content = $(this.host).text();
     } else {
       if (this._content === '' || this._content === undefined || this._content === null) {
