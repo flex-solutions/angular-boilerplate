@@ -33,12 +33,12 @@
               </div>
             </td>
             <td>
-              {{group.name}}
+              <label style="font-size: 0.8rem;margin-top:14px">{{group.name}}</label>
             </td>
             <td>
-              <span class="change-color">
-                <a (click)="navigateToPermissionScheme(group.permissionScheme._id, group.permissionScheme.name)">{{group.permissionScheme.name}}</a>
-              </span>
+              <label class="radio-a-group" style="margin-top:16px">
+                <a class="a-clickable" (click)="navigateToPermissionScheme(group.permissionScheme._id, group.permissionScheme.name)">{{group.permissionScheme.name}}</a>
+              </label>
             </td>
           </tr>
         </tbody>
