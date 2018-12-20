@@ -15,7 +15,9 @@ export class LoaderComponent implements OnInit, OnDestroy {
 
   constructor(@Inject(INJECT_TOKEN.LOADING_INDICATOR) private loaderService: LoaderService) {
     this.subscription = this.loaderService.loaderState.subscribe((state: LoaderState) => {
-      this.show = state.show;
+      setTimeout(() => {
+        this.show = state.show;
+      }, 500);
     });
   }
 
