@@ -17,7 +17,7 @@ export class LoaderComponent implements OnInit, OnDestroy {
     this.subscription = this.loaderService.loaderState.subscribe((state: LoaderState) => {
       setTimeout(() => {
         this.show = state.show;
-      }, 1000);
+      }, 500);
     });
   }
 
