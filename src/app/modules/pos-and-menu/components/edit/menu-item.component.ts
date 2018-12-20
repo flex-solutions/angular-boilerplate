@@ -71,7 +71,6 @@ export class EditMenuItemComponent extends AbstractFormComponent
   }
 
   protected onSubmit() {
-    console.log(this.isApplyAll);
     this.posService.updateMenuITem(this.menuItem, this.isApplyAll).subscribe(() => {
         const successMsg = this.translateService.translate(
           'pos-menu-update-pos-success',

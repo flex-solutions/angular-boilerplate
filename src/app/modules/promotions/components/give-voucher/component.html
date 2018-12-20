@@ -19,7 +19,8 @@
           <div class="form-group col-md-12">
             <label for="applyDays" i18n="@@give-voucher-effect-days">Effective time</label>
             <label class="require">*</label>
-            <app-date-range-picker [(dateRange)]="affectTime" [timePicker]="true" [canReset]="false" [canSelectPastDate]="false"></app-date-range-picker>
+            <app-date-range-picker [(dateRange)]="affectTime" [timePicker]="true" [canReset]="false"
+              [canSelectPastDate]="false"></app-date-range-picker>
           </div>
           <div class="form-group col-md-12">
             <label i18n="@@give-voucher-notification-message">Nội dung thông báo</label>
@@ -31,8 +32,60 @@
     </app-wizard-step>
     <app-wizard-step isLastStep="true" i18n-title="@@promotions-create_edit_promotion-wizard_step-custmer_title_field"
       title="Member Target">
-      <app-member-home canAddOrUpdateMember="false"></app-member-home>
+      <app-member-home canAddOrUpdateMember="false">
+        <div class="accordion basic-accordion" id="accordionConfig" role="tablist">
+          <div class="card">
+            <div class="card-header" role="tab" id="headingConfig">
+              <h6 class="mb-0">
+                <a data-toggle="collapse" href="#collapseConfig" aria-expanded="true" aria-controls="collapseConfig"
+                  class="collapsed">
+                  <i class="card-icon mdi mdi-settings-outline"></i>
+                  <span>Tùy chọn</span>
+                </a>
+              </h6>
+            </div>
+            <div id="collapseConfig" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionConfig"
+              style="">
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                      <label class="form-check-label">
+                        <input type="radio" name="give-voucher-skip-option" [checked]="skipType === 1" value="1" class="form-check-input"
+                          (change)="skipType = $event.target.value">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" i18n="@@give-voucher-ignore-assigned-members-history">Ignore
+                          duplicate giving voucher and member used this voucher</label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                      <label class="form-check-label">
+                        <input type="radio" name="give-voucher-skip-option" [checked]="skipType === 0" value="0" class="form-check-input"
+                          (change)="skipType = $event.target.value">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" i18n="@@give-voucher-ignore-assigned-members">Ignore
+                          duplicate giving</label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                      <label class="form-check-label">
+                        <input type="radio" name="give-voucher-skip-option" [checked]="skipType === 2" value="2" class="form-check-input"
+                          (change)="skipType = $event.target.value">
+                        <i class="input-helper"></i>
+                        <label class="chk-label" i18n="@@give-voucher-no-ignored">Không bỏ qua</label>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-member-home>
     </app-wizard-step>
   </app-wizard>
-
 </app-card>

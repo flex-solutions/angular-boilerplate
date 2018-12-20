@@ -10,7 +10,7 @@
       <div class="row">
         <div class="form-group col-md-12" [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched)}">
           <label for="description" i18n="@@pos-menu-item-th-description">Description</label>
-          <input id="description" required class="form-control" formControlName="description" [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched) }"
+          <input id="description" class="form-control" formControlName="description" [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched) }"
             [(ngModel)]="menuItem.description" placeholder="Enter description">
           <div class="form-control-feedback" *ngFor="let error of errors.description">
             <p *ngIf="description.hasError(error.type) && (description.dirty || description.touched)" class="error mt-2 text-danger">{{translateService.translate(error.message,
@@ -38,13 +38,13 @@
       <div class="form-cmds">
           <button  class="btn btn-success btn-small mr-2" i18n="@@common_button-submit" (click)="submit()">Submit</button>
           <button class="btn btn-light btn-small mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
-          <div class="form-check form-check-flat">
+          <!-- <div class="form-check form-check-flat">
             <label class="form-check-label" style="padding-left: 4px">
               <input type="checkbox" formControlName="isApplyForAllItem" class="form-check-input form-control" [(ngModel)]="isApplyAll">
               <i class="input-helper"></i>
               <label class="chk-label" i18n="@@menu-tem-label-apply_for_all_item"> Apply all for same items</label>
             </label>
-          </div>
+          </div> -->
         </div>
       <!-- Form buttons --> 
 

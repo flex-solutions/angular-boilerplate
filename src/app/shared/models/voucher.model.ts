@@ -15,6 +15,7 @@ export enum VoucherOperationType {
 RepeatOneCode,
 BatchExport,
 MemberCare,
+RegisterApp,
 }
 
 export enum VoucherAdvanceMenuItemPriceAlow {
