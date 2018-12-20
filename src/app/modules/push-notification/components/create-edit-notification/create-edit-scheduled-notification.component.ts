@@ -98,7 +98,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
             Object.assign(this.membersList.memberFilter, {
                 daysAreNotReturned: {
                     from: this.selectedDays ? this.selectedDays : 0,
-                    to: Number.MAX_VALUE
+                    to: this.selectedDays ? this.selectedDays : 0
                 }
             });
 
