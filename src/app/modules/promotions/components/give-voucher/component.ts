@@ -6,7 +6,7 @@ import { VoucherService } from './../../../vouchers/services/vouchers.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { Location } from '@angular/common';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { IGiveVoucherModel } from './../../interfaces/promotion';
+import { IGiveVoucherModel, VoucherGivingSkipType } from './../../interfaces/promotion';
 import { PromotionService } from './../../services/promotion.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -24,6 +24,7 @@ export class GiveVoucherComponent implements OnInit {
   model: IGiveVoucherModel;
   notificationMessage: string;
   affectTime: DateRangeModel;
+  skipType: VoucherGivingSkipType = VoucherGivingSkipType.AssignedAndUseOrNotUse;
 
   vouchers: Voucher[] = [];
   selectedVoucher: Voucher = new Voucher();
@@ -82,7 +83,8 @@ export class GiveVoucherComponent implements OnInit {
       member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
       startDate: this.affectTime.startDate,
       endDate: this.affectTime.endDate,
-      notificationMsg: this.notificationMessage
+      notificationMsg: this.notificationMessage,
+      skipType: this.skipType
     };
 
     this._promotionService.giveVoucher(this.model).subscribe(() => {

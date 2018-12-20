@@ -1923,6 +1923,10 @@
         <source>Customer care</source>
         <target>Customer care</target>
       </trans-unit>
+      <trans-unit id="voucher-using-purpose-register-care" datatype="html">
+        <source>Register app</source>
+        <target>Register app</target>
+      </trans-unit>
       <trans-unit id="voucher-campaign-name" datatype="html">
         <source>Program name</source>
         <target>Program name</target>
@@ -2456,6 +2460,18 @@
       <trans-unit id="give-voucher-success" datatype="html">
         <source>Give voucher successfully</source>
         <target>Give voucher successfully</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members" datatype="html">
+        <source>Ignore duplicate giving</source>
+        <target>Ignore duplicate giving</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members-history" datatype="html">
+        <source>Ignore duplicate giving voucher and member used this voucher</source>
+        <target>Ignore duplicate giving voucher and member used this voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-no-ignored" datatype="html">
+        <source>No ignore</source>
+        <target>No ignore</target>
       </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->

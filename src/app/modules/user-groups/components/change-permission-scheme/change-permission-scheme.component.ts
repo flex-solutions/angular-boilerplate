@@ -1,7 +1,7 @@
 import { ExDialog } from './../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { UserGroupService } from './../../services/usergroup.service';
 import { UserGroup } from './../../../../shared/models/user-group.model';
-import { Component, OnInit, AfterViewInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DialogComponent, ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
 import { PermissionSchemeDetailComponent } from '../../../permission-scheme/components/scheme-detail/permission-scheme-detail.component';
@@ -38,7 +38,7 @@ export class ChangePermissionSchemeComponent extends DialogComponent implements 
         if (this.selectedSchemeId === this.userGroup.permissionScheme._id) {
             this.cancel();
         } else {
-            this.usergroupService.updatePermissionSchemeForUserGroup(this.userGroup._id, this.selectedSchemeId).subscribe(result => {
+            this.usergroupService.updatePermissionSchemeForUserGroup(this.userGroup._id, this.selectedSchemeId).subscribe(() => {
                 this.result = true;
                 this.dialogResult();
             });
