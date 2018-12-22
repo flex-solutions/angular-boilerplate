@@ -146,8 +146,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         scheduledNotification.title = this.notificationTitle;
         scheduledNotification.content = this.notificationContent;
         const memberCriteria = this.membersList.getFilterQuery();
-        scheduledNotification.member_filter_raw = this.membersList.memberFilter;
-        scheduledNotification.member_filter = convertCriteriaToQueryString(memberCriteria);
+        scheduledNotification.memberFilterRaw = this.membersList.memberFilter;
+        scheduledNotification.memberFilter = convertCriteriaToQueryString(memberCriteria);
         return scheduledNotification;
     }
 
@@ -188,8 +188,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         this.notificationContent = editingNotification.content;
         this.notificationName = editingNotification.name;
         this.notificationTitle = editingNotification.title;
-        if (!isNullOrEmptyOrUndefined(editingNotification.member_filter_raw)) {
-            Object.assign(this.membersList.memberFilter, editingNotification.member_filter_raw);
+        if (!isNullOrEmptyOrUndefined(editingNotification.memberFilterRaw)) {
+            Object.assign(this.membersList.memberFilter, editingNotification.memberFilterRaw);
             this.membersList.loadData();
         }
 
