@@ -10,8 +10,6 @@ import { convertCriteriaToQueryString } from '../../../../utilities/search-filte
 import { ScheduleType, getScheduleTypeName, ScheduledNotification } from '../../models/create-edit-schedule-notification.model';
 import { ScheduledNotificationCreationData, IOption } from '../../models/schedule-notification-creation-data';
 import { ActivatedRoute, Params } from '@angular/router';
-import { tick } from '@angular/core/testing';
-import { Range } from '../../../../shared/ui-common/input-range/input-range.component';
 
 @Component({
     templateUrl: './create-edit-scheduled-notification.component.html',
@@ -98,7 +96,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
             Object.assign(this.membersList.memberFilter, {
                 daysAreNotReturned: {
                     from: this.selectedDays ? this.selectedDays : 0,
-                    to: this.selectedDays ? this.selectedDays : 0
+                    to: 1000000 // : 365 = 237 years
                 }
             });
 
@@ -148,8 +146,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         scheduledNotification.title = this.notificationTitle;
         scheduledNotification.content = this.notificationContent;
         const memberCriteria = this.membersList.getFilterQuery();
-        scheduledNotification.member_filter_raw = this.membersList.memberFilter;
-        scheduledNotification.member_filter = convertCriteriaToQueryString(memberCriteria);
+        scheduledNotification.memberFilterRaw = this.membersList.memberFilter;
+        scheduledNotification.memberFilter = convertCriteriaToQueryString(memberCriteria);
         return scheduledNotification;
     }
 
@@ -190,8 +188,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         this.notificationContent = editingNotification.content;
         this.notificationName = editingNotification.name;
         this.notificationTitle = editingNotification.title;
-        if (!isNullOrEmptyOrUndefined(editingNotification.member_filter_raw)) {
-            Object.assign(this.membersList.memberFilter, editingNotification.member_filter_raw);
+        if (!isNullOrEmptyOrUndefined(editingNotification.memberFilterRaw)) {
+            Object.assign(this.membersList.memberFilter, editingNotification.memberFilterRaw);
             this.membersList.loadData();
         }
 
