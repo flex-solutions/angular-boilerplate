@@ -28,8 +28,8 @@ class ScheduledNotification {
     name: string;
     title: string;
     content: string;
-    member_filter: any;
-    member_filter_raw: any;
+    memberFilter: any;
+    memberFilterRaw: any;
     days: number;
 }
 export {
