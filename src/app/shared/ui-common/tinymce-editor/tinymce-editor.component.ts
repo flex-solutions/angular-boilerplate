@@ -1,15 +1,13 @@
-import { init, any, isEmpty } from 'ramda';
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter, forwardRef, NgZone, OnChanges, SimpleChange } from '@angular/core';
-import { isNullOrUndefined } from 'util';
+import { Guid } from 'guid-typescript';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 declare let tinymce: any;
-declare let $: any;
 
-export class tinymceContent {
+export class TinymceContent {
   content: string;
   rawContent: string;
 
-  constructor(inputContent: string = "", inputRawContent: string = "") {
+  constructor(inputContent: string = '', inputRawContent: string = '') {
     this.content = inputContent;
     this.rawContent = inputRawContent;
   }
@@ -19,14 +17,13 @@ export class tinymceContent {
   templateUrl: 'tinymce-editor.component.html',
   styleUrls: ['tinymce-editor.component.css']
 })
-export class TynimceEditorComponent implements OnInit, AfterViewInit {
+export class TynimceEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('content')
   set content(value: string) {
     this._content = value;
     this.contentChange.emit(this._content);
     if (this.editor) {
-      if (this.editor.getContent() !== this._content)
-      {
+      if (this.editor.getContent() !== this._content) {
         this.editor.setContent(this._content);
       }
       this.raiseRawContent();
@@ -34,7 +31,7 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   }
 
   get content(): string {
-    return this._content
+    return this._content;
   }
 
   private _content: string;
@@ -46,23 +43,24 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   }
 
   get rawContent(): string {
-    return this._rawContent
+    return this._rawContent;
   }
 
   private _rawContent: string;
-
+  uploadElementId: string;
   @Input() elementId: string;
   @Input() editorHeight: number;
   @Input() hasError: boolean;
 
   @Output() contentChange = new EventEmitter();
   @Output() rawContentChange = new EventEmitter();
-  @Output() onBlur = new EventEmitter();
-  @Output() onFinishedInitialization = new EventEmitter();
+  @Output() blurChanged = new EventEmitter();
+  @Output() finishedInitialization = new EventEmitter();
 
   editor;
 
   constructor() {
+    this.uploadElementId = Guid.create().toString();
   }
 
   ngOnInit() { this.hasError = false; }
@@ -76,40 +74,59 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
       selector: '#' + this.elementId,
       height: this.editorHeight ? this.editorHeight : 500,
       theme: 'modern',
-      plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
-      toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+      paste_data_images: true,
+      plugins: `print preview fullpage searchreplace autolink directionality visualblocks emoticons
+      visualchars fullscreen image link media template codesample table charmap hr pagebreak
+      nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help`,
+      toolbar1: `formatselect | bold italic strikethrough forecolor backcolor | link image |
+      alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat`,
+      toolbar2: 'print preview media | forecolor backcolor emoticons',
       image_advtab: true,
+      file_picker_callback: (callback, value, meta) => {
+        if (meta.filetype === 'image') {
+          const element = $(`#${this.uploadElementId}`) as any;
+          element.trigger('click');
+          element.on('change', function() {
+            const file = element[0].files[0];
+            const reader = new FileReader();
+            reader.onload = (e: any) => {
+              callback(e.target.result, {
+                alt: ''
+              });
+            };
+            reader.readAsDataURL(file);
+          });
+        }
+      },
       setup: editor => {
         this.editor = editor;
         editor.on('Blur', () => {
-          this.onBlur.emit(true);
+          this.blurChanged.emit(true);
         });
         editor.on('Focus', () => {
-          this.onBlur.emit(false);
+          this.blurChanged.emit(false);
         });
         editor.on('keyup change', () => {
           this.content = editor.getContent();
         });
-        this.onFinishedInitialization.emit();
+        this.finishedInitialization.emit();
       },
-    })
+    });
   }
 
   private raiseRawContent() {
-    if (this.editor)
-    {
-      let body = this.editor.getBody();
-      if (body)
-      {
-        var textcontent = body.textContent;
-        textcontent = textcontent.replace(/^[ \s]+|[ \s]+$/ig, '');
-        this.rawContent = textcontent;
+    if (this.editor) {
+      const body = this.editor.getBody();
+      if (body) {
+        let textContent = body.textContent;
+        textContent = textContent.replace(/^[ \s]+|[ \s]+$/ig, '');
+        this.rawContent = textContent;
       }
     }
   }
 
   reset() {
-    this.content = "";
+    this.content = '';
   }
 
   getClassStyle() {
@@ -119,5 +136,4 @@ export class TynimceEditorComponent implements OnInit, AfterViewInit {
   ngOnDestroy() {
     tinymce.remove(this.editor);
   }
-
 }

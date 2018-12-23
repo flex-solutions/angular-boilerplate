@@ -71,7 +71,7 @@ import { PushNotificationModule } from './modules/push-notification/push-notific
 })
 export class AppModule {
   constructor(pubsubConfigService: PubSubConfigService,
-    private notificationChannelFactory: NotificationChannelFactory) {
+    private notificationChannelFactory: NotificationChannelFactory, ) {
     // Set config for pubsub
     const pubsubConfig: IPubSubConfig = { host: environment.host };
     pubsubConfigService.config = pubsubConfig;
