@@ -26,6 +26,14 @@
       <span *ngFor="let pos of voucher.applyPoses" class="tag"><span>{{pos.name}}</span></span>
     </div>
   </div>
+  <div class="info-block" *ngIf="voucher.type==2">
+    <p class="col-md-6 font-weight-bold">Số món cần mua:</p>
+    <span class="col-md-6">{{voucher.numberBuyItem}}</span>
+  </div>
+  <div class="info-block" *ngIf="voucher.type==2">
+    <p class="col-md-6 font-weight-bold">Số món được tặng:</p>
+    <span class="col-md-6">{{voucher.numberGiftItem}}</span>
+  </div>
   <div class="info-block">
     <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1" i18n="@@view-voucher-applied-menu">Món áp dụng:</p>
     <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2" i18n="@@view-voucher-require-menu">Món cần mua:</p>
