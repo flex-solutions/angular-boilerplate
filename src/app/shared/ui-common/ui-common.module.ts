@@ -78,6 +78,6 @@ import { LoadingElementDirective } from './loading-bar/loading-element.directive
   providers: [{
     provide: INJECT_TOKEN.LOADING_INDICATOR,
     useValue: new LoaderService()
-  }, AddressService]
+  }, AddressService, ]
 })
 export class UICommonModule {}
