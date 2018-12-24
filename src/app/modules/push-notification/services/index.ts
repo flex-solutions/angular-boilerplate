@@ -1,3 +1,3 @@
-import { ScheduledNotificationService } from './scheduled-notification.service';
+import { PushNotificationService } from './push-notification';
 
-export const pushNotificationServices = [ScheduledNotificationService];
+export const pushNotificationServices = [PushNotificationService];
