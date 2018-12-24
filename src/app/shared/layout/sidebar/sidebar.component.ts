@@ -50,7 +50,7 @@ export class SidebarComponent implements OnInit {
   }
 
   navigateToPushNotificationPage() {
-    this.router.navigate([`${ModuleRoute.PROMOTION}/push-notification`]);
+    this.router.navigate([`${ModuleRoute.PUSH_NOTIFICATION}/now`]);
   }
 
   navigateToMemberManagementPage() {

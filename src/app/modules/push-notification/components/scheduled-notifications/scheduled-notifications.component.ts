@@ -1,7 +1,7 @@
 import { TranslateService } from './../../../../shared/services/translate.service';
 import { ScheduledNotificationView } from '../../models/schedule-notification-view.model';
 import { Component, OnInit } from '@angular/core';
-import { ScheduledNotificationService } from '../../services/scheduled-notification.service';
+import { PushNotificationService } from '../../services/push-notification';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Router } from '@angular/router';
 import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
@@ -17,7 +17,7 @@ export class ScheduledNotificationsComponent implements OnInit {
     private currentFilterArgs: IFilterChangedEvent;
 
     constructor(
-        private readonly scheduledNotificationService: ScheduledNotificationService,
+        private readonly scheduledNotificationService: PushNotificationService,
         private readonly route: Router,
         private readonly translateService: TranslateService,
         private readonly dialogManager: ExDialog,
