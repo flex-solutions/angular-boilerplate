@@ -1,4 +1,4 @@
-import { ScheduledNotificationService } from './../../services/scheduled-notification.service';
+import { PushNotificationService } from './../../services/push-notification';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WizardComponent } from '../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
@@ -55,7 +55,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         private readonly _notificationService: NotificationService,
         private readonly _location: Location,
         private readonly _activeRoute: ActivatedRoute,
-        private readonly _scheduledNotificationService: ScheduledNotificationService
+        private readonly _scheduledNotificationService: PushNotificationService
     ) {}
 
     ngOnInit() {
@@ -183,8 +183,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     }
 
     private setDataForEditMode(editingNotification: ScheduledNotification) {
-        this.selectedSchedule = this.scheduleTypes.find(t => t.id == editingNotification.type);
-        this.selectedTimeToPushNotification = this.timesToPushNotification.find(t => t.id == editingNotification.timeToPush);
+        this.selectedSchedule = this.scheduleTypes.find(t => t.id === editingNotification.type);
+        this.selectedTimeToPushNotification = this.timesToPushNotification.find(t => t.id === editingNotification.timeToPush);
         this.notificationContent = editingNotification.content;
         this.notificationName = editingNotification.name;
         this.notificationTitle = editingNotification.title;
@@ -195,11 +195,11 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
 
         switch (+this.selectedSchedule.id) {
             case ScheduleType.Weekly:
-                this.selectedDayOfWeek = this.daysOfWeek.find(t => t.id == editingNotification.days);
+                this.selectedDayOfWeek = this.daysOfWeek.find(t => t.id === editingNotification.days);
                 break;
 
             case ScheduleType.Monthly:
-                this.selectedDayOfMonth = this.daysOfMonth.find(t => t.id == editingNotification.days);
+                this.selectedDayOfMonth = this.daysOfMonth.find(t => t.id === editingNotification.days);
                 break;
 
             case ScheduleType.DaysAreNotReturned:

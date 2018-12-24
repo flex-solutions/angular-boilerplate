@@ -1,15 +1,14 @@
-import { ScheduledNotificationView } from '../models/schedule-notification-view.model';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../shared/abstract/abstract-rest-service';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 
 @Injectable()
-export class ScheduledNotificationService extends AbstractRestService {
+export class PushNotificationService extends AbstractRestService {
     protected controllerName: string;
     constructor() {
         super();
-        this.controllerName = 'notification-scheduler';
+        this.controllerName = 'notification';
     }
 
     count(searchKey: string) {
@@ -38,5 +37,9 @@ export class ScheduledNotificationService extends AbstractRestService {
 
     deleteScheduledNotification(id) {
         return this.delete(`${id}`);
+    }
+
+    pushNotificationNow(model: any): Observable<Response> {
+      return this.post('push-notification-now', model);
     }
 }

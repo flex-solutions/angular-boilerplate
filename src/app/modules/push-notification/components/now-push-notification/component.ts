@@ -10,10 +10,10 @@ import { convertCriteriaToQueryString } from '../../../../utilities/search-filte
 import { PushNotificationService } from '../../services/push-notification';
 
 @Component({
-  selector: 'app-push-notification',
+  selector: 'app-now-push-notification',
   templateUrl: './component.html'
 })
-export class PushNotificaionComponent implements OnInit {
+export class NowPushNotificationComponent implements OnInit {
   // Properties
   notificationMessage: string;
   title: string;
@@ -57,7 +57,7 @@ export class PushNotificaionComponent implements OnInit {
       message: this.notificationMessage,
       title: this.title,
     };
-    this.pushNotificationService.pushNotification(model).subscribe(() => {
+    this.pushNotificationService.pushNotificationNow(model).subscribe(() => {
       this._notificationService.showSuccess(this.successMsg);
       this.reset();
     });

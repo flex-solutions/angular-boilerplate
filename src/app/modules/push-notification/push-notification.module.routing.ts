@@ -1,8 +1,16 @@
+import { NowPushNotificationComponent } from './components/now-push-notification/component';
 import { CreateEditScheduledNotificationComponent, ScheduledNotificationsComponent } from './components';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const pushNotificationModuleRoutes: Routes = [
+    {
+        path: 'now',
+        component: NowPushNotificationComponent,
+        data: {
+            breadcrumb: 'Push notification now'
+        }
+    },
     {
         path: 'scheduled-notification',
         component: ScheduledNotificationsComponent,
