@@ -25,6 +25,7 @@ import { VouchersModule } from './modules/vouchers/vouchers.module';
 import { PosAndMenuModule } from './modules/pos-and-menu/module';
 import { VersionController } from './version/controller';
 import { VERSION_TOKEN } from './shared/interfaces/version';
+import { PushNotificationModule } from './modules/push-notification/push-notification.module';
 
 @NgModule({
   declarations: [AppComponent, VersionComponent],
@@ -43,7 +44,8 @@ import { VERSION_TOKEN } from './shared/interfaces/version';
     PromotionsModule,
     MemberModule,
     VouchersModule,
-    PosAndMenuModule
+    PosAndMenuModule,
+    PushNotificationModule
   ],
   providers: [
     {
@@ -69,7 +71,7 @@ import { VERSION_TOKEN } from './shared/interfaces/version';
 })
 export class AppModule {
   constructor(pubsubConfigService: PubSubConfigService,
-    private notificationChannelFactory: NotificationChannelFactory) {
+    private notificationChannelFactory: NotificationChannelFactory, ) {
     // Set config for pubsub
     const pubsubConfig: IPubSubConfig = { host: environment.host };
     pubsubConfigService.config = pubsubConfig;

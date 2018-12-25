@@ -23,4 +23,8 @@ export class PromotionsService extends AbstractRestService {
   exportBatchVoucher(id: string, fileName: string) {
     this.download(fileName, `export-batch-voucher/${id}`);
   }
+
+  updateVoucher(id: string, voucher: Voucher) {
+    return this.patch(`${id}/update-voucher`, voucher);
+  }
 }

@@ -1,26 +1,16 @@
-<app-member-filter
-  [(filter)]="memberFilter"
-  (runFilterClicked)="onRunFilterClicked()"
-  [resetFunction]="resetFilter"
-></app-member-filter>
+<app-member-filter [(filter)]="memberFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"
+  *ngIf="!isHideFilterControl"></app-member-filter>
+<div style="margin-bottom:10px">
+  <ng-content></ng-content>
+</div>
 <app-card title="Members" i18n-title="@@members-list-tbl-title">
   <div class="command-region">
-    <button
-      *ngIf="canAddOrUpdateMember"
-      type="button"
-      class="btn btn-sm btn-primary"
-      (click)="createNewMember()"
-    >
+    <button *ngIf="canAddOrUpdateMember" type="button" class="btn btn-sm btn-primary" (click)="createNewMember()">
       <i class="mdi mdi-plus"></i>
       <span i18n="@@members-tbl-btn-create">Create member</span>
     </button>
   </div>
-  <app-dg
-    #dg
-    (pageChanged)="onPageChanged($event)"
-    [countFunction]="count"
-    hideSearchInput="true"
-  >
+  <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
     <tr>
       <th i18n="@@members-tbl-member-id">Member ID</th>
       <th i18n="@@members-tbl-name">Name</th>
@@ -43,7 +33,7 @@
         <td>
           <a class="a-clickable" (click)="navigateToFilterMember(member)">{{
             member.name
-          }}</a>
+            }}</a>
         </td>
         <td>{{ member.phoneNumber }}</td>
         <td>{{ member.create_on | dateFormat }}</td>

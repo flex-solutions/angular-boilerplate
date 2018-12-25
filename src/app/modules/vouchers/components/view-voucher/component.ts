@@ -46,13 +46,10 @@ export class ViewVoucherComponent extends AbstractBaseComponent implements OnIni
         const func = this.isRunning === 'true' ? this.getVoucherRunning : this.getStaticVoucher;
 
         func(this.voucherCode).subscribe(res => {
-            this.voucher = res;
+          this.voucher = res;
 
-            const applyDays = VoucherCreationData.applyDays;
-            this.voucher.applyDays = applyDays.filter(d => this.voucher.applyDays.find(day => d.id === day));
-
-            const applyHours = VoucherCreationData.applyHours;
-            this.voucher.applyHourRanges = applyHours.filter(h => this.voucher.applyHourRanges.find(hr => h.id === hr));
+          this.voucher.applyDays = VoucherCreationData.applyDays.filter(d => this.voucher.applyDays.find(day => d.id === day));
+          this.voucher.applyHourRanges = VoucherCreationData.applyHours.filter(h => this.voucher.applyHourRanges.find(hr => h.id === hr));
         });
     }
 }

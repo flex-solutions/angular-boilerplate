@@ -38,9 +38,9 @@
         <div class="form-group col-md-12">
           <label for="content" i18n="@@news-create_edit_news-label-content_field">Content </label>
           <label class="require">*</label> &nbsp;&nbsp;&nbsp;&nbsp;
-          <app-tinymce-editor elementId="contentEditor" [(content)]="news.content" (onBlur)="onTinyEditorBlur($event)"
+          <app-tinymce-editor elementId="contentEditor" [(content)]="news.content" (blurChanged)="onTinyEditorBlur($event)"
             editorHeight="500" [hasError]="hasEmptyAndBlurContent()" [(rawContent)]="rawContent"
-            (onFinishedInitialization)="finishContentComponent()"></app-tinymce-editor>
+            (finishedInitialization)="finishContentComponent()"></app-tinymce-editor>
           <label id="content-error" class="error text-danger show-errors" for="content" i18n="@@news-create_edit_news-label-content_require"
             *ngIf="hasEmptyAndBlurContent()">Please provide the content</label>
           <br *ngIf="!hasEmptyAndBlurContent()" />

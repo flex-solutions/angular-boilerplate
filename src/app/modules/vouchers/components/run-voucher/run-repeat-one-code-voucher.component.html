@@ -23,7 +23,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
-      <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-success" (click)="submit()" appLoadingElement>Ok</button>
+      <button type="button" class="btn btn-light" data-dismiss="modal" appLoadingElement [showBusy]="'false'" (click)="cancel()">Cancel</button>
     </div>
   </div>

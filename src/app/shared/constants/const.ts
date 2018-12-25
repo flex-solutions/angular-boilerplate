@@ -17,7 +17,8 @@ const ModuleRoute = {
     MEMBER: 'members',
     MEMBERSHIP_TYPE: 'membership-type',
     VOUCHER : 'voucher',
-    POS_AND_MENU: 'pos'
+    POS_AND_MENU: 'pos',
+    PUSH_NOTIFICATION: 'push-notification'
 };
 
 const PagingDefault = {

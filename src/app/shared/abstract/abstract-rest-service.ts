@@ -7,7 +7,6 @@ import {
 import { catchError, retry, finalize } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { SharedModule } from '../shared.module';
-import { LoaderService } from '../ui-common/loading-bar/loader.service';
 import { HttpExceptionResponse } from '../models/http-exception-response.model';
 import { NotificationService } from '../services/notification.service';
 import { TranslateService } from '../services/translate.service';
@@ -21,11 +20,14 @@ export abstract class AbstractRestService {
   protected baseUrl: string;
   private configurationService: ApplicationConfigurationService;
   protected httpClient: HttpClient;
-  protected loaderService: LoaderService;
   protected notifier: NotificationService;
   protected translateService: TranslateService;
   protected browserNotifer: BrowserNotificationService;
   protected forbiddenHandler: ForbiddenHandler;
+
+  protected get loaderService() {
+    return SharedModule.injector.get('__loading_indicator__');
+  }
 
   constructor() {
     // Get base url provide by application configuration service
@@ -35,7 +37,6 @@ export abstract class AbstractRestService {
     this.notifier = SharedModule.injector.get(NotificationService);
     this.baseUrl = this.configurationService.getApiUri();
     this.httpClient = SharedModule.injector.get(HttpClient);
-    this.loaderService = SharedModule.injector.get(LoaderService);
     this.translateService = SharedModule.injector.get(TranslateService);
     this.browserNotifer = SharedModule.injector.get(BrowserNotificationService);
     this.forbiddenHandler = SharedModule.injector.get(ForbiddenHandler);
