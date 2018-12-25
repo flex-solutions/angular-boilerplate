@@ -2463,9 +2463,21 @@
         <source>Search by member id, publish code</source>
         <target>Search by member id, publish code</target>
       </trans-unit>
-      <trans-unit id="" datatype="html">
-        <source></source>
-        <target></target>
+      <trans-unit id="voucher-running-member-care-used-dlg-title" datatype="html">
+        <source>Manual mark a voucher code which is used</source>
+        <target>Manual mark a voucher code which is used</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-sub-title" datatype="html">
+        <source>Mark voucher code "{{publishCode}}" of "{{voucherName}}" is used with a bill id</source>
+        <target>Mark voucher code "{{publishCode}}" of "{{voucherName}}" is used with a bill id</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-lbl-billId" datatype="html">
+        <source>Input bill id which used voucher code {{publishCode}}</source>
+        <target>Input bill id which used voucher code {{publishCode}}</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-confirm-delete-tracking" datatype="html">
+        <source>Are you sure you want to delete code {{0}} of voucher {{1}}?</source>
+        <target>Are you sure you want to delete code {{0}} of voucher {{1}}?</target>
       </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->

@@ -2459,6 +2459,30 @@
         <source>Search by member id, publish code</source>
         <target>Tìm kiếm theo mã hội viên, mã phát hành voucher</target>
       </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-title" datatype="html">
+        <source>Manual mark a voucher code which is used</source>
+        <target>Đánh dấu một mã phát hành voucher đã được dùng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-sub-title" datatype="html">
+        <source>Mark voucher code "{{publishCode}}" of "{{voucherName}}" is used with a bill id</source>
+        <target>Đánh dấu mã "{{publishCode}}" của chương trình "{{voucherName}}" đã được sử dụng ở một hóa đơn</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-lbl-billId" datatype="html">
+        <source>Input bill id which used voucher code {{publishCode}}</source>
+        <target>Nhập mã hóa đơn đã sử dụng mã voucher {{publishCode}}</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-confirm-delete-tracking" datatype="html">
+        <source>Are you sure you want to delete code {{0}} of voucher {{1}}?</source>
+        <target>Bạn có chắc muốn xóa code {{0}} của voucher {{1}}?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-publish-code-success" datatype="html">
+        <source>A voucher code has been deleted?</source>
+        <target>Một mã voucher đã bị xóa</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-use-publish-code-success" datatype="html">
+        <source>A voucher code has been used</source>
+        <target>Một mã voucher đã được dùng</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">

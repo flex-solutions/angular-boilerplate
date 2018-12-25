@@ -8,6 +8,8 @@ import { PromotionsService } from '../../../services/promotions.service';
 import { VoucherTracking } from '../../../../../shared/models/voucher-campaign.model';
 import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { ManualUseVoucherCodeComponent } from './manual-use-code.component';
+import { TranslateService } from '../../../../../shared/services/translate.service';
+import { NotificationService } from '../../../../../shared/services/notification.service';
 
 @Component({
   moduleId: module.id,
@@ -23,15 +25,22 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
 
   voucherTrackings: VoucherTracking[] = [];
 
+  deleteSuccessMsg: string;
+  useCodeSuccessMsg: string;
+
   constructor(protected dialogService: DialogService,
     private readonly exDialog: ExDialog,
-    private promotionServices: PromotionsService) {
+    private promotionServices: PromotionsService,
+    private readonly translateService: TranslateService,
+    private readonly notification: NotificationService) {
     super(dialogService);
   }
 
   ngOnInit(): void {
     this.voucher = this.callerData.voucher;
     this.runningId = this.callerData.runningId;
+    this.deleteSuccessMsg = this.translateService.translate('voucher-running-delete-publish-code-success');
+    this.useCodeSuccessMsg = this.translateService.translate('voucher-running-use-publish-code-success');
   }
 
   public count = (searchKey: string): Observable<number> => {
@@ -54,9 +63,11 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
   }
 
   delete(tracking: VoucherTracking) {
-    this.exDialog.openConfirm(`Bạn có chắc muốn xóa code ${tracking.publish_code} của voucher ${this.voucher.name}?`).subscribe(ok => {
+    const msg = this.translateService.translate('voucher-running-confirm-delete-tracking', tracking.publish_code, this.voucher.name);
+    this.exDialog.openConfirm(msg).subscribe(ok => {
       if (ok) {
         this.promotionServices.deleteRunningTracking(this.runningId, tracking._id).subscribe(() => {
+          this.notification.showSuccess(this.deleteSuccessMsg);
           this.loadRemainingCode();
         });
       }
@@ -73,6 +84,7 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
       if (result) {
         const billId = result;
         this.promotionServices.manualUseVoucherCode(tracking.publish_code, tracking.membership_id, billId).subscribe(() => {
+          this.notification.showSuccess(this.useCodeSuccessMsg);
           this.loadRemainingCode();
         });
       }
