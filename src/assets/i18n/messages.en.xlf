@@ -2500,8 +2500,8 @@
         <target>Display and modify menu info</target>
       </trans-unit>
       <trans-unit id="pos-menu-item-list-sub-title" datatype="html">
-        <source>Display and modify menu info of {{0}}</source>
-        <target>Display and modify menu info of {{0}}</target>
+        <source>Display and modify menu info of POS {{0}}</source>
+        <target>Display and modify menu info of POS {{0}}</target>
       </trans-unit>
       <trans-unit id="pos-menu-list-btn-menu" datatype="html">
         <source>Menu</source>
