@@ -10,7 +10,8 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count"
+    searchLabel="Search by member id, publish code">
       <tr role="row">
         <th>Publish code</th>
         <th>Member id</th>
@@ -19,7 +20,7 @@
         <th>Actions</th>
       </tr>
       <tbody>
-        <tr *ngFor="let tracking of voucherTrackings">
+        <tr *ngFor="let tracking of voucherTrackings | voucherTrackingFilter: dg.searchKey">
           <td>{{tracking.publish_code}}</td>
           <td>{{tracking.membership_id}}</td>
           <td>{{tracking.start_date | dateTimeFormat }}</td>
