@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class PromotionsService extends AbstractRestService {
-
   protected controllerName = 'promotions';
 
   getVouchersRunning(): Observable<any[]> {
@@ -34,5 +33,19 @@ export class PromotionsService extends AbstractRestService {
 
   getRemainingCodes(id: string, searchKey: string, pageSize: number, pageNumber: number): Observable<any[]> {
     return this.get(`${id}/remaining-codes?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
+
+  deleteRunningTracking(runningId: string, _id: any) {
+    return this.delete(`${runningId}/delete-tracking/${_id}`);
+  }
+
+  manualUseVoucherCode(publish_code: string, membership_id: string, billId: any) {
+    const payload = {
+      publishCode: publish_code,
+      memberId: membership_id,
+      billId: billId,
+    };
+
+    return this.patch('manual-use-voucher', payload);
   }
 }

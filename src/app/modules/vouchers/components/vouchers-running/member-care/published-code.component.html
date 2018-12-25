@@ -26,11 +26,11 @@
           <td>{{tracking.start_date | dateTimeFormat }}</td>
           <td>{{tracking.end_date | dateTimeFormat }}</td>
           <td>
-            <button appCanUpdate type="button" class="btn btn-light btn-custom-css">
+            <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="manualUseVoucherCode(tracking)">
               <i class="mdi mdi-check text-primary" aria-hidden="false"></i>
               <span>Đã dùng</span>
             </button>
-            <button appCanUpdate type="button" class="btn btn-light btn-custom-css">
+            <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="delete(tracking)">
               <i class="mdi mdi-delete text-danger" aria-hidden="false"></i>
               <span>Xóa code</span>
             </button>
@@ -42,4 +42,4 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
   </div>
-</div>e
+</div>

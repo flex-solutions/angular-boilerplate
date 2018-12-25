@@ -87,6 +87,8 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
       runningId: item.id
     }};
 
-    this.exDialog.openPrime(PublishedVoucherCodeOfMemberCareComponent, dialogData, ModalSize.Large);
+    this.exDialog.openPrime(PublishedVoucherCodeOfMemberCareComponent, dialogData, ModalSize.Large).subscribe(() => {
+      this.getVouchersRunning();
+    });
   }
 }

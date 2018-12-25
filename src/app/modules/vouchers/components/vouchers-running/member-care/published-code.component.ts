@@ -6,6 +6,8 @@ import { Observable, of } from 'rxjs';
 import { DialogService } from '../../../../../shared/ui-common/modal/services/dialog.service';
 import { PromotionsService } from '../../../services/promotions.service';
 import { VoucherTracking } from '../../../../../shared/models/voucher-campaign.model';
+import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { ManualUseVoucherCodeComponent } from './manual-use-code.component';
 
 @Component({
   moduleId: module.id,
@@ -22,6 +24,7 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
   voucherTrackings: VoucherTracking[] = [];
 
   constructor(protected dialogService: DialogService,
+    private readonly exDialog: ExDialog,
     private promotionServices: PromotionsService) {
     super(dialogService);
   }
@@ -45,7 +48,36 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
     this.dialogResult();
   }
 
-  submit() {}
+  submit() {
+    this.result = true;
+    this.dialogResult();
+  }
+
+  delete(tracking: VoucherTracking) {
+    this.exDialog.openConfirm(`Bạn có chắc muốn xóa code ${tracking.publish_code} của voucher ${this.voucher.name}?`).subscribe(ok => {
+      if (ok) {
+        this.promotionServices.deleteRunningTracking(this.runningId, tracking._id).subscribe(() => {
+          this.loadRemainingCode();
+        });
+      }
+    });
+  }
+
+  manualUseVoucherCode(tracking: VoucherTracking) {
+    const dialogData = { callerData: {
+      voucherName: this.voucher.name,
+      publishCode: tracking.publish_code
+    }};
+
+    this.exDialog.openPrime(ManualUseVoucherCodeComponent, dialogData).subscribe(result => {
+      if (result) {
+        const billId = result;
+        this.promotionServices.manualUseVoucherCode(tracking.publish_code, tracking.membership_id, billId).subscribe(() => {
+          this.loadRemainingCode();
+        });
+      }
+    });
+  }
 
   private loadRemainingCode() {
     const searchKey =  this.dgFilter.searchKey;
@@ -56,4 +88,5 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
       this.voucherTrackings = res;
     });
   }
+
 }

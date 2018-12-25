@@ -9,7 +9,8 @@ import { CommonCreateEditVoucherComponent } from './create-edit/common.component
 import {
   VouchersRunningComponent,
   PublishedVoucherCodeOfMemberCareComponent,
-  HistoryOfMemberCareComponent
+  HistoryOfMemberCareComponent,
+  ManualUseVoucherCodeComponent,
 } from './vouchers-running/components';
 
 const voucherComponents = [
@@ -23,7 +24,8 @@ const voucherComponents = [
     CommonCreateEditVoucherComponent,
     EditVoucherRunningComponent,
     PublishedVoucherCodeOfMemberCareComponent,
-    HistoryOfMemberCareComponent
+    HistoryOfMemberCareComponent,
+    ManualUseVoucherCodeComponent,
 ];
 
 const voucherEntryComponents = [
@@ -31,6 +33,7 @@ const voucherEntryComponents = [
   RunRepeatOneCodeVoucherComponent,
   PublishedVoucherCodeOfMemberCareComponent,
   HistoryOfMemberCareComponent,
+  ManualUseVoucherCodeComponent,
 ];
 
 export {voucherComponents, voucherEntryComponents};
