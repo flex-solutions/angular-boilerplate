@@ -2431,6 +2431,34 @@
         <source>Voucher information</source>
         <target>Thông tin voucher</target>
       </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-title" datatype="html">
+        <source>List of published voucher code</source>
+        <target>Danh sách mã voucher đã phát hành</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-sub-title" datatype="html">
+        <source>View and possible to delete published voucher code of program "{{voucher.name}}"</source>
+        <target>Xem và xóa các mã voucher đã phát hành của chương trình "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code" datatype="html">
+        <source>Publish code</source>
+        <target>Mã phát hành</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-member-id" datatype="html">
+        <source>Member id</source>
+        <target>Mã HV</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-used" datatype="html">
+        <source>Used code</source>
+        <target>Đã dùng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-delete" datatype="html">
+        <source>Delete code</source>
+        <target>Xóa code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-search-lbl" datatype="html">
+        <source>Search by member id, publish code</source>
+        <target>Tìm kiếm theo mã hội viên, mã phát hành voucher</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">

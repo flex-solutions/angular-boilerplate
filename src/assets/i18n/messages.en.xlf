@@ -2435,6 +2435,38 @@
         <source>Voucher information</source>
         <target>Voucher information</target>
       </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-title" datatype="html">
+        <source>List of published voucher code</source>
+        <target>List of published voucher code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-sub-title" datatype="html">
+        <source>View and possible to delete published voucher code of program "{{voucher.name}}"</source>
+        <target>View and possible to delete published voucher code of program "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code" datatype="html">
+        <source>Publish code</source>
+        <target>Publish code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-member-id" datatype="html">
+        <source>Member id</source>
+        <target>Member id</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-used" datatype="html">
+        <source>Used code</source>
+        <target>Used code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-delete" datatype="html">
+        <source>Delete code</source>
+        <target>Delete code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-search-lbl" datatype="html">
+        <source>Search by member id, publish code</source>
+        <target>Search by member id, publish code</target>
+      </trans-unit>
+      <trans-unit id="" datatype="html">
+        <source></source>
+        <target></target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
