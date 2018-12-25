@@ -4,8 +4,8 @@ import { VouchersComponent } from './components/home/vouchers.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { VouchersRunningComponent } from './components/vouchers-running/index.component';
 import { EditVoucherRunningComponent } from './components/create-edit/edit-voucher-running.component';
+import { VouchersRunningComponent } from './components/vouchers-running/components';
 const VoucherRoutes: Routes = [
   {
     path: '',

@@ -27,4 +27,12 @@ export class PromotionsService extends AbstractRestService {
   updateVoucher(id: string, voucher: Voucher) {
     return this.patch(`${id}/update-voucher`, voucher);
   }
+
+  countRemainingCodes(id: string, searchKey: string): Observable<number> {
+    return this.get(`${id}/count-remaining-codes?searchKey=${searchKey}`);
+  }
+
+  getRemainingCodes(id: string, searchKey: string, pageSize: number, pageNumber: number): Observable<any[]> {
+    return this.get(`${id}/remaining-codes?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
 }

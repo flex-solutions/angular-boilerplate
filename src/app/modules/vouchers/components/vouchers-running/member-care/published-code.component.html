@@ -1,0 +1,44 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div>
+      <h5 class="modal-title" style="width: 100%">List of published voucher code</h5>
+      <p class="row col-12">View and possible to delete published voucher code of program
+        "{{voucher.name}}"</p>
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count">
+      <tr role="row">
+        <th>Publish code</th>
+        <th>Member id</th>
+        <th>Published date</th>
+        <th>Expire date</th>
+        <th>Actions</th>
+      </tr>
+      <tbody>
+        <tr *ngFor="let tracking of voucherTrackings">
+          <td>{{tracking.publish_code}}</td>
+          <td>{{tracking.membership_id}}</td>
+          <td>{{tracking.start_date | dateTimeFormat }}</td>
+          <td>{{tracking.end_date | dateTimeFormat }}</td>
+          <td>
+            <button appCanUpdate type="button" class="btn btn-light btn-custom-css">
+              <i class="mdi mdi-check text-primary" aria-hidden="false"></i>
+              <span>Đã dùng</span>
+            </button>
+            <button appCanUpdate type="button" class="btn btn-light btn-custom-css">
+              <i class="mdi mdi-delete text-danger" aria-hidden="false"></i>
+              <span>Xóa code</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </app-dg>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
+  </div>
+</div>e
