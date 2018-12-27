@@ -1,0 +1,36 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div>
+      <h5 class="modal-title" style="width: 100%">Report usage of voucher</h5>
+      <p class="row col-12">View usage status of "{{voucher.name}}"</p>
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" searchLabel="Search by member id, publish code, bill id">
+      <tr role="row">
+        <th i18n="@@voucher-running-member-care-published-code">Publish code</th>
+        <th i18n="@@voucher-running-member-care-member-id">Member id</th>
+        <th i18n="@@voucher-running-effect-from">Published date</th>
+        <th i18n="@@voucher-running-effect-to">Expire date</th>
+        <th>Used date</th>
+        <th>Bill id</th>
+      </tr>
+      <tbody>
+        <tr *ngFor="let history of voucherHistories | voucherTrackingFilter: dg.searchKey">
+          <td>{{tracking.publish_code}}</td>
+          <td>{{tracking.membership_id}}</td>
+          <td>{{tracking.start_date | dateTimeFormat }}</td>
+          <td>{{tracking.end_date | dateTimeFormat }}</td>
+          <td>{{tracking.used_date | dateTimeFormat }}</td>
+          <td>{{tracking.bill_id | dateTimeFormat }}</td>
+        </tr>
+      </tbody>
+    </app-dg>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="close()">Ok</button>
+  </div>
+</div>

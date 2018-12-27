@@ -1,3 +1,4 @@
+import { HistoryOfMemberCareComponent } from './member-care/history.component';
 import { VoucherRouteNames } from './../../vouchers.constants';
 import { ExDialog } from './../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -90,5 +91,14 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
     this.exDialog.openPrime(PublishedVoucherCodeOfMemberCareComponent, dialogData, ModalSize.Large).subscribe(() => {
       this.getVouchersRunning();
     });
+  }
+
+  viewVoucherUsage(item: VoucherOperationDtoBase) {
+    const dialogData = { callerData: {
+      voucher: item.voucher,
+      runningId: item.id
+    }};
+
+    this.exDialog.openPrime(HistoryOfMemberCareComponent, dialogData, ModalSize.Large);
   }
 }

@@ -175,7 +175,7 @@
                     <td>{{item.start_date | dateTimeFormat}}</td>
                     <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>
-                      <a class="a-clickable">{{item.usedCount}}</a>
+                      <a class="a-clickable" (click)="viewVoucherUsage(item)">{{item.usedCount}}</a>
                     </td>
                     <td>
                       <a class="a-clickable" (click)="viewListOfPublishedCodeOfMemberCareType(item)">{{item.remainCount}}</a>
