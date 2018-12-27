@@ -48,4 +48,12 @@ export class PromotionsService extends AbstractRestService {
 
     return this.patch('manual-use-voucher', payload);
   }
+
+  countVoucherHistory(searchKey: string, code: string): Observable<number> {
+    return this.get(`history/${code}/count?searchKey=${searchKey}`);
+  }
+
+  getVoucherHistory(code: string, searchKey: string, pageSize: number, pageNumber: number): Observable<any[]> {
+    return this.get(`history/${code}?searchKey=${searchKey}&pageSize=${pageSize}&pageNumber=${pageNumber}`);
+  }
 }

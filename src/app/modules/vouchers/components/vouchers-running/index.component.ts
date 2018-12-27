@@ -96,7 +96,6 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
   viewVoucherUsage(item: VoucherOperationDtoBase) {
     const dialogData = { callerData: {
       voucher: item.voucher,
-      runningId: item.id
     }};
 
     this.exDialog.openPrime(HistoryOfMemberCareComponent, dialogData, ModalSize.Large);

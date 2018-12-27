@@ -20,12 +20,12 @@
       </tr>
       <tbody>
         <tr *ngFor="let history of voucherHistories | voucherTrackingFilter: dg.searchKey">
-          <td>{{tracking.publish_code}}</td>
-          <td>{{tracking.membership_id}}</td>
-          <td>{{tracking.start_date | dateTimeFormat }}</td>
-          <td>{{tracking.end_date | dateTimeFormat }}</td>
-          <td>{{tracking.used_date | dateTimeFormat }}</td>
-          <td>{{tracking.bill_id | dateTimeFormat }}</td>
+          <td>{{history.publish_code}}</td>
+          <td>{{history.membership_id}}</td>
+          <td>{{history.start_date | dateTimeFormat }}</td>
+          <td>{{history.end_date | dateTimeFormat }}</td>
+          <td>{{history.used_date | dateTimeFormat }}</td>
+          <td>{{history.bill_id}}</td>
         </tr>
       </tbody>
     </app-dg>

@@ -17,6 +17,7 @@ class VoucherTracking extends ModelBase {
   publish_code: string;
   is_used: boolean;
   used_date: Date;
+  bill_id: string;
 }
 
 export {VoucherRunning, VoucherTracking};

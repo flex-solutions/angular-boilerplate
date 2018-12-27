@@ -15,7 +15,8 @@ export class VoucherTrackingsFilter implements PipeTransform {
       searchText = searchText.toLowerCase();
       return items.filter(it => {
           return it.membership_id.toLowerCase().includes(searchText)
-          || it.publish_code.toLowerCase().includes(searchText);
+          || it.publish_code.toLowerCase().includes(searchText)
+          || (it.bill_id && it.bill_id.toLowerCase().includes(searchText));
       });
   }
 }
