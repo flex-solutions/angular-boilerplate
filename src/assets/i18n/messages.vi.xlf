@@ -2658,7 +2658,7 @@
       </trans-unit>
       <trans-unit id="scheduled-notification-txt-search" datatype="html">
         <source>Search by name</source>
-        <target>Tìm kiếm theo tên thông báo</target>
+        <target>Tìm kiếm theo tên gợi nhớ</target>
       </trans-unit>
       <trans-unit id="create-scheduled-notification-title" datatype="html">
         <source>Create notification</source>
