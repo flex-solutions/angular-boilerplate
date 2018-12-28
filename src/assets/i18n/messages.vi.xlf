@@ -2549,7 +2549,7 @@
       </trans-unit>
       <trans-unit id="pos-menu-coordinates-validate-required" datatype="html">
         <source>Please input coordinates</source>
-        <target>Vui lòng nhập tọa độ của POS</target>
+        <target>Vui lòng nhập đầy đủ tọa độ của POS</target>
       </trans-unit>
       <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
         <source>Please input pos's open time</source>
