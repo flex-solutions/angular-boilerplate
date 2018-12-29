@@ -2435,6 +2435,71 @@
         <source>Voucher information</source>
         <target>Voucher information</target>
       </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-title" datatype="html">
+        <source>List of published voucher code</source>
+        <target>List of published voucher code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-sub-title" datatype="html">
+        <source>View and possible to delete published voucher code of program "{{voucher.name}}"</source>
+        <target>View and possible to delete published voucher code of program "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code" datatype="html">
+        <source>Publish code</source>
+        <target>Publish code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-member-id" datatype="html">
+        <source>Member id</source>
+        <target>Member id</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-used" datatype="html">
+        <source>Used code</source>
+        <target>Used code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-delete" datatype="html">
+        <source>Delete code</source>
+        <target>Delete code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-search-lbl" datatype="html">
+        <source>Search by member id, publish code</source>
+        <target>Search by member id, publish code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-title" datatype="html">
+        <source>Manual mark a voucher code which is used</source>
+        <target>Manual mark a voucher code which is used</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-sub-title" datatype="html">
+        <source>Mark voucher code "{{publishCode}}" of "{{voucherName}}" is used with a bill id</source>
+        <target>Mark voucher code "{{publishCode}}" of "{{voucherName}}" is used with a bill id</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-lbl-billId" datatype="html">
+        <source>Input bill id which used voucher code {{publishCode}}</source>
+        <target>Input bill id which used voucher code {{publishCode}}</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-confirm-delete-tracking" datatype="html">
+        <source>Are you sure you want to delete code {{0}} of voucher {{1}}?</source>
+        <target>Are you sure you want to delete code {{0}} of voucher {{1}}?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-title" datatype="html">
+        <source>Report usage of voucher</source>
+        <target>Report usage of voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-sub-title" datatype="html">
+        <source>View usage status of "{{voucher.name}}"</source>
+        <target>View usage status of "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-search-lbl" datatype="html">
+        <source>Search by member id, publish code, bill id</source>
+        <target>Search by member id, publish code, bill id</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-used-date" datatype="html">
+        <source>Used date</source>
+        <target>Used date</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-bill-id" datatype="html">
+        <source>Bill id</source>
+        <target>Bill id</target>
+      </trans-unit>
+
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
