@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PromotionsComponent } from './components/promotions/promotions.component';
 import { DetailPromotionComponent } from './components/detail-promotion/detail-promotion.component';
-import { PushNotificaionComponent } from './components/push-notification/component';
 
 const routes: Routes = [
   {
@@ -26,13 +25,6 @@ const routes: Routes = [
     component: GiveVoucherComponent,
     data: {
       breadcrumb: 'Give voucher'
-    }
-  },
-  {
-    path: 'push-notification',
-    component: PushNotificaionComponent,
-    data: {
-      breadcrumb: 'Push notification'
     }
   },
   {

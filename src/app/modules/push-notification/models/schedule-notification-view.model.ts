@@ -4,5 +4,8 @@ export interface ScheduledNotificationView {
   title: string;
   content: string;
   schedule: string;
-  lastRunAt: string;
+  lastRunDate: string;
+  type: number;
+  days: number;
+  timeToPush: string;
 }

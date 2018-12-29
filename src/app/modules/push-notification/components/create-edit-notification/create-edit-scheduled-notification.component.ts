@@ -1,4 +1,4 @@
-import { ScheduledNotificationService } from './../../services/scheduled-notification.service';
+import { PushNotificationService } from './../../services/push-notification';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WizardComponent } from '../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
@@ -55,7 +55,7 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
         private readonly _notificationService: NotificationService,
         private readonly _location: Location,
         private readonly _activeRoute: ActivatedRoute,
-        private readonly _scheduledNotificationService: ScheduledNotificationService
+        private readonly _scheduledNotificationService: PushNotificationService
     ) {}
 
     ngOnInit() {
@@ -127,7 +127,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
 
     private buildScheduledNotification() {
         const scheduledNotification = new ScheduledNotification();
-        switch (+this.selectedSchedule.id) {
+        scheduledNotification.type = +this.selectedSchedule.id;
+        switch (scheduledNotification.type) {
             case ScheduleType.Weekly:
                 scheduledNotification.days = this.selectedDayOfWeek.id;
                 break;
@@ -141,7 +142,6 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
                 break;
         }
         scheduledNotification.name = this.notificationName;
-        scheduledNotification.type = this.selectedSchedule.id;
         scheduledNotification.timeToPush = this.selectedTimeToPushNotification.id;
         scheduledNotification.title = this.notificationTitle;
         scheduledNotification.content = this.notificationContent;
@@ -183,8 +183,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     }
 
     private setDataForEditMode(editingNotification: ScheduledNotification) {
-        this.selectedSchedule = this.scheduleTypes.find(t => t.id == editingNotification.type);
-        this.selectedTimeToPushNotification = this.timesToPushNotification.find(t => t.id == editingNotification.timeToPush);
+        this.selectedSchedule = this.scheduleTypes.find(t => t.id === +editingNotification.type);
+        this.selectedTimeToPushNotification = this.timesToPushNotification.find(t => t.id === +editingNotification.timeToPush);
         this.notificationContent = editingNotification.content;
         this.notificationName = editingNotification.name;
         this.notificationTitle = editingNotification.title;
@@ -195,11 +195,11 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
 
         switch (+this.selectedSchedule.id) {
             case ScheduleType.Weekly:
-                this.selectedDayOfWeek = this.daysOfWeek.find(t => t.id == editingNotification.days);
+                this.selectedDayOfWeek = this.daysOfWeek.find(t => t.id === +editingNotification.days);
                 break;
 
             case ScheduleType.Monthly:
-                this.selectedDayOfMonth = this.daysOfMonth.find(t => t.id == editingNotification.days);
+                this.selectedDayOfMonth = this.daysOfMonth.find(t => t.id === +editingNotification.days);
                 break;
 
             case ScheduleType.DaysAreNotReturned:
@@ -209,9 +209,26 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
     }
 
     onValidate() {
-        this.errors.notificationContent = isNullOrEmptyOrUndefined(this.notificationContent) ? 'Required' : null;
-        this.errors.notificationTitle = isNullOrEmptyOrUndefined(this.notificationTitle) ? 'Required' : null;
-        this.errors.notificationName = isNullOrEmptyOrUndefined(this.notificationName) ? 'Required' : null;
-        this.errors.selectedDays = isNullOrEmptyOrUndefined(this.selectedDays) ? 'Required' : null;
+        this.errors.notificationContent = isNullOrEmptyOrUndefined(this.notificationContent)
+            ? this._translateService.translate('create-schedule-notification-validation_require-notification-content')
+            : null;
+        this.errors.notificationTitle = isNullOrEmptyOrUndefined(this.notificationTitle)
+            ? this._translateService.translate('create-schedule-notification-validation_require-notification-title')
+            : null;
+        this.errors.notificationName = isNullOrEmptyOrUndefined(this.notificationName)
+            ? this._translateService.translate('create-schedule-notification-validation_require-notification-name')
+            : null;
+
+        if (isNullOrEmptyOrUndefined(this.selectedDays)) {
+            this.errors.selectedDays = this._translateService.translate(
+                'create-schedule-notification-validation_require-notification-days'
+            );
+        } else if (+this.selectedDays <= 0) {
+            this.errors.selectedDays = this._translateService.translate(
+                'create-schedule-notification-validation_invalid-notification-days'
+            );
+        } else {
+            this.errors.selectedDays = null;
+        }
     }
 }
