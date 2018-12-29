@@ -2549,7 +2549,7 @@
       </trans-unit>
       <trans-unit id="pos-menu-coordinates-validate-required" datatype="html">
         <source>Please input coordinates</source>
-        <target>Vui lòng nhập tọa độ của POS</target>
+        <target>Vui lòng nhập đầy đủ tọa độ của POS</target>
       </trans-unit>
       <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
         <source>Please input pos's open time</source>
@@ -2658,7 +2658,7 @@
       </trans-unit>
       <trans-unit id="scheduled-notification-txt-search" datatype="html">
         <source>Search by name</source>
-        <target>Tìm kiếm theo tên thông báo</target>
+        <target>Tìm kiếm theo tên gợi nhớ</target>
       </trans-unit>
       <trans-unit id="create-scheduled-notification-title" datatype="html">
         <source>Create notification</source>
@@ -2744,6 +2744,30 @@
       <trans-unit id="create-schedule-notification-schedule-days-are-not-returned" datatype="html">
         <source>Days are not returned</source>
         <target>Khách hàng không tới cửa hàng trong X ngày</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-name" datatype="html">
+        <source>Please input name of notification</source>
+        <target>Vui lòng nhập tên gợi nhớ</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-title" datatype="html">
+        <source>Please input notification title</source>
+        <target>Vui lòng nhập tiêu đề của thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-content" datatype="html">
+        <source>Please input notification content</source>
+        <target>Vui lòng nhập nội dung của thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-days" datatype="html">
+        <source>Please input selected days</source>
+        <target>Vui lòng nhập số ngày chưa trở lại</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_invalid-notification-days" datatype="html">
+        <source>Selected days must be greater than zero</source>
+        <target>Số ngày chưa trở lại phải lớn hơn 0</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-days-are-not-returned-x" datatype="html">
+        <source>Customer are not returned after {{0}} days</source>
+        <target>Khách hàng không tới cửa hàng trong {{0}} ngày</target>
       </trans-unit>
       <!--END Scheduled notification-->
     </body>
