@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogComponent } from '../../../../../shared/ui-common/modal/components/dialog.component';
-import { Voucher } from '../../../../../shared/models/voucher.model';
-import { IFilterChangedEvent } from '../../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { Voucher } from '../../../../shared/models/voucher.model';
+import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Observable, of } from 'rxjs';
-import { DialogService } from '../../../../../shared/ui-common/modal/services/dialog.service';
-import { PromotionsService } from '../../../services/promotions.service';
-import { VoucherTracking } from '../../../../../shared/models/voucher-campaign.model';
-import { ExDialog } from '../../../../../shared/ui-common/modal/services/ex-dialog.service';
+import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
+import { PromotionsService } from '../../services/promotions.service';
+import { VoucherTracking } from '../../../../shared/models/voucher-campaign.model';
+import { ExDialog } from '../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { ManualUseVoucherCodeComponent } from './manual-use-code.component';
-import { TranslateService } from '../../../../../shared/services/translate.service';
-import { NotificationService } from '../../../../../shared/services/notification.service';
+import { TranslateService } from '../../../../shared/services/translate.service';
+import { NotificationService } from '../../../../shared/services/notification.service';
 
 @Component({
   moduleId: module.id,

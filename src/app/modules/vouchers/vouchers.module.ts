@@ -12,7 +12,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { VoucherFormFactory } from './components/create-edit/voucher-form.factory';
 import { VoucherRunner } from './components/run-voucher/voucher-runner';
 import { PromotionsService } from './services/promotions.service';
-import { VoucherRunningPipes } from './components/vouchers-running/pipes';
+import { VoucherRunningFilters } from './components/vouchers-running/filters';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { VoucherRunningPipes } from './components/vouchers-running/pipes';
     SharedModule,
     PosAndMenuModule
   ],
-  declarations: [VoucherStatusDirective, ...voucherComponents, ...VoucherRunningPipes],
+  declarations: [VoucherStatusDirective, ...voucherComponents, ...VoucherRunningFilters],
   providers: [VoucherService, PromotionsService, VoucherFormFactory, VoucherRunner],
   entryComponents: [...voucherEntryComponents]
 })

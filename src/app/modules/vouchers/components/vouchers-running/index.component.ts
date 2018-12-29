@@ -1,4 +1,3 @@
-import { HistoryOfMemberCareComponent } from './member-care/history.component';
 import { VoucherRouteNames } from './../../vouchers.constants';
 import { ExDialog } from './../../../../shared/ui-common/modal/services/ex-dialog.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -15,8 +14,9 @@ import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base
 import { PromotionsService } from '../../services/promotions.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { Router } from '@angular/router';
-import { PublishedVoucherCodeOfMemberCareComponent } from './member-care/published-code.component';
 import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { PublishedVoucherCodeOfMemberCareComponent } from './published-code.component';
+import { HistoryOfMemberCareComponent } from './history.component';
 
 @Component({
   moduleId: module.id,

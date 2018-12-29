@@ -1,6 +1,6 @@
-import { DialogComponent } from '../../../../../shared/ui-common/modal/components/dialog.component';
+import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { OnInit, Component } from '@angular/core';
-import { isNullOrEmptyOrUndefined } from '../../../../../utilities/util';
+import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
 
 @Component({
   moduleId: module.id,

@@ -1,11 +1,10 @@
-import { IFilterChangedEvent } from './../../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { IFilterChangedEvent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
 import { Component, OnInit } from '@angular/core';
-import { DialogComponent } from '../../../../../shared/ui-common/modal/components/dialog.component';
-import { of } from 'rxjs';
-import { VoucherTracking } from '../../../../../shared/models/voucher-campaign.model';
-import { Voucher } from '../../../../../shared/models/voucher.model';
-import { DialogService } from '../../../../../shared/ui-common/modal/services/dialog.service';
-import { PromotionsService } from '../../../services/promotions.service';
+import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { VoucherTracking } from '../../../../shared/models/voucher-campaign.model';
+import { Voucher } from '../../../../shared/models/voucher.model';
+import { DialogService } from '../../../../shared/ui-common/modal/services/dialog.service';
+import { PromotionsService } from '../../services/promotions.service';
 
 @Component({
   moduleId: module.id,

@@ -1,10 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { VoucherTracking } from '../../../../../shared/models/voucher-campaign.model';
+import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({
   name: 'voucherTrackingFilter'
 })
-export class VoucherTrackingsFilter implements PipeTransform {
+export class VoucherTrackingFilter implements PipeTransform {
   transform(items: VoucherTracking[], searchText: string): any[] {
       if (!items) {
           return [];

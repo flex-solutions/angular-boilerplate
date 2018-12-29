@@ -5,7 +5,7 @@ import { VouchersComponent } from './components/home/vouchers.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EditVoucherRunningComponent } from './components/create-edit/edit-voucher-running.component';
-import { VouchersRunningComponent } from './components/vouchers-running/components';
+import { VouchersRunningComponent } from './components/vouchers-running';
 const VoucherRoutes: Routes = [
   {
     path: '',

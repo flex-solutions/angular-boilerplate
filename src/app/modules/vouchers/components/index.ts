@@ -11,7 +11,7 @@ import {
   PublishedVoucherCodeOfMemberCareComponent,
   HistoryOfMemberCareComponent,
   ManualUseVoucherCodeComponent,
-} from './vouchers-running/components';
+} from './vouchers-running';
 
 const voucherComponents = [
     VouchersComponent,
