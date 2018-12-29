@@ -127,7 +127,8 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
 
     private buildScheduledNotification() {
         const scheduledNotification = new ScheduledNotification();
-        switch (+this.selectedSchedule.id) {
+        scheduledNotification.type = +this.selectedSchedule.id;
+        switch (scheduledNotification.type) {
             case ScheduleType.Weekly:
                 scheduledNotification.days = this.selectedDayOfWeek.id;
                 break;
@@ -141,7 +142,6 @@ export class CreateEditScheduledNotificationComponent implements OnInit {
                 break;
         }
         scheduledNotification.name = this.notificationName;
-        scheduledNotification.type = this.selectedSchedule.id;
         scheduledNotification.timeToPush = this.selectedTimeToPushNotification.id;
         scheduledNotification.title = this.notificationTitle;
         scheduledNotification.content = this.notificationContent;

@@ -14,6 +14,9 @@ import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base
 import { PromotionsService } from '../../services/promotions.service';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { Router } from '@angular/router';
+import { ModalSize } from '../../../../shared/ui-common/modal/components/dialog.component';
+import { PublishedVoucherCodeOfMemberCareComponent } from './published-code.component';
+import { HistoryOfMemberCareComponent } from './history.component';
 
 @Component({
   moduleId: module.id,
@@ -77,5 +80,24 @@ export class VouchersRunningComponent extends AbstractBaseComponent implements O
 
   editVoucher(item: VoucherOperationDtoBase) {
     this.router.navigate([VoucherRouteNames.EDIT_VOUCHER_RUNNING, item.id, item.voucher.code]);
+  }
+
+  viewListOfPublishedCodeOfMemberCareType(item: VoucherOperationDtoBase) {
+    const dialogData = { callerData: {
+      voucher: item.voucher,
+      runningId: item.id
+    }};
+
+    this.exDialog.openPrime(PublishedVoucherCodeOfMemberCareComponent, dialogData, ModalSize.Large).subscribe(() => {
+      this.getVouchersRunning();
+    });
+  }
+
+  viewVoucherUsage(item: VoucherOperationDtoBase) {
+    const dialogData = { callerData: {
+      voucher: item.voucher,
+    }};
+
+    this.exDialog.openPrime(HistoryOfMemberCareComponent, dialogData, ModalSize.Large);
   }
 }

@@ -18743,6 +18743,15 @@ button.close {
   padding: 15px;
 }
 
+.modal-body table {
+  background: white;
+}
+
+.modal-body .tbl-container {
+  max-height: 500px;
+  overflow: auto;
+}
+
 .modal-footer {
   display: flex;
   align-items: center;
