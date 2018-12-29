@@ -108,8 +108,12 @@
                     <td>{{item.start_date | dateTimeFormat}}</td>
                     <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>{{item.maxRange}}</td>
-                    <td>{{item.usedCount}}</td>
-                    <td>{{item.remainCount}}</td>
+                    <td>
+                      <a class="a-clickable" (click)="viewVoucherUsage(item)">{{item.usedCount}}</a>
+                    </td>
+                    <td>
+                      <a class="a-clickable" (click)="viewListOfPublishedCodeOfMemberCareType(item)">{{item.remainCount}}</a>
+                    </td>
                     <td>
                       <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
