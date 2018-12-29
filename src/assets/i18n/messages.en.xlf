@@ -2479,6 +2479,27 @@
         <source>Are you sure you want to delete code {{0}} of voucher {{1}}?</source>
         <target>Are you sure you want to delete code {{0}} of voucher {{1}}?</target>
       </trans-unit>
+      <trans-unit id="voucher-running-report-usage-title" datatype="html">
+        <source>Report usage of voucher</source>
+        <target>Report usage of voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-sub-title" datatype="html">
+        <source>View usage status of "{{voucher.name}}"</source>
+        <target>View usage status of "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-search-lbl" datatype="html">
+        <source>Search by member id, publish code, bill id</source>
+        <target>Search by member id, publish code, bill id</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-used-date" datatype="html">
+        <source>Used date</source>
+        <target>Used date</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-bill-id" datatype="html">
+        <source>Bill id</source>
+        <target>Bill id</target>
+      </trans-unit>
+
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">

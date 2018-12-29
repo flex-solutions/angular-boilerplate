@@ -1,22 +1,23 @@
 <div class="modal-content">
   <div class="modal-header">
     <div>
-      <h5 class="modal-title" style="width: 100%">Report usage of voucher</h5>
-      <p class="row col-12">View usage status of "{{voucher.name}}"</p>
+      <h5 class="modal-title" style="width: 100%" i18n="@@voucher-running-report-usage-title">Report usage of voucher</h5>
+      <p class="row col-12" i18n="@@voucher-running-report-usage-sub-title">View usage status of "{{voucher.name}}"</p>
     </div>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
   <div class="modal-body">
-    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" searchLabel="Search by member id, publish code, bill id">
+    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" searchLabel="Search by member id, publish code, bill id"
+    i18n-searchLabel="@@voucher-running-report-usage-search-lbl">
       <tr role="row">
         <th i18n="@@voucher-running-member-care-published-code">Publish code</th>
         <th i18n="@@voucher-running-member-care-member-id">Member id</th>
         <th i18n="@@voucher-running-effect-from">Published date</th>
         <th i18n="@@voucher-running-effect-to">Expire date</th>
-        <th>Used date</th>
-        <th>Bill id</th>
+        <th i18n="@@voucher-running-report-usage-used-date">Used date</th>
+        <th i18n="@@voucher-running-report-usage-bill-id">Bill id</th>
       </tr>
       <tbody>
         <tr *ngFor="let history of voucherHistories | voucherTrackingFilter: dg.searchKey">

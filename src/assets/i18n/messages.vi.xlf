@@ -2483,6 +2483,26 @@
         <source>A voucher code has been used</source>
         <target>Một mã voucher đã được dùng</target>
       </trans-unit>
+      <trans-unit id="voucher-running-report-usage-title" datatype="html">
+        <source>Report usage of voucher</source>
+        <target>Báo cáo sử dụng voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-sub-title" datatype="html">
+        <source>View usage status of "{{voucher.name}}"</source>
+        <target>Xem tình trạng sử dụng voucher của chương trình "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-search-lbl" datatype="html">
+        <source>Search by member id, publish code, bill id</source>
+        <target>Tìm theo mã hội viên, mã phát hành voucher và mã hóa đơn</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-used-date" datatype="html">
+        <source>Used date</source>
+        <target>Ngày sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-bill-id" datatype="html">
+        <source>Bill id</source>
+        <target>Mã hóa đơn</target>
+      </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
       <trans-unit id="give-voucher-title" datatype="html">
