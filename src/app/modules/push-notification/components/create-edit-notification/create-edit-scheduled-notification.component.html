@@ -141,6 +141,13 @@
                             [ngClass]="{ 'has-error': errors.notificationContent && (isForceValidate || content.dirty || content.touched) }"
                             #content="ngModel"
                         ></textarea>
+                        <label
+                            id="notification-content-input-error"
+                            class="error mt-2 text-danger ml-0"
+                            for="notification-content-input"
+                            *ngIf="errors.notificationContent && (isForceValidate || content.dirty || content.touched)"
+                            >{{ errors.notificationContent }}</label
+                        >
                     </div>
                 </div>
             </form>
