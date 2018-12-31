@@ -12,10 +12,12 @@ class VoucherRunning extends ModelBase {
 }
 
 class VoucherTracking extends ModelBase {
+  _id: any;
   membership_id: string;
   publish_code: string;
   is_used: boolean;
   used_date: Date;
+  bill_id: string;
 }
 
 export {VoucherRunning, VoucherTracking};

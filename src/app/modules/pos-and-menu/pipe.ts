@@ -37,7 +37,7 @@ export class POSMenuFilter implements PipeTransform {
         searchText = searchText.toLowerCase();
         return items.filter(it => {
             return it.name.toLowerCase().includes(searchText)
-            || (isNullOrEmptyOrUndefined(it.itemType) || it.itemType.name.toLowerCase().includes(searchText))
+            || (!isNullOrEmptyOrUndefined(it.itemType) && it.itemType.name.toLowerCase().includes(searchText))
             || it.description.toLowerCase().includes(searchText)
             || it.itemId.toLowerCase().includes(searchText);
         });

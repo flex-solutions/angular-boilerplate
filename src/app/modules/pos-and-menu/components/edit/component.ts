@@ -26,128 +26,130 @@ export class POSEditComponent extends AbstractFormComponent implements OnInit, A
     selectedCity: Province;
 
     public errors = {
-        name: [
-          {
-            type: 'required',
-            message: 'pos-menu-name-validate-required'
-          },
-          {
-            type: 'pattern',
-            message: 'pos-menu-name-validate-pattern'
-          }
-        ],
-        address: [
-          {
-            type: 'required',
-            message: 'pos-menu-address-validate-required'
-          }
-        ],
-        phoneNumber: [
-            {
-              type: 'required',
-              message: 'pos-menu-phone-number-validate-required'
-            }
-        ],
-        coordinates: [
-            {
-              type: 'required',
-              message: 'pos-menu-coordinates-validate-required'
-            }
-        ]
+      name: [{
+          type: 'required',
+          message: 'pos-menu-name-validate-required'
+        },
+        {
+          type: 'pattern',
+          message: 'pos-menu-name-validate-pattern'
+        }
+      ],
+      address: [{
+        type: 'required',
+        message: 'pos-menu-address-validate-required'
+      }],
+      phoneNumber: [{
+        type: 'required',
+        message: 'pos-menu-phone-number-validate-required'
+      }],
+      coordinates: [{
+        type: 'required',
+        message: 'pos-menu-coordinates-validate-required'
+      }]
     };
 
     constructor(private readonly location: Location,
-        activatedRoute: ActivatedRoute,
-        private readonly posService: POSService,
-        private readonly formBuilder: FormBuilder,
-        public readonly translateService: TranslateService,
-        private readonly notification: NotificationService) {
-        super();
-        this.posId = activatedRoute.snapshot.params['id'];
+      activatedRoute: ActivatedRoute,
+      private readonly posService: POSService,
+      private readonly formBuilder: FormBuilder,
+      public readonly translateService: TranslateService,
+      private readonly notification: NotificationService) {
+      super();
+      this.posId = activatedRoute.snapshot.params['id'];
     }
 
     ngOnInit() {
-        super.ngOnInit();
-        this.getPos();
+      super.ngOnInit();
+      this.getPos();
     }
 
     get name() {
-        return this.formGroup.get('name');
+      return this.formGroup.get('name');
     }
 
     get address() {
-        return this.formGroup.get('address');
+      return this.formGroup.get('address');
     }
 
     get phoneNumber() {
-        return this.formGroup.get('phoneNumber');
+      return this.formGroup.get('phoneNumber');
     }
 
-    get coordinates() {
-        return this.formGroup.get('coordinates');
+    get longitude() {
+      return this.formGroup.get('longitude');
+    }
+
+    get latitude() {
+      return this.formGroup.get('latitude');
     }
 
     private getPos() {
-        this.posService.findById(this.posId).subscribe(res => {
-            this.pos = res;
-            if (isEmpty(this.pos)) {
-                return;
-            }
+      this.posService.findById(this.posId).subscribe(res => {
+        this.pos = res;
+        if (isEmpty(this.pos)) {
+          return;
+        }
 
-            if (isEmpty(this.pos.openTimes)) {
-                const openTime = new POSOpenTimeDto();
-                this.pos.openTimes = [openTime];
-            } else {
-                forEach(this.pos.openTimes, openTime => {
-                    openTime.internalId = Guid.create().toString();
-                });
-            }
+        if (isEmpty(this.pos.openTimes)) {
+          const openTime = new POSOpenTimeDto();
+          this.pos.openTimes = [openTime];
+        } else {
+          forEach(this.pos.openTimes, openTime => {
+            openTime.internalId = Guid.create().toString();
+          });
+        }
 
-            this.selectedCity = this.pos.province;
-            this.selectedDistrict = this.pos.district;
-        });
+        this.selectedCity = this.pos.province;
+        this.selectedDistrict = this.pos.district;
+      });
     }
 
     protected onSubmit() {
-        if (isEmpty(this.pos.openTimes)) {
-            this.notification.showError(this.translateService.translate('pos-menu-open-time-validate-required'));
-            return;
-        }
+      if (isEmpty(this.pos.openTimes)) {
+        this.notification.showError(this.translateService.translate('pos-menu-open-time-validate-required'));
+        return;
+      }
 
-        this.pos.province = this.selectedCity;
-        this.pos.district = this.selectedDistrict;
-        this.posService.update(this.pos).subscribe(() => {
-            const successMsg = this.translateService.translate('pos-menu-update-pos-success', this.pos.name);
-            this.notification.showSuccess(successMsg);
-        });
+      this.pos.province = this.selectedCity;
+      this.pos.district = this.selectedDistrict;
+      this.posService.update(this.pos).subscribe(() => {
+        const successMsg = this.translateService.translate('pos-menu-update-pos-success', this.pos.name);
+        this.notification.showSuccess(successMsg);
+      });
     }
 
     protected onCancel() {
-        this.location.back();
+      this.location.back();
     }
 
     protected onCreateForm() {
-        super.onCreateForm();
-        this.formGroup = this.formBuilder.group({
-          name: [
-            '', [Validators.required, Validators.pattern(validationRegex.notAllowSpecialCharacters)]
-          ],
-          address: ['', [Validators.required]],
-          phoneNumber: ['', [Validators.required]],
-          coordinates: ['', [Validators.required]]
-        });
+      super.onCreateForm();
+      this.formGroup = this.formBuilder.group({
+        name: [
+          '', [Validators.required, Validators.pattern(validationRegex.notAllowSpecialCharacters)]
+        ],
+        address: ['', [Validators.required]],
+        phoneNumber: ['', [Validators.required]],
+        longitude: ['', [Validators.required]],
+        latitude: ['', [Validators.required]],
+      });
     }
 
     addNewOpenTime(openTime: POSOpenTimeDto) {
-        const index = findIndex(this.pos.openTimes, {internalId: openTime.internalId});
-        this.pos.openTimes.splice(index + 1, 0, new POSOpenTimeDto());
+      const index = findIndex(this.pos.openTimes, {
+        internalId: openTime.internalId
+      });
+      this.pos.openTimes.splice(index + 1, 0, new POSOpenTimeDto());
     }
 
     deleteOpenTime(openTime: POSOpenTimeDto) {
-        if (this.pos.openTimes.length === 1) {
-            return;
-        }
+      if (this.pos.openTimes.length === 1) {
+        return;
+      }
 
-        remove(this.pos.openTimes, {internalId: openTime.internalId});
+      remove(this.pos.openTimes, {
+        internalId: openTime.internalId
+      });
     }
 }
