@@ -1948,12 +1948,12 @@
         <target>Discount amount</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-number-item-to-buy" datatype="html">
-        <source>Number of items to buy</source>
-        <target>Number of items to buy</target>
+        <source>Number of items to buy (blank if applicable one item)</source>
+        <target>Number of items to buy (blank if applicable one item)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-number-item-donated" datatype="html">
-        <source>Number of items donated</source>
-        <target>Number of items donated</target>
+        <source>Number of items donated (blank if applicable one item)</source>
+        <target>Number of items donated (blank if applicable one item)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-restaurants" datatype="html">
         <source>POS applicable (blank if applicable all)</source>
