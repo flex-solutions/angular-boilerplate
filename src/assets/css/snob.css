@@ -18748,7 +18748,7 @@ button.close {
 }
 
 .modal-body .tbl-container {
-  max-height: 500px;
+  max-height: 350px;
   overflow: auto;
 }
 
