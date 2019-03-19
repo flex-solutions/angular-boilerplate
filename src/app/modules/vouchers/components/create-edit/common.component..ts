@@ -79,6 +79,8 @@ export class CommonCreateEditVoucherComponent implements AfterViewInit {
   }
 
   submit(voucher: Voucher) {
+    voucher.numberBuyItem = this.voucher.numberBuyItem;
+    voucher.numberGiftItem = this.voucher.numberGiftItem;
     this.voucher = voucher;
     this.voucher.applyPoses = map(this.selectedPoses, 'id');
     this.voucher.applyMenuItemTypes = map(this.selectedMenuItemTypes, 'id');

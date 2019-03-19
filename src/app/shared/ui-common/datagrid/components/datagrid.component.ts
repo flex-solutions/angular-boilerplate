@@ -143,6 +143,11 @@ export class DatagridComponent implements OnInit {
     }
   }
 
+  refresh() {
+    this.countAndRasePageChangedForTheFirstPage();
+    this.countPageEntry();
+  }
+
   getParams(): IFilterChangedEvent {
     const filterChangedEvent: IFilterChangedEvent = {
       pagination: { itemsPerPage: this.itemsPerPage, page: this.currentPage },

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DatagridComponent } from './../../../../shared/ui-common/datagrid/components/datagrid.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
 import { Voucher } from '../../../../shared/models/voucher.model';
 import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
@@ -27,6 +28,8 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
 
   deleteSuccessMsg: string;
   useCodeSuccessMsg: string;
+
+  @ViewChild('dg') publishedCodeGrid: DatagridComponent;
 
   constructor(protected dialogService: DialogService,
     private readonly exDialog: ExDialog,
@@ -85,7 +88,7 @@ export class PublishedVoucherCodeOfMemberCareComponent extends DialogComponent i
         const billId = result;
         this.promotionServices.manualUseVoucherCode(tracking.publish_code, tracking.membership_id, billId).subscribe(() => {
           this.notification.showSuccess(this.useCodeSuccessMsg);
-          this.loadRemainingCode();
+          this.publishedCodeGrid.refresh();
         });
       }
     });
