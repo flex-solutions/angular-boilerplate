@@ -1,0 +1,65 @@
+<app-card title="Menu Toppings"
+  subTitle="View, edit name for menu topping and topping options. Tip: Click on Option name to edit">
+  <form id="editable-form">
+    <div class="accordion accordion-body-filled" id="accordion-6" role="tablist">
+      <div class="card" *ngFor="let topping of toppings">
+        <div class="card-header" role="tab" id="headingOne-6" style="display: flex; align-items: baseline;">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" href="#collapseOne-6" aria-expanded="false" aria-controls="collapseOne-6"
+              class="collapsed">
+              <div style="display:flex">
+                <div class="topping-block">
+                  Name
+                  <div class="badge badge-outline-info badge-pill info">{{topping.name}}
+                  </div>
+                </div>
+                <div class="topping-block">
+                  IPOS Id
+                  <div class="badge badge-outline-info badge-pill info">{{topping.iposId}}</div>
+                </div>
+                <div class="topping-block">
+                  Min permitted <div class="badge badge-outline-info badge-pill info">{{topping.minPermitted}}</div>
+                </div>
+                <div class="topping-block">
+                  Max permitted <div class="badge badge-outline-info badge-pill info">{{topping.maxPermitted}}</div>
+                </div>
+              </div>
+            </a>
+          </h5>
+          <button type="button" class="btn btn-inverse-primary btn-rounded btn-sm" style="margin-top:-8px"
+            (click)="editToppingName(topping)">Edit
+            name</button>
+        </div>
+        <div id="collapseOne-6" class="collapse" role="tabpanel" aria-labelledby="headingOne-6"
+          data-parent="#accordion-6">
+          <div class="card-body">
+            <p class="lead">
+              Options
+            </p>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>IPOS Id</th>
+                  <th>Option name</th>
+                  <th>Take away price</th>
+                  <th>On the seat price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let option of topping.options">
+                  <td>{{option.iposId}}</td>
+                  <td>
+                    <app-input-editable [(value)]="option.name" (valueChange)="toppingOptionNameChanged(option)">
+                    </app-input-editable>
+                  </td>
+                  <td>{{option.taPrice | currency:'đ':'symbol':'1.0-2'}}</td>
+                  <td>{{option.otsPrice | currency:'đ':'symbol':'1.0-2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-card>
