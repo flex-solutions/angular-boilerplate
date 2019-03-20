@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractBaseComponent } from '../../../../shared/abstract/abstract-base-component';
-import { IFilterChangedEvent } from '../../../../shared/ui-common/datagrid/components/datagrid.component';
-import { MenuItemDto } from '../../../../shared/models/menu.model';
 import { POSService } from '../../services/pos';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '../../../../shared/services/translate.service';
-import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
+import { ActivatedRoute } from '@angular/router';
 import IMenuTopping from '../../../../shared/models/menu.model';
+import { NotificationService } from '../../../../shared/services/notification.service';
 
 @Component({
     moduleId: module.id,
@@ -20,9 +17,8 @@ export class MenuToppingComponent extends AbstractBaseComponent implements OnIni
 
     constructor(
         private readonly posService: POSService,
-        activatedRoute: ActivatedRoute,
-        private readonly translateService: TranslateService,
-        private readonly router: Router
+        private readonly notification: NotificationService,
+        activatedRoute: ActivatedRoute
     ) {
         super();
         this.menuItemId = activatedRoute.snapshot.params['id'];
@@ -38,10 +34,12 @@ export class MenuToppingComponent extends AbstractBaseComponent implements OnIni
 
     async toppingOptionNameChanged(option) {
         await this.posService.updateToppingOption(option).toPromise();
+        this.notification.showSuccess('Update topping option name successfully');
     }
 
     async toppingNameChanged(topping: IMenuTopping) {
         await this.posService.updateTopping(topping).toPromise();
+        this.notification.showSuccess('Update topping name successfully');
     }
 
     editToppingName(topping: IMenuTopping) {}
