@@ -2664,6 +2664,14 @@
         <source>Description</source>
         <target>Mô tả</target>
       </trans-unit>
+      <trans-unit id="pos-menu-item-name-required" datatype="html">
+        <source>Please input menu name</source>
+        <target>Vui lòng nhập tên menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-th-name" datatype="html">
+        <source>Name</source>
+        <target>Tên</target>
+      </trans-unit>
       <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
         <source> Apply all for same items</source>
         <target>Áp dụng cho những sản phẩm cùng loại</target>

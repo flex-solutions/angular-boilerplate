@@ -367,8 +367,10 @@
         <target>Username or password is incorrect. You have {{0}} login attempts remain.</target>
       </trans-unit>
       <trans-unit id="account-login-validation-blockedAccount" datatype="html">
-        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
-        <target>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</target>
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.
+        </source>
+        <target>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.
+        </target>
       </trans-unit>
       <trans-unit id="account-login-validation-invalidRecaptcha" datatype="html">
         <source>Recaptcha is invalid. Please make sure that you are not a robot.</source>
@@ -2182,8 +2184,10 @@
         <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
       </trans-unit>
       <trans-unit id="membership-type-create-sub-title" datatype="html">
-        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
-        <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too
+        </source>
+        <target>Allow add one or many new membership type, new membership type should be added on IPOS system too
+        </target>
       </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
         <source>Internal membership types</source>
@@ -2656,6 +2660,10 @@
       <trans-unit id="pos-menu-item-th-description" datatype="html">
         <source>Description</source>
         <target>Description</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-th-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
       </trans-unit>
       <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
         <source> Apply all for same items</source>
