@@ -177,7 +177,8 @@
       <!--Datagrid-->
       <trans-unit id="dg-entries-info" datatype="html">
         <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
-        <target>Hiển thị từ dòng {{currentPageStartEntry}} tới dòng {{currentPageEndEntry}} của {{totalItems}} dòng</target>
+        <target>Hiển thị từ dòng {{currentPageStartEntry}} tới dòng {{currentPageEndEntry}} của {{totalItems}} dòng
+        </target>
       </trans-unit>
       <trans-unit id="dg-show-label" datatype="html">
         <source>Show</source>
@@ -366,7 +367,8 @@
         <target>Tên đăng nhập hoặc mật khẩu không chính xác. Bạn còn lại {{0}} lần đăng nhập.</target>
       </trans-unit>
       <trans-unit id="account-login-validation-blockedAccount" datatype="html">
-        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.
+        </source>
         <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ
           admin để
           mở khóa.</target>
@@ -761,7 +763,8 @@
       </trans-unit>
       <trans-unit id="account-recovery-label-enter-email" datatype="html">
         <source>Enter your email address below and we'll send you a secure link to reset your password</source>
-        <target>Nhập địa chỉ email của bạn vào bên dưới, hệ thống sẽ gởi bạn một liên kết bảo mật để phục hồi mật khẩu</target>
+        <target>Nhập địa chỉ email của bạn vào bên dưới, hệ thống sẽ gởi bạn một liên kết bảo mật để phục hồi mật khẩu
+        </target>
       </trans-unit>
       <trans-unit id="account-recovery-input-email-address" datatype="html">
         <source>Email address</source>
@@ -2171,7 +2174,8 @@
           ổn định</target>
       </trans-unit>
       <trans-unit id="membership-type-create-sub-title" datatype="html">
-        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too
+        </source>
         <target>Thêm và áp dụng các loại ưu đãi cố định cho một loại hội viên</target>
       </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
@@ -2641,7 +2645,7 @@
         <target>Hiển thị và sửa thông tin menu</target>
       </trans-unit>
       <trans-unit id="pos-menu-item-list-sub-title" datatype="html">
-        <source>Display and modify menu info of  POS {{0}}</source>
+        <source>Display and modify menu info of POS {{0}}</source>
         <target>Hiển thị và sửa thông tin menu của POS {{0}}</target>
       </trans-unit>
       <trans-unit id="pos-menu-list-btn-menu" datatype="html">
@@ -2667,6 +2671,54 @@
       <trans-unit id="menu-item-edit-label-can_exchange_point" datatype="html">
         <source> Can Exchange Point</source>
         <target> Có thể đổi điểm thưởng</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-sub-title" datatype="html">
+        <source> View, edit name for menu topping and topping options. Tip: Click on Option name to edit</source>
+        <target> Xem, sửa tên topping và tùy chọn topping của một menu. Tip: Click vào tên tùy chọn để sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-name" datatype="html">
+        <source> Name</source>
+        <target> Tên topping</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-ipos-id" datatype="html">
+        <source> IPos id</source>
+        <target> Mã IPos</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-min-permitted" datatype="html">
+        <source> Min permitted</source>
+        <target> Số lượng tối thiểu</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-max-permitted" datatype="html">
+        <source> Max permitted</source>
+        <target> Số lượng tối đa</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-btn-edit-name" datatype="html">
+        <source> Edit name</source>
+        <target> Sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option" datatype="html">
+        <source> Options</source>
+        <target> Tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-name" datatype="html">
+        <source> Option name</source>
+        <target> Tên tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ta-price" datatype="html">
+        <source> Take away price</source>
+        <target> Giá mang đi</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ots-price" datatype="html">
+        <source> On the seat price</source>
+        <target> Giá ăn tại chỗ</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-opt-name-success" datatype="html">
+        <source> Update topping option name successfully</source>
+        <target> Cập nhật tên tùy chọn topping thành công</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-name-success" datatype="html">
+        <source> Update topping name successfully</source>
+        <target> Cập nhật tên topping thành công</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
@@ -2747,7 +2799,8 @@
       </trans-unit>
       <trans-unit id="edit-scheduled-notification-sub-title" datatype="html">
         <source>This page allows you edit scheduled notification for a group of customers</source>
-        <target>Trang này cho phép bạn sửa thông báo gởi tới một nhóm hội viên được chọn theo một lịch trình cố định</target>
+        <target>Trang này cho phép bạn sửa thông báo gởi tới một nhóm hội viên được chọn theo một lịch trình cố định
+        </target>
       </trans-unit>
       <trans-unit id="create-scheduled-notification-step-1-title" datatype="html">
         <source>Notification</source>

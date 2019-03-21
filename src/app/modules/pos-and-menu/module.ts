@@ -7,16 +7,11 @@ import { PosAndMenuRoutingModule } from './routing.module';
 import { POSService } from './services/pos';
 import { pipes } from './pipe';
 import { PosDirectives } from './directives/index';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    PosAndMenuRoutingModule,
-    UICommonModule
-  ],
-  declarations: [...components, ...pipes, ...PosDirectives],
-  providers: [POSService]
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, PosAndMenuRoutingModule, UICommonModule, PopoverModule.forRoot()],
+    declarations: [...components, ...pipes, ...PosDirectives],
+    providers: [POSService]
 })
 export class PosAndMenuModule {}

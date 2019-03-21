@@ -14,6 +14,7 @@ import { NotificationService } from '../../../../shared/services/notification.se
 export class MenuToppingComponent extends AbstractBaseComponent implements OnInit {
     toppings: IMenuTopping[] = [];
     menuItemId: string;
+    editToppingName: string;
 
     constructor(
         private readonly posService: POSService,
@@ -37,10 +38,16 @@ export class MenuToppingComponent extends AbstractBaseComponent implements OnIni
         this.notification.showSuccess('Update topping option name successfully');
     }
 
-    async toppingNameChanged(topping: IMenuTopping) {
-        await this.posService.updateTopping(topping).toPromise();
-        this.notification.showSuccess('Update topping name successfully');
+    editTopping(topping: IMenuTopping) {
+        this.editToppingName = topping.name;
     }
 
-    editToppingName(topping: IMenuTopping) {}
+    async submitToEditToppingName(topping: IMenuTopping) {
+        const updateTopping: IMenuTopping = Object.assign({}, topping);
+        updateTopping.name = this.editToppingName;
+
+        await this.posService.updateTopping(updateTopping).toPromise();
+        this.notification.showSuccess('Update topping name successfully');
+        topping.name = this.editToppingName;
+    }
 }

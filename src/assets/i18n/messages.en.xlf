@@ -2665,6 +2665,54 @@
         <source> Can Exchange Point</source>
         <target> Can Exchange Point</target>
       </trans-unit>
+      <trans-unit id="menu-item-topping-sub-title" datatype="html">
+        <source> View, edit name for menu topping and topping options. Tip: Click on Option name to edit</source>
+        <target> Xem, sửa tên topping và tùy chọn topping của một menu. Tip: Click vào tên tùy chọn để sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-name" datatype="html">
+        <source> Name</source>
+        <target> Tên topping</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-ipos-id" datatype="html">
+        <source> IPos id</source>
+        <target> Mã IPos</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-min-permitted" datatype="html">
+        <source> Min permitted</source>
+        <target> Số lượng tối thiểu</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-max-permitted" datatype="html">
+        <source> Max permitted</source>
+        <target> Số lượng tối đa</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-btn-edit-name" datatype="html">
+        <source> Edit name</source>
+        <target> Sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option" datatype="html">
+        <source> Options</source>
+        <target> Tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-name" datatype="html">
+        <source> Option name</source>
+        <target> Tên tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ta-price" datatype="html">
+        <source> Take away price</source>
+        <target> Giá mang đi</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ots-price" datatype="html">
+        <source> On the seat price</source>
+        <target> Giá ăn tại chỗ</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-opt-name-success" datatype="html">
+        <source> Update topping option name successfully</source>
+        <target> Cập nhật tên tùy chọn topping thành công</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-name-success" datatype="html">
+        <source> Update topping name successfully</source>
+        <target> Cập nhật tên topping thành công</target>
+      </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
       <trans-unit id="push-notification-success" datatype="html">
