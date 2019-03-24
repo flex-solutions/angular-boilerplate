@@ -2661,6 +2661,10 @@
         <source>Description</source>
         <target>Description</target>
       </trans-unit>
+            <trans-unit id="pos-menu-item-th-group-name" datatype="html">
+        <source>Group name</source>
+        <target>Group name</target>
+      </trans-unit>
       <trans-unit id="pos-menu-item-th-name" datatype="html">
         <source>Name</source>
         <target>Name</target>

@@ -53,6 +53,10 @@ export class EditMenuItemComponent extends AbstractFormComponent implements OnIn
         return this.formGroup.get('description');
     }
 
+    get groupName() {
+        return this.formGroup.get('groupName');
+    }
+
     get name() {
         return this.formGroup.get('name');
     }
@@ -92,7 +96,8 @@ export class EditMenuItemComponent extends AbstractFormComponent implements OnIn
             description: ['', []],
             name: ['', [Validators.required]],
             canExchangePoint: ['', []],
-            isApplyForAllItem: ['', []]
+            isApplyForAllItem: ['', []],
+            groupName: ['', []],
         });
     }
 }

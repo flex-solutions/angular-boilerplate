@@ -5,9 +5,9 @@ import { isNullOrEmptyOrUndefined } from '../../../utilities/util';
 
 declare let $: any;
 
-@Directive({ selector: '[appMenuItemAvarta]' })
-export class MenuItemAvartaDirective implements OnChanges, AfterViewInit {
-    @Input('appMenuItemAvarta') avarta: string;
+@Directive({ selector: '[appMenuItemAvatar]' })
+export class MenuItemAvatarDirective implements OnChanges, AfterViewInit {
+    @Input('appMenuItemAvatar') avatar: string;
     host: any;
     defaultImage: any;
 
@@ -16,23 +16,23 @@ export class MenuItemAvartaDirective implements OnChanges, AfterViewInit {
     }
 
     ngOnChanges() {
-        this.createAvartaCtrl();
+        this.createAvatarCtrl();
     }
 
     ngAfterViewInit() {
-        this.createAvartaCtrl();
+        this.createAvatarCtrl();
     }
 
-    private createAvartaCtrl() {
-        if (isNullOrEmptyOrUndefined(this.avarta)) {
-            getBase64('assets/images/defaultavatar.png').then(data => {
+    private createAvatarCtrl() {
+        if (isNullOrEmptyOrUndefined(this.avatar)) {
+            getBase64('assets/images/menu-default-avatar.png').then(data => {
                 $(this.host).html(
-                    `<img src="${data.toString()}" class="rounded" alt="image" style="width: 92px !important;height: 92px !important;">`
+                    `<img src="${data.toString()}" class="rounded" alt="image" style="width: 125px !important;height: 125px !important;">`
                 );
             });
         } else {
             $(this.host).html(
-                `<img src="${this.avarta}" class="rounded" alt="image" style="width: 92px !important;height: 92px !important;">`
+                `<img src="${this.avatar}" class="rounded" alt="image" style="width: 92px !important;height: 92px !important;">`
             );
         }
     }

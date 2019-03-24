@@ -2664,6 +2664,10 @@
         <source>Description</source>
         <target>Mô tả</target>
       </trans-unit>
+      <trans-unit id="pos-menu-item-th-group-name" datatype="html">
+        <source>Group name</source>
+        <target>Tên nhóm</target>
+      </trans-unit>
       <trans-unit id="pos-menu-item-name-required" datatype="html">
         <source>Please input menu name</source>
         <target>Vui lòng nhập tên menu</target>

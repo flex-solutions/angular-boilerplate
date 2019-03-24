@@ -21,6 +21,53 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="groupName" i18n="@@pos-menu-item-th-group-name">Group name</label>
+          <input id="groupName" class="form-control" formControlName="groupName" [(ngModel)]="menuItem.groupName"
+            placeholder="Enter group name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="size">Size</label>
+          <div class="row" style="margin-bottom: 10px">
+            <div style="margin-left: 10px">
+              <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                <label class="form-check-label">
+                  <input type="radio" name="give-voucher-skip-option" class="form-check-input"
+                    [checked]="menuItem.size === 'S'" value="S" (change)="menuItem.size = $event.target.value">
+                  <i class="input-helper"></i>
+                  <label class="chk-label" style="margin-top:10px">S</label>
+                </label>
+              </div>
+            </div>
+            <div style="margin-left: 10px">
+              <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                <label class="form-check-label">
+                  <input type="radio" name="give-voucher-skip-option" class="form-check-input"
+                    [checked]="menuItem.size === 'M'" value="M" (change)="menuItem.size = $event.target.value">
+                  <i class="input-helper"></i>
+                  <label class="chk-label" style="margin-top:10px">M</label>
+                </label>
+              </div>
+            </div>
+            <div style="margin-left: 10px">
+              <div class="form-radio form-radio-flat" style="margin-top:0;margin-bottom:0">
+                <label class="form-check-label">
+                  <input type="radio" name="give-voucher-skip-option" class="form-check-input"
+                    [checked]="menuItem.size === 'L'" value="L" (change)="menuItem.size = $event.target.value">
+                  <i class="input-helper"></i>
+                  <label class="chk-label" style="margin-top:10px">L</label>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="form-group col-md-12"
           [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched)}">

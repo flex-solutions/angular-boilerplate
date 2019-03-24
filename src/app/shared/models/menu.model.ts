@@ -22,6 +22,8 @@ class MenuItemDto extends ModelBase {
     canExchangePoint: true;
     image: any;
     toppings: IMenuTopping[];
+    groupName: string;
+    size: string;
 }
 
 class MenuItemTypeDto extends ModelBase {
