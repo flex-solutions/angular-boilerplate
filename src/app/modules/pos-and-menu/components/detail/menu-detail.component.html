@@ -1,36 +1,41 @@
-
-<app-card title="Menu" i18n-title="@@pos-menu-item-list-title" subTitle= "{{subTitle}}">
-    <app-dg #dg searchLabel="Search by name, type" i18n-searchLabel="@@pos-menu-item-list-txt-search" (pageChanged)="onPageChanged($event)"
-        [countFunction]="count">
-        <tr>
-            <th></th>
-            <th style="width: 55%"></th>
-        </tr>
-        <tbody>
-            <tr *ngFor="let menuItem of pos_menu  | posMenuFilter: dg.searchKey">
-                <td>
-                    <div class="card-body">
-                        <div class="d-flex flex-row">
-                            <div [appMenuItemAvarta] = "menuItem.image"> </div>
-                            <div class="ml-3">
-                                <h6>
-                                    {{menuItem.itemId}} - {{menuItem.name}} 
-                                    <span *ngIf="!isShowAll" [appMenuItemStatus]="menuItem.status"> </span>
-                                    <span [appMenuItemExchangePoint] = "menuItem.canExchangePoint"> </span>
-                                </h6>
-                                <p class="mt-2">{{menuItem.itemType?.name}}</p>
-                                <p class="text-muted" style="word-break: break-word">{{menuItem.description}}</p>
-                                <p class="mt-2">{{menuItem.taPrice | currency:'đ':'symbol':'1.0-2'}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td >
-                    <div class="template-demo">
-                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-fw" (click)="edit(menuItem)"  style="float: left;">Edit</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </app-dg>
+<app-card title="Menu" i18n-title="@@pos-menu-item-list-title" subTitle="{{subTitle}}">
+  <app-dg #dg searchLabel="Search by name, type" i18n-searchLabel="@@pos-menu-item-list-txt-search"
+    (pageChanged)="onPageChanged($event)" [countFunction]="count">
+    <tr>
+      <th></th>
+      <th style="width: 55%"></th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let menuItem of pos_menu  | posMenuFilter: dg.searchKey">
+        <td>
+          <div class="card-body">
+            <div class="d-flex flex-row">
+              <div [appMenuItemAvatar]="menuItem.image"> </div>
+              <div class="ml-3">
+                <h6>
+                  {{menuItem.groupName}} - Size {{menuItem.size}}
+                  <span *ngIf="!isShowAll" [appMenuItemStatus]="menuItem.status"> </span>
+                  <span [appMenuItemExchangePoint]="menuItem.canExchangePoint"> </span>
+                </h6>
+                <p>
+                  {{menuItem.itemId}} - {{menuItem.name}}
+                </p>
+                <p class="mt-2">{{menuItem.itemType?.name}}</p>
+                <p class="text-muted" style="word-break: break-word">{{menuItem.description}}</p>
+                <p class="mt-2">{{menuItem.taPrice | currency:'đ':'symbol':'1.0-2'}}</p>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="template-demo">
+            <button type="button" class="btn btn-inverse-info btn-rounded btn-fw" (click)="viewTopping(menuItem)"
+              style="float: left;">Topping</button>
+            <button type="button" class="btn btn-inverse-primary btn-rounded btn-fw" (click)="edit(menuItem)"
+              style="float: left;">Edit</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </app-dg>
 </app-card>
