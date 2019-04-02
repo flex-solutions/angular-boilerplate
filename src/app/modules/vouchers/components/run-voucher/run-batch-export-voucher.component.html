@@ -13,16 +13,12 @@
     <form class="cmxform">
       <fieldset>
         <div class="form-group">
-          <label for="txtFrom" i18n="@@voucher-runner-batch-export-code-from-number">Phát hành mã từ số</label>
-          <input type="number" [(ngModel)]="dto.minRange" class="form-control" id="txtFrom" name="txtFrom">
-        </div>
-        <div class="form-group">
-          <label for="txtTo" i18n="@@voucher-runner-batch-export-code-to-number">đến số</label>
+          <label for="txtTo" i18n="@@voucher-runner-batch-export-code-to-number">Publish Count</label>
           <input type="number" [(ngModel)]="dto.maxRange" class="form-control" id="txtTo" name="txtTo">
         </div>
         <div class="form-group">
           <label for="applyRangeTime" i18n="@@voucher-runner-effective-time">Thời gian có hiệu lực</label>
-          <app-date-range-picker [(dateRange)]="dateRange"></app-date-range-picker>
+          <app-date-range-picker [(dateRange)]="dateRange" [canReset]="false" [canSelectPastDate]="false" [timePicker]="true"></app-date-range-picker>
         </div>
         <div class="form-group">
           <label for="txtPrefix" i18n="@@voucher-runner-batch-export-code-prefix">Tiền tố của mã (2 kí tự)</label>
@@ -32,7 +28,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="submit()">Ok</button>
-    <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="submit()" appLoadingElement>Ok</button>
+    <button type="button" class="btn btn-light" data-dismiss="modal" appLoadingElement [showBusy]="'false'" (click)="cancel()">Cancel</button>
   </div>
 </div>

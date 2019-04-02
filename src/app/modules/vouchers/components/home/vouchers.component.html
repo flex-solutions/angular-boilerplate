@@ -1,41 +1,45 @@
 <!-- partial -->
 <app-voucher-filter [(voucherFilter)]="voucherFilter" (runFilterClicked)="onRunFilterClicked()" [resetFunction]="resetFilter"></app-voucher-filter>
 <app-card title="Vouchers" i18n-title="@@vouchers-title">
-    <div class="command-region">
-    </div>
-    <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
-        <tr role="row">
-            <th i18n="@@voucher-campaign-name">Tên chương trình</th>
-            <th i18n="@@voucher-type-using-purpose">Mục đích sử dụng</th>
-            <th i18n="@@vouchers-discount">Discount</th>
-          <th i18n="@@vouchers-createdDate">Ngày tạo</th>
-        </tr>
-        <tbody>
-            <tr *ngFor="let item of items">
-                <td>
-                    <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item._id)">{{item.name}}</p>
-                </td>
-                <td *ngIf="item.operationType == 0" i18n="@@voucher-using-purpose-repeat-one-code">Một mã sử dụng nhiều lần</td>
-                <td *ngIf="item.operationType == 1" i18n="@@voucher-using-purpose-export-batch-code">Xuất mã hàng loạt</td>
-                <td *ngIf="item.operationType == 2" i18n="@@voucher-using-purpose-customer-care">Chiến dịch CSKH</td>
-                <td *ngIf="item.type == 0">{{item.discount | currency:'VND':symbol:'1.0-2'}}</td>
-                <td *ngIf="item.type == 1">{{item.discount}}%</td>
-                <td *ngIf="item.type == 2"></td>
-                <td>{{item.create_on | dateFormat}}</td>
-                <td>
-                    <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="runACampaign(item)">
-                        <i class="mdi mdi-run text-primary" aria-hidden="false"></i>
-                        <span i18n="@@list-vouchers-run-voucher">Chạy chương trình</span>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@common-action-edit">Edit</a>
-                      <a class="dropdown-item" (click)="deleteVoucher(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </app-dg>
+  <div class="command-region">
+    <button type="button" class="btn btn-sm btn-primary" (click)="navigateToCreatePage()">
+      <i class="mdi mdi-plus"></i>
+      <span>New voucher</span>
+    </button>
+  </div>
+  <app-dg #dg (pageChanged)="onPageChanged($event)" [countFunction]="count" hideSearchInput="true">
+    <tr role="row">
+      <th i18n="@@voucher-campaign-name">Tên chương trình</th>
+      <th i18n="@@voucher-type-using-purpose">Mục đích sử dụng</th>
+      <th i18n="@@vouchers-discount">Discount</th>
+      <th i18n="@@vouchers-createdDate">Ngày tạo</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>
+          <p class="a-clickable pull-left centered" (click)="navigateTovoucherDetailPage(item)">{{item.name}}</p>
+        </td>
+        <td *ngIf="item.operationType == 0" i18n="@@voucher-using-purpose-repeat-one-code">Một mã sử dụng nhiều lần</td>
+        <td *ngIf="item.operationType == 1" i18n="@@voucher-using-purpose-export-batch-code">Xuất mã hàng loạt</td>
+        <td *ngIf="item.operationType == 2" i18n="@@voucher-using-purpose-customer-care">Chiến dịch CSKH</td>
+        <td *ngIf="item.type == 0">{{item.discount | currency:'VND':symbol:'1.0-2'}}</td>
+        <td *ngIf="item.type == 1">{{item.discount}}%</td>
+        <td *ngIf="item.type == 2"></td>
+        <td>{{item.create_on | dateFormat}}</td>
+        <td>
+          <button appCanUpdate type="button" class="btn btn-light btn-custom-css" (click)="runACampaign(item)">
+            <i class="mdi mdi-run text-primary" aria-hidden="false"></i>
+            <span i18n="@@list-vouchers-run-voucher">Chạy chương trình</span>
+          </button>
+          <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@common-action-edit">Edit</a>
+            <a class="dropdown-item" (click)="deleteVoucher(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </app-dg>
 </app-card>

@@ -1,0 +1,14 @@
+.topping-block {
+  font-weight: 400;
+  margin-right: 50px;
+}
+
+.topping-block .info {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+.accordion.accordion-body-filled .card .card-body {
+  background-color: #ffffff;
+  color: inherit;
+}

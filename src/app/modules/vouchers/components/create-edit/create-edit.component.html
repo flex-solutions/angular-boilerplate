@@ -23,6 +23,7 @@
                   <option value="0" i18n="@@voucher-using-purpose-repeat-one-code">Một mã sử dụng nhiều lần</option>
                   <option value="1" i18n="@@voucher-using-purpose-export-batch-code">Xuất mã hàng loạt</option>
                   <option value="2" i18n="@@voucher-using-purpose-customer-care">Chiến dịch CSKH</option>
+                  <!-- <option value="3" i18n="@@voucher-using-purpose-register-care">Đăng ký App</option> -->
                 </select>
               </div>
             </div>
@@ -91,58 +92,7 @@
               <label for="notificationMessage" i18n="@@common_label-push_notification_msg">Nội dung thông báo</label>
               <textarea class="form-control" id="notificationMessage" [(ngModel)]="voucher.notificationMessage" [ngModelOptions]="{standalone: true}" rows="6"></textarea>
           </div>
-          <div class="form-group" *ngIf="voucherGroupType==1">
-            <div class="row">
-              <div class="col-md-6">
-                <label i18n="@@voucher-create-edit-number-item-to-buy">Số lượng món cần mua</label>
-                <input class="form-control" type="number" appInputNumber [(ngModel)]="voucher.numberBuyItem" [ngModelOptions]="{standalone: true}">
-              </div>
-              <div class="col-md-6">
-                <label i18n="@@voucher-create-edit-number-item-donated">Số lượng món được tặng</label>
-                <input class="form-control" type="number" appInputNumber [(ngModel)]="voucher.numberGiftItem" [ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" i18n="@@voucher-create-edit-applicable-restaurants">Danh sách nhà hàng áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="poses" [(selectedItems)]="selectedPoses" (selectedItemsChange)="onSelectedPosesChanged()"></app-select2-multiple>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" i18n="@@voucher-create-edit-applicable-type">Chọn loại áp dụng (bỏ trống nếu áp dụng cho tất cả nhóm món và món)</label>
-            <select [(ngModel)]="applyMenuType" [ngModelOptions]="{standalone: true}"
-            class="form-control border-light" id="selectApplyMenuType"
-            (change)="onApplyMenuTypeChange()">
-              <option value="-1"></option>
-              <option value="0" i18n="@@voucher-create-edit-applicable-type-group-dishes">Áp dụng cho nhóm món</option>
-              <option value="1" i18n="@@voucher-create-edit-applicable-type-dishes">Áp dụng cho món</option>
-            </select>
-          </div>
-          <div class="form-group" *ngIf="applyMenuType==0">
-            <label *ngIf="voucherGroupType==0" i18n="@@voucher-create-edit-applicable-type-applicable-item-types">Nhóm món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <label *ngIf="voucherGroupType==1" i18n="@@voucher-create-edit-applicable-type-be-purchased-item-types">Nhóm món cần mua (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedMenuItemTypes"></app-select2-multiple>
-          </div>
-          <div class="form-group" *ngIf="applyMenuType==0 && voucherGroupType==1">
-            <label i18n="@@voucher-create-edit-applicable-type-gift-set">Nhóm món được tặng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="menuItemTypes" [(selectedItems)]="selectedAttachMenuItemTypes"></app-select2-multiple>
-          </div>
-          <div class="form-group" *ngIf="applyMenuType==1">
-            <label *ngIf="voucherGroupType==0" i18n="@@voucher-create-edit-applicable-type-applicable-items">Danh sách món áp dụng (bỏ trống nếu áp dụng tất cả)</label>
-            <label *ngIf="voucherGroupType==1" i18n="@@voucher-create-edit-applicable-type-be-purchased-items">Danh sách món cần mua (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="menuItems" [(selectedItems)]="selectedMenuItems"></app-select2-multiple>
-          </div>
-          <div class="form-group" *ngIf="applyMenuType==1 && voucherGroupType==1">
-            <label i18n="@@voucher-create-edit-applicable-type-be-donated-items">Danh sách món được tặng (bỏ trống nếu áp dụng tất cả)</label>
-            <app-select2-multiple [itemsSource]="menuItems" [(selectedItems)]="selectedAttachMenuItems"></app-select2-multiple>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" i18n="@@voucher-create-edit-applied-days">Ngày áp dụng (bỏ trống nếu áp dụng tất cả các ngày)</label>
-            <app-select2-multiple [itemsSource]="applyDays" [(selectedItems)]="selectedApplyDays"></app-select2-multiple>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" i18n="@@voucher-create-edit-applied-hours">Giờ áp dụng (bỏ trống nếu áp dụng tất cả các giờ)</label>
-            <app-select2-multiple [itemsSource]="applyHours" [(selectedItems)]="selectedApplyHours"></app-select2-multiple>
-          </div>
+          <app-common-create-edit-voucher #commonCreateEditVoucher [isEdit]="isEdit" [voucherGroupType]="voucherGroupType"></app-common-create-edit-voucher>
         </app-card>
       </div>
     </div>
@@ -196,7 +146,7 @@
 
     <!-- Form buttons -->
     <div class="form-cmds always-bottom-panel">
-      <button class="btn btn-success mr-2" i18n="@@common_button-submit" (click)="submit()" [disabled]="formGroup.invalid">Submit</button>
+      <button class="btn btn-success mr-2" (click)="submit()" [disabled]="formGroup.invalid" appLoadingElement [content]="'common_button-submit'">Submit</button>
       <button class="btn btn-light mr-3" i18n="@@common_button-cancel" (click)="cancel()">Cancel</button>
       <div class="form-check form-check-flat chk" *ngIf="!isEdit">
         <label class="form-check-label">

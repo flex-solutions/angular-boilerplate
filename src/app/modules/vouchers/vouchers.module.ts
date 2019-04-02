@@ -11,6 +11,8 @@ import { VoucherStatusDirective } from './directives/voucherStatus.directive';
 import { SharedModule } from '../../shared/shared.module';
 import { VoucherFormFactory } from './components/create-edit/voucher-form.factory';
 import { VoucherRunner } from './components/run-voucher/voucher-runner';
+import { PromotionsService } from './services/promotions.service';
+import { VoucherRunningFilters } from './components/vouchers-running/filters';
 
 @NgModule({
   imports: [
@@ -22,8 +24,8 @@ import { VoucherRunner } from './components/run-voucher/voucher-runner';
     SharedModule,
     PosAndMenuModule
   ],
-  declarations: [VoucherStatusDirective, ...voucherComponents],
-  providers: [VoucherService, VoucherFormFactory, VoucherRunner],
+  declarations: [VoucherStatusDirective, ...voucherComponents, ...VoucherRunningFilters],
+  providers: [VoucherService, PromotionsService, VoucherFormFactory, VoucherRunner],
   entryComponents: [...voucherEntryComponents]
 })
 export class VouchersModule {}

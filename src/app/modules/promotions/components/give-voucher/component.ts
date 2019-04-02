@@ -1,18 +1,18 @@
+import * as moment from 'moment';
 import { isNil } from 'ramda';
+import { DateRangeModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { Voucher } from './../../../../shared/models/voucher.model';
 import { VoucherService } from './../../../vouchers/services/vouchers.service';
 import { WizardComponent } from './../../../../shared/ui-common/wizard/wizard/wizard.component';
 import { Location } from '@angular/common';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { IGiveVoucherModel } from './../../interfaces/promotion';
+import { IGiveVoucherModel, VoucherGivingSkipType } from './../../interfaces/promotion';
 import { PromotionService } from './../../services/promotion.service';
-import { WizardStep } from './../../../../shared/ui-common/wizard/wizard-step/wizard-step.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { MemberHomeComponent } from '../../../member/components/home/home.component';
 import { isNullOrEmptyOrUndefined } from '../../../../utilities/util';
-import { UTF8Encoding } from '../../../../utilities/ utf8-regex';
 import { convertCriteriaToQueryString } from '../../../../utilities/search-filter';
 
 @Component({
@@ -23,7 +23,8 @@ export class GiveVoucherComponent implements OnInit {
   // Properties
   model: IGiveVoucherModel;
   notificationMessage: string;
-  applyDays = 30;
+  affectTime: DateRangeModel;
+  skipType: VoucherGivingSkipType = VoucherGivingSkipType.AssignedAndUseOrNotUse;
 
   vouchers: Voucher[] = [];
   selectedVoucher: Voucher = new Voucher();
@@ -46,6 +47,7 @@ export class GiveVoucherComponent implements OnInit {
 
   ngOnInit() {
     this.successMsg = this.translateService.translate('give-voucher-success');
+    this.affectTime = this.voucherService.initAffectTime();
     this.getCampaignVoucher();
   }
 
@@ -79,11 +81,23 @@ export class GiveVoucherComponent implements OnInit {
     this.model = {
       voucher: this.selectedVoucher,
       member_filter: convertCriteriaToQueryString(this.membersList.getFilterQuery()),
-      applyDays: this.applyDays,
-      notificationMsg: this.notificationMessage
+      startDate: this.affectTime.startDate,
+      endDate: this.affectTime.endDate,
+      notificationMsg: this.notificationMessage,
+      skipType: this.skipType
     };
+
     this._promotionService.giveVoucher(this.model).subscribe(() => {
       this._notificationService.showSuccess(this.successMsg);
+      this.reset();
     });
+  }
+
+  private reset() {
+    this.selectedVoucher = new Voucher();
+    this.membersList.resetFilter();
+    this.affectTime = this.voucherService.initAffectTime();
+    this.notificationMessage = '';
+    this.wizardComponent.reset();
   }
 }

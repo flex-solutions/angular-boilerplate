@@ -22,9 +22,16 @@ export interface IGiveVoucherModel {
   voucher: Voucher;
   member_filter: any;
   notificationMsg: string;
-  applyDays: number;
+  startDate: Date;
+  endDate: Date;
+  skipType: VoucherGivingSkipType;
 }
 
+export enum VoucherGivingSkipType {
+  AssignedAndNotUse = 0,
+  AssignedAndUseOrNotUse,
+  None
+}
 export class StatusCheckedItem implements CheckedItem {
   displayName: string;
   status: PromotionStatus;

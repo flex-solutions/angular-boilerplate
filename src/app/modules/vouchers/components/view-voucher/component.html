@@ -1,0 +1,97 @@
+<app-card title="Voucher {{voucher.name}}">
+  <div class="command-region">
+  </div>
+
+  <h4><small class="text-muted" i18n="@@voucher-pool-title-general-info">Thông tin chung</small></h4>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-campaign-name">Voucher name:</p>
+    <span class="col-md-6">{{voucher.name}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-voucher-code">Voucher code:</p>
+    <span class="col-md-6">{{voucher.code}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-description">Description:</p>
+    <span class="col-md-6">{{voucher.description}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@vouchers-discount">Discount:</p>
+    <span *ngIf="voucher.type == 0" class="col-md-6">{{voucher.discount | currency:'VND':'symbol':'1.0-2'}}</span>
+    <span *ngIf="voucher.type == 1" class="col-md-6">{{voucher.discount}}%</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-applied-pos">Applied Poses:</p>
+    <div class="col-md-6">
+      <span *ngFor="let pos of voucher.applyPoses" class="tag"><span>{{pos.name}}</span></span>
+    </div>
+  </div>
+  <div class="info-block" *ngIf="voucher.type==2">
+    <p class="col-md-6 font-weight-bold">Số món cần mua:</p>
+    <span class="col-md-6">{{voucher.numberBuyItem}}</span>
+  </div>
+  <div class="info-block" *ngIf="voucher.type==2">
+    <p class="col-md-6 font-weight-bold">Số món được tặng:</p>
+    <span class="col-md-6">{{voucher.numberGiftItem}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1" i18n="@@view-voucher-applied-menu">Món áp dụng:</p>
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2" i18n="@@view-voucher-require-menu">Món cần mua:</p>
+    <div class="col-md-6">
+      <span *ngFor="let menuItem of voucher.applyMenuItems" class="tag"><span>{{menuItem.name}}</span></span>
+    </div>
+  </div>
+  <div class="info-block" *ngIf="voucher.type==2">
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-gift-menu">Món được tặng:</p>
+    <div class="col-md-6">
+      <span *ngFor="let menuItem of voucher.attachGiftOfMenuItems" class="tag"><span>{{menuItem.name}}</span></span>
+    </div>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==0 || voucher.type==1" i18n="@@view-voucher-menu-group">Nhóm món áp dụng:</p>
+    <p class="col-md-6 font-weight-bold" *ngIf="voucher.type==2" i18n="@@view-voucher-require-menu-group">Nhóm món cần mua:</p>
+    <div class="col-md-6">
+      <span *ngFor="let menuItemType of voucher.applyMenuItemTypes" class="tag"><span>{{menuItemType.name}}</span></span>
+    </div>
+  </div>
+  <div class="info-block" *ngIf="voucher.type==2">
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-gift-menu-group">Nhóm món được tặng:</p>
+    <div class="col-md-6">
+      <span *ngFor="let menuItemType of voucher.attachGiftOfMenuItemTypes" class="tag"><span>{{menuItemType.name}}</span></span>
+    </div>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-applied-days">Áp dụng vào thứ:</p>
+    <div class="col-md-6">
+      <span *ngFor="let day of voucher.applyDays" class="tag"><span>{{day.name}}</span></span>
+    </div>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@view-voucher-applied-hours">Giờ áp dụng:</p>
+    <div class="col-md-6">
+      <span *ngFor="let hour of voucher.applyHourRanges" class="tag"><span>{{hour.name}}</span></span>
+    </div>
+  </div>
+
+  <h4 class="mt-3"><small class="text-muted" i18n="@@voucher-create-edit-title-advance-condition">Điều kiện nâng cao</small></h4>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-advance-condition-apply-invoice-from">Áp dụng hóa đơn từ:</p>
+    <span class="col-md-6">{{voucher.advApplyMinBillAmount | currency:'VND':'symbol':'1.0-2'}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-advance-condition-decrease-not-over">Giảm không quá:</p>
+    <span class="col-md-6">{{voucher.advApplyMaxDiscountAmount | currency:'VND':'symbol':'1.0-2'}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-advance-condition-number-discount-dishes">Số món giảm giá:</p>
+    <span class="col-md-6">{{voucher.advApplyAllowMenuItemCount}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-advance-condition-discount-lowest-highest">Giảm giá món cao nhất/thấp nhất:</p>
+    <span class="col-md-6">{{voucher.advApplyMenuItemAllow}}</span>
+  </div>
+  <div class="info-block">
+    <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-advance-condition-discount-from-item">Giảm giá từ món thứ:</p>
+    <span class="col-md-6">{{voucher.advApplyFromMenuItemIndex? voucher.advApplyFromMenuItemIndex + 1 : ''}}&nbsp;</span>
+  </div>
+</app-card>

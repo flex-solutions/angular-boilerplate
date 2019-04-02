@@ -4,7 +4,6 @@ import { Voucher, RepeatOneCodeDto, VoucherOperationType } from './../../../../s
 import { DateRangeModel } from './../../../../shared/ui-common/datepicker/model/date-range.model';
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../../../shared/ui-common/modal/components/dialog.component';
-import { VoucherRunning } from '../../../../shared/models/voucher-campaign.model';
 
 @Component({
   selector: 'app-run-repeat-one-code-voucher',
@@ -23,11 +22,7 @@ export class RunRepeatOneCodeVoucherComponent extends DialogComponent implements
   }
 
   ngOnInit() {
-    const initDate = new DateRangeModel();
-    initDate.startDate = new Date();
-    initDate.endDate = new Date();
-    this.dateRange = initDate;
-
+    this.dateRange = this.voucherService.initAffectTime();
     this.voucher = this.callerData;
   }
 

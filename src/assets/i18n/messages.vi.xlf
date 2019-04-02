@@ -60,6 +60,34 @@
         <source>Push notification message</source>
         <target>Nội dung thông báo</target>
       </trans-unit>
+      <trans-unit id="common-monday" datatype="html">
+        <source>Monday</source>
+        <target>Thứ 2</target>
+      </trans-unit>
+      <trans-unit id="common-tuesday" datatype="html">
+        <source>Tuesday</source>
+        <target>Thứ 3</target>
+      </trans-unit>
+      <trans-unit id="common-wednesday" datatype="html">
+        <source>Wednesday</source>
+        <target>Thứ 4</target>
+      </trans-unit>
+      <trans-unit id="common-thursday" datatype="html">
+        <source>Thursday</source>
+        <target>Thứ 5</target>
+      </trans-unit>
+      <trans-unit id="common-friday" datatype="html">
+        <source>Friday</source>
+        <target>Thứ 6</target>
+      </trans-unit>
+      <trans-unit id="common-saturday" datatype="html">
+        <source>Saturday</source>
+        <target>Thứ 7</target>
+      </trans-unit>
+      <trans-unit id="common-sunday" datatype="html">
+        <source>Sunday</source>
+        <target>Chủ nhật</target>
+      </trans-unit>
       <!-- Nav Bar -->
       <trans-unit id="layout-navbar-anchor-changepassword" datatype="html">
         <source>Change Password</source>
@@ -123,6 +151,18 @@
         <source>Push Notification</source>
         <target>Gởi Tin Nhắn</target>
       </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-push-notification" datatype="html">
+        <source>Push Notification</source>
+        <target>Gửi Tin Nhắn</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-scheduled-notification" datatype="html">
+        <source>Scheduled Notification</source>
+        <target>Gửi tin nhắn theo lịch</target>
+      </trans-unit>
+      <trans-unit id="layout-sidebar-anchor-manual-notification" datatype="html">
+        <source>Manual Notification</source>
+        <target>Gửi tin nhắn ngay</target>
+      </trans-unit>
       <!-- END Side Bar -->
       <!-- Modal -->
       <trans-unit id="modal-confirm-submit-button" datatype="html">
@@ -137,7 +177,8 @@
       <!--Datagrid-->
       <trans-unit id="dg-entries-info" datatype="html">
         <source>Showing {{currentPageStartEntry}} to {{currentPageEndEntry}} of {{totalItems}} entries</source>
-        <target>Hiển thị từ dòng {{currentPageStartEntry}} tới dòng {{currentPageEndEntry}} của {{totalItems}} dòng</target>
+        <target>Hiển thị từ dòng {{currentPageStartEntry}} tới dòng {{currentPageEndEntry}} của {{totalItems}} dòng
+        </target>
       </trans-unit>
       <trans-unit id="dg-show-label" datatype="html">
         <source>Show</source>
@@ -326,7 +367,8 @@
         <target>Tên đăng nhập hoặc mật khẩu không chính xác. Bạn còn lại {{0}} lần đăng nhập.</target>
       </trans-unit>
       <trans-unit id="account-login-validation-blockedAccount" datatype="html">
-        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.
+        </source>
         <target>Số lần đăng nhập cho phép của bạn đã vượt quá {{0}} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ
           admin để
           mở khóa.</target>
@@ -721,7 +763,8 @@
       </trans-unit>
       <trans-unit id="account-recovery-label-enter-email" datatype="html">
         <source>Enter your email address below and we'll send you a secure link to reset your password</source>
-        <target>Nhập địa chỉ email của bạn vào bên dưới, hệ thống sẽ gởi bạn một liên kết bảo mật để phục hồi mật khẩu</target>
+        <target>Nhập địa chỉ email của bạn vào bên dưới, hệ thống sẽ gởi bạn một liên kết bảo mật để phục hồi mật khẩu
+        </target>
       </trans-unit>
       <trans-unit id="account-recovery-input-email-address" datatype="html">
         <source>Email address</source>
@@ -1562,7 +1605,10 @@
         <source>Point</source>
         <target>Điểm</target>
       </trans-unit>
-
+      <trans-unit id="members-tbl-member-total-amount" datatype="html">
+        <source>Total Amount</source>
+        <target>Đã chi tiêu</target>
+      </trans-unit>
       <!--End Member Module-->
       <!--Start Create Edit Member Module-->
       <trans-unit id="member-create_edit_member-h4-create_member" datatype="html">
@@ -1819,8 +1865,10 @@
         <target>Bạn có chắc muốn xoá voucher "{{0}}"?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-warning-confirm" datatype="html">
-        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for those membership types is also deleted too. Are you sure you still delete?</source>
-        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
+        <source>Voucher "{{0}}" has been using for membership type(s) ({{1}}). If you are continue, the benefit for
+        those membership types is also deleted too. Are you sure you still delete?</source>
+        <target>Voucher "{{0}}" đang được dùng làm ưu đãi trong hạng hội viên ({{1}}), nếu bạn tiếp tục xóa, ưu đãi
+          trong hạng hội viên cũng bị xoá, bạn có muốn tiếp tục?</target>
       </trans-unit>
       <trans-unit id="vouchers-delete-success" datatype="html">
         <source>Voucher "{{0}}" has been deleted</source>
@@ -1868,6 +1916,10 @@
         <source>Customer care</source>
         <target>Chiến dịch CSKH</target>
       </trans-unit>
+      <trans-unit id="voucher-using-purpose-register-care" datatype="html">
+        <source>Register app</source>
+        <target>Đăng ký app</target>
+      </trans-unit>
       <trans-unit id="voucher-campaign-name" datatype="html">
         <source>Program name</source>
         <target>Tên chương trình</target>
@@ -1889,12 +1941,12 @@
         <target>Số tiền giảm giá</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-number-item-to-buy" datatype="html">
-        <source>Number of items to buy</source>
-        <target>Số lượng món cần mua</target>
+        <source>Number of items to buy (blank if applicable one item)</source>
+        <target>Số lượng món cần mua (bỏ trống nếu áp dụng 1 món)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-number-item-donated" datatype="html">
-        <source>Number of items donated</source>
-        <target>Số lượng món được tặng</target>
+        <source>Number of items donated (blank if applicable one item)</source>
+        <target>Số lượng món được tặng (bỏ trống nếu áp dụng 1 món)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-restaurants" datatype="html">
         <source>POS applicable (blank if applicable all)</source>
@@ -2024,6 +2076,10 @@
         <source>A new voucher has been created</source>
         <target>Một voucher mới được tạo thành công</target>
       </trans-unit>
+      <trans-unit id="voucher-edit-success" datatype="html">
+        <source>Voucher "{{0}}" has been updated</source>
+        <target>Voucher "{{0}}" được cập nhật thành công</target>
+      </trans-unit>
       <!--End create/edit voucher-->
       <!--Start running voucher-->
       <trans-unit id="voucher-runner-title" datatype="html">
@@ -2038,13 +2094,9 @@
         <source>Let's export batch code for voucher "{{voucher.name}}"</source>
         <target>Xuất mã hàng loạt cho voucher "{{voucher.name}}"</target>
       </trans-unit>
-      <trans-unit id="voucher-runner-batch-export-code-from-number" datatype="html">
-        <source>Publish code from number (equal 1 if empty)</source>
-        <target>Phát hành mã từ số (bằng 1 nếu bỏ trống)</target>
-      </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-to-number" datatype="html">
-        <source>to number (equal 1000 if empty)</source>
-        <target>đến số (bằng 1000 nếu bỏ trống)</target>
+        <source>Publish quantity (default 1000 code)</source>
+        <target>Số lượng mã được phát hành (bằng 1000 nếu bỏ trống)</target>
       </trans-unit>
       <trans-unit id="voucher-runner-batch-export-code-prefix" datatype="html">
         <source>Prefix of code (2 characters)</source>
@@ -2122,7 +2174,8 @@
           ổn định</target>
       </trans-unit>
       <trans-unit id="membership-type-create-sub-title" datatype="html">
-        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too
+        </source>
         <target>Thêm và áp dụng các loại ưu đãi cố định cho một loại hội viên</target>
       </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
@@ -2311,12 +2364,148 @@
         <target>Tiền tố</target>
       </trans-unit>
       <trans-unit id="voucher-running-code-scope" datatype="html">
-        <source>Scope of code</source>
-        <target>Phạm vi mã</target>
+        <source>Publish count</source>
+        <target>SL mã phát hành</target>
       </trans-unit>
       <trans-unit id="voucher-running-success" datatype="html">
         <source>Voucher "{{0}}" has been run</source>
         <target>Voucher "{{0}}" đã được áp dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-confirm" datatype="html">
+        <source>You are deleting promotion "{{0}}". {{1}} published voucher will be deleted, continue?</source>
+        <target>Bạn đang xóa chương trình "{{0}}". {{1}} voucher đã phát hành sẽ bị xóa, bạn có muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-success" datatype="html">
+        <source>A promotion has been deleted</source>
+        <target>Một chương trình khuyến mãi đã bị xóa</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-view-voucher" datatype="html">
+        <source>View voucher</source>
+        <target>Xem thông tin voucher</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-pos" datatype="html">
+        <source>Applied poses:</source>
+        <target>POS áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-menu" datatype="html">
+        <source>Applied menu:</source>
+        <target>Món áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-require-menu" datatype="html">
+        <source>Require menu:</source>
+        <target>Món cần mua:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-gift-menu" datatype="html">
+        <source>Gift menu:</source>
+        <target>Món được tặng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-menu-group" datatype="html">
+        <source>Menu group:</source>
+        <target>Nhóm món áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-require-menu-group" datatype="html">
+        <source>Require menu group:</source>
+        <target>Nhóm món cần mua:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-gift-menu-group" datatype="html">
+        <source>Gift menu group:</source>
+        <target>Nhóm món được tặng:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-days" datatype="html">
+        <source>Applied days:</source>
+        <target>Áp dụng vào thứ:</target>
+      </trans-unit>
+      <trans-unit id="view-voucher-applied-hours" datatype="html">
+        <source>Applied hours:</source>
+        <target>Giờ áp dụng:</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-batch-voucher-export" datatype="html">
+        <source>Download code</source>
+        <target>Tải mã voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-edit" datatype="html">
+        <source>Edit voucher</source>
+        <target>Sửa thông tin voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-update-success" datatype="html">
+        <source>Update voucher for promotion {{0}} successfully</source>
+        <target>Cập nhật thông tin voucher cho chương trình {{0}} thành công</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-edit-title" datatype="html">
+        <source>Voucher information</source>
+        <target>Thông tin voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-title" datatype="html">
+        <source>List of published voucher code</source>
+        <target>Danh sách mã voucher đã phát hành</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code-dialog-sub-title" datatype="html">
+        <source>View and possible to delete published voucher code of program "{{voucher.name}}"</source>
+        <target>Xem và xóa các mã voucher đã phát hành của chương trình "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-published-code" datatype="html">
+        <source>Publish code</source>
+        <target>Mã phát hành</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-member-id" datatype="html">
+        <source>Member id</source>
+        <target>Mã HV</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-used" datatype="html">
+        <source>Used code</source>
+        <target>Đã dùng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-btn-delete" datatype="html">
+        <source>Delete code</source>
+        <target>Xóa code</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-search-lbl" datatype="html">
+        <source>Search by member id, publish code</source>
+        <target>Tìm kiếm theo mã hội viên, mã phát hành voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-title" datatype="html">
+        <source>Manual mark a voucher code which is used</source>
+        <target>Đánh dấu một mã phát hành voucher đã được dùng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-dlg-sub-title" datatype="html">
+        <source>Mark voucher code "{{publishCode}}" of "{{voucherName}}" is used with a bill id</source>
+        <target>Đánh dấu mã "{{publishCode}}" của chương trình "{{voucherName}}" đã được sử dụng ở một hóa đơn</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-member-care-used-lbl-billId" datatype="html">
+        <source>Input bill id which used voucher code {{publishCode}}</source>
+        <target>Nhập mã hóa đơn đã sử dụng mã voucher {{publishCode}}</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-confirm-delete-tracking" datatype="html">
+        <source>Are you sure you want to delete code {{0}} of voucher {{1}}?</source>
+        <target>Bạn có chắc muốn xóa code {{0}} của voucher {{1}}?</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-delete-publish-code-success" datatype="html">
+        <source>A voucher code has been deleted?</source>
+        <target>Một mã voucher đã bị xóa</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-use-publish-code-success" datatype="html">
+        <source>A voucher code has been used</source>
+        <target>Một mã voucher đã được dùng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-title" datatype="html">
+        <source>Report usage of voucher</source>
+        <target>Báo cáo sử dụng voucher</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-sub-title" datatype="html">
+        <source>View usage status of "{{voucher.name}}"</source>
+        <target>Xem tình trạng sử dụng voucher của chương trình "{{voucher.name}}"</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-search-lbl" datatype="html">
+        <source>Search by member id, publish code, bill id</source>
+        <target>Tìm theo mã hội viên, mã phát hành voucher và mã hóa đơn</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-used-date" datatype="html">
+        <source>Used date</source>
+        <target>Ngày sử dụng</target>
+      </trans-unit>
+      <trans-unit id="voucher-running-report-usage-bill-id" datatype="html">
+        <source>Bill id</source>
+        <target>Mã hóa đơn</target>
       </trans-unit>
       <!--STOP voucher running-->
       <!--START Give Voucher-->
@@ -2333,8 +2522,8 @@
         <target>Mã voucher đã chọn</target>
       </trans-unit>
       <trans-unit id="give-voucher-effect-days" datatype="html">
-        <source>Effect days</source>
-        <target>Số ngày áp dụng</target>
+        <source>Affect time</source>
+        <target>Thời gian có hiệu lực</target>
       </trans-unit>
       <trans-unit id="give-voucher-notification-message" datatype="html">
         <source>Notification message</source>
@@ -2343,6 +2532,18 @@
       <trans-unit id="give-voucher-success" datatype="html">
         <source>Give voucher successfully</source>
         <target>Tặng voucher hoàn tất</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members" datatype="html">
+        <source>Ignore duplicate giving</source>
+        <target>Bỏ qua hội viên đã được tặng nhưng chưa sử dụng voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-ignore-assigned-members-history" datatype="html">
+        <source>Ignore duplicate giving voucher and member used this voucher</source>
+        <target>Bỏ qua hội viên đã được tặng nhưng chưa sử dụng hoặc đã sử dụng voucher</target>
+      </trans-unit>
+      <trans-unit id="give-voucher-no-ignored" datatype="html">
+        <source>No ignore</source>
+        <target>Không bỏ qua</target>
       </trans-unit>
       <!--STOP Give Voucher-->
       <!--START Pos and Menu Module-->
@@ -2361,6 +2562,18 @@
       <trans-unit id="pos-menu-list-th-name" datatype="html">
         <source>Name</source>
         <target>Tên</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates" datatype="html">
+        <source>Coordinates</source>
+        <target>Tọa Độ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates-long" datatype="html">
+        <source>Longitude</source>
+        <target>Kinh Độ</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-label-coordinates-lat" datatype="html">
+        <source>Latitude</source>
+        <target>Vĩ Độ</target>
       </trans-unit>
       <trans-unit id="pos-menu-list-th-address" datatype="html">
         <source>Address</source>
@@ -2410,13 +2623,114 @@
         <source>Please input pos's phone number</source>
         <target>Vui lòng nhập số điện thoại</target>
       </trans-unit>
+      <trans-unit id="pos-menu-coordinates-validate-required" datatype="html">
+        <source>Please input coordinates</source>
+        <target>Vui lòng nhập đầy đủ tọa độ của POS</target>
+      </trans-unit>
       <trans-unit id="pos-menu-open-time-validate-required" datatype="html">
         <source>Please input pos's open time</source>
         <target>Vui lòng nhập thời gian hoạt động</target>
       </trans-unit>
       <trans-unit id="pos-menu-update-pos-success" datatype="html">
         <source>POS "{{0}}" has been updated</source>
-        <target>Đã cập nhật thông tin cho pos "{{0}}"</target>
+        <target>Đã cập nhật thông tin cho pos {{0}}</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-title" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+
+      <trans-unit id="pos-menu-item-list-sub-title-general" datatype="html">
+        <source>Display and modify menu info</source>
+        <target>Hiển thị và sửa thông tin menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-sub-title" datatype="html">
+        <source>Display and modify menu info of POS {{0}}</source>
+        <target>Hiển thị và sửa thông tin menu của POS {{0}}</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-list-btn-menu" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-list-txt-search" datatype="html">
+        <source>Search by name, type</source>
+        <target>Tìm kiếm theo tên và loại</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-image" datatype="html">
+        <source>Avarta</source>
+        <target>Hình</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-th-description" datatype="html">
+        <source>Description</source>
+        <target>Mô tả</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-th-group-name" datatype="html">
+        <source>Group name</source>
+        <target>Tên nhóm</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-name-required" datatype="html">
+        <source>Please input menu name</source>
+        <target>Vui lòng nhập tên menu</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-th-name" datatype="html">
+        <source>Name</source>
+        <target>Tên</target>
+      </trans-unit>
+      <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
+        <source> Apply all for same items</source>
+        <target>Áp dụng cho những sản phẩm cùng loại</target>
+      </trans-unit>
+      <trans-unit id="menu-item-edit-label-can_exchange_point" datatype="html">
+        <source> Can Exchange Point</source>
+        <target> Có thể đổi điểm thưởng</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-sub-title" datatype="html">
+        <source> View, edit name for menu topping and topping options. Tip: Click on Option name to edit</source>
+        <target> Xem, sửa tên topping và tùy chọn topping của một menu. Tip: Click vào tên tùy chọn để sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-name" datatype="html">
+        <source> Name</source>
+        <target> Tên topping</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-ipos-id" datatype="html">
+        <source> IPos id</source>
+        <target> Mã IPos</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-min-permitted" datatype="html">
+        <source> Min permitted</source>
+        <target> Số lượng tối thiểu</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-max-permitted" datatype="html">
+        <source> Max permitted</source>
+        <target> Số lượng tối đa</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-btn-edit-name" datatype="html">
+        <source> Edit name</source>
+        <target> Sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option" datatype="html">
+        <source> Options</source>
+        <target> Tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-name" datatype="html">
+        <source> Option name</source>
+        <target> Tên tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ta-price" datatype="html">
+        <source> Take away price</source>
+        <target> Giá mang đi</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ots-price" datatype="html">
+        <source> On the seat price</source>
+        <target> Giá ăn tại chỗ</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-opt-name-success" datatype="html">
+        <source> Update topping option name successfully</source>
+        <target> Cập nhật tên tùy chọn topping thành công</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-name-success" datatype="html">
+        <source> Update topping name successfully</source>
+        <target> Cập nhật tên topping thành công</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->
@@ -2445,6 +2759,154 @@
         <target>Nội dung</target>
       </trans-unit>
       <!--END Push Notification-->
+      <!--START Scheduled notification-->
+      <trans-unit id="scheduled-notification-tbl-h2-title" datatype="html">
+        <source>Scheduled Notification</source>
+        <target>Thông báo theo lịch</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-btn-create" datatype="html">
+        <source>New notification</source>
+        <target>Tạo thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-name" datatype="html">
+        <source>Name</source>
+        <target>Tên gợi nhớ</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-title" datatype="html">
+        <source>Title</source>
+        <target>Tiêu đề thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-content" datatype="html">
+        <source>Content</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-schedule" datatype="html">
+        <source>Schedule</source>
+        <target>Lịch gửi</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-tbl-last-run-at" datatype="html">
+        <source>Last Run At</source>
+        <target>Lần gửi cuối cùng</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-btn-delete-notification" datatype="html">
+        <source>Delete notification</source>
+        <target>Xoá thông báo</target>
+      </trans-unit>
+      <trans-unit id="scheduled-notification-txt-search" datatype="html">
+        <source>Search by name</source>
+        <target>Tìm kiếm theo tên gợi nhớ</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-title" datatype="html">
+        <source>Create notification</source>
+        <target>Tạo thông báo</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-title" datatype="html">
+        <source>Edit notification</source>
+        <target>Sửa thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-sub-title" datatype="html">
+        <source>This page allows you create scheduled notification for a group of customers</source>
+        <target>Trang này cho phép bạn tạo thông báo mới gởi tới một nhóm hội viên được chọn theo một lịch trình cố
+          định</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-sub-title" datatype="html">
+        <source>This page allows you edit scheduled notification for a group of customers</source>
+        <target>Trang này cho phép bạn sửa thông báo gởi tới một nhóm hội viên được chọn theo một lịch trình cố định
+        </target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-title" datatype="html">
+        <source>Notification</source>
+        <target>Thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-schedule" datatype="html">
+        <source>Schedule</source>
+        <target>Lịch gửi</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-days" datatype="html">
+        <source>Days</source>
+        <target>Số ngày</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-time-to-push-notification" datatype="html">
+        <source>Time to push notification</source>
+        <target>Thời gian gửi thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-day-of-week" datatype="html">
+        <source>Day of week</source>
+        <target>Thứ trong tuần</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-day-of-month" datatype="html">
+        <source>Day of month</source>
+        <target>Ngày trong tháng</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-title" datatype="html">
+        <source>Notification title</source>
+        <target>Tiêu đề thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-step-1-frm-content" datatype="html">
+        <source>Notification content</source>
+        <target>Nội dung thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-wizard_step-custmer_title_field" datatype="html">
+        <source>Customer target</source>
+        <target>Đối tượng khách hàng</target>
+      </trans-unit>
+      <trans-unit id="create-scheduled-notification-wizard_step-success-message" datatype="html">
+        <source>Create schedule notification successfully</source>
+        <target>Tạo thông báo mới thành công</target>
+      </trans-unit>
+      <trans-unit id="edit-scheduled-notification-wizard_step-success-message" datatype="html">
+        <source>Edit schedule notification successfully</source>
+        <target>Sửa thông báo thành công</target>
+      </trans-unit>
+      <trans-unit id="delete-create-scheduled-notification-confirm-message" datatype="html">
+        <source>Notification "{{0}}" will be permanently deleted. Are you sure you want to delete?</source>
+        <target>Thông báo "{{0}}" sẽ bị xoá vĩnh viễn. Bạn có chắc muốn tiếp tục?</target>
+      </trans-unit>
+      <trans-unit id="delete-create-scheduled-notification-confirm-title" datatype="html">
+        <source>Delete scheduled notification</source>
+        <target>Xoá thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-daily" datatype="html">
+        <source>Daily</source>
+        <target>Hằng ngày</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-weekly" datatype="html">
+        <source>Weekly</source>
+        <target>Hằng tuần</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-monthly" datatype="html">
+        <source>Monthly</source>
+        <target>Hàng tháng</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-days-are-not-returned" datatype="html">
+        <source>Days are not returned</source>
+        <target>Khách hàng không tới cửa hàng trong X ngày</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-name" datatype="html">
+        <source>Please input name of notification</source>
+        <target>Vui lòng nhập tên gợi nhớ</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-title" datatype="html">
+        <source>Please input notification title</source>
+        <target>Vui lòng nhập tiêu đề của thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-content" datatype="html">
+        <source>Please input notification content</source>
+        <target>Vui lòng nhập nội dung của thông báo</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_require-notification-days" datatype="html">
+        <source>Please input selected days</source>
+        <target>Vui lòng nhập số ngày chưa trở lại</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-validation_invalid-notification-days" datatype="html">
+        <source>Selected days must be greater than zero</source>
+        <target>Số ngày chưa trở lại phải lớn hơn 0</target>
+      </trans-unit>
+      <trans-unit id="create-schedule-notification-schedule-days-are-not-returned-x" datatype="html">
+        <source>Customer are not returned after {{0}} days</source>
+        <target>Khách hàng không tới cửa hàng trong {{0}} ngày</target>
+      </trans-unit>
+      <!--END Scheduled notification-->
     </body>
   </file>
 </xliff>

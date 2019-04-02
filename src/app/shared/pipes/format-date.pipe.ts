@@ -10,8 +10,21 @@ declare let moment: any;
 export class DateFormat implements PipeTransform {
   transform(rawDate: any, arg: any): any {
     if (rawDate) {
-      const localDate: Date = moment(rawDate).toDate();
-      return moment(localDate).format('DD/MM/YYYY');
+      return moment(rawDate).format('DD/MM/YYYY');
+    } else {
+      return '';
+    }
+  }
+}
+@Pipe({
+  name: 'dateTimeFormat'
+})
+
+@Injectable()
+export class DateTimeFormat implements PipeTransform {
+  transform(rawDate: any, arg: any): any {
+    if (rawDate) {
+      return moment(rawDate).format('DD/MM/YYYY HH:mm');
     } else {
       return '';
     }

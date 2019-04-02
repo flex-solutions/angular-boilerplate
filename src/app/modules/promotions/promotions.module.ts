@@ -10,7 +10,6 @@ import { UICommonModule } from '../../shared/ui-common/ui-common.module';
 import { PromotionModuleComponents, PromotionsModuleEntryComponents } from './components';
 import { VouchersModule } from '../vouchers/vouchers.module';
 import { MemberModule } from '../member/member.module';
-import { PushNotificationService } from './services/push-notification';
 
 @NgModule({
   imports: [
@@ -22,7 +21,7 @@ import { PushNotificationService } from './services/push-notification';
     VouchersModule,
     MemberModule
   ],
-  providers: [PromotionService, StartStopPromotionService, PushNotificationService],
+  providers: [PromotionService, StartStopPromotionService],
   declarations: [
     ...PromotionModuleComponents,
     ...PromotionDirectives,

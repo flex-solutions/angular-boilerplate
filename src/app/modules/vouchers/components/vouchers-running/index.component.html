@@ -17,6 +17,7 @@
               <table class="table center-aligned-table">
                 <thead>
                   <tr>
+                    <th>QR Code</th>
                     <th i18n="@@voucher-campaign-name">Tên chương trình</th>
                     <th i18n="@@voucher-create-edit-voucher-code">Mã voucher</th>
                     <th i18n="@@vouchers-discount">Discount</th>
@@ -25,20 +26,35 @@
                     <th i18n="@@voucher-running-usage-limit">Số lần sử dụng</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-remain-count">Còn lại</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of repeatCodeItems">
-                    <td>{{item.voucher.name}}</td>
+                    <td><img style="width:150px;height:150px;border-radius:0" appImgBinary [data]="item.barcode"></td>
+                    <td>
+                      <p class="a-clickable pull-left centered" (click)="viewVoucher(item)">{{item.voucher.name}}</p>
+                    </td>
                     <td>{{item.voucher.code}}</td>
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
                     <td *ngIf="item.voucher.type == 2"></td>
-                    <td>{{item.start_date | dateFormat}}</td>
-                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.start_date | dateTimeFormat}}</td>
+                    <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>{{item.usageLimit}}</td>
                     <td>{{item.usedCount}}</td>
                     <td>{{item.remainCount}}</td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@voucher-running-edit">Sửa
+                          thông tin voucher</a>
+                        <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -74,23 +90,43 @@
                     <th i18n="@@vouchers-discount">Discount</th>
                     <th i18n="@@voucher-running-effect-from">Có hiệu lực từ ngày</th>
                     <th i18n="@@voucher-running-effect-to">Đến ngày</th>
-                    <th i18n="@@voucher-running-code-scope">Phạm vi mã</th>
+                    <th i18n="@@voucher-running-code-scope">SL mã phát hành</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-remain-count">Còn lại</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of batchExportItems">
-                    <td>{{item.voucher.name}}</td>
+                    <td>
+                      <p class="a-clickable pull-left centered" (click)="viewVoucher(item)">{{item.voucher.name}}</p>
+                    </td>
                     <td>{{item.prefix}}</td>
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
                     <td *ngIf="item.voucher.type == 2"></td>
-                    <td>{{item.start_date | dateFormat}}</td>
-                    <td>{{item.end_date | dateFormat}}</td>
-                    <td>{{item.minRange}} - {{item.maxRange}}</td>
-                    <td>{{item.usedCount}}</td>
-                    <td>{{item.remainCount}}</td>
+                    <td>{{item.start_date | dateTimeFormat}}</td>
+                    <td>{{item.end_date | dateTimeFormat}}</td>
+                    <td>{{item.maxRange}}</td>
+                    <td>
+                      <a class="a-clickable" (click)="viewVoucherUsage(item)">{{item.usedCount}}</a>
+                    </td>
+                    <td>
+                      <a class="a-clickable" (click)="viewListOfPublishedCodeOfMemberCareType(item)">{{item.remainCount}}</a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@voucher-running-edit">Sửa
+                          thông tin voucher</a>
+                        <a class="dropdown-item" (click)="exportCode(item)" href="javascript:;" i18n="@@voucher-running-batch-voucher-export">Export
+                          code</a>
+                        <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -128,22 +164,36 @@
                     <th i18n="@@voucher-running-effect-to">Đến ngày</th>
                     <th i18n="@@voucher-running-used-count">Đã sử dụng</th>
                     <th i18n="@@voucher-running-available-code">Available</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of memberCareItems">
-                    <td>{{item.voucher.name}}</td>
+                    <td>
+                      <p class="a-clickable pull-left centered" (click)="viewVoucher(item)">{{item.voucher.name}}</p>
+                    </td>
                     <td>{{item.voucher.code}}</td>
                     <td *ngIf="item.voucher.type == 0">{{item.voucher.discount | currency:'VND':symbol:'1.0-2'}}</td>
                     <td *ngIf="item.voucher.type == 1">{{item.voucher.discount}}%</td>
                     <td *ngIf="item.voucher.type == 2"></td>
-                    <td>{{item.start_date | dateFormat}}</td>
-                    <td>{{item.end_date | dateFormat}}</td>
+                    <td>{{item.start_date | dateTimeFormat}}</td>
+                    <td>{{item.end_date | dateTimeFormat}}</td>
                     <td>
-                      <a class="a-clickable">{{item.usedCount}}</a>
+                      <a class="a-clickable" (click)="viewVoucherUsage(item)">{{item.usedCount}}</a>
                     </td>
                     <td>
-                      <a class="a-clickable">{{item.remainCount}}</a>
+                      <a class="a-clickable" (click)="viewListOfPublishedCodeOfMemberCareType(item)">{{item.remainCount}}</a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal btn-option-custom font-weight-bold"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="editVoucher(item)" href="javascript:;" i18n="@@voucher-running-edit">Sửa
+                          thông tin voucher</a>
+                        <a class="dropdown-item" (click)="delete(item)" href="javascript:;" i18n="@@common-action-delete">Delete</a>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
