@@ -91,6 +91,7 @@ export class Select2Component implements AfterViewInit {
     @Input()
     set valuePropertyName(val) {
         this._valuePropertyName = val;
+        this.onSelectedItemChange();
     }
     get valuePropertyName() {
         return this._valuePropertyName;
@@ -172,7 +173,7 @@ export class Select2Component implements AfterViewInit {
     }
 
     onSelectedItemChange() {
-        const temp = this._selectedItem;
+        const temp = this.buildSelect2Data(this._selectedItem);
         if (temp && !isNullOrEmptyOrUndefined(temp.id)) {
             this.host.val(temp.id).trigger('change');
         } else {

@@ -92,6 +92,6 @@
   </div>
   <div class="info-block">
     <p class="col-md-6 font-weight-bold" i18n="@@voucher-create-edit-advance-condition-discount-from-item">Giảm giá từ món thứ:</p>
-    <span class="col-md-6">{{voucher.advApplyFromMenuItemIndex + 1}}</span>
+    <span class="col-md-6">{{voucher.advApplyFromMenuItemIndex? voucher.advApplyFromMenuItemIndex + 1 : ''}}&nbsp;</span>
   </div>
 </app-card>

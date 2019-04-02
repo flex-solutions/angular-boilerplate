@@ -367,8 +367,10 @@
         <target>Username or password is incorrect. You have {{0}} login attempts remain.</target>
       </trans-unit>
       <trans-unit id="account-login-validation-blockedAccount" datatype="html">
-        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</source>
-        <target>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.</target>
+        <source>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.
+        </source>
+        <target>The login attempts exceeds {{0}} times. Your account is blocked, please contact system admin to unlock.
+        </target>
       </trans-unit>
       <trans-unit id="account-login-validation-invalidRecaptcha" datatype="html">
         <source>Recaptcha is invalid. Please make sure that you are not a robot.</source>
@@ -1948,12 +1950,12 @@
         <target>Discount amount</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-number-item-to-buy" datatype="html">
-        <source>Number of items to buy</source>
-        <target>Number of items to buy</target>
+        <source>Number of items to buy (blank if applicable one item)</source>
+        <target>Number of items to buy (blank if applicable one item)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-number-item-donated" datatype="html">
-        <source>Number of items donated</source>
-        <target>Number of items donated</target>
+        <source>Number of items donated (blank if applicable one item)</source>
+        <target>Number of items donated (blank if applicable one item)</target>
       </trans-unit>
       <trans-unit id="voucher-create-edit-applicable-restaurants" datatype="html">
         <source>POS applicable (blank if applicable all)</source>
@@ -2182,8 +2184,10 @@
         <target>Allow to update information of a membership type, it also should be updated on IPOS system too</target>
       </trans-unit>
       <trans-unit id="membership-type-create-sub-title" datatype="html">
-        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too</source>
-        <target>Allow add one or many new membership type, new membership type should be added on IPOS system too</target>
+        <source>Allow to add one or many new membership type, new membership type should be added on IPOS system too
+        </source>
+        <target>Allow add one or many new membership type, new membership type should be added on IPOS system too
+        </target>
       </trans-unit>
       <trans-unit id="membership-type-list-category-internal" datatype="html">
         <source>Internal membership types</source>
@@ -2638,8 +2642,8 @@
         <target>Display and modify menu info</target>
       </trans-unit>
       <trans-unit id="pos-menu-item-list-sub-title" datatype="html">
-        <source>Display and modify menu info of {{0}}</source>
-        <target>Display and modify menu info of {{0}}</target>
+        <source>Display and modify menu info of POS {{0}}</source>
+        <target>Display and modify menu info of POS {{0}}</target>
       </trans-unit>
       <trans-unit id="pos-menu-list-btn-menu" datatype="html">
         <source>Menu</source>
@@ -2657,6 +2661,14 @@
         <source>Description</source>
         <target>Description</target>
       </trans-unit>
+            <trans-unit id="pos-menu-item-th-group-name" datatype="html">
+        <source>Group name</source>
+        <target>Group name</target>
+      </trans-unit>
+      <trans-unit id="pos-menu-item-th-name" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
       <trans-unit id="menu-tem-label-apply_for_all_item" datatype="html">
         <source> Apply all for same items</source>
         <target> Apply all for same items</target>
@@ -2664,6 +2676,54 @@
       <trans-unit id="menu-item-edit-label-can_exchange_point" datatype="html">
         <source> Can Exchange Point</source>
         <target> Can Exchange Point</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-sub-title" datatype="html">
+        <source> View, edit name for menu topping and topping options. Tip: Click on Option name to edit</source>
+        <target> Xem, sửa tên topping và tùy chọn topping của một menu. Tip: Click vào tên tùy chọn để sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-name" datatype="html">
+        <source> Name</source>
+        <target> Tên topping</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-ipos-id" datatype="html">
+        <source> IPos id</source>
+        <target> Mã IPos</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-min-permitted" datatype="html">
+        <source> Min permitted</source>
+        <target> Số lượng tối thiểu</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-max-permitted" datatype="html">
+        <source> Max permitted</source>
+        <target> Số lượng tối đa</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-btn-edit-name" datatype="html">
+        <source> Edit name</source>
+        <target> Sửa tên</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option" datatype="html">
+        <source> Options</source>
+        <target> Tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-name" datatype="html">
+        <source> Option name</source>
+        <target> Tên tùy chọn</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ta-price" datatype="html">
+        <source> Take away price</source>
+        <target> Giá mang đi</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-option-ots-price" datatype="html">
+        <source> On the seat price</source>
+        <target> Giá ăn tại chỗ</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-opt-name-success" datatype="html">
+        <source> Update topping option name successfully</source>
+        <target> Cập nhật tên tùy chọn topping thành công</target>
+      </trans-unit>
+      <trans-unit id="menu-item-topping-update-topping-name-success" datatype="html">
+        <source> Update topping name successfully</source>
+        <target> Cập nhật tên topping thành công</target>
       </trans-unit>
       <!--END Pos and Menu Module-->
       <!--START Push Notification-->

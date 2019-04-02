@@ -3,9 +3,8 @@ import { Input, Directive, OnChanges, AfterViewInit, ElementRef } from '@angular
 declare let $: any;
 
 @Directive({ selector: '[appMenuItemExchangePoint]' })
-
 export class MenuItemExchangePointDirective implements OnChanges, AfterViewInit {
-    @Input('appMenuItemExchangePoint') isEchangePoint: boolean;
+    @Input('appMenuItemExchangePoint') canExchangePoint: boolean;
     host: any;
 
     constructor(el: ElementRef) {
@@ -21,8 +20,9 @@ export class MenuItemExchangePointDirective implements OnChanges, AfterViewInit 
     }
 
     private createStatusCtrl() {
-        const icon = this.isEchangePoint ? '<i class="mdi mdi-heart text-success"></i>'
-         : '<i class="mdi mdi-heart-broken text-danger"></i>';
-         $(this.host).html(icon);
+        const icon = this.canExchangePoint
+            ? '<i class="mdi mdi-heart text-success"></i>'
+            : '<i class="mdi mdi-heart-broken text-danger"></i>';
+        $(this.host).html(icon);
     }
 }

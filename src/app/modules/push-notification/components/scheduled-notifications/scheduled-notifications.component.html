@@ -18,7 +18,7 @@
     #dg
     (pageChanged)="onPageChanged($event)"
     [countFunction]="count"
-    searchLabel="Search by name" 
+    searchLabel="Search by name"
     i18n-searchLabel="@@scheduled-notification-txt-search"
   >
     <tr>
@@ -41,7 +41,7 @@
         <td>{{ notification.title }}</td>
         <td>{{ notification.content }}</td>
         <td>{{ notification.schedule }}</td>
-        <td>{{ notification.lastRunDate | dateFormat }}</td>
+        <td>{{ notification.lastRunDate | dateTimeFormat }}</td>
         <td>
           <div class="row">
             <button
