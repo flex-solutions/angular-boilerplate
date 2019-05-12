@@ -5,7 +5,7 @@ import {
   IValidationMessage,
   GenericValidator
 } from '../../../../shared/validation/generic-validator';
-import { AccountMessages } from '../../account.message';
+import { LINGUAL_KEY } from '../../constants';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { AuthenticationService } from '../../../../shared/services/authentication.service';
 import { Location } from '@angular/common';
@@ -28,10 +28,10 @@ export class RecoveryPasswordComponent extends AbstractFormComponent
   } = {
     email: {
       required: {
-        message: AccountMessages.EmailEmpty
+        message: LINGUAL_KEY.EmailEmpty
       },
       pattern: {
-        message: AccountMessages.EmailInvalid
+        message: LINGUAL_KEY.EmailInvalid
       }
     }
   };
