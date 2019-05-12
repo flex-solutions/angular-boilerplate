@@ -10,6 +10,7 @@ import { IPermissionScheme, IPermissionSchemeDetail } from '../models/permission
 import { isNullOrEmptyOrUndefined } from '../../utilities/util';
 import { equals } from 'ramda';
 import ArrayExtension from '../../utilities/array.extension';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService extends AbstractRestService {
@@ -24,6 +25,10 @@ export class AuthenticationService extends AbstractRestService {
   }
 
   authenticated(): boolean {
+    if (environment.authentication === false) {
+      return true;
+    }
+
     if (AuthenticationTokenHelper.localToken) {
       const expireUtcDate = parseInt(AuthenticationTokenHelper.expireTime, 0);
       const dateNow = Date.now() / 1000;

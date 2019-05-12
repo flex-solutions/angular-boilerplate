@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { BasicUserInfo } from '../../models/user.model';
 import { ModuleRoute } from '../../constants/const';
 import { VERSION_TOKEN, IVersionController } from '../../interfaces/version';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,6 +13,7 @@ import { VERSION_TOKEN, IVersionController } from '../../interfaces/version';
 })
 export class SidebarComponent implements OnInit {
   currentUser: BasicUserInfo;
+  isAuthentication: boolean;
 
   constructor(
     private router: Router,
@@ -23,6 +25,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.authenticationService.getCurrentUser();
+    this.isAuthentication = environment.authentication;
   }
 
   navigateToUsersPage() {
@@ -35,52 +38,6 @@ export class SidebarComponent implements OnInit {
 
   navigateToPermissionSchemesPage() {
     this.router.navigate([ModuleRoute.PERMISSION_SCHEMES]);
-  }
-
-  navigateToNewsPage() {
-    this.router.navigate([ModuleRoute.NEWS]);
-  }
-
-  navigateToPromotionPage() {
-    this.router.navigate([ModuleRoute.PROMOTION]);
-  }
-
-  navigateToGiveVoucherPage() {
-    this.router.navigate([`${ModuleRoute.PROMOTION}/give-voucher`]);
-  }
-
-  navigateToPushNotificationPage() {
-    this.router.navigate([`${ModuleRoute.PUSH_NOTIFICATION}/now`]);
-  }
-
-  navigateToMemberManagementPage() {
-    this.router.navigate([ModuleRoute.MEMBER]);
-  }
-
-  navigateToMembershipTypeListPage() {
-    this.router.navigate([
-      `${ModuleRoute.MEMBER}/${ModuleRoute.MEMBERSHIP_TYPE}`
-    ]);
-  }
-
-  navigateToVouchersPage() {
-    this.router.navigate([ModuleRoute.VOUCHER]);
-  }
-
-  navigateToPosPage() {
-    this.router.navigate([ModuleRoute.POS_AND_MENU]);
-  }
-
-  navigateToVoucherCreationPage() {
-    this.router.navigate([`${ModuleRoute.VOUCHER}/create`]);
-  }
-
-  navigateToVouchersRunningPage() {
-    this.router.navigate([`${ModuleRoute.VOUCHER}/vouchers-running`]);
-  }
-
-  navigateToScheduleNotification() {
-    this.router.navigate([`${ModuleRoute.PUSH_NOTIFICATION}/scheduled-notification`]);
   }
 
   showVersion() {

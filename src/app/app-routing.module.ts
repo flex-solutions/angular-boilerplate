@@ -20,38 +20,14 @@ const routes: Routes = [
     {
       path: 'permission-schemes',
       loadChildren: 'app/modules/permission-scheme/permission-scheme.module#PermissionSchemeModule',
-    },
-    {
-      path: 'news',
-      loadChildren: 'app/modules/news/news.module#NewsModule', // Lazy loading views module
-    },
-    {
-      path: 'promotions',
-      loadChildren: 'app/modules/promotions/promotions.module#PromotionsModule',
-    },
-    {
-      path: 'members',
-      loadChildren: 'app/modules/member/member.module#MemberModule',
-    },
-    {
-      path: 'voucher',
-      loadChildren: 'app/modules/vouchers/vouchers.module#VouchersModule',
-    },
-    {
-      path: 'pos',
-      loadChildren: 'app/modules/pos-and-menu/module#PosAndMenuModule',
-    },
-    {
-      path: 'push-notification',
-      loadChildren: 'app/modules/push-notification/push-notification.module#PushNotificationModule',
     }]
   },
   {
     path: '',
     component: LoginLayoutComponent,
     children: [{
-      path: 'account',
-      loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
+      path: 'authentication',
+      loadChildren: 'app/modules/authentication/module#AuthenticationModule', // Lazy loading authentication module
     }]
   },
 ];

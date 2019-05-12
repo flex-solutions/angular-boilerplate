@@ -1,7 +1,7 @@
 {
-  "name": "snobrs-cms",
-  "version": "0.6.21",
-  "license": "SNOB",
+  "name": "angular-boilerplate",
+  "version": "1.0.0",
+  "license": "Flex Solutions",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +13,7 @@
     "build-i18n-dev": "for lang in vi en; do ng build --output-path=dist/$lang --base-href=/$lang/ --aot --i18n-file=src/assets/i18n/messages.$lang.xlf --i18n-locale=$lang --i18n-format=xlf; done",
     "vi": "ng serve --aot --i18n-file=src/assets/i18n/messages.vi-VN.xlf --locale=vi --i18n-format=xlf",
     "en": "ng serve --aot --i18n-file=src/assets/i18n/messages.en-US.xlf --locale=en --i18n-format=xlf",
-    "build:client-and-server-bundles-i18n": "ng run snobrs-cms:build:production-en && ng run snobrs-cms:build:production-vi"
+    "build:client-and-server-bundles-i18n": "ng run cms:build:production-en && ng run cms:build:production-vi"
   },
   "private": true,
   "dependencies": {

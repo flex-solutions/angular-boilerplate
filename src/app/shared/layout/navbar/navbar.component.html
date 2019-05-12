@@ -8,10 +8,10 @@
   </button>
   <ul class="navbar-nav navbar-nav-right">
     <app-notification></app-notification>
-    <li class="nav-item dropdown d-none d-xl-inline-block">
+    <li *ngIf="isAuthentication" class="nav-item dropdown d-none d-xl-inline-block">
       <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
         <span class="mr-3">Hello, {{currentUser.fullname}} !</span>
-        <img class="img-xs rounded-circle" src="{{currentUser.avatar}}" alt="Profile image">
+        <img class="img-xs rounded-circle" src="{{currentUser.avatar || './assets/images/defaultavatar.png'}}" alt="Profile image">
       </a>
       <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
         <a class="dropdown-item mt-2" i18n="@@layout-navbar-anchor-changepassword" (click) = "changePassword()">

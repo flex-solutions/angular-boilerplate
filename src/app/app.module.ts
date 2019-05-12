@@ -17,15 +17,8 @@ import { UserGroupsModule } from './modules/user-groups/usergroup.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PermissionSchemeModule } from './modules/permission-scheme/permission-scheme.module';
 import { DialogModule } from './shared/ui-common/modal/dialog.module';
-import { NewsModule } from './modules/news/news.module';
-import { UsersModule } from './modules/users/users.module';
-import { PromotionsModule } from './modules/promotions/promotions.module';
-import { MemberModule } from './modules/member/member.module';
-import { VouchersModule } from './modules/vouchers/vouchers.module';
-import { PosAndMenuModule } from './modules/pos-and-menu/module';
 import { VersionController } from './version/controller';
 import { VERSION_TOKEN } from './shared/interfaces/version';
-import { PushNotificationModule } from './modules/push-notification/push-notification.module';
 
 @NgModule({
   declarations: [AppComponent, VersionComponent],
@@ -38,14 +31,7 @@ import { PushNotificationModule } from './modules/push-notification/push-notific
     PubSubClientModule,
     DialogModule,
     UserGroupsModule,
-    UsersModule,
     PermissionSchemeModule,
-    NewsModule,
-    PromotionsModule,
-    MemberModule,
-    VouchersModule,
-    PosAndMenuModule,
-    PushNotificationModule
   ],
   providers: [
     {

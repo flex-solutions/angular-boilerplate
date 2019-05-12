@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "snobrs-cms": {
+    "cms": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -107,24 +107,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "snobrs-cms:build"
+            "browserTarget": "cms:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "snobrs-cms:build:production"
+              "browserTarget": "cms:build:production"
             },
             "vi": {
-              "browserTarget": "snobrs-cms:build:production-vi"
+              "browserTarget": "cms:build:production-vi"
             },
             "en": {
-              "browserTarget": "snobrs-cms:build:production-en"
+              "browserTarget": "cms:build:production-en"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "snobrs-cms:build"
+            "browserTarget": "cms:build"
           }
         },
         "test": {
@@ -156,7 +156,7 @@
         }
       }
     },
-    "snobrs-cms-e2e": {
+    "cms-e2e": {
       "root": "e2e",
       "sourceRoot": "src",
       "projectType": "application",
@@ -165,7 +165,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "snobrs-cms:serve"
+            "devServerTarget": "cms:serve"
           }
         },
         "lint": {
@@ -178,7 +178,7 @@
       }
     }
   },
-  "defaultProject": "snobrs-cms",
+  "defaultProject": "cms",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

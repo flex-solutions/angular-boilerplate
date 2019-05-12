@@ -11,17 +11,17 @@
     <div class="about-frm">
       <div class="about-logo"></div>
       <div style="display:grid">
-        <h2>SNOB CMS</h2>
+        <h2 style="text-transform:uppercase">{{cmsTitle}}</h2>
         <label>GUI Version: {{guiVersion}}</label>
         <label>API Version: {{apiVersion}}</label>
-        <label>Contact: <a class="text-primary" href="mailto:snobcoffeevn@gmail.com?Subject=[SNOB CMS Support] Hi Admin"
-            target="_top">snobcoffeevn@gmail.com</a></label>
+        <label>Contact: <a class="text-primary" href="mailto:{{contactMail}}?Subject= Hi Admin"
+            target="_top">{{contactMail}}</a></label>
       </div>
     </div>
   </div>
   <div class="modal-footer">
     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block about-copyright">Copyright © 2018
-      <a href="http://www.snobcoffee.vn/" target="_blank">SNOB</a>. All rights reserved.</span>
+      <a href="{{homepage}}" target="_blank" style="text-transform:uppercase">{{cmsTitle}}</a>. All rights reserved.</span>
     <button type="button" class="btn btn-success" (click)="close()">Ok</button>
   </div>
 </div>
