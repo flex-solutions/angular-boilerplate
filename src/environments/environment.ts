@@ -5,8 +5,12 @@
 
 export const environment = {
   production: false,
-  // host: 'http://localhost:3000',
-  host: 'http://209.97.160.16:3000',
+  host: 'http://localhost:3000',
   INVISIBLE_RECAPTCHA_SITEKEY: '6LdiA10UAAAAALuxIB1bCFAYJmNtr1ezF-muzAQF',
-  VERSION: require('../../package.json').version
+  VERSION: require('../../package.json').version,
+  authentication: false,
+  CMS_TITLE: 'CMS',
+  CMS_SYSTEM_NAME: 'CMS Full Name',
+  HOMEPAGE: 'http://www.homepage.vn/',
+  CONTACT_MAIL: 'contact@gmail.com',
 };

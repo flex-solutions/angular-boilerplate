@@ -1,6 +1,6 @@
 const DefaultUserGroup = {
-    ADMINISTRATORS: 'snob-cms-administrators',
-    USERS: 'snob-cms-users'
+    ADMINISTRATORS: 'cms-administrators',
+    USERS: 'cms-users'
 };
 
 const DefaultPermissionScheme = {

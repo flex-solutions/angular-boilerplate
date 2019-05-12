@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('snobrs-cms App', () => {
+describe('cms App', () => {
   let page: AppPage;
 
   beforeEach(() => {

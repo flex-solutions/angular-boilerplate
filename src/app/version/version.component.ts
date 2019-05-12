@@ -14,6 +14,9 @@ export class VersionComponent extends DialogComponent implements AfterViewInit {
 
     guiVersion: string;
     apiVersion: string;
+    cmsTitle: string;
+    contactMail: string;
+    homepage: string;
 
     constructor(private readonly appService: AppService,
         dialogService: DialogService) {
@@ -24,6 +27,10 @@ export class VersionComponent extends DialogComponent implements AfterViewInit {
         setTimeout(() => {
             this.getApiVersion();
             this.getGUIVersion();
+
+            this.cmsTitle = environment.CMS_TITLE;
+            this.contactMail = environment.CONTACT_MAIL;
+            this.homepage = environment.HOMEPAGE;
         });
     }
 
