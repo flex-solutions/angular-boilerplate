@@ -1,5 +1,4 @@
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
+import { Directive, Input, ElementRef, OnChanges, AfterViewInit } from '@angular/core';
 
 declare let $: any;
 
