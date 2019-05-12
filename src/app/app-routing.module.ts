@@ -26,8 +26,8 @@ const routes: Routes = [
     path: '',
     component: LoginLayoutComponent,
     children: [{
-      path: 'account',
-      loadChildren: 'app/modules/account/account.module#AccountModule', // Lazy loading account module
+      path: 'authentication',
+      loadChildren: 'app/modules/authentication/module#AuthenticationModule', // Lazy loading authentication module
     }]
   },
 ];

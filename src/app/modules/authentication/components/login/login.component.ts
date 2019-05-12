@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '../../../../shared/services/translate.service';
 import { GenericValidator, IValidationMessage } from '../../../../shared/validation/generic-validator';
 import { InvisibleReCaptchaComponent } from 'ngx-captcha';
-import { AccountMessages } from '../../account.message';
+import { LINGUAL_KEY } from '../../constants';
 import { SignedUser } from '../../../../shared/models/user.model';
 import { HttpExceptionResponse } from '../../../../shared/models/http-exception-response.model';
 import { AuthenticationResponse } from '../../../../shared/models/authentication.model';
@@ -51,12 +51,12 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
   } = {
       username: {
         required: {
-          message: AccountMessages.EmptyUserName
+          message: LINGUAL_KEY.EmptyUserName
         }
       },
       password: {
         required: {
-          message: AccountMessages.EmptyPassword
+          message: LINGUAL_KEY.EmptyPassword
         }
       }
     };
@@ -75,7 +75,7 @@ export class LoginComponent extends AbstractFormComponent implements OnInit {
       // Reset recaptcha
       this.captchaRef.resetCaptcha();
       // Raise error reCaptcha invalid
-      this.loginError = this.translateService.translate(AccountMessages.InvalidRECAPTCHA);
+      this.loginError = this.translateService.translate(LINGUAL_KEY.InvalidRECAPTCHA);
     } else {
       const signedUser = new SignedUser();
       signedUser.username = this.username;
