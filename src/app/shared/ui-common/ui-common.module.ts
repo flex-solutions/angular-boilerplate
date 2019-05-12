@@ -1,4 +1,4 @@
-import { BooleanStatusCtrlDirective } from './directives/ boolean-status-ctrl.directive';
+import { BooleanStatusCtrlDirective } from './directives/boolean-status-ctrl.directive';
 import { DateRangePickerComponent } from './datepicker/date-range-picker/date-range-picker.component';
 import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
 import { WizardComponent } from './wizard/wizard/wizard.component';
