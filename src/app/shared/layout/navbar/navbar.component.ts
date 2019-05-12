@@ -4,6 +4,7 @@ import { ExDialog } from '../../ui-common/modal/services/ex-dialog.service';
 import { TranslateService } from '../../services/translate.service';
 import { BasicUserInfo } from '../../models/user.model';
 import { ChangePasswordComponent } from '../../../modules/users/components/change-password/change-password.modal';
+import { environment } from '../../../../environments/environment';
 declare let $: any;
 
 @Component({
@@ -16,9 +17,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     private translateService: TranslateService) { }
 
   currentUser: BasicUserInfo;
+  isAuthentication: boolean;
 
   ngOnInit() {
     this.currentUser = this.authenticationService.getCurrentUser();
+    this.isAuthentication = environment.authentication;
   }
 
   ngAfterViewInit(): void {
